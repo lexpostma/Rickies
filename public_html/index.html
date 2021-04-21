@@ -22,7 +22,7 @@
 			body {
 				max-width: 500px;
 				width: 100%;
-				margin: 50px auto 0;
+				margin: 0 auto;
 				padding: 20px;
 			}
 			a {
@@ -34,12 +34,18 @@
 				height: auto;
 				border-radius: 4px;
 			}
+			
+			@media screen and (min-width: 600px) {
+				body {
+					margin-top: 50px;
+				}
+			}
 		</style>
 	</head>
 	<body>
-		<img src="/images/connected_artwork.png" />
+		<img src="/images/connected_artwork.png" alt="Connected artwork" />
 		<h1>The Rickies</h1>
 		<p>Hello world! Fan-art website for The Rickies coming soon-ish. Just setting everything up, listening to old episodes, getting the data, designing and building the whole thing. You know, small stuff.</p>
-		<p>I just love the show. Enjoy <a href="https://relay.fm/connected">Connected</a> too on Relay FM</p>
+		<p>I just love the show. Enjoy <a href="https://relay.fm/connected">Connected</a> too on Relay FM.</p>
 	</body>
 </html>
