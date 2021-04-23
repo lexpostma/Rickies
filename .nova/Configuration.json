@@ -1,6 +1,7 @@
 {
   "VineCode.Sass.sourceMap" : "None",
-  "workspace.color" : 1,
+  "workspace.art_style" : 1,
+  "workspace.color" : 9,
   "workspace.name" : "Rickies",
   "workspace.preview_root" : "\/public_html\/",
   "workspace.preview_type" : "custom",
