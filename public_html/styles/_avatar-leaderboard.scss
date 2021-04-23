@@ -1,0 +1,53 @@
+.avatar {
+	background: pink; // TODO
+	border-radius: 50%;
+	border: var(--graphic-border);
+	width: var(--graphic-size);
+	height: var(--graphic-size);
+
+	.ring {
+		position: absolute;
+		top: -8px;
+		left: -8px;
+		bottom: -8px;
+		right: -8px;
+		border: 4px solid orange; // TODO
+		border-radius: 50%;
+	}
+}
+
+.avatar_leaderboard {
+	display: flex;
+	flex-direction: row;
+	// align-items: flex-start;
+	align-items: center;
+	margin: var(--space-between-vertical) var(--space-between-horizontal);
+	.host {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		order: 0;
+		flex-grow: 1;
+		margin: 0 8px;
+		// padding: 8px 0px 0px;
+		.avatar {
+			margin-bottom: 8px;
+			margin: 8px;
+		}
+		span:not(:first-of-type) {
+			margin-top: 4px;
+		}
+		.name {
+			font-weight: bold;
+		}
+		.title {
+			color: var(--text-secondary-color);
+		}
+		.string {}
+		&.winner .avatar {
+			margin-top: 0px;
+			margin-bottom: 16px;
+		}
+	}
+}

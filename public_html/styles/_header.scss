@@ -1,0 +1,73 @@
+header {
+	position: relative;
+	text-align: center;
+	padding: var(--space-between-vertical);
+	background-size: cover;
+	background-position: center;
+	&.home {
+		background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%), url('/images/confetti.png');
+		@media (prefers-color-scheme: dark) {
+			background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%), url('/images/confetti.png');
+		}
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 48px var(--space-between-horizontal);
+		img#trophy {
+			height: 120px;
+			margin-bottom: var(--space-between-horizontal);
+		}
+		h1 {
+			margin-bottom: 4px;
+		}
+	}
+	&.details {
+		height: 375px;
+		background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%), var(--hero-image);
+		@media (prefers-color-scheme: dark) {
+			background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%), var(--hero-image);
+		}
+		h1 {
+			text-transform: uppercase;
+			position: absolute;
+			left: var(--space-between-vertical);
+			right: var(--space-between-vertical);
+			bottom: var(--space-between-vertical);
+		}
+	}
+
+	#corner_tag {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 90px;
+		height: 90px;
+		background-image: url('/images/triangle.svg');
+		background-size: cover;
+		img#relay_logo {
+			width: 40px;
+			position: absolute;
+			right: 45px;
+			top: 10px;
+		}
+	}
+}
+
+nav {
+	background: var(--menu-color);
+	text-align: center;
+	padding: var(--space-between-horizontal);
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	a {
+		margin: 0px var(--space-between-horizontal);
+		&.active {
+			opacity: 1;
+			font-weight: bold;
+			text-decoration: none;
+		}
+	}
+}

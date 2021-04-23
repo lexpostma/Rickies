@@ -1,0 +1,71 @@
+ul.list_item_group {
+
+}
+li.list_item + li.list_item {
+	margin-top: var(--space-between-vertical);
+}
+
+.list_item_graphic {
+	border-radius: var(--corner-radius);
+	border: var(--graphic-border);
+	width: var(--graphic-size);
+	height: var(--graphic-size);
+	&.image {
+		// To extend image behind the transparant border
+		// https://stackoverflow.com/a/24231514
+		background-size: cover;
+		background-origin: border-box;
+		background-position: center;
+	}
+	&.placeholder {
+		background-color: var(--relay-blue);
+		animation-name: connected_colors;
+		animation-duration: 60s;
+		animation-iteration-count: infinite;
+		// animation-delay: -1s;
+	}
+}
+
+
+li.list_item {
+	.list_item_content {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+
+		.list_item_labels {
+			margin-left: var(--space-between-horizontal);
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			padding-top: 8px;
+
+			.label1,
+			.label2,
+			.secondary_string {
+				display: block;
+			}
+			.secondary_string {
+				margin-top: 4px;
+				font-size: 0.75rem;
+				.tag {
+					margin-right: 8px;
+				}
+				.label3 {
+					color: var(--text-secondary-color);
+				}
+			}
+		}
+	}
+	a.list_item_content {
+		text-decoration: none;
+		.list_item_labels {
+			.label1 {
+				text-decoration: underline;
+			}
+			.label2 {
+				color: var(--text-primary-color);
+			}
+		}
+	}
+}

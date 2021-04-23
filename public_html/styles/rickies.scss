@@ -1,0 +1,112 @@
+@use "root";
+@use "header";
+@use "list-item";
+@use "avatar-leaderboard";
+
+html {
+	line-height: 1.5;
+    background-color: var(--background-color);
+	color: var(--text-primary-color);
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+	width: 100vw;
+	overflow-x: hidden;
+}
+
+h1 {
+	font-weight: 800;
+	font-size: 2rem;
+	line-height: 1;
+	margin: 0;
+}
+
+h2 {}
+h3 {
+	font-weight: 600;
+	font-size: 1.25rem;
+}
+h4 {
+	text-transform: uppercase;
+	color: var(--text-secondary-color);
+	font-weight: bold;
+	font-size: 0.875rem;
+}
+
+// Regular links
+a {
+	&:link,
+	&:visited {
+		color: var(--link-color);
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		color: var(--link-hover-color);
+	}
+}
+
+// Links on dark background
+footer a,
+nav a {
+	&:link,
+	&:visited {
+		color: white;
+		opacity: 0.7;
+	}
+
+	&:hover,
+	&:focus {
+		opacity: 1;
+	}
+
+	&:active {
+		opacity: 1;
+	}
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+span.tag {
+	color: #FFF;
+	background: var(--tag-color);
+	padding: 0px 4px;
+	border-radius: var(--corner-radius);
+	border: var(--graphic-border);
+}
+
+.banner {
+	text-align: center;
+	color: white;
+	padding: 8px var(--space-between-horizontal);
+	background: var(--connected-orange);
+}
+
+footer {
+	padding: var(--space-between-horizontal);
+	color: white;
+	text-align: center;
+	background: var(--relay-blue);
+	font-size: 0.875rem;
+}
+
+section {
+	padding: 0 var(--space-between-horizontal);
+}
+
+section,
+footer {
+	margin-top: var(--space-between-vertical);
+
+}
+
+@media screen and (min-width: 400px) {}
+@media screen and (min-width: 600px) {}
+@media screen and (min-width: 800px) {}
+@media screen and (min-height: 1000px) {}
+@media (prefers-color-scheme: dark) {}
