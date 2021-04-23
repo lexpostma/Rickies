@@ -48,7 +48,8 @@ main {
   margin: 5px 0 22px;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: "BlackChancery";
 }
 
@@ -103,7 +104,7 @@ ol a:active {
   bottom: 0;
   left: 0;
   right: 0;
-  background: #FFF;
+  background: #fff;
   padding: 8px 24px 20px;
 }
 #rule_slider label {
@@ -134,6 +135,6 @@ ol a:active {
     fill: var(--text-primary-color);
   }
   #back_button svg path:last-of-type {
-    fill: #FFFFFF;
+    fill: #ffffff;
   }
 }

@@ -7,30 +7,28 @@
 </section>
 
 <?php
-
-$host_array = array(
-	array(
+$host_array = [
+	[
 		"name" => "Stephen",
 		"winner" => false,
 		"title" => "Document Maintainer",
-		"string" => "3 points<br />Flexing 23%"
-	),
-	array(
+		"string" => "3 points<br />Flexing 23%",
+	],
+	[
 		"name" => "Myke",
 		"winner" => false,
 		"title" => "Keynote Chairman",
-		"string" => "3 points<br />Flexing 23%"
-	),
-	array(
+		"string" => "3 points<br />Flexing 23%",
+	],
+	[
 		"name" => "Federico",
 		"winner" => false,
 		"title" => "Picker of Passion",
-		"string" => "3 points<br />Flexing 23%"
-	)
-);
+		"string" => "3 points<br />Flexing 23%",
+	],
+];
 
 echo avatar_leaderboard($host_array);
-
 ?>
 
 <section>

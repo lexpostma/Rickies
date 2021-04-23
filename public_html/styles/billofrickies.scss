@@ -1,10 +1,10 @@
 @font-face {
-	font-family: 'BlackChancery';
-	src: url('/fonts/BlackChancery.eot');
-	src: url('/fonts/BlackChancery.eot?#iefix') format('embedded-opentype'),
-		url('/fonts/BlackChancery.woff2') format('woff2'),
-		url('/fonts/BlackChancery.woff') format('woff'),
-		url('/fonts/BlackChancery.ttf') format('truetype');
+	font-family: "BlackChancery";
+	src: url("/fonts/BlackChancery.eot");
+	src: url("/fonts/BlackChancery.eot?#iefix") format("embedded-opentype"),
+		url("/fonts/BlackChancery.woff2") format("woff2"),
+		url("/fonts/BlackChancery.woff") format("woff"),
+		url("/fonts/BlackChancery.ttf") format("truetype");
 	font-weight: 100;
 	font-style: normal;
 	font-display: swap;
@@ -31,7 +31,7 @@
 
 html {
 	line-height: 1.5;
-    background-color: var(--background-color);
+	background-color: var(--background-color);
 	color: var(--text-primary-color);
 }
 
@@ -45,7 +45,13 @@ body {
 main {
 	max-width: 600px;
 	margin: auto;
-	background-image: url(/images/parchment-border.svg), radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%), url(/images/parchment-background.jpg);
+	background-image: url(/images/parchment-border.svg),
+		radial-gradient(
+			107.69% 64.1% at 50.13% 51.34%,
+			rgba(255, 245, 225, 0.7) 0%,
+			rgba(255, 218, 184, 0.7) 100%
+		),
+		url(/images/parchment-background.jpg);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 100% 100%, cover, cover;
@@ -57,8 +63,9 @@ main {
 	margin: 5px 0 22px;
 }
 
-h1, h2 {
-	font-family: 'BlackChancery';
+h1,
+h2 {
+	font-family: "BlackChancery";
 }
 h1 {
 	text-align: center;
@@ -80,7 +87,7 @@ ol {
 		margin: -2px -4px;
 		border-radius: 4px;
 		transition: background 100ms;
-		background: rgba(215, 164, 87,0);
+		background: rgba(215, 164, 87, 0);
 
 		&:link,
 		&:visited {
@@ -92,7 +99,6 @@ ol {
 			text-decoration-color: var(--text-primary-color);
 			color: var(--text-primary-color);
 			background: var(--link-color);
-
 		}
 		&:active {
 			text-decoration-color: black;
@@ -117,7 +123,7 @@ ol {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background: #FFF;
+	background: #fff;
 	padding: 8px 24px 20px;
 
 	label {
@@ -125,15 +131,15 @@ ol {
 		text-align: center;
 	}
 
-	input[type=range] {
+	input[type="range"] {
 		width: 100%;
 	}
 }
 
-
-
-@media screen and (min-width: 400px) {}
-@media screen and (min-width: 600px) {}
+@media screen and (min-width: 400px) {
+}
+@media screen and (min-width: 600px) {
+}
 @media screen and (min-width: 800px) {
 	:root {
 		font-size: 16px;
@@ -143,7 +149,8 @@ ol {
 		padding: 48px 48px 64px;
 	}
 }
-@media screen and (min-height: 1000px) {}
+@media screen and (min-height: 1000px) {
+}
 
 @media (prefers-color-scheme: dark) {
 	/* :root {
@@ -157,8 +164,7 @@ ol {
 			fill: var(--text-primary-color);
 		}
 		path:last-of-type {
-			fill: #FFFFFF;
+			fill: #ffffff;
 		}
 	}
 }
-

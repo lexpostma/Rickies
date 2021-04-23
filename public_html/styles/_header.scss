@@ -5,9 +5,20 @@ header {
 	background-size: cover;
 	background-position: center;
 	&.home {
-		background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%), url('/images/confetti.png');
+		background-image: linear-gradient(
+				180deg,
+				rgba(255, 255, 255, 0.33) 0%,
+				rgba(255, 255, 255, 0.84) 100%
+			),
+			url("/images/confetti.png");
 		@media (prefers-color-scheme: dark) {
-			background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%), url('/images/confetti.png');
+			color: white;
+			background-image: linear-gradient(
+					180deg,
+					rgba(51, 63, 72, 0.33) 0%,
+					rgba(51, 63, 72, 0.84) 100%
+				),
+				url("/images/confetti.png");
 		}
 
 		display: flex;
@@ -24,9 +35,19 @@ header {
 	}
 	&.details {
 		height: 375px;
-		background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%), var(--hero-image);
+		background-image: linear-gradient(
+				180deg,
+				rgba(255, 255, 255, 0.33) 0%,
+				rgba(255, 255, 255, 0.84) 100%
+			),
+			var(--hero-image);
 		@media (prefers-color-scheme: dark) {
-			background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%), var(--hero-image);
+			background-image: linear-gradient(
+					180deg,
+					rgba(51, 63, 72, 0.33) 0%,
+					rgba(51, 63, 72, 0.84) 100%
+				),
+				var(--hero-image);
 		}
 		h1 {
 			text-transform: uppercase;
@@ -43,7 +64,7 @@ header {
 		left: 0;
 		width: 90px;
 		height: 90px;
-		background-image: url('/images/triangle.svg');
+		background-image: url("/images/triangle.svg");
 		background-size: cover;
 		img#relay_logo {
 			width: 40px;

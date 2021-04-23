@@ -1,6 +1,6 @@
 :root {
-  --background-color: #FFF;
-  --text-primary-color: #31373D;
+  --background-color: #fff;
+  --text-primary-color: #31373d;
   --text-secondary-color: #777777;
   --menu-color: var(--connected-blue);
   --link-color: var(--connected-blue);
@@ -18,7 +18,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #000000;
-    --text-primary-color: #9BAEC1;
+    --text-primary-color: #9baec1;
     --text-secondary-color: #929292;
     --link-hover-color: var(--connected-blue);
     --graphic-border: 1px solid rgba(255, 255, 255, 0.2);
@@ -40,6 +40,7 @@ header.home {
 }
 @media (prefers-color-scheme: dark) {
   header.home {
+    color: white;
     background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%), url("/images/confetti.png");
   }
 }
@@ -244,7 +245,7 @@ a:link, a:visited {
   color: var(--link-color);
 }
 a:hover, a:focus, a:active {
-  color: #23527c;
+  color: var(--link-hover-color);
 }
 
 footer a:link, footer a:visited,
@@ -270,7 +271,7 @@ ul {
 }
 
 span.tag {
-  color: #FFF;
+  color: #fff;
   background: var(--tag-color);
   padding: 0px 4px;
   border-radius: var(--corner-radius);

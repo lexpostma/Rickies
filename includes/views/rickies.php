@@ -9,7 +9,7 @@ On Connected at Relay FM.</p>
 </header>
 
 <nav>
-	<a href="<?=billofrickies_url();?>">The Bill of Rickies</a>
+	<a href="<?= billofrickies_url() ?>">The Bill of Rickies</a>
 	<a href="/leaderboard">Host Leaderboard</a>
 </nav>
 
@@ -20,13 +20,9 @@ On Connected at Relay FM.</p>
 <section>
 	<ul class="list_item_group">
 
-<?php
-
-foreach ($rickies_events_array as &$event) {
+<?php foreach ($rickies_events_array as &$event) {
 	echo list_item($event);
-};
-
-?>
+} ?>
 
 	</ul>
 </section>

@@ -1,12 +1,12 @@
 <?php
 
 // Rickies overview
-$rickies_events_params = array(
+$rickies_events_params = [
 	"filterByFormula" => "AND( Published, Picks )",
-	"sort" => array(array('field' => 'Episode date', 'direction' => "desc")),
+	"sort" => [["field" => "Episode date", "direction" => "desc"]],
 	// "maxRecords" => 150,
 	// "pageSize" => 50,
-);
+];
 $all_event_details = false;
 
-include("../includes/controllers/rickies/event_data_controller.php");
+include "../includes/controllers/rickies/event_data_controller.php";

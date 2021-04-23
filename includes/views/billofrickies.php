@@ -1,4 +1,6 @@
-<a id="back_button" href="<?=billofrickies_url(false);?>"><? include("../public_html/images/back-button.svg"); ?></a>
+<a id="back_button" href="<?= billofrickies_url(
+	false
+) ?>"><? include("../public_html/images/back-button.svg"); ?></a>
 
 <main>
 	<p id="active_date">28 June 2020</p>
@@ -6,23 +8,31 @@
 
 	<h2>The Rickies</h2>
 	<ol>
-<?php
-
-foreach ($rules_array["rickies"] as &$rule) {
-	echo "<li id='rule".$rule["id"]."' startdate='".$rule["date_start"]."' enddate='".$rule["date_end"]."' >".$rule["rule"]."</li>";
-};
-
-?>
+<?php foreach ($rules_array["rickies"] as &$rule) {
+	echo "<li id='rule" .
+		$rule["id"] .
+		"' startdate='" .
+		$rule["date_start"] .
+		"' enddate='" .
+		$rule["date_end"] .
+		"' >" .
+		$rule["rule"] .
+		"</li>";
+} ?>
 	</ol>
 	<h2>The Flexies</h2>
 	<ol>
-<?php
-
-foreach ($rules_array["flexies"] as &$rule) {
-	echo "<li id='rule".$rule["id"]."' startdate='".$rule["date_start"]."' enddate='".$rule["date_end"]."' >".$rule["rule"]."</li>";
-};
-
-?>
+<?php foreach ($rules_array["flexies"] as &$rule) {
+	echo "<li id='rule" .
+		$rule["id"] .
+		"' startdate='" .
+		$rule["date_start"] .
+		"' enddate='" .
+		$rule["date_end"] .
+		"' >" .
+		$rule["rule"] .
+		"</li>";
+} ?>
 	</ol>
 </main>
 

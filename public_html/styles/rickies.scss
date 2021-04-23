@@ -5,7 +5,7 @@
 
 html {
 	line-height: 1.5;
-    background-color: var(--background-color);
+	background-color: var(--background-color);
 	color: var(--text-primary-color);
 }
 
@@ -22,7 +22,8 @@ h1 {
 	margin: 0;
 }
 
-h2 {}
+h2 {
+}
 h3 {
 	font-weight: 600;
 	font-size: 1.25rem;
@@ -73,7 +74,7 @@ ul {
 }
 
 span.tag {
-	color: #FFF;
+	color: #fff;
 	background: var(--tag-color);
 	padding: 0px 4px;
 	border-radius: var(--corner-radius);
@@ -102,11 +103,15 @@ section {
 section,
 footer {
 	margin-top: var(--space-between-vertical);
-
 }
 
-@media screen and (min-width: 400px) {}
-@media screen and (min-width: 600px) {}
-@media screen and (min-width: 800px) {}
-@media screen and (min-height: 1000px) {}
-@media (prefers-color-scheme: dark) {}
+@media screen and (min-width: 400px) {
+}
+@media screen and (min-width: 600px) {
+}
+@media screen and (min-width: 800px) {
+}
+@media screen and (min-height: 1000px) {
+}
+@media (prefers-color-scheme: dark) {
+}

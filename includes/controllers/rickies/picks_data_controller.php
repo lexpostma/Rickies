@@ -2,7 +2,6 @@
 
 // Ricky picks
 
-
 // $picks_data__params = array(
 // 	"fields" => ["Artwork", "Name", "URL", "Winner (manual)", "Episode date"],
 // );
@@ -21,7 +20,6 @@
 // 			"url"			=> "/".check_key("URL",$fields),
 // 			"date" 			=> strtotime(check_key("Episode date",$fields,false,0)),
 // 			"artwork"		=> check_key("Artwork",$fields,false,0),
-// 			// "artwork" 		=> check_artwork_key(0,$fields["Artwork"]),
 // 			"tag" 			=> check_key("Winner (manual)",$fields),
 // 		);
 //

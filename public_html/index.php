@@ -1,40 +1,46 @@
 <?php
-	require '../includes/functions.php';
 
-	include('../includes/Parsedown.php');
-	include('../includes/airtable/Airtable.php');
-	include('../includes/airtable/Request.php');
-	include('../includes/airtable/Response.php');
+require "../includes/functions.php";
+include "../includes/Parsedown.php";
 
-	use TANIOS\Airtable\Airtable;
+// Define Airtable integration
+include "../includes/airtable/Airtable.php";
+include "../includes/airtable/Request.php";
+include "../includes/airtable/Response.php";
+use TANIOS\Airtable\Airtable;
 
-	$airtable = new Airtable(array(
-		'api_key'   => getenv("AIRTABLE_API"),
-		'base'      => getenv("AIRTABLE_BASE")
-	));
+$airtable = new Airtable([
+	"api_key" => getenv("AIRTABLE_API"),
+	"base" => getenv("AIRTABLE_BASE"),
+]);
 
-	if(getenv("ENVIRONMENT") !== false) {
-		$environment = getenv("ENVIRONMENT");
-	} else {
-		$environment = "debug";
-	}
+// Define currently running environment
+if (getenv("ENVIRONMENT") !== false) {
+	$environment = getenv("ENVIRONMENT");
+} else {
+	$environment = "debug";
+}
 
-	if(isset($_GET['view'])){
-		$url_view = $_GET['view'];
-	} else {
-		$url_view = "main";
-	}
+// What view is requested?
+if (isset($_GET["view"])) {
+	$url_view = $_GET["view"];
+} else {
+	$url_view = "main";
+}
 
-	if (in_array("thebillof", explode(".", $_SERVER['HTTP_HOST']))) {
-		$subdomain = "billofrickies";
-	} else {
-		$subdomain = "rickies";
-	};
-	include("../includes/controllers/".$subdomain."_controller.php");
+// What subdomain is being requested?
+// This was done to enable a more dynamic URL
+// The result will open the corresponder controller
+if (in_array("thebillof", explode(".", $_SERVER["HTTP_HOST"]))) {
+	// Does the subdomain include "thebillof" for The Bill of Rickies?
+	$subdomain = "billofrickies";
+} else {
+	// Default "rickies"
+	$subdomain = "rickies";
+}
 
-// echo "<br />".current_url();
-// echo "<br /><pre>",var_dump($_SERVER),"</pre>";
-
+// Include the controller of get all the data before the HTML begins
+include "../includes/controllers/" . $subdomain . "_controller.php";
 ?>
 
 <!DOCTYPE HTML>

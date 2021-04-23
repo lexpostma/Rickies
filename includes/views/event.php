@@ -5,31 +5,27 @@
 	<p>These Rickies are is not officially scored yet</p>
 </div> -->
 
-<?php
-
-$host_array = array(
-	array(
+<?php $host_array = [
+	[
 		"name" => "Stephen",
 		"winner" => false,
 		"title" => "Document Maintainer",
-		"string" => "3 points<br />Flexing 23%"
-	),
-	array(
+		"string" => "3 points<br />Flexing 23%",
+	],
+	[
 		"name" => "Myke",
 		"winner" => true,
 		"title" => "Keynote Chairman",
-		"string" => "3 points<br />Flexing 23%"
-	),
-	array(
+		"string" => "3 points<br />Flexing 23%",
+	],
+	[
 		"name" => "Federico",
 		"winner" => false,
 		"title" => "Picker of Passion",
-		"string" => "3 points<br />Flexing 23%"
-	)
-);
-
+		"string" => "3 points<br />Flexing 23%",
+	],
+];
 // echo avatar_leaderboard($host_array);
-
 ?>
 
 <nav>
@@ -120,51 +116,49 @@ $host_array = array(
 	</ul>
 
 <?php
-
-$event_details = array(
+$event_details = [
 	"Apple event",
-	array(
-		"url"			=> "#",
+	[
+		"url" => "#",
 		// "img_url"		=> "/images/bill-of-rickies-avatar.png",
-		"label1"		=> "Apple Event, April 2020",
-		"label2"		=> "Spring Loaded.",
-		"label3"		=> "Aired on 30 June 2020"
-	),
+		"label1" => "Apple Event, April 2020",
+		"label2" => "Spring Loaded.",
+		"label3" => "Aired on 30 June 2020",
+	],
 	"Podcast episodes",
-	array(
-		"url"			=> "#",
+	[
+		"url" => "#",
 		// "img_url"		=> "/images/bill-of-rickies-avatar.png",
-		"label1"		=> "#123: The Rickies (Summer 2020)",
-		"label2"		=> "Music is My Girlfriend",
-		"label3"		=> "Aired on 28 June 2020",
-		"tag"			=> "Predictions",
-		"tag_color"		=> "purple"
-	),
-	array(
-		"url"			=> "#",
+		"label1" => "#123: The Rickies (Summer 2020)",
+		"label2" => "Music is My Girlfriend",
+		"label3" => "Aired on 28 June 2020",
+		"tag" => "Predictions",
+		"tag_color" => "purple",
+	],
+	[
+		"url" => "#",
 		// "img_url"		=> "/images/bill-of-rickies-avatar.png",
-		"label1"		=> "#124: Hippopotamus As A Testing Title",
-		"label3"		=> "Aired on 28 June 2020",
-		"tag"			=> "Predictions",
-		"tag_color"		=> "blue"
-	),
+		"label1" => "#124: Hippopotamus As A Testing Title",
+		"label3" => "Aired on 28 June 2020",
+		"tag" => "Predictions",
+		"tag_color" => "blue",
+	],
 	"More",
-	array(
-		"url"			=> billofrickies_url(),
-		"img_url"		=> "/images/bill-of-rickies-avatar.png",
-		"label1"		=> "The Bill of Rickies",
-	),
-	array(
-		"url"			=> "#",
+	[
+		"url" => billofrickies_url(),
+		"img_url" => "/images/bill-of-rickies-avatar.png",
+		"label1" => "The Bill of Rickies",
+	],
+	[
+		"url" => "#",
 		// "img_url"		=> "/images/bill-of-rickies-avatar.png",
-		"label1"		=> "Furkids",
-		"label2"		=> "$125 donated by Stephen",
-		"label3"		=> "Federico’s choice",
-	)
-);
+		"label1" => "Furkids",
+		"label2" => "$125 donated by Stephen",
+		"label3" => "Federico’s choice",
+	],
+];
 
 echo list_item_bundle($event_details);
-
 ?>
 
 </section>

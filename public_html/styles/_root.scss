@@ -1,6 +1,6 @@
 :root {
-	--background-color: #FFF;
-	--text-primary-color: #31373D;
+	--background-color: #fff;
+	--text-primary-color: #31373d;
 	--text-secondary-color: #777777;
 	--menu-color: var(--connected-blue);
 	--link-color: var(--connected-blue);
@@ -24,7 +24,7 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		--background-color: #000000;
-		--text-primary-color: #9BAEC1;
+		--text-primary-color: #9baec1;
 		--text-secondary-color: #929292;
 		--link-hover-color: var(--connected-blue);
 		--graphic-border: 1px solid rgba(255, 255, 255, 0.2);

@@ -1,30 +1,47 @@
 :root {
 	--connected-green: #449934;
-	--connected-yellow: #FCC200;
-	--connected-orange: #EF7B00;
-	--connected-red: #E51F2E;
-	--connected-purple: #9D3489;
-	--connected-blue: #0D87CA;
+	--connected-yellow: #fcc200;
+	--connected-orange: #ef7b00;
+	--connected-red: #e51f2e;
+	--connected-purple: #9d3489;
+	--connected-blue: #0d87ca;
 	--relay-blue: #333f48;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
 	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-			box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 @keyframes connected_colors {
-	0%   { background-color: var(--connected-green);  }
-	17%  { background-color: var(--connected-yellow); }
-	33%  { background-color: var(--connected-orange); }
-	50%  { background-color: var(--connected-red);    }
-	67%  { background-color: var(--connected-purple); }
-	84%  { background-color: var(--connected-blue);   }
-	100% { background-color: var(--connected-green);  }
+	0% {
+		background-color: var(--connected-green);
+	}
+	17% {
+		background-color: var(--connected-yellow);
+	}
+	33% {
+		background-color: var(--connected-orange);
+	}
+	50% {
+		background-color: var(--connected-red);
+	}
+	67% {
+		background-color: var(--connected-purple);
+	}
+	84% {
+		background-color: var(--connected-blue);
+	}
+	100% {
+		background-color: var(--connected-green);
+	}
 }
 
-html {}
+html {
+}
 
 body {
 	width: 100vw;
