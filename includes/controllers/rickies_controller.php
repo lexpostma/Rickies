@@ -21,21 +21,21 @@ switch ($url_view) {
 		$back_to_overview = true;
 }
 
-// Function to create a list_item component.
-// Example data:
-// $data = array(
-// 	"url"		=> "/event",
-// 	"img_url"	=> "/images/bill-of-rickies-avatar.png",
-// 	"label1"	=> "Keynote Rickies, April 2020",
-// 	"label2"	=> "Alt Title for Funsies",
-// 	"label3"	=> "25 April 2020",
-// 	"tag"		=> "Scored",
-// 	"tag_color"	=> "green",
-// );
-// foreach (range(1, 10) as $i) {
-// 	echo list_item($data);
-// };
-
+/* Function to create a list_item component.
+Example data:
+$data = array(
+	"url"		=> "/event",
+	"img_url"	=> "/images/bill-of-rickies-avatar.png",
+	"label1"	=> "Keynote Rickies, April 2020",
+	"label2"	=> "Alt Title for Funsies",
+	"label3"	=> "25 April 2020",
+	"tag"		=> "Scored",
+	"tag_color"	=> "green",
+);
+foreach (range(1, 10) as $i) {
+	echo list_item($data);
+};
+*/
 function list_item($data)
 {
 	// Is the list item clickable, yes/no?
