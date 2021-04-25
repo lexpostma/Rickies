@@ -77,10 +77,10 @@ header #corner_tag {
   background-size: cover;
 }
 header #corner_tag img#relay_logo {
-  width: 35px;
+  width: 25px;
   position: absolute;
-  right: 50px;
-  top: 5px;
+  right: 55px;
+  top: 12px;
 }
 
 nav {
