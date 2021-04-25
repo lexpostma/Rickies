@@ -147,6 +147,7 @@ function avatar_leaderboard($host_array)
 }
 
 // Format the date to a readable string
+// Via https://stackoverflow.com/a/25623057
 function date_to_string_label($input, $air_date = false)
 {
 	$date_format = "%e %B %Y";
@@ -155,6 +156,8 @@ function date_to_string_label($input, $air_date = false)
 	$date = strtotime($input);
 
 	$datediff = $date - $current;
+
+	// Get the difference in days (diff in seconds / (60s * 60m * 24h))
 	$difference = floor($datediff / (60 * 60 * 24));
 
 	if ($difference == 0) {
@@ -172,8 +175,6 @@ function date_to_string_label($input, $air_date = false)
 	} else {
 		$air_string = "Aired ";
 		$output = strftime($date_format, $date);
-
-		// $output = strftime($date_format, $date);
 	}
 
 	if ($air_date) {
@@ -246,7 +247,7 @@ function picks_bundle($data)
 			}
 
 			// Output the gathered data
-			$output .= "<div class='host_picks'><h3>" . $host . "<span>";
+			$output .= "<div class='host_picks'><h3>$host<span>";
 			if ($type == "Rickies") {
 				$output .= $score["points"] . " points • " . $score["correct"] . "/" . $score["count"];
 			} else {
@@ -254,10 +255,7 @@ function picks_bundle($data)
 					($score["correct"] / $score["count"]) * 100 . "% • " . $score["correct"] . "/" . $score["count"];
 			}
 
-			$output .= "</span></h3><ul>";
-
-			$output .= $pick_items . "</ul></div>";
-			unset($score);
+			$output .= "</span></h3><ul>$pick_items</ul></div>";
 		}
 		$output .= "</div></section>";
 	}

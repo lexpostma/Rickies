@@ -40,7 +40,10 @@ li.pick_item {
 			font-size: 0.75rem;
 			font-weight: 600;
 			position: relative;
-			background: var(--connected-yellow); // Default if status is unknown
+
+			// Status colors for points
+			// Default if status is unknown
+			background: var(--connected-yellow);
 			&.regular.correct,
 			&.risky.correct {
 				background: var(--connected-green);
@@ -56,6 +59,7 @@ li.pick_item {
 				background: var(--connected-orange);
 			}
 
+			// Risky points ring
 			&.risky:after {
 				content: "";
 				border-radius: 50%;
