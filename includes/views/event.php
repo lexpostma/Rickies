@@ -1,9 +1,9 @@
-<!-- <header class="details" style="--hero-image: url(/images/connected-map.png);">
+<header class="details" style="--hero-image: url(/images/diagonal_rainbow.svg);">
 	<h1>Keynote Rickies, April 2020</h1>
 </header>
 <div class="banner">
 	<p>These Rickies are is not officially scored yet</p>
-</div> -->
+</div>
 
 <?php $host_array = [
 	[
