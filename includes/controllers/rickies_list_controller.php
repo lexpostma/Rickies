@@ -2,8 +2,17 @@
 
 // Rickies overview
 $rickies_events_params = [
+	"fields" => [
+		"Name",
+		"URL",
+		"Winner (manual)",
+		"Predictions episode date",
+		"Predictions episode artwork",
+		"Rickies artwork",
+		"Event artwork",
+	],
 	"filterByFormula" => "AND( Published, Picks )",
-	"sort" => [["field" => "Episode date", "direction" => "desc"]],
+	"sort" => [["field" => "Predictions episode date", "direction" => "desc"]],
 	// "maxRecords" => 150,
 	// "pageSize" => 50,
 ];

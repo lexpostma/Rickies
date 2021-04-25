@@ -40,32 +40,21 @@ function list_item($data)
 {
 	// Is the list item clickable, yes/no?
 	$output = "";
-	if (isset($data["url"])) {
-		$output .=
-			'<li class="list_item"><a class="list_item_content" href="' .
-			$data["url"] .
-			'">';
+	if (isset($data["url"]) && $data["url"] !== false) {
+		$output .= '<li class="list_item"><a class="list_item_content" href="' . $data["url"] . '">';
 	} else {
 		$output .= '<li class="list_item"><div class="list_item_content">';
 	}
 
 	// Is there an image, yes/no?
-	if (isset($data["img_url"])) {
+	if (isset($data["img_url"]) && $data["img_url"] !== false) {
 		$output .=
-			'<div class="list_item_graphic image" style="background-image: url(' .
-			$data["img_url"] .
-			')"></div>';
+			'<div class="list_item_graphic image" style="background-image: url(' . $data["img_url"] . ')"></div>';
 	} else {
-		$output .=
-			'<div class="list_item_graphic placeholder" style="animation-delay: -' .
-			rand(0, 50) .
-			's;"></div>';
+		$output .= '<div class="list_item_graphic placeholder" style="animation-delay: -' . rand(0, 50) . 's;"></div>';
 	}
 
-	$output .=
-		'<div class="list_item_labels"><span class="label1">' .
-		$data["label1"] .
-		"</span>";
+	$output .= '<div class="list_item_labels"><span class="label1">' . $data["label1"] . "</span>";
 
 	// Is there an 2nd label, yes/no?
 	if (isset($data["label2"])) {
@@ -155,4 +144,41 @@ function avatar_leaderboard($host_array)
 	}
 	$output .= "</div>";
 	return $output;
+}
+
+// Format the date to a readable string
+function date_to_string_label($input, $air_date = false)
+{
+	$date_format = "%e %B %Y";
+
+	$current = strtotime(date("Y-m-d"));
+	$date = strtotime($input);
+
+	$datediff = $date - $current;
+	$difference = floor($datediff / (60 * 60 * 24));
+
+	if ($difference == 0) {
+		$air_string = "Airs ";
+		$output = "today";
+	} elseif ($difference == -1) {
+		$air_string = "Aired ";
+		$output = "yesterday";
+	} elseif ($difference == 1) {
+		$air_string = "Airs ";
+		$output = "tomorrow";
+	} elseif ($difference > 1) {
+		$air_string = "Airs on ";
+		$output = strftime($date_format, $date);
+	} else {
+		$air_string = "Aired ";
+		$output = strftime($date_format, $date);
+
+		// $output = strftime($date_format, $date);
+	}
+
+	if ($air_date) {
+		return $air_string . $output;
+	} else {
+		return ucfirst($output);
+	}
 }

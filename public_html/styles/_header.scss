@@ -5,19 +5,11 @@ header {
 	background-size: cover;
 	background-position: center;
 	&.home {
-		background-image: linear-gradient(
-				180deg,
-				rgba(255, 255, 255, 0.33) 0%,
-				rgba(255, 255, 255, 0.84) 100%
-			),
+		background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%),
 			url("/images/confetti.png");
 		@media (prefers-color-scheme: dark) {
 			color: white;
-			background-image: linear-gradient(
-					180deg,
-					rgba(51, 63, 72, 0.33) 0%,
-					rgba(51, 63, 72, 0.84) 100%
-				),
+			background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%),
 				url("/images/confetti.png");
 		}
 
@@ -35,18 +27,10 @@ header {
 	}
 	&.details {
 		height: 375px;
-		background-image: linear-gradient(
-				180deg,
-				rgba(255, 255, 255, 0.33) 0%,
-				rgba(255, 255, 255, 0.84) 100%
-			),
+		background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%),
 			var(--hero-image);
 		@media (prefers-color-scheme: dark) {
-			background-image: linear-gradient(
-					180deg,
-					rgba(51, 63, 72, 0.33) 0%,
-					rgba(51, 63, 72, 0.84) 100%
-				),
+			background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%),
 				var(--hero-image);
 		}
 		h1 {

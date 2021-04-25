@@ -2,9 +2,9 @@
 
 // Rickies event details view
 $rickies_events_params = [
-	"filterByFormula" => "AND( Published, Picks )",
+	"filterByFormula" => "AND( Published, Picks, URL = '$url_view' )",
 	"maxRecords" => 1,
-	"sort" => [["field" => "Episode date", "direction" => "desc"]],
+	"sort" => [["field" => "Predictions episode date", "direction" => "desc"]],
 	// "pageSize" => 50,
 ];
 $all_event_details = true;

@@ -115,50 +115,6 @@
 		</li>
 	</ul>
 
-<?php
-$event_details = [
-	"Apple event",
-	[
-		"url" => "#",
-		// "img_url"		=> "/images/bill-of-rickies-avatar.png",
-		"label1" => "Apple Event, April 2020",
-		"label2" => "Spring Loaded.",
-		"label3" => "Aired on 30 June 2020",
-	],
-	"Podcast episodes",
-	[
-		"url" => "#",
-		// "img_url"		=> "/images/bill-of-rickies-avatar.png",
-		"label1" => "#123: The Rickies (Summer 2020)",
-		"label2" => "Music is My Girlfriend",
-		"label3" => "Aired on 28 June 2020",
-		"tag" => "Predictions",
-		"tag_color" => "purple",
-	],
-	[
-		"url" => "#",
-		// "img_url"		=> "/images/bill-of-rickies-avatar.png",
-		"label1" => "#124: Hippopotamus As A Testing Title",
-		"label3" => "Aired on 28 June 2020",
-		"tag" => "Predictions",
-		"tag_color" => "blue",
-	],
-	"More",
-	[
-		"url" => billofrickies_url(),
-		"img_url" => "/images/bill-of-rickies-avatar.png",
-		"label1" => "The Bill of Rickies",
-	],
-	[
-		"url" => "#",
-		// "img_url"		=> "/images/bill-of-rickies-avatar.png",
-		"label1" => "Furkids",
-		"label2" => "$125 donated by Stephen",
-		"label3" => "Federico’s choice",
-	],
-];
-
-echo list_item_bundle($event_details);
-?>
+<?= list_item_bundle(reset($rickies_events_array)["details"]) ?>
 
 </section>
