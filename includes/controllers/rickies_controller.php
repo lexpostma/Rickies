@@ -182,3 +182,84 @@ function date_to_string_label($input, $air_date = false)
 		return ucfirst($output);
 	}
 }
+
+// Function to display picks
+function pick_item($data)
+{
+	$output = "<li class='pick_item'>";
+	if ($data["type"] !== "Flexy") {
+		$output .= "<span class='round'>" . $data["round"] . "</span>";
+	}
+	$output .=
+		"<p class='pick'><span class='label'>" .
+		$data["pick"] .
+		"</span><span class='points " .
+		strtolower($data["type"]) .
+		" " .
+		strtolower($data["status"]) .
+		"'>";
+	if ($data["status"] == false) {
+		$output .= "?";
+	} elseif ($data["points"] > 0 && $data["type"] == "Flexy") {
+		$output .= "💪";
+	} elseif ($data["type"] == "Flexy") {
+		$output .= "";
+	} elseif ($data["points"] > 0) {
+		$output .= "+" . $data["points"];
+	} else {
+		$output .= $data["points"];
+	}
+	$output .= "</span></p>";
+	if ($data["note"]) {
+		$output .= "<span class='note'>" . markdown($data["note"]) . "</span>";
+	}
+	$output .= "</li>";
+	return $output;
+}
+
+function picks_bundle($data)
+{
+	$output = "";
+
+	// Split the data by type (Rickies or Flexies)
+	foreach ($data as $type => $hosts) {
+		$output .= "<section id='" . strtolower($type) . "'><h2>The $type</h2><div class='picks_type_group'>";
+
+		// Split the data by host
+		foreach ($hosts as $host => $picks) {
+			$pick_items = "";
+			$score = [
+				"count" => 0,
+				"correct" => 0,
+				"points" => 0,
+			];
+
+			// Get the picks for this host
+			foreach ($picks as $key => $value) {
+				// Count the scores of the picks for this host
+				$score["count"]++;
+				$score["points"] = $score["points"] + $value["points"];
+				if ($value["status"] == "Correct") {
+					$score["correct"]++;
+				}
+				$pick_items .= pick_item($value);
+			}
+
+			// Output the gathered data
+			$output .= "<div class='host_picks'><h3>" . $host . "<span>";
+			if ($type == "Rickies") {
+				$output .= $score["points"] . " points • " . $score["correct"] . "/" . $score["count"];
+			} else {
+				$output .=
+					($score["correct"] / $score["count"]) * 100 . "% • " . $score["correct"] . "/" . $score["count"];
+			}
+
+			$output .= "</span></h3><ul>";
+
+			$output .= $pick_items . "</ul></div>";
+			unset($score);
+		}
+		$output .= "</div></section>";
+	}
+	return $output;
+}

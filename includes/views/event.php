@@ -34,59 +34,7 @@
 	<a href="#">Details</a>
 </nav>
 
-<section id="rickies">
-	<h2>The Rickies</h2>
-	<h3>Federico</h3>
-	<ul>
-		<li>Regular pick 1</li>
-		<li>Regular pick 2</li>
-		<li>Risky pick</li>
-	</ul>
-
-	<h3>Myke</h3>
-	<ul>
-		<li>Regular pick 1</li>
-		<li>Regular pick 2</li>
-		<li>Risky pick</li>
-	</ul>
-
-	<h3>Stephen</h3>
-	<ul>
-		<li>Regular pick 1</li>
-		<li>Regular pick 2</li>
-		<li>Risky pick</li>
-	</ul>
-</section>
-
-<section id="flexies">
-	<h2>The Flexies</h2>
-	<h3>Federico</h3>
-	<ul>
-		<li>Flexy pick 1</li>
-		<li>Flexy pick 2</li>
-		<li>Flexy pick 3</li>
-		<li>Flexy pick 4</li>
-		<li>Flexy pick 5</li>
-	</ul>
-
-	<h3>Myke</h3>
-	<ul>
-		<li>Flexy pick 1</li>
-		<li>Flexy pick 2</li>
-		<li>Flexy pick 3</li>
-		<li>Flexy pick 4</li>
-		<li>Flexy pick 5</li>
-	</ul>
-
-	<h3>Stephen</h3>
-	<ul>
-		<li>Flexy pick 1</li>
-		<li>Flexy pick 2</li>
-		<li>Flexy pick 3</li>
-		<li>Flexy pick 4</li>
-		<li>Flexy pick 5</li>
-	</ul>
-</section>
+<?= picks_bundle($picks_data__array) ?>
 
 <section id="details">
 	<h2>Details</h2>

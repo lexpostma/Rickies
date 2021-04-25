@@ -159,6 +159,81 @@ li.list_item a.list_item_content .list_item_labels .label2 {
   color: var(--text-primary-color);
 }
 
+.picks_type_group h3 span {
+  color: var(--text-secondary-color);
+  float: right;
+}
+
+li.pick_item {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+li.pick_item span.round {
+  font-size: 0.75rem;
+  color: var(--text-secondary-color);
+}
+li.pick_item p.pick {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+li.pick_item p.pick span.label {
+  flex-grow: 1;
+}
+li.pick_item p.pick span.points {
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-left: 8px;
+  color: white;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: var(--graphic-border);
+  border-radius: 50%;
+  display: inline-block;
+  line-height: 1.2rem;
+  text-align: center;
+  letter-spacing: -0.05em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  position: relative;
+  background: var(--connected-yellow);
+}
+li.pick_item p.pick span.points.regular.correct, li.pick_item p.pick span.points.risky.correct {
+  background: var(--connected-green);
+}
+li.pick_item p.pick span.points.regular.wrong, li.pick_item p.pick span.points.risky.wrong {
+  background: var(--connected-red);
+}
+li.pick_item p.pick span.points.flexy.correct {
+  background: var(--connected-purple);
+}
+li.pick_item p.pick span.points.flexy.wrong {
+  background: var(--connected-orange);
+}
+li.pick_item p.pick span.points.risky:after {
+  content: "";
+  border-radius: 50%;
+  border: 1px solid;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  bottom: -3px;
+  left: -3px;
+}
+li.pick_item p.pick span.points.risky.correct:after {
+  border-color: var(--connected-green);
+}
+li.pick_item p.pick span.points.risky.wrong:after {
+  border-color: var(--connected-red);
+}
+li.pick_item span.note {
+  font-size: 0.75rem;
+  color: var(--text-secondary-color);
+}
+
 .avatar {
   background: pink;
   border-radius: 50%;
