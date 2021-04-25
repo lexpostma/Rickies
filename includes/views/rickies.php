@@ -1,6 +1,6 @@
 <header class="home">
 	<div id="corner_tag">
-		<img id="relay_logo" src="/images/connected-globe.png" />
+		<img id="relay_logo" src="/images/relayfm_logo.png" />
 	</div>
 	<img id="trophy" src="/images/trophy.png" />
 	<h1>The Rickies</h1>
