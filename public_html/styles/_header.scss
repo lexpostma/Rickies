@@ -25,20 +25,29 @@ header {
 			margin-bottom: 4px;
 		}
 	}
-	&.details {
-		height: 375px;
-		background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%),
-			var(--hero-image);
-		@media (prefers-color-scheme: dark) {
-			background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%),
-				var(--hero-image);
-		}
+	&.details,
+	&.leaderboard {
 		h1 {
 			text-transform: uppercase;
 			position: absolute;
 			left: var(--space-between-vertical);
 			right: var(--space-between-vertical);
 			bottom: var(--space-between-vertical);
+		}
+	}
+	&.details {
+		height: 375px;
+		background-color: var(--connected-blue);
+		background-image: url(/images/diagonal-rainbow-header.svg);
+		background-size: cover;
+	}
+	&.leaderboard {
+		height: 250px;
+		background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%),
+			url(/images/connected-map.png);
+		@media (prefers-color-scheme: dark) {
+			background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%),
+				url(/images/connected-map.png);
 		}
 	}
 
@@ -55,24 +64,6 @@ header {
 			position: absolute;
 			right: 55px;
 			top: 12px;
-		}
-	}
-}
-
-nav {
-	background: var(--menu-color);
-	text-align: center;
-	padding: var(--space-between-horizontal);
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	a {
-		margin: 0px var(--space-between-horizontal);
-		&.active {
-			opacity: 1;
-			font-weight: bold;
-			text-decoration: none;
 		}
 	}
 }

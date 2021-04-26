@@ -1,4 +1,4 @@
-<header class="details" style="--hero-image: url(/images/connected-map.png);">
+<header class="leaderboard">
 	<h1>Host Leaderboard</h1>
 </header>
 

@@ -3,6 +3,7 @@
 @use "list-item";
 @use "pick-item";
 @use "avatar-leaderboard";
+@use "menu-section";
 
 html {
 	line-height: 1.5;
@@ -87,23 +88,6 @@ span.tag {
 	color: white;
 	padding: 8px var(--space-between-horizontal);
 	background: var(--connected-orange);
-}
-
-footer {
-	padding: var(--space-between-horizontal);
-	color: white;
-	text-align: center;
-	background: var(--relay-blue);
-	font-size: 0.875rem;
-}
-
-section {
-	padding: 0 var(--space-between-horizontal);
-}
-
-section,
-footer {
-	margin-top: var(--space-between-vertical);
 }
 
 @media screen and (min-width: 400px) {

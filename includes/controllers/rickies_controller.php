@@ -173,7 +173,7 @@ function date_to_string_label($input, $air_date = false)
 		$air_string = "Airs on ";
 		$output = strftime($date_format, $date);
 	} else {
-		$air_string = "Aired ";
+		$air_string = "Aired on ";
 		$output = strftime($date_format, $date);
 	}
 
@@ -204,7 +204,7 @@ function pick_item($data)
 	} elseif ($data["points"] > 0 && $data["type"] == "Flexy") {
 		$output .= "💪";
 	} elseif ($data["type"] == "Flexy") {
-		$output .= "";
+		$output .= "👎";
 	} elseif ($data["points"] > 0) {
 		$output .= "+" . $data["points"];
 	} else {
@@ -224,7 +224,10 @@ function picks_bundle($data)
 
 	// Split the data by type (Rickies or Flexies)
 	foreach ($data as $type => $hosts) {
-		$output .= "<section id='" . strtolower($type) . "'><h2>The $type</h2><div class='picks_type_group'>";
+		$output .=
+			"<section class='mobile_split' id='" .
+			strtolower($type) .
+			"'><h2>The $type</h2><div class='picks_type_group'>";
 
 		// Split the data by host
 		foreach ($hosts as $host => $picks) {
@@ -247,10 +250,11 @@ function picks_bundle($data)
 			}
 
 			// Output the gathered data
-			$output .= "<div class='host_picks'><h3>$host<span>";
+			$output .=
+				"<div class='host_picks' id='" . strtolower($type) . "_" . strtolower($host) . "'><h3>$host<span>";
 			if ($type == "Rickies") {
 				$output .= $score["points"] . " points • " . $score["correct"] . "/" . $score["count"];
-			} else {
+			} elseif ($score["count"] !== 0) {
 				$output .=
 					($score["correct"] / $score["count"]) * 100 . "% • " . $score["correct"] . "/" . $score["count"];
 			}

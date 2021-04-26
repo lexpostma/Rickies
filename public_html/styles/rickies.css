@@ -51,21 +51,27 @@ header.home img#trophy {
 header.home h1 {
   margin-bottom: 4px;
 }
-header.details {
-  height: 375px;
-  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%), var(--hero-image);
-}
-@media (prefers-color-scheme: dark) {
-  header.details {
-    background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%), var(--hero-image);
-  }
-}
-header.details h1 {
+header.details h1, header.leaderboard h1 {
   text-transform: uppercase;
   position: absolute;
   left: var(--space-between-vertical);
   right: var(--space-between-vertical);
   bottom: var(--space-between-vertical);
+}
+header.details {
+  height: 375px;
+  background-color: var(--connected-blue);
+  background-image: url(/images/diagonal-rainbow-header.svg);
+  background-size: cover;
+}
+header.leaderboard {
+  height: 250px;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%), url(/images/connected-map.png);
+}
+@media (prefers-color-scheme: dark) {
+  header.leaderboard {
+    background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%), url(/images/connected-map.png);
+  }
 }
 header #corner_tag {
   position: absolute;
@@ -81,24 +87,6 @@ header #corner_tag img#relay_logo {
   position: absolute;
   right: 55px;
   top: 12px;
-}
-
-nav {
-  background: var(--menu-color);
-  text-align: center;
-  padding: var(--space-between-horizontal);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-nav a {
-  margin: 0px var(--space-between-horizontal);
-}
-nav a.active {
-  opacity: 1;
-  font-weight: bold;
-  text-decoration: none;
 }
 
 li.list_item + li.list_item {
@@ -162,6 +150,7 @@ li.list_item a.list_item_content .list_item_labels .label2 {
 .picks_type_group h3 span {
   color: var(--text-secondary-color);
   float: right;
+  font-variant-numeric: tabular-nums;
 }
 
 li.pick_item {
@@ -191,7 +180,6 @@ li.pick_item p.pick span.points {
   width: 1.3rem;
   height: 1.3rem;
   border: var(--graphic-border);
-  border-radius: 50%;
   display: inline-block;
   line-height: 1.2rem;
   text-align: center;
@@ -199,19 +187,20 @@ li.pick_item p.pick span.points {
   font-size: 0.75rem;
   font-weight: 600;
   position: relative;
+  border-radius: 50%;
   background: var(--connected-yellow);
+}
+li.pick_item p.pick span.points.flexy {
+  border-radius: var(--corner-radius);
 }
 li.pick_item p.pick span.points.regular.correct, li.pick_item p.pick span.points.risky.correct {
   background: var(--connected-green);
 }
-li.pick_item p.pick span.points.regular.wrong, li.pick_item p.pick span.points.risky.wrong {
-  background: var(--connected-red);
-}
 li.pick_item p.pick span.points.flexy.correct {
-  background: var(--connected-purple);
+  background: var(--connected-blue);
 }
-li.pick_item p.pick span.points.flexy.wrong {
-  background: var(--connected-orange);
+li.pick_item p.pick span.points.wrong {
+  background: var(--connected-red);
 }
 li.pick_item p.pick span.points.risky:after {
   content: "";
@@ -282,6 +271,48 @@ li.pick_item span.note {
 .avatar_leaderboard .host.winner .avatar {
   margin-top: 0px;
   margin-bottom: 16px;
+}
+
+nav {
+  background: var(--menu-color);
+  text-align: center;
+  padding: var(--space-between-horizontal);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+nav a {
+  margin: 0px var(--space-between-horizontal);
+}
+nav a.active {
+  opacity: 1;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+section {
+  padding: 0 var(--space-between-horizontal);
+}
+
+section,
+footer {
+  margin-top: var(--space-between-vertical);
+}
+
+section.mobile_split {
+  display: none;
+}
+section.mobile_split.active {
+  display: block;
+}
+
+footer {
+  padding: var(--space-between-horizontal);
+  color: white;
+  text-align: center;
+  background: var(--relay-blue);
+  font-size: 0.875rem;
 }
 
 html {
@@ -357,21 +388,4 @@ span.tag {
   color: white;
   padding: 8px var(--space-between-horizontal);
   background: var(--connected-orange);
-}
-
-footer {
-  padding: var(--space-between-horizontal);
-  color: white;
-  text-align: center;
-  background: var(--relay-blue);
-  font-size: 0.875rem;
-}
-
-section {
-  padding: 0 var(--space-between-horizontal);
-}
-
-section,
-footer {
-  margin-top: var(--space-between-vertical);
 }

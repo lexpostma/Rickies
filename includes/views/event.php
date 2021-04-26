@@ -1,4 +1,4 @@
-<header class="details" style="--hero-image: url(/images/diagonal_rainbow.svg);">
+<header class="details">
 	<h1>Keynote Rickies, April 2020</h1>
 </header>
 <div class="banner">
@@ -29,14 +29,14 @@
 ?>
 
 <nav>
-	<a href="#" class="active">The Rickies</a>
-	<a href="#">The Flexies</a>
-	<a href="#">Details</a>
+	<a href="<?= current_url() ?>#rickies" class="active">The Rickies</a>
+	<a href="<?= current_url() ?>#flexies">The Flexies</a>
+	<a href="<?= current_url() ?>#details">Details</a>
 </nav>
 
 <?= picks_bundle($picks_data__array) ?>
 
-<section id="details">
+<section class="mobile_split" id="details">
 	<h2>Details</h2>
 	<h3>Hosts</h3>
 	<ul>
