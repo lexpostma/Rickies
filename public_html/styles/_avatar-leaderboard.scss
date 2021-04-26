@@ -1,5 +1,7 @@
 @use "variables" as var;
 
+// Gradient background (aka winner ring) animation
+// Via https://codepen.io/P1N2O/pen/pyBNzX
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
