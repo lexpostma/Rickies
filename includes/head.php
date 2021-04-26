@@ -12,15 +12,12 @@
 
 <!-- Icons -->
 <link rel="shortcut icon" type="image/ico" href="favicon.png" />
-<link rel="mask-icon" href="images/safari.svg" color="#106DC6">
 
 <!-- Standard SEO / Google -->
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <meta name="author" content="Lex Postma" />
-<meta name="copyright" content="Copyright (c) 2020-<?= date(
-	"Y"
-) ?> by Lex Postma" />
+<meta name="copyright" content="Copyright (c) 2020-<?= date("Y") ?> by Lex Postma" />
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <?
 	if($environment !== "production") {
