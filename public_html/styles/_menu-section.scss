@@ -1,17 +1,46 @@
-nav {
+@use "responsive" as res;
+
+.nav_content {
 	background: var(--menu-color);
 	text-align: center;
-	padding: var(--space-between-horizontal);
+	padding: 0;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	a {
-		margin: 0px var(--space-between-horizontal);
+		padding: var(--space-between-horizontal);
 		&.active {
 			opacity: 1;
 			font-weight: bold;
 			text-decoration: none;
+		}
+	}
+}
+nav.nav_container {
+	position: relative;
+	.nav_content {
+		position: absolute;
+		right: 0;
+		left: 0;
+		top: 0;
+
+		z-index: 10;
+	}
+	&.sticky {
+		.nav_content {
+			position: fixed;
+			// padding-top: env(safe-area-inset-top);
+		}
+	}
+}
+@media screen and (min-width: res.$break-md) {
+	nav.nav_container {
+		.nav_content {
+			position: relative;
+		}
+		.nav_anchor {
+			display: none;
 		}
 	}
 }
@@ -29,6 +58,18 @@ section.mobile_split {
 	display: none;
 	&.active {
 		display: block;
+	}
+	h2 {
+		display: none;
+	}
+}
+
+@media screen and (min-width: res.$break-md) {
+	section.mobile_split {
+		display: block;
+		h2 {
+			display: block;
+		}
 	}
 }
 

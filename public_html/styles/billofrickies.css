@@ -10,16 +10,7 @@
   --background-color: black;
   --text-primary-color: #543404;
   --link-color: #d7a457;
-  /* --text-secondary-color: #777777; */
-  /* --menu-color: #106DC6; */
-  /* --link-color: #106DC6; */
   --space-between-vertical: 32px;
-  /* --nav-height: 44px; */
-  /* --safe-distance-top:    max(var(--distance),env(safe-area-inset-top)); */
-  /* --safe-distance-bottom: max(var(--distance),env(safe-area-inset-bottom)); */
-  /* --safe-distance-left:   max(var(--distance),env(safe-area-inset-left)); */
-  /* --safe-distance-right:  max(var(--distance),env(safe-area-inset-right)); */
-  /* --hover-animation-duration: 200ms; */
   font-size: 14px;
 }
 

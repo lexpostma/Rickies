@@ -16,29 +16,6 @@
   box-sizing: border-box;
 }
 
-@keyframes connected_colors {
-  0% {
-    background-color: var(--connected-green);
-  }
-  17% {
-    background-color: var(--connected-yellow);
-  }
-  33% {
-    background-color: var(--connected-orange);
-  }
-  50% {
-    background-color: var(--connected-red);
-  }
-  67% {
-    background-color: var(--connected-purple);
-  }
-  84% {
-    background-color: var(--connected-blue);
-  }
-  100% {
-    background-color: var(--connected-green);
-  }
-}
 body {
   width: 100vw;
   overflow-x: hidden;

@@ -1,0 +1,19 @@
+$break-sm: 576px;
+$break-md: 768px;
+$break-lg: 992px;
+$break-xl: 1200px;
+$break-xxl: 1400px;
+
+@media screen and (min-width: $break-sm) {
+}
+@media screen and (min-width: $break-md) {
+}
+@media screen and (min-width: $break-lg) {
+}
+@media screen and (min-height: $break-xl) {
+}
+@media screen and (min-height: $break-xxl) {
+}
+
+@media (prefers-color-scheme: dark) {
+}

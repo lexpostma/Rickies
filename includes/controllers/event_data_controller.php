@@ -77,6 +77,7 @@ do {
 							check_key("Predictions episode date", $fields, false, 0),
 							true
 						),
+						"number" => check_key("Predictions episode number", $fields, false, 0),
 						"tag" => "Prediction",
 						"tag_color" => "purple",
 					],
@@ -86,6 +87,7 @@ do {
 						"label1" => check_key("Results episode title", $fields, false, 0),
 						"label2" => check_key("Results episode alt title", $fields, false, 0),
 						"label3" => date_to_string_label(check_key("Results episode date", $fields, false, 0), true),
+						"number" => check_key("Results episode number", $fields, false, 0),
 						"tag" => "Results",
 						"tag_color" => "blue",
 					],
@@ -115,19 +117,16 @@ do {
 				}
 
 				// Episode data
-				if ($rickies_events_array[$id]["details"]["episode_data_predictions"]["img_url"] == false) {
-					// No custom image, fallback to local default
-					$rickies_events_array[$id]["details"]["episode_data_predictions"]["img_url"] =
-						"/images/connected_artwork.jpeg";
-				}
+				$rickies_events_array[$id]["details"]["episode_data_predictions"] = episode_data(
+					$rickies_events_array[$id]["details"]["episode_data_predictions"]
+				);
+				$rickies_events_array[$id]["details"]["episode_data_results"] = episode_data(
+					$rickies_events_array[$id]["details"]["episode_data_results"]
+				);
 
 				if ($rickies_events_array[$id]["details"]["episode_data_results"]["label1"] == false) {
 					// No episode, clear details from array
 					unset($rickies_events_array[$id]["details"]["episode_data_results"]);
-				} elseif ($rickies_events_array[$id]["details"]["episode_data_results"]["img_url"] == false) {
-					// No custom image, fallback to local default
-					$rickies_events_array[$id]["details"]["episode_data_results"]["img_url"] =
-						"/images/connected_artwork.jpeg";
 				}
 
 				// Charity data
@@ -154,6 +153,7 @@ do {
 		}
 	} else {
 		// No event (1 or more) found
+		header("HTTP/1.0 404 Not Found", true, 404);
 		echo "404: Rickies not found :( ";
 	}
 } while ($rickies_events_request = $rickies_events_response->next());

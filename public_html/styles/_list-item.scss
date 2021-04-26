@@ -4,27 +4,6 @@ li.list_item + li.list_item {
 	margin-top: var(--space-between-vertical);
 }
 
-.list_item_graphic {
-	border-radius: var(--corner-radius);
-	border: var(--graphic-border);
-	width: var(--graphic-size);
-	height: var(--graphic-size);
-	&.image {
-		// To extend image behind the transparant border
-		// https://stackoverflow.com/a/24231514
-		background-size: cover;
-		background-origin: border-box;
-		background-position: center;
-	}
-	&.placeholder {
-		background-color: var(--relay-blue);
-		animation-name: connected_colors;
-		animation-duration: 60s;
-		animation-iteration-count: infinite;
-		// animation-delay: -1s;
-	}
-}
-
 li.list_item {
 	.list_item_content {
 		display: flex;
@@ -65,4 +44,12 @@ li.list_item {
 			}
 		}
 	}
+}
+
+span.tag {
+	color: #fff;
+	background: var(--tag-color);
+	padding: 0px 4px;
+	border-radius: var(--corner-radius);
+	border: var(--graphic-border);
 }

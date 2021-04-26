@@ -39,12 +39,4 @@ do {
 	}
 } while ($picks_data__request = $picks_data__response->next());
 
-// usort($picks_data__array["rickies"], function($a, $b) {
-// 	return $a['order'] <=> $b['order'];
-// });
-
-// usort($picks_data__array, function($a, $b) {
-// 	return $a['date'] <=> $b['date'];
-// });
-
 // echo "<pre>", var_dump($picks_data__array), "</pre>";

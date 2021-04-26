@@ -1,8 +1,10 @@
+@use "responsive" as res;
 @use "root";
 @use "header";
 @use "list-item";
 @use "pick-item";
 @use "avatar-leaderboard";
+@use "list-graphic";
 @use "menu-section";
 
 html {
@@ -73,30 +75,4 @@ ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-}
-
-span.tag {
-	color: #fff;
-	background: var(--tag-color);
-	padding: 0px 4px;
-	border-radius: var(--corner-radius);
-	border: var(--graphic-border);
-}
-
-.banner {
-	text-align: center;
-	color: white;
-	padding: 8px var(--space-between-horizontal);
-	background: var(--connected-orange);
-}
-
-@media screen and (min-width: 400px) {
-}
-@media screen and (min-width: 600px) {
-}
-@media screen and (min-width: 800px) {
-}
-@media screen and (min-height: 1000px) {
-}
-@media (prefers-color-scheme: dark) {
 }

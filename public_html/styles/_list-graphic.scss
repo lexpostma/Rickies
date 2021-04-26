@@ -1,0 +1,47 @@
+@keyframes connected_colors {
+	0% {
+		background-color: var(--connected-green);
+	}
+	17% {
+		background-color: var(--connected-yellow);
+	}
+	33% {
+		background-color: var(--connected-orange);
+	}
+	50% {
+		background-color: var(--connected-red);
+	}
+	67% {
+		background-color: var(--connected-purple);
+	}
+	84% {
+		background-color: var(--connected-blue);
+	}
+	100% {
+		background-color: var(--connected-green);
+	}
+}
+
+.item_graphic {
+	border-radius: var(--corner-radius);
+	border: var(--graphic-border);
+	width: var(--graphic-size);
+	height: var(--graphic-size);
+	&.avatar {
+		border-radius: 50%;
+		position: relative;
+	}
+	&.image {
+		// To extend image behind the transparant border
+		// https://stackoverflow.com/a/24231514
+		background-size: cover;
+		background-origin: border-box;
+		background-position: center;
+	}
+	&.placeholder {
+		background-color: var(--relay-blue);
+		animation-name: connected_colors;
+		animation-duration: 60s;
+		animation-iteration-count: infinite;
+	}
+}

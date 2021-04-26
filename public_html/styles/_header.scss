@@ -37,6 +37,7 @@ header {
 	}
 	&.details {
 		height: 375px;
+		color: white;
 		background-color: var(--connected-blue);
 		background-image: url(/images/diagonal-rainbow-header.svg);
 		background-size: cover;
@@ -66,4 +67,9 @@ header {
 			top: 12px;
 		}
 	}
+}
+.banner {
+	text-align: center;
+	color: white;
+	padding: 8px var(--space-between-horizontal);
 }

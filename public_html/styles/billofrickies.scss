@@ -1,9 +1,10 @@
+@use "responsive" as res;
+
 @font-face {
 	font-family: "BlackChancery";
 	src: url("/fonts/BlackChancery.eot");
 	src: url("/fonts/BlackChancery.eot?#iefix") format("embedded-opentype"),
-		url("/fonts/BlackChancery.woff2") format("woff2"),
-		url("/fonts/BlackChancery.woff") format("woff"),
+		url("/fonts/BlackChancery.woff2") format("woff2"), url("/fonts/BlackChancery.woff") format("woff"),
 		url("/fonts/BlackChancery.ttf") format("truetype");
 	font-weight: 100;
 	font-style: normal;
@@ -14,18 +15,7 @@
 	--background-color: black;
 	--text-primary-color: #543404;
 	--link-color: #d7a457;
-	/* --text-secondary-color: #777777; */
-	/* --menu-color: #106DC6; */
-	/* --link-color: #106DC6; */
-
 	--space-between-vertical: 32px;
-	/* --nav-height: 44px; */
-	/* --safe-distance-top:    max(var(--distance),env(safe-area-inset-top)); */
-	/* --safe-distance-bottom: max(var(--distance),env(safe-area-inset-bottom)); */
-	/* --safe-distance-left:   max(var(--distance),env(safe-area-inset-left)); */
-	/* --safe-distance-right:  max(var(--distance),env(safe-area-inset-right)); */
-	/* --hover-animation-duration: 200ms; */
-
 	font-size: 14px;
 }
 
@@ -46,11 +36,7 @@ main {
 	max-width: 600px;
 	margin: auto;
 	background-image: url(/images/parchment-border.svg),
-		radial-gradient(
-			107.69% 64.1% at 50.13% 51.34%,
-			rgba(255, 245, 225, 0.7) 0%,
-			rgba(255, 218, 184, 0.7) 100%
-		),
+		radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%),
 		url(/images/parchment-background.jpg);
 	background-position: center;
 	background-repeat: no-repeat;
@@ -136,11 +122,7 @@ ol {
 	}
 }
 
-@media screen and (min-width: 400px) {
-}
-@media screen and (min-width: 600px) {
-}
-@media screen and (min-width: 800px) {
+@media screen and (min-width: res.$break-md) {
 	:root {
 		font-size: 16px;
 	}
@@ -148,8 +130,6 @@ ol {
 		margin: 32px auto 128px;
 		padding: 48px 48px 64px;
 	}
-}
-@media screen and (min-height: 1000px) {
 }
 
 @media (prefers-color-scheme: dark) {

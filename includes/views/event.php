@@ -1,11 +1,16 @@
 <header class="details">
-	<h1>Keynote Rickies, April 2020</h1>
+	<h1><?= $rickies_data["name"] ?></h1>
 </header>
-<div class="banner">
-	<p>These Rickies are is not officially scored yet</p>
-</div>
+<?php
+if ($rickies_data["winner"] == false) {
+	echo "<div class='banner' style='background-color: var(--connected-" .
+		$rickies_data["tag_color"] .
+		");'><p>" .
+		$rickies_data["tag_banner"] .
+		"</p></div>";
+}
 
-<?php $host_array = [
+$host_array = [
 	[
 		"name" => "Stephen",
 		"winner" => false,
@@ -25,13 +30,26 @@
 		"string" => "3 points<br />Flexing 23%",
 	],
 ];
-// echo avatar_leaderboard($host_array);
+
+echo avatar_leaderboard($host_array);
 ?>
 
-<nav>
-	<a href="<?= current_url() ?>#rickies" class="active">The Rickies</a>
-	<a href="<?= current_url() ?>#flexies">The Flexies</a>
-	<a href="<?= current_url() ?>#details">Details</a>
+<nav class="nav_container">
+	<div class="nav_anchor"></div>
+	<div class="nav_content">
+		<a class="menu_item"
+			id="menu_rickies"
+			href="<?= current_url() ?>#rickies"
+			onclick="navigate_section('rickies');">The Rickies</a>
+		<a class="menu_item"
+			id="menu_flexies"
+			href="<?= current_url() ?>#flexies"
+			onclick="navigate_section('flexies');">The Flexies</a>
+		<a class="menu_item"
+			id="menu_details"
+			href="<?= current_url() ?>#details"
+			onclick="navigate_section('details');">Details</a>
+	</div>
 </nav>
 
 <?= picks_bundle($picks_data__array) ?>
@@ -63,6 +81,8 @@
 		</li>
 	</ul>
 
-<?= list_item_bundle(reset($rickies_events_array)["details"]) ?>
+<?= list_item_bundle($rickies_data["details"]) ?>
 
 </section>
+
+<script><? include("scripts/navigation.js")?></script>

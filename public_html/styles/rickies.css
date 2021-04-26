@@ -60,6 +60,7 @@ header.details h1, header.leaderboard h1 {
 }
 header.details {
   height: 375px;
+  color: white;
   background-color: var(--connected-blue);
   background-image: url(/images/diagonal-rainbow-header.svg);
   background-size: cover;
@@ -89,26 +90,14 @@ header #corner_tag img#relay_logo {
   top: 12px;
 }
 
-li.list_item + li.list_item {
-  margin-top: var(--space-between-vertical);
+.banner {
+  text-align: center;
+  color: white;
+  padding: 8px var(--space-between-horizontal);
 }
 
-.list_item_graphic {
-  border-radius: var(--corner-radius);
-  border: var(--graphic-border);
-  width: var(--graphic-size);
-  height: var(--graphic-size);
-}
-.list_item_graphic.image {
-  background-size: cover;
-  background-origin: border-box;
-  background-position: center;
-}
-.list_item_graphic.placeholder {
-  background-color: var(--relay-blue);
-  animation-name: connected_colors;
-  animation-duration: 60s;
-  animation-iteration-count: infinite;
+li.list_item + li.list_item {
+  margin-top: var(--space-between-vertical);
 }
 
 li.list_item .list_item_content {
@@ -145,6 +134,14 @@ li.list_item a.list_item_content .list_item_labels .label1 {
 }
 li.list_item a.list_item_content .list_item_labels .label2 {
   color: var(--text-primary-color);
+}
+
+span.tag {
+  color: #fff;
+  background: var(--tag-color);
+  padding: 0px 4px;
+  border-radius: var(--corner-radius);
+  border: var(--graphic-border);
 }
 
 .picks_type_group h3 span {
@@ -223,28 +220,24 @@ li.pick_item span.note {
   color: var(--text-secondary-color);
 }
 
-.avatar {
-  background: pink;
-  border-radius: 50%;
-  border: var(--graphic-border);
-  width: var(--graphic-size);
-  height: var(--graphic-size);
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
-.avatar .ring {
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  bottom: -8px;
-  right: -8px;
-  border: 4px solid orange;
-  border-radius: 50%;
-}
-
 .avatar_leaderboard {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: var(--space-between-vertical) var(--space-between-horizontal);
+  max-width: 650px;
+  margin: var(--space-between-vertical) auto;
+  padding: 0 var(--space-between-horizontal);
 }
 .avatar_leaderboard .host {
   text-align: center;
@@ -258,6 +251,7 @@ li.pick_item span.note {
 .avatar_leaderboard .host .avatar {
   margin-bottom: 8px;
   margin: 8px;
+  background: pink;
 }
 .avatar_leaderboard .host span:not(:first-of-type) {
   margin-top: 4px;
@@ -272,25 +266,118 @@ li.pick_item span.note {
   margin-top: 0px;
   margin-bottom: 16px;
 }
+.avatar_leaderboard .host.winner .avatar:before, .avatar_leaderboard .host.winner .avatar:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.avatar_leaderboard .host.winner .avatar:before {
+  z-index: -1;
+  top: -4px;
+  left: -4px;
+  bottom: -4px;
+  right: -4px;
+  background: var(--background-color);
+}
+.avatar_leaderboard .host.winner .avatar:after {
+  z-index: -2;
+  top: -8px;
+  left: -8px;
+  bottom: -8px;
+  right: -8px;
+  background-color: var(--connected-orange);
+  background-image: linear-gradient(-45deg, var(--connected-green), var(--connected-yellow), var(--connected-orange), var(--connected-red), var(--connected-purple), var(--connected-blue));
+  background-size: 300% 300%;
+  animation-name: gradient;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
 
-nav {
+@keyframes connected_colors {
+  0% {
+    background-color: var(--connected-green);
+  }
+  17% {
+    background-color: var(--connected-yellow);
+  }
+  33% {
+    background-color: var(--connected-orange);
+  }
+  50% {
+    background-color: var(--connected-red);
+  }
+  67% {
+    background-color: var(--connected-purple);
+  }
+  84% {
+    background-color: var(--connected-blue);
+  }
+  100% {
+    background-color: var(--connected-green);
+  }
+}
+.item_graphic {
+  border-radius: var(--corner-radius);
+  border: var(--graphic-border);
+  width: var(--graphic-size);
+  height: var(--graphic-size);
+}
+.item_graphic.avatar {
+  border-radius: 50%;
+  position: relative;
+}
+.item_graphic.image {
+  background-size: cover;
+  background-origin: border-box;
+  background-position: center;
+}
+.item_graphic.placeholder {
+  background-color: var(--relay-blue);
+  animation-name: connected_colors;
+  animation-duration: 60s;
+  animation-iteration-count: infinite;
+}
+
+.nav_content {
   background: var(--menu-color);
   text-align: center;
-  padding: var(--space-between-horizontal);
+  padding: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-nav a {
-  margin: 0px var(--space-between-horizontal);
+.nav_content a {
+  padding: var(--space-between-horizontal);
 }
-nav a.active {
+.nav_content a.active {
   opacity: 1;
   font-weight: bold;
   text-decoration: none;
 }
 
+nav.nav_container {
+  position: relative;
+}
+nav.nav_container .nav_content {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+nav.nav_container.sticky .nav_content {
+  position: fixed;
+}
+
+@media screen and (min-width: 768px) {
+  nav.nav_container .nav_content {
+    position: relative;
+  }
+  nav.nav_container .nav_anchor {
+    display: none;
+  }
+}
 section {
   padding: 0 var(--space-between-horizontal);
 }
@@ -306,7 +393,18 @@ section.mobile_split {
 section.mobile_split.active {
   display: block;
 }
+section.mobile_split h2 {
+  display: none;
+}
 
+@media screen and (min-width: 768px) {
+  section.mobile_split {
+    display: block;
+  }
+  section.mobile_split h2 {
+    display: block;
+  }
+}
 footer {
   padding: var(--space-between-horizontal);
   color: white;
@@ -373,19 +471,4 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-span.tag {
-  color: #fff;
-  background: var(--tag-color);
-  padding: 0px 4px;
-  border-radius: var(--corner-radius);
-  border: var(--graphic-border);
-}
-
-.banner {
-  text-align: center;
-  color: white;
-  padding: 8px var(--space-between-horizontal);
-  background: var(--connected-orange);
 }

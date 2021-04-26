@@ -48,10 +48,9 @@ function list_item($data)
 
 	// Is there an image, yes/no?
 	if (isset($data["img_url"]) && $data["img_url"] !== false) {
-		$output .=
-			'<div class="list_item_graphic image" style="background-image: url(' . $data["img_url"] . ')"></div>';
+		$output .= '<div class="item_graphic image" style="background-image: url(' . $data["img_url"] . ')"></div>';
 	} else {
-		$output .= '<div class="list_item_graphic placeholder" style="animation-delay: -' . rand(0, 50) . 's;"></div>';
+		$output .= '<div class="item_graphic placeholder" style="animation-delay: -' . rand(0, 50) . 's;"></div>';
 	}
 
 	$output .= '<div class="list_item_labels"><span class="label1">' . $data["label1"] . "</span>";
@@ -117,20 +116,37 @@ function list_item_bundle($data)
 	return $output;
 }
 
+// Tune the episode data
+function episode_data($episode)
+{
+	// Add episode number to title
+	$episode["label1"] = "#" . $episode["number"] . ": " . $episode["label1"];
+	if ($episode["img_url"] == false) {
+		// No custom image, fallback to local default
+		if ($episode["number"] < 304) {
+			// Old artwork
+			$episode["img_url"] = "/images/connected-artwork-old.jpg";
+		} else {
+			// New artwork
+			$episode["img_url"] = "/images/connected-artwork.jpg";
+		}
+	}
+
+	return $episode;
+}
+
 // Function to create the side-by-side host leaderboard component with avatars
 function avatar_leaderboard($host_array)
 {
 	$output = '<div class="avatar_leaderboard">';
 	foreach ($host_array as &$host) {
 		if ($host["winner"]) {
-			$output .= '<div class="host winner">
-				<div class="avatar"><div class="ring"></div></div>';
+			$output .= '<div class="host winner">';
 		} else {
-			$output .= '<div class="host">
-				<div class="avatar"></div>';
+			$output .= '<div class="host">';
 		}
 		$output .=
-			'
+			'<div class="item_graphic avatar"></div>
 			<span class="name">' .
 			$host["name"] .
 			'</span>
@@ -248,15 +264,25 @@ function picks_bundle($data)
 				}
 				$pick_items .= pick_item($value);
 			}
+			if ($score["count"] !== 0) {
+				// Calculate the ratio of correct picks, if not 0 picks
+				$score["percentage"] = ($score["correct"] / $score["count"]) * 100;
+
+				// Round the percentage to 1 decimal if it has decimals
+				// Otherwise, don't show decimals at all
+				// Via https://stackoverflow.com/q/4113200
+				$score["percentage"] = str_replace(".0", "", (string) number_format($score["percentage"], 1, ".", ""));
+			}
 
 			// Output the gathered data
 			$output .=
 				"<div class='host_picks' id='" . strtolower($type) . "_" . strtolower($host) . "'><h3>$host<span>";
 			if ($type == "Rickies") {
+				// Rickies have points
 				$output .= $score["points"] . " points • " . $score["correct"] . "/" . $score["count"];
 			} elseif ($score["count"] !== 0) {
-				$output .=
-					($score["correct"] / $score["count"]) * 100 . "% • " . $score["correct"] . "/" . $score["count"];
+				// Flexies have ratio, but only for more than 0 picks
+				$output .= $score["percentage"] . "% • " . $score["correct"] . "/" . $score["count"];
 			}
 
 			$output .= "</span></h3><ul>$pick_items</ul></div>";
