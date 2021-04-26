@@ -45,8 +45,8 @@ $rickies_events_array[$id]["details"] = [
 		"url" => check_key("Charity URL", $fields, false, 0),
 		"img_url" => check_key("Charity logo", $fields, false, 0),
 		"label1" => check_key("Charity name", $fields, false, 0),
-		"label2" => "$125 donated by Stephen",
-		"label3" => "Federico’s choice",
+		"label2" => "$" . check_key("Flexy donation", $fields) . " donated by " . check_key("Flexy loser", $fields),
+		"label3" => check_key("Flexy winner", $fields) . "’s choice",
 	],
 ];
 
