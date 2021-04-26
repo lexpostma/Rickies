@@ -1,4 +1,4 @@
-@use "responsive" as res;
+@use "variables" as var;
 @use "root";
 @use "header";
 @use "list-item";
@@ -37,6 +37,7 @@ h4 {
 	color: var(--text-secondary-color);
 	font-weight: bold;
 	font-size: 0.875rem;
+	margin: 0;
 }
 
 // Regular links

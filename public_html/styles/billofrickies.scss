@@ -1,4 +1,4 @@
-@use "responsive" as res;
+@use "variables" as var;
 
 @font-face {
 	font-family: "BlackChancery";
@@ -122,7 +122,7 @@ ol {
 	}
 }
 
-@media screen and (min-width: res.$break-md) {
+@media screen and (min-width: var.$break-md) {
 	:root {
 		font-size: 16px;
 	}

@@ -1,3 +1,8 @@
+@mixin secondary-text {
+	color: var(--text-secondary-color);
+	font-size: 0.75rem;
+}
+
 $break-sm: 576px;
 $break-md: 768px;
 $break-lg: 992px;

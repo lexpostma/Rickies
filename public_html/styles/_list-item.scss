@@ -1,3 +1,5 @@
+@use "variables" as var;
+
 ul.list_item_group {
 }
 li.list_item + li.list_item {
@@ -15,6 +17,7 @@ li.list_item {
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
+			flex-grow: 1;
 
 			.label1,
 			.label2,
@@ -23,12 +26,11 @@ li.list_item {
 			}
 			.secondary_string {
 				margin-top: 4px;
-				font-size: 0.75rem;
+				@include var.secondary-text;
 				.tag {
 					margin-right: 8px;
+					color: white;
 				}
-				.label3 {
-					color: var(--text-secondary-color);
 				}
 			}
 		}

@@ -27,6 +27,8 @@
 	border: var(--graphic-border);
 	width: var(--graphic-size);
 	height: var(--graphic-size);
+	flex-grow: 0;
+	flex-shrink: 0;
 	&.avatar {
 		border-radius: 50%;
 		position: relative;

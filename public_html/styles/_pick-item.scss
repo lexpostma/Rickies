@@ -1,3 +1,5 @@
+@use "variables" as var;
+
 .picks_type_group {
 	// display: flex;
 	// flex-direction: row;
@@ -14,8 +16,7 @@ li.pick_item {
 	flex-direction: column;
 	align-items: flex-start;
 	span.round {
-		font-size: 0.75rem;
-		color: var(--text-secondary-color);
+		@include var.secondary-text;
 	}
 	p.pick {
 		align-self: stretch;
@@ -83,7 +84,6 @@ li.pick_item {
 		}
 	}
 	span.note {
-		font-size: 0.75rem;
-		color: var(--text-secondary-color);
+		@include var.secondary-text;
 	}
 }

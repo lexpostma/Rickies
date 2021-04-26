@@ -110,6 +110,7 @@ li.list_item .list_item_content .list_item_labels {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex-grow: 1;
 }
 li.list_item .list_item_content .list_item_labels .label1,
 li.list_item .list_item_content .list_item_labels .label2,
@@ -118,10 +119,12 @@ li.list_item .list_item_content .list_item_labels .secondary_string {
 }
 li.list_item .list_item_content .list_item_labels .secondary_string {
   margin-top: 4px;
+  color: var(--text-secondary-color);
   font-size: 0.75rem;
 }
 li.list_item .list_item_content .list_item_labels .secondary_string .tag {
   margin-right: 8px;
+  color: white;
 }
 li.list_item .list_item_content .list_item_labels .secondary_string .label3 {
   color: var(--text-secondary-color);
@@ -157,8 +160,8 @@ li.pick_item {
   align-items: flex-start;
 }
 li.pick_item span.round {
-  font-size: 0.75rem;
   color: var(--text-secondary-color);
+  font-size: 0.75rem;
 }
 li.pick_item p.pick {
   align-self: stretch;
@@ -216,8 +219,8 @@ li.pick_item p.pick span.points.risky.wrong:after {
   border-color: var(--connected-red);
 }
 li.pick_item span.note {
-  font-size: 0.75rem;
   color: var(--text-secondary-color);
+  font-size: 0.75rem;
 }
 
 @keyframes gradient {
@@ -261,6 +264,7 @@ li.pick_item span.note {
 }
 .avatar_leaderboard .host .title {
   color: var(--text-secondary-color);
+  font-size: 0.75rem;
 }
 .avatar_leaderboard .host.winner .avatar {
   margin-top: 0px;
@@ -321,6 +325,8 @@ li.pick_item span.note {
   border: var(--graphic-border);
   width: var(--graphic-size);
   height: var(--graphic-size);
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 .item_graphic.avatar {
   border-radius: 50%;
@@ -442,6 +448,7 @@ h4 {
   color: var(--text-secondary-color);
   font-weight: bold;
   font-size: 0.875rem;
+  margin: 0;
 }
 
 a:link, a:visited {

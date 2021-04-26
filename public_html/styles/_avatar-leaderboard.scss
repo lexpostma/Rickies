@@ -1,3 +1,5 @@
+@use "variables" as var;
+
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -39,7 +41,7 @@
 			font-weight: bold;
 		}
 		.title {
-			color: var(--text-secondary-color);
+			@include var.secondary-text;
 		}
 		.string {
 		}

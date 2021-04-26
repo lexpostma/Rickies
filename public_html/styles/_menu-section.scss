@@ -1,4 +1,4 @@
-@use "responsive" as res;
+@use "variables" as var;
 
 .nav_content {
 	background: var(--menu-color);
@@ -34,7 +34,7 @@ nav.nav_container {
 		}
 	}
 }
-@media screen and (min-width: res.$break-md) {
+@media screen and (min-width: var.$break-md) {
 	nav.nav_container {
 		.nav_content {
 			position: relative;
@@ -64,7 +64,7 @@ section.mobile_split {
 	}
 }
 
-@media screen and (min-width: res.$break-md) {
+@media screen and (min-width: var.$break-md) {
 	section.mobile_split {
 		display: block;
 		h2 {
