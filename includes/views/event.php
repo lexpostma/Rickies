@@ -1,12 +1,10 @@
 <header class="details">
 	<h1>
-<?php
-if($rickies_data["type"] == "Keynote Rickies") {
+<?php if ($rickies_data["type"] == "Keynote Rickies") {
 	echo str_lreplace(" ", "&nbsp;", $rickies_data["name"]);
 } else {
 	echo $rickies_data["name"];
-}
-?>
+} ?>
 	</h1>
 </header>
 
