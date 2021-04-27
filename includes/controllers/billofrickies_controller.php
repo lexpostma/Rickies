@@ -4,14 +4,7 @@
 
 $rules_array = [];
 $rules_params = [
-	"fields" => [
-		"Rule styled",
-		"Start date",
-		"End date",
-		"Order",
-		"id",
-		"Rule type",
-	],
+	"fields" => ["Rule styled", "Start date", "End date", "Order", "id", "Rule type"],
 ];
 $rules_request = $airtable->getContent("Rules", $rules_params);
 do {
@@ -53,3 +46,4 @@ usort($rules_array["flexies"], function ($a, $b) {
 $include_body = "../includes/views/billofrickies.php";
 
 $seo_title = "The Bill of Rickies";
+$favicon = "favicon-bill.png";

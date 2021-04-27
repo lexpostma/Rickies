@@ -1,10 +1,16 @@
-<?
-	if (empty($seo_title)) {
-		$seo_title = "The Rickies";
-	};
-	if($environment !== "production") {
-		$seo_title .= " [".$environment."]";
-	}
+<?php
+
+if (empty($seo_title)) {
+	$seo_title = "The Rickies";
+	$favicon = "favicon.png";
+}
+if ($environment !== "production") {
+	$seo_title .= " [" . $environment . "]";
+}
+
+if (empty($favicon)) {
+	$favicon = "favicon.png";
+}
 ?>
 
 <meta charset="utf-8">
@@ -13,13 +19,13 @@
 <base href="<?= base_url() ?>">
 
 <!-- Icons -->
-<link rel="shortcut icon" type="image/ico" href="favicon.png" />
+<link rel="shortcut icon" type="image/ico" href="<?= $favicon ?>" />
 
 <!-- Standard SEO / Google -->
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <meta name="author" content="Lex Postma" />
-<meta name="copyright" content="Copyright (c) 2020-<?= date("Y") ?> by Lex Postma" />
+<meta name="copyright" content="Copyright © 2020-<?= date("Y") ?> by Lex Postma" />
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <?
 	if($environment !== "production") {
