@@ -1,3 +1,5 @@
+@use "variables" as var;
+
 :root {
 	--background-color: #fff;
 	--text-primary-color: #31373d;
@@ -6,8 +8,10 @@
 	--link-color: var(--connected-blue);
 	--link-hover-color: var(--connected-blue);
 
+	--space-sides: 16px;
 	--space-between-vertical: 32px;
 	--space-between-horizontal: 16px;
+
 	--corner-radius: 4px;
 	/* --nav-height: 44px; */
 	// --safe-distance-top:    max(var(--distance),env(safe-area-inset-top));
@@ -19,6 +23,13 @@
 	--graphic-size: 60px;
 
 	font-size: 16px;
+}
+
+@media screen and (min-width: var.$break-md) {
+	:root {
+		--space-sides: 32px;
+		font-size: 18px;
+	}
 }
 
 @media (prefers-color-scheme: dark) {

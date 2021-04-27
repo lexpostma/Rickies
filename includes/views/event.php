@@ -38,14 +38,14 @@
 
 <?= picks_bundle($picks_data__array) ?>
 
-<section class="mobile_split" id="details">
+<section class="navigate_with_mobile_menu" id="details">
 	<h2>Details</h2>
-	<h3>Hosts</h3>
+	<div class="section_group">
 <?php
 echo host_item_bundle($rickies_data["hosts"]);
 echo list_item_bundle($rickies_data["details"]);
 ?>
-
+	</div>
 </section>
 
 <script><? include("scripts/navigation.js")?></script>

@@ -1,15 +1,13 @@
 @use "variables" as var;
 
-.picks_type_group {
-	// display: flex;
-	// flex-direction: row;
-	// align-items: flex-start;
+.section_group {
 	h3 span {
 		color: var(--text-secondary-color);
 		float: right;
 		font-variant-numeric: tabular-nums;
 	}
 }
+
 li.pick_item {
 	margin-top: 12px;
 	display: flex;

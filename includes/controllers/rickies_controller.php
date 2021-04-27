@@ -103,13 +103,13 @@ function list_item_bundle($data)
 			}
 			$output .= list_item($value);
 			if ($key == count($data) - 1) {
-				$output .= "</ul>";
+				$output .= "</ul></div>";
 			}
 		} else {
 			if (is_array($previous_value)) {
-				$output .= "</ul>";
+				$output .= "</ul></div>";
 			}
-			$output .= "<h3>" . $value . "</h3>";
+			$output .= "<div class='section_group--list'><h3>" . $value . "</h3>";
 		}
 		$previous_value = $value;
 	}
@@ -243,9 +243,9 @@ function picks_bundle($data)
 	// Split the data by type (Rickies or Flexies)
 	foreach ($data as $type => $hosts) {
 		$output .=
-			"<section class='mobile_split' id='" .
+			"<section class='navigate_with_mobile_menu' id='" .
 			strtolower($type) .
-			"'><h2>The $type</h2><div class='picks_type_group'>";
+			"'><h2>The $type</h2><div class='section_group'>";
 
 		// Split the data by host
 		foreach ($hosts as $host => $picks) {
@@ -273,7 +273,11 @@ function picks_bundle($data)
 
 			// Output the gathered data
 			$output .=
-				"<div class='host_picks' id='" . strtolower($type) . "_" . strtolower($host) . "'><h3>$host<span>";
+				"<div class='host_picks section_group--list' id='" .
+				strtolower($type) .
+				"_" .
+				strtolower($host) .
+				"'><h3>$host<span>";
 			if ($type == "Rickies") {
 				// Rickies have points
 				$output .= plural_points($score["points"]) . " • " . $score["correct"] . "/" . $score["count"];
@@ -291,7 +295,7 @@ function picks_bundle($data)
 
 function host_item_bundle($host_event_data)
 {
-	$output = "<ul>";
+	$output = "<div class='section_group--list'><h3>Hosts</h3><ul>";
 	$html_strings = [];
 
 	foreach ($host_event_data as $host_event_key => $event_details) {
@@ -396,6 +400,6 @@ function host_item_bundle($host_event_data)
 </li>
 ";
 	}
-	$output .= "</ul>";
+	$output .= "</ul></div>";
 	return $output;
 }

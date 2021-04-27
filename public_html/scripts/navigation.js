@@ -17,7 +17,7 @@ function navigate_section(section) {
 		el.classList.remove("active");
 	});
 	// Remove the "active" class from all sections
-	Array.from(document.querySelectorAll("section.mobile_split")).forEach(function (el) {
+	Array.from(document.querySelectorAll("section.navigate_with_mobile_menu")).forEach(function (el) {
 		el.classList.remove("active");
 	});
 
@@ -60,11 +60,11 @@ function set_nav_height() {
 	if (window.innerWidth < 768) {
 		var nav_height = document.querySelector(".nav_content").offsetHeight;
 		console.log("resizing, height=" + nav_height);
-		Array.from(document.querySelectorAll(".mobile_split")).forEach(function (el) {
+		Array.from(document.querySelectorAll(".navigate_with_mobile_menu")).forEach(function (el) {
 			el.style.paddingTop = nav_height + "px";
 		});
 	} else {
-		Array.from(document.querySelectorAll(".mobile_split")).forEach(function (el) {
+		Array.from(document.querySelectorAll(".navigate_with_mobile_menu")).forEach(function (el) {
 			el.style.paddingTop = "";
 		});
 	}

@@ -16,7 +16,7 @@ header {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding: 48px var(--space-between-horizontal);
+		padding: 48px var(--space-sides);
 		img#trophy {
 			height: 120px;
 			margin-bottom: var(--space-between-horizontal);
@@ -71,5 +71,5 @@ header {
 .banner {
 	text-align: center;
 	color: white;
-	padding: 8px var(--space-between-horizontal);
+	padding: 8px var(--space-sides);
 }
