@@ -9,8 +9,8 @@ $rickies_events_params = [
 ];
 $all_event_details = true;
 
-include "../includes/controllers/event_data_controller.php";
-include "../includes/controllers/picks_data_controller.php";
+include "../includes/data_controllers/event_data_controller.php";
+include "../includes/data_controllers/picks_data_controller.php";
 $rickies_data = reset($rickies_events_array);
 
 $leaderboard_data = [];

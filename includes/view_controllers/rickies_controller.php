@@ -5,18 +5,18 @@ $include_body = "../includes/views/main.php";
 switch ($url_view) {
 	case "main":
 		// No query is defined, so the main overview is shown
-		include "../includes/controllers/rickies_list_controller.php";
+		include "../includes/view_controllers/rickies_list_controller.php";
 		$include_subbody = "../includes/views/rickies.php";
 		break;
 	case "leaderboard":
 		// Leaderboard query
-		include "../includes/controllers/leaderboard_controller.php";
+		include "../includes/view_controllers/leaderboard_controller.php";
 		$include_subbody = "../includes/views/leaderboard.php";
 		$back_to_overview = true;
 		break;
 	default:
 		// If non of the above, it's probably a Rickies event
-		include "../includes/controllers/rickies_detail_controller.php";
+		include "../includes/view_controllers/rickies_detail_controller.php";
 		$include_subbody = "../includes/views/event.php";
 		$back_to_overview = true;
 }

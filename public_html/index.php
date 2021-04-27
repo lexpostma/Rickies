@@ -40,7 +40,7 @@ if (in_array("thebillof", explode(".", $_SERVER["HTTP_HOST"]))) {
 }
 
 // Include the controller of get all the data before the HTML begins
-include "../includes/controllers/" . $subdomain . "_controller.php";
+include "../includes/view_controllers/" . $subdomain . "_controller.php";
 ?>
 
 <!DOCTYPE HTML>

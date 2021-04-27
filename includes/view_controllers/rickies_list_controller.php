@@ -19,4 +19,4 @@ $rickies_events_params = [
 ];
 $all_event_details = false;
 
-include "../includes/controllers/event_data_controller.php";
+include "../includes/data_controllers/event_data_controller.php";
