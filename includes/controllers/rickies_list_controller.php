@@ -4,8 +4,9 @@
 $rickies_events_params = [
 	"fields" => [
 		"Name",
+		"Rickies type",
 		"URL",
-		"Winner (manual)",
+		"Ricky winner (manual)",
 		"Predictions episode date",
 		"Predictions episode artwork",
 		"Rickies artwork",

@@ -3,13 +3,7 @@
 // Is the current URL accessed via http or https?
 function url_protocol()
 {
-	return strtolower(
-		substr(
-			$_SERVER["SERVER_PROTOCOL"],
-			0,
-			strpos($_SERVER["SERVER_PROTOCOL"], "/")
-		)
-	) . "://";
+	return strtolower(substr($_SERVER["SERVER_PROTOCOL"], 0, strpos($_SERVER["SERVER_PROTOCOL"], "/"))) . "://";
 }
 
 // https://example.com
@@ -71,4 +65,34 @@ function markdown($markdown)
 function random($array)
 {
 	return $array[array_rand($array)];
+}
+
+// Round the percentage to 1 decimal if it has decimals
+// Otherwise, don't show decimals at all
+// Via https://stackoverflow.com/q/4113200
+function round_if_decimal($value)
+{
+	return str_replace(".0", "", (string) number_format($value, 1, ".", ""));
+}
+
+function plural_points($value)
+{
+	if ($value == 1 || $value == -1) {
+		return $value . " point";
+	} else {
+		return $value . " points";
+	}
+}
+
+// Replace last occurence of a string in a string
+// Via https://stackoverflow.com/a/3835653
+function str_lreplace($search, $replace, $subject)
+{
+	$pos = strrpos($subject, $search);
+
+	if ($pos !== false) {
+		$subject = substr_replace($subject, $replace, $pos, strlen($search));
+	}
+
+	return $subject;
 }

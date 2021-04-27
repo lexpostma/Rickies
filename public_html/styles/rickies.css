@@ -126,8 +126,29 @@ li.list_item .list_item_content .list_item_labels .secondary_string .tag {
   margin-right: 8px;
   color: white;
 }
-li.list_item .list_item_content .list_item_labels .secondary_string .label3 {
+li.list_item.host_details .list_item_content {
+  align-items: flex-start;
+}
+li.list_item.host_details .list_item_content .list_item_labels {
+  margin-top: 8px;
+}
+li.list_item.host_details .list_item_content .list_item_labels .ranking {
   color: var(--text-secondary-color);
+  font-size: 0.75rem;
+}
+li.list_item.host_details .list_item_content .list_item_labels .mini_stats {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 8px;
+  width: 100%;
+}
+li.list_item.host_details .list_item_content .list_item_labels .mini_stats .mini_stats--list {
+  width: 100%;
+  max-width: 200px;
+}
+li.list_item.host_details .list_item_content .list_item_labels .mini_stats .mini_stats--list:last-of-type {
+  margin-left: 8px;
 }
 li.list_item a.list_item_content {
   text-decoration: none;

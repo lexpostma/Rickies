@@ -31,6 +31,28 @@ li.list_item {
 					margin-right: 8px;
 					color: white;
 				}
+			}
+		}
+	}
+	&.host_details .list_item_content {
+		align-items: flex-start;
+		.list_item_labels {
+			margin-top: 8px;
+			.ranking {
+				@include var.secondary-text;
+			}
+			.mini_stats {
+				display: flex;
+				flex-direction: row;
+				align-items: flex-start;
+				margin-top: 8px;
+				width: 100%;
+				.mini_stats--list {
+					width: 100%;
+					max-width: 200px;
+					&:last-of-type {
+						margin-left: 8px;
+					}
 				}
 			}
 		}

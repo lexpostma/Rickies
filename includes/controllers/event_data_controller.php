@@ -18,6 +18,7 @@ do {
 			// Main details, required for the list overview
 			$rickies_events_array[$id] = [
 				"name" => check_key("Name", $fields),
+				"type" => check_key("Rickies type", $fields),
 				"url_name" => check_key("URL", $fields),
 				"date" => date_to_string_label(check_key("Predictions episode date", $fields, false, 0)),
 				"artwork" => [
@@ -26,7 +27,7 @@ do {
 					"event" => check_key("Event artwork", $fields, false, 0),
 					"results_ep" => check_key("Results episode artwork", $fields, false, 0),
 				],
-				"winner" => check_key("Winner (manual)", $fields),
+				"winner" => check_key("Ricky winner (manual)", $fields),
 			];
 
 			// Assign the correct artwork URLs from array

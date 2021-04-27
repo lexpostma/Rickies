@@ -1,5 +1,54 @@
 <?php
 
+// Add more details from Airtable to array, to build the detail page
+if (check_key("Ricky ranking", $fields)) {
+	// Order by Ricky ranking
+	$hosts = explode(", ", check_key("Ricky ranking", $fields));
+} elseif (check_key("Round Robin order", $fields)) {
+	// Order by Robin
+	$hosts = check_key("Round Robin order", $fields);
+} else {
+	// No Fallback to alphabetical order
+	$hosts = ["Federico", "Myke", "Stephen"];
+}
+
+$rickies_events_array[$id]["coin_toss"]["rickies"] = check_key("Ricky coin flip (flat)", $fields, false, 0);
+$rickies_events_array[$id]["coin_toss"]["flexies"] = check_key("Flexy coin flip (flat)", $fields, false, 0);
+
+foreach ($hosts as $host) {
+	$rickies_events_array[$id]["hosts"][$host] = [
+		"details" => [
+			// "name" => $host,
+			"first_name" => $host,
+			"round_robin" => array_search($host, $hosts),
+		],
+		"rickies" => [
+			"ranking" => array_search($host, explode(", ", check_key("Ricky ranking", $fields))),
+			"correct" => check_key($host . "’s correct pick count", $fields),
+			"count" => 3,
+			"risky_correct" => check_key($host . "’s Risky Pick", $fields),
+			"points" => check_key($host . "’s score", $fields),
+			"coin_toss_winner" => false,
+		],
+		"flexies" => [
+			"ranking" => array_search($host, explode(", ", check_key("Flexy ranking", $fields))),
+			"correct" => check_key($host . "’s Risky Pick", $fields),
+			"count" => check_key($host . "’s Flexy count", $fields),
+			"percentage" => check_key($host . "’s Flexy percentage", $fields),
+			"points" => check_key($host . "’s Flexy score", $fields),
+			"coin_toss_winner" => false,
+		],
+	];
+
+	if ($rickies_events_array[$id]["coin_toss"]["rickies"] == $host) {
+		$rickies_events_array[$id]["hosts"][$host]["rickies"]["coin_toss_winner"] = true;
+	}
+
+	if ($rickies_events_array[$id]["coin_toss"]["flexies"] == $host) {
+		$rickies_events_array[$id]["hosts"][$host]["flexies"]["coin_toss_winner"] = true;
+	}
+}
+
 $rickies_events_array[$id]["details"] = [
 	// Apple Event data
 	"event_title" => "Apple event",

@@ -146,7 +146,9 @@ function avatar_leaderboard($host_array)
 			$output .= '<div class="host">';
 		}
 		$output .=
-			'<div class="item_graphic avatar"></div>
+			'<div class="item_graphic avatar placeholder" style="animation-delay: ' .
+			rand(-50, 0) .
+			's;"></div>
 			<span class="name">' .
 			$host["name"] .
 			'</span>
@@ -265,13 +267,8 @@ function picks_bundle($data)
 				$pick_items .= pick_item($value);
 			}
 			if ($score["count"] !== 0) {
-				// Calculate the ratio of correct picks, if not 0 picks
-				$score["percentage"] = ($score["correct"] / $score["count"]) * 100;
-
-				// Round the percentage to 1 decimal if it has decimals
-				// Otherwise, don't show decimals at all
-				// Via https://stackoverflow.com/q/4113200
-				$score["percentage"] = str_replace(".0", "", (string) number_format($score["percentage"], 1, ".", ""));
+				// Calculate the ratio of correct picks, if not 0 picks, and round it
+				$score["percentage"] = round_if_decimal(($score["correct"] / $score["count"]) * 100);
 			}
 
 			// Output the gathered data
@@ -279,7 +276,7 @@ function picks_bundle($data)
 				"<div class='host_picks' id='" . strtolower($type) . "_" . strtolower($host) . "'><h3>$host<span>";
 			if ($type == "Rickies") {
 				// Rickies have points
-				$output .= $score["points"] . " points • " . $score["correct"] . "/" . $score["count"];
+				$output .= plural_points($score["points"]) . " • " . $score["correct"] . "/" . $score["count"];
 			} elseif ($score["count"] !== 0) {
 				// Flexies have ratio, but only for more than 0 picks
 				$output .= $score["percentage"] . "% • " . $score["correct"] . "/" . $score["count"];
@@ -289,5 +286,116 @@ function picks_bundle($data)
 		}
 		$output .= "</div></section>";
 	}
+	return $output;
+}
+
+function host_item_bundle($host_event_data)
+{
+	$output = "<ul>";
+	$html_strings = [];
+
+	foreach ($host_event_data as $host_event_key => $event_details) {
+		$html_strings["ranking"] = [];
+
+		if ($event_details["rickies"]["ranking"] !== false && $event_details["rickies"]["ranking"] == 0) {
+			array_push($html_strings["ranking"], "<b>Rickies winner</b>");
+		} elseif ($event_details["rickies"]["ranking"] == 1) {
+			array_push($html_strings["ranking"], "Rickies 2nd place");
+		} elseif ($event_details["rickies"]["ranking"] == 2) {
+			array_push($html_strings["ranking"], "Rickies 3rd place");
+		}
+
+		if ($event_details["flexies"]["ranking"] !== false && $event_details["flexies"]["ranking"] == 0) {
+			array_push($html_strings["ranking"], "Flexies winner");
+		} elseif ($event_details["flexies"]["ranking"] == 2) {
+			array_push($html_strings["ranking"], "Flexies loser");
+		}
+
+		if ($event_details["details"]["round_robin"] == 0) {
+			array_push($html_strings["ranking"], "Round Robin #1");
+		} elseif ($event_details["details"]["round_robin"] == 1) {
+			array_push($html_strings["ranking"], "Round Robin #2");
+		} elseif ($event_details["details"]["round_robin"] == 2) {
+			array_push($html_strings["ranking"], "Round Robin #3");
+		}
+
+		$html_strings["stats"] = [
+			"🏆 Rickies" => [
+				$event_details["rickies"]["correct"] . "/" . $event_details["rickies"]["count"] . " correct",
+			],
+			"💪 Flexies" => [
+				$event_details["flexies"]["correct"] . "/" . $event_details["flexies"]["count"] . " correct",
+				round_if_decimal($event_details["flexies"]["percentage"] * 100) . "% flexing power",
+			],
+		];
+
+		// Add stat about Risky Pick
+		if ($event_details["rickies"]["risky_correct"]) {
+			array_push($html_strings["stats"]["🏆 Rickies"], "Risky Pick correct!");
+		} else {
+			array_push($html_strings["stats"]["🏆 Rickies"], "Risky Pick too risky");
+		}
+
+		// Add stat about points
+		array_push($html_strings["stats"]["🏆 Rickies"], plural_points($event_details["rickies"]["points"]));
+
+		// Add stats about coin flips
+		if ($event_details["rickies"]["coin_toss_winner"] && $event_details["rickies"]["ranking"] == 0) {
+			// Host won the Rickies and the coin flip
+			array_push($html_strings["stats"]["🏆 Rickies"], "Won by coin flip");
+		} elseif ($event_details["rickies"]["coin_toss_winner"] && $event_details["rickies"]["ranking"] == 1) {
+			// Host is 2nd place and won the coin flip
+			array_push($html_strings["stats"]["🏆 Rickies"], "2nd by coin flip");
+		}
+
+		if ($event_details["flexies"]["coin_toss_winner"] && $event_details["flexies"]["ranking"] == 0) {
+			// Host won the flexies and the coin flip
+			array_push($html_strings["stats"]["💪 Flexies"], "Won by coin flip");
+		} elseif ($event_details["flexies"]["coin_toss_winner"] && $event_details["flexies"]["ranking"] == 1) {
+			// Host is 2nd place and won the coin flip
+			array_push($html_strings["stats"]["💪 Flexies"], "Saved by coin flip");
+		}
+
+		$output .=
+			"
+<li class='list_item host_details'>
+	<div class='list_item_content'>
+		<div class='item_graphic avatar placeholder' style='animation-delay: " .
+			rand(-50, 0) .
+			"s;'></div>
+		<div class='list_item_labels'>
+			<p>
+				<a href='/leaderboard#" .
+			strtolower($event_details["details"]["first_name"]) .
+			"'>" .
+			$event_details["details"]["first_name"] .
+			"</a>
+				<br />
+				<span class='ranking'>" .
+			implode(" • ", $html_strings["ranking"]) .
+			"</span>
+			</p>";
+		if ($event_details["rickies"]["ranking"] !== false) {
+			$output .= "
+			<div class='mini_stats'>";
+			foreach ($html_strings["stats"] as $stat_title => $stat_data) {
+				$output .=
+					"<div class='mini_stats--list'>
+				<h4>$stat_title</h4>
+				<p>" .
+					implode("<br />", $stat_data) .
+					"</p>
+				</div>
+				";
+			}
+			$output .= "</div>";
+		}
+		$output .= "
+		</div>
+	</div>
+</li>
+";
+	}
+	$output .= "</ul>";
 	return $output;
 }
