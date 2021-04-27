@@ -43,6 +43,9 @@ p {
 pre {
 	font-size: 0.8rem;
 	overflow-x: scroll;
-	/* padding: var(--distance); */
+	padding: 10px;
 	background: pink;
+	@media (prefers-color-scheme: dark) {
+		background: #230034;
+	}
 }
