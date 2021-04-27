@@ -1,5 +1,7 @@
 <?
-	$seo_title = "The Rickies";
+	if (empty($seo_title)) {
+		$seo_title = "The Rickies";
+	};
 	if($environment !== "production") {
 		$seo_title .= " [".$environment."]";
 	}

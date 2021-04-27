@@ -12,3 +12,4 @@ $all_event_details = true;
 include "../includes/controllers/event_data_controller.php";
 include "../includes/controllers/picks_data_controller.php";
 $rickies_data = reset($rickies_events_array);
+$seo_title = $rickies_data["name"];

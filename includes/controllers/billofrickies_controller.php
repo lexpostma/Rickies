@@ -51,3 +51,5 @@ usort($rules_array["flexies"], function ($a, $b) {
 // echo '<pre>' , var_dump($rules_array) , '</pre>';
 
 $include_body = "../includes/views/billofrickies.php";
+
+$seo_title = "The Bill of Rickies";
