@@ -1,6 +1,6 @@
 <?php
 
-// Ricky picks
+// Ricky picks _data_ controller
 
 $picks_data__params = [
 	"filterByFormula" => "AND( URL = '$url_view' )",

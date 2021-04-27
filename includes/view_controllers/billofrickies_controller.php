@@ -1,6 +1,7 @@
 <?php
 
-// The Bill of Rickies
+// The Bill of Rickies _view_ controller
+// Also does data, due to the small size
 
 $rules_array = [];
 $rules_params = [

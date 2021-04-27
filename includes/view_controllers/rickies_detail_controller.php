@@ -1,6 +1,7 @@
 <?php
 
-// Rickies event details view
+// Rickies _view_ controller, event details page
+
 $rickies_events_params = [
 	"filterByFormula" => "AND( Published, Picks, URL = '$url_view' )",
 	"maxRecords" => 1,

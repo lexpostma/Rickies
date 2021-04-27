@@ -1,5 +1,7 @@
 <?php
 
+// Rickies _view_ controller, general
+
 $include_body = "../includes/views/main.php";
 
 switch ($url_view) {

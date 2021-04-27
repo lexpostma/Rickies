@@ -1,6 +1,6 @@
 <?php
 
-// Rickies event
+// Rickies _data_ controller, general
 
 $rickies_events_array = [];
 $rickies_events_request = $airtable->getContent("Rickies", $rickies_events_params);

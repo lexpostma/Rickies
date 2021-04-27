@@ -1,6 +1,7 @@
 <?php
 
-// Rickies overview
+// Rickies _view_ controller, main overview
+
 $rickies_events_params = [
 	"fields" => [
 		"Name",

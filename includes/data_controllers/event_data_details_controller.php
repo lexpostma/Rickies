@@ -1,5 +1,7 @@
 <?php
 
+// Rickies _data_ controller, extra details
+
 // Add more details from Airtable to array, to build the detail page
 if (check_key("Ricky ranking", $fields)) {
 	// Order by Ricky ranking
