@@ -90,3 +90,53 @@
 		}
 	}
 }
+.host_stats {
+	h4 {
+		margin-top: var(--space-between-horizontal);
+	}
+	h3 + p {
+		@include var.secondary-text;
+	}
+}
+table.full_stats {
+	border-collapse: collapse;
+	border: none;
+	td.value {
+		font-weight: bold;
+		padding-right: 4px;
+	}
+}
+
+.charts {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	margin: 8px 0;
+	.chart_pick_type {
+		position: relative;
+		.chart_emoji {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 16px;
+			z-index: -1;
+			text-align: center;
+		}
+		.chart_label {
+			@include var.secondary-text;
+			text-align: center;
+			display: block;
+			margin-top: 4px;
+		}
+	}
+	.chart_pick_type + .chart_pick_type {
+		margin-left: var(--space-between-horizontal);
+	}
+
+	.chart-container {
+		position: relative;
+		height: 60px;
+		width: 60px;
+		// background-color: pink; // TODO
+	}
+}

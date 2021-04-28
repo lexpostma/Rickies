@@ -3,7 +3,7 @@
 @use "header";
 @use "list-item";
 @use "pick-item";
-@use "avatar-leaderboard";
+@use "leaderboard";
 @use "list-graphic";
 @use "menu-section";
 
@@ -29,6 +29,7 @@ h1 {
 h2 {
 }
 h3 {
+	margin: 0;
 	font-weight: 600;
 	font-size: 1.25rem;
 }

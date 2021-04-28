@@ -8,9 +8,8 @@ $hosts_data__params = [
 	// 	"fields" => ["Artwork", "Name", "URL", "Winner (manual)", "Episode date"],
 ];
 
-$hosts_data__array = [
-	// "Rickies" => ["Myke" => [], "Federico" => [], "Stephen" => []],
-];
+$connected_colors = ["green", "yellow", "orange", "red", "purple", "blue"];
+$hosts_data__array = [];
 $hosts_data__request = $airtable->getContent("Hosts", $hosts_data__params);
 do {
 	$hosts_data__response = $hosts_data__request->getResponse();
@@ -34,40 +33,95 @@ do {
 			],
 			"titles" => ["test", "temp"],
 			"achievements" => [
-				"annual_rickies_wins" => check_key("Annual wins", $fields),
-				"keynote_rickies_wins" => check_key("Keynote wins", $fields),
-				"flexies_wins" => check_key("Flexy win count", $fields),
-				"flexies_lost" => check_key("Flexy loss count", $fields),
+				"annual_rickies_wins" => [
+					"value" => check_key("Annual wins", $fields),
+					"label" => "time Annual Rickies winner",
+					"0hide" => true,
+				],
+				"keynote_rickies_wins" => [
+					"value" => check_key("Keynote wins", $fields),
+					"label" => "time Keynote Rickies winner",
+					"0hide" => true,
+				],
+				"flexies_wins" => [
+					"value" => check_key("Flexy win count", $fields),
+					"label" => "time Flexies winner",
+					"0hide" => true,
+				],
+				"flexies_lost" => [
+					"value" => check_key("Flexy loss count", $fields),
+					"label" => "time Flexies loser",
+					"0hide" => true,
+				],
 			],
 			"stats" => [
 				"picks" => [
-					"regular" => [
-						"correct" => check_key("Correct regular count", $fields),
-						"unknown" => check_key("Unknown Risky count", $fields),
-						"wrong" => check_key("Wrong regular count", $fields),
+					"Regular" => [
+						"Correct" => check_key("Correct regular count", $fields),
+						"Wrong" => check_key("Wrong regular count", $fields),
+						"Unknown" => check_key("Unknown Risky count", $fields),
 					],
-					"risky" => [
-						"correct" => check_key("Correct Risky count", $fields),
-						"unknown" => check_key("Unknown Risky count", $fields),
-						"wrong" => check_key("Wrong Risky count", $fields),
+					"Risky" => [
+						"Correct" => check_key("Correct Risky count", $fields),
+						"Wrong" => check_key("Wrong Risky count", $fields),
+						"Unknown" => check_key("Unknown Risky count", $fields),
 					],
-					"flexy" => [
-						"correct" => check_key("Correct Flexy count", $fields),
-						"unknown" => check_key("Unknown Flexy count", $fields),
-						"wrong" => check_key("Wrong Flexy count", $fields),
+					"Flexy" => [
+						"Correct" => check_key("Correct Flexy count", $fields),
+						"Wrong" => check_key("Wrong Flexy count", $fields),
+						"Unknown" => check_key("Unknown Flexy count", $fields),
 					],
 				],
 				"other" => [
-					"total_points" => check_key("Total points", $fields),
-					"ricky_win_rate" => check_key("Ricky win rate", $fields),
-					"flexy_win_rate" => check_key("Flexy win rate", $fields),
-					"flexy_loss_rate" => check_key("Flexy loss rate", $fields),
-					"ricky_coin_flips_won" => check_key("Ricky coin flip wins", $fields),
-					"flexy_coin_flips_won" => check_key("Flexy coin flip wins", $fields),
-					"donations" => check_key("Flexy donations", $fields),
+					"scored_points" => [
+						"value" => check_key("Total points", $fields),
+						"label" => "points scored in total",
+					],
+					"correct_flexies" => [
+						"value" => check_key("Correct Flexy count", $fields),
+						"label" => "Flexing Power (correct Flexies)",
+						"unit" => "FP",
+					],
+
+					"ricky_win_rate" => [
+						"value" => check_key("Rickies win rate", $fields),
+						"label" => "Ricky win rate",
+						"unit" => "%",
+					],
+					"flexy_win_rate" => [
+						"value" => check_key("Flexy win rate", $fields),
+						"label" => "Flexy win rate",
+						"unit" => "%",
+					],
+					"flexy_loss_rate" => [
+						"value" => check_key("Flexy loss rate", $fields),
+						"label" => "Flexy lose rate",
+						"unit" => "%",
+					],
+					"ricky_coin_flips_won" => [
+						"value" => check_key("Ricky coin flip wins", $fields),
+						"label" => "Ricky coin flips won",
+						"0hide" => true,
+					],
+					"flexy_coin_flips_won" => [
+						"value" => check_key("Flexy coin flip wins", $fields),
+						"label" => "Flexy coin flips won",
+						"0hide" => true,
+					],
+					"donations" => [
+						"value" => check_key("Flexy donations", $fields),
+						"label" => "donated to charities",
+						"unit" => "$",
+						"0hide" => true,
+					],
 				],
 			],
 		];
+
+		$hosts_data__array[$id]["personal"]["color"] = random($connected_colors);
+		if (($key = array_search($hosts_data__array[$id]["personal"]["color"], $connected_colors)) !== false) {
+			unset($connected_colors[$key]);
+		}
 	}
 } while ($hosts_data__request = $hosts_data__response->next());
 
