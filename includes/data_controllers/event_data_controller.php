@@ -55,8 +55,8 @@ do {
 			}
 
 			// If there's a manual winner, that means that Ricky is officially scored
-			if ($rickies_events_array[$id]["winner"] == false) {
-				$rickies_events_array[$id]["tag"] = "Unscored";
+			if ($rickies_events_array[$id]["status"] == "Unscored") {
+				$rickies_events_array[$id]["tag"] = $rickies_events_array[$id]["status"];
 				$rickies_events_array[$id]["tag_color"] = "orange";
 				$rickies_events_array[$id]["tag_banner"] = "These Rickies are not officially scored yet";
 			}
