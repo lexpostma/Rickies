@@ -46,10 +46,8 @@ li.list_item {
 				flex-direction: row;
 				align-items: flex-start;
 				margin-top: 8px;
-				// TODO: use flex-basis: 100% ?
 				width: 100%;
 				.mini_stats--list {
-					// TODO use flex-basis: 100% ?
 					width: 100%;
 					max-width: 200px;
 					&:last-of-type {

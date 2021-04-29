@@ -13,9 +13,14 @@
   /* --hover-animation-duration: 200ms; */
   --graphic-border: 1px solid rgba(0, 0, 0, 0.1);
   --graphic-size: 60px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
+@media screen and (min-width: 576px) {
+  :root {
+    font-size: 16px;
+  }
+}
 @media screen and (min-width: 768px) {
   :root {
     --space-sides: 32px;
@@ -260,7 +265,7 @@ li.pick_item span.note {
 .avatar_leaderboard {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   max-width: 650px;
   margin: var(--space-between-vertical) auto;
   padding: 0 var(--space-sides);
@@ -277,7 +282,6 @@ li.pick_item span.note {
 .avatar_leaderboard .host .avatar {
   margin-bottom: 8px;
   margin: 8px;
-  background: pink;
 }
 .avatar_leaderboard .host span:not(:first-of-type) {
   margin-top: 4px;
@@ -335,6 +339,7 @@ li.pick_item span.note {
 .host_stats .host_item_content span.emoji {
   display: inline-block;
   margin-right: 4px;
+  width: 1.6em;
 }
 .host_stats .host_item_content h4 {
   margin-top: var(--space-between-horizontal);
@@ -344,13 +349,25 @@ li.pick_item span.note {
   font-size: 0.75rem;
 }
 
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .host_stats {
+    flex-direction: column;
+  }
+  .host_stats .host_item_content {
+    margin-left: 0;
+  }
+}
 table.full_stats {
   border-collapse: collapse;
   border: none;
 }
+table.full_stats td {
+  vertical-align: top;
+}
 table.full_stats td.value {
   font-weight: bold;
   padding-right: 4px;
+  font-variant-numeric: tabular-nums;
 }
 
 .charts {
@@ -358,6 +375,7 @@ table.full_stats td.value {
   flex-direction: row;
   align-items: flex-start;
   margin: 8px 0;
+  flex-wrap: wrap;
 }
 .charts .chart_pick_type {
   position: relative;
@@ -416,10 +434,21 @@ table.full_stats td.value {
   height: var(--graphic-size);
   flex-grow: 0;
   flex-shrink: 0;
+  position: relative;
 }
 .item_graphic.avatar {
   border-radius: 50%;
-  position: relative;
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.85) 100%);
+  background-origin: border-box;
+}
+.item_graphic.avatar img {
+  width: 120%;
+  height: 120%;
+  object-fit: contain;
+  object-position: center;
+  position: absolute;
+  left: -10%;
+  top: -10%;
 }
 .item_graphic.fill_image {
   background-size: cover;
@@ -495,6 +524,9 @@ section.navigate_with_mobile_menu h2 {
   section {
     margin-left: auto;
     margin-right: auto;
+    max-width: 650px;
+  }
+  section.large_columns {
     max-width: 1200px;
   }
 

@@ -18,29 +18,25 @@ do {
 			// Main details, required for the list overview
 			$rickies_events_array[$id] = [
 				"name" => check_key("Name", $fields),
+				"status" => check_key("Status", $fields),
 				"type" => check_key("Rickies type", $fields),
 				"url_name" => check_key("URL", $fields),
 				"date" => date_to_string_label(check_key("Predictions episode date", $fields, false, 0)),
 				"artwork" => [
-					"rickies" => check_key("Rickies artwork", $fields, false, 0),
-					"predictions_ep" => check_key("Predictions episode artwork", $fields, false, 0),
-					"event" => check_key("Event artwork", $fields, false, 0),
-					"results_ep" => check_key("Results episode artwork", $fields, false, 0),
+					"rickies" => airtable_image_url(check_key("Rickies artwork", $fields, false, 0)),
+					"predictions_ep" => airtable_image_url(check_key("Predictions episode artwork", $fields, false, 0)),
+					"event" => airtable_image_url(check_key("Event artwork", $fields, false, 0)),
+					"results_ep" => airtable_image_url(check_key("Results episode artwork", $fields, false, 0)),
 				],
-				"winner" => check_key("Ricky winner (manual)", $fields),
+				"winner" => check_key("Rickies 1st (manual)", $fields),
 			];
 
-			// Assign the correct artwork URLs from array
+			// Set large thumbnail URL as the value of the main event artwork,
+			// but only the first not-false
 			foreach ($rickies_events_array[$id]["artwork"] as $source => $artwork) {
-				// Set large thumbnail URL as the value of the artwork array
-				if ($artwork !== false) {
-					$rickies_events_array[$id]["artwork"][$source] = $artwork["thumbnails"]["large"]["url"];
-				}
-
-				// Set large thumbnail URL as the value of the main event artwork,
-				// but only the first not-false
 				if ($artwork !== false && !isset($rickies_events_array[$id]["img_url"]) && $source !== "results_ep") {
-					$rickies_events_array[$id]["img_url"] = $artwork["thumbnails"]["large"]["url"];
+					$rickies_events_array[$id]["img_url"] = $artwork;
+					break;
 				}
 			}
 

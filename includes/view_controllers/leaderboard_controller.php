@@ -6,7 +6,7 @@ include "../includes/data_controllers/hosts_data_controller.php";
 
 function leaderboard_item_bundle($input)
 {
-	$output = '<section><div class="section_group">';
+	$output = '<section class="large_columns"><div class="section_group">';
 	$chart_script = "<script>";
 	foreach ($input as $host_data) {
 		$output .= leaderboard_item($host_data);
@@ -24,14 +24,11 @@ function leaderboard_item($host_data)
 
 	// Add avatar
 	$img_array = [
-		"type" => "color",
+		"type" => "avatar",
+		"src" => $host_data["images"]["memoji"]["neutral"],
 		"color" => $host_data["personal"]["color"],
 	];
 	$output .= list_item_graphic($img_array, true);
-	// '
-	// <div class="item_graphic avatar" style="background-color: var(--connected-' .
-	// $host_data["personal"]["color"] .
-	// ');"></div>';
 
 	// Name and personal details
 	$output .=
@@ -81,9 +78,12 @@ function score_label_item($array, $color)
 	$output = "<table class='full_stats'>";
 	foreach ($array as $stat) {
 		if ($stat["value"] !== false && !($stat["value"] == 0 && array_key_exists("0hide", $stat))) {
+			if ($stat["value"] == 1 && array_key_exists("label1", $stat)) {
+				$stat["label"] = $stat["label1"];
+			}
 			if (array_key_exists("unit", $stat)) {
 				if ($stat["unit"] == "%") {
-					$stat["value"] = $stat["value"] * 100 . "%";
+					$stat["value"] = $stat["value"] . "%";
 				} elseif ($stat["unit"] == '$') {
 					$stat["value"] = '$' . $stat["value"];
 				} else {
@@ -112,31 +112,33 @@ function score_graph_script($chart_array, $host)
 {
 	$chart_script = "";
 	foreach ($chart_array as $pick_type => $graph) {
-		$chart_id = define_score_graph_id($host, $pick_type);
-		$chart_var = $chart_id;
+		if ($pick_type !== "Scored" && $pick_type !== "Overall") {
+			$chart_id = define_score_graph_id($host, $pick_type);
+			$chart_var = $chart_id;
 
-		// Add a ChartJS chart data
-		$labels = [];
-		$data = [];
-		foreach ($graph as $key => $value) {
-			$labels[$key] = "'" . $key . "'";
-			$data[$key] = $value;
-			// $output .= $value . ": " . $key . "<br />";
-		}
+			// Add a ChartJS chart data
+			$labels = [];
+			$data = [];
+			foreach ($graph as $key => $value) {
+				if ($key !== "Total" && $key !== "Rate") {
+					$labels[$key] = "'" . $key . "'";
+					$data[$key] = $value;
+				}
+			}
 
-		$chart_script .=
-			"
+			$chart_script .=
+				"
 var $chart_var = document.getElementById('$chart_id');
 var $chart_id = new Chart($chart_var, {
 	type: 'doughnut',
 	data: {
 		labels: [" .
-			implode(",", $labels) .
-			"],
+				implode(",", $labels) .
+				"],
 		datasets: [{
 			data: [" .
-			implode(",", $data) .
-			"],
+				implode(",", $data) .
+				"],
 			backgroundColor: [
 				'#449934',
 				'#E51F2E',
@@ -163,6 +165,7 @@ var $chart_id = new Chart($chart_var, {
 		}
 	}
 });";
+		}
 	}
 	return $chart_script;
 }
@@ -170,18 +173,24 @@ function score_graph_item($chart_array, $host)
 {
 	$output = '<div class="charts">';
 	$emoji = [
-		"Regular" => "🎯",
+		"Regular" => "🧠",
 		"Risky" => "⚠️",
 		"Flexy" => "💪",
+		// "Scored" => "🎯",
+		// "Overall" => "🪣",
 	];
-	// $chart_script = "<script>";
+
 	foreach ($chart_array as $pick_type => $graph) {
-		$chart_id = define_score_graph_id($host, $pick_type);
-		// Add a ChartJS chart canvas
-		$output .=
-			'<div class="chart_pick_type"><div class="chart-container"><canvas id="' . $chart_id . '"></canvas></div>';
-		$output .= '<span class="chart_emoji">' . $emoji[$pick_type] . "</span>";
-		$output .= '<span class="chart_label">' . $pick_type . "</span></div>";
+		if ($pick_type !== "Scored" && $pick_type !== "Overall") {
+			$chart_id = define_score_graph_id($host, $pick_type);
+			// Add a ChartJS chart canvas
+			$output .=
+				'<div class="chart_pick_type"><div class="chart-container"><canvas id="' .
+				$chart_id .
+				'"></canvas></div>';
+			$output .= '<span class="chart_emoji">' . $emoji[$pick_type] . "</span>";
+			$output .= '<span class="chart_label">' . $pick_type . "</span></div>";
+		}
 	}
 
 	$output .= "</div>";
@@ -194,11 +203,22 @@ foreach ($hosts_data__array as $host) {
 	$set = [
 		"name" => $host["personal"]["first_name"],
 		"winner" => false,
-		"title" => $host["titles"][0],
-		// TODO: Define leaderboard string
-		"string" => "something",
+		"title" => $host["titles"][0] . "<br />" . $host["titles"][1],
+		"string" =>
+			"Won " .
+			$host["achievements"]["rickies_wins"]["value"] .
+			" Rickies<br />
+		" .
+			$host["stats"]["picks"]["Overall"]["Rate"] .
+			"% correct picks<br />
+		" .
+			$host["stats"]["other"]["scored_points"]["value"] .
+			" points • " .
+			$host["stats"]["other"]["correct_flexies"]["value"] .
+			" FP",
 		"img_array" => [
-			"type" => "color",
+			"type" => "avatar",
+			"src" => $host["images"]["memoji"]["neutral"],
 			"color" => $host["personal"]["color"],
 		],
 	];

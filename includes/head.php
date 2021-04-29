@@ -9,6 +9,10 @@ $head_defaults = [
 	"description" =>
 		"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 	"keywords" => ["Apple", "podcast", "relay", "predictions", "awards", "wwdc"],
+	"site_relay" => "https://relay.fm/",
+	"site_connected" => "https://relay.fm/connected",
+	"twitter_author" => "@lexpostma",
+	"twitter_connected" => "@_connectedfm",
 ];
 
 if (isset($head_custom)) {
@@ -62,8 +66,8 @@ if ($environment !== "production") {
 <meta name="twitter:description" content="<?= $head["description"] ?>">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image:src" content="">
-<meta name="twitter:creator" content="@lexpostma">
-<meta name="twitter:site" content="@_connectedfm">
+<meta name="twitter:creator" content="<?= $head["twitter_author"] ?>">
+<meta name="twitter:site" content="<?= $head["twitter_connected"] ?>">
 
 <?
 	// include("ios_optimisation.php");
@@ -76,34 +80,6 @@ if ($environment !== "production") {
 <!-- Style sheet -->
 <link rel="stylesheet" href="/styles/global.css?v=<?= date("z") ?>">
 <link rel="stylesheet" href="/styles/<?= $subdomain ?>.css?v=<?= date("z") ?>">
-
-<!-- If it's a webapp, open links inside webapp instead of Safari https://stackoverflow.com/a/8173161 -->
-<!-- <script>
-	(
-		function(element,userAgent,userAgentVar){
-			if(userAgentVar in userAgent&&userAgent[userAgentVar]){
-				var d,
-					elementLocation=element.location,
-					f=/^(a|html)$/i;
-
-				element.addEventListener("click",function(element){
-					elementTarget=element.target;
-					while(!f.test(elementTarget.nodeName))elementTarget=elementTarget.parentNode;
-
-					// links with target="_blank" should still open in Safari
-					var newTabLink = elementTarget.attributes.getNamedItem("target");
-					if(newTabLink && newTabLink.value == "_blank") return;
-
-					// links that should with # in href should have default behaviour
-					var anchorLink = elementTarget.attributes.getNamedItem("href");
-					if(anchorLink && anchorLink.value.startsWith("#")) return;
-
-					"href"in elementTarget&&(elementTarget.href.indexOf("http")||~elementTarget.href.indexOf(elementLocation.host))&&(element.preventDefault(),elementLocation.href=elementTarget.href)
-				},!1)
-			}
-		}
-	)(document,window.navigator,"standalone")
-</script> -->
 
 <?php if ($url_view == "leaderboard") { ?>
 <!-- Chart.js -->

@@ -15,5 +15,7 @@ include $include_subbody;
  	"❤️",
  	"💜",
  	"💙",
- ]) ?> by <a href="https://lexpostma.me">Lex Postma</a>,<br />listener and fan of the <a href="https://relay.fm/connected">Connected</a> podcast</p>
+ ]) ?> by <a target="_blank" href="https://lexpostma.me">Lex Postma</a>,<br />listener and fan of the <a target="_blank" href="<?= $head[
+ 	"site_connected"
+ ] ?>">Connected</a> podcast</p>
 </footer>

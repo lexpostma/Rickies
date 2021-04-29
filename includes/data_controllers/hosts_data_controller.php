@@ -28,88 +28,98 @@ do {
 				"twitter_url" => check_key("Twitter", $fields),
 			],
 			"images" => [
-				"photo" => check_key("Photo", $fields),
-				"memoji" => 0,
+				"photo" => airtable_image_url(check_key("Photo", $fields, false, 0)),
+				"memoji" => [
+					"neutral" => check_key("Memoji neutral", $fields),
+					"happy" => check_key("Memoji happy", $fields),
+					"sad" => check_key("Memoji sad", $fields),
+				],
 			],
 			"titles" => check_key("Titles HTML", $fields),
 			"achievements" => [
 				"annual_rickies_wins" => [
-					"value" => check_key("Annual wins", $fields),
-					"label" => "time Annual Rickies winner",
+					"value" => check_key("Rickies Wins Annual Count", $fields),
+					"label" => "time Annual Chairman",
 					"0hide" => true,
 				],
 				"keynote_rickies_wins" => [
-					"value" => check_key("Keynote wins", $fields),
-					"label" => "time Keynote Rickies winner",
+					"value" => check_key("Rickies Wins Keynote Count", $fields),
+					"label" => "time Keynote Chairman",
 					"0hide" => true,
 				],
+				"rickies_wins" => [
+					"value" => check_key("Rickies Wins Total Count", $fields),
+					"label" => "time Rickies winner",
+					"0hide" => true,
+				],
+
 				"flexies_wins" => [
-					"value" => check_key("Flexy win count", $fields),
+					"value" => check_key("Flexies Wins Total Count", $fields),
 					"label" => "time Flexies winner",
 					"0hide" => true,
 				],
 				"flexies_lost" => [
-					"value" => check_key("Flexy loss count", $fields),
-					"label" => "time Flexies loser",
+					"value" => check_key("Flexies Donation Count", $fields),
+					"label" => "time charity donor",
 					"0hide" => true,
 				],
 			],
 			"stats" => [
 				"picks" => [
 					"Regular" => [
-						"Correct" => check_key("Correct regular count", $fields),
-						"Wrong" => check_key("Wrong regular count", $fields),
-						"Unknown" => check_key("Unknown Risky count", $fields),
+						"Correct" => check_key("Picks Regular Correct Count", $fields, 0),
+						"Wrong" => check_key("Picks Regular Wrong Count", $fields, 0),
+						"Unknown" => check_key("Picks Regular Unknown Count", $fields, 0),
+						"Total" => check_key("Picks Regular Total Count", $fields, 0),
 					],
 					"Risky" => [
-						"Correct" => check_key("Correct Risky count", $fields),
-						"Wrong" => check_key("Wrong Risky count", $fields),
-						"Unknown" => check_key("Unknown Risky count", $fields),
+						"Correct" => check_key("Picks Risky Correct Count", $fields, 0),
+						"Wrong" => check_key("Picks Risky Wrong Count", $fields, 0),
+						"Unknown" => check_key("Picks Risky Unknown Count", $fields, 0),
+						"Total" => check_key("Picks Risky Total Count", $fields, 0),
 					],
 					"Flexy" => [
-						"Correct" => check_key("Correct Flexy count", $fields),
-						"Wrong" => check_key("Wrong Flexy count", $fields),
-						"Unknown" => check_key("Unknown Flexy count", $fields),
+						"Correct" => check_key("Picks Flexy Correct Count", $fields, 0),
+						"Wrong" => check_key("Picks Flexy Wrong Count", $fields, 0),
+						"Unknown" => check_key("Picks Flexy Unknown Count", $fields, 0),
+						"Total" => check_key("Picks Flexy Total Count", $fields, 0),
 					],
 				],
 				"other" => [
 					"scored_points" => [
-						"value" => check_key("Total points", $fields),
-						"label" => "points scored in total",
+						"value" => check_key("Points Scored Total", $fields, 0),
+						"label" => "Ricky points scored overall",
+						"label1" => "Ricky point scored overall",
 					],
 					"correct_flexies" => [
-						"value" => check_key("Correct Flexy count", $fields),
-						"label" => "Flexing Power (correct Flexies)",
-						"unit" => "FP",
+						"value" => check_key("Picks Flexy Total Count", $fields, 0),
+						"label" => "Flexing Points overall",
+						"label1" => "Flexing Point overall",
+						"unit" => " FP",
 					],
-
 					"ricky_win_rate" => [
-						"value" => check_key("Rickies win rate", $fields),
+						"value" => round_if_decimal(check_key("Rickies Wins Rate", $fields, 0) * 100),
 						"label" => "Ricky win rate",
 						"unit" => "%",
 					],
 					"flexy_win_rate" => [
-						"value" => check_key("Flexy win rate", $fields),
+						"value" => round_if_decimal(check_key("Flexies Wins Rate", $fields, 0) * 100),
 						"label" => "Flexy win rate",
 						"unit" => "%",
 					],
 					"flexy_loss_rate" => [
-						"value" => check_key("Flexy loss rate", $fields),
+						"value" => round_if_decimal(check_key("Flexies Lost Rate", $fields, 0) * 100),
 						"label" => "Flexy lose rate",
 						"unit" => "%",
 					],
-					"ricky_coin_flips_won" => [
-						"value" => check_key("Ricky coin flip wins", $fields),
-						"label" => "Ricky coin flips won",
-						"0hide" => true,
-					],
-					"flexy_coin_flips_won" => [
-						"value" => check_key("Flexy coin flip wins", $fields),
-						"label" => "Flexy coin flips won",
+					"coin_flips_won" => [
+						"value" => check_key("Coin Flip Wins Total", $fields),
+						"label" => "coin flips won",
+						"label1" => "coin flip won",
 						"0hide" => true,
 					],
 					"donations" => [
-						"value" => check_key("Flexy donations", $fields),
+						"value" => check_key("Flexy Donation Amount", $fields),
 						"label" => "donated to charities",
 						"unit" => "$",
 						"0hide" => true,
@@ -117,6 +127,57 @@ do {
 				],
 			],
 		];
+
+		// Calculate the scored/graded picks
+		$hosts_data__array[$id]["stats"]["picks"]["Scored"] = [
+			"Correct" =>
+				$hosts_data__array[$id]["stats"]["picks"]["Regular"]["Correct"] +
+				$hosts_data__array[$id]["stats"]["picks"]["Risky"]["Correct"],
+			"Wrong" =>
+				$hosts_data__array[$id]["stats"]["picks"]["Regular"]["Wrong"] +
+				$hosts_data__array[$id]["stats"]["picks"]["Risky"]["Wrong"],
+
+			"Unknown" =>
+				$hosts_data__array[$id]["stats"]["picks"]["Regular"]["Unknown"] +
+				$hosts_data__array[$id]["stats"]["picks"]["Risky"]["Unknown"],
+
+			"Total" =>
+				$hosts_data__array[$id]["stats"]["picks"]["Regular"]["Total"] +
+				$hosts_data__array[$id]["stats"]["picks"]["Risky"]["Total"],
+		];
+
+		// Calculate the overall pick counts
+		$hosts_data__array[$id]["stats"]["picks"]["Overall"] = [
+			"Correct" =>
+				$hosts_data__array[$id]["stats"]["picks"]["Scored"]["Correct"] +
+				$hosts_data__array[$id]["stats"]["picks"]["Flexy"]["Correct"],
+			"Wrong" =>
+				$hosts_data__array[$id]["stats"]["picks"]["Scored"]["Wrong"] +
+				$hosts_data__array[$id]["stats"]["picks"]["Flexy"]["Wrong"],
+
+			"Unknown" =>
+				$hosts_data__array[$id]["stats"]["picks"]["Scored"]["Unknown"] +
+				$hosts_data__array[$id]["stats"]["picks"]["Flexy"]["Unknown"],
+
+			"Total" =>
+				$hosts_data__array[$id]["stats"]["picks"]["Scored"]["Total"] +
+				$hosts_data__array[$id]["stats"]["picks"]["Flexy"]["Total"],
+		];
+
+		// Calculate the rate of correctness per pick type
+		foreach ($hosts_data__array[$id]["stats"]["picks"] as $pick_type => $pick_values) {
+			// echo $pick_type;
+			$hosts_data__array[$id]["stats"]["picks"][$pick_type]["Rate"] = round_if_decimal(
+				($pick_values["Correct"] / ($pick_values["Total"] - $pick_values["Unknown"])) * 100
+			);
+		}
+
+		foreach ($hosts_data__array[$id]["images"]["memoji"] as $mood => $images) {
+			$hosts_data__array[$id]["images"]["memoji"][$mood] = airtable_image_url(random($images));
+			// foreach ($images as $key => $array) {
+			//
+			// }
+		}
 
 		$hosts_data__array[$id]["personal"]["color"] = random($connected_colors);
 		if (($key = array_search($hosts_data__array[$id]["personal"]["color"], $connected_colors)) !== false) {

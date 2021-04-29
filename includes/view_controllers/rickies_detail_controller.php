@@ -3,7 +3,7 @@
 // Rickies _view_ controller, event details page
 
 $rickies_events_params = [
-	"filterByFormula" => "AND( Published, Picks, URL = '$url_view' )",
+	"filterByFormula" => "AND( Status != 'Hidden', Picks, URL = '$url_view' )",
 	"maxRecords" => 1,
 	"sort" => [["field" => "Predictions episode date", "direction" => "desc"]],
 	// "pageSize" => 50,
@@ -26,7 +26,8 @@ foreach ($rickies_data["hosts"] as $host) {
 			"<br />Flexing " .
 			round_if_decimal($host["flexies"]["percentage"] * 100) .
 			"%",
-		"img_array" => [],
+		// TODO: Add memoji
+		"img_array" => false,
 	];
 
 	// Define rank and winner in array

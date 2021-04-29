@@ -38,7 +38,7 @@
 
 <?= pick_item_bundle($picks_data__array) ?>
 
-<section class="navigate_with_mobile_menu" id="details">
+<section class="navigate_with_mobile_menu large_columns" id="details">
 	<h2>Details</h2>
 	<div class="section_group">
 <?php

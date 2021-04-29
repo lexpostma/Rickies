@@ -22,9 +22,13 @@
 	--graphic-border: 1px solid rgba(0, 0, 0, 0.1);
 	--graphic-size: 60px;
 
-	font-size: 16px;
+	font-size: 14px;
 }
-
+@media screen and (min-width: var.$break-sm) {
+	:root {
+		font-size: 16px;
+	}
+}
 @media screen and (min-width: var.$break-md) {
 	:root {
 		--space-sides: 32px;

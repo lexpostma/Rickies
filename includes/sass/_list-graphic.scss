@@ -29,9 +29,20 @@
 	height: var(--graphic-size);
 	flex-grow: 0;
 	flex-shrink: 0;
+	position: relative;
 	&.avatar {
 		border-radius: 50%;
-		position: relative;
+		background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.85) 100%);
+		background-origin: border-box;
+		img {
+			width: 120%;
+			height: 120%;
+			object-fit: contain;
+			object-position: center;
+			position: absolute;
+			left: -10%;
+			top: -10%;
+		}
 	}
 	&.fill_image {
 		// To extend image behind the transparant border

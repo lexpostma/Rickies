@@ -17,9 +17,8 @@
 .avatar_leaderboard {
 	display: flex;
 	flex-direction: row;
-	// align-items: flex-start;
-	align-items: center;
-	max-width: 650px;
+	align-items: flex-start;
+	max-width: var.$readability-width;
 	margin: var(--space-between-vertical) auto;
 	padding: 0 var(--space-sides);
 	.host {
@@ -34,7 +33,6 @@
 		.avatar {
 			margin-bottom: 8px;
 			margin: 8px;
-			background: pink;
 		}
 		span:not(:first-of-type) {
 			margin-top: 4px;
@@ -103,6 +101,7 @@
 		span.emoji {
 			display: inline-block;
 			margin-right: 4px;
+			width: 1.6em;
 		}
 		h4 {
 			margin-top: var(--space-between-horizontal);
@@ -112,12 +111,39 @@
 		}
 	}
 }
+@media screen and (min-width: var.$break-md) and (max-width: var.$break-lg) {
+	.host_stats {
+		flex-direction: column;
+		// align-items: center;
+		.host_item_content {
+			margin-left: 0;
+			// h3,
+			// h3 + p {
+			// 	text-align: center;
+			// }
+		}
+	}
+}
+// @media screen and (min-width: var.$break-lg) {
+// 	.host_stats {
+// 		flex-direction: row;
+// 		align-items: flex-start;
+// 		.host_item_content {
+// 			margin-left: var(--space-between-horizontal);
+// 		}
+// 	}
+// }
+
 table.full_stats {
 	border-collapse: collapse;
 	border: none;
+	td {
+		vertical-align: top;
+	}
 	td.value {
 		font-weight: bold;
 		padding-right: 4px;
+		font-variant-numeric: tabular-nums;
 	}
 }
 
@@ -126,6 +152,7 @@ table.full_stats {
 	flex-direction: row;
 	align-items: flex-start;
 	margin: 8px 0;
+	flex-wrap: wrap;
 	.chart_pick_type {
 		position: relative;
 		.chart_emoji {

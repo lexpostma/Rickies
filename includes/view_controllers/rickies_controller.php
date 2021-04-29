@@ -26,31 +26,37 @@ switch ($url_view) {
 function list_item_graphic($img_array = false, $avatar = false)
 {
 	$class = ["item_graphic"];
-	if (!$img_array) {
-		array_push($class, "placeholder");
-	} elseif ($img_array["type"] == "background") {
-		array_push($class, "fill_image");
-	}
-
-	if ($avatar) {
-		array_push($class, "avatar");
-	}
-
 	$style = [];
-	if (!$img_array) {
+
+	if ($img_array == false) {
+		$class[] = "placeholder";
 		$style[] = "animation-delay: " . rand(-50, 0) . "s;";
 	} elseif ($img_array["type"] == "background") {
+		$class[] = "fill_image";
 		$style[] = "background-image: url(" . $img_array["src"] . ");";
 	} elseif ($img_array["type"] == "color") {
 		$style[] = "background-color: var(--connected-" . $img_array["color"] . ")";
+	} elseif ($img_array["type"] == "avatar") {
+		$class[] = "avatar";
+		$img = "<img src='" . $img_array["src"] . "' />";
+		$style[] = "background-color: var(--connected-" . $img_array["color"] . ")";
 	}
+
+	if ($avatar == true) {
+		$class[] = "avatar";
+	}
+
 	$output = '<div class="' . implode(" ", $class) . '" ';
 
 	if (!empty($style)) {
 		$output .= 'style="' . implode(" ", $style) . '"';
 	}
 
-	$output .= "></div>";
+	$output .= ">";
+	if (isset($img)) {
+		$output .= $img;
+	}
+	$output .= "</div>";
 	return $output;
 }
 
@@ -73,7 +79,12 @@ function list_item($data)
 	// Is the list item clickable, yes/no?
 	$output = "";
 	if (isset($data["url"]) && $data["url"] !== false) {
-		$output .= '<li class="list_item"><a class="list_item_content" href="' . $data["url"] . '">';
+		if ($data["url"][0] == "/" || isset($data["url_internal"])) {
+			$href = 'href="' . $data["url"] . '"';
+		} else {
+			$href = 'target="_blank" href="' . $data["url"] . '"';
+		}
+		$output .= '<li class="list_item"><a class="list_item_content" ' . $href . ">";
 	} else {
 		$output .= '<li class="list_item"><div class="list_item_content">';
 	}
@@ -155,20 +166,24 @@ function list_item_bundle($data)
 // Tune the episode data
 function episode_data($episode)
 {
-	// Add episode number to title
-	$episode["label1"] = "#" . $episode["number"] . ": " . $episode["label1"];
-	if ($episode["img_url"] == false) {
-		// No custom image, fallback to local default
-		if ($episode["number"] < 304) {
-			// Old artwork
-			$episode["img_url"] = "/images/connected-artwork-old.jpg";
-		} else {
-			// New artwork
-			$episode["img_url"] = "/images/connected-artwork.jpg";
+	if (array_key_exists("label1", $episode) && $episode["label1"] !== false) {
+		// Add episode number to title
+		$episode["label1"] = "#" . $episode["number"] . ": " . $episode["label1"];
+		if ($episode["img_url"] == false) {
+			// No custom image, fallback to local default
+			if ($episode["number"] < 304) {
+				// Old artwork
+				$episode["img_url"] = "/images/connected-artwork-old.jpg";
+			} else {
+				// New artwork
+				$episode["img_url"] = "/images/connected-artwork.jpg";
+			}
 		}
-	}
 
-	return $episode;
+		return $episode;
+	} else {
+		return false;
+	}
 }
 
 // Function to create the side-by-side host leaderboard component with avatars
@@ -277,7 +292,7 @@ function pick_item_bundle($data)
 	// Split the data by type (Rickies or Flexies)
 	foreach ($data as $type => $hosts) {
 		$output .=
-			"<section class='navigate_with_mobile_menu' id='" .
+			"<section class='navigate_with_mobile_menu large_columns' id='" .
 			strtolower($type) .
 			"'><h2>The $type</h2><div class='section_group'>";
 
@@ -435,4 +450,17 @@ function host_item_bundle($host_event_data)
 	}
 	$output .= "</ul></div>";
 	return $output;
+}
+
+// Assign the correct artwork URLs from array
+// Set large thumbnail URL as the value of the artwork array
+function airtable_image_url($input)
+{
+	if (is_array($input)) {
+		return $input["thumbnails"]["large"]["url"];
+	} elseif ($input == false) {
+		return false;
+	} else {
+		return $input;
+	}
 }

@@ -17,7 +17,7 @@ do {
 		if (check_key("Rule type", $fields) == "Rickies") {
 			$rules_array["rickies"][] = [
 				"id" => check_key("id", $fields),
-				"rule" => markdown(check_key("Rule styled", $fields)),
+				"rule" => a_blank(markdown(check_key("Rule styled", $fields))),
 				"date_start" => strtotime(check_key("Start date", $fields)),
 				"date_end" => strtotime(check_key("End date", $fields)),
 				"order" => check_key("Order", $fields),
@@ -25,7 +25,7 @@ do {
 		} else {
 			$rules_array["flexies"][] = [
 				"id" => check_key("id", $fields),
-				"rule" => markdown(check_key("Rule styled", $fields)),
+				"rule" => a_blank(markdown(check_key("Rule styled", $fields))),
 				"date_start" => strtotime(check_key("Start date", $fields)),
 				"date_end" => strtotime(check_key("End date", $fields)),
 				"order" => check_key("Order", $fields),
@@ -41,6 +41,12 @@ usort($rules_array["rickies"], function ($a, $b) {
 usort($rules_array["flexies"], function ($a, $b) {
 	return $a["order"] <=> $b["order"];
 });
+
+// Add target="_blank" to links;
+function a_blank($input)
+{
+	return str_replace('<a href="', '<a target="_blank" href="', $input);
+}
 
 // echo '<pre>' , var_dump($rules_array) , '</pre>';
 
