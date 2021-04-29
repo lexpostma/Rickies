@@ -58,4 +58,10 @@ if (isset($leaderboard_order)) {
 
 // echo "<pre>", var_dump($leaderboard_data), "</pre>";
 
-$seo_title = $rickies_data["name"];
+$head_custom = [
+	"title" => $rickies_data["name"],
+	// TODO: Make Rickies description
+	// IDEA: Include scoring banner and Apple Event name
+	"description" => "The " . $rickies_data["name"] . ", about Apple and stuff",
+	"keywords" => ["wwdc", "risky picks", "flexies", "charity"],
+];

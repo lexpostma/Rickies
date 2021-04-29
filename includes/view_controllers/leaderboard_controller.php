@@ -201,4 +201,8 @@ $avatar_leaderboard_array = [
 	],
 ];
 
-$seo_title = "Host Leaderboard • The Rickies";
+$head_custom = [
+	"title" => "Host Leaderboard • The Rickies",
+	// TODO: Write SEO description
+	"description" => "",
+];
