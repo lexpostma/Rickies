@@ -14,8 +14,8 @@ include "../includes/data_controllers/event_data_controller.php";
 include "../includes/data_controllers/picks_data_controller.php";
 $rickies_data = reset($rickies_events_array);
 
+// Define the data for the leaderboard at the top of the page
 $leaderboard_data = [];
-
 foreach ($rickies_data["hosts"] as $host) {
 	$added_host = [
 		"name" => $host["details"]["first_name"],
@@ -26,6 +26,7 @@ foreach ($rickies_data["hosts"] as $host) {
 			"<br />Flexing " .
 			round_if_decimal($host["flexies"]["percentage"] * 100) .
 			"%",
+		"img_array" => [],
 	];
 
 	// Define rank and winner in array

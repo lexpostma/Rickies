@@ -23,9 +23,39 @@ switch ($url_view) {
 		$back_to_overview = true;
 }
 
+function list_item_graphic($img_array = false, $avatar = false)
+{
+	$class = ["item_graphic"];
+	if (!$img_array) {
+		array_push($class, "placeholder");
+	} elseif ($img_array["type"] == "background") {
+		array_push($class, "fill_image");
+	}
+
+	if ($avatar) {
+		array_push($class, "avatar");
+	}
+
+	$style = [];
+	if (!$img_array) {
+		$style[] = "animation-delay: " . rand(-50, 0) . "s;";
+	} elseif ($img_array["type"] == "background") {
+		$style[] = "background-image: url(" . $img_array["src"] . ");";
+	} elseif ($img_array["type"] == "color") {
+		$style[] = "background-color: var(--connected-" . $img_array["color"] . ")";
+	}
+	$output = '<div class="' . implode(" ", $class) . '" ';
+
+	if (!empty($style)) {
+		$output .= 'style="' . implode(" ", $style) . '"';
+	}
+
+	$output .= "></div>";
+	return $output;
+}
+
 /* Function to create a list_item component.
-Example data:
-$data = array(
+EXAMPLE: $data = array(
 	"url"		=> "/event",
 	"img_url"	=> "/images/bill-of-rickies-avatar.png",
 	"label1"	=> "Keynote Rickies, April 2020",
@@ -50,9 +80,13 @@ function list_item($data)
 
 	// Is there an image, yes/no?
 	if (isset($data["img_url"]) && $data["img_url"] !== false) {
-		$output .= '<div class="item_graphic image" style="background-image: url(' . $data["img_url"] . ')"></div>';
+		$img_array = [
+			"src" => $data["img_url"],
+			"type" => "background",
+		];
+		$output .= list_item_graphic($img_array);
 	} else {
-		$output .= '<div class="item_graphic placeholder" style="animation-delay: -' . rand(0, 50) . 's;"></div>';
+		$output .= list_item_graphic();
 	}
 
 	$output .= '<div class="list_item_labels"><span class="label1">' . $data["label1"] . "</span>";
@@ -147,11 +181,9 @@ function avatar_leaderboard($host_array)
 		} else {
 			$output .= '<div class="host">';
 		}
+		$output .= list_item_graphic($host["img_array"], true);
 		$output .=
-			'<div class="item_graphic avatar placeholder" style="animation-delay: ' .
-			rand(-50, 0) .
-			's;"></div>
-			<span class="name">' .
+			'<span class="name">' .
 			$host["name"] .
 			'</span>
 			<span class="title">' .
@@ -238,7 +270,7 @@ function pick_item($data)
 	return $output;
 }
 
-function picks_bundle($data)
+function pick_item_bundle($data)
 {
 	$output = "";
 
@@ -365,10 +397,9 @@ function host_item_bundle($host_event_data)
 		$output .=
 			"
 <li class='list_item host_details'>
-	<div class='list_item_content'>
-		<div class='item_graphic avatar placeholder' style='animation-delay: " .
-			rand(-50, 0) .
-			"s;'></div>
+	<div class='list_item_content'>" .
+			list_item_graphic(false, true) .
+			"
 		<div class='list_item_labels'>
 			<p>
 				<a href='/leaderboard#" .

@@ -7,6 +7,6 @@
 </section>
 
 <?php
-echo avatar_leaderboard($avatar_leaderboard_array);
+echo avatar_leaderboard($leaderboard_data);
 echo leaderboard_item_bundle($hosts_data__array);
 

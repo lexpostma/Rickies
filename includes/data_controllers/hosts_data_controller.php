@@ -31,7 +31,7 @@ do {
 				"photo" => check_key("Photo", $fields),
 				"memoji" => 0,
 			],
-			"titles" => ["test", "temp"],
+			"titles" => check_key("Titles HTML", $fields),
 			"achievements" => [
 				"annual_rickies_wins" => [
 					"value" => check_key("Annual wins", $fields),

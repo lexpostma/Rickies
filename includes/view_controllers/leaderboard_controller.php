@@ -23,15 +23,20 @@ function leaderboard_item($host_data)
 	$output = '<div class="section_group--list host_stats">';
 
 	// Add avatar
-	$output .=
-		'
-		<div class="item_graphic avatar" style="background-color: var(--connected-' .
-		$host_data["personal"]["color"] .
-		');"></div>';
+	$img_array = [
+		"type" => "color",
+		"color" => $host_data["personal"]["color"],
+	];
+	$output .= list_item_graphic($img_array, true);
+	// '
+	// <div class="item_graphic avatar" style="background-color: var(--connected-' .
+	// $host_data["personal"]["color"] .
+	// ');"></div>';
 
 	// Name and personal details
 	$output .=
-		'<h3 id="' .
+		'<div class="host_item_content">
+		<h3 id="' .
 		strtolower($host_data["personal"]["first_name"]) .
 		'">' .
 		$host_data["personal"]["full_name"] .
@@ -49,10 +54,11 @@ function leaderboard_item($host_data)
 		"</a></p>";
 
 	// Title
-	$output .= "<h4>Current titles</h4>";
+	$output .= "<h4>Current titles</h4><ul>";
 	foreach ($host_data["titles"] as $key => $value) {
-		$output .= $value . "<br />";
+		$output .= "<li>" . $value . "</li>";
 	}
+	$output .= "</ul>";
 
 	// Achievements
 	$output .= "<h4>Achievements</h4>";
@@ -63,7 +69,8 @@ function leaderboard_item($host_data)
 	$output .= score_graph_item($host_data["stats"]["picks"], strtolower($host_data["personal"]["first_name"]));
 	$output .= score_label_item($host_data["stats"]["other"], $host_data["personal"]["color"]);
 
-	$output .= "</div>";
+	// Close host and content
+	$output .= "</div></div>";
 
 	return $output;
 }
@@ -140,7 +147,8 @@ var $chart_id = new Chart($chart_var, {
 				'rgba(0, 0, 0, 0.1)',
 				'rgba(0, 0, 0, 0.1)',
 			],
-			borderWidth: 1
+			borderWidth: 1,
+			borderAlign: 'inner',
 		}]
 	},
 	options: {
@@ -180,26 +188,22 @@ function score_graph_item($chart_array, $host)
 	return $output;
 }
 
-$avatar_leaderboard_array = [
-	[
-		"name" => "Stephen",
+// Define the data for the leaderboard at the top of the page
+$leaderboard_data = [];
+foreach ($hosts_data__array as $host) {
+	$set = [
+		"name" => $host["personal"]["first_name"],
 		"winner" => false,
-		"title" => "Document Maintainer",
-		"string" => "3 points<br />Flexing 23%",
-	],
-	[
-		"name" => "Myke",
-		"winner" => false,
-		"title" => "Keynote Chairman",
-		"string" => "3 points<br />Flexing 23%",
-	],
-	[
-		"name" => "Federico",
-		"winner" => false,
-		"title" => "Picker of Passion",
-		"string" => "3 points<br />Flexing 23%",
-	],
-];
+		"title" => $host["titles"][0],
+		// TODO: Define leaderboard string
+		"string" => "something",
+		"img_array" => [
+			"type" => "color",
+			"color" => $host["personal"]["color"],
+		],
+	];
+	array_push($leaderboard_data, $set);
+}
 
 $head_custom = [
 	"title" => "Host Leaderboard • The Rickies",

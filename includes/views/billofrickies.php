@@ -35,6 +35,7 @@
 </main>
 
 <!-- <div id="rule_slider">
+	TODO: Define slider
 	<label for="date">Keynote Rickies, March 2020</label>
 	<input type="range" id="date" name="date" min="0" max="11">
 </div>

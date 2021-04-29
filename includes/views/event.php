@@ -36,7 +36,7 @@
 	</div>
 </nav>
 
-<?= picks_bundle($picks_data__array) ?>
+<?= pick_item_bundle($picks_data__array) ?>
 
 <section class="navigate_with_mobile_menu" id="details">
 	<h2>Details</h2>

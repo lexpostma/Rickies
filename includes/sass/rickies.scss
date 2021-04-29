@@ -52,6 +52,11 @@ a {
 	&:active {
 		color: var(--link-hover-color);
 	}
+	span.emoji {
+		text-decoration: none;
+		display: inline-block;
+		margin-right: 4px;
+	}
 }
 
 // Links on dark background
