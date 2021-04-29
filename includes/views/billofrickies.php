@@ -1,6 +1,4 @@
-<a id="back_button" href="<?= billofrickies_url(
-	false
-) ?>"><? include("../public_html/images/back-button.svg"); ?></a>
+<?= back_button(billofrickies_url(false)) ?>
 
 <main>
 	<p id="active_date">28 June 2020</p>

@@ -18,6 +18,16 @@ function current_url()
 	return base_url() . $_SERVER["REQUEST_URI"];
 }
 
+function back_button($location = "/")
+{
+	$output = "<a id='back_button' href='$location'>";
+	$output .= file_get_contents("../public_html/images/back-button.svg");
+	// $output .= include "../public_html/images/back-button.svg";
+	$output .= "</a>";
+
+	return $output;
+}
+
 function billofrickies_url($goto = true)
 {
 	if ($goto) {

@@ -1,9 +1,7 @@
 <?php
 
 if (isset($back_to_overview)) {
-	echo "<a id='back_button' href='/'>";
-	include "../public_html/images/back-button.svg";
-	echo "</a>";
+	echo back_button();
 }
 
 include $include_subbody;
