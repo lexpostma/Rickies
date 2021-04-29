@@ -40,16 +40,12 @@ const remove_class_on_scroll = () => nav_content.parentElement.classList.remove(
 
 // Toggle stickiness of nav bar
 function make_nav_sticky() {
-	if (window.innerWidth < 768) {
-		// statusbar_height = document.querySelector(".statusbar").offsetHeight;
-		nav_position = nav_anchor.getBoundingClientRect().top;
-		// console.log(nav_position);
-		// if (nav_position <= statusbar_height) {
-		if (nav_position <= 0) {
-			add_class_on_scroll();
-		} else {
-			remove_class_on_scroll();
-		}
+	// statusbar_height = document.querySelector(".statusbar").offsetHeight;
+	nav_position = nav_anchor.getBoundingClientRect().top;
+	// console.log(nav_position);
+	// if (nav_position <= statusbar_height) {
+	if (nav_position <= 0) {
+		add_class_on_scroll();
 	} else {
 		remove_class_on_scroll();
 	}

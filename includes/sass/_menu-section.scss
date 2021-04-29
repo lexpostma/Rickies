@@ -34,16 +34,6 @@ nav.nav_container {
 		}
 	}
 }
-@media screen and (min-width: var.$break-md) {
-	nav.nav_container {
-		.nav_content {
-			position: relative;
-		}
-		.nav_anchor {
-			display: none;
-		}
-	}
-}
 
 section {
 	padding: 0 var(--space-sides);
