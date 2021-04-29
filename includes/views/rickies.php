@@ -2,10 +2,13 @@
 	<a target="_blank" href="<?= $head["site_relay"] ?>" id="corner_tag">
 		<img id="relay_logo" src="/images/relay-logo.png" />
 	</a>
-	<img id="trophy" src="/images/trophy.png" />
-	<h1>The Rickies</h1>
-	<p>Awards with risk, flexing, and passion.<br />
-On Connected at Relay FM.</p>
+	<div class="hero_content">
+		<img id="trophy" src="/images/trophy.png" />
+		<div class="hero_heading">
+			<h1>The Rickies</h1>
+			<p>Awards with risk, flexing, and passion.<br />On Connected at Relay FM.</p>
+		</div>
+	</div>
 </header>
 
 <nav class="nav_content">

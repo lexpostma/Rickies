@@ -1,3 +1,5 @@
+@use "variables" as var;
+
 header {
 	position: relative;
 	text-align: center;
@@ -12,17 +14,31 @@ header {
 			background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%),
 				url("/images/confetti.png");
 		}
-
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 		padding: 48px var(--space-sides);
-		img#trophy {
-			height: 120px;
-			margin-bottom: var(--space-between-horizontal);
-		}
-		h1 {
-			margin-bottom: 4px;
+		.hero_content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			img#trophy {
+				height: 120px;
+				margin-bottom: var(--space-between-horizontal);
+			}
+			h1 {
+				margin-bottom: 4px;
+			}
+			@media screen and (min-width: var.$break-lg) {
+				flex-direction: row;
+				justify-content: center;
+
+				img#trophy {
+					height: 160px;
+					margin-bottom: 0;
+					margin-right: var(--space-sides);
+				}
+				.hero_heading {
+					text-align: left;
+				}
+			}
 		}
 	}
 	&.details,
