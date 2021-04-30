@@ -20,6 +20,7 @@ html {
 }
 
 body {
+	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 	width: 100vw;
 	overflow-x: hidden;
 }
@@ -37,6 +38,12 @@ p {
 	top: 20px;
 	left: 20px;
 	z-index: 2;
+}
+
+.banner {
+	text-align: center;
+	color: white;
+	padding: 8px 16px;
 }
 
 /* For debugging */

@@ -1,0 +1,28 @@
+// Make the menu not sticky and show all sections at once
+nav.nav_container {
+	.nav_content {
+		// display: none;
+		position: relative;
+	}
+	&.sticky {
+		.nav_content {
+			position: relative;
+		}
+	}
+}
+
+section.navigate_with_mobile_menu {
+	display: block;
+	h2 {
+		display: block;
+	}
+}
+
+// Hide the charts elements if there's no JS to make them
+.charts {
+	display: none;
+}
+
+#rule_slider {
+	display: none;
+}

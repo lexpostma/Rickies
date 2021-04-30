@@ -8,15 +8,14 @@
 	</h1>
 </header>
 
-<?php if ($rickies_data['winner'] == false) {
-	echo '<div class="banner" style="background-color: var(--connected-' .
-		$rickies_data['tag_color'] .
-		');"><p>' .
-		$rickies_data['tag_banner'] .
-		'</p></div>';
-} else {
+<?php
+if (array_key_exists('tag', $rickies_data)) {
+	echo banner($rickies_data['tag_banner'], $rickies_data['tag_color']);
+}
+if ($rickies_data['winner'] == false) {
 	echo avatar_leaderboard($leaderboard_data);
-} ?>
+}
+?>
 
 <nav class="nav_container">
 	<div class="nav_anchor"></div>
@@ -36,7 +35,7 @@
 	</div>
 </nav>
 
-<?= pick_item_bundle($picks_data__array) ?>
+<?= no_script_banner(), pick_item_bundle($picks_data__array) ?>
 
 <section class="navigate_with_mobile_menu large_columns" id="details">
 	<h2>Details</h2>

@@ -16,6 +16,8 @@
 	<a href="/leaderboard">Host Leaderboard</a>
 </nav>
 
+<?= no_script_banner() ?>
+
 <section>
 	<div class="nav_anchor"></div>
 	<p>The Rickies are a prediction award show on the <a target="_blank" href="<?= $head[

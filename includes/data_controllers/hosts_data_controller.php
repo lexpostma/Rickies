@@ -3,9 +3,9 @@
 // Host _data_ controller
 
 $hosts_data__params = [
-	// "filterByFormula" => "AND( URL = '$url_view' )",
-	// "sort" => [["field" => "Order", "direction" => "asc"]],
-	// 	"fields" => ["Artwork", "Name", "URL", "Winner (manual)", "Episode date"],
+	// 'filterByFormula' => "AND( URL = '$url_view' )",
+	// 'sort' => [['field' => 'Order', 'direction' => 'asc']],
+	// 'fields' => ['Artwork', 'Name', 'URL', 'Winner (manual)', 'Episode date'],
 ];
 
 $connected_colors = ['green', 'yellow', 'orange', 'red', 'purple', 'blue'];

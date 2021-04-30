@@ -8,11 +8,11 @@ header {
 	background-position: center;
 	&.home {
 		background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%),
-			url("/images/confetti.png");
+			url('/images/confetti.png');
 		@media (prefers-color-scheme: dark) {
 			color: white;
 			background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%),
-				url("/images/confetti.png");
+				url('/images/confetti.png');
 		}
 		padding: 48px var(--space-sides);
 		.hero_content {
@@ -69,7 +69,7 @@ header {
 		left: 0;
 		width: 90px;
 		height: 90px;
-		background-image: url("/images/triangle.svg");
+		background-image: url('/images/triangle.svg');
 		background-size: cover;
 		img#relay_logo {
 			width: 35px;
@@ -78,9 +78,4 @@ header {
 			top: 10px;
 		}
 	}
-}
-.banner {
-	text-align: center;
-	color: white;
-	padding: 8px var(--space-sides);
 }

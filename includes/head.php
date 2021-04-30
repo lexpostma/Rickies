@@ -80,6 +80,11 @@ if ($environment !== 'production') {
 <!-- Style sheet -->
 <link rel="stylesheet" href="/styles/global.css?v=<?= date('z') ?>">
 <link rel="stylesheet" href="/styles/<?= $subdomain ?>.css?v=<?= date('z') ?>">
+<noscript>
+	<link rel="stylesheet" href="/styles/noscript.css?v=<?= date('z') ?>">
+</noscript>
+
+
 
 <?php if ($url_view == 'leaderboard') { ?>
 <!-- Chart.js -->

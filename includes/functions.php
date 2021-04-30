@@ -105,3 +105,25 @@ function str_lreplace($search, $replace, $subject)
 
 	return $subject;
 }
+
+function banner($string, $color = 'orange')
+{
+	return '<div class="banner" style="background-color: var(--connected-' .
+		$color .
+		');"><p>' .
+		$string .
+		'</p></div>';
+}
+
+function no_script_banner($string = false)
+{
+	$color = 'red';
+	$output = '<noscript>';
+	if ($string) {
+		$output .= banner($string, $color);
+	} else {
+		$output .= banner('This page works better with Javascript enabled', $color);
+	}
+	$output .= '</noscript>';
+	return $output;
+}

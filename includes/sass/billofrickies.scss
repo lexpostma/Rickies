@@ -26,13 +26,13 @@ html {
 }
 
 body {
-	font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
 }
 
 // Note that the border.svg file needs to contain
 // preserveAspectRatio="none" to be able to stretch the full element.
 // Via https://stackoverflow.com/a/56459700
 main {
+	font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
 	max-width: 600px;
 	margin: auto;
 	background-image: url(/images/parchment-border.svg),
