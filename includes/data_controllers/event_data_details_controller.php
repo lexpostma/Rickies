@@ -2,20 +2,36 @@
 
 // Rickies _data_ controller, extra details
 
+$rickies_events_array[$id]['ranking'] = [
+	'robin' => check_key('Round Robin order', $fields),
+	'rickies' => check_key('Rickies ranking', $fields),
+	'flexies' => check_key('Flexies ranking', $fields),
+];
+$rickies_events_array[$id]['coin_toss_win'] = [
+	'rickies' => check_key('Rickies coin flip (flat)', $fields, false, 0),
+	'flexies' => check_key('Flexies coin flip (flat)', $fields, false, 0),
+];
+
 // Add more details from Airtable to array, to build the detail page
-if (check_key('Ricky ranking', $fields)) {
+if ($rickies_events_array[$id]['ranking']['rickies']) {
 	// Order by Ricky ranking
-	$hosts = explode(', ', check_key('Ricky ranking', $fields));
+	// Convert ranking string to array
+	$hosts = $rickies_events_array[$id]['ranking']['rickies'] = explode(
+		', ',
+		$rickies_events_array[$id]['ranking']['rickies']
+	);
 } elseif (check_key('Round Robin order', $fields)) {
 	// Order by Robin
-	$hosts = check_key('Round Robin order', $fields);
+	$hosts = $rickies_events_array[$id]['ranking']['robin'];
 } else {
 	// No Fallback to alphabetical order
 	$hosts = ['Federico', 'Myke', 'Stephen'];
 }
 
-$rickies_events_array[$id]['coin_toss']['rickies'] = check_key('Ricky coin flip (flat)', $fields, false, 0);
-$rickies_events_array[$id]['coin_toss']['flexies'] = check_key('Flexy coin flip (flat)', $fields, false, 0);
+// Convert ranking string to array
+if ($rickies_events_array[$id]['ranking']['flexies']) {
+	$rickies_events_array[$id]['ranking']['flexies'] = explode(', ', $rickies_events_array[$id]['ranking']['flexies']);
+}
 
 foreach ($hosts as $host) {
 	$rickies_events_array[$id]['hosts'][$host] = [
@@ -25,12 +41,13 @@ foreach ($hosts as $host) {
 			'round_robin' => array_search($host, $hosts),
 		],
 		'rickies' => [
-			'ranking' => array_search($host, explode(', ', check_key('Ricky ranking', $fields))),
+			'ranking' => array_search($host, explode(', ', check_key('Rickies ranking', $fields))),
 			'correct' => check_key($host . '’s correct pick count', $fields),
 			'count' => 3,
 			'risky_correct' => check_key($host . '’s Risky Pick', $fields),
 			'points' => check_key($host . '’s score', $fields),
 			'coin_toss_winner' => false,
+			'coin_toss_loser' => false,
 		],
 		'flexies' => [
 			'ranking' => array_search($host, explode(', ', check_key('Flexy ranking', $fields))),
@@ -39,14 +56,15 @@ foreach ($hosts as $host) {
 			'percentage' => check_key($host . '’s Flexy percentage', $fields),
 			'points' => check_key($host . '’s Flexy score', $fields),
 			'coin_toss_winner' => false,
+			'coin_toss_loser' => false,
 		],
 	];
 
-	if ($rickies_events_array[$id]['coin_toss']['rickies'] == $host) {
+	if ($rickies_events_array[$id]['coin_toss_win']['rickies'] == $host) {
 		$rickies_events_array[$id]['hosts'][$host]['rickies']['coin_toss_winner'] = true;
 	}
 
-	if ($rickies_events_array[$id]['coin_toss']['flexies'] == $host) {
+	if ($rickies_events_array[$id]['coin_toss_win']['flexies'] == $host) {
 		$rickies_events_array[$id]['hosts'][$host]['flexies']['coin_toss_winner'] = true;
 	}
 }
@@ -96,9 +114,11 @@ $rickies_events_array[$id]['details'] = [
 	'more_data_charity' => [
 		'url' => check_key('Charity URL', $fields, false, 0),
 		'img_url' => check_key('Charity logo', $fields, false, 0),
+		// To contain the background-image instead of cover
+		// 'img_fill' => true,
 		'label1' => check_key('Charity name', $fields, false, 0),
-		'label2' => "$" . check_key('Flexy donation', $fields) . ' donated by ' . check_key('Flexy loser', $fields),
-		'label3' => check_key('Flexy winner', $fields) . '’s choice',
+		'label2' => '$' . check_key('Flexy donation', $fields) . ' donated by ' . check_key('Flexies 3rd', $fields),
+		'label3' => check_key('Flexies 1st', $fields) . '’s choice',
 	],
 ];
 
