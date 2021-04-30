@@ -1,7 +1,7 @@
 // Make the menu not sticky and show all sections at once
 nav.nav_container {
+	height: auto;
 	.nav_content {
-		// display: none;
 		position: relative;
 	}
 	&.sticky {

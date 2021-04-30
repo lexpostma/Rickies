@@ -1,3 +1,6 @@
+nav.nav_container {
+  height: auto;
+}
 nav.nav_container .nav_content {
   position: relative;
 }
