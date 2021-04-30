@@ -40,6 +40,7 @@ h4 {
 
 // Regular links
 a {
+	font-weight: 500;
 	&:link,
 	&:visited {
 		color: var(--link-color);
