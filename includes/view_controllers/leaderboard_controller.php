@@ -2,6 +2,9 @@
 
 // Host Leaderboard _view_ controller
 
+$hosts_data__params = [];
+$all_host_details = true;
+
 include '../includes/data_controllers/hosts_data_controller.php';
 
 function leaderboard_item_bundle($input)

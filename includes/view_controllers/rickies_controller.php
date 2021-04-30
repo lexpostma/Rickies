@@ -419,11 +419,17 @@ function host_item_bundle($host_event_data)
 			array_push($html_strings['stats']['💪 Flexies'], 'Saved by coin flip');
 		}
 
+		$avatar_img_array = [
+			'type' => 'avatar',
+			'src' => $event_details['details']['memoji']['neutral'],
+			'color' => $event_details['details']['color'],
+		];
+
 		$output .=
 			'
 <li class="list_item host_details">
 	<div class="list_item_content">' .
-			list_item_graphic(false, true) .
+			list_item_graphic($avatar_img_array, true) .
 			'
 		<div class="list_item_labels">
 			<p>

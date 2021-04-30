@@ -30,7 +30,7 @@
 <section>
 	<ul class="list_item_group">
 
-<?php foreach ($rickies_events_array as $event) {
+<?php foreach ($rickies_events__array as $event) {
 	echo list_item($event);
 } ?>
 

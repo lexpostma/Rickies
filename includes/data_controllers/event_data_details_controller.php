@@ -2,39 +2,42 @@
 
 // Rickies _data_ controller, extra details
 
-$rickies_events_array[$id]['ranking'] = [
+$rickies_events__array[$id]['ranking'] = [
 	'robin' => check_key('Round Robin order', $fields),
 	'rickies' => check_key('Rickies ranking', $fields),
 	'flexies' => check_key('Flexies ranking', $fields),
 ];
-$rickies_events_array[$id]['coin_toss_win'] = [
+$rickies_events__array[$id]['coin_toss_win'] = [
 	'rickies' => check_key('Rickies coin flip (flat)', $fields, false, 0),
 	'flexies' => check_key('Flexies coin flip (flat)', $fields, false, 0),
 ];
 
 // Add more details from Airtable to array, to build the detail page
-if ($rickies_events_array[$id]['ranking']['rickies']) {
+if ($rickies_events__array[$id]['ranking']['rickies']) {
 	// Order by Ricky ranking
 	// Convert ranking string to array
-	$hosts = $rickies_events_array[$id]['ranking']['rickies'] = explode(
+	$hosts = $rickies_events__array[$id]['ranking']['rickies'] = explode(
 		', ',
-		$rickies_events_array[$id]['ranking']['rickies']
+		$rickies_events__array[$id]['ranking']['rickies']
 	);
 } elseif (check_key('Round Robin order', $fields)) {
 	// Order by Robin
-	$hosts = $rickies_events_array[$id]['ranking']['robin'];
+	$hosts = $rickies_events__array[$id]['ranking']['robin'];
 } else {
 	// No Fallback to alphabetical order
 	$hosts = ['Federico', 'Myke', 'Stephen'];
 }
 
 // Convert ranking string to array
-if ($rickies_events_array[$id]['ranking']['flexies']) {
-	$rickies_events_array[$id]['ranking']['flexies'] = explode(', ', $rickies_events_array[$id]['ranking']['flexies']);
+if ($rickies_events__array[$id]['ranking']['flexies']) {
+	$rickies_events__array[$id]['ranking']['flexies'] = explode(
+		', ',
+		$rickies_events__array[$id]['ranking']['flexies']
+	);
 }
 
 foreach ($hosts as $host) {
-	$rickies_events_array[$id]['hosts'][$host] = [
+	$rickies_events__array[$id]['hosts'][$host] = [
 		'details' => [
 			// "name" => $host,
 			'first_name' => $host,
@@ -50,7 +53,7 @@ foreach ($hosts as $host) {
 			'coin_toss_loser' => false,
 		],
 		'flexies' => [
-			'ranking' => array_search($host, explode(', ', check_key('Flexy ranking', $fields))),
+			'ranking' => array_search($host, explode(', ', check_key('Flexies ranking', $fields))),
 			'correct' => check_key($host . '’s Risky Pick', $fields),
 			'count' => check_key($host . '’s Flexy count', $fields),
 			'percentage' => check_key($host . '’s Flexy percentage', $fields),
@@ -60,21 +63,21 @@ foreach ($hosts as $host) {
 		],
 	];
 
-	if ($rickies_events_array[$id]['coin_toss_win']['rickies'] == $host) {
-		$rickies_events_array[$id]['hosts'][$host]['rickies']['coin_toss_winner'] = true;
+	if ($rickies_events__array[$id]['coin_toss_win']['rickies'] == $host) {
+		$rickies_events__array[$id]['hosts'][$host]['rickies']['coin_toss_winner'] = true;
 	}
 
-	if ($rickies_events_array[$id]['coin_toss_win']['flexies'] == $host) {
-		$rickies_events_array[$id]['hosts'][$host]['flexies']['coin_toss_winner'] = true;
+	if ($rickies_events__array[$id]['coin_toss_win']['flexies'] == $host) {
+		$rickies_events__array[$id]['hosts'][$host]['flexies']['coin_toss_winner'] = true;
 	}
 }
 
-$rickies_events_array[$id]['details'] = [
+$rickies_events__array[$id]['details'] = [
 	// Apple Event data
 	'event_title' => 'Apple event',
 	'event_data' => [
 		'url' => check_key('Event URL', $fields, false, 0),
-		'img_url' => $rickies_events_array[$id]['artwork']['event'],
+		'img_url' => $rickies_events__array[$id]['artwork']['event'],
 		'label1' => check_key('Event name', $fields),
 		'label2' => check_key('Event tagline', $fields, false, 0),
 		'label3' => date_to_string_label(check_key('Event date', $fields, false, 0), true),
@@ -84,7 +87,7 @@ $rickies_events_array[$id]['details'] = [
 	'episode_title' => 'Podcast episodes',
 	'episode_data_predictions' => [
 		'url' => check_key('Predictions episode URL', $fields, false, 0),
-		'img_url' => $rickies_events_array[$id]['artwork']['predictions_ep'],
+		'img_url' => $rickies_events__array[$id]['artwork']['predictions_ep'],
 		'label1' => check_key('Predictions episode title', $fields, false, 0),
 		'label2' => check_key('Predictions episode alt title', $fields, false, 0),
 		'label3' => date_to_string_label(check_key('Predictions episode date', $fields, false, 0), true),
@@ -94,7 +97,7 @@ $rickies_events_array[$id]['details'] = [
 	],
 	'episode_data_results' => [
 		'url' => check_key('Results episode URL', $fields, false, 0),
-		'img_url' => $rickies_events_array[$id]['artwork']['results_ep'],
+		'img_url' => $rickies_events__array[$id]['artwork']['results_ep'],
 		'label1' => check_key('Results episode title', $fields, false, 0),
 		'label2' => check_key('Results episode alt title', $fields, false, 0),
 		'label3' => date_to_string_label(check_key('Results episode date', $fields, false, 0), true),
@@ -123,34 +126,34 @@ $rickies_events_array[$id]['details'] = [
 ];
 
 // Event data
-if ($rickies_events_array[$id]['details']['event_data']['label1'] == false) {
+if ($rickies_events__array[$id]['details']['event_data']['label1'] == false) {
 	// No event linked, clear details from array
-	unset($rickies_events_array[$id]['details']['event_title']);
-	unset($rickies_events_array[$id]['details']['event_data']);
+	unset($rickies_events__array[$id]['details']['event_title']);
+	unset($rickies_events__array[$id]['details']['event_data']);
 } else {
 }
 
 // Episode data
-$rickies_events_array[$id]['details']['episode_data_predictions'] = episode_data(
-	$rickies_events_array[$id]['details']['episode_data_predictions']
+$rickies_events__array[$id]['details']['episode_data_predictions'] = episode_data(
+	$rickies_events__array[$id]['details']['episode_data_predictions']
 );
-$rickies_events_array[$id]['details']['episode_data_results'] = episode_data(
-	$rickies_events_array[$id]['details']['episode_data_results']
+$rickies_events__array[$id]['details']['episode_data_results'] = episode_data(
+	$rickies_events__array[$id]['details']['episode_data_results']
 );
 
-if ($rickies_events_array[$id]['details']['episode_data_results']['label1'] == false) {
+if ($rickies_events__array[$id]['details']['episode_data_results']['label1'] == false) {
 	// No episode, clear details from array
-	unset($rickies_events_array[$id]['details']['episode_data_results']);
+	unset($rickies_events__array[$id]['details']['episode_data_results']);
 }
 
 // Charity data
-if ($rickies_events_array[$id]['details']['more_data_charity']['label1'] == false) {
+if ($rickies_events__array[$id]['details']['more_data_charity']['label1'] == false) {
 	// No charity, clear details from array
-	unset($rickies_events_array[$id]['details']['more_data_charity']);
+	unset($rickies_events__array[$id]['details']['more_data_charity']);
 } else {
 	// Charity is set, if image is also set, define the right URL
-	if ($rickies_events_array[$id]['details']['more_data_charity']['img_url'] !== false) {
-		$rickies_events_array[$id]['details']['more_data_charity']['img_url'] =
-			$rickies_events_array[$id]['details']['more_data_charity']['img_url']['thumbnails']['large']['url'];
+	if ($rickies_events__array[$id]['details']['more_data_charity']['img_url'] !== false) {
+		$rickies_events__array[$id]['details']['more_data_charity']['img_url'] =
+			$rickies_events__array[$id]['details']['more_data_charity']['img_url']['thumbnails']['large']['url'];
 	}
 }

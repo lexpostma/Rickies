@@ -2,41 +2,41 @@
 
 // Host _data_ controller
 
-$hosts_data__params = [
-	// 'filterByFormula' => "AND( URL = '$url_view' )",
-	// 'sort' => [['field' => 'Order', 'direction' => 'asc']],
-	// 'fields' => ['Artwork', 'Name', 'URL', 'Winner (manual)', 'Episode date'],
-];
-
 $connected_colors = ['green', 'yellow', 'orange', 'red', 'purple', 'blue'];
 $hosts_data__array = [];
 $hosts_data__request = $airtable->getContent('Hosts', $hosts_data__params);
 do {
 	$hosts_data__response = $hosts_data__request->getResponse();
 	foreach ($hosts_data__response['records'] as $array) {
-		$id = json_decode(json_encode($array), true)['id'];
+		// $id = json_decode(json_encode($array), true)['id'];
 		$fields = json_decode(json_encode($array), true)['fields'];
+
+		$id = check_key('First name', $fields);
 
 		$hosts_data__array[$id] = [
 			'personal' => [
-				'first_name' => check_key('First name', $fields),
+				'first_name' => $id,
 				'full_name' => check_key('Full name', $fields),
-				'location' => check_key('Location', $fields),
-				'website_url' => check_key('Website URL', $fields),
-				'website_name' => check_key('Website name', $fields),
-				'twitter' => check_key('Twitter handle', $fields),
-				'twitter_url' => check_key('Twitter', $fields),
 			],
 			'images' => [
-				'photo' => airtable_image_url(check_key('Photo', $fields, false, 0)),
 				'memoji' => [
 					'neutral' => check_key('Memoji neutral', $fields),
 					'happy' => check_key('Memoji happy', $fields),
 					'sad' => check_key('Memoji sad', $fields),
 				],
 			],
-			'titles' => check_key('Titles HTML', $fields),
-			'achievements' => [
+		];
+
+		if ($all_host_details) {
+			$hosts_data__array[$id]['personal']['location'] = check_key('Location', $fields);
+			$hosts_data__array[$id]['personal']['website_url'] = check_key('Website URL', $fields);
+			$hosts_data__array[$id]['personal']['website_name'] = check_key('Website name', $fields);
+			$hosts_data__array[$id]['personal']['twitter'] = check_key('Twitter handle', $fields);
+			$hosts_data__array[$id]['personal']['twitter_url'] = check_key('Twitter', $fields);
+			$hosts_data__array[$id]['images']['photo'] = airtable_image_url(check_key('Photo', $fields, false, 0));
+			$hosts_data__array[$id]['title'] = check_key('Titles HTML', $fields);
+
+			$hosts_data__array[$id]['achievements'] = [
 				'annual_rickies_wins' => [
 					'value' => check_key('Rickies Wins Annual Count', $fields),
 					'label' => 'time Annual Chairman',
@@ -63,8 +63,8 @@ do {
 					'label' => 'time charity donor',
 					'0hide' => true,
 				],
-			],
-			'stats' => [
+			];
+			$hosts_data__array[$id]['stats'] = [
 				'picks' => [
 					'Regular' => [
 						'Correct' => check_key('Picks Regular Correct Count', $fields, 0),
@@ -125,58 +125,55 @@ do {
 						'0hide' => true,
 					],
 				],
-			],
-		];
+			];
 
-		// Calculate the scored/graded picks
-		$hosts_data__array[$id]['stats']['picks']['Scored'] = [
-			'Correct' =>
-				$hosts_data__array[$id]['stats']['picks']['Regular']['Correct'] +
-				$hosts_data__array[$id]['stats']['picks']['Risky']['Correct'],
-			'Wrong' =>
-				$hosts_data__array[$id]['stats']['picks']['Regular']['Wrong'] +
-				$hosts_data__array[$id]['stats']['picks']['Risky']['Wrong'],
+			// Calculate the scored/graded picks
+			$hosts_data__array[$id]['stats']['picks']['Scored'] = [
+				'Correct' =>
+					$hosts_data__array[$id]['stats']['picks']['Regular']['Correct'] +
+					$hosts_data__array[$id]['stats']['picks']['Risky']['Correct'],
+				'Wrong' =>
+					$hosts_data__array[$id]['stats']['picks']['Regular']['Wrong'] +
+					$hosts_data__array[$id]['stats']['picks']['Risky']['Wrong'],
 
-			'Unknown' =>
-				$hosts_data__array[$id]['stats']['picks']['Regular']['Unknown'] +
-				$hosts_data__array[$id]['stats']['picks']['Risky']['Unknown'],
+				'Unknown' =>
+					$hosts_data__array[$id]['stats']['picks']['Regular']['Unknown'] +
+					$hosts_data__array[$id]['stats']['picks']['Risky']['Unknown'],
 
-			'Total' =>
-				$hosts_data__array[$id]['stats']['picks']['Regular']['Total'] +
-				$hosts_data__array[$id]['stats']['picks']['Risky']['Total'],
-		];
+				'Total' =>
+					$hosts_data__array[$id]['stats']['picks']['Regular']['Total'] +
+					$hosts_data__array[$id]['stats']['picks']['Risky']['Total'],
+			];
 
-		// Calculate the overall pick counts
-		$hosts_data__array[$id]['stats']['picks']['Overall'] = [
-			'Correct' =>
-				$hosts_data__array[$id]['stats']['picks']['Scored']['Correct'] +
-				$hosts_data__array[$id]['stats']['picks']['Flexy']['Correct'],
-			'Wrong' =>
-				$hosts_data__array[$id]['stats']['picks']['Scored']['Wrong'] +
-				$hosts_data__array[$id]['stats']['picks']['Flexy']['Wrong'],
+			// Calculate the overall pick counts
+			$hosts_data__array[$id]['stats']['picks']['Overall'] = [
+				'Correct' =>
+					$hosts_data__array[$id]['stats']['picks']['Scored']['Correct'] +
+					$hosts_data__array[$id]['stats']['picks']['Flexy']['Correct'],
+				'Wrong' =>
+					$hosts_data__array[$id]['stats']['picks']['Scored']['Wrong'] +
+					$hosts_data__array[$id]['stats']['picks']['Flexy']['Wrong'],
 
-			'Unknown' =>
-				$hosts_data__array[$id]['stats']['picks']['Scored']['Unknown'] +
-				$hosts_data__array[$id]['stats']['picks']['Flexy']['Unknown'],
+				'Unknown' =>
+					$hosts_data__array[$id]['stats']['picks']['Scored']['Unknown'] +
+					$hosts_data__array[$id]['stats']['picks']['Flexy']['Unknown'],
 
-			'Total' =>
-				$hosts_data__array[$id]['stats']['picks']['Scored']['Total'] +
-				$hosts_data__array[$id]['stats']['picks']['Flexy']['Total'],
-		];
+				'Total' =>
+					$hosts_data__array[$id]['stats']['picks']['Scored']['Total'] +
+					$hosts_data__array[$id]['stats']['picks']['Flexy']['Total'],
+			];
 
-		// Calculate the rate of correctness per pick type
-		foreach ($hosts_data__array[$id]['stats']['picks'] as $pick_type => $pick_values) {
-			// echo $pick_type;
-			$hosts_data__array[$id]['stats']['picks'][$pick_type]['Rate'] = round_if_decimal(
-				($pick_values['Correct'] / ($pick_values['Total'] - $pick_values['Unknown'])) * 100
-			);
+			// Calculate the rate of correctness per pick type
+			foreach ($hosts_data__array[$id]['stats']['picks'] as $pick_type => $pick_values) {
+				// echo $pick_type;
+				$hosts_data__array[$id]['stats']['picks'][$pick_type]['Rate'] = round_if_decimal(
+					($pick_values['Correct'] / ($pick_values['Total'] - $pick_values['Unknown'])) * 100
+				);
+			}
 		}
 
 		foreach ($hosts_data__array[$id]['images']['memoji'] as $mood => $images) {
 			$hosts_data__array[$id]['images']['memoji'][$mood] = airtable_image_url(random($images));
-			// foreach ($images as $key => $array) {
-			//
-			// }
 		}
 
 		$hosts_data__array[$id]['personal']['color'] = random($connected_colors);
@@ -186,4 +183,4 @@ do {
 	}
 } while ($hosts_data__request = $hosts_data__response->next());
 
-// echo "<pre>", var_dump($hosts_data__array), "</pre>";
+// echo '<pre>', var_dump($hosts_data__array), '</pre>';

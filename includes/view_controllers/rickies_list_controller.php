@@ -2,7 +2,7 @@
 
 // Rickies _view_ controller, main overview
 
-$rickies_events_params = [
+$rickies_events__params = [
 	'fields' => [
 		'Name',
 		'Rickies type',

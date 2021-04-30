@@ -2,21 +2,21 @@
 
 // Rickies _data_ controller, general
 
-$rickies_events_array = [];
-$rickies_events_request = $airtable->getContent('Rickies', $rickies_events_params);
+$rickies_events__array = [];
+$rickies_events__request = $airtable->getContent('Rickies', $rickies_events__params);
 do {
-	$rickies_events_response = $rickies_events_request->getResponse();
+	$rickies_events__response = $rickies_events__request->getResponse();
 
-	// echo "<pre>", var_dump($rickies_events_response), "</pre>";
+	// echo "<pre>", var_dump($rickies_events__response), "</pre>";
 
 	// Does event exist?
-	if (count($rickies_events_response['records']) > 0) {
-		foreach ($rickies_events_response['records'] as $array) {
+	if (count($rickies_events__response['records']) > 0) {
+		foreach ($rickies_events__response['records'] as $array) {
 			$id = json_decode(json_encode($array), true)['id'];
 			$fields = json_decode(json_encode($array), true)['fields'];
 
 			// Main details, required for the list overview
-			$rickies_events_array[$id] = [
+			$rickies_events__array[$id] = [
 				'name' => check_key('Name', $fields),
 				'status' => check_key('Status', $fields),
 				'type' => check_key('Rickies type', $fields),
@@ -33,32 +33,32 @@ do {
 
 			// Set large thumbnail URL as the value of the main event artwork,
 			// but only the first not-false
-			foreach ($rickies_events_array[$id]['artwork'] as $source => $artwork) {
-				if ($artwork !== false && !isset($rickies_events_array[$id]['img_url']) && $source !== 'results_ep') {
-					$rickies_events_array[$id]['img_url'] = $artwork;
+			foreach ($rickies_events__array[$id]['artwork'] as $source => $artwork) {
+				if ($artwork !== false && !isset($rickies_events__array[$id]['img_url']) && $source !== 'results_ep') {
+					$rickies_events__array[$id]['img_url'] = $artwork;
 					break;
 				}
 			}
 
 			if (!$all_event_details) {
 				// Only the details needed for the Rickies overview
-				$rickies_events_array[$id]['label1'] = $rickies_events_array[$id]['name'];
-				unset($rickies_events_array[$id]['name']);
+				$rickies_events__array[$id]['label1'] = $rickies_events__array[$id]['name'];
+				unset($rickies_events__array[$id]['name']);
 
-				$rickies_events_array[$id]['label3'] = $rickies_events_array[$id]['date'];
+				$rickies_events__array[$id]['label3'] = $rickies_events__array[$id]['date'];
 
-				$rickies_events_array[$id]['url'] = '/' . $rickies_events_array[$id]['url_name'];
-				unset($rickies_events_array[$id]['url_name']);
+				$rickies_events__array[$id]['url'] = '/' . $rickies_events__array[$id]['url_name'];
+				unset($rickies_events__array[$id]['url_name']);
 			} else {
 				// Add more details from Airtable to array, to build the detail page
 				include 'event_data_details_controller.php';
 			}
 
 			// If the status Unscored, add tag/banner
-			if ($rickies_events_array[$id]['status'] == 'Unscored') {
-				$rickies_events_array[$id]['tag'] = $rickies_events_array[$id]['status'];
-				$rickies_events_array[$id]['tag_color'] = 'orange';
-				$rickies_events_array[$id]['tag_banner'] = 'These Rickies are not officially scored yet';
+			if ($rickies_events__array[$id]['status'] == 'Unscored') {
+				$rickies_events__array[$id]['tag'] = $rickies_events__array[$id]['status'];
+				$rickies_events__array[$id]['tag_color'] = 'orange';
+				$rickies_events__array[$id]['tag_banner'] = 'These Rickies are not officially scored yet';
 			}
 		}
 	} else {
@@ -66,6 +66,6 @@ do {
 		header('HTTP/1.0 404 Not Found', true, 404);
 		echo '404: Rickies not found :( ';
 	}
-} while ($rickies_events_request = $rickies_events_response->next());
+} while ($rickies_events__request = $rickies_events__response->next());
 
-// echo '<pre>', var_dump($rickies_events_array), '</pre>';
+// echo '<pre>', var_dump($rickies_events__array), '</pre>';
