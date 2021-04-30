@@ -1,6 +1,6 @@
 # Complex Airtable formulas
 
-This documentation is to explain the more complex formulas, mostly to myself. Since Airtable does not support syntax highlighting and strips all white-space formatting after submitting, it's very hard to figure out what I did in the past. Or how to replicate/extend it.
+Explanation for the more complex formulas. Since Airtable does not support syntax highlighting and strips all white-space formatting after submitting, it's very hard to figure out what I did in the past. Or how to replicate/extend it.
 
 ## Calculate winner of the Rickies
 
