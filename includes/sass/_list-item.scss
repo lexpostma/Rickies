@@ -62,8 +62,10 @@ li.list_item {
 	}
 	a.list_item_content {
 		text-decoration: none;
+		font-weight: normal;
 		.list_item_labels {
 			.label1 {
+				font-weight: 500;
 				text-decoration: underline;
 			}
 			.label2 {

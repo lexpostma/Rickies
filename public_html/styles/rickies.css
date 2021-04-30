@@ -194,8 +194,10 @@ li.list_item.host_details .list_item_content .list_item_labels .mini_stats .mini
 }
 li.list_item a.list_item_content {
   text-decoration: none;
+  font-weight: normal;
 }
 li.list_item a.list_item_content .list_item_labels .label1 {
+  font-weight: 500;
   text-decoration: underline;
 }
 li.list_item a.list_item_content .list_item_labels .label2 {
@@ -657,6 +659,9 @@ h4 {
   margin: 0;
 }
 
+a {
+  font-weight: 500;
+}
 a:link, a:visited {
   color: var(--link-color);
 }
