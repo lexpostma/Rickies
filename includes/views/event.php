@@ -1,19 +1,19 @@
 <header class="details">
 	<h1>
-<?php if ($rickies_data["type"] == "Keynote Rickies") {
-	echo str_lreplace(" ", "&nbsp;", $rickies_data["name"]);
+<?php if ($rickies_data['type'] == 'Keynote Rickies') {
+	echo str_lreplace(' ', '&nbsp;', $rickies_data['name']);
 } else {
-	echo $rickies_data["name"];
+	echo $rickies_data['name'];
 } ?>
 	</h1>
 </header>
 
-<?php if ($rickies_data["winner"] == false) {
-	echo "<div class='banner' style='background-color: var(--connected-" .
-		$rickies_data["tag_color"] .
-		");'><p>" .
-		$rickies_data["tag_banner"] .
-		"</p></div>";
+<?php if ($rickies_data['winner'] == false) {
+	echo '<div class="banner" style="background-color: var(--connected-' .
+		$rickies_data['tag_color'] .
+		');"><p>' .
+		$rickies_data['tag_banner'] .
+		'</p></div>';
 } else {
 	echo avatar_leaderboard($leaderboard_data);
 } ?>
@@ -42,10 +42,10 @@
 	<h2>Details</h2>
 	<div class="section_group">
 <?php
-echo host_item_bundle($rickies_data["hosts"]);
-echo list_item_bundle($rickies_data["details"]);
+echo host_item_bundle($rickies_data['hosts']);
+echo list_item_bundle($rickies_data['details']);
 ?>
 	</div>
 </section>
 
-<script><? include("scripts/navigation.js")?></script>
+<script><? include("scripts/navigation.js"); ?></script>

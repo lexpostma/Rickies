@@ -8,24 +8,24 @@
 			f = /^(a|html)$/i;
 
 		element.addEventListener(
-			"click",
+			'click',
 			function (element) {
 				elementTarget = element.target;
 				while (!f.test(elementTarget.nodeName)) elementTarget = elementTarget.parentNode;
 
 				// links with target="_blank" should still open in Safari
-				var newTabLink = elementTarget.attributes.getNamedItem("target");
-				if (newTabLink && newTabLink.value == "_blank") return;
+				var newTabLink = elementTarget.attributes.getNamedItem('target');
+				if (newTabLink && newTabLink.value == '_blank') return;
 
 				// links that should with # in href should have default behaviour
-				var anchorLink = elementTarget.attributes.getNamedItem("href");
-				if (anchorLink && anchorLink.value.startsWith("#")) return;
+				var anchorLink = elementTarget.attributes.getNamedItem('href');
+				if (anchorLink && anchorLink.value.startsWith('#')) return;
 
-				"href" in elementTarget &&
-					(elementTarget.href.indexOf("http") || ~elementTarget.href.indexOf(elementLocation.host)) &&
+				'href' in elementTarget &&
+					(elementTarget.href.indexOf('http') || ~elementTarget.href.indexOf(elementLocation.host)) &&
 					(element.preventDefault(), (elementLocation.href = elementTarget.href));
 			},
 			!1
 		);
 	}
-})(document, window.navigator, "standalone");
+})(document, window.navigator, 'standalone');

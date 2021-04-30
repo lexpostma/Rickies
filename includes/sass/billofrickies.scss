@@ -1,11 +1,11 @@
 @use "variables" as var;
 
 @font-face {
-	font-family: "BlackChancery";
-	src: url("/fonts/BlackChancery.eot");
-	src: url("/fonts/BlackChancery.eot?#iefix") format("embedded-opentype"),
-		url("/fonts/BlackChancery.woff2") format("woff2"), url("/fonts/BlackChancery.woff") format("woff"),
-		url("/fonts/BlackChancery.ttf") format("truetype");
+	font-family: 'BlackChancery';
+	src: url('/fonts/BlackChancery.eot');
+	src: url('/fonts/BlackChancery.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/BlackChancery.woff2') format('woff2'), url('/fonts/BlackChancery.woff') format('woff'),
+		url('/fonts/BlackChancery.ttf') format('truetype');
 	font-weight: 100;
 	font-style: normal;
 	font-display: swap;
@@ -51,7 +51,7 @@ main {
 
 h1,
 h2 {
-	font-family: "BlackChancery";
+	font-family: 'BlackChancery';
 }
 h1 {
 	text-align: center;
@@ -117,7 +117,7 @@ ol {
 		text-align: center;
 	}
 
-	input[type="range"] {
+	input[type='range'] {
 		width: 100%;
 	}
 }

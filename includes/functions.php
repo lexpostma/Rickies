@@ -3,27 +3,26 @@
 // Is the current URL accessed via http or https?
 function url_protocol()
 {
-	return strtolower(substr($_SERVER["SERVER_PROTOCOL"], 0, strpos($_SERVER["SERVER_PROTOCOL"], "/"))) . "://";
+	return strtolower(substr($_SERVER['SERVER_PROTOCOL'], 0, strpos($_SERVER['SERVER_PROTOCOL'], '/'))) . '://';
 }
 
 // https://example.com
 function base_url()
 {
-	return url_protocol() . $_SERVER["SERVER_NAME"];
+	return url_protocol() . $_SERVER['SERVER_NAME'];
 }
 
 // https://example.com/something
 function current_url()
 {
-	return base_url() . $_SERVER["REQUEST_URI"];
+	return base_url() . $_SERVER['REQUEST_URI'];
 }
 
-function back_button($location = "/")
+function back_button($location = '/')
 {
-	$output = "<a id='back_button' href='$location'>";
-	$output .= file_get_contents("../public_html/images/back-button.svg");
-	// $output .= include "../public_html/images/back-button.svg";
-	$output .= "</a>";
+	$output = '<a id="back_button" href="' . $location . '">';
+	$output .= file_get_contents('../public_html/images/back-button.svg');
+	$output .= '</a>';
 
 	return $output;
 }
@@ -34,14 +33,14 @@ function billofrickies_url($goto = true)
 		// goto = true
 		// You want to go to The Bill of Rickies
 		// Therefore we need to add subdomain to the URL
-		$urlarray = explode(".", $_SERVER["SERVER_NAME"]);
-		array_splice($urlarray, -2, 0, "thebillof");
-		return url_protocol() . implode(".", $urlarray);
+		$urlarray = explode('.', $_SERVER['SERVER_NAME']);
+		array_splice($urlarray, -2, 0, 'thebillof');
+		return url_protocol() . implode('.', $urlarray);
 	} else {
 		// goto = false
 		// You want to go back home, away from The Bill of Rickies
 		// Therefore we need to remove the subdomain from the URL
-		return str_replace("thebillof.", "", base_url());
+		return str_replace('thebillof.', '', base_url());
 	}
 }
 
@@ -82,15 +81,15 @@ function random($array)
 // Via https://stackoverflow.com/q/4113200
 function round_if_decimal($value)
 {
-	return str_replace(".0", "", (string) number_format($value, 1, ".", ""));
+	return str_replace('.0', '', (string) number_format($value, 1, '.', ''));
 }
 
 function plural_points($value)
 {
 	if ($value == 1 || $value == -1) {
-		return $value . " point";
+		return $value . ' point';
 	} else {
-		return $value . " points";
+		return $value . ' points';
 	}
 }
 
