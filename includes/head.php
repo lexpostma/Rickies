@@ -86,7 +86,11 @@ if ($environment !== 'production') {
 
 
 
-<?php if ($url_view == 'leaderboard') { ?>
+<?php if ($subdomain == 'rickies') { ?>
+<!-- Canvas Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+<?php } elseif ($url_view == 'leaderboard') { ?>
 <!-- Chart.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js" integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg==" crossorigin="anonymous"></script>
 <?php }

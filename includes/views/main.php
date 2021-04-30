@@ -19,3 +19,12 @@ include $include_subbody;
  	'site_connected'
  ] ?>">Connected</a> podcast</p>
 </footer>
+
+<script>
+<?php
+include 'scripts/confetti.js';
+if ($url_view == 'main') {
+	echo 'confetti_go()';
+}
+?>
+</script>

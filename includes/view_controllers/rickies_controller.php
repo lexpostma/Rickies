@@ -192,7 +192,7 @@ function avatar_leaderboard($host_array)
 	$output = '<div class="avatar_leaderboard">';
 	foreach ($host_array as &$host) {
 		if ($host['winner']) {
-			$output .= '<div class="host winner">';
+			$output .= '<div class="host winner" onclick="confetti_go()">';
 		} else {
 			$output .= '<div class="host">';
 		}

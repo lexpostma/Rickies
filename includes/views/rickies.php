@@ -3,7 +3,7 @@
 		<img id="relay_logo" src="/images/relay-logo.png" />
 	</a>
 	<div class="hero_content">
-		<img id="trophy" src="/images/trophy.png" />
+		<img id="trophy" src="/images/trophy.png" onclick="confetti_go()"/>
 		<div class="hero_heading">
 			<h1>The Rickies</h1>
 			<p>Awards with risk, flexing, and passion.<br />On Connected at Relay FM.</p>
