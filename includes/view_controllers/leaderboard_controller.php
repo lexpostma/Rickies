@@ -222,7 +222,7 @@ foreach ($hosts_data__array as $host) {
 			' FP',
 		'img_array' => [
 			'type' => 'avatar',
-			'src' => $host['images']['memoji']['neutral'],
+			'src' => $host['images']['memoji']['happy'],
 			'color' => $host['personal']['color'],
 		],
 	];
