@@ -9,16 +9,23 @@
 	justify-content: center;
 	align-items: center;
 	a {
-		padding: var(--space-between-horizontal);
+		padding: var(--space-between-md);
 		&.active {
 			opacity: 1;
 			font-weight: bold;
 			text-decoration: none;
 		}
+		@media (hover: hover) {
+			&:hover {
+				background: var(--element-hover-color);
+			}
+		}
 	}
 }
 nav.nav_container {
 	position: relative;
+	// To prevent margins of elements before/after from collapsing
+	height: 1px;
 	.nav_content {
 		position: absolute;
 		right: 0;
@@ -36,12 +43,12 @@ nav.nav_container {
 }
 
 section {
-	padding: 0 var(--space-sides);
+	padding: 0 var(--space-side-padding);
 }
 
 section,
 footer {
-	margin-top: var(--space-between-vertical);
+	margin-top: var(--space-between-lg);
 }
 
 section.navigate_with_mobile_menu {
@@ -53,7 +60,11 @@ section.navigate_with_mobile_menu {
 		display: none;
 	}
 }
-
+.section_group--list {
+	&:not(:first-of-type) {
+		margin-top: var(--space-between-lg);
+	}
+}
 @media screen and (min-width: var.$break-md) {
 	section.navigate_with_mobile_menu {
 		display: block;
@@ -77,16 +88,17 @@ section.navigate_with_mobile_menu {
 		flex-direction: row;
 		align-items: flex-start;
 		.section_group--list {
+			margin-top: 0;
 			flex-basis: 100%;
 		}
 		.section_group--list + .section_group--list {
-			margin-left: var(--space-sides);
+			margin-left: var(--space-between-lg);
 		}
 	}
 }
 
 footer {
-	padding: var(--space-sides);
+	padding: var(--space-side-padding);
 	color: white;
 	text-align: center;
 	background: var(--relay-blue);

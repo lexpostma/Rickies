@@ -1,4 +1,7 @@
 {
+  "index.ignored_file_patterns" : [
+    "*.css"
+  ],
   "VineCode.Sass.cssStyle" : "Expanded",
   "VineCode.Sass.outputPath" : "\/public_html\/styles\/",
   "VineCode.Sass.sourceMap" : "None",

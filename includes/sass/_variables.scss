@@ -4,6 +4,7 @@
 }
 
 $readability-width: 650px;
+$pop-transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 
 // Values copied from Bootstrap, they're smarter than me
 // https://getbootstrap.com/docs/5.0/layout/breakpoints/
@@ -25,4 +26,7 @@ $break-xxl: 1400px;
 }
 
 @media (prefers-color-scheme: dark) {
+}
+
+@media (hover: hover) {
 }

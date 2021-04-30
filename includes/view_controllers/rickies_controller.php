@@ -34,6 +34,9 @@ function list_item_graphic($img_array = false, $avatar = false)
 	} elseif ($img_array['type'] == 'background') {
 		$class[] = 'fill_image';
 		$style[] = 'background-image: url(' . $img_array['src'] . ');';
+	} elseif ($img_array['type'] == 'contain') {
+		$class[] = 'contain_image';
+		$style[] = 'background-image: url(' . $img_array['src'] . ');';
 	} elseif ($img_array['type'] == 'color') {
 		$style[] = 'background-color: var(--connected-' . $img_array['color'] . ')';
 	} elseif ($img_array['type'] == 'avatar') {
@@ -91,10 +94,13 @@ function list_item($data)
 
 	// Is there an image, yes/no?
 	if (isset($data['img_url']) && $data['img_url'] !== false) {
-		$img_array = [
-			'src' => $data['img_url'],
-			'type' => 'background',
-		];
+		$img_array['src'] = $data['img_url'];
+		if (!array_key_exists('img_fill', $data)) {
+			$img_array['type'] = 'background';
+		} else {
+			$img_array['type'] = 'contain';
+		}
+
 		$output .= list_item_graphic($img_array);
 	} else {
 		$output .= list_item_graphic();
@@ -146,7 +152,7 @@ function list_item_bundle($data)
 	foreach ($data as $key => $value) {
 		if (is_array($value)) {
 			if (!is_array($previous_value)) {
-				$output .= '<ul>';
+				$output .= '<ul class="list_item_group">';
 			}
 			$output .= list_item($value);
 			if ($key == count($data) - 1) {
@@ -339,7 +345,7 @@ function pick_item_bundle($data)
 				$output .= $score['percentage'] . '% • ' . $score['correct'] . '/' . $score['count'];
 			}
 
-			$output .= "</span></h3><ul>$pick_items</ul></div>";
+			$output .= '</span></h3><ul class="list_item_group">' . $pick_items . '</ul></div>';
 		}
 		$output .= '</div></section>';
 	}
@@ -348,7 +354,7 @@ function pick_item_bundle($data)
 
 function host_item_bundle($host_event_data)
 {
-	$output = '<div class="section_group--list"><h3>Hosts</h3><ul>';
+	$output = '<div class="section_group--list"><h3>Hosts</h3><ul class="list_item_group">';
 	$html_strings = [];
 
 	foreach ($host_event_data as $host_event_key => $event_details) {

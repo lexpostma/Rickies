@@ -15,7 +15,7 @@
 	--background-color: black;
 	--text-primary-color: #543404;
 	--link-color: #d7a457;
-	--space-between-vertical: 32px;
+	--space-between-lg: 32px;
 	font-size: 14px;
 }
 
@@ -62,7 +62,7 @@ h1 {
 
 h2 {
 	font-size: 1.7rem;
-	margin: var(--space-between-vertical) 0 4px;
+	margin: var(--space-between-lg) 0 4px;
 }
 
 ol {

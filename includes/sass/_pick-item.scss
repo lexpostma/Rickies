@@ -1,6 +1,6 @@
 @use "variables" as var;
 
-.section_group {
+.host_picks {
 	h3 span {
 		color: var(--text-secondary-color);
 		float: right;
@@ -9,10 +9,11 @@
 }
 
 li.pick_item {
-	margin-top: 12px;
+	// margin-top: 12px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	padding: var(--space-element-padding);
 	span.round {
 		@include var.secondary-text;
 	}
@@ -64,7 +65,7 @@ li.pick_item {
 
 			// Risky points ring
 			&.risky:after {
-				content: "";
+				content: '';
 				border-radius: 50%;
 				border: 1px solid;
 				position: absolute;

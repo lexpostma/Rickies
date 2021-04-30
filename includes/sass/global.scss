@@ -1,3 +1,5 @@
+@use "variables" as var;
+
 :root {
 	--connected-green: #449934;
 	--connected-yellow: #fcc200;
@@ -38,6 +40,12 @@ p {
 	top: 20px;
 	left: 20px;
 	z-index: 2;
+	@media (hover: hover) {
+		transition: var.$pop-transition;
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
 }
 
 .banner {

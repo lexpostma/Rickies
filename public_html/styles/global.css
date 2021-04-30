@@ -35,6 +35,14 @@ p {
   left: 20px;
   z-index: 2;
 }
+@media (hover: hover) {
+  #back_button {
+    transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+  }
+  #back_button:hover {
+    transform: scale(1.2);
+  }
+}
 
 .banner {
   text-align: center;

@@ -1,9 +1,11 @@
 @use "variables" as var;
 
 ul.list_item_group {
+	margin-left: var(--space-element-padding-neg);
+	margin-right: var(--space-element-padding-neg);
 }
 li.list_item + li.list_item {
-	margin-top: var(--space-between-vertical);
+	margin-top: var(--space-between-sm);
 }
 
 li.list_item {
@@ -11,9 +13,10 @@ li.list_item {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
+		padding: var(--space-element-padding);
 
 		.list_item_labels {
-			margin-left: var(--space-between-horizontal);
+			margin-left: var(--space-between-md);
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
@@ -65,6 +68,18 @@ li.list_item {
 			}
 			.label2 {
 				color: var(--text-primary-color);
+			}
+		}
+		@media (hover: hover) {
+			border-radius: var(--element-corner-radius);
+			.item_graphic {
+				transition: var.$pop-transition;
+			}
+			&:hover {
+				background: var(--element-hover-color);
+				.item_graphic {
+					transform: scale(1.1);
+				}
 			}
 		}
 	}

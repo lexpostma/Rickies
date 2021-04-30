@@ -1,7 +1,7 @@
 // Get #anchor from the URL to trigger the navigation function
 function get_anchor_from_url() {
 	var anchor = window.location.hash.substr(1);
-	console.log(anchor);
+
 	if (anchor == '') {
 		navigate_section('rickies');
 	} else {
@@ -53,16 +53,19 @@ function make_nav_sticky() {
 
 // Define the height of the nav bar and it's anchor/sticky-fillup
 function set_nav_height() {
-	if (window.innerWidth < 768) {
-		var nav_height = document.querySelector('.nav_content').offsetHeight;
-		console.log('resizing, height=' + nav_height);
-		Array.from(document.querySelectorAll('.navigate_with_mobile_menu')).forEach(function (el) {
-			el.style.paddingTop = nav_height + 'px';
-		});
-	} else {
-		Array.from(document.querySelectorAll('.navigate_with_mobile_menu')).forEach(function (el) {
-			el.style.paddingTop = '';
-		});
+	var nav_height = document.querySelector('.nav_content').offsetHeight;
+	// console.log('resizing, height=' + nav_height);
+	Array.from(document.querySelectorAll('.navigate_with_mobile_menu')).forEach(function (el) {
+		el.style.paddingTop = nav_height + 'px';
+	});
+
+	if (window.innerWidth > 768) {
+		Array.from(document.querySelectorAll('.navigate_with_mobile_menu'))
+			.slice(0, -1)
+			.forEach(function (el) {
+				// el.style.paddingTop = nav_height + 'px';
+				el.style.marginBottom = '-' + nav_height + 'px';
+			});
 	}
 }
 set_nav_height();

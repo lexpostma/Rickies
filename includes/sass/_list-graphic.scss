@@ -30,9 +30,13 @@
 	flex-grow: 0;
 	flex-shrink: 0;
 	position: relative;
+	background-repeat: no-repeat;
 	&.avatar {
 		border-radius: 50%;
 		background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.85) 100%);
+		@media (prefers-color-scheme: dark) {
+			background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.3) 100%);
+		}
 		background-origin: border-box;
 		img {
 			width: 120%;
@@ -49,6 +53,11 @@
 		// https://stackoverflow.com/a/24231514
 		background-size: cover;
 		background-origin: border-box;
+		background-position: center;
+	}
+	&.contain_image {
+		background-color: #7f7f7f;
+		background-size: contain;
 		background-position: center;
 	}
 	&.placeholder {

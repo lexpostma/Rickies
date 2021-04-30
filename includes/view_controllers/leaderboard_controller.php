@@ -114,7 +114,8 @@ function score_graph_script($chart_array, $host)
 	foreach ($chart_array as $pick_type => $graph) {
 		if ($pick_type !== 'Scored' && $pick_type !== 'Overall') {
 			$chart_id = define_score_graph_id($host, $pick_type);
-			$chart_var = $chart_id;
+			$chart_el = $chart_id . '_el';
+			$chart_var = $chart_id . '_var';
 
 			// Add a ChartJS chart data
 			$labels = [];
@@ -128,8 +129,8 @@ function score_graph_script($chart_array, $host)
 
 			$chart_script .=
 				"
-var $chart_var = document.getElementById('$chart_id');
-var $chart_id = new Chart($chart_var, {
+var $chart_el = document.getElementById('$chart_id');
+var $chart_var = new Chart($chart_el, {
 	type: 'doughnut',
 	data: {
 		labels: [" .

@@ -54,7 +54,7 @@ do {
 				include 'event_data_details_controller.php';
 			}
 
-			// If there's a manual winner, that means that Ricky is officially scored
+			// If the status Unscored, add tag/banner
 			if ($rickies_events_array[$id]['status'] == 'Unscored') {
 				$rickies_events_array[$id]['tag'] = $rickies_events_array[$id]['status'];
 				$rickies_events_array[$id]['tag_color'] = 'orange';
@@ -68,4 +68,4 @@ do {
 	}
 } while ($rickies_events_request = $rickies_events_response->next());
 
-// echo "<pre>", var_dump($rickies_events_array), "</pre>";
+// echo '<pre>', var_dump($rickies_events_array), '</pre>';
