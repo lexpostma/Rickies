@@ -59,6 +59,12 @@ header.home {
     background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%), url("/images/confetti.png");
   }
 }
+@media screen and (min-width: 992px) {
+  header.home {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
 header.home .hero_content {
   display: flex;
   flex-direction: column;
@@ -135,12 +141,27 @@ header #corner_tag img#relay_logo {
   right: 50px;
   top: 10px;
 }
+@media screen and (min-width: 992px) {
+  header #corner_tag {
+    width: 120px;
+    height: 120px;
+  }
+  header #corner_tag img#relay_logo {
+    width: 50px;
+    right: 65px;
+  }
+}
 @media (hover: hover) {
   header #corner_tag img#relay_logo {
     transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
   }
   header #corner_tag:hover img#relay_logo {
     transform: scale(1.3) translate(0px, -1px);
+  }
+}
+@media screen and (hover: hover) and (min-width: 992px) {
+  header #corner_tag:hover img#relay_logo {
+    transform: scale(1.2);
   }
 }
 
