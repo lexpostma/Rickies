@@ -12,7 +12,8 @@
 if (array_key_exists('tag', $rickies_data)) {
 	echo banner($rickies_data['tag_banner'], $rickies_data['tag_color']);
 }
-if ($rickies_data['winner'] == false) {
+
+if ($rickies_data['ranking']['rickies'] !== false) {
 	echo avatar_leaderboard($leaderboard_data);
 }
 ?>

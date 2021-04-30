@@ -14,7 +14,7 @@ $rickies_events_params = [
 		'Rickies artwork',
 		'Event artwork',
 	],
-	'filterByFormula' => "AND( Status != 'Hidden', Picks )",
+	'filterByFormula' => "AND( Status, Status != 'Hidden', Picks )",
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
 	// "maxRecords" => 150,
 	// "pageSize" => 50,

@@ -3,7 +3,7 @@
 // Rickies _view_ controller, event details page
 
 $rickies_events_params = [
-	'filterByFormula' => "AND( Status != 'Hidden', Picks, URL = '$url_view' )",
+	'filterByFormula' => "AND( Status, Status != 'Hidden', Picks, URL = '$url_view' )",
 	'maxRecords' => 1,
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
 	// "pageSize" => 50,
