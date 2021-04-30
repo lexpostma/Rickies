@@ -4,34 +4,24 @@
 	<p id="active_date">28 June 2020</p>
 	<h1>The Bill of Rickies</h1>
 
-	<h2>The Rickies</h2>
-	<ol>
-<?php foreach ($rules_array['rickies'] as &$rule) {
-	echo '<li id="rule' .
-		$rule['id'] .
-		'" startdate="' .
-		$rule['date_start'] .
-		'" enddate="' .
-		$rule['date_end'] .
-		'" >' .
-		$rule['rule'] .
-		'</li>';
+<?php foreach ($rules_array as $type => $rules) {
+	echo '<h2>The ' . ucfirst($type) . '</h2><ol>';
+
+	foreach ($rules as $rule) {
+		echo '<li class="rule" id="rule' .
+			$rule['id'] .
+			'" startdate="' .
+			$rule['date_start'] .
+			'" enddate="' .
+			$rule['date_end'] .
+			'" >' .
+			$rule['rule'] .
+			'</li>';
+	}
+
+	echo '</ol>';
 } ?>
-	</ol>
-	<h2>The Flexies</h2>
-	<ol>
-<?php foreach ($rules_array['flexies'] as &$rule) {
-	echo '<li id="rule' .
-		$rule['id'] .
-		'" startdate="' .
-		$rule['date_start'] .
-		'" enddate="' .
-		$rule['date_end'] .
-		'" >' .
-		$rule['rule'] .
-		'</li>';
-} ?>
-	</ol>
+
 </main>
 
 <div id="rule_slider">
