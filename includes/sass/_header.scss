@@ -22,6 +22,16 @@ header {
 			img#trophy {
 				height: 120px;
 				margin-bottom: var(--space-between-md);
+				@media (hover: hover) {
+					transition: var.$pop-transition;
+					cursor: pointer;
+					&:hover {
+						transform: scale(1.05);
+					}
+					&:active {
+						transform: scale(0.95);
+					}
+				}
 			}
 			h1 {
 				margin-bottom: 4px;

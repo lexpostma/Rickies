@@ -39,8 +39,11 @@ p {
   #back_button {
     transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
   }
-  #back_button:hover {
+  #back_button:hover, #back_button:focus {
     transform: scale(1.2);
+  }
+  #back_button:active {
+    transform: scale(0.9);
   }
 }
 

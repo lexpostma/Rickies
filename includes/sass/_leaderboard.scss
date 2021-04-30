@@ -90,9 +90,26 @@
 				animation-iteration-count: infinite;
 			}
 			@media (hover: hover) {
-				transition: var.$pop-transition;
+				&:after,
+				&:before,
+				img {
+					transition: var.$pop-transition;
+				}
+
 				&:hover {
-					transform: scale(1.2);
+					&:before,
+					&:after {
+						transform: scale(1.1);
+					}
+					img {
+						transform: scale(1.4) rotate(-10deg);
+					}
+				}
+				&:active {
+					&:before,
+					&:after {
+						transform: scale(0.95);
+					}
 				}
 			}
 		}
@@ -131,15 +148,6 @@
 		}
 	}
 }
-// @media screen and (min-width: var.$break-lg) {
-// 	.host_stats {
-// 		flex-direction: row;
-// 		align-items: flex-start;
-// 		.host_item_content {
-// 			margin-left: var(--space-between-md);
-// 		}
-// 	}
-// }
 
 table.full_stats {
 	border-collapse: collapse;

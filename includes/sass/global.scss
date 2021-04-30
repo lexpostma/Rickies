@@ -42,7 +42,8 @@ p {
 	z-index: 2;
 	@media (hover: hover) {
 		transition: var.$pop-transition;
-		&:hover {
+		&:hover,
+		&:focus {
 			transform: scale(1.2);
 		}
 	}

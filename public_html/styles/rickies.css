@@ -68,6 +68,18 @@ header.home .hero_content img#trophy {
   height: 120px;
   margin-bottom: var(--space-between-md);
 }
+@media (hover: hover) {
+  header.home .hero_content img#trophy {
+    transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+    cursor: pointer;
+  }
+  header.home .hero_content img#trophy:hover {
+    transform: scale(1.05);
+  }
+  header.home .hero_content img#trophy:active {
+    transform: scale(0.95);
+  }
+}
 header.home .hero_content h1 {
   margin-bottom: 4px;
 }
@@ -379,11 +391,18 @@ li.pick_item span.note {
   animation-iteration-count: infinite;
 }
 @media (hover: hover) {
-  .avatar_leaderboard .host.winner .avatar {
+  .avatar_leaderboard .host.winner .avatar:after, .avatar_leaderboard .host.winner .avatar:before,
+.avatar_leaderboard .host.winner .avatar img {
     transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
   }
-  .avatar_leaderboard .host.winner .avatar:hover {
-    transform: scale(1.2);
+  .avatar_leaderboard .host.winner .avatar:hover:before, .avatar_leaderboard .host.winner .avatar:hover:after {
+    transform: scale(1.1);
+  }
+  .avatar_leaderboard .host.winner .avatar:hover img {
+    transform: scale(1.4) rotate(-10deg);
+  }
+  .avatar_leaderboard .host.winner .avatar:active:before, .avatar_leaderboard .host.winner .avatar:active:after {
+    transform: scale(0.95);
   }
 }
 
