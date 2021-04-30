@@ -24,11 +24,11 @@ main {
   font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
   max-width: 600px;
   margin: auto;
+  padding: 24px 24px 100px;
   background-image: url(/images/parchment-border.svg), radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%), url(/images/parchment-background.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%, cover, cover;
-  padding: 24px 24px 100px;
 }
 
 #active_date {
