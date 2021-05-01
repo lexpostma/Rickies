@@ -1,7 +1,11 @@
-<?= back_button(billofrickies_url(false)), no_script_banner() ?>
+<?php
+echo back_button(billofrickies_url(false)), no_script_banner();
+if (isset($error)) {
+	echo $error;
+}
+?>
 
 <main>
-	<!-- TODO: Set starting date -->
 	<p id="active_date"><?= $current_selection['date_string'] ?></p>
 	<h1>The Bill of Rickies</h1>
 

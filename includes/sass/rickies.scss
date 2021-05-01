@@ -57,25 +57,6 @@ a {
 	}
 }
 
-// Links on dark background
-footer a,
-nav a {
-	&:link,
-	&:visited {
-		color: white;
-		opacity: 0.7;
-	}
-
-	&:hover,
-	&:focus {
-		opacity: 1;
-	}
-
-	&:active {
-		opacity: 1;
-	}
-}
-
 ul {
 	margin: 0;
 	padding: 0;

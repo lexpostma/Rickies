@@ -714,22 +714,6 @@ a span.emoji {
   margin-right: 4px;
 }
 
-footer a:link, footer a:visited,
-nav a:link,
-nav a:visited {
-  color: white;
-  opacity: 0.7;
-}
-footer a:hover, footer a:focus,
-nav a:hover,
-nav a:focus {
-  opacity: 1;
-}
-footer a:active,
-nav a:active {
-  opacity: 1;
-}
-
 ul {
   margin: 0;
   padding: 0;

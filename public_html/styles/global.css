@@ -42,15 +42,33 @@ p {
   #back_button:hover, #back_button:focus {
     transform: scale(1.2);
   }
-  #back_button:active {
-    transform: scale(0.9);
-  }
 }
 
 .banner {
   text-align: center;
   color: white;
   padding: 8px 16px;
+}
+
+.banner a:link, .banner a:visited,
+footer a:link,
+footer a:visited,
+nav a:link,
+nav a:visited {
+  color: white;
+  opacity: 0.8;
+}
+.banner a:hover, .banner a:focus,
+footer a:hover,
+footer a:focus,
+nav a:hover,
+nav a:focus {
+  opacity: 1;
+}
+.banner a:active,
+footer a:active,
+nav a:active {
+  opacity: 1;
 }
 
 /* For debugging */

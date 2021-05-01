@@ -50,6 +50,16 @@ foreach ($rickies_events__array as $event) {
 	$index++;
 }
 
+if ($url_view !== 'main' && !isset($current_selection)) {
+	// URL query is given, but no events have match.
+	// That's a 404
+	header('HTTP/1.0 404 Not Found', true, 404);
+	$error = banner(
+		'No rules were found for the requested Rickies. Here’s the <a href="/">latest Bill of Rickies</a>.',
+		'red'
+	);
+}
+
 $event_slider_js_vars =
 	'
 	var rickies_event_values = [\'' .
