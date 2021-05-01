@@ -56,6 +56,25 @@ a {
 		display: inline-block;
 		margin-right: 4px;
 	}
+
+	// Add Twitter logo to Twitter.com URLs
+	&[href^="https://twitter.com"]
+	{
+		&:after {
+			content: url('/images/twitter.svg');
+			display: inline-block;
+			margin-left: 0.3em;
+			transition: var.$pop-transition;
+			opacity: 0.7;
+			transform: translate(0px, 1px);
+		}
+		&:hover {
+			&:after {
+				opacity: 1;
+				transform: translate(3px, 0px);
+			}
+		}
+	}
 }
 
 ul {

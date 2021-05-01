@@ -42,7 +42,7 @@ if ($rickies_data['ranking']['rickies'] !== false) {
 	<h2>Details</h2>
 	<div class="section_group">
 <?php
-echo host_item_bundle($rickies_data['hosts']);
+echo host_item_bundle($rickies_data['hosts'], $rickies_data['type']);
 echo list_item_bundle($rickies_data['details']);
 ?>
 	</div>

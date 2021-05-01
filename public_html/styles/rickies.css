@@ -4,7 +4,7 @@
   --text-secondary-color: #777777;
   --menu-color: var(--connected-blue);
   --link-color: var(--connected-blue);
-  --link-hover-color: var(--connected-blue);
+  --link-hover-color: #23527c;
   --element-hover-color: rgba(0, 0, 0, 0.05);
   --element-corner-radius: 8px;
   --space-side-padding: 16px;
@@ -37,7 +37,7 @@
     --background-color: #000000;
     --text-primary-color: #9baec1;
     --text-secondary-color: #929292;
-    --link-hover-color: var(--connected-blue);
+    --link-hover-color: #33adf1;
     --graphic-border: 1px solid rgba(255, 255, 255, 0.2);
     --element-hover-color: rgba(255, 255, 255, 0.1);
   }
@@ -745,6 +745,18 @@ a span.emoji {
   text-decoration: none;
   display: inline-block;
   margin-right: 4px;
+}
+a[href^="https://twitter.com"]:after {
+  content: url("/images/twitter.svg");
+  display: inline-block;
+  margin-left: 0.3em;
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+  opacity: 0.7;
+  transform: translate(0px, 1px);
+}
+a[href^="https://twitter.com"]:hover:after {
+  opacity: 1;
+  transform: translate(3px, 0px);
 }
 
 ul {

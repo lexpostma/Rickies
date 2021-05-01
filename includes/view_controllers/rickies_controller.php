@@ -314,7 +314,7 @@ function pick_item_bundle($data)
 	return $output;
 }
 
-function host_item_bundle($host_event_data)
+function host_item_bundle($host_event_data, $event_type)
 {
 	$output = '<div class="section_group--list"><h3>Hosts</h3><ul class="list_item_group">';
 	$html_strings = [];
@@ -323,7 +323,13 @@ function host_item_bundle($host_event_data)
 		$html_strings['ranking'] = [];
 
 		if ($event_details['rickies']['ranking'] !== false && $event_details['rickies']['ranking'] == 0) {
-			array_push($html_strings['ranking'], '<b>Rickies winner</b>');
+			$chairman_link =
+				'<a target="_blank" href="https://twitter.com/' .
+				strtolower(str_replace(' Rickies', 'chairman', $event_type)) .
+				'">' .
+				str_replace('Rickies', 'Chairman', $event_type) .
+				'</a>';
+			array_push($html_strings['ranking'], '<b>Rickies winner</b> • ' . $chairman_link);
 		} elseif ($event_details['rickies']['ranking'] == 1) {
 			array_push($html_strings['ranking'], 'Rickies 2nd place');
 		} elseif ($event_details['rickies']['ranking'] == 2) {
@@ -403,7 +409,7 @@ function host_item_bundle($host_event_data)
 				<a href="/leaderboard#' .
 			strtolower($event_details['details']['first_name']) .
 			'">' .
-			$event_details['details']['first_name'] .
+			$event_details['details']['full_name'] .
 			'</a>
 				<br />
 				<span class="ranking">' .
