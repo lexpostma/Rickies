@@ -201,13 +201,14 @@ h2.rule_type,
 li.rule {
   max-height: 150px;
   opacity: 1;
-  transition: 750ms max-height ease-in, 750ms opacity ease-in;
+  transition: 750ms max-height ease-in, 495ms opacity ease-in;
+  transition-delay: 0ms, 247.5ms;
 }
 h2.rule_type.hidden,
 li.rule.hidden {
-  opacity: 0;
   max-height: 0px;
-  transition: 750ms max-height ease-out, 750ms opacity ease-out;
+  opacity: 0;
+  transition: 750ms max-height ease-out, 495ms opacity ease-out;
 }
 h2.rule_type.hidden.gone,
 li.rule.hidden.gone {
