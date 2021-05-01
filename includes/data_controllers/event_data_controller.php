@@ -20,7 +20,7 @@ do {
 				'name' => check_key('Name', $fields),
 				'status' => check_key('Status', $fields),
 				'type' => check_key('Rickies type', $fields),
-				'url_name' => check_key('URL', $fields),
+				'url' => '/' . check_key('URL', $fields),
 				'date' => date_to_string_label(check_key('Predictions episode date', $fields, false, 0)),
 				'artwork' => [
 					'rickies' => airtable_image_url(check_key('Rickies artwork', $fields, false, 0)),
@@ -46,9 +46,6 @@ do {
 				unset($rickies_events__array[$id]['name']);
 
 				$rickies_events__array[$id]['label3'] = $rickies_events__array[$id]['date'];
-
-				$rickies_events__array[$id]['url'] = '/' . $rickies_events__array[$id]['url_name'];
-				unset($rickies_events__array[$id]['url_name']);
 			} else {
 				// Add more details from Airtable to array, to build the detail page
 				include 'event_data_details_controller.php';

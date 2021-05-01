@@ -1,6 +1,6 @@
 <?php
 
-// Ricky picks _data_ controller
+// Rickies picks _data_ controller
 
 $picks_data__params = [
 	'filterByFormula' => "AND( URL = '$url_view' )",
@@ -36,6 +36,7 @@ do {
 			$picks_data__array[check_key('Type group', $fields)][check_key('Host name', $fields, false, 0)],
 			$picks_data__array_temp
 		);
+		unset($picks_data__array_temp);
 	}
 } while ($picks_data__request = $picks_data__response->next());
 

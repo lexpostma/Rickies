@@ -2,28 +2,8 @@
 
 // Rickies _view_ controller, event details page
 
-// Get Rickies event data
-$rickies_events__params = [
-	'filterByFormula' => "AND( Status, Status != 'Hidden', Picks, URL = '$url_view' )",
-	'maxRecords' => 1,
-	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
-	// "pageSize" => 50,
-];
-$all_event_details = true;
-
-include '../includes/data_controllers/event_data_controller.php';
-include '../includes/data_controllers/picks_data_controller.php';
-
-// Get host personal data
-$hosts_data__params = [
-	'fields' => ['First name', 'Full name', 'Memoji neutral', 'Memoji happy', 'Memoji sad'],
-];
-$all_host_details = false;
-include '../includes/data_controllers/hosts_data_controller.php';
-
-// Merge event and host arrays
+// Get and merge event and host data
 include '../includes/data_controllers/merge_hosts_event_data_controller.php';
-// $rickies_data = reset($rickies_events__array);
 
 // Define the data for the leaderboard at the top of the page
 $leaderboard_data = [];
