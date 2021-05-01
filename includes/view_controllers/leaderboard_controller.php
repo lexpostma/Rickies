@@ -144,14 +144,14 @@ var $chart_var = new Chart($chart_el, {
 				implode(',', $data) .
 				"],
 			backgroundColor: [
-				'#449934',
-				'#E51F2E',
-				'#FCC200',
+				'rgba(68, 153, 52, 0.7)',
+				'rgba(229, 31, 46, 0.7)',
+				'rgba(252, 194, 0, 0.7)',
 			],
 			borderColor: [
-				'rgba(0, 0, 0, 0.1)',
-				'rgba(0, 0, 0, 0.1)',
-				'rgba(0, 0, 0, 0.1)',
+				'rgba(68, 153, 52, 0.7)',
+				'rgba(229, 31, 46, 0.7)',
+				'rgba(252, 194, 0, 0.7)',
 			],
 			borderWidth: 1,
 			borderAlign: 'inner',
