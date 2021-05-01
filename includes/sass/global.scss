@@ -57,7 +57,7 @@ p {
 
 // Links on colored/dark background
 .banner a,
-footer a,
+footer a:not(#footer_corner),
 nav a {
 	&:link,
 	&:visited {

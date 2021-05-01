@@ -1,6 +1,6 @@
 <header class="home">
-	<a target="_blank" href="<?= $head['site_relay'] ?>" id="corner_tag">
-		<img id="relay_logo" src="/images/relay-logo.png" />
+	<a target="_blank" href="<?= $head['site_relay'] ?>" id="header_corner" title="Visit <?= $head['company'] ?>">
+		<img id="relay_logo" src="/images/relay-logo.png" alt="<?= $head['company'] ?> logo"/>
 	</a>
 	<div class="hero_content">
 		<img id="trophy" src="/images/trophy.png" onclick="confetti_go()"/>

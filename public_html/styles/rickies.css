@@ -126,44 +126,6 @@ header.leaderboard {
   height: 250px;
   background-image: url(/images/connected-map.png);
 }
-header #corner_tag {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 90px;
-  height: 90px;
-  background-image: url("/images/triangle.svg");
-  background-size: cover;
-}
-header #corner_tag img#relay_logo {
-  width: 35px;
-  position: absolute;
-  right: 50px;
-  top: 10px;
-}
-@media screen and (min-width: 992px) {
-  header #corner_tag {
-    width: 120px;
-    height: 120px;
-  }
-  header #corner_tag img#relay_logo {
-    width: 50px;
-    right: 65px;
-  }
-}
-@media (hover: hover) {
-  header #corner_tag img#relay_logo {
-    transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
-  }
-  header #corner_tag:hover img#relay_logo {
-    transform: scale(1.3) translate(0px, -1px);
-  }
-}
-@media screen and (hover: hover) and (min-width: 992px) {
-  header #corner_tag:hover img#relay_logo {
-    transform: scale(1.2);
-  }
-}
 
 .nav_content {
   background: var(--menu-color);
@@ -263,6 +225,76 @@ footer {
   background: var(--relay-blue);
   font-size: 0.875rem;
   position: relative;
+}
+
+#header_corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 90px;
+  background-image: url("/images/triangle.svg");
+  background-size: cover;
+}
+#header_corner img#relay_logo {
+  width: 35px;
+  position: absolute;
+  right: 50px;
+  top: 10px;
+}
+@media screen and (min-width: 992px) {
+  #header_corner {
+    width: 120px;
+    height: 120px;
+  }
+  #header_corner img#relay_logo {
+    width: 50px;
+    right: 65px;
+  }
+}
+@media (hover: hover) {
+  #header_corner img#relay_logo {
+    transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+  }
+  #header_corner:hover img#relay_logo {
+    transform: scale(1.3) translate(0px, -1px);
+  }
+}
+@media screen and (hover: hover) and (min-width: 992px) {
+  #header_corner:hover img#relay_logo {
+    transform: scale(1.2);
+  }
+}
+
+#footer_corner {
+  display: none;
+}
+@media screen and (min-width: 576px) {
+  #footer_corner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(110deg, rgba(51, 63, 72, 0.8) 30%, indigo 80%);
+    display: flex;
+    padding: var(--space-side-padding);
+  }
+  #footer_corner img {
+    width: 2rem;
+  }
+}
+@media (hover: hover) {
+  #footer_corner img {
+    transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+  }
+  #footer_corner:hover img {
+    transform: scale(1.3);
+  }
+}
+@media screen and (hover: hover) and (min-width: 768px) {
+  #footer_corner:hover img {
+    transform: scale(1.2);
+  }
 }
 
 @keyframes connected_colors {
