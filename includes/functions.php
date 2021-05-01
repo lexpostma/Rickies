@@ -127,3 +127,54 @@ function no_script_banner($string = false)
 	$output .= '</noscript>';
 	return $output;
 }
+
+// Format the date to a readable string
+// Via https://stackoverflow.com/a/25623057
+function date_to_string_label($input, $air_date = false)
+{
+	$date_format = '%e %B %Y';
+
+	$current = strtotime(date('Y-m-d'));
+	$date = strtotime($input);
+
+	$datediff = $date - $current;
+
+	// Get the difference in days (diff in seconds / (60s * 60m * 24h))
+	$difference = floor($datediff / (60 * 60 * 24));
+
+	if ($difference == 0) {
+		$air_string = 'Airs ';
+		$output = 'today';
+	} elseif ($difference == -1) {
+		$air_string = 'Aired ';
+		$output = 'yesterday';
+	} elseif ($difference == 1) {
+		$air_string = 'Airs ';
+		$output = 'tomorrow';
+	} elseif ($difference > 1) {
+		$air_string = 'Airs on ';
+		$output = strftime($date_format, $date);
+	} else {
+		$air_string = 'Aired on ';
+		$output = strftime($date_format, $date);
+	}
+
+	if ($air_date) {
+		return $air_string . $output;
+	} else {
+		return ucfirst($output);
+	}
+}
+
+// Assign the correct artwork URLs from array
+// Set large thumbnail URL as the value of the artwork array
+function airtable_image_url($input)
+{
+	if (is_array($input)) {
+		return $input['thumbnails']['large']['url'];
+	} elseif ($input == false) {
+		return false;
+	} else {
+		return $input;
+	}
+}
