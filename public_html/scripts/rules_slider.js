@@ -13,6 +13,16 @@ function update_rules(value) {
 			hide_rule(el);
 		}
 	});
+
+	// Check is the list is empty (all <li> rules inside are hidden )
+	// If empty, also hide the title (previous sibling of the <ol>)
+	Array.from(document.querySelectorAll('ol.rules')).forEach(function (el) {
+		if (el.querySelectorAll('li.rule:not(.hidden)').length === 0) {
+			hide_rule(el.previousSibling);
+		} else {
+			show_rule(el.previousSibling);
+		}
+	});
 }
 
 function hide_rule(element) {

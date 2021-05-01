@@ -197,16 +197,19 @@ a:not(#back_button):link, a:not(#back_button):visited {
   }
 }
 
+h2.rule_type,
 li.rule {
   max-height: 150px;
   opacity: 1;
   transition: 750ms max-height ease-in, 750ms opacity ease-in;
 }
+h2.rule_type.hidden,
 li.rule.hidden {
   opacity: 0;
   max-height: 0px;
   transition: 750ms max-height ease-out, 750ms opacity ease-out;
 }
+h2.rule_type.hidden.gone,
 li.rule.hidden.gone {
   display: none;
 }

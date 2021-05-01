@@ -6,7 +6,7 @@
 	<h1>The Bill of Rickies</h1>
 
 <?php foreach ($rules__array as $type => $rules) {
-	echo '<h2>The ' . ucfirst($type) . '</h2><ol>';
+	echo '<h2 class="rule_type">The ' . ucfirst($type) . '</h2><ol class="rules">';
 
 	foreach ($rules as $rule) {
 		echo '<li class="rule ';
