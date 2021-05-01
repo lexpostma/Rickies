@@ -1,11 +1,12 @@
 @use "variables" as var;
 @use "root";
 @use "header";
+@use "menu-section";
+@use "logo-tag";
+@use "list-graphic";
 @use "list-item";
 @use "pick-item";
 @use "leaderboard";
-@use "list-graphic";
-@use "menu-section";
 
 html {
 	line-height: 1.5;
