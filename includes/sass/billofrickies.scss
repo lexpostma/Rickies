@@ -94,6 +94,24 @@ ol {
 	}
 }
 
+$transition_time: 750ms;
+li.rule {
+	max-height: 150px;
+	opacity: 1;
+	transition: $transition_time max-height ease-in, $transition_time opacity ease-in;
+	// transition-delay: 0ms;
+	&.hidden {
+		opacity: 0;
+		max-height: 0px;
+		// "duration + delay" should be equal to the JS delay for adding "gone" class
+		transition: $transition_time max-height ease-out, $transition_time opacity ease-out;
+		// transition-delay: 250ms;
+		&.gone {
+			display: none;
+		}
+	}
+}
+
 #back_button,
 #rule_slider {
 	box-shadow: 0px 1px 4px rgba(84, 52, 4, 0.5);

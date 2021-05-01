@@ -10,6 +10,9 @@ $rickies_events__params = [
 $all_event_details = true;
 
 include '../includes/data_controllers/event_data_controller.php';
+// echo '<pre>', var_dump($rickies_events__array), '</pre>';
+
+// Get picks data
 include '../includes/data_controllers/picks_data_controller.php';
 
 // Get host personal data
@@ -18,8 +21,6 @@ $hosts_data__params = [
 ];
 $all_host_details = false;
 include '../includes/data_controllers/hosts_data_controller.php';
-
-// echo '<pre>', var_dump($rickies_events__array), '</pre>';
 // echo '<pre>', var_dump($hosts_data__array), '</pre>';
 
 $rickies_data = reset($rickies_events__array);

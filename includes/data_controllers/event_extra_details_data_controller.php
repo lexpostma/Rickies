@@ -109,10 +109,11 @@ $rickies_events__array[$id]['details'] = [
 	// More data
 	'more_title' => 'More',
 	'more_data_rules' => [
-		'url' => billofrickies_url(),
+		'url' => billofrickies_url() . '/' . $rickies_events__array[$id]['url_name'],
 		'url_internal' => true,
 		'img_url' => '/images/bill-of-rickies-avatar.png',
 		'label1' => 'The Bill of Rickies',
+		'label3' => 'As of these ' . $rickies_events__array[$id]['type'],
 	],
 	'more_data_charity' => [
 		'url' => check_key('Charity URL', $fields, false, 0),
