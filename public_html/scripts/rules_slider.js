@@ -2,16 +2,16 @@ function update_rules(value) {
 	document.getElementById('date_label').textContent = rickies_event_names[value];
 	document.getElementById('active_date').textContent = rickies_event_dates[value];
 
-	// Show the rules that do match the selected event
-	// Remove class "hidden" from the <li>
-	Array.from(document.querySelectorAll('li.rule.' + rickies_event_classes[value])).forEach(function (el) {
-		show_rule(el);
-	});
-
-	// Hide the rules that do not match the selected event
-	// Add class "hidden" to the <li>
-	Array.from(document.querySelectorAll('li.rule:not(.' + rickies_event_classes[value] + ')')).forEach(function (el) {
-		hide_rule(el);
+	Array.from(document.querySelectorAll('li.rule')).forEach(function (el) {
+		if (el.dataset.startDate <= rickies_event_values[value] && el.dataset.endDate >= rickies_event_values[value]) {
+			// Show the rules that have started _on_ or _before_ the selected event data
+			// AND ended _on_ or _after_ the selected event data
+			// Remove class "hidden" from the <li>
+			show_rule(el);
+		} else {
+			// Add class "hidden" to the <li>
+			hide_rule(el);
+		}
 	});
 }
 

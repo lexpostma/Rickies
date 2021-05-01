@@ -2,7 +2,7 @@
 
 <main>
 	<!-- TODO: Set starting date -->
-	<p id="active_date">28 June 2020</p>
+	<p id="active_date"><?= $current_selection['date_string'] ?></p>
 	<h1>The Bill of Rickies</h1>
 
 <?php foreach ($rules__array as $type => $rules) {
@@ -11,11 +11,15 @@
 	foreach ($rules as $rule) {
 		echo '<li class="rule ';
 
-		// Add classes to each event this rule applies to
-		foreach ($rule['applies_to'] as $event) {
-			echo $event['url'] . ' ';
+		// This is the same rule that's also in the JS
+		if ($rule['date_start'] <= $current_selection['date'] && $rule['date_end'] >= $current_selection['date']) {
+		} else {
+			echo 'hidden gone';
 		}
-		echo '" id="rule' . $rule['id'] . '" >' . $rule['rule'] . '</li>';
+		echo '" id="rule' . $rule['id'] . '" ';
+		echo ' data-start-date="' . $rule['date_start'] . '" ';
+		echo ' data-end-date="' . $rule['date_end'] . '" ';
+		echo '>' . $rule['rule'] . '</li>';
 	}
 
 	echo '</ol>';
@@ -25,13 +29,14 @@
 <!-- TODO: Style slider -->
 <div id="rule_slider">
 	<!-- TODO: Set starting event name and add link -->
-	<label id="date_label" for="date_slider">Rickies event name</label>
+	<label id="date_label" for="date_slider"><?= $current_selection['name'] ?></label>
 	<input
 		id="date_slider"
 		type="range"
 		name="date_slider"
 		min="0"
 		max="<?= $event_slider_steps ?>"
+		value="<?= $current_selection['index'] ?>"
 		step="1"
 		list="date_values"
 		oninput="update_rules(this.value)"
@@ -44,6 +49,6 @@
 </div>
 
 <script><?php
-echo $event_slider_js_data;
+echo $event_slider_js_vars;
 include 'scripts/rules_slider.js';
 ?></script>

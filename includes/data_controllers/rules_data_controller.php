@@ -16,16 +16,6 @@ do {
 		// $id = json_decode(json_encode($array), true)["id"];
 		$fields = json_decode(json_encode($array), true)['fields'];
 
-		// $date_start = strtotime(check_key('Start date', $fields));
-		// if (!in_array($date_start, $dates_array)) {
-		// 	$dates_array[] = $date_start;
-		// }
-
-		// $date_end = strtotime(check_key('End date', $fields));
-		// if (!in_array($date_end, $dates_array)) {
-		// 	$dates_array[] = $date_end;
-		// }
-
 		if (check_key('Rule type', $fields) == 'Rickies') {
 			$type = 'rickies';
 		} else {
@@ -34,9 +24,9 @@ do {
 		$rules__array[$type][] = [
 			'id' => check_key('id', $fields),
 			'rule' => a_blank(markdown(check_key('Rule styled', $fields))),
+			'date_start' => strtotime(check_key('Start date', $fields)),
+			'date_end' => strtotime(check_key('End date', $fields)),
 			'events' => check_key('Applied to Rickies', $fields),
-			// 'date_start' => $date_start,
-			// 'date_end' => $date_end,
 			'order' => check_key('Order', $fields),
 		];
 	}

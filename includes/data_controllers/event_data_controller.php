@@ -21,7 +21,8 @@ do {
 				'status' => check_key('Status', $fields),
 				'type' => check_key('Rickies type', $fields),
 				'url_name' => check_key('URL', $fields),
-				'date' => date_to_string_label(check_key('Predictions episode date', $fields, false, 0)),
+				'date_string' => date_to_string_label(check_key('Predictions episode date', $fields, false, 0)),
+				'date' => strtotime(check_key('Predictions episode date', $fields, false, 0)),
 				'artwork' => [
 					'rickies' => airtable_image_url(check_key('Rickies artwork', $fields, false, 0)),
 					'predictions_ep' => airtable_image_url(check_key('Predictions episode artwork', $fields, false, 0)),
@@ -40,16 +41,11 @@ do {
 				}
 			}
 
-			if (!$all_event_details && !isset($rules__array)) {
+			if (!$all_event_details) {
 				// Only the details needed for the Rickies overview
 				$rickies_events__array[$id]['label1'] = $rickies_events__array[$id]['name'];
-				unset($rickies_events__array[$id]['name']);
-
-				$rickies_events__array[$id]['label3'] = $rickies_events__array[$id]['date'];
+				$rickies_events__array[$id]['label3'] = $rickies_events__array[$id]['date_string'];
 				$rickies_events__array[$id]['url'] = '/' . $rickies_events__array[$id]['url_name'];
-			} elseif (isset($rules__array)) {
-				// Add rules field to the array to allow merging in record id
-				$rickies_events__array[$id]['rules'] = check_key('Rules', $fields);
 			} else {
 				// Add more details from Airtable to array, to build the detail page
 				include 'event_extra_details_data_controller.php';
