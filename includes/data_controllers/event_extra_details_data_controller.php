@@ -7,9 +7,11 @@ $rickies_events__array[$id]['ranking'] = [
 	'rickies' => check_key('Rickies ranking', $fields),
 	'flexies' => check_key('Flexies ranking', $fields),
 ];
-$rickies_events__array[$id]['coin_toss_win'] = [
-	'rickies' => check_key('Rickies coin flip (flat)', $fields, false, 0),
-	'flexies' => check_key('Flexies coin flip (flat)', $fields, false, 0),
+$rickies_events__array[$id]['coin_toss'] = [
+	'rickies_win' => check_key('Rickies coin flip (flat)', $fields, false, 0),
+	'flexies_win' => check_key('Flexies coin flip (flat)', $fields, false, 0),
+	'rickies_loss' => check_key('Rickies coin flip lost by', $fields),
+	'flexies_loss' => check_key('Flexies coin flip lost by', $fields),
 ];
 
 // Add more details from Airtable to array, to build the detail page
@@ -39,7 +41,6 @@ if ($rickies_events__array[$id]['ranking']['flexies']) {
 foreach ($hosts as $host) {
 	$rickies_events__array[$id]['hosts'][$host] = [
 		'details' => [
-			// "name" => $host,
 			'first_name' => $host,
 			'round_robin' => array_search($host, $hosts),
 		],
@@ -63,12 +64,20 @@ foreach ($hosts as $host) {
 		],
 	];
 
-	if ($rickies_events__array[$id]['coin_toss_win']['rickies'] == $host) {
+	if ($rickies_events__array[$id]['coin_toss']['rickies_win'] == $host) {
 		$rickies_events__array[$id]['hosts'][$host]['rickies']['coin_toss_winner'] = true;
 	}
 
-	if ($rickies_events__array[$id]['coin_toss_win']['flexies'] == $host) {
+	if ($rickies_events__array[$id]['coin_toss']['flexies_win'] == $host) {
 		$rickies_events__array[$id]['hosts'][$host]['flexies']['coin_toss_winner'] = true;
+	}
+
+	if ($rickies_events__array[$id]['coin_toss']['rickies_loss'] == $host) {
+		$rickies_events__array[$id]['hosts'][$host]['rickies']['coin_toss_loser'] = true;
+	}
+
+	if ($rickies_events__array[$id]['coin_toss']['flexies_loss'] == $host) {
+		$rickies_events__array[$id]['hosts'][$host]['flexies']['coin_toss_loser'] = true;
 	}
 }
 

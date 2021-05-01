@@ -91,7 +91,6 @@ if ($environment !== 'production') {
 <?php
 if ($subdomain == 'rickies') { ?>
 <!-- Canvas Confetti -->
-<!-- Via https://github.com/catdad/canvas-confetti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
 <?php }
