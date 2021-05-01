@@ -19,7 +19,7 @@ $rickies_events__params = [
 		'Rickies artwork',
 		'Event artwork',
 	],
-	'filterByFormula' => "AND( Status, Status != 'Hidden' )",
+	'filterByFormula' => "AND( Status, Status != 'Hidden', Picks )",
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'asc']],
 ];
 
@@ -34,7 +34,8 @@ foreach ($rickies_events__array as $event) {
 	$event_slider_js_array['date'][] = $event['date'];
 	$event_slider_js_array['name'][] = $event['name'];
 	$event_slider_js_array['url'][] = $event['url_name'];
-	$event_slider_js_array['date_string'][] = $event['date_string'];
+	$event_slider_js_array['date_string'][] =
+		'<a href="' . billofrickies_url(false) . '/' . $event['url_name'] . '">' . $event['date_string'] . '</a>';
 
 	// If the URL has an event param, check which event
 	if ($url_view !== 'main' && $event['url_name'] == $url_view) {

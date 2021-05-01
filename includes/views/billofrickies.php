@@ -26,27 +26,27 @@
 } ?>
 
 </main>
-<!-- TODO: Style slider -->
-<div id="rule_slider">
-	<!-- TODO: Set starting event name and add link -->
-	<label id="date_label" for="date_slider"><?= $current_selection['name'] ?></label>
-	<input
-		id="date_slider"
-		type="range"
-		name="date_slider"
-		min="0"
-		max="<?= $event_slider_steps ?>"
-		value="<?= $current_selection['index'] ?>"
-		step="1"
-		list="date_values"
-		oninput="update_rules(this.value)"
-		onchange="update_rules(this.value)">
-	<datalist id="date_values">
+<aside class="slider">
+	<div id="rule_slider">
+		<label id="date_label" for="date_slider"><?= $current_selection['name'] ?></label>
+		<input
+			id="date_slider"
+			type="range"
+			name="date_slider"
+			min="0"
+			max="<?= $event_slider_steps ?>"
+			value="<?= $current_selection['index'] ?>"
+			step="1"
+			list="date_values"
+			oninput="update_rules(this.value)"
+			onchange="update_rules(this.value)">
+		<datalist id="date_values">
 <?php for ($i = 0; $i <= $event_slider_steps; $i++) {
 	echo '<option value="' . $i . '"></option>';
 } ?>
-	</datalist>
-</div>
+		</datalist>
+	</div>
+</aside>
 
 <script><?php
 echo $event_slider_js_vars;

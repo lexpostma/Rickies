@@ -1,4 +1,5 @@
 @use "variables" as var;
+@use "rule-slider";
 
 @font-face {
 	font-family: 'BlackChancery';
@@ -30,7 +31,7 @@ body {
 
 main {
 	font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
-	max-width: 600px;
+	max-width: var.$readability-width;
 	margin: auto;
 	padding: 24px 24px 100px;
 
@@ -69,18 +70,21 @@ h2 {
 ol {
 	margin: 0;
 	padding-left: 26px;
-	a {
-		padding: 2px 4px;
-		margin: -2px -4px;
-		border-radius: 4px;
-		transition: background 100ms;
-		background: rgba(215, 164, 87, 0);
+}
 
-		&:link,
-		&:visited {
-			text-decoration-color: var(--link-color);
-			color: inherit;
-		}
+a:not(#back_button) {
+	padding: 2px 4px;
+	margin: -2px -4px;
+	border-radius: 4px;
+	transition: background 100ms;
+	background: rgba(215, 164, 87, 0);
+
+	&:link,
+	&:visited {
+		text-decoration-color: var(--link-color);
+		color: inherit;
+	}
+	@media (hover: hover) {
 		&:hover,
 		&:focus {
 			text-decoration-color: var(--text-primary-color);
@@ -113,31 +117,13 @@ li.rule {
 }
 
 #back_button,
-#rule_slider {
+aside.slider {
 	box-shadow: 0px 1px 4px rgba(84, 52, 4, 0.5);
 }
 
 #back_button svg {
 	path:last-of-type {
 		fill: var(--text-primary-color);
-	}
-}
-
-#rule_slider {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: #fff;
-	padding: 8px 24px 20px;
-
-	label {
-		display: block;
-		text-align: center;
-	}
-
-	input[type='range'] {
-		width: 100%;
 	}
 }
 
@@ -157,13 +143,4 @@ li.rule {
 		--text-primary-color: #FFFFFF;
 		--text-secondary-color: #777777;
 	} */
-
-	#back_button svg {
-		path:first-of-type {
-			fill: var(--text-primary-color);
-		}
-		path:last-of-type {
-			fill: #ffffff;
-		}
-	}
 }

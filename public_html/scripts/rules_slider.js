@@ -1,6 +1,6 @@
 function update_rules(value) {
-	document.getElementById('date_label').textContent = rickies_event_names[value];
-	document.getElementById('active_date').textContent = rickies_event_dates[value];
+	document.getElementById('date_label').innerHTML = rickies_event_names[value];
+	document.getElementById('active_date').innerHTML = rickies_event_dates[value];
 
 	Array.from(document.querySelectorAll('li.rule')).forEach(function (el) {
 		if (el.dataset.startDate <= rickies_event_values[value] && el.dataset.endDate >= rickies_event_values[value]) {
