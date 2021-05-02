@@ -316,7 +316,8 @@ function pick_item_bundle($data)
 
 function host_item_bundle($host_event_data, $event_type)
 {
-	$output = '<div class="section_group--list"><h3>Hosts</h3><ul class="list_item_group">';
+	$output = '';
+
 	$html_strings = [];
 
 	foreach ($host_event_data as $host_event_key => $event_details) {
@@ -324,30 +325,30 @@ function host_item_bundle($host_event_data, $event_type)
 
 		if ($event_details['rickies']['ranking'] !== false && $event_details['rickies']['ranking'] == 0) {
 			$chairman_link =
-				'<a target="_blank" href="https://twitter.com/' .
+				'<a class="nowrap" target="_blank" href="https://twitter.com/' .
 				strtolower(str_replace(' Rickies', 'chairman', $event_type)) .
 				'">' .
 				str_replace('Rickies', 'Chairman', $event_type) .
 				'</a>';
-			array_push($html_strings['ranking'], '<b>Rickies winner</b> • ' . $chairman_link);
+			array_push($html_strings['ranking'], '<b class="nowrap">Rickies winner</b> • ' . $chairman_link);
 		} elseif ($event_details['rickies']['ranking'] == 1) {
-			array_push($html_strings['ranking'], 'Rickies 2nd place');
+			array_push($html_strings['ranking'], '<span class="nowrap">Rickies 2nd place</span>');
 		} elseif ($event_details['rickies']['ranking'] == 2) {
-			array_push($html_strings['ranking'], 'Rickies 3rd place');
+			array_push($html_strings['ranking'], '<span class="nowrap">Rickies 3rd place</span>');
 		}
 
 		if ($event_details['flexies']['ranking'] !== false && $event_details['flexies']['ranking'] == 0) {
-			array_push($html_strings['ranking'], 'Flexies winner');
+			array_push($html_strings['ranking'], '<span class="nowrap">Flexies winner</span>');
 		} elseif ($event_details['flexies']['ranking'] == 2) {
-			array_push($html_strings['ranking'], 'Flexies loser');
+			array_push($html_strings['ranking'], '<span class="nowrap">Flexies loser</span>');
 		}
 
 		if ($event_details['details']['round_robin'] == 0) {
-			array_push($html_strings['ranking'], 'Round Robin #1');
+			array_push($html_strings['ranking'], '<span class="nowrap">Round Robin #1</span>');
 		} elseif ($event_details['details']['round_robin'] == 1) {
-			array_push($html_strings['ranking'], 'Round Robin #2');
+			array_push($html_strings['ranking'], '<span class="nowrap">Round Robin #2</span>');
 		} elseif ($event_details['details']['round_robin'] == 2) {
-			array_push($html_strings['ranking'], 'Round Robin #3');
+			array_push($html_strings['ranking'], '<span class="nowrap">Round Robin #3</span>');
 		}
 
 		$html_strings['stats'] = [
@@ -398,44 +399,47 @@ function host_item_bundle($host_event_data, $event_type)
 			'color' => $event_details['details']['color'],
 		];
 
+		$output .= '';
 		$output .=
 			'
-<li class="list_item host_details">
-	<div class="list_item_content">' .
+<div class="section_group--list">
+	<ul class="list_item_group">
+	<li class="list_item host_details">
+		<div class="list_item_content">' .
 			list_item_graphic($avatar_img_array, true) .
 			'
-		<div class="list_item_labels">
-			<p>
-				<a href="/leaderboard#' .
+			<div class="list_item_labels">
+				<p>
+					<a href="/leaderboard#' .
 			strtolower($event_details['details']['first_name']) .
 			'">' .
 			$event_details['details']['full_name'] .
-			'</a>
-				<br />
-				<span class="ranking">' .
+			'</a></p>
+					<p class="ranking">' .
 			implode(' • ', $html_strings['ranking']) .
-			'</span>
-			</p>';
+			'</p>';
 		if ($event_details['rickies']['ranking'] !== false) {
 			$output .= '
-			<div class="mini_stats">';
+				<div class="mini_stats">';
 			foreach ($html_strings['stats'] as $stat_title => $stat_data) {
 				$output .=
 					'<div class="mini_stats--list">
-				<h4>' .
+					<h4>' .
 					$stat_title .
 					'</h4>
-				<p>' .
+					<p>' .
 					implode('<br />', $stat_data) .
 					'</p>
-				</div>';
+					</div>';
 			}
 			$output .= '</div>';
 		}
 		$output .= '
-		</div>
-	</div>
-</li>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
 ';
 	}
 	$output .= '</ul></div>';

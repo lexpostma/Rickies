@@ -5,8 +5,8 @@ if (isset($error)) {
 }
 ?>
 
-<main>
-	<p id="active_date"><?= $current_selection['date_string'] ?></p>
+<main id="the_document">
+	<p id="document_date"><?= $current_selection['date_string'] ?></p>
 	<h1>The Bill of Rickies</h1>
 
 <?php foreach ($rules__array as $type => $rules) {
@@ -30,9 +30,12 @@ if (isset($error)) {
 } ?>
 
 </main>
+<aside class="no_bill">
+	<p>No rules were documented yet for the <span id="no_rules_string"></span>. Use the slider below to see The Bill of Rickies come into existence and progress over time.</p>
+</aside>
 <aside class="slider">
 	<div id="rule_slider">
-		<label id="date_label" for="date_slider"><?= $current_selection['name'] ?></label>
+		<label id="slider_label" for="date_slider"><?= $current_selection['name'] ?></label>
 		<input
 			id="date_slider"
 			type="range"
@@ -55,4 +58,5 @@ if (isset($error)) {
 <script><?php
 echo $event_slider_js_vars;
 include 'scripts/rules_slider.js';
+echo 'update_rules(' . $current_selection['index'] . ')';
 ?></script>

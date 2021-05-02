@@ -2,7 +2,6 @@
 
 :root {
 	--background-color: #fff;
-	--text-primary-color: #31373d;
 	--text-secondary-color: #777777;
 	--menu-color: var(--connected-blue);
 	--link-color: var(--connected-blue);
@@ -44,11 +43,15 @@
 		font-size: 18px;
 	}
 }
+@media screen and (min-width: var.$break-xl) {
+	:root {
+		--graphic-size: 80px;
+	}
+}
 
 @media (prefers-color-scheme: dark) {
 	:root {
 		--background-color: #000000;
-		--text-primary-color: #9baec1;
 		--text-secondary-color: #929292;
 		--link-hover-color: #33adf1;
 		--graphic-border: 1px solid rgba(255, 255, 255, 0.2);

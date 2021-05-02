@@ -1,6 +1,12 @@
+var paper = document.getElementById('the_document');
+var document_date = document.getElementById('document_date');
+var slider_label = document.getElementById('slider_label');
+var no_rules_string = document.getElementById('no_rules_string');
+
 function update_rules(value) {
-	document.getElementById('date_label').innerHTML = rickies_event_names[value];
-	document.getElementById('active_date').innerHTML = rickies_event_dates[value];
+	slider_label.innerHTML = rickies_event_names[value];
+	no_rules_string.innerHTML = rickies_event_names[value];
+	document_date.innerHTML = rickies_event_dates[value];
 
 	Array.from(document.querySelectorAll('li.rule')).forEach(function (el) {
 		if (el.dataset.startDate <= rickies_event_values[value] && el.dataset.endDate >= rickies_event_values[value]) {
@@ -23,6 +29,12 @@ function update_rules(value) {
 			show_rule(el.previousSibling);
 		}
 	});
+
+	if (paper.querySelectorAll('li.rule:not(.hidden)').length === 0) {
+		paper.classList.add('hidden');
+	} else {
+		paper.classList.remove('hidden');
+	}
 }
 
 function hide_rule(element) {

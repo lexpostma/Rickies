@@ -1,13 +1,16 @@
 @mixin secondary-text {
 	color: var(--text-secondary-color);
 	font-size: 0.75rem;
+	// line-height: 1.3;
 }
 
 $readability-width: 650px;
-$pop-transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+$hover-duration: 300ms;
+$pop-transition: $hover-duration transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 
 // Values copied from Bootstrap, they're smarter than me
 // https://getbootstrap.com/docs/5.0/layout/breakpoints/
+$break-xs: 375px;
 $break-sm: 576px;
 $break-md: 768px;
 $break-lg: 992px;

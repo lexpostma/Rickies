@@ -1,6 +1,5 @@
 :root {
   --background-color: #fff;
-  --text-primary-color: #31373d;
   --text-secondary-color: #777777;
   --menu-color: var(--connected-blue);
   --link-color: var(--connected-blue);
@@ -32,10 +31,14 @@
     font-size: 18px;
   }
 }
+@media screen and (min-width: 1200px) {
+  :root {
+    --graphic-size: 80px;
+  }
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #000000;
-    --text-primary-color: #9baec1;
     --text-secondary-color: #929292;
     --link-hover-color: #33adf1;
     --graphic-border: 1px solid rgba(255, 255, 255, 0.2);
@@ -134,10 +137,24 @@ header.leaderboard {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 }
 .nav_content a {
-  padding: var(--space-between-md);
+  padding: var(--space-between-md) var(--space-between-sm);
+  white-space: nowrap;
+}
+.nav_content a span.need_space {
+  display: none;
+}
+@media screen and (min-width: 375px) {
+  .nav_content a {
+    padding: var(--space-between-md);
+  }
+}
+@media screen and (min-width: 576px) {
+  .nav_content a span.need_space {
+    display: inline;
+  }
 }
 .nav_content a.active {
   opacity: 1;
@@ -202,7 +219,8 @@ section.navigate_with_mobile_menu h2 {
     max-width: 650px;
   }
   section.large_columns {
-    max-width: 1200px;
+    padding-top: var(--space-between-lg);
+    max-width: 1400px;
   }
 
   .section_group {
@@ -426,6 +444,14 @@ li.list_item.host_details .list_item_content .list_item_labels .mini_stats .mini
 li.list_item.host_details .list_item_content .list_item_labels .mini_stats .mini_stats--list:last-of-type {
   margin-left: 8px;
 }
+@media screen and (min-width: 768px) {
+  li.list_item.host_details .list_item_content {
+    flex-direction: column;
+  }
+  li.list_item.host_details .list_item_content .list_item_labels {
+    margin-left: 0;
+  }
+}
 li.list_item a.list_item_content {
   text-decoration: none;
   font-weight: normal;
@@ -440,6 +466,8 @@ li.list_item a.list_item_content .list_item_labels .label2 {
 @media (hover: hover) {
   li.list_item a.list_item_content {
     border-radius: var(--element-corner-radius);
+    background: var(--background-color);
+    transition: 300ms background ease-in-out;
   }
   li.list_item a.list_item_content .item_graphic {
     transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);

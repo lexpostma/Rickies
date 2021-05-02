@@ -59,6 +59,12 @@ li.list_item {
 				}
 			}
 		}
+		@media screen and (min-width: var.$break-md) {
+			flex-direction: column;
+			.list_item_labels {
+				margin-left: 0;
+			}
+		}
 	}
 	a.list_item_content {
 		text-decoration: none;
@@ -74,6 +80,8 @@ li.list_item {
 		}
 		@media (hover: hover) {
 			border-radius: var(--element-corner-radius);
+			background: var(--background-color);
+			transition: var.$hover-duration background ease-in-out;
 			.item_graphic {
 				transition: var.$pop-transition;
 			}

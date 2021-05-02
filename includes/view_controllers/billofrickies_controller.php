@@ -55,7 +55,7 @@ if ($url_view !== 'main' && !isset($current_selection)) {
 	// That's a 404
 	header('HTTP/1.0 404 Not Found', true, 404);
 	$error = banner(
-		'No rules were found for the requested Rickies. Here’s the <a href="/">latest Bill of Rickies</a>.',
+		'<b>404:</b> No rules were found for the requested Rickies. Here’s the <a href="/">latest Bill of Rickies</a>.',
 		'red'
 	);
 }

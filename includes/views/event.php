@@ -30,6 +30,10 @@ if ($rickies_data['ranking']['rickies'] !== false) {
 			href="<?= current_url() ?>#flexies"
 			onclick="navigate_section('flexies');">The Flexies</a>
 		<a class="menu_item"
+			id="menu_hosts"
+			href="<?= current_url() ?>#hosts"
+			onclick="navigate_section('hosts');">Hosts</a>
+		<a class="menu_item"
 			id="menu_details"
 			href="<?= current_url() ?>#details"
 			onclick="navigate_section('details');">Details</a>
@@ -38,13 +42,18 @@ if ($rickies_data['ranking']['rickies'] !== false) {
 
 <?= no_script_banner(), pick_item_bundle($picks_data__array) ?>
 
+<section class="navigate_with_mobile_menu large_columns" id="hosts">
+	<h2>Hosts</h2>
+	<div class="section_group">
+	<?= host_item_bundle($rickies_data['hosts'], $rickies_data['type']) ?>
+	</div>
+</section>
+
 <section class="navigate_with_mobile_menu large_columns" id="details">
 	<h2>Details</h2>
+
 	<div class="section_group">
-<?php
-echo host_item_bundle($rickies_data['hosts'], $rickies_data['type']);
-echo list_item_bundle($rickies_data['details']);
-?>
+<?= list_item_bundle($rickies_data['details']) ?>
 	</div>
 </section>
 

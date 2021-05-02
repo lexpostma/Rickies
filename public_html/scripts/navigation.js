@@ -71,6 +71,7 @@ function set_nav_height() {
 set_nav_height();
 
 window.addEventListener('scroll', function () {
+	// set_nav_height();
 	make_nav_sticky();
 });
 

@@ -13,8 +13,8 @@
 }
 
 :root {
-	--background-color: black;
-	--text-primary-color: #543404;
+	--background-color: var(--relay-blue);
+	--text-document-color: #543404;
 	--link-color: #d7a457;
 	--space-between-lg: 32px;
 	font-size: 14px;
@@ -23,7 +23,7 @@
 html {
 	line-height: 1.5;
 	background-color: var(--background-color);
-	color: var(--text-primary-color);
+	color: var(--text-document-color);
 }
 
 body {
@@ -46,7 +46,7 @@ main {
 	background-size: 100% 100%, cover, cover;
 }
 
-#active_date {
+#document_date {
 	text-align: center;
 	margin: 5px 0 22px;
 }
@@ -72,6 +72,37 @@ ol {
 	padding-left: 26px;
 }
 
+main {
+	transition: var.$pop-transition;
+	transition-delay: 0ms;
+	&.hidden {
+		transform: scale(0);
+		transform-origin: center 20%;
+		transition-delay: 500ms;
+	}
+}
+aside.no_bill {
+	display: none;
+}
+main.hidden + aside.no_bill {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 60px;
+	left: 0;
+	padding: 32px 32px 60px;
+	display: flex;
+	align-items: center;
+	z-index: -1;
+	p {
+		width: 100%;
+		max-width: var.$readability-width;
+		margin: auto;
+		color: rgb(0, 255, 0);
+		font-family: -apple-system-ui-monospace, ui-monospace, Courier New, monospace;
+	}
+}
+
 main a {
 	padding: 2px 4px;
 	margin: -2px -4px;
@@ -87,8 +118,8 @@ main a {
 	@media (hover: hover) {
 		&:hover,
 		&:focus {
-			text-decoration-color: var(--text-primary-color);
-			color: var(--text-primary-color);
+			text-decoration-color: var(--text-document-color);
+			color: var(--text-document-color);
 			background: var(--link-color);
 		}
 		&:active {
@@ -123,7 +154,7 @@ aside.slider {
 
 #back_button svg {
 	path:last-of-type {
-		fill: var(--text-primary-color);
+		fill: var(--text-document-color);
 	}
 }
 
@@ -140,7 +171,6 @@ aside.slider {
 @media (prefers-color-scheme: dark) {
 	/* :root {
 		--background-color: #31373D;
-		--text-primary-color: #FFFFFF;
 		--text-secondary-color: #777777;
 	} */
 }

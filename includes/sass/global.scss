@@ -8,6 +8,14 @@
 	--connected-purple: #9d3489;
 	--connected-blue: #0d87ca;
 	--relay-blue: #333f48;
+
+	--text-primary-color: #31373d;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--text-primary-color: #9baec1;
+	}
 }
 
 *,
@@ -39,7 +47,7 @@ p {
 	position: absolute;
 	top: 20px;
 	left: 20px;
-	z-index: 2;
+	z-index: 11;
 	@media (hover: hover) {
 		transition: var.$pop-transition;
 		&:hover,
@@ -53,6 +61,10 @@ p {
 	text-align: center;
 	color: white;
 	padding: 8px 16px;
+}
+
+.nowrap {
+	white-space: nowrap;
 }
 
 // Links on colored/dark background
