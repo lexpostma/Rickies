@@ -732,6 +732,15 @@ table.full_stats td.value {
   height: 60px;
   width: 60px;
 }
+@media screen and (min-width: 1400px) {
+  .charts .chart_pick_type .chart_emoji {
+    top: 25px;
+  }
+  .charts .chart-container {
+    height: 80px;
+    width: 80px;
+  }
+}
 
 html {
   line-height: 1.5;

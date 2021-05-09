@@ -194,4 +194,13 @@ table.full_stats {
 		height: 60px;
 		width: 60px;
 	}
+	@media screen and (min-width: var.$break-xxl) {
+		.chart_pick_type .chart_emoji {
+			top: 25px;
+		}
+		.chart-container {
+			height: 80px;
+			width: 80px;
+		}
+	}
 }
