@@ -112,16 +112,16 @@ function list_item($data)
 		$output .= list_item_graphic();
 	}
 
-	$output .= '<div class="list_item_labels"><span class="label1">' . $data['label1'] . '</span>';
+	$output .= '<div class="list_item_labels"><p class="label1">' . $data['label1'] . '</p>';
 
 	// Is there an 2nd label, yes/no?
 	if (isset($data['label2'])) {
-		$output .= '<span class="label2">' . $data['label2'] . '</span>';
+		$output .= '<p class="label2">' . $data['label2'] . '</p>';
 	}
 
 	// Is there an 3nd label OR tag, yes/no?
 	if (isset($data['tag']) || isset($data['label3'])) {
-		$output .= '<div class="secondary_string">';
+		$output .= '<p class="secondary_string">';
 		if (isset($data['tag'])) {
 			// Does the tag have a color defined, yes/no?
 			if (!isset($data['tag_color'])) {
@@ -137,7 +137,7 @@ function list_item($data)
 		if (isset($data['label3'])) {
 			$output .= '<span class="label3">' . $data['label3'] . '</span>';
 		}
-		$output .= '</div>';
+		$output .= '</p>';
 	}
 	$output .= '</div>';
 

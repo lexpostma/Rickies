@@ -21,12 +21,6 @@ li.list_item {
 			flex-direction: column;
 			align-items: flex-start;
 			flex-grow: 1;
-
-			.label1,
-			.label2,
-			.secondary_string {
-				display: block;
-			}
 			.secondary_string {
 				margin-top: 4px;
 				@include var.secondary-text;
