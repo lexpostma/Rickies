@@ -46,6 +46,7 @@ if (isset($error)) {
 			step="1"
 			list="date_values"
 			oninput="update_rules(this.value)"
+			onclick="update_rules(this.value)"
 			onchange="update_rules(this.value)">
 		<datalist id="date_values">
 <?php for ($i = 0; $i <= $event_slider_steps; $i++) {

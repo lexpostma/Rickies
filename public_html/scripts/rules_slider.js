@@ -8,33 +8,38 @@ function update_rules(value) {
 	no_rules_string.innerHTML = rickies_event_names[value];
 	document_date.innerHTML = rickies_event_dates[value];
 
-	Array.from(document.querySelectorAll('li.rule')).forEach(function (el) {
-		if (el.dataset.startDate <= rickies_event_values[value] && el.dataset.endDate >= rickies_event_values[value]) {
-			// Show the rules that have started _on_ or _before_ the selected event data
-			// AND ended _on_ or _after_ the selected event data
-			// Remove class "hidden" from the <li>
-			show_rule(el);
-		} else {
-			// Add class "hidden" to the <li>
-			hide_rule(el);
-		}
-	});
+	// Check is paper contains rules.
+	// Hide it if it doesn't
+	if (paper.querySelectorAll('li.rule:not(.hidden)').length === 0) {
+		paper.classList.add('hidden');
+	} else {
+		paper.classList.remove('hidden');
+	}
 
 	// Check is the list is empty (all <li> rules inside are hidden )
 	// If empty, also hide the title (previous sibling of the <ol>)
 	Array.from(document.querySelectorAll('ol.rules')).forEach(function (el) {
 		if (el.querySelectorAll('li.rule:not(.hidden)').length === 0) {
 			hide_rule(el.previousSibling);
-		} else {
-			show_rule(el.previousSibling);
 		}
 	});
 
-	if (paper.querySelectorAll('li.rule:not(.hidden)').length === 0) {
-		paper.classList.add('hidden');
-	} else {
-		paper.classList.remove('hidden');
-	}
+	Array.from(document.querySelectorAll('li.rule')).forEach(function (el) {
+		if (el.dataset.startDate <= rickies_event_values[value] && el.dataset.endDate >= rickies_event_values[value]) {
+			// Show the rules that have started _on_ or _before_ the selected event data
+			// AND ended _on_ or _after_ the selected event data
+			// Remove class "hidden" from the <li>
+			show_rule(el);
+
+			// If a rule is shown, the entire paper and its title should also be shown
+			paper.classList.remove('hidden');
+			// Title <h2> is sibling before the <li>'s parent <ol>
+			show_rule(el.parentNode.previousSibling);
+		} else {
+			// Add class "hidden" to the <li>
+			hide_rule(el);
+		}
+	});
 }
 
 function hide_rule(element) {
