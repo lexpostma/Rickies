@@ -246,7 +246,6 @@ aside.slider #rule_slider input[type=range]:focus {
   --text-document-color: #543404;
   --link-color: #d7a457;
   --space-between-lg: 32px;
-  font-size: 14px;
 }
 
 html {
@@ -257,9 +256,9 @@ html {
 
 main {
   font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
-  max-width: 650px;
+  max-width: 750px;
+  padding: var(--space-between-lg);
   margin: auto;
-  padding: 24px 24px 100px;
   background-image: url(/images/parchment-border.svg), radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%), url(/images/parchment-background.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -377,18 +376,8 @@ aside.slider {
 }
 
 @media screen and (min-width: 768px) {
-  :root {
-    font-size: 16px;
-  }
-
   main {
     margin: 32px auto 128px;
     padding: 48px 48px 64px;
   }
-}
-@media (prefers-color-scheme: dark) {
-  /* :root {
-  	--background-color: #31373D;
-  	--text-secondary-color: #777777;
-  } */
 }

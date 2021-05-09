@@ -17,7 +17,6 @@
 	--text-document-color: #543404;
 	--link-color: #d7a457;
 	--space-between-lg: 32px;
-	font-size: 14px;
 }
 
 html {
@@ -31,9 +30,11 @@ body {
 
 main {
 	font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
-	max-width: var.$readability-width;
+
+	// Slightly wider than readability, due to paper's large padding
+	max-width: 750px;
+	padding: 24px;
 	margin: auto;
-	padding: 24px 24px 100px;
 
 	// Note that the border.svg file needs to contain
 	// preserveAspectRatio="none" to be able to stretch the full element.
@@ -159,18 +160,8 @@ aside.slider {
 }
 
 @media screen and (min-width: var.$break-md) {
-	:root {
-		font-size: 16px;
-	}
 	main {
 		margin: 32px auto 128px;
 		padding: 48px 48px 64px;
 	}
-}
-
-@media (prefers-color-scheme: dark) {
-	/* :root {
-		--background-color: #31373D;
-		--text-secondary-color: #777777;
-	} */
 }

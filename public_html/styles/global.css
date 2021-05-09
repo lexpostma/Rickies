@@ -7,8 +7,19 @@
   --connected-blue: #0d87ca;
   --relay-blue: #333f48;
   --text-primary-color: #31373d;
+  font-size: 14px;
 }
 
+@media screen and (min-width: 576px) {
+  :root {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 768px) {
+  :root {
+    font-size: 18px;
+  }
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --text-primary-color: #9baec1;
