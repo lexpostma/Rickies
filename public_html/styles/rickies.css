@@ -1,7 +1,6 @@
 :root {
   --background-color: #fff;
   --text-secondary-color: #777777;
-  --menu-color: var(--connected-blue);
   --link-color: var(--connected-blue);
   --link-hover-color: #23527c;
   --element-hover-color: rgba(0, 0, 0, 0.05);
@@ -131,7 +130,7 @@ header.about, header.leaderboard {
 }
 
 .nav_content {
-  background: var(--menu-color);
+  background: var(--connected-blue);
   text-align: center;
   padding: 0;
   display: flex;
