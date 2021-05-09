@@ -321,8 +321,7 @@ main.hidden + aside.no_bill p {
   width: 100%;
   max-width: 650px;
   margin: auto;
-  color: lime;
-  font-family: -apple-system-ui-monospace, ui-monospace, Courier New, monospace;
+  color: white;
 }
 
 main a {
