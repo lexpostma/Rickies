@@ -16,6 +16,12 @@ switch ($url_view) {
 		$include_subbody = '../includes/views/leaderboard.php';
 		$back_to_overview = true;
 		break;
+	case 'about':
+		// About query
+		include '../includes/view_controllers/about_controller.php';
+		$include_subbody = '../includes/views/about.php';
+		$back_to_overview = true;
+		break;
 	default:
 		// If non of the above, it's probably a Rickies event
 		include '../includes/view_controllers/rickies_detail_controller.php';

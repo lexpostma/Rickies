@@ -55,6 +55,7 @@ header {
 			}
 		}
 	}
+	&.about,
 	&.details,
 	&.leaderboard {
 		h1 {
@@ -79,6 +80,7 @@ header {
 				url(/images/diagonal-rainbow-header.svg);
 		}
 	}
+	&.about,
 	&.leaderboard {
 		height: 250px;
 		background-image: url(/images/connected-map.png);
