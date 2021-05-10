@@ -9,7 +9,9 @@ function url_protocol()
 // https://example.com
 function base_url()
 {
-	return url_protocol() . $_SERVER['SERVER_NAME'];
+	$url = url_protocol() . $_SERVER['SERVER_NAME'];
+	return str_replace('www.', '', $url);
+	// return url_protocol() . $_SERVER['SERVER_NAME'];
 }
 
 // https://example.com/something
@@ -33,7 +35,8 @@ function billofrickies_url($goto = true)
 		// goto = true
 		// You want to go to The Bill of Rickies
 		// Therefore we need to add subdomain to the URL
-		$urlarray = explode('.', $_SERVER['SERVER_NAME']);
+		$url = str_replace('www.', '', $_SERVER['SERVER_NAME']);
+		$urlarray = explode('.', $url);
 		array_splice($urlarray, -2, 0, 'thebillof');
 		return url_protocol() . implode('.', $urlarray);
 	} else {
