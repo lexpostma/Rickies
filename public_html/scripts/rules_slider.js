@@ -4,17 +4,10 @@ var slider_label = document.getElementById('slider_label');
 var no_rules_string = document.getElementById('no_rules_string');
 
 function update_rules(value) {
+	// Update labels
 	slider_label.innerHTML = rickies_event_names[value];
-	no_rules_string.innerHTML = rickies_event_names[value];
 	document_date.innerHTML = rickies_event_dates[value];
-
-	// Check is paper contains rules.
-	// Hide it if it doesn't
-	if (paper.querySelectorAll('li.rule:not(.hidden)').length === 0) {
-		paper.classList.add('hidden');
-	} else {
-		paper.classList.remove('hidden');
-	}
+	no_rules_string.innerHTML = rickies_event_names[value];
 
 	// Check is the list is empty (all <li> rules inside are hidden )
 	// If empty, also hide the title (previous sibling of the <ol>)
@@ -48,6 +41,13 @@ function hide_rule(element) {
 	var delayInMilliseconds = 750;
 
 	element.classList.add('hidden');
+
+	// With each hiding of an element, check is paper still contains rules.
+	// Hide entire paper if it doesn't have content/rules
+	if (paper.querySelectorAll('li.rule:not(.hidden)').length === 0) {
+		paper.classList.add('hidden');
+	}
+
 	setTimeout(function () {
 		element.classList.add('gone');
 	}, delayInMilliseconds);
