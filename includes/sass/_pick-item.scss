@@ -1,10 +1,18 @@
 @use "variables" as var;
 
 .host_picks {
-	h3 span {
-		color: var(--text-secondary-color);
-		float: right;
-		font-variant-numeric: tabular-nums;
+	h3 {
+		overflow: auto;
+		&:after {
+			content: '';
+			clear: both;
+			display: table;
+		}
+		span {
+			color: var(--text-secondary-color);
+			float: right;
+			font-variant-numeric: tabular-nums;
+		}
 	}
 }
 

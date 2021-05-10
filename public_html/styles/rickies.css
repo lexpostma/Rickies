@@ -468,6 +468,14 @@ span.tag {
   border: var(--graphic-border);
 }
 
+.host_picks h3 {
+  overflow: auto;
+}
+.host_picks h3:after {
+  content: "";
+  clear: both;
+  display: table;
+}
 .host_picks h3 span {
   color: var(--text-secondary-color);
   float: right;
