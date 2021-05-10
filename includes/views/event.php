@@ -17,8 +17,8 @@ if (
 } elseif (array_key_exists('img_url', $rickies_data)) {
 	// Image exists, no exceptions -> place image above the title
 	echo '<header class="details contain_img"><img src="' . $rickies_data['img_url'] . '" />';
-} elseif ($rickies_data['type'] == 'Annual Rickies' && !array_key_exists('img_url', $rickies_data)) {
-	// Annual Rickies, no image, show year
+} elseif ($rickies_data['type'] == 'Annual Rickies') {
+	// No image, but Annual Rickies -> show year
 	echo '<header class="details"><div class="big_year">' . strftime('%Y', $rickies_data['date']) . '</div>';
 } else {
 	// Else -> empty header
