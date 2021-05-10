@@ -139,7 +139,7 @@ function list_item($data)
 		if (array_key_exists('artwork_background_color', $data) && $data['artwork_background_color'] !== false) {
 			$img_array['color'] = $data['artwork_background_color'];
 		}
-	} elseif ($data['type'] == 'Annual Rickies') {
+	} elseif (array_key_exists('type', $data) && $data['type'] == 'Annual Rickies') {
 		// No image, but annual, so include the date/year
 		$img_array['type'] = 'annual';
 		$img_array['date'] = $data['date'];
