@@ -54,25 +54,25 @@ if ($rickies_data['ranking']['rickies'] !== false) {
 				id="menu_rickies"
 				href="<?= current_url() ?>#rickies"
 				data-goatcounter-click="Show Rickies"
-				data-goatcounter-referrer="/<?= $rickies_data['url_name'] ?>"
+				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('rickies');">The Rickies</a>
 			<a class="menu_item"
 				id="menu_flexies"
 				href="<?= current_url() ?>#flexies"
 				data-goatcounter-click="Show Flexies"
-				data-goatcounter-referrer="/<?= $rickies_data['url_name'] ?>"
+				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('flexies');">The Flexies</a>
 			<a class="menu_item"
 				id="menu_hosts"
 				href="<?= current_url() ?>#hosts"
 				data-goatcounter-click="Show hosts"
-				data-goatcounter-referrer="/<?= $rickies_data['url_name'] ?>"
+				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('hosts');">Hosts</a>
 			<a class="menu_item"
 				id="menu_details"
 				href="<?= current_url() ?>#details"
 				data-goatcounter-click="Show details"
-				data-goatcounter-referrer="/<?= $rickies_data['url_name'] ?>"
+				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('details');">Details</a>
 		</div>
 	</div>
