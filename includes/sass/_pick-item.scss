@@ -63,13 +63,8 @@ li.pick_item {
 				background: var(--connected-blue);
 			}
 			&.wrong {
-				// &.regular.wrong,
-				// &.risky.wrong {
 				background: var(--connected-red);
 			}
-			// &.flexy.wrong {
-			// background: var(--connected-orange);
-			// }
 
 			// Risky points ring
 			&.risky:after {
@@ -90,7 +85,7 @@ li.pick_item {
 			}
 		}
 	}
-	span.note {
+	.note p {
 		@include var.secondary-text;
 	}
 }

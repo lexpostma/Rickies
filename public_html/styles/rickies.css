@@ -555,7 +555,7 @@ li.pick_item p.pick span.points.risky.correct:after {
 li.pick_item p.pick span.points.risky.wrong:after {
   border-color: var(--connected-red);
 }
-li.pick_item span.note {
+li.pick_item .note p {
   color: var(--text-secondary-color);
   font-size: 0.75rem;
 }

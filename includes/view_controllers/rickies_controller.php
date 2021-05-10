@@ -242,17 +242,17 @@ function avatar_leaderboard($host_array)
 function pick_item($data)
 {
 	$output = '<li class="pick_item">';
+
+	// If it's not a Flexy, the picks are in 3 rounds
 	if ($data['type'] !== 'Flexy') {
 		$output .= '<span class="round">' . $data['round'] . '</span>';
 	}
-	$output .=
-		'<p class="pick"><span class="label">' .
-		$data['pick'] .
-		'</span><span class="points ' .
-		strtolower($data['type']) .
-		' ' .
-		strtolower($data['status']) .
-		'">';
+
+	// Define the pick label
+	$output .= '<p class="pick"><span class="label">' . $data['pick'] . '</span>';
+
+	// Define the point score
+	$output .= '<span class="points ' . strtolower($data['type']) . ' ' . strtolower($data['status']) . '">';
 	if ($data['status'] == false) {
 		$output .= '?';
 	} elseif ($data['points'] > 0 && $data['type'] == 'Flexy') {
@@ -264,9 +264,13 @@ function pick_item($data)
 	} else {
 		$output .= $data['points'];
 	}
-	$output .= '</span></p>';
+	$output .= '</span>';
+
+	$output .= '</p>';
+
+	// Add optional note
 	if ($data['note']) {
-		$output .= '<span class="note">' . markdown($data['note']) . '</span>';
+		$output .= '<div class="note">' . markdown($data['note']) . '</div>';
 	}
 	$output .= '</li>';
 	return $output;
