@@ -7,6 +7,10 @@
   --connected-blue: #0d87ca;
   --relay-blue: #333f48;
   --text-primary-color: #31373d;
+  --space-side-padding: 16px;
+  --space-between-sm: 8px;
+  --space-between-md: 16px;
+  --space-between-lg: 32px;
   font-size: 14px;
 }
 
@@ -17,6 +21,7 @@
 }
 @media screen and (min-width: 768px) {
   :root {
+    --space-side-padding: 32px;
     font-size: 18px;
   }
 }

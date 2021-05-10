@@ -13,7 +13,7 @@ li.pick_item {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	padding: var(--space-element-padding);
+	padding: var(--element-padding);
 	span.round {
 		@include var.secondary-text;
 	}

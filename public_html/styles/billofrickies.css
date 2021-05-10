@@ -245,7 +245,6 @@ aside.slider #rule_slider input[type=range]:focus {
   --background-color: var(--relay-blue);
   --text-document-color: #543404;
   --link-color: #d7a457;
-  --space-between-lg: 32px;
 }
 
 html {
@@ -257,7 +256,7 @@ html {
 main {
   font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
   max-width: 750px;
-  padding: var(--space-between-lg);
+  padding: 24px;
   margin: auto;
   background-image: url(/images/parchment-border.svg), radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%), url(/images/parchment-background.jpg);
   background-position: center;

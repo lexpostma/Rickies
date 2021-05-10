@@ -1,8 +1,8 @@
 @use "variables" as var;
 
 ul.list_item_group {
-	margin-left: var(--space-element-padding-neg);
-	margin-right: var(--space-element-padding-neg);
+	margin-left: var(--element-padding-neg);
+	margin-right: var(--element-padding-neg);
 }
 li.list_item + li.list_item {
 	margin-top: var(--space-between-sm);
@@ -13,7 +13,7 @@ li.list_item {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		padding: var(--space-element-padding);
+		padding: var(--element-padding);
 
 		.list_item_labels {
 			margin-left: var(--space-between-md);

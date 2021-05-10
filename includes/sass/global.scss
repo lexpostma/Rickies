@@ -11,6 +11,11 @@
 
 	--text-primary-color: #31373d;
 
+	--space-side-padding: 16px;
+	--space-between-sm: 8px;
+	--space-between-md: 16px;
+	--space-between-lg: 32px;
+
 	font-size: 14px;
 }
 
@@ -21,6 +26,7 @@
 }
 @media screen and (min-width: var.$break-md) {
 	:root {
+		--space-side-padding: 32px;
 		font-size: 18px;
 	}
 }

@@ -8,19 +8,11 @@
 
 	--element-hover-color: rgba(0, 0, 0, 0.05);
 	--element-corner-radius: 8px;
-
-	--space-side-padding: 16px;
-
-	--space-between-sm: 8px;
-	--space-between-md: 16px;
-	--space-between-lg: 32px;
-
-	--space-element-padding: 8px;
-	--space-element-padding-neg: -8px;
+	--element-padding: 8px;
+	--element-padding-neg: -8px;
 
 	--corner-radius: 4px;
 
-	/* --nav-height: 44px; */
 	// --safe-distance-top:    max(var(--distance),env(safe-area-inset-top));
 	// --safe-distance-bottom: max(var(--distance),env(safe-area-inset-bottom));
 	// --safe-distance-left:   max(var(--distance),env(safe-area-inset-left));
@@ -28,12 +20,6 @@
 	/* --hover-animation-duration: 200ms; */
 	--graphic-border: 1px solid rgba(0, 0, 0, 0.1);
 	--graphic-size: 60px;
-}
-
-@media screen and (min-width: var.$break-md) {
-	:root {
-		--space-side-padding: 32px;
-	}
 }
 
 @media screen and (min-width: var.$break-xl) {
