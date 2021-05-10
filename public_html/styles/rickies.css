@@ -1,3 +1,29 @@
+@keyframes connected_colors {
+  0% {
+    background-color: var(--connected-green);
+  }
+  14% {
+    background-color: var(--connected-yellow);
+  }
+  29% {
+    background-color: var(--connected-orange);
+  }
+  43% {
+    background-color: var(--connected-red);
+  }
+  57% {
+    background-color: var(--connected-purple);
+  }
+  71% {
+    background-color: var(--connected-blue);
+  }
+  86% {
+    background-color: var(--relay-blue);
+  }
+  100% {
+    background-color: var(--connected-green);
+  }
+}
 :root {
   --background-color: #fff;
   --text-secondary-color: #777777;
@@ -113,10 +139,15 @@ header.about, header.leaderboard {
 }
 
 .nav_content {
-  background: var(--connected-blue);
+  background-color: var(--connected-blue);
   text-align: center;
   padding: 0;
   overflow-x: auto;
+}
+.nav_content.home {
+  animation-name: connected_colors;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
 }
 .nav_content .nav_content--items {
   display: inline-flex;
@@ -300,29 +331,6 @@ footer {
   }
 }
 
-@keyframes connected_colors {
-  0% {
-    background-color: var(--connected-green);
-  }
-  17% {
-    background-color: var(--connected-yellow);
-  }
-  33% {
-    background-color: var(--connected-orange);
-  }
-  50% {
-    background-color: var(--connected-red);
-  }
-  67% {
-    background-color: var(--connected-purple);
-  }
-  84% {
-    background-color: var(--connected-blue);
-  }
-  100% {
-    background-color: var(--connected-green);
-  }
-}
 .item_graphic {
   border-radius: var(--corner-radius);
   border: var(--graphic-border);

@@ -1,7 +1,10 @@
 @use "variables" as var;
 
 .nav_content {
-	background: var(--connected-blue);
+	background-color: var(--connected-blue);
+	&.home {
+		@include var.connected_background(40s);
+	}
 	text-align: center;
 	padding: 0;
 	overflow-x: auto;

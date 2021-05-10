@@ -1,3 +1,29 @@
+@keyframes connected_colors {
+  0% {
+    background-color: var(--connected-green);
+  }
+  14% {
+    background-color: var(--connected-yellow);
+  }
+  29% {
+    background-color: var(--connected-orange);
+  }
+  43% {
+    background-color: var(--connected-red);
+  }
+  57% {
+    background-color: var(--connected-purple);
+  }
+  71% {
+    background-color: var(--connected-blue);
+  }
+  86% {
+    background-color: var(--relay-blue);
+  }
+  100% {
+    background-color: var(--connected-green);
+  }
+}
 aside.slider {
   position: fixed;
   bottom: 0;

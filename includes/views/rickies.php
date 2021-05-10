@@ -11,7 +11,7 @@
 	</div>
 </header>
 
-<nav class="nav_content home">
+<nav class="nav_content home" style="animation-delay: <?= rand(-50, 0) ?>s;">
 	<div class="nav_content--items">
 		<a class="active" href="#list"><span class="need_space">The </span>Rickies</a>
 		<a href="/leaderboard"><span class="need_space">Host </span>Leaderboard</a>

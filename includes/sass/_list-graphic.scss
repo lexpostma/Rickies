@@ -1,26 +1,4 @@
-@keyframes connected_colors {
-	0% {
-		background-color: var(--connected-green);
-	}
-	17% {
-		background-color: var(--connected-yellow);
-	}
-	33% {
-		background-color: var(--connected-orange);
-	}
-	50% {
-		background-color: var(--connected-red);
-	}
-	67% {
-		background-color: var(--connected-purple);
-	}
-	84% {
-		background-color: var(--connected-blue);
-	}
-	100% {
-		background-color: var(--connected-green);
-	}
-}
+@use "variables" as var;
 
 .item_graphic {
 	border-radius: var(--corner-radius);
@@ -62,8 +40,6 @@
 	}
 	&.placeholder {
 		background-color: var(--relay-blue);
-		animation-name: connected_colors;
-		animation-duration: 60s;
-		animation-iteration-count: infinite;
+		@include var.connected_background(60s);
 	}
 }
