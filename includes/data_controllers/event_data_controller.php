@@ -7,7 +7,7 @@ $rickies_events__request = $airtable->getContent('Rickies', $rickies_events__par
 do {
 	$rickies_events__response = $rickies_events__request->getResponse();
 
-	// echo "<pre>", var_dump($rickies_events__response), "</pre>";
+	// echo '<pre>', var_dump($rickies_events__response), '</pre>';
 
 	// Does event exist?
 	if (count($rickies_events__response['records']) > 0) {
@@ -25,10 +25,11 @@ do {
 				'date' => strtotime(check_key('Predictions episode date', $fields, false, 0)),
 				'artwork' => [
 					'rickies' => airtable_image_url(check_key('Rickies artwork', $fields, false, 0)),
-					'predictions_ep' => airtable_image_url(check_key('Predictions episode artwork', $fields, false, 0)),
 					'event' => airtable_image_url(check_key('Event artwork', $fields, false, 0)),
+					'predictions_ep' => airtable_image_url(check_key('Predictions episode artwork', $fields, false, 0)),
 					'results_ep' => airtable_image_url(check_key('Results episode artwork', $fields, false, 0)),
 				],
+				'artwork_background_color' => check_key('Artwork background color', $fields),
 				'winner' => check_key('Rickies 1st (manual)', $fields),
 			];
 

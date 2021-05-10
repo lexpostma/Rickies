@@ -13,6 +13,7 @@ $rickies_events__params = [
 		'Predictions episode artwork',
 		'Rickies artwork',
 		'Event artwork',
+		'Artwork background color',
 	],
 	'filterByFormula' => "AND( Status, Status != 'Hidden', Picks )",
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],

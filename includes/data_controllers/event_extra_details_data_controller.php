@@ -127,8 +127,6 @@ $rickies_events__array[$id]['details'] = [
 	'more_data_charity' => [
 		'url' => check_key('Charity URL', $fields, false, 0),
 		'img_url' => check_key('Charity logo', $fields, false, 0),
-		// To contain the background-image instead of cover
-		// 'img_fill' => true,
 		'label1' => check_key('Charity name', $fields, false, 0),
 		'label2' => '$' . check_key('Flexy donation', $fields) . ' donated by ' . check_key('Flexies 3rd', $fields),
 		'label3' => check_key('Flexies 1st', $fields) . '’s choice',

@@ -31,24 +31,40 @@ switch ($url_view) {
 
 function list_item_graphic($img_array = false, $avatar = false)
 {
+	// Image array types can be:
+	// * background: fill the background with src, optional color
+	// * color: use color as background
+	// * annual: use text + random color background
+	// * avatar: use <img> with memoji on a color background
 	$class = ['item_graphic'];
 	$style = [];
 
 	if ($img_array == false) {
 		$class[] = 'placeholder';
 		$style[] = 'animation-delay: ' . rand(-50, 0) . 's;';
-	} elseif ($img_array['type'] == 'background') {
-		$class[] = 'fill_image';
-		$style[] = 'background-image: url(' . $img_array['src'] . ');';
-	} elseif ($img_array['type'] == 'contain') {
-		$class[] = 'contain_image';
-		$style[] = 'background-image: url(' . $img_array['src'] . ');';
-	} elseif ($img_array['type'] == 'color') {
-		$style[] = 'background-color: var(--connected-' . $img_array['color'] . ')';
-	} elseif ($img_array['type'] == 'avatar') {
-		$class[] = 'avatar';
-		$img = '<img src="' . $img_array['src'] . '" />';
-		$style[] = 'background-color: var(--connected-' . $img_array['color'] . ')';
+	} else {
+		switch ($img_array['type']) {
+			case 'background':
+				$class[] = 'fill_image';
+				if (isset($img_array['color'])) {
+					$style[] = 'background-color: ' . $img_array['color'] . ';';
+				}
+				$style[] = 'background-image: url(' . $img_array['src'] . ');';
+				break;
+			case 'color':
+				$style[] = 'background-color: var(--connected-' . $img_array['color'] . ')';
+				break;
+			case 'annual':
+				$class[] = 'annual diagonal';
+				$style[] = 'animation-delay: ' . rand(-50, 0) . 's;';
+				$txt = '<span>' . strftime('’%y', $img_array['date']) . '</span>';
+				break;
+			case 'avatar':
+				$class[] = 'avatar';
+				$img = '<img src="' . $img_array['src'] . '" />';
+				$style[] = 'background-color: var(--connected-' . $img_array['color'] . ')';
+				break;
+		}
 	}
 
 	if ($avatar == true) {
@@ -64,6 +80,8 @@ function list_item_graphic($img_array = false, $avatar = false)
 	$output .= '>';
 	if (isset($img)) {
 		$output .= $img;
+	} elseif (isset($txt)) {
+		$output .= $txt;
 	}
 	$output .= '</div>';
 	return $output;
@@ -113,18 +131,23 @@ function list_item($data)
 
 	// Is there an image, yes/no?
 	if (isset($data['img_url']) && $data['img_url'] !== false) {
+		// Set URL as img src
 		$img_array['src'] = $data['img_url'];
-		if (!array_key_exists('img_fill', $data)) {
-			$img_array['type'] = 'background';
-		} else {
-			$img_array['type'] = 'contain';
-		}
+		$img_array['type'] = 'background';
 
-		$output .= list_item_graphic($img_array);
+		// Set color, if defined
+		if (array_key_exists('artwork_background_color', $data) && $data['artwork_background_color'] !== false) {
+			$img_array['color'] = $data['artwork_background_color'];
+		}
+	} elseif ($data['type'] == 'Annual Rickies') {
+		// No image, but annual, so include the date/year
+		$img_array['type'] = 'annual';
+		$img_array['date'] = $data['date'];
 	} else {
-		$output .= list_item_graphic();
+		$img_array = false;
 	}
 
+	$output .= list_item_graphic($img_array);
 	$output .= '<div class="list_item_labels"><p class="label1">' . $data['label1'] . '</p>';
 
 	// Is there an 2nd label, yes/no?

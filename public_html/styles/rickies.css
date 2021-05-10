@@ -59,6 +59,7 @@ header {
   padding: var(--space-between-lg);
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 header.home {
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%), url("/images/confetti.png");
@@ -117,21 +118,49 @@ header.home .hero_content h1 {
 header.about h1, header.details h1, header.leaderboard h1 {
   text-transform: uppercase;
   position: absolute;
+  z-index: 2;
   color: white;
   left: var(--space-between-lg);
   right: var(--space-between-lg);
   bottom: var(--space-between-lg);
+  text-shadow: 0px 1px 6px rgba(51, 63, 72, 0.6);
 }
 header.details {
   height: 375px;
   background-color: var(--connected-blue);
   background-size: cover;
-  background-image: linear-gradient(180deg, rgba(51, 63, 72, 0) 75%, rgba(51, 63, 72, 0.2) 100%), url(/images/diagonal-rainbow-header.svg);
+  background-image: url(/images/diagonal-rainbow-header.svg);
+}
+header.details .gradient {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(180deg, rgba(51, 63, 72, 0) 75%, rgba(51, 63, 72, 0.2) 100%);
 }
 @media (prefers-color-scheme: dark) {
-  header.details {
-    background-image: linear-gradient(180deg, rgba(51, 63, 72, 0) 40%, rgba(51, 63, 72, 0.6) 100%), url(/images/diagonal-rainbow-header.svg);
+  header.details .gradient {
+    background-image: linear-gradient(180deg, rgba(51, 63, 72, 0) 40%, rgba(51, 63, 72, 0.6) 100%);
   }
+}
+header.details .big_year {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 900;
+  font-size: 180px;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-shadow: 0px 2px 8px rgba(51, 63, 72, 0.2);
+}
+header.details.custom.color {
+  background-size: auto 100%;
+}
+header.details.contain_img img {
+  height: 70%;
+  filter: drop-shadow(0px 1px 6px rgba(51, 63, 72, 0.6));
+  border-radius: var(--corner-radius);
 }
 header.about, header.leaderboard {
   height: 250px;
@@ -340,11 +369,12 @@ footer {
   flex-shrink: 0;
   position: relative;
   background-repeat: no-repeat;
+  background-origin: border-box;
+  background-position: center;
 }
 .item_graphic.avatar {
   border-radius: 50%;
   background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.85) 100%);
-  background-origin: border-box;
 }
 @media (prefers-color-scheme: dark) {
   .item_graphic.avatar {
@@ -360,15 +390,20 @@ footer {
   left: -10%;
   top: -10%;
 }
+.item_graphic.annual {
+  color: white;
+  text-align: center;
+  line-height: var(--graphic-size);
+  font-weight: 800;
+  font-size: calc(var(--graphic-size) / 1.8);
+}
+.item_graphic.diagonal {
+  background-color: var(--connected-blue);
+  background-size: cover;
+  background-image: url(/images/diagonal-rainbow-header.svg);
+}
 .item_graphic.fill_image {
   background-size: cover;
-  background-origin: border-box;
-  background-position: center;
-}
-.item_graphic.contain_image {
-  background-color: #7f7f7f;
-  background-size: contain;
-  background-position: center;
 }
 .item_graphic.placeholder {
   background-color: var(--relay-blue);
@@ -796,4 +831,8 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+#back_button {
+  box-shadow: 0px 1px 6px rgba(51, 63, 72, 0.6);
 }
