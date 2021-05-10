@@ -3,6 +3,15 @@ var document_date = document.getElementById('document_date');
 var slider_label = document.getElementById('slider_label');
 var no_rules_string = document.getElementById('no_rules_string');
 
+function slide_event() {
+	window.goatcounter.count({
+		path: 'Show history',
+		title: 'Slide through The Bill of Rickies',
+		referrer: window.location.href,
+		event: true,
+	});
+}
+
 function update_rules(value) {
 	// Update labels
 	slider_label.innerHTML = rickies_event_names[value];

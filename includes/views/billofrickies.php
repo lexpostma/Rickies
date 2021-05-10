@@ -47,7 +47,7 @@ if (isset($error)) {
 			list="date_values"
 			oninput="update_rules(this.value)"
 			onclick="update_rules(this.value)"
-			onchange="update_rules(this.value)">
+			onchange="update_rules(this.value); slide_event()">
 		<datalist id="date_values">
 <?php for ($i = 0; $i <= $event_slider_steps; $i++) {
 	echo '<option value="' . $i . '"></option>';
