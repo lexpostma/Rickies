@@ -283,7 +283,7 @@ main {
   font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
   max-width: 750px;
   padding: 24px;
-  margin: auto;
+  margin: 16px auto 100px;
   background-image: url(/images/parchment-border.svg), radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%), url(/images/parchment-background.jpg);
   background-position: center;
   background-repeat: no-repeat;

@@ -146,7 +146,7 @@ header.about, header.leaderboard {
 }
 .nav_content.home {
   animation-name: connected_colors;
-  animation-duration: 30s;
+  animation-duration: 40s;
   animation-iteration-count: infinite;
 }
 .nav_content .nav_content--items {
