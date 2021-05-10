@@ -1,7 +1,6 @@
-<?php if ($rickies_data['type'] == 'Annual Rickies' && !array_key_exists('img_url', $rickies_data)) {
-	// Annual Rickies, no image, show year
-	echo '<header class="details"><div class="big_year">' . strftime('%Y', $rickies_data['date']) . '</div>';
-} elseif (
+<?php
+// Define the header
+if (
 	array_key_exists('img_url', $rickies_data) &&
 	$rickies_data['artwork']['rickies'] == $rickies_data['img_url'] &&
 	$rickies_data['artwork_background_color'] !== false
@@ -15,9 +14,15 @@
 } elseif (array_key_exists('img_url', $rickies_data) && $rickies_data['artwork']['event'] == $rickies_data['img_url']) {
 	// Image is same as Apple Event image, use as background cover
 	echo '<header class="details" style="background-image: url(' . $rickies_data['img_url'] . ');">';
-} else {
-	// Else -> place image above the title
+} elseif (array_key_exists('img_url', $rickies_data)) {
+	// Image exists, no exceptions -> place image above the title
 	echo '<header class="details contain_img"><img src="' . $rickies_data['img_url'] . '" />';
+} elseif ($rickies_data['type'] == 'Annual Rickies' && !array_key_exists('img_url', $rickies_data)) {
+	// Annual Rickies, no image, show year
+	echo '<header class="details"><div class="big_year">' . strftime('%Y', $rickies_data['date']) . '</div>';
+} else {
+	// Else -> empty header
+	echo '<header class="details">';
 } ?>
 
 
