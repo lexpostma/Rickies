@@ -50,10 +50,20 @@ foreach ($rickies_data['hosts'] as $host) {
 		$added_host['ranking'] = $host['rickies']['ranking'];
 	}
 
-	if ($host['flexies']['ranking'] !== false && $host['flexies']['ranking'] == 0) {
+	// If there's a Flexies ranking, host is #1 and there is a charity -> Add title
+	if (
+		$host['flexies']['ranking'] !== false &&
+		$host['flexies']['ranking'] == 0 &&
+		array_key_exists('more_data_charity', $rickies_data['details'])
+	) {
 		$added_host['title'][] = 'Charity Chooser';
 	} elseif ($host['flexies']['ranking'] !== false && $host['flexies']['ranking'] == 2) {
-		$added_host['title'][] = 'Generous Donor';
+		// If there's a Flexies ranking, host is #3 and there is a charity -> Add title
+		if (array_key_exists('more_data_charity', $rickies_data['details'])) {
+			$added_host['title'][] = 'Generous Donor';
+		}
+
+		// If there's a Rickies ranking, host is not #1 there -> show sad memoji
 		if ($host['rickies']['ranking'] !== false && $host['rickies']['ranking'] !== 0) {
 			$added_host['img_array']['src'] = $host['details']['memoji']['sad'];
 		}
