@@ -21,22 +21,24 @@ if ($rickies_data['ranking']['rickies'] !== false) {
 <nav class="nav_container">
 	<div class="nav_anchor"></div>
 	<div class="nav_content">
-		<a class="menu_item"
-			id="menu_rickies"
-			href="<?= current_url() ?>#rickies"
-			onclick="navigate_section('rickies');">The Rickies</a>
-		<a class="menu_item"
-			id="menu_flexies"
-			href="<?= current_url() ?>#flexies"
-			onclick="navigate_section('flexies');">The Flexies</a>
-		<a class="menu_item"
-			id="menu_hosts"
-			href="<?= current_url() ?>#hosts"
-			onclick="navigate_section('hosts');">Hosts</a>
-		<a class="menu_item"
-			id="menu_details"
-			href="<?= current_url() ?>#details"
-			onclick="navigate_section('details');">Details</a>
+		<div class="nav_content--items">
+			<a class="menu_item"
+				id="menu_rickies"
+				href="<?= current_url() ?>#rickies"
+				onclick="navigate_section('rickies');">The Rickies</a>
+			<a class="menu_item"
+				id="menu_flexies"
+				href="<?= current_url() ?>#flexies"
+				onclick="navigate_section('flexies');">The Flexies</a>
+			<a class="menu_item"
+				id="menu_hosts"
+				href="<?= current_url() ?>#hosts"
+				onclick="navigate_section('hosts');">Hosts</a>
+			<a class="menu_item"
+				id="menu_details"
+				href="<?= current_url() ?>#details"
+				onclick="navigate_section('details');">Details</a>
+		</div>
 	</div>
 </nav>
 

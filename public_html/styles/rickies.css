@@ -116,35 +116,38 @@ header.about, header.leaderboard {
   background: var(--connected-blue);
   text-align: center;
   padding: 0;
-  display: flex;
+  overflow-x: auto;
+}
+.nav_content .nav_content--items {
+  display: inline-flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: stretch;
 }
-.nav_content a {
+.nav_content .nav_content--items a {
   padding: var(--space-between-md) var(--space-between-sm);
   white-space: nowrap;
 }
-.nav_content a span.need_space {
+.nav_content .nav_content--items a span.need_space {
   display: none;
 }
 @media screen and (min-width: 375px) {
-  .nav_content a {
+  .nav_content .nav_content--items a {
     padding: var(--space-between-md);
   }
 }
 @media screen and (min-width: 576px) {
-  .nav_content a span.need_space {
+  .nav_content .nav_content--items a span.need_space {
     display: inline;
   }
 }
-.nav_content a.active {
+.nav_content .nav_content--items a.active {
   opacity: 1;
   font-weight: bold;
   text-decoration: none;
 }
 @media (hover: hover) {
-  .nav_content a:hover {
+  .nav_content .nav_content--items a:hover {
     background: var(--element-hover-color);
   }
 }

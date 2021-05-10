@@ -4,33 +4,36 @@
 	background: var(--connected-blue);
 	text-align: center;
 	padding: 0;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: stretch;
-	a {
-		padding: var(--space-between-md) var(--space-between-sm);
-		white-space: nowrap;
-		span.need_space {
-			display: none;
-		}
-		@media screen and (min-width: var.$break-xs) {
-			padding: var(--space-between-md);
-		}
-		@media screen and (min-width: var.$break-sm) {
+	overflow-x: auto;
+	.nav_content--items {
+		display: inline-flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: stretch;
+		a {
+			padding: var(--space-between-md) var(--space-between-sm);
+			white-space: nowrap;
 			span.need_space {
-				display: inline;
+				display: none;
 			}
-		}
+			@media screen and (min-width: var.$break-xs) {
+				padding: var(--space-between-md);
+			}
+			@media screen and (min-width: var.$break-sm) {
+				span.need_space {
+					display: inline;
+				}
+			}
 
-		&.active {
-			opacity: 1;
-			font-weight: bold;
-			text-decoration: none;
-		}
-		@media (hover: hover) {
-			&:hover {
-				background: var(--element-hover-color);
+			&.active {
+				opacity: 1;
+				font-weight: bold;
+				text-decoration: none;
+			}
+			@media (hover: hover) {
+				&:hover {
+					background: var(--element-hover-color);
+				}
 			}
 		}
 	}

@@ -12,9 +12,12 @@
 </header>
 
 <nav class="nav_content home">
-	<a class="active" href="#list">The Rickies</a>
-	<a href="/leaderboard"><span class="need_space">Host </span>Leaderboard</a>
-	<a href="<?= billofrickies_url() ?>">The Bill of Rickies</a>
+	<div class="nav_content--items">
+		<a class="active" href="#list"><span class="need_space">The </span>Rickies</a>
+		<a href="/leaderboard"><span class="need_space">Host </span>Leaderboard</a>
+		<a href="<?= billofrickies_url() ?>">The Bill of Rickies</a>
+		<a href="/about">About</a>
+	</div>
 </nav>
 
 <?= no_script_banner() ?>
