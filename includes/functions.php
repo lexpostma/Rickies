@@ -173,8 +173,11 @@ function date_to_string_label($input, $air_date = false)
 // Set large thumbnail URL as the value of the artwork array
 function airtable_image_url($input)
 {
+	// Sizes from Airtable are
+	// [ full | large | small ]
+	// [  ??  |  512  |  36   ]
 	if (is_array($input)) {
-		return $input['thumbnails']['large']['url'];
+		return $input['thumbnails']['full']['url'];
 	} elseif ($input == false) {
 		return false;
 	} else {
