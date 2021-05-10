@@ -36,7 +36,7 @@ foreach ($rickies_data['hosts'] as $host) {
 	// Define rank and winner in array
 	if ($host['rickies']['ranking'] !== false && $host['rickies']['ranking'] == 0) {
 		$added_host['winner'] = true;
-		$added_host['title'][] = str_replace('Rickies', 'Chairman', $rickies_data['type']);
+		$added_host['title'][] = chairman_url($rickies_data['type']);
 		$added_host['img_array']['src'] = $host['details']['memoji']['happy'];
 		$added_host['ranking'] = 0;
 

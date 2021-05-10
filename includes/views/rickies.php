@@ -1,5 +1,11 @@
 <header class="home">
-	<a target="_blank" href="<?= $head['site_relay'] ?>" id="header_corner" title="Visit <?= $head['company'] ?>">
+	<a
+		target="_blank"
+		href="<?= $head['site_relay'] ?>"
+		id="header_corner"
+		title="Visit <?= $head['company'] ?>"
+		<?= $head['site_relay_goat'] ?>
+	>
 		<img id="relay_logo" src="/images/relay-logo.png" alt="<?= $head['company'] ?> logo"/>
 	</a>
 	<div class="hero_content">
@@ -24,11 +30,11 @@
 
 <section>
 	<div class="nav_anchor"></div>
-	<p>The Rickies are a prediction award show on the <a target="_blank" href="<?= $head[
- 	'site_connected'
- ] ?>">Connected</a> podcast on <a target="_blank" href="<?= $head[
-	'site_relay'
-] ?>">Relay FM</a>. Every year and every Apple event, Myke Hurley, Stephen Hackett, and Federico Viticci predict what Apple will announce next. Over the course of the show, the hosts have relied on <a href="<?= billofrickies_url() ?>">The Bill of Rickies</a> to keep the record straight. Some predictions are risky, some are just to flex, most are formed with passion.</p>
+	<p>The Rickies are a prediction award show on the <a target="_blank" href="<?= $head['site_connected'] ?>" <?= $head[
+	'site_connected_goat'
+] ?>>Connected</a> podcast on <a target="_blank" href="<?= $head['site_relay'] ?>" <?= $head[
+	'site_relay_goat'
+] ?>>Relay FM</a>. Every year and every Apple event, Myke Hurley, Stephen Hackett, and Federico Viticci predict what Apple will announce next. Over the course of the show, the hosts have relied on <a href="<?= billofrickies_url() ?>">The Bill of Rickies</a> to keep the record straight. Some predictions are risky, some are just to flex, most are formed with passion.</p>
 </section>
 
 <section id="list">

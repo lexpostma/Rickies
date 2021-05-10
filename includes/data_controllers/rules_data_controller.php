@@ -32,10 +32,18 @@ do {
 	}
 } while ($rules__request = $rules__response->next());
 
-// Add target="_blank" to links;
+// Add target="_blank" to external links;
 function a_blank($input)
 {
-	return str_replace('<a href="', '<a target="_blank" href="', $input);
+	$output = str_replace(
+		'<a href="http',
+		'<a
+			target="_blank"
+			href="http',
+		$input
+	);
+
+	return $output;
 }
 
 // echo '<pre>', var_dump($rules__array), '</pre>';

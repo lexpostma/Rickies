@@ -44,11 +44,29 @@ function leaderboard_item($host_data)
 		$host_data['personal']['location'] .
 		' • <a target="_blank" href="' .
 		$host_data['personal']['twitter_url'] .
+		'"
+		data-goatcounter-click="' .
+		$host_data['personal']['twitter_url'] .
+		'"
+		data-goatcounter-title="Go to @' .
+		$host_data['personal']['twitter'] .
+		'"
+		data-goatcounter-referrer="' .
+		current_url() .
 		'">@' .
 		$host_data['personal']['twitter'] .
 		'</a>' .
 		' • <a target="_blank" href="' .
 		$host_data['personal']['website_url'] .
+		'"
+		data-goatcounter-click="' .
+		$host_data['personal']['website_url'] .
+		'"
+		data-goatcounter-title="Go to ' .
+		$host_data['personal']['website_name'] .
+		'"
+		data-goatcounter-referrer="' .
+		current_url() .
 		'">' .
 		$host_data['personal']['website_name'] .
 		'</a></p>';

@@ -178,3 +178,35 @@ function airtable_image_url($input)
 		return $input;
 	}
 }
+
+function goat_referral($input)
+{
+	return str_replace('<a ', '<a data-goatcounter-referrer="' . current_url() . '" ', $input);
+}
+
+function chairman_url($event_type)
+{
+	$twitter = 'https://twitter.com/' . strtolower(str_replace(' Rickies', 'chairman', $event_type));
+	$label = str_replace('Rickies', 'Chairman', $event_type);
+
+	$chairman_link =
+		'<a
+		class="nowrap"
+		target="_blank"
+		href="' .
+		$twitter .
+		'"
+		data-goatcounter-click="' .
+		$twitter .
+		'"
+		data-goatcounter-title="' .
+		$label .
+		'"
+		data-goatcounter-referrer="' .
+		current_url() .
+		'" >' .
+		$label .
+		'</a>';
+
+	return $chairman_link;
+}

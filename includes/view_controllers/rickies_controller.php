@@ -91,7 +91,20 @@ function list_item($data)
 		if ($data['url'][0] == '/' || isset($data['url_internal'])) {
 			$href = 'href="' . $data['url'] . '"';
 		} else {
-			$href = 'target="_blank" href="' . $data['url'] . '"';
+			$href =
+				'target="_blank"
+				data-goatcounter-click="' .
+				$data['url'] .
+				'"
+				data-goatcounter-title="' .
+				$data['label1'] .
+				'"
+				data-goatcounter-referrer="' .
+				current_url() .
+				'"
+				href="' .
+				$data['url'] .
+				'"';
 		}
 		$output .= '<li class="list_item"><a class="list_item_content" ' . $href . '>';
 	} else {
@@ -330,13 +343,7 @@ function host_item_bundle($host_event_data, $event_type)
 		$html_strings['ranking'] = [];
 
 		if ($event_details['rickies']['ranking'] !== false && $event_details['rickies']['ranking'] == 0) {
-			$chairman_link =
-				'<a class="nowrap" target="_blank" href="https://twitter.com/' .
-				strtolower(str_replace(' Rickies', 'chairman', $event_type)) .
-				'">' .
-				str_replace('Rickies', 'Chairman', $event_type) .
-				'</a>';
-			array_push($html_strings['ranking'], '<b class="nowrap">Rickies winner</b> • ' . $chairman_link);
+			array_push($html_strings['ranking'], '<b class="nowrap">Rickies winner</b> • ' . chairman_url($event_type));
 		} elseif ($event_details['rickies']['ranking'] == 1) {
 			array_push($html_strings['ranking'], '<span class="nowrap">Rickies 2nd place</span>');
 		} elseif ($event_details['rickies']['ranking'] == 2) {
