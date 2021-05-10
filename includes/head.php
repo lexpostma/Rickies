@@ -109,8 +109,10 @@ if ($environment !== 'production') {
 	}
 </script>
 
-<? } if ($environment == 'production') { // Only tracking production ?>
+<? } if ($environment == 'production') { // Only track production ?>
 <script data-goatcounter="https://rickies.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<? } else { // Track others elsewhere ?>
+<script data-goatcounter="https://rickies-test.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <? } if ($subdomain == 'rickies') { ?>
 <!-- Canvas Confetti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
