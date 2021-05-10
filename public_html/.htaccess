@@ -6,7 +6,8 @@ RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
 ## All other rewrites ##
-RewriteRule ^([A-Za-z0-9-_]+)/?$		/index.php?view=$1  	[NC,L]
+RewriteRule ^billof/([A-Za-z0-9-_]+)/?$	/index.php?view=$1&sub=billof	[NC,L]
+RewriteRule ^([A-Za-z0-9-_]+)/?$		/index.php?view=$1	[NC,L]
 
 ## Error pages
 # ErrorDocument 400 /error/400.php

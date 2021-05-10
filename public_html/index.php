@@ -28,6 +28,20 @@ if (isset($_GET['view'])) {
 	$url_view = 'main';
 }
 
+// Is "billof" is URL parameter instead of subdomain, redirect to subdomain
+if ((isset($_GET['sub']) && $_GET['sub'] == 'billof') || $url_view == 'billof') {
+	$location = billofrickies_url();
+
+	// Add query to "billof" URL if it's needed
+	if ($url_view !== 'main' && $url_view !== 'billof') {
+		$location .= '/' . $url_view;
+	}
+
+	// Redirect to new location
+	header('Location: ' . $location);
+	die();
+}
+
 // What subdomain is being requested?
 // This was done to enable a more dynamic URL
 // The result will open the corresponder controller

@@ -86,16 +86,25 @@ if ($environment !== 'production') {
 	<link rel="stylesheet" href="/styles/noscript.css?v=<?= date('z') ?>">
 </noscript>
 
+<!-- Goat Counter -->
+<? if ($subdomain == 'billofrickies') { ?>
+<script>
+	window.goatcounter = {
+		path: function(p) {
+			// Add 'billof' to path on subdomain
+			return 'billof'+p
+		},
+	}
+</script>
 
-
-<?php
-if ($subdomain == 'rickies') { ?>
+<? } if ($environment == 'production') { // Only tracking production ?>
+<script data-goatcounter="https://rickies.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<? } if ($subdomain == 'rickies') { ?>
 <!-- Canvas Confetti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
-<?php }
-if ($url_view == 'leaderboard') { ?>
+<? } if ($url_view == 'leaderboard') { ?>
 <!-- Chart.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js" integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg==" crossorigin="anonymous"></script>
-<?php }
+<? }
 
