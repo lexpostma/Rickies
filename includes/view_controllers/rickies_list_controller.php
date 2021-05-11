@@ -15,7 +15,7 @@ $rickies_events__params = [
 		'Event artwork',
 		'Artwork background color',
 	],
-	'filterByFormula' => "AND( OR(Status = 'Completed', Status = 'Unscored'), Picks )",
+	'filterByFormula' => "AND( OR(Status = 'Completed', Status = 'Unscored', Status = 'Pre-Rickies'), Picks )",
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
 	// "maxRecords" => 150,
 	// "pageSize" => 50,

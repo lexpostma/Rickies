@@ -57,6 +57,11 @@ do {
 				$rickies_events__array[$id]['tag'] = $rickies_events__array[$id]['status'];
 				$rickies_events__array[$id]['tag_color'] = 'orange';
 				$rickies_events__array[$id]['tag_banner'] = 'These Rickies are not officially scored yet';
+			} elseif ($rickies_events__array[$id]['status'] == 'Pre-Rickies') {
+				$rickies_events__array[$id]['tag'] = $rickies_events__array[$id]['status'];
+				$rickies_events__array[$id]['tag_color'] = 'yellow';
+				$rickies_events__array[$id]['tag_banner'] =
+					'These predictions predate The Rickies and are not officially graded as such';
 			}
 		}
 	} else {

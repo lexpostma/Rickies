@@ -55,12 +55,15 @@ li.pick_item {
 			// Status colors for points
 			// Default if status is unknown
 			background: var(--connected-yellow);
-			&.regular.correct,
-			&.risky.correct {
-				background: var(--connected-green);
-			}
-			&.flexy.correct {
-				background: var(--connected-blue);
+			&.half,
+			&.correct {
+				&.regular,
+				&.risky {
+					background: var(--connected-green);
+				}
+				&.flexy {
+					background: var(--connected-blue);
+				}
 			}
 			&.wrong {
 				background: var(--connected-red);

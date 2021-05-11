@@ -282,8 +282,10 @@ function pick_item($data)
 		$output .= '💪';
 	} elseif ($data['type'] == 'Flexy') {
 		$output .= '👎';
-	} elseif ($data['points'] > 0) {
+	} elseif ($data['points'] >= 1) {
 		$output .= '+' . $data['points'];
+	} elseif ($data['points'] > 0) {
+		$output .= $data['points'];
 	} else {
 		$output .= $data['points'];
 	}
@@ -326,7 +328,7 @@ function pick_item_bundle($data)
 				// Count the scores of the picks for this host
 				$score['count']++;
 				$score['points'] = $score['points'] + $value['points'];
-				if ($value['status'] == 'Correct') {
+				if ($value['status'] == 'Correct' || $value['status'] == 'Half') {
 					$score['correct']++;
 				}
 				$pick_items .= pick_item($value);
