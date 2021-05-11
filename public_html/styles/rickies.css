@@ -275,7 +275,7 @@ section.navigate_with_mobile_menu h2 {
   }
   .section_group .section_group--list {
     margin-top: 0;
-    flex-basis: 100%;
+    flex-basis: calc((100% / 3) - (var(--space-between-lg) / 2));
   }
   .section_group .section_group--list + .section_group--list {
     margin-left: var(--space-between-lg);
