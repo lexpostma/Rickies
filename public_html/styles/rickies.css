@@ -502,6 +502,11 @@ li.list_item a.list_item_content .list_item_labels .label2 {
     transform: scale(1.1);
   }
 }
+li.list_item a[href^="https://www.youtube.com"] .secondary_string:before {
+  content: url("/images/youtube.svg");
+  display: inline-block;
+  margin-right: 0.3em;
+}
 
 span.tag {
   color: #fff;

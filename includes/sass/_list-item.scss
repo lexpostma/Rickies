@@ -87,6 +87,17 @@ li.list_item {
 			}
 		}
 	}
+	a[href^="https://www.youtube.com"]
+	{
+		.secondary_string:before {
+			content: url('/images/youtube.svg');
+			display: inline-block;
+			margin-right: 0.3em;
+			// transition: var.$pop-transition;
+			// opacity: 0.7;
+			// transform: translate(0px, 1px);
+		}
+	}
 }
 
 span.tag {
