@@ -2,7 +2,7 @@
 
 // Get Rickies event data
 $rickies_events__params = [
-	'filterByFormula' => "AND( Status, Status != 'Hidden', Picks, URL = '$url_view' )",
+	'filterByFormula' => "AND( OR(Status = 'Completed', Status = 'Unscored'), Picks, URL = '$url_view' )",
 	'maxRecords' => 1,
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
 	// "pageSize" => 50,
