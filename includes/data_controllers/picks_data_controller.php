@@ -8,7 +8,7 @@ $picks_data__params = [
 	// 	"fields" => ["Artwork", "Name", "URL", "Winner (manual)", "Episode date"],
 ];
 
-$picks_data__array = [
+$picks_data__empty = $picks_data__array = [
 	'Rickies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
 	'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
 ];
@@ -39,5 +39,11 @@ do {
 		unset($picks_data__array_temp);
 	}
 } while ($picks_data__request = $picks_data__response->next());
+
+foreach ($picks_data__array as $type => $host_picks) {
+	if ($picks_data__array[$type] == $picks_data__empty[$type]) {
+		unset($picks_data__array[$type]);
+	}
+}
 
 // echo "<pre>", var_dump($picks_data__array), "</pre>";
