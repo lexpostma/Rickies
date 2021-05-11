@@ -25,15 +25,15 @@ $rickies_events__array[$id]['coin_toss'] = [
 ];
 
 // Add more details from Airtable to array, to build the detail page
-if ($rickies_events__array[$id]['ranking']['rickies']) {
+if ($rickies_events__array[$id]['ranking']['rickies'] !== []) {
 	// Order by Rickies ranking
 	// Convert ranking string to array
 	$hosts = $rickies_events__array[$id]['ranking']['rickies'];
-} elseif ($rickies_events__array[$id]['ranking']['flexies']) {
+} elseif ($rickies_events__array[$id]['ranking']['flexies'] !== []) {
 	// Order by Flexies ranking
 	// Convert ranking string to array
 	$hosts = $rickies_events__array[$id]['ranking']['flexies'];
-} elseif ($rickies_events__array[$id]['ranking']['robin'] !== false) {
+} elseif ($rickies_events__array[$id]['ranking']['robin'] !== []) {
 	// Order by Robin
 	$hosts = $rickies_events__array[$id]['ranking']['robin'];
 } else {
