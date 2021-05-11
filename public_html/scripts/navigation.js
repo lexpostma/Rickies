@@ -3,7 +3,9 @@ function get_anchor_from_url() {
 	var anchor = window.location.hash.substr(1);
 
 	if (anchor == '') {
-		navigate_section('rickies');
+		var menu_items = document.getElementsByClassName('menu_item');
+		var first_item = menu_items[0].id.replace('menu_', '');
+		navigate_section(first_item);
 	} else {
 		navigate_section(anchor);
 	}
