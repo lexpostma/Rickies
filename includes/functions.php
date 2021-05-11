@@ -111,11 +111,13 @@ function str_lreplace($search, $replace, $subject)
 
 function banner($string, $color = 'orange')
 {
-	return '<div class="banner" style="background-color: var(--connected-' .
-		$color .
-		');"><p>' .
-		$string .
-		'</p></div>';
+	$output = '<div class="banner';
+	if ($color == 'yellow') {
+		$output .= ' contrast ';
+	}
+
+	$output .= '" style="background-color: var(--connected-' . $color . ');"><p>' . $string . '</p></div>';
+	return $output;
 }
 
 function no_script_banner($string = false)

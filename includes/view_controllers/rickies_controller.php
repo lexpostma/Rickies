@@ -160,11 +160,16 @@ function list_item($data)
 		$output .= '<p class="secondary_string">';
 		if (isset($data['tag'])) {
 			// Does the tag have a color defined, yes/no?
+			$data['tag_class'] = 'tag';
 			if (!isset($data['tag_color'])) {
 				$data['tag_color'] = 'red';
+			} elseif ($data['tag_color'] == 'yellow') {
+				$data['tag_class'] .= ' contrast';
 			}
 			$output .=
-				'<span class="tag" style="--tag-color: var(--connected-' .
+				'<span class="' .
+				$data['tag_class'] .
+				'" style="--tag-color: var(--connected-' .
 				$data['tag_color'] .
 				')">' .
 				$data['tag'] .
