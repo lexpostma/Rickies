@@ -45,7 +45,7 @@ foreach ($hosts as $host) {
 			'round_robin' => array_search($host, $rickies_events__array[$id]['ranking']['robin']),
 		],
 		'rickies' => [
-			'ranking' => array_search($host, $rickies_events__array[$id]['ranking']['rickies']),
+			'ranking' => array_search($host, explode(', ', check_key('Rickies ranking', $fields))),
 			'correct' => check_key($host . '’s correct pick count', $fields),
 			'count' => 3,
 			'risky_correct' => check_key($host . '’s Risky Pick', $fields),
@@ -54,7 +54,7 @@ foreach ($hosts as $host) {
 			'coin_toss_loser' => false,
 		],
 		'flexies' => [
-			'ranking' => array_search($host, $rickies_events__array[$id]['ranking']['flexies']),
+			'ranking' => array_search($host, explode(', ', check_key('Flexies ranking', $fields))),
 			'correct' => check_key($host . '’s Risky Pick', $fields),
 			'count' => check_key($host . '’s Flexy count', $fields),
 			'percentage' => check_key($host . '’s Flexy percentage', $fields),
