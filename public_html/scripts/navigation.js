@@ -59,6 +59,7 @@ function set_nav_height() {
 	// console.log('resizing, height=' + nav_height);
 	Array.from(document.querySelectorAll('.navigate_with_mobile_menu')).forEach(function (el) {
 		el.style.paddingTop = nav_height + 'px';
+		el.style.marginBottom = '0px';
 	});
 
 	if (window.innerWidth > 768) {
