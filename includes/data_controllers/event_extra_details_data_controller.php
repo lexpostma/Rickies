@@ -3,10 +3,20 @@
 // Rickies _data_ controller, extra details
 
 $rickies_events__array[$id]['ranking'] = [
-	'robin' => check_key('Round Robin order', $fields),
 	'rickies' => check_key('Rickies ranking', $fields),
 	'flexies' => check_key('Flexies ranking', $fields),
+	'robin' => check_key('Round Robin order', $fields),
 ];
+
+// Convert ranking strings to arrays
+foreach ($rickies_events__array[$id]['ranking'] as $type => $ranking) {
+	if ($ranking) {
+		$rickies_events__array[$id]['ranking'][$type] = explode(', ', $ranking);
+	} else {
+		$rickies_events__array[$id]['ranking'][$type] = [];
+	}
+}
+
 $rickies_events__array[$id]['coin_toss'] = [
 	'rickies_win' => check_key('Rickies coin flip (flat)', $fields, false, 0),
 	'flexies_win' => check_key('Flexies coin flip (flat)', $fields, false, 0),
@@ -16,26 +26,19 @@ $rickies_events__array[$id]['coin_toss'] = [
 
 // Add more details from Airtable to array, to build the detail page
 if ($rickies_events__array[$id]['ranking']['rickies']) {
-	// Order by Ricky ranking
+	// Order by Rickies ranking
 	// Convert ranking string to array
-	$hosts = $rickies_events__array[$id]['ranking']['rickies'] = explode(
-		', ',
-		$rickies_events__array[$id]['ranking']['rickies']
-	);
+	$hosts = $rickies_events__array[$id]['ranking']['rickies'];
+} elseif ($rickies_events__array[$id]['ranking']['flexies']) {
+	// Order by Flexies ranking
+	// Convert ranking string to array
+	$hosts = $rickies_events__array[$id]['ranking']['flexies'];
 } elseif ($rickies_events__array[$id]['ranking']['robin'] !== false) {
 	// Order by Robin
 	$hosts = $rickies_events__array[$id]['ranking']['robin'];
 } else {
 	// No Fallback to alphabetical order
 	$hosts = ['Federico', 'Myke', 'Stephen'];
-}
-
-// Convert ranking string to array
-if ($rickies_events__array[$id]['ranking']['flexies']) {
-	$rickies_events__array[$id]['ranking']['flexies'] = explode(
-		', ',
-		$rickies_events__array[$id]['ranking']['flexies']
-	);
 }
 
 foreach ($hosts as $host) {
@@ -45,7 +48,7 @@ foreach ($hosts as $host) {
 			'round_robin' => array_search($host, $rickies_events__array[$id]['ranking']['robin']),
 		],
 		'rickies' => [
-			'ranking' => array_search($host, explode(', ', check_key('Rickies ranking', $fields))),
+			'ranking' => array_search($host, $rickies_events__array[$id]['ranking']['rickies']),
 			'correct' => check_key($host . '’s correct pick count', $fields),
 			'count' => 3,
 			'risky_correct' => check_key($host . '’s Risky Pick', $fields),
@@ -54,7 +57,7 @@ foreach ($hosts as $host) {
 			'coin_toss_loser' => false,
 		],
 		'flexies' => [
-			'ranking' => array_search($host, explode(', ', check_key('Flexies ranking', $fields))),
+			'ranking' => array_search($host, $rickies_events__array[$id]['ranking']['flexies']),
 			'correct' => check_key($host . '’s Risky Pick', $fields),
 			'count' => check_key($host . '’s Flexy count', $fields),
 			'percentage' => check_key($host . '’s Flexy percentage', $fields),
