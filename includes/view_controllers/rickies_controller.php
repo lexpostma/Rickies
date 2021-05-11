@@ -443,14 +443,6 @@ function host_item_bundle($host_event_data, $event_type)
 				array_push($html_strings['stats']['💪 Flexies'], 'Lost by coin flip');
 			}
 		}
-		// $html_strings['stats']['🏆 Rickies'] = [
-		// $event_details['rickies']['correct'] . '/' . $event_details['rickies']['count'] . ' correct',
-		// ],
-		// 	'💪 Flexies' => [
-		// 		$event_details['flexies']['correct'] . '/' . $event_details['flexies']['count'] . ' correct',
-		// 		round_if_decimal($event_details['flexies']['percentage'] * 100) . '% flexing power',
-		// 	],
-		// ];
 
 		$avatar_img_array = [
 			'type' => 'avatar',
