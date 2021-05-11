@@ -12,9 +12,6 @@ $all_event_details = true;
 include '../includes/data_controllers/event_data_controller.php';
 // echo '<pre>', var_dump($rickies_events__array), '</pre>';
 
-// Get picks data
-include '../includes/data_controllers/picks_data_controller.php';
-
 // Get host personal data
 $hosts_data__params = [
 	'fields' => ['First name', 'Full name', 'Memoji neutral', 'Memoji happy', 'Memoji sad'],
@@ -34,3 +31,13 @@ foreach ($rickies_data['hosts'] as $first_name => $host_data) {
 }
 
 // echo '<pre>', var_dump($rickies_data), '</pre>';
+
+// Get picks data
+include '../includes/data_controllers/picks_data_controller.php';
+
+// Sort picks data by ranking
+foreach ($picks_data__array as $type => $host_picks) {
+	$picks_data__array[$type] = array_merge(array_flip($hosts), $picks_data__array[$type]);
+}
+
+// echo '<pre>', var_dump($picks_data__array), '</pre>';
