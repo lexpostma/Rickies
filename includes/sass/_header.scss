@@ -91,7 +91,12 @@ header {
 		.big_year {
 			color: rgba(255, 255, 255, 0.9);
 			font-weight: 900;
-			font-size: 180px;
+			font-size: 120px;
+			margin-top: 50px;
+			@media screen and (min-width: var.$break-md) {
+				font-size: 180px;
+				margin-top: 0;
+			}
 			pointer-events: none;
 			-webkit-user-select: none;
 			-ms-user-select: none;
