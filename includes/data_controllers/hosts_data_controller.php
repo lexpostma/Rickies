@@ -99,17 +99,17 @@ do {
 					],
 					'ricky_win_rate' => [
 						'value' => round_if_decimal(check_key('Rickies Wins Rate', $fields, 0) * 100),
-						'label' => 'Ricky win rate',
+						'label' => 'Rickies win rate',
 						'unit' => '%',
 					],
 					'flexy_win_rate' => [
 						'value' => round_if_decimal(check_key('Flexies Wins Rate', $fields, 0) * 100),
-						'label' => 'Flexy win rate',
+						'label' => 'Flexies win rate',
 						'unit' => '%',
 					],
 					'flexy_loss_rate' => [
 						'value' => round_if_decimal(check_key('Flexies Lost Rate', $fields, 0) * 100),
-						'label' => 'Flexy lose rate',
+						'label' => 'Flexies lose rate',
 						'unit' => '%',
 					],
 					'coin_flips_won' => [
