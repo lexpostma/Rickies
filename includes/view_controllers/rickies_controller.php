@@ -391,47 +391,59 @@ function host_item_bundle($host_event_data, $event_type)
 			array_push($html_strings['ranking'], '<span class="nowrap">Round Robin #3</span>');
 		}
 
-		$html_strings['stats'] = [
-			'🏆 Rickies' => [
+		$html_strings['stats'] = [];
+		if ($event_details['rickies']['count'] !== 0) {
+			$html_strings['stats']['🏆 Rickies'] = [
 				$event_details['rickies']['correct'] . '/' . $event_details['rickies']['count'] . ' correct',
-			],
-			'💪 Flexies' => [
+			];
+
+			// Add stat about Risky Pick
+			if ($event_details['rickies']['risky_correct']) {
+				array_push($html_strings['stats']['🏆 Rickies'], 'Risky Pick correct!');
+			} else {
+				array_push($html_strings['stats']['🏆 Rickies'], 'Risky Pick too risky');
+			}
+
+			// Add stat about points
+			array_push($html_strings['stats']['🏆 Rickies'], plural_points($event_details['rickies']['points']));
+
+			// Add stats about Rickies coin flips
+			if ($event_details['rickies']['coin_toss_winner'] && $event_details['rickies']['ranking'] == 0) {
+				// Host won the Rickies and the coin flip
+				array_push($html_strings['stats']['🏆 Rickies'], 'Won by coin flip');
+				// } elseif ($event_details['rickies']['coin_toss_winner'] && $event_details['rickies']['ranking'] == 1) {
+				// 	// Host is 2nd place and won the coin flip
+				// 	array_push($html_strings['stats']['🏆 Rickies'], 'Saved by coin flip');
+			} elseif ($event_details['rickies']['coin_toss_loser'] && $event_details['rickies']['ranking'] == 1) {
+				// Host is 2nd place and lost the coin flip
+				array_push($html_strings['stats']['🏆 Rickies'], 'Lost by coin flip');
+			}
+		}
+		if ($event_details['flexies']['count'] !== 0) {
+			$html_strings['stats']['💪 Flexies'] = [
 				$event_details['flexies']['correct'] . '/' . $event_details['flexies']['count'] . ' correct',
 				round_if_decimal($event_details['flexies']['percentage'] * 100) . '% flexing power',
-			],
-		];
+			];
 
-		// Add stat about Risky Pick
-		if ($event_details['rickies']['risky_correct']) {
-			array_push($html_strings['stats']['🏆 Rickies'], 'Risky Pick correct!');
-		} else {
-			array_push($html_strings['stats']['🏆 Rickies'], 'Risky Pick too risky');
+			// Add stats about Flexies coin flips
+			if ($event_details['flexies']['coin_toss_winner'] && $event_details['flexies']['ranking'] == 0) {
+				// Host won the flexies and the coin flip
+				array_push($html_strings['stats']['💪 Flexies'], 'Won by coin flip');
+			} elseif ($event_details['flexies']['coin_toss_winner'] && $event_details['flexies']['ranking'] == 1) {
+				// Host is 2nd place and won the coin flip
+				array_push($html_strings['stats']['💪 Flexies'], 'Saved by coin flip');
+			} elseif ($event_details['flexies']['coin_toss_loser']) {
+				array_push($html_strings['stats']['💪 Flexies'], 'Lost by coin flip');
+			}
 		}
-
-		// Add stat about points
-		array_push($html_strings['stats']['🏆 Rickies'], plural_points($event_details['rickies']['points']));
-
-		// Add stats about coin flips
-		if ($event_details['rickies']['coin_toss_winner'] && $event_details['rickies']['ranking'] == 0) {
-			// Host won the Rickies and the coin flip
-			array_push($html_strings['stats']['🏆 Rickies'], 'Won by coin flip');
-			// } elseif ($event_details['rickies']['coin_toss_winner'] && $event_details['rickies']['ranking'] == 1) {
-			// 	// Host is 2nd place and won the coin flip
-			// 	array_push($html_strings['stats']['🏆 Rickies'], 'Saved by coin flip');
-		} elseif ($event_details['rickies']['coin_toss_loser'] && $event_details['rickies']['ranking'] == 1) {
-			// Host is 2nd place and lost the coin flip
-			array_push($html_strings['stats']['🏆 Rickies'], 'Lost by coin flip');
-		}
-
-		if ($event_details['flexies']['coin_toss_winner'] && $event_details['flexies']['ranking'] == 0) {
-			// Host won the flexies and the coin flip
-			array_push($html_strings['stats']['💪 Flexies'], 'Won by coin flip');
-		} elseif ($event_details['flexies']['coin_toss_winner'] && $event_details['flexies']['ranking'] == 1) {
-			// Host is 2nd place and won the coin flip
-			array_push($html_strings['stats']['💪 Flexies'], 'Saved by coin flip');
-		} elseif ($event_details['flexies']['coin_toss_loser']) {
-			array_push($html_strings['stats']['💪 Flexies'], 'Lost by coin flip');
-		}
+		// $html_strings['stats']['🏆 Rickies'] = [
+		// $event_details['rickies']['correct'] . '/' . $event_details['rickies']['count'] . ' correct',
+		// ],
+		// 	'💪 Flexies' => [
+		// 		$event_details['flexies']['correct'] . '/' . $event_details['flexies']['count'] . ' correct',
+		// 		round_if_decimal($event_details['flexies']['percentage'] * 100) . '% flexing power',
+		// 	],
+		// ];
 
 		$avatar_img_array = [
 			'type' => 'avatar',
@@ -439,7 +451,6 @@ function host_item_bundle($host_event_data, $event_type)
 			'color' => $event_details['details']['color'],
 		];
 
-		$output .= '';
 		$output .=
 			'
 <div class="section_group--list">
@@ -458,7 +469,7 @@ function host_item_bundle($host_event_data, $event_type)
 					<p class="ranking">' .
 			implode(' • ', $html_strings['ranking']) .
 			'</p>';
-		if ($event_details['rickies']['ranking'] !== false) {
+		if ($event_details['rickies']['ranking'] !== false || $event_details['flexies']['ranking'] !== false) {
 			$output .= '
 				<div class="mini_stats">';
 			foreach ($html_strings['stats'] as $stat_title => $stat_data) {

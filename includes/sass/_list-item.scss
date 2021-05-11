@@ -48,7 +48,7 @@ li.list_item {
 				.mini_stats--list {
 					width: 100%;
 					max-width: 200px;
-					&:last-of-type {
+					& + .mini_stats--list {
 						margin-left: 8px;
 					}
 				}

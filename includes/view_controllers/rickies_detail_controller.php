@@ -20,18 +20,26 @@ foreach ($rickies_data['hosts'] as $host) {
 		'name' => $host['details']['first_name'],
 		'winner' => false,
 		'title' => [],
-		'string' =>
-			'Score: ' .
-			plural_points($host['rickies']['points']) .
-			'<br />Flexing: ' .
-			round_if_decimal($host['flexies']['percentage'] * 100) .
-			'%',
+		'string' => [],
 		'img_array' => [
 			'type' => 'avatar',
 			'src' => $host['details']['memoji']['neutral'],
 			'color' => $host['details']['color'],
 		],
 	];
+
+	// Define Rickies part of leaderboard string
+	if (array_key_exists('Rickies', $picks_data__array)) {
+		$added_host['string'][] = 'Score: ' . plural_points($host['rickies']['points']);
+	}
+
+	// Define Flexies part of leaderboard string
+	if (array_key_exists('Flexies', $picks_data__array)) {
+		$added_host['string'][] = 'Flexing: ' . round_if_decimal($host['flexies']['percentage'] * 100) . '%';
+	}
+
+	// Combine leaderboard string parts
+	$added_host['string'] = implode('<br />', $added_host['string']);
 
 	// Define rank and winner in array
 	if ($host['rickies']['ranking'] !== false && $host['rickies']['ranking'] == 0) {

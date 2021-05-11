@@ -465,7 +465,7 @@ li.list_item.host_details .list_item_content .list_item_labels .mini_stats .mini
   width: 100%;
   max-width: 200px;
 }
-li.list_item.host_details .list_item_content .list_item_labels .mini_stats .mini_stats--list:last-of-type {
+li.list_item.host_details .list_item_content .list_item_labels .mini_stats .mini_stats--list + .mini_stats--list {
   margin-left: 8px;
 }
 @media screen and (min-width: 768px) {
