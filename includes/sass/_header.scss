@@ -9,11 +9,11 @@ header {
 	background-repeat: no-repeat;
 	&.home {
 		background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%),
-			url('/images/confetti.png');
+			url('/images/confetti.svg');
 		@media (prefers-color-scheme: dark) {
 			color: white;
 			background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%),
-				url('/images/confetti.png');
+				url('/images/confetti.svg');
 		}
 		padding: 48px var(--space-side-padding);
 		@media screen and (min-width: var.$break-lg) {

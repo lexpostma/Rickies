@@ -62,13 +62,13 @@ header {
   background-repeat: no-repeat;
 }
 header.home {
-  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%), url("/images/confetti.png");
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%), url("/images/confetti.svg");
   padding: 48px var(--space-side-padding);
 }
 @media (prefers-color-scheme: dark) {
   header.home {
     color: white;
-    background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%), url("/images/confetti.png");
+    background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%), url("/images/confetti.svg");
   }
 }
 @media screen and (min-width: 992px) {
