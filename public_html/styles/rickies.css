@@ -635,7 +635,9 @@ li.pick_item .note p {
   align-items: center;
   order: 0;
   flex-grow: 1;
-  margin: 0 8px;
+}
+.avatar_leaderboard .host + .host {
+  margin-left: 8px;
 }
 .avatar_leaderboard .host .avatar {
   margin-bottom: 8px;
