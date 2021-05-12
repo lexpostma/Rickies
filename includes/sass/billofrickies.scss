@@ -34,6 +34,7 @@ main {
 	max-width: 750px;
 	padding: 24px;
 	margin: 0 auto 100px;
+	margin-top: var.$iX-top;
 
 	background-image: url(/images/parchment-border/light-top.png), url(/images/parchment-border/light-left.png),
 		url(/images/parchment-border/light-right.png), url(/images/parchment-border/light-bottom.png),
@@ -51,6 +52,8 @@ main {
 	@media screen and (min-width: var.$break-md) {
 		margin-top: 32px;
 		margin-bottom: 128px;
+		margin-top: calc(#{var.$iX-top} + 32px);
+		margin-bottom: calc(#{var.$iX-bottom} + 128px);
 		padding: 64px;
 	}
 

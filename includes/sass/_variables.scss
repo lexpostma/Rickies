@@ -41,6 +41,12 @@ $hover-duration: 300ms;
 $pop-transition: $hover-duration transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 $header-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
 
+// iOS safe-areas
+$iX-top: env(safe-area-inset-top);
+$iX-bottom: env(safe-area-inset-bottom);
+$iX-left: env(safe-area-inset-left);
+$iX-right: env(safe-area-inset-right);
+
 // Values copied from Bootstrap, they're smarter than me
 // https://getbootstrap.com/docs/5.0/layout/breakpoints/
 $break-xs: 375px;

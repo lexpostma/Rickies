@@ -120,6 +120,7 @@ section.navigate_with_mobile_menu {
 
 footer {
 	padding: var(--space-side-padding);
+	padding-bottom: max(var(--space-side-padding), #{var.$iX-bottom});
 	color: white;
 	text-align: center;
 	background: var(--relay-blue);

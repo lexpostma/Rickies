@@ -53,6 +53,7 @@ aside.slider {
 	background: #fff;
 	#rule_slider {
 		padding: 8px 24px 20px;
+		padding-bottom: max(20px, #{var.$iX-bottom});
 		max-width: var.$readability-width;
 		margin: 0 auto;
 		label {
@@ -63,6 +64,7 @@ aside.slider {
 		}
 		@media screen and (min-width: var.$break-md) {
 			padding: 16px 32px 24px;
+			padding-bottom: max(24px, #{var.$iX-bottom});
 			label {
 				margin-bottom: 16px;
 			}

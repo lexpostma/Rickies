@@ -290,6 +290,7 @@ section.navigate_with_mobile_menu h2 {
 }
 footer {
   padding: var(--space-side-padding);
+  padding-bottom: max(var(--space-side-padding), env(safe-area-inset-bottom));
   color: white;
   text-align: center;
   background: var(--relay-blue);
