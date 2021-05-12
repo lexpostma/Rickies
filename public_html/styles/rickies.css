@@ -64,6 +64,7 @@ header {
 header.home {
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%), url("/images/confetti.svg");
   padding: 48px var(--space-side-padding);
+  padding-top: calc(env(safe-area-inset-top) + 48px);
 }
 @media (prefers-color-scheme: dark) {
   header.home {
