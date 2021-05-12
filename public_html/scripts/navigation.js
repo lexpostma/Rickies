@@ -28,7 +28,6 @@ function navigate_section(section) {
 	var active_section = document.getElementById(section);
 	active_menu.classList.add('active');
 	active_section.classList.add('active');
-	set_nav_height();
 }
 
 // STICKY MENU
@@ -52,32 +51,10 @@ function make_nav_sticky() {
 	}
 }
 
-// Define the height of the nav bar and it's anchor/sticky-fillup
-function set_nav_height() {
-	statusbar_height = document.getElementById('statusbar').offsetHeight;
-	var nav_height = document.getElementById('nav_content').offsetHeight + statusbar_height;
-
-	Array.from(document.querySelectorAll('.navigate_with_mobile_menu')).forEach(function (el) {
-		el.style.paddingTop = nav_height + 'px';
-		el.style.marginBottom = '0px';
-	});
-
-	if (window.innerWidth > 768) {
-		Array.from(document.querySelectorAll('.navigate_with_mobile_menu'))
-			.slice(0, -1)
-			.forEach(function (el) {
-				el.style.marginBottom = '-' + nav_height + 'px';
-			});
-	}
-}
-set_nav_height();
-
 window.addEventListener('scroll', function () {
-	// set_nav_height();
 	make_nav_sticky();
 });
 
 window.addEventListener('resize', function () {
-	set_nav_height();
 	make_nav_sticky();
 });

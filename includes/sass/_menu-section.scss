@@ -73,10 +73,28 @@ nav.nav_container {
 	}
 }
 
+:root {
+	--nav-height: 53px;
+}
+
 section {
+	margin-left: auto;
+	margin-right: auto;
+
 	padding: 0 var(--space-side-padding);
 	padding-left: max(var(--space-side-padding), #{var.$iX-left});
 	padding-right: max(var(--space-side-padding), #{var.$iX-right});
+	&.navigate_with_mobile_menu {
+		display: none;
+		padding-top: calc(var(--nav-height) + var(--space-side-padding));
+		padding-top: calc(var(--nav-height) + var(--space-side-padding) + #{var.$iX-top});
+		&.active {
+			display: block;
+		}
+		h2 {
+			display: none;
+		}
+	}
 }
 
 section,
@@ -84,36 +102,56 @@ footer {
 	margin-top: var(--space-between-lg);
 }
 
-section.navigate_with_mobile_menu {
-	display: none;
-	&.active {
-		display: block;
-	}
-	h2 {
-		display: none;
-	}
-}
 .section_group--list {
 	&:not(:first-of-type) {
 		margin-top: var(--space-between-lg);
 	}
 }
-@media screen and (min-width: var.$break-md) {
-	section.navigate_with_mobile_menu {
-		display: block;
-		h2 {
-			display: block;
-		}
+@media screen and (min-width: var.$break-sm) {
+	:root {
+		--nav-height: 56px;
 	}
 
 	section {
-		margin-left: auto;
-		margin-right: auto;
-		max-width: var.$readability-width;
+		&.navigate_with_mobile_menu {
+			// padding-top: 56px + 16px;
+			// padding-top: calc(56px + 16px + #{var.$iX-top});
+		}
+	}
+}
+@media screen and (min-width: var.$break-md) {
+	:root {
+		--nav-height: 59px;
+	}
 
+	section {
+		max-width: var.$readability-width;
 		&.large_columns {
-			padding-top: var(--space-between-lg);
 			max-width: 1400px;
+			&:not(.navigate_with_mobile_menu) {
+				padding-top: var(--space-between-lg);
+			}
+		}
+
+		&.navigate_with_mobile_menu {
+			padding-top: var(--nav-height) + var(--space-side-padding);
+			padding-top: calc(var(--nav-height) + #{var.$iX-top});
+
+			display: block;
+			&:not(:last-of-type) {
+				margin-bottom: calc(-1 * (var(--nav-height)));
+				margin-bottom: calc(-1 * (var(--nav-height) + #{var.$iX-top}));
+			}
+
+			h2 {
+				margin-top: 0;
+				margin-bottom: var(--space-between-md);
+				padding-top: var(--space-between-lg);
+				display: block;
+			}
+			&:not(:first-of-type) h2 {
+				border-top: 1px solid var(--element-hover-color);
+			}
 		}
 	}
 
