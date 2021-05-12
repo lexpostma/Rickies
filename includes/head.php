@@ -101,7 +101,7 @@ if ($environment !== 'production') {
 </noscript>
 
 <!-- Goat Counter -->
-<? } if ($environment == 'production') { // Only track production ?>
+<? if ($environment == 'production') { // Only track production ?>
 <script data-goatcounter="https://rickies.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <? } else { // Track others elsewhere ?>
 <script data-goatcounter="https://rickies-test.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
