@@ -17,7 +17,7 @@ if (
 } elseif (array_key_exists('img_url', $rickies_data)) {
 	// Image exists, no exceptions -> place image above the title
 	echo '<header class="details contain_img"><img src="' . $rickies_data['img_url'] . '" />';
-} elseif ($rickies_data['type'] == 'Annual Rickies') {
+} elseif ($rickies_data['type'] == 'annual') {
 	// No image, but Annual Rickies -> show year
 	echo '<header class="details"><div class="big_year">' . strftime('%Y', $rickies_data['date']) . '</div>';
 } else {
@@ -28,7 +28,7 @@ if (
 
 	<div class="gradient"></div>
 	<h1>
-<?php if ($rickies_data['type'] == 'Keynote Rickies') {
+<?php if ($rickies_data['type'] == 'keynote') {
 	echo str_lreplace(' ', '&nbsp;', $rickies_data['name']);
 } else {
 	echo $rickies_data['name'];

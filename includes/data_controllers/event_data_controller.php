@@ -20,6 +20,7 @@ do {
 				'name' => check_key('Name', $fields),
 				'status' => check_key('Status', $fields),
 				'type' => check_key('Rickies type', $fields),
+				'type_string' => check_key('Rickies type string', $fields),
 				'url_name' => check_key('URL', $fields),
 				'date_string' => date_to_string_label(check_key('Predictions episode date', $fields, false, 0)),
 				'date' => strtotime(check_key('Predictions episode date', $fields, false, 0)),

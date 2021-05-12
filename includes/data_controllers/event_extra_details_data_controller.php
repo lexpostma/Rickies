@@ -125,7 +125,7 @@ $rickies_events__array[$id]['details'] = [
 		'url_internal' => true,
 		'img_url' => '/images/bill-of-rickies-avatar.png',
 		'label1' => 'The Bill of Rickies',
-		'label3' => 'As of these ' . $rickies_events__array[$id]['type'],
+		'label3' => 'As of these ' . $rickies_events__array[$id]['type_string'],
 	],
 	'more_data_charity' => [
 		'url' => check_key('Charity URL', $fields, false, 0),

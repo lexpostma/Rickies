@@ -194,8 +194,8 @@ function goat_referral($input)
 
 function chairman_url($event_type)
 {
-	$twitter = 'https://twitter.com/' . strtolower(str_replace(' Rickies', 'chairman', $event_type));
-	$label = str_replace('Rickies', 'Chairman', $event_type);
+	$twitter = 'https://twitter.com/' . $event_type . 'chairman';
+	$label = ucfirst($event_type) . ' Chairman';
 
 	$chairman_link =
 		'<a
