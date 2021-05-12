@@ -59,9 +59,11 @@ aside.slider #rule_slider input[type=range] {
   /* Specific width is required for Firefox. */
   background: transparent;
   /* Otherwise white in Chrome */
+  outline: none;
 }
 aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
+  outline: none;
   cursor: pointer;
   cursor: ew-resize;
   height: 32px;
@@ -94,6 +96,7 @@ aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
 }
 aside.slider #rule_slider input[type=range]::-moz-range-thumb {
   -webkit-appearance: none;
+  outline: none;
   cursor: pointer;
   cursor: ew-resize;
   height: 32px;
@@ -126,6 +129,7 @@ aside.slider #rule_slider input[type=range]::-moz-range-thumb {
 }
 aside.slider #rule_slider input[type=range]::-ms-thumb {
   -webkit-appearance: none;
+  outline: none;
   cursor: pointer;
   cursor: ew-resize;
   height: 32px;

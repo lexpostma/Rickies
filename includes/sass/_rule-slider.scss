@@ -2,6 +2,7 @@
 
 @mixin slider-thumb {
 	-webkit-appearance: none;
+	outline: none;
 	cursor: pointer;
 	cursor: ew-resize;
 	height: 32px;
@@ -77,6 +78,7 @@ aside.slider {
 			-webkit-appearance: none; /* Hides the slider so that custom slider can be made */
 			width: 100%; /* Specific width is required for Firefox. */
 			background: transparent; /* Otherwise white in Chrome */
+			outline: none;
 			&::-webkit-slider-thumb {
 				@include slider-thumb;
 			}
