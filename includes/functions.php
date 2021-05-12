@@ -10,8 +10,10 @@ function url_protocol()
 function domain_url()
 {
 	$url = url_protocol() . $_SERVER['SERVER_NAME'];
-	return str_replace('www.', '', $url);
-	// return url_protocol() . $_SERVER['SERVER_NAME'];
+	$url = str_replace('www.', '', $url);
+	$url = str_replace('thebillof.', '', $url);
+
+	return $url;
 }
 
 // https://example.com/something
