@@ -92,7 +92,8 @@ $include_body = '../includes/views/billofrickies.php';
 
 $head_custom = [
 	'title' => 'The Bill of Rickies',
-	'favicon' => '/favicon-bill.png',
+	// BUG: Favicon is cached and overwrites main one
+	// 'favicon' => '/favicon-bill.png',
 	// TODO: Write SEO description
 	'description' => '',
 ];
