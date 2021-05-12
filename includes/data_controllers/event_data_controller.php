@@ -52,11 +52,11 @@ do {
 				include 'event_extra_details_data_controller.php';
 			}
 
-			// If the status Unscored, add tag/banner
-			if ($rickies_events__array[$id]['status'] == 'Unscored') {
+			// If the status not Completed, add tag/banner
+			if ($rickies_events__array[$id]['status'] == 'Ungraded') {
 				$rickies_events__array[$id]['tag'] = $rickies_events__array[$id]['status'];
 				$rickies_events__array[$id]['tag_color'] = 'orange';
-				$rickies_events__array[$id]['tag_banner'] = 'These Rickies are not officially scored yet';
+				$rickies_events__array[$id]['tag_banner'] = 'These Rickies are not officially graded yet';
 			} elseif ($rickies_events__array[$id]['status'] == 'Pre-Rickies') {
 				$rickies_events__array[$id]['tag'] = $rickies_events__array[$id]['status'];
 				$rickies_events__array[$id]['tag_color'] = 'yellow';
