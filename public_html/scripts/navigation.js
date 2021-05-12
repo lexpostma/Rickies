@@ -28,6 +28,7 @@ function navigate_section(section) {
 	var active_section = document.getElementById(section);
 	active_menu.classList.add('active');
 	active_section.classList.add('active');
+	set_nav_height();
 }
 
 // STICKY MENU
