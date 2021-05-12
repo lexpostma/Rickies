@@ -64,6 +64,7 @@ if ($environment !== 'production') {
 	}
 ?>
 
+
 <!-- Open Graph protocol / Facebook -->
 <meta property="og:title" content="<?= $head['title'] ?>" />
 <meta property="og:description" content="<?= $head['description'] ?>" />
@@ -84,9 +85,8 @@ if ($environment !== 'production') {
 <meta name="twitter:creator" content="<?= $head['twitter_author'] ?>">
 <meta name="twitter:site" content="<?= $head['twitter_connected'] ?>">
 
-<?
-	// include("ios_optimisation.php");
-?>
+<?include("ios_optimisation.php");?>
+
 
 <!-- Normalize and Google Font		 -->
 <link rel="stylesheet" href="/styles/normalize.css">

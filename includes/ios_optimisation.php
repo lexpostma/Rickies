@@ -3,7 +3,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-
 <?php
 echo '<!-- iOS home screen icons -->';
 $appIconSizes = [
@@ -24,17 +23,19 @@ if ($environment !== 'production') {
 	$appIconDirectory = '/images/app-icons/';
 }
 foreach ($appIconSizes as $device => $size) {
-	echo '<!-- ' .
-		$device .
-		' --><link rel="apple-touch-icon-precomposed" sizes="' .
+	echo '
+<link rel="apple-touch-icon-precomposed" sizes="' .
 		$size .
 		'" href="' .
 		$appIconDirectory .
 		'icon-' .
 		$size .
-		'.png" />';
+		'.png" /> <!-- ' .
+		$device .
+		' -->';
 }
 
+/*
 echo '<!-- iOS splash screens -->';
 $splashScreenSizes = [
 	'iPhone 5, 5s, SE' => [
@@ -156,4 +157,5 @@ foreach ($splashScreenSizes as $device => $size) {
 		$size['ratio'] .
 		')" />';
 }
+*/
 
