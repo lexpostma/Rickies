@@ -93,10 +93,13 @@ header {
 			}
 		}
 		.big_year {
-			color: rgba(255, 255, 255, 0.9);
+			color: rgba(255, 255, 255, 0.8);
 			font-weight: 900;
-			font-size: 120px;
+			font-size: 100px;
 			margin-top: 50px;
+			@media screen and (min-width: var.$break-xs) {
+				font-size: 120px;
+			}
 			@media screen and (min-width: var.$break-md) {
 				font-size: 180px;
 				margin-top: 0;
@@ -105,7 +108,7 @@ header {
 			-webkit-user-select: none;
 			-ms-user-select: none;
 			user-select: none;
-			text-shadow: 0px 2px 8px rgba(51, 63, 72, 0.2);
+			text-shadow: 0px 2px 8px rgba(51, 63, 72, 0.1);
 		}
 		&.custom.color {
 			background-size: auto 100%;
