@@ -333,8 +333,8 @@ function pick_item_bundle($data)
 				// Count the scores of the picks for this host
 				$score['count']++;
 				$score['points'] = $score['points'] + $value['points'];
-				if ($value['status'] == 'Correct' || $value['status'] == 'Half') {
-					$score['correct']++;
+				if ($value['status'] == 'Correct') {
+					$score['correct'] = $score['correct'] + $value['factor'];
 				}
 				$pick_items .= pick_item($value);
 			}

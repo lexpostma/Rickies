@@ -29,6 +29,7 @@ do {
 			'score_points' => check_key('Scoring points', $fields),
 			'brag_points' => check_key('Bragging points', $fields),
 			'points' => check_key('Points', $fields),
+			'factor' => check_key('Factor', $fields),
 			'note' => check_key('Special remark', $fields),
 		];
 
