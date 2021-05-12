@@ -88,15 +88,35 @@ li.list_item {
 			}
 		}
 	}
+	a[href^="https://github.com"],
+	a[href^="https://twitter.com"],
+	a[href^="https://www.youtube.com"]
+	{
+		.secondary_string:before {
+			display: inline-block;
+			margin-right: 0.3em;
+			transform: translate(0px, 1px);
+			// transition: var.$pop-transition;
+			// opacity: 0.7;
+			// transform: translate(0px, 1px);
+		}
+	}
 	a[href^="https://www.youtube.com"]
 	{
 		.secondary_string:before {
 			content: url('/images/youtube.svg');
-			display: inline-block;
-			margin-right: 0.3em;
-			// transition: var.$pop-transition;
-			// opacity: 0.7;
-			// transform: translate(0px, 1px);
+		}
+	}
+	a[href^="https://twitter.com"]
+	{
+		.secondary_string:before {
+			content: url('/images/twitter.svg');
+		}
+	}
+	a[href^="https://github.com"]
+	{
+		.secondary_string:before {
+			content: url('/images/github.svg');
 		}
 	}
 }

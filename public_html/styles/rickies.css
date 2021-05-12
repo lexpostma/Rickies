@@ -34,7 +34,6 @@
   --element-padding: 8px;
   --element-padding-neg: -8px;
   --corner-radius: 4px;
-  /* --hover-animation-duration: 200ms; */
   --graphic-border: 1px solid rgba(0, 0, 0, 0.1);
   --graphic-size: 60px;
 }
@@ -562,10 +561,21 @@ li.list_item a.list_item_content .list_item_labels .label2 {
     transform: scale(1.1);
   }
 }
+li.list_item a[href^="https://github.com"] .secondary_string:before,
+li.list_item a[href^="https://twitter.com"] .secondary_string:before,
 li.list_item a[href^="https://www.youtube.com"] .secondary_string:before {
-  content: url("/images/youtube.svg");
   display: inline-block;
   margin-right: 0.3em;
+  transform: translate(0px, 1px);
+}
+li.list_item a[href^="https://www.youtube.com"] .secondary_string:before {
+  content: url("/images/youtube.svg");
+}
+li.list_item a[href^="https://twitter.com"] .secondary_string:before {
+  content: url("/images/twitter.svg");
+}
+li.list_item a[href^="https://github.com"] .secondary_string:before {
+  content: url("/images/github.svg");
 }
 
 span.tag {
@@ -881,17 +891,26 @@ a span.emoji {
   display: inline-block;
   margin-right: 4px;
 }
-a[href^="https://twitter.com"]:after {
-  content: url("/images/twitter.svg");
+a:not(.list_item_content)[href^="https://github.com"]:after, a:not(.list_item_content)[href^="https://twitter.com"]:after {
   display: inline-block;
   margin-left: 0.3em;
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+}
+a:not(.list_item_content)[href^="https://twitter.com"]:after {
   opacity: 0.7;
+  content: url("/images/twitter.svg");
   transform: translate(0px, 1px);
 }
-a[href^="https://twitter.com"]:hover:after {
-  opacity: 1;
+a:not(.list_item_content)[href^="https://twitter.com"]:hover:after {
   transform: translate(3px, 0px);
+  opacity: 1;
+}
+a:not(.list_item_content)[href^="https://github.com"]:after {
+  content: url("/images/github.svg");
+  transform: translate(0px, 1px);
+}
+a:not(.list_item_content)[href^="https://github.com"]:hover:after {
+  transform: scale(1.2);
 }
 
 ul {
