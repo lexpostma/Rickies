@@ -33,7 +33,7 @@ main {
 	// Slightly wider than readability, due to paper's large padding
 	max-width: 750px;
 	padding: 24px;
-	margin: 0 auto 100px;
+	margin: 0 auto 128px;
 	margin-top: var.$iX-top;
 
 	background-image: url(/images/parchment-border/light-top.png), url(/images/parchment-border/light-left.png),
@@ -51,9 +51,9 @@ main {
 
 	@media screen and (min-width: var.$break-md) {
 		margin-top: 32px;
-		margin-bottom: 128px;
+		margin-bottom: 150px;
 		margin-top: calc(#{var.$iX-top} + 32px);
-		margin-bottom: calc(#{var.$iX-bottom} + 128px);
+		margin-bottom: calc(#{var.$iX-bottom} + 150px);
 		padding: 64px;
 	}
 
