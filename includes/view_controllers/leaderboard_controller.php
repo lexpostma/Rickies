@@ -235,9 +235,9 @@ foreach ($hosts_data__array as $host) {
 			"% correct picks<br />
 		" .
 			$host['stats']['other']['scored_points']['value'] .
-			' points • ' .
+			'&nbsp;points • ' .
 			$host['stats']['other']['correct_flexies']['value'] .
-			' FP',
+			'&nbsp;FP',
 		'img_array' => [
 			'type' => 'avatar',
 			'src' => $host['images']['memoji']['happy'],
