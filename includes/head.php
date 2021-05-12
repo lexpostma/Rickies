@@ -93,10 +93,11 @@ if ($environment !== 'production') {
 <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"> -->
 
 <!-- Style sheet -->
-<link rel="stylesheet" href="/styles/global.css?v=<?= date('z') ?>">
-<link rel="stylesheet" href="/styles/<?= $subdomain ?>.css?v=<?= date('z') ?>">
+<!-- TODO: put date() back to 'z' in URLs to allow caching daily instead of seconds -->
+<link rel="stylesheet" href="/styles/global.css?v=<?= date('s') ?>">
+<link rel="stylesheet" href="/styles/<?= $subdomain ?>.css?v=<?= date('s') ?>">
 <noscript>
-	<link rel="stylesheet" href="/styles/noscript.css?v=<?= date('z') ?>">
+	<link rel="stylesheet" href="/styles/noscript.css?v=<?= date('s') ?>">
 </noscript>
 
 <!-- Goat Counter -->
