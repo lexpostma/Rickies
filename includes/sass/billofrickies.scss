@@ -92,13 +92,13 @@ ol {
 }
 
 main {
-	transition: var.$pop-transition;
+	transition: var.$pop-transition, 300ms margin ease-in-out;
 	transition-delay: 0ms;
 	&.hidden {
 		transform: scale(0);
+		margin: 0 auto;
 		transform-origin: center 20%;
 		transition-delay: 500ms;
-		margin: 0;
 	}
 }
 aside.no_bill {

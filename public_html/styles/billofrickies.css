@@ -351,14 +351,14 @@ ol {
 }
 
 main {
-  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54), 300ms margin ease-in-out;
   transition-delay: 0ms;
 }
 main.hidden {
   transform: scale(0);
+  margin: 0 auto;
   transform-origin: center 20%;
   transition-delay: 500ms;
-  margin: 0;
 }
 
 aside.no_bill {
