@@ -60,9 +60,10 @@ do {
 
 			// If the status not Completed, add tag/banner
 			if ($rickies_events__array[$id]['status'] == 'Ungraded') {
-				$rickies_events__array[$id]['tag'] = $rickies_events__array[$id]['status'];
-				$rickies_events__array[$id]['tag_color'] = 'orange';
-				$rickies_events__array[$id]['tag_banner'] = 'These Rickies are not officially graded yet';
+				$rickies_events__array[$id]['tag'] = 'Interactive';
+				$rickies_events__array[$id]['tag_color'] = 'purple';
+				$rickies_events__array[$id]['tag_banner'] =
+					'<b>Interactive score card</b><br />Grade the Rickies and Flexies yourself until the official results are in';
 			} elseif ($rickies_events__array[$id]['status'] == 'Pre-Rickies') {
 				$rickies_events__array[$id]['tag'] = $rickies_events__array[$id]['status'];
 				$rickies_events__array[$id]['tag_color'] = 'yellow';

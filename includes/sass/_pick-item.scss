@@ -90,4 +90,23 @@ li.pick_item {
 	.note p {
 		@include var.secondary-text;
 	}
+	&.interactive {
+		cursor: pointer;
+		p.pick span.points {
+			transition: var.$pop-transition;
+		}
+		@media (hover: hover) {
+			border-radius: var(--element-corner-radius);
+			background: var(--background-color);
+			transition: var.$hover-duration background ease-in-out;
+			&:hover {
+				background: var(--element-hover-color);
+			}
+		}
+		&:active {
+			p.pick span.points {
+				transform: scale(1.3);
+			}
+		}
+	}
 }

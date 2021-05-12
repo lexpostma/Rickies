@@ -269,7 +269,7 @@ function avatar_leaderboard($host_array)
 // Function to display picks
 function pick_item($data)
 {
-	$output = '<li class="pick_item">';
+	$output = '<li class="pick_item interactive">';
 
 	// If it's not a Flexy, the picks are in 3 rounds
 	if ($data['type'] !== 'Flexy') {
