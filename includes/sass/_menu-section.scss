@@ -77,6 +77,11 @@ nav.nav_container {
 	--nav-height: 53px;
 }
 
+section,
+footer {
+	margin-top: var(--space-between-lg);
+}
+
 section {
 	margin-left: auto;
 	margin-right: auto;
@@ -88,6 +93,7 @@ section {
 		display: none;
 		padding-top: calc(var(--nav-height) + var(--space-side-padding));
 		padding-top: calc(var(--nav-height) + var(--space-side-padding) + #{var.$iX-top});
+		margin-top: calc(-1 * #{var.$iX-top});
 		&.active {
 			display: block;
 		}
@@ -95,11 +101,6 @@ section {
 			display: none;
 		}
 	}
-}
-
-section,
-footer {
-	margin-top: var(--space-between-lg);
 }
 
 .section_group--list {
@@ -134,6 +135,7 @@ footer {
 		}
 
 		&.navigate_with_mobile_menu {
+			margin-top: var(--space-between-lg);
 			padding-top: var(--nav-height) + var(--space-side-padding);
 			padding-top: calc(var(--nav-height) + #{var.$iX-top});
 
