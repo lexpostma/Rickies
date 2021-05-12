@@ -101,16 +101,6 @@ if ($environment !== 'production') {
 </noscript>
 
 <!-- Goat Counter -->
-<? if ($focus_site == 'billofrickies') { ?>
-<script>
-	window.goatcounter = {
-		path: function(p) {
-			// Add 'billof' to path on subdomain
-			return 'billof'+p
-		},
-	}
-</script>
-
 <? } if ($environment == 'production') { // Only track production ?>
 <script data-goatcounter="https://rickies.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <? } else { // Track others elsewhere ?>
