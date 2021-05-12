@@ -54,27 +54,27 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 <? if(array_key_exists('Rickies', $picks_data__array)) {?>
 			<a class="menu_item"
 				id="menu_rickies"
-				href="<?= current_url() ?>#rickies"
+				href="#rickies"
 				data-goatcounter-click="Show Rickies"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('rickies');">The Rickies</a>
 <? } if(array_key_exists('Flexies', $picks_data__array)) {?>
 			<a class="menu_item"
 				id="menu_flexies"
-				href="<?= current_url() ?>#flexies"
+				href="#flexies"
 				data-goatcounter-click="Show Flexies"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('flexies');">The Flexies</a>
 <? } ?>
 			<a class="menu_item"
 				id="menu_hosts"
-				href="<?= current_url() ?>#hosts"
+				href="#hosts"
 				data-goatcounter-click="Show hosts"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('hosts');">Hosts</a>
 			<a class="menu_item"
 				id="menu_details"
-				href="<?= current_url() ?>#details"
+				href="#details"
 				data-goatcounter-click="Show details"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('details');">Details</a>

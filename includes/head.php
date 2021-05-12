@@ -46,7 +46,7 @@ if ($environment !== 'production') {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover" />
 <title><?= $head['title'] ?></title>
-<base href="<?= base_url() ?>">
+<base href="<?= current_url() ?>">
 <link rel="canonical" href="<?= current_url() ?>" />
 
 <!-- Icons -->

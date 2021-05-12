@@ -7,7 +7,7 @@ function url_protocol()
 }
 
 // https://example.com
-function base_url()
+function domain_url()
 {
 	$url = url_protocol() . $_SERVER['SERVER_NAME'];
 	return str_replace('www.', '', $url);
@@ -17,7 +17,7 @@ function base_url()
 // https://example.com/something
 function current_url()
 {
-	return base_url() . $_SERVER['REQUEST_URI'];
+	return domain_url() . $_SERVER['REQUEST_URI'];
 }
 
 function back_button($location = '/')
@@ -43,7 +43,7 @@ function billofrickies_url($goto = true)
 		// goto = false
 		// You want to go back home, away from The Bill of Rickies
 		// Therefore we need to remove the subdomain from the URL
-		return str_replace('thebillof.', '', base_url());
+		return str_replace('thebillof.', '', domain_url());
 	}
 }
 

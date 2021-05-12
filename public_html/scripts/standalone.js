@@ -17,7 +17,7 @@
 				var newTabLink = elementTarget.attributes.getNamedItem('target');
 				if (newTabLink && newTabLink.value == '_blank') return;
 
-				// links that should with # in href should have default behaviour
+				// links that start with # in href should have default behaviour
 				var anchorLink = elementTarget.attributes.getNamedItem('href');
 				if (anchorLink && anchorLink.value.startsWith('#')) return;
 
