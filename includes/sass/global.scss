@@ -66,6 +66,7 @@ p {
 
 	position: absolute;
 	top: 20px;
+	top: max(20px, #{var.$iX-top});
 	left: 20px;
 	z-index: 11;
 	@media (hover: hover) {

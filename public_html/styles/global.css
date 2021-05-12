@@ -81,6 +81,7 @@ p {
   border-radius: 20px;
   position: absolute;
   top: 20px;
+  top: max(20px, env(safe-area-inset-top));
   left: 20px;
   z-index: 11;
 }
