@@ -2,7 +2,11 @@
 <meta name="apple-mobile-web-app-title" content="<?= $head['name'] ?>" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<script><?= file_get_contents('scripts/standalone.js') ?></script>
+
+<!-- Web App manifest, via https://web.dev/add-manifest/ -->
+<link rel="manifest" href="/manifest.json">
+
+<script><?//= file_get_contents('scripts/standalone.js') ?></script>
 
 <?php
 echo '<!-- iOS home screen icons -->';
