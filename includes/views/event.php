@@ -10,23 +10,27 @@ if (
 		$rickies_data['artwork_background_color'] .
 		'; background-image: url(' .
 		$rickies_data['img_url'] .
-		');">';
+		');"><div class="gradient"></div>';
 } elseif (array_key_exists('img_url', $rickies_data) && $rickies_data['artwork']['event'] == $rickies_data['img_url']) {
 	// Image is same as Apple Event image, use as background cover
-	echo '<header class="details" style="background-image: url(' . $rickies_data['img_url'] . ');">';
+	echo '<header class="details" style="background-image: url(' .
+		$rickies_data['img_url'] .
+		');"><div class="gradient"></div>';
 } elseif (array_key_exists('img_url', $rickies_data)) {
 	// Image exists, no exceptions -> place image above the title
-	echo '<header class="details contain_img"><img src="' . $rickies_data['img_url'] . '" />';
+	echo '<header class="details contain_img"><div class="gradient"></div><img src="' .
+		$rickies_data['img_url'] .
+		'" />';
 } elseif ($rickies_data['type'] == 'annual') {
 	// No image, but Annual Rickies -> show year
-	echo '<header class="details"><div class="big_year">' . strftime('%Y', $rickies_data['date']) . '</div>';
+	echo '<header class="details"><div class="gradient"></div><div class="big_year">' .
+		strftime('%Y', $rickies_data['date']) .
+		'</div>';
 } else {
 	// Else -> empty header
-	echo '<header class="details">';
+	echo '<header class="details"><div class="gradient"></div>';
 } ?>
 
-
-	<div class="gradient"></div>
 	<h1>
 <?php if ($rickies_data['type'] == 'keynote') {
 	echo str_lreplace(' ', '&nbsp;', $rickies_data['name']);

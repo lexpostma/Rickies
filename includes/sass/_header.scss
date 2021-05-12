@@ -73,6 +73,9 @@ header {
 	}
 	&.details {
 		height: 375px;
+	}
+	&.about,
+	&.details {
 		background-color: var(--connected-blue);
 		background-size: cover;
 		background-image: url(/images/diagonal-rainbow-header.svg);
@@ -113,9 +116,11 @@ header {
 			border-radius: var(--corner-radius);
 		}
 	}
+	&.leaderboard {
+		background-image: url(/images/connected-map.png);
+	}
 	&.about,
 	&.leaderboard {
 		height: 250px;
-		background-image: url(/images/connected-map.png);
 	}
 }
