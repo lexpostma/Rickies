@@ -21,6 +21,13 @@ The following libraries are used:
 -   [Normalize.css](https://necolas.github.io/normalize.css/) for CSS resets
 -   [Parsedown](https://parsedown.org) for parser Markdown, coming from Airtable, in PHP
 
+## Referrals
+Use the following referral links to give us both something extra and help support this project. 
+
+- Hover
+- Digital Ocean
+- Airtable
+
 ## Tools
 
 -   [Nova](https://nova.app) by Panic
@@ -30,3 +37,4 @@ The following libraries are used:
 -   [Tower](https://www.git-tower.com/mac) Git client
 -   [MAMP Pro](https://www.mamp.info/en/mamp-pro/mac/)
 -   [ImageOptim](https://imageoptim.com/mac)
+- Overcast
