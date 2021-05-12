@@ -315,7 +315,7 @@ function pick_item_bundle($data)
 		$output .=
 			'<section class="navigate_with_mobile_menu large_columns" id="' .
 			strtolower($type) .
-			'"><h2>The ' .
+			'"><h2 class="section_title">The ' .
 			$type .
 			'</h2><div class="section_group">';
 

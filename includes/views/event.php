@@ -98,4 +98,31 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 	</div>
 </section>
 
-<script><? include("scripts/navigation.js"); ?></script>
+<script><? echo file_get_contents("scripts/navigation.js"); ?></script>
+
+<?php
+// Term "Rickies" was coined on episode #245
+$rickies_start = strtotime('2019-05-28');
+
+// Term "Flexies" was coined on episode #275
+$flexies_start = strtotime('2019-12-31');
+
+// Change some strings to originals before the terms Rickies/Flexies were coined
+if (
+	$rickies_data['status'] == 'Pre-Rickies' ||
+	$rickies_data['date'] < $rickies_start ||
+	$rickies_data['date'] < $flexies_start
+) {
+	echo '<script>';
+
+	if ($rickies_data['status'] == 'Pre-Rickies' || $rickies_data['date'] < $rickies_start) {
+		echo "var rickies_alt = 'Predictions';";
+	}
+
+	if ($rickies_data['date'] < $flexies_start) {
+		echo "var flexies_alt = 'Bragging Rights';";
+	}
+
+	echo file_get_contents('scripts/pre-rickies.js') . '</script>';
+}
+
