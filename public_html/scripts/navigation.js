@@ -33,15 +33,17 @@ function navigate_section(section) {
 // STICKY MENU
 const nav_content = document.getElementById('nav_content');
 const nav_anchor = document.getElementById('nav_anchor');
-let nav_position = nav_anchor.getBoundingClientRect().top;
-let statusbar_height = document.getElementById('statusbar').offsetHeight;
+var nav_position = nav_anchor.getBoundingClientRect().top;
+var statusbar_height = document.getElementById('statusbar').offsetHeight;
 
 const add_class_on_scroll = () => nav_content.parentElement.classList.add('sticky');
 const remove_class_on_scroll = () => nav_content.parentElement.classList.remove('sticky');
 
 // Toggle stickiness of nav bar
 function make_nav_sticky() {
+	statusbar_height = document.getElementById('statusbar').offsetHeight;
 	nav_position = nav_anchor.getBoundingClientRect().top;
+
 	if (nav_position <= statusbar_height) {
 		add_class_on_scroll();
 	} else {
@@ -51,6 +53,7 @@ function make_nav_sticky() {
 
 // Define the height of the nav bar and it's anchor/sticky-fillup
 function set_nav_height() {
+	statusbar_height = document.getElementById('statusbar').offsetHeight;
 	var nav_height = document.getElementById('nav_content').offsetHeight + statusbar_height;
 
 	Array.from(document.querySelectorAll('.navigate_with_mobile_menu')).forEach(function (el) {
@@ -62,7 +65,6 @@ function set_nav_height() {
 		Array.from(document.querySelectorAll('.navigate_with_mobile_menu'))
 			.slice(0, -1)
 			.forEach(function (el) {
-				// el.style.paddingTop = nav_height + 'px';
 				el.style.marginBottom = '-' + nav_height + 'px';
 			});
 	}
