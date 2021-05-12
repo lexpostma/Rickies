@@ -68,7 +68,7 @@ aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
   cursor: ew-resize;
   height: 32px;
   width: 38.34px;
-  border: none;
+  border: 1px solid red;
   background: none;
   background-image: url("/images/connected-globe.png");
   background-size: contain;
@@ -101,7 +101,7 @@ aside.slider #rule_slider input[type=range]::-moz-range-thumb {
   cursor: ew-resize;
   height: 32px;
   width: 38.34px;
-  border: none;
+  border: 1px solid red;
   background: none;
   background-image: url("/images/connected-globe.png");
   background-size: contain;
@@ -134,7 +134,7 @@ aside.slider #rule_slider input[type=range]::-ms-thumb {
   cursor: ew-resize;
   height: 32px;
   width: 38.34px;
-  border: none;
+  border: 1px solid red;
   background: none;
   background-image: url("/images/connected-globe.png");
   background-size: contain;
