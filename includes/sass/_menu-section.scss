@@ -75,6 +75,8 @@ nav.nav_container {
 
 section {
 	padding: 0 var(--space-side-padding);
+	padding-left: max(var(--space-side-padding), #{var.$iX-left});
+	padding-right: max(var(--space-side-padding), #{var.$iX-right});
 }
 
 section,

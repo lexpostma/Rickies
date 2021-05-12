@@ -249,6 +249,8 @@ nav.nav_container.sticky #nav_content {
 
 section {
   padding: 0 var(--space-side-padding);
+  padding-left: max(var(--space-side-padding), env(safe-area-inset-left));
+  padding-right: max(var(--space-side-padding), env(safe-area-inset-right));
 }
 
 section,
