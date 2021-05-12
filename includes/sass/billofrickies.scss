@@ -13,7 +13,7 @@
 }
 
 :root {
-	--background-color: var(--relay-blue);
+	--background-color: var(--connected-blue);
 	--text-document-color: #543404;
 	--link-color: #d7a457;
 }
@@ -33,17 +33,33 @@ main {
 	// Slightly wider than readability, due to paper's large padding
 	max-width: 750px;
 	padding: 24px;
-	margin: 16px auto 100px;
+	margin: 0 auto 100px;
 
-	// Note that the border.svg file needs to contain
-	// preserveAspectRatio="none" to be able to stretch the full element.
-	// Via https://stackoverflow.com/a/56459700
-	background-image: url(/images/parchment-border.svg),
+	background-image: url(/images/parchment-border/light-top.png), url(/images/parchment-border/light-left.png),
+		url(/images/parchment-border/light-right.png), url(/images/parchment-border/light-bottom.png),
 		radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%),
 		url(/images/parchment-background.jpg);
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 100% 100%, cover, cover;
+	background-position: left top, left top, right top, right bottom, center, center;
+	background-repeat: repeat-x, repeat-y, repeat-y, repeat-x, no-repeat, no-repeat;
+	background-size: auto 32px, 32px auto, 32px auto, auto 32px, cover, cover;
+
+	@media screen and (min-width: var.$break-sm) {
+		background-size: auto 64px, 64px auto, 64px auto, auto 64px, cover, cover;
+		padding: 48px 48px 64px;
+	}
+
+	@media screen and (min-width: var.$break-md) {
+		margin-top: 32px;
+		margin-bottom: 128px;
+		padding: 64px;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		background-image: url(/images/parchment-border/dark-top.png), url(/images/parchment-border/dark-left.png),
+			url(/images/parchment-border/dark-right.png), url(/images/parchment-border/dark-bottom.png),
+			radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%),
+			url(/images/parchment-background.jpg);
+	}
 }
 
 #document_date {
@@ -79,6 +95,7 @@ main {
 		transform: scale(0);
 		transform-origin: center 20%;
 		transition-delay: 500ms;
+		margin: 0;
 	}
 }
 aside.no_bill {
@@ -157,9 +174,8 @@ aside.slider {
 	}
 }
 
-@media screen and (min-width: var.$break-md) {
-	main {
-		margin: 32px auto 128px;
-		padding: 48px 48px 64px;
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-color: var(--relay-blue);
 	}
 }
