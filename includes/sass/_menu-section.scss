@@ -1,7 +1,8 @@
 @use "variables" as var;
 
 $statusbar: var.$iX-top;
-.statusbar {
+#statusbar {
+	height: 0;
 	height: $statusbar;
 	position: fixed;
 	top: 0;
@@ -11,7 +12,7 @@ $statusbar: var.$iX-top;
 	pointer-events: none;
 }
 
-.nav_content {
+#nav_content {
 	background-color: var(--connected-blue);
 	&.home {
 		@include var.connected_background(40s);
@@ -56,7 +57,7 @@ nav.nav_container {
 	position: relative;
 	// To prevent margins of elements before/after from collapsing
 	height: 1px;
-	.nav_content {
+	#nav_content {
 		position: absolute;
 		right: 0;
 		left: 0;
@@ -65,7 +66,7 @@ nav.nav_container {
 		z-index: 10;
 	}
 	&.sticky {
-		.nav_content {
+		#nav_content {
 			position: fixed;
 			padding-top: $statusbar;
 		}

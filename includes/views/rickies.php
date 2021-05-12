@@ -17,7 +17,7 @@
 	</div>
 </header>
 
-<nav class="nav_content home" style="animation-delay: <?= rand(-50, 0) ?>s;">
+<nav id="nav_content" class="home" style="animation-delay: <?= rand(-50, 0) ?>s;">
 	<div class="nav_content--items">
 		<a class="active" href="#list"><span class="need_space">The </span>Rickies</a>
 		<a href="/leaderboard"><span class="need_space">Host </span>Leaderboard</a>
@@ -29,7 +29,7 @@
 <?= no_script_banner() ?>
 
 <section>
-	<div class="nav_anchor"></div>
+	<div id="nav_anchor"></div>
 	<p>The Rickies are a prediction award show on the <a target="_blank" href="<?= $head['site_connected'] ?>" <?= $head[
 	'site_connected_goat'
 ] ?>>Connected</a> podcast on <a target="_blank" href="<?= $head['site_relay'] ?>" <?= $head[

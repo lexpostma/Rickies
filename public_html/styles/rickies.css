@@ -175,7 +175,8 @@ header.about, header.leaderboard {
   background-image: url(/images/connected-map.png);
 }
 
-.statusbar {
+#statusbar {
+  height: 0;
   height: env(safe-area-inset-top);
   position: fixed;
   top: 0;
@@ -185,47 +186,47 @@ header.about, header.leaderboard {
   pointer-events: none;
 }
 
-.nav_content {
+#nav_content {
   background-color: var(--connected-blue);
   text-align: center;
   padding: 0;
   overflow-x: auto;
 }
-.nav_content.home {
+#nav_content.home {
   animation-name: connected_colors;
   animation-duration: 40s;
   animation-iteration-count: infinite;
 }
-.nav_content .nav_content--items {
+#nav_content .nav_content--items {
   display: inline-flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
 }
-.nav_content .nav_content--items a {
+#nav_content .nav_content--items a {
   padding: var(--space-between-md) var(--space-between-sm);
   white-space: nowrap;
 }
-.nav_content .nav_content--items a span.need_space {
+#nav_content .nav_content--items a span.need_space {
   display: none;
 }
 @media screen and (min-width: 375px) {
-  .nav_content .nav_content--items a {
+  #nav_content .nav_content--items a {
     padding: var(--space-between-md);
   }
 }
 @media screen and (min-width: 576px) {
-  .nav_content .nav_content--items a span.need_space {
+  #nav_content .nav_content--items a span.need_space {
     display: inline;
   }
 }
-.nav_content .nav_content--items a.active {
+#nav_content .nav_content--items a.active {
   opacity: 1;
   font-weight: bold;
   text-decoration: none;
 }
 @media (hover: hover) {
-  .nav_content .nav_content--items a:hover {
+  #nav_content .nav_content--items a:hover {
     background: var(--element-hover-color);
   }
 }
@@ -234,14 +235,14 @@ nav.nav_container {
   position: relative;
   height: 1px;
 }
-nav.nav_container .nav_content {
+nav.nav_container #nav_content {
   position: absolute;
   right: 0;
   left: 0;
   top: 0;
   z-index: 10;
 }
-nav.nav_container.sticky .nav_content {
+nav.nav_container.sticky #nav_content {
   position: fixed;
   padding-top: env(safe-area-inset-top);
 }
