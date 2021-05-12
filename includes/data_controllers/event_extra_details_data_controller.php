@@ -121,7 +121,7 @@ $rickies_events__array[$id]['details'] = [
 	// More data
 	'more_title' => 'More',
 	'more_data_rules' => [
-		'url' => billofrickies_url() . '/' . $rickies_events__array[$id]['url_name'],
+		'url' => '/billof/' . $rickies_events__array[$id]['url_name'],
 		'url_internal' => true,
 		'img_url' => '/images/bill-of-rickies-avatar.png',
 		'label1' => 'The Bill of Rickies',

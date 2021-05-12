@@ -35,7 +35,7 @@ foreach ($rickies_events__array as $event) {
 	$event_slider_js_array['name'][] = $event['name'];
 	$event_slider_js_array['url'][] = $event['url_name'];
 	$event_slider_js_array['date_string'][] =
-		'<a href="' . billofrickies_url(false) . '/' . $event['url_name'] . '">' . $event['date_string'] . '</a>';
+		'<a href="' . '/' . $event['url_name'] . '">' . $event['date_string'] . '</a>';
 
 	// If the URL has an event param, check which event
 	if ($url_view !== 'main' && $event['url_name'] == $url_view) {
@@ -50,7 +50,7 @@ foreach ($rickies_events__array as $event) {
 	$index++;
 }
 
-if ($url_view !== 'main' && !isset($current_selection)) {
+if ($url_view !== 'main' && $url_view !== 'billof' && !isset($current_selection)) {
 	// URL query is given, but no events have match.
 	// That's a 404
 	header('HTTP/1.0 404 Not Found', true, 404);
@@ -92,7 +92,7 @@ $include_body = '../includes/views/billofrickies.php';
 
 $head_custom = [
 	'title' => 'The Bill of Rickies',
-	'favicon' => 'favicon-bill.png',
+	'favicon' => '/favicon-bill.png',
 	// TODO: Write SEO description
 	'description' => '',
 ];

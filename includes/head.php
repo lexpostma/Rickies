@@ -3,7 +3,7 @@
 $head_defaults = [
 	'title' => 'The Rickies',
 	'name' => 'The Rickies',
-	'favicon' => 'favicon.png',
+	'favicon' => '/favicon.png',
 	'author' => 'Lex Postma',
 	'company' => 'Relay FM',
 	// TODO: Write SEO description
@@ -95,13 +95,13 @@ if ($environment !== 'production') {
 <!-- Style sheet -->
 <!-- TODO: put date() back to 'z' in URLs to allow caching daily instead of seconds -->
 <link rel="stylesheet" href="/styles/global.css?v=<?= date('s') ?>">
-<link rel="stylesheet" href="/styles/<?= $subdomain ?>.css?v=<?= date('s') ?>">
+<link rel="stylesheet" href="/styles/<?= $focus_site ?>.css?v=<?= date('s') ?>">
 <noscript>
 	<link rel="stylesheet" href="/styles/noscript.css?v=<?= date('s') ?>">
 </noscript>
 
 <!-- Goat Counter -->
-<? if ($subdomain == 'billofrickies') { ?>
+<? if ($focus_site == 'billofrickies') { ?>
 <script>
 	window.goatcounter = {
 		path: function(p) {
@@ -115,7 +115,7 @@ if ($environment !== 'production') {
 <script data-goatcounter="https://rickies.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <? } else { // Track others elsewhere ?>
 <script data-goatcounter="https://rickies-test.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<? } if ($subdomain == 'rickies') { ?>
+<? } if ($focus_site == 'rickies') { ?>
 <!-- Canvas Confetti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 

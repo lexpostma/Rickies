@@ -1,5 +1,5 @@
 <?php
-echo back_button(billofrickies_url(false)), no_script_banner();
+echo back_button(), no_script_banner();
 if (isset($error)) {
 	echo $error;
 }

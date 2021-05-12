@@ -29,24 +29,6 @@ function back_button($location = '/')
 	return $output;
 }
 
-function billofrickies_url($goto = true)
-{
-	if ($goto) {
-		// goto = true
-		// You want to go to The Bill of Rickies
-		// Therefore we need to add subdomain to the URL
-		$url = str_replace('www.', '', $_SERVER['SERVER_NAME']);
-		$urlarray = explode('.', $url);
-		array_splice($urlarray, -2, 0, 'thebillof');
-		return url_protocol() . implode('.', $urlarray);
-	} else {
-		// goto = false
-		// You want to go back home, away from The Bill of Rickies
-		// Therefore we need to remove the subdomain from the URL
-		return str_replace('thebillof.', '', domain_url());
-	}
-}
-
 // Does the key exists in the array or subarray,
 // and what to return if it is or it not?
 function check_key($key, $array, $default = false, $sub_array = false)

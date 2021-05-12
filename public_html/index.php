@@ -28,33 +28,17 @@ if (isset($_GET['view'])) {
 	$url_view = 'main';
 }
 
-// Is "billof" is URL parameter instead of subdomain, redirect to subdomain
+// Is "billof" a URL parameter?
 if ((isset($_GET['sub']) && $_GET['sub'] == 'billof') || $url_view == 'billof') {
-	$location = billofrickies_url();
-
-	// Add query to "billof" URL if it's needed
-	if ($url_view !== 'main' && $url_view !== 'billof') {
-		$location .= '/' . $url_view;
-	}
-
-	// Redirect to new location
-	header('Location: ' . $location);
-	die();
-}
-
-// What subdomain is being requested?
-// This was done to enable a more dynamic URL
-// The result will open the corresponder controller
-if (in_array('thebillof', explode('.', $_SERVER['HTTP_HOST']))) {
-	// Does the subdomain include "thebillof" for The Bill of Rickies?
-	$subdomain = 'billofrickies';
+	// Does the URL include "thebillof" for The Bill of Rickies?
+	$focus_site = 'billofrickies';
 } else {
 	// Default "rickies"
-	$subdomain = 'rickies';
+	$focus_site = 'rickies';
 }
 
 // Include the controller of get all the data before the HTML begins
-include '../includes/view_controllers/' . $subdomain . '_controller.php';
+include '../includes/view_controllers/' . $focus_site . '_controller.php';
 ?>
 
 <!DOCTYPE HTML>
