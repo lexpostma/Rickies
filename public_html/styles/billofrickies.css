@@ -66,8 +66,8 @@ aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
   cursor: ew-resize;
   height: 32px;
   width: 38.34px;
+  border: none;
   background: none;
-  border: 0;
   background-image: url("/images/connected-globe.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -98,8 +98,8 @@ aside.slider #rule_slider input[type=range]::-moz-range-thumb {
   cursor: ew-resize;
   height: 32px;
   width: 38.34px;
+  border: none;
   background: none;
-  border: 0;
   background-image: url("/images/connected-globe.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -130,8 +130,8 @@ aside.slider #rule_slider input[type=range]::-ms-thumb {
   cursor: ew-resize;
   height: 32px;
   width: 38.34px;
+  border: none;
   background: none;
-  border: 0;
   background-image: url("/images/connected-globe.png");
   background-size: contain;
   background-repeat: no-repeat;
