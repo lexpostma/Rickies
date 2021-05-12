@@ -37,7 +37,12 @@ do {
 			// Set large thumbnail URL as the value of the main event artwork,
 			// but only the first not-false
 			foreach ($rickies_events__array[$id]['artwork'] as $source => $artwork) {
-				if ($artwork !== false && !isset($rickies_events__array[$id]['img_url']) && $source !== 'results_ep') {
+				if (
+					$artwork !== false &&
+					!isset($rickies_events__array[$id]['img_url']) &&
+					$source !== 'results_ep' &&
+					$source !== 'predictions_ep'
+				) {
 					$rickies_events__array[$id]['img_url'] = $artwork;
 					break;
 				}
