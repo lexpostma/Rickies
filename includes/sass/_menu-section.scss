@@ -1,5 +1,16 @@
 @use "variables" as var;
 
+$statusbar: var.$iX-top;
+.statusbar {
+	height: $statusbar;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 10;
+	pointer-events: none;
+}
+
 .nav_content {
 	background-color: var(--connected-blue);
 	&.home {
@@ -56,7 +67,7 @@ nav.nav_container {
 	&.sticky {
 		.nav_content {
 			position: fixed;
-			// padding-top: env(safe-area-inset-top);
+			padding-top: $statusbar;
 		}
 	}
 }

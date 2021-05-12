@@ -47,6 +47,7 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 ?>
 
 <nav class="nav_container">
+	<div class="statusbar"></div>
 	<div class="nav_anchor"></div>
 	<div class="nav_content">
 		<div class="nav_content--items">

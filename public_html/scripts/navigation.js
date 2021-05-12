@@ -34,19 +34,15 @@ function navigate_section(section) {
 const nav_content = document.querySelector('.nav_content');
 const nav_anchor = document.querySelector('.nav_anchor');
 let nav_position = nav_anchor.getBoundingClientRect().top;
-// let nav_height = document.querySelector(".nav_content").offsetHeight;
-// let statusbar_height = document.querySelector(".statusbar").offsetHeight;
+let statusbar_height = document.querySelector('.statusbar').offsetHeight;
 
 const add_class_on_scroll = () => nav_content.parentElement.classList.add('sticky');
 const remove_class_on_scroll = () => nav_content.parentElement.classList.remove('sticky');
 
 // Toggle stickiness of nav bar
 function make_nav_sticky() {
-	// statusbar_height = document.querySelector(".statusbar").offsetHeight;
 	nav_position = nav_anchor.getBoundingClientRect().top;
-	// console.log(nav_position);
-	// if (nav_position <= statusbar_height) {
-	if (nav_position <= 0) {
+	if (nav_position <= statusbar_height) {
 		add_class_on_scroll();
 	} else {
 		remove_class_on_scroll();
