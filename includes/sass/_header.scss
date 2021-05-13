@@ -79,7 +79,9 @@ header {
 		}
 	}
 	&.details {
-		height: 375px;
+		height: 100vw;
+		max-height: 375px;
+		max-height: calc(375px + #{var.$iX-top});
 	}
 	&.about,
 	&.details {
@@ -103,13 +105,17 @@ header {
 			color: rgba(255, 255, 255, 0.8);
 			font-weight: 900;
 			font-size: 100px;
-			margin-top: 50px;
+			margin-top: 30px;
+			margin-top: calc(30px + #{var.$iX-top});
 			@media screen and (min-width: var.$break-xs) {
+				margin-top: 50px;
+				margin-top: calc(50px + #{var.$iX-top});
 				font-size: 120px;
 			}
 			@media screen and (min-width: var.$break-md) {
 				font-size: 180px;
 				margin-top: 0;
+				margin-top: var.$iX-top;
 			}
 			pointer-events: none;
 			-webkit-user-select: none;
@@ -132,5 +138,6 @@ header {
 	&.about,
 	&.leaderboard {
 		height: 250px;
+		max-height: calc(250px + #{var.$iX-top});
 	}
 }

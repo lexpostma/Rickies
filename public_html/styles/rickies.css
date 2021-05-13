@@ -133,7 +133,9 @@ header.about h1, header.details h1, header.leaderboard h1 {
   text-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
 }
 header.details {
-  height: 375px;
+  height: 100vw;
+  max-height: 375px;
+  max-height: calc(375px + env(safe-area-inset-top));
 }
 header.about, header.details {
   background-color: var(--connected-blue);
@@ -157,7 +159,8 @@ header.about .big_year, header.details .big_year {
   color: rgba(255, 255, 255, 0.8);
   font-weight: 900;
   font-size: 100px;
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-top: calc(30px + env(safe-area-inset-top));
   pointer-events: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -166,6 +169,8 @@ header.about .big_year, header.details .big_year {
 }
 @media screen and (min-width: 375px) {
   header.about .big_year, header.details .big_year {
+    margin-top: 50px;
+    margin-top: calc(50px + env(safe-area-inset-top));
     font-size: 120px;
   }
 }
@@ -173,6 +178,7 @@ header.about .big_year, header.details .big_year {
   header.about .big_year, header.details .big_year {
     font-size: 180px;
     margin-top: 0;
+    margin-top: env(safe-area-inset-top);
   }
 }
 header.about.custom.color, header.details.custom.color {
@@ -188,6 +194,7 @@ header.leaderboard {
 }
 header.about, header.leaderboard {
   height: 250px;
+  max-height: calc(250px + env(safe-area-inset-top));
 }
 
 html {
