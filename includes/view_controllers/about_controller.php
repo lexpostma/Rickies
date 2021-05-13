@@ -28,7 +28,7 @@ $resources = [
 	[
 		'url' => 'https://github.com/lexpostma/Rickies/blob/main/Acknowledgements.md',
 		'img_url' => '/images/bill-of-rickies-avatar.png',
-		'label1' => 'Acknowldegments',
+		'label1' => 'Acknowledgements',
 		// 'label2' => 'By Jason Biatek',
 		'label3' => 'GitHub',
 	],
