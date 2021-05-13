@@ -2,7 +2,7 @@
 
 // Rickies _view_ controller, general
 
-$include_body = '../includes/views/main.php';
+$include_body = $incl_path . 'views/main.php';
 
 switch ($url_view) {
 	case 'main':

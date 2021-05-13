@@ -108,6 +108,21 @@ p {
   white-space: nowrap;
 }
 
+.footer_space {
+  margin-top: var(--space-between-lg);
+}
+
+footer {
+  margin-top: auto;
+  padding: var(--space-side-padding);
+  padding-bottom: max(var(--space-side-padding), env(safe-area-inset-bottom));
+  color: white;
+  text-align: center;
+  background: var(--relay-blue);
+  font-size: 0.875rem;
+  position: relative;
+}
+
 .banner a:link, .banner a:visited,
 footer a:not(#footer_corner):link,
 footer a:not(#footer_corner):visited,

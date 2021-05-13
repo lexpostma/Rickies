@@ -1,5 +1,22 @@
 <?php
 
+$incl_path = $_SERVER['DOCUMENT_ROOT'] . '/../includes/';
+include_once $incl_path . 'Parsedown.php';
+
+// Define currently running environment
+if (getenv('ENVIRONMENT') !== false) {
+	$environment = getenv('ENVIRONMENT');
+} else {
+	$environment = 'debug';
+}
+
+// What view is requested?
+if (isset($_GET['view'])) {
+	$url_view = $_GET['view'];
+} else {
+	$url_view = 'main';
+}
+
 // Is the current URL accessed via http or https?
 function url_protocol()
 {
@@ -25,7 +42,7 @@ function current_url()
 function back_button($location = '/')
 {
 	$output = '<a id="back_button" href="' . $location . '">';
-	$output .= file_get_contents('../public_html/images/back-button.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/back-button.svg');
 	$output .= '</a>';
 
 	return $output;

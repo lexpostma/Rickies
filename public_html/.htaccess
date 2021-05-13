@@ -15,9 +15,16 @@ RewriteRule ^billof/([A-Za-z0-9-_]+)/?$	/index.php?view=$1&sub=billof	[NC,L]
 RewriteRule ^([A-Za-z0-9-_]+)/?$		/index.php?view=$1	[NC,L]
 
 ## Error pages
-# ErrorDocument 400 /error/400.php
-# ErrorDocument 401 /error/401.php
-# ErrorDocument 403 /error/403.php
-# ErrorDocument 404 /error/404.php
-# ErrorDocument 500 /error/500.php
-# ErrorDocument 502 /error/502.php
+ErrorDocument 400 /error/400.php
+ErrorDocument 401 /error/401.php
+ErrorDocument 403 /error/403.php
+ErrorDocument 404 /error/404.php
+ErrorDocument 406 /error/406.php
+ErrorDocument 409 /error/409.php
+ErrorDocument 413 /error/413.php
+ErrorDocument 414 /error/414.php
+ErrorDocument 500 /error/500.php
+ErrorDocument 501 /error/501.php
+ErrorDocument 502 /error/502.php
+ErrorDocument 503 /error/503.php
+ErrorDocument 504 /error/504.php

@@ -72,9 +72,11 @@ do {
 			}
 		}
 	} else {
-		// No event (1 or more) found
-		header('HTTP/1.0 404 Not Found', true, 404);
-		echo '404: Rickies not found :( ';
+		// No Rickies/event (1 or more) found
+		// Continue with 404
+		$error_code = 404;
+		include $incl_path . 'error.php';
+		die();
 	}
 } while ($rickies_events__request = $rickies_events__response->next());
 

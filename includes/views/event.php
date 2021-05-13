@@ -103,7 +103,7 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 	</div>
 </section>
 
-<script><? echo file_get_contents("scripts/navigation.js"); ?></script>
+<script><? echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js'); ?></script>
 
 <?php
 // Term "Rickies" was coined on episode #245
@@ -128,6 +128,6 @@ if (
 		echo "var flexies_alt = 'Bragging Rights';";
 	}
 
-	echo file_get_contents('scripts/pre-rickies.js') . '</script>';
+	echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/pre-rickies.js') . '</script>';
 }
 
