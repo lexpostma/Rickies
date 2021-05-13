@@ -497,7 +497,7 @@ li.list_item + li.list_item {
 li.list_item .list_item_content {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   padding: var(--element-padding);
 }
 li.list_item .list_item_content .list_item_labels {
@@ -507,6 +507,8 @@ li.list_item .list_item_content .list_item_labels {
   align-items: flex-start;
   flex-grow: 1;
   width: 100%;
+  min-height: var(--graphic-size);
+  justify-content: center;
 }
 li.list_item .list_item_content .list_item_labels .secondary_string {
   margin-top: 4px;

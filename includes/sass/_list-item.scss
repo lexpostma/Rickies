@@ -12,7 +12,7 @@ li.list_item {
 	.list_item_content {
 		display: flex;
 		flex-direction: row;
-		align-items: center;
+		align-items: flex-start;
 		padding: var(--element-padding);
 
 		.list_item_labels {
@@ -22,6 +22,8 @@ li.list_item {
 			align-items: flex-start;
 			flex-grow: 1;
 			width: 100%;
+			min-height: var(--graphic-size);
+			justify-content: center;
 			.secondary_string {
 				margin-top: 4px;
 				@include var.secondary-text;
