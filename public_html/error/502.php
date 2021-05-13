@@ -1,5 +1,4 @@
-<?
-    $error_code = "502";
-    $error_text = "Bad Gateway";
-    include "error.php";
-?>
+<?php
+
+$error_code = 502;
+include '../../includes/error.php';

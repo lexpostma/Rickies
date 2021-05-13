@@ -1,5 +1,4 @@
-<?
-    $error_code = "500";
-    $error_text = "Internal Server Error";
-    include "error.php";
-?>
+<?php
+
+$error_code = 500;
+include '../../includes/error.php';

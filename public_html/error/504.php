@@ -1,5 +1,4 @@
-<?
-    $error_code = "504";
-    $error_text = "Gateway Timeout";
-    include "error.php";
-?>
+<?php
+
+$error_code = 504;
+include '../../includes/error.php';

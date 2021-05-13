@@ -1,5 +1,4 @@
-<?
-    $error_code = "414";
-    $error_text = "URI Too Long";
-    include "error.php";
-?>
+<?php
+
+$error_code = 414;
+include '../../includes/error.php';

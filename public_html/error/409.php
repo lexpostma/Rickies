@@ -1,5 +1,4 @@
-<?
-    $error_code = "409";
-    $error_text = "Conflict";
-    include "error.php";
-?>
+<?php
+
+$error_code = 409;
+include '../../includes/error.php';

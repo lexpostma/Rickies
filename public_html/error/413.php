@@ -1,5 +1,4 @@
-<?
-    $error_code = "413";
-    $error_text = "Payload Too Large";
-    include "error.php";
-?>
+<?php
+
+$error_code = 413;
+include '../../includes/error.php';

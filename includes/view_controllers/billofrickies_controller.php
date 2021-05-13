@@ -88,7 +88,7 @@ if (!isset($current_selection)) {
 }
 // echo '<pre>', var_dump($current_selection), '</pre>';
 
-$include_body = '../includes/views/billofrickies.php';
+$include_body = $incl_path . 'views/billofrickies.php';
 
 $head_custom = [
 	'title' => 'The Bill of Rickies',

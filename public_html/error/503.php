@@ -1,5 +1,4 @@
-<?
-    $error_code = "503";
-    $error_text = "Service Unavailable";
-    include "error.php";
-?>
+<?php
+
+$error_code = 503;
+include '../../includes/error.php';

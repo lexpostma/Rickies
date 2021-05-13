@@ -1,5 +1,4 @@
-<?
-    $error_code = "404";
-    $error_text = "Not Found";
-    include "error.php";
-?>
+<?php
+
+$error_code = 404;
+include '../../includes/error.php';

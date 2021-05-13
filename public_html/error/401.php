@@ -1,5 +1,4 @@
-<?
-    $error_code = "401";
-    $error_text = "Unauthorized";
-    include "error.php";
-?>
+<?php
+
+$error_code = 401;
+include '../../includes/error.php';

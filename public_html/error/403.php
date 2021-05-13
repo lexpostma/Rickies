@@ -1,5 +1,4 @@
-<?
-    $error_code = "403";
-    $error_text = "Forbidden";
-    include "error.php";
-?>
+<?php
+
+$error_code = 403;
+include '../../includes/error.php';

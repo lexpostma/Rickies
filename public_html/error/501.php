@@ -1,5 +1,4 @@
-<?
-    $error_code = "501";
-    $error_text = "Not Implemented";
-    include "error.php";
-?>
+<?php
+
+$error_code = 501;
+include '../../includes/error.php';
