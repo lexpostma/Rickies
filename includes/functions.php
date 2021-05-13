@@ -136,10 +136,12 @@ function no_script_banner($string = false)
 
 // Format the date to a readable string
 // Via https://stackoverflow.com/a/25623057
+function date_string_format()
+{
+	return '%e %B %Y';
+}
 function date_to_string_label($input, $air_date = false)
 {
-	$date_format = '%e %B %Y';
-
 	$current = strtotime(date('Y-m-d'));
 	$date = strtotime($input);
 
@@ -159,10 +161,10 @@ function date_to_string_label($input, $air_date = false)
 		$output = 'tomorrow';
 	} elseif ($difference > 1) {
 		$air_string = 'Airs on ';
-		$output = strftime($date_format, $date);
+		$output = strftime(date_string_format(), $date);
 	} else {
 		$air_string = 'Aired on ';
-		$output = strftime($date_format, $date);
+		$output = strftime(date_string_format(), $date);
 	}
 
 	if ($air_date) {

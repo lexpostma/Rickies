@@ -46,7 +46,10 @@ function list_item_graphic($img_array = false, $avatar = false)
 		switch ($img_array['type']) {
 			case 'background':
 				$class[] = 'fill_image';
-				if (isset($img_array['color'])) {
+				if (isset($img_array['color']) && $img_array['color'] == 'random') {
+					$class[] = 'placeholder';
+					$style[] = 'animation-delay: ' . rand(-50, 0) . 's;';
+				} elseif (isset($img_array['color'])) {
 					$style[] = 'background-color: ' . $img_array['color'] . ';';
 				}
 				$style[] = 'background-image: url(' . $img_array['src'] . ');';
@@ -131,13 +134,17 @@ function list_item($data)
 
 	// Is there an image, yes/no?
 	if (isset($data['img_url']) && $data['img_url'] !== false) {
-		// Set URL as img src
-		$img_array['src'] = $data['img_url'];
-		$img_array['type'] = 'background';
+		if (is_array($data['img_url'])) {
+			$img_array = $data['img_url'];
+		} else {
+			// Set URL as img src
+			$img_array['src'] = $data['img_url'];
+			$img_array['type'] = 'background';
 
-		// Set color, if defined
-		if (array_key_exists('artwork_background_color', $data) && $data['artwork_background_color'] !== false) {
-			$img_array['color'] = $data['artwork_background_color'];
+			// Set color, if defined
+			if (array_key_exists('artwork_background_color', $data) && $data['artwork_background_color'] !== false) {
+				$img_array['color'] = $data['artwork_background_color'];
+			}
 		}
 	} elseif (array_key_exists('type', $data) && $data['type'] == 'annual') {
 		// No image, but annual, so include the date/year

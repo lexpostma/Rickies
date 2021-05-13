@@ -10,12 +10,8 @@
 ?>
 </section>
 
-<section>
-	<h2>Other resources</h2>
-	<ul class="list_item_group">
-<?php // TODO: Add intro
-foreach ($resources as $item) {
-	echo list_item($item);
-} ?>
-	</ul>
+<section class="large_columns">
+	<div class="section_group">
+		<?= list_item_bundle($resources) ?>
+	</div>
 </section>

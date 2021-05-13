@@ -97,7 +97,6 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 
 <section class="navigate_with_mobile_menu large_columns" id="details">
 	<h2>Details</h2>
-
 	<div class="section_group">
 <?= list_item_bundle($rickies_data['details']) ?>
 	</div>

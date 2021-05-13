@@ -30,6 +30,9 @@ li.list_item {
 					color: white;
 				}
 			}
+			.label2 + .secondary_string {
+				margin-top: 2px;
+			}
 		}
 	}
 	&.host_details .list_item_content {
