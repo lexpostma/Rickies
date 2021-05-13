@@ -7,8 +7,8 @@ $resources = [
 	'This Project',
 	[
 		'label1' => 'Project on GitHub',
-		// 'label2' => 'By Jason Biatek',
-		'label3' => 'Read me last updated on ' . strftime(date_string_format(), filemtime('../Readme.md')),
+		'label2' => 'See the code, create issues. Public but not open source',
+		'label3' => '‘Read me’ was last updated on ' . strftime(date_string_format(), filemtime('../Readme.md')),
 		'url' => 'https://github.com/lexpostma/Rickies/blob/main/Acknowledgements.md',
 		'img_url' => ['src' => '/images/about/project.svg', 'type' => 'background', 'color' => 'random'],
 	],
@@ -37,7 +37,7 @@ $resources = [
 	[
 		'label1' => 'Listen to Connected',
 		'label2' => 'The podcast on Relay FM',
-		// 'label3' => 'At MacStories on 18 April 2019',
+		// 'label3' => '',
 		'url' => 'https://relay.fm/connected',
 		'img_url' => '/images/connected-artwork.jpg',
 	],
@@ -51,7 +51,7 @@ $resources = [
 	[
 		'label1' => 'Get Connected Pro',
 		'label2' => 'Preshow, postshow, no ads.',
-		// 'label3' => 'GitHub',
+		// 'label3' => '',
 		'url' => 'https://getconnectedpro.co',
 		'img_url' => '/images/connected-pro-artwork.jpg',
 	],
