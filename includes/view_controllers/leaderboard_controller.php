@@ -48,7 +48,7 @@ function leaderboard_item($host_data)
 		data-goatcounter-click="' .
 		$host_data['personal']['twitter_url'] .
 		'"
-		data-goatcounter-title="Go to @' .
+		title="Go to @' .
 		$host_data['personal']['twitter'] .
 		'"
 		data-goatcounter-referrer="' .
@@ -62,7 +62,7 @@ function leaderboard_item($host_data)
 		data-goatcounter-click="' .
 		$host_data['personal']['website_url'] .
 		'"
-		data-goatcounter-title="Go to ' .
+		title="Visit ' .
 		$host_data['personal']['website_name'] .
 		'"
 		data-goatcounter-referrer="' .

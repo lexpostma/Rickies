@@ -210,7 +210,7 @@ function chairman_url($event_type)
 		data-goatcounter-click="' .
 		$twitter .
 		'"
-		data-goatcounter-title="' .
+		title="' .
 		$label .
 		'"
 		data-goatcounter-referrer="' .

@@ -3,7 +3,6 @@
 		target="_blank"
 		href="<?= $head['site_relay'] ?>"
 		id="header_corner"
-		title="Visit <?= $head['company'] ?>"
 		<?= $head['site_relay_goat'] ?>
 	>
 		<img id="relay_logo" src="/images/relay-logo.png" alt="<?= $head['company'] ?> logo"/>

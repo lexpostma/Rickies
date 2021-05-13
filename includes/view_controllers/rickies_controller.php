@@ -110,14 +110,14 @@ function list_item($data)
 	$output = '';
 	if (isset($data['url']) && $data['url'] !== false) {
 		if ($data['url'][0] == '/' || isset($data['url_internal'])) {
-			$href = 'href="' . $data['url'] . '"';
+			$href = 'href="' . $data['url'] . '" title="' . $data['label1'] . '"';
 		} else {
 			$href =
 				'target="_blank"
 				data-goatcounter-click="' .
 				$data['url'] .
 				'"
-				data-goatcounter-title="' .
+				title="' .
 				$data['label1'] .
 				'"
 				data-goatcounter-referrer="' .
