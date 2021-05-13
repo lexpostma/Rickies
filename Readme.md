@@ -7,10 +7,10 @@ The Rickies are a prediction award show on the from the [Connected ](https://rel
 
 ## Main features
 
-- Overview of all Rickies, including prediction shows before the official Rickies. 
-- For each Rickies, all details are together in one place.
-- Ungraded Rickies are interactive so you can score live with the event before the official results are in.
-- Host Leaderboard
-- The Bill of Rickies with complete history, accessible through slider.
-- Built on Airtable database.
-- Standalone web app, optimised for iOS devices with support for dark mode. 
+-   Overview of all Rickies, including prediction shows before the official Rickies.
+-   For each Rickies, all details are together in one place.
+-   Ungraded Rickies are interactive so you can score live with the event before the official results are in.
+-   Host Leaderboard
+-   The Bill of Rickies with complete history, accessible through slider.
+-   Built on Airtable database.
+-   Standalone web app, optimised for iOS devices with support for dark mode.

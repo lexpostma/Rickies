@@ -20,15 +20,15 @@ The following libraries are used:
 -   [Canvas Confetti](https://github.com/catdad/canvas-confetti) for the confetti on the [homepage](https://rickies.co/)
 -   [Normalize.css](https://necolas.github.io/normalize.css/) for CSS resets
 -   [Parsedown](https://parsedown.org) for parser Markdown in PHP
-- [Goat Counter](https://www.goatcounter.com/) for simple analytics
+-   [Goat Counter](https://www.goatcounter.com/) for simple analytics
 
 ## Referrals
-Use the following referral links to give us both something extra and help support this project. 
 
-- Hover
-- Digital Ocean
-- Airtable
-- Cloudflare
+Use the following referral links to give us both something extra and help support this project.
+
+-   [Hover](https://hover.com/RPxkv2lK), get $2 off your first domain name purchase.
+-   [DigitalOcean](https://m.do.co/c/c931041cf4fc), gets $100 in credit for cloud services.
+-   [Airtable](https://airtable.com/invite/r/srbbQalO), the familiarity of a spreadsheet, and the power of a database.
 
 ## Tools
 
@@ -39,5 +39,5 @@ Use the following referral links to give us both something extra and help suppor
 -   [Tower](https://www.git-tower.com/mac) Git client
 -   [MAMP Pro](https://www.mamp.info/en/mamp-pro/mac/)
 -   [ImageOptim](https://imageoptim.com/mac)
-- [Overcast](https://overcast.fm/)
-- [UptimeRobot](https://uptimerobot.com/)
+-   [Overcast](https://overcast.fm/)
+-   [UptimeRobot](https://uptimerobot.com/)
