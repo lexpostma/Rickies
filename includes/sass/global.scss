@@ -120,26 +120,6 @@ footer {
 	}
 }
 
-// Links on colored/dark background
-.banner a,
-footer a:not(#footer_corner),
-nav a {
-	&:link,
-	&:visited {
-		color: white;
-		opacity: 0.8;
-	}
-
-	&:hover,
-	&:focus {
-		opacity: 1;
-	}
-
-	&:active {
-		opacity: 1;
-	}
-}
-
 /* For debugging */
 pre {
 	font-size: 0.8rem;

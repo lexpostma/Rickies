@@ -52,6 +52,67 @@
     --element-hover-color: rgba(255, 255, 255, 0.1);
   }
 }
+a {
+  font-weight: 500;
+}
+a:link, a:visited {
+  color: var(--link-color);
+}
+a:hover, a:focus, a:active {
+  color: var(--link-hover-color);
+}
+a span.emoji {
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 4px;
+}
+a:not(.list_item_content)[href^="https://github.com"]:after, a:not(.list_item_content)[href^="https://twitter.com"]:after {
+  display: inline-block;
+  margin-left: 0.3em;
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+}
+a:not(.list_item_content)[href^="https://twitter.com"]:after {
+  opacity: 0.7;
+  content: url("/images/twitter.svg");
+  transform: translate(0px, 1px);
+}
+@media (hover: hover) {
+  a:not(.list_item_content)[href^="https://twitter.com"]:hover:after {
+    transform: translate(3px, 0px);
+    opacity: 1;
+  }
+}
+a:not(.list_item_content)[href^="https://github.com"]:after {
+  content: url("/images/github.svg");
+  transform: translate(0px, 1px);
+}
+@media (hover: hover) {
+  a:not(.list_item_content)[href^="https://github.com"]:hover:after {
+    transform: scale(1.2);
+  }
+}
+
+.banner a:link, .banner a:visited,
+footer a:not(#footer_corner):link,
+footer a:not(#footer_corner):visited,
+nav a:link,
+nav a:visited {
+  color: white;
+  opacity: 0.8;
+}
+.banner a:hover, .banner a:focus,
+footer a:not(#footer_corner):hover,
+footer a:not(#footer_corner):focus,
+nav a:hover,
+nav a:focus {
+  opacity: 1;
+}
+.banner a:active,
+footer a:not(#footer_corner):active,
+nav a:active {
+  opacity: 1;
+}
+
 h1 {
   font-weight: 800;
   font-size: 2rem;
@@ -919,46 +980,6 @@ h4 {
   font-weight: bold;
   font-size: 0.875rem;
   margin: 0;
-}
-
-a {
-  font-weight: 500;
-}
-a:link, a:visited {
-  color: var(--link-color);
-}
-a:hover, a:focus, a:active {
-  color: var(--link-hover-color);
-}
-a span.emoji {
-  text-decoration: none;
-  display: inline-block;
-  margin-right: 4px;
-}
-a:not(.list_item_content)[href^="https://github.com"]:after, a:not(.list_item_content)[href^="https://twitter.com"]:after {
-  display: inline-block;
-  margin-left: 0.3em;
-  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
-}
-a:not(.list_item_content)[href^="https://twitter.com"]:after {
-  opacity: 0.7;
-  content: url("/images/twitter.svg");
-  transform: translate(0px, 1px);
-}
-@media (hover: hover) {
-  a:not(.list_item_content)[href^="https://twitter.com"]:hover:after {
-    transform: translate(3px, 0px);
-    opacity: 1;
-  }
-}
-a:not(.list_item_content)[href^="https://github.com"]:after {
-  content: url("/images/github.svg");
-  transform: translate(0px, 1px);
-}
-@media (hover: hover) {
-  a:not(.list_item_content)[href^="https://github.com"]:hover:after {
-    transform: scale(1.2);
-  }
 }
 
 ul {

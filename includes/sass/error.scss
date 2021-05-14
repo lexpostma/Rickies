@@ -1,5 +1,6 @@
 @use "variables" as var;
 @use "root";
+@use "links";
 @use "header";
 @use "menu-section";
 @use "logo-tag";
@@ -8,4 +9,8 @@ html {
 	line-height: 1.5;
 	background-color: var(--background-color);
 	color: var(--text-primary-color);
+}
+
+p + p {
+	margin-top: var(--space-between-md);
 }

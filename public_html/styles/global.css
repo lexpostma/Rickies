@@ -137,27 +137,6 @@ footer.is_standalone p.refresh_page, footer.isnot_standalone p.promote_webapp {
   display: block;
 }
 
-.banner a:link, .banner a:visited,
-footer a:not(#footer_corner):link,
-footer a:not(#footer_corner):visited,
-nav a:link,
-nav a:visited {
-  color: white;
-  opacity: 0.8;
-}
-.banner a:hover, .banner a:focus,
-footer a:not(#footer_corner):hover,
-footer a:not(#footer_corner):focus,
-nav a:hover,
-nav a:focus {
-  opacity: 1;
-}
-.banner a:active,
-footer a:not(#footer_corner):active,
-nav a:active {
-  opacity: 1;
-}
-
 /* For debugging */
 pre {
   font-size: 0.8rem;
