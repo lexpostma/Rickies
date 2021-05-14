@@ -1,3 +1,5 @@
+![Trophy](public_html/images/trophy.png)
+
 # The Rickies
 
 Predictions with risk, flexing, and passion.
