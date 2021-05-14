@@ -140,10 +140,15 @@ function date_string_format()
 {
 	return '%e %B %Y';
 }
-function date_to_string_label($input, $air_date = false)
+function date_to_string_label($date, $context = false, $date_needs_conversion = true)
 {
 	$current = strtotime(date('Y-m-d'));
-	$date = strtotime($input);
+
+	// Is date still a string that needs to be converted?
+	// Default = true, false means no conversion
+	if ($date_needs_conversion) {
+		$date = strtotime($date);
+	}
 
 	$datediff = $date - $current;
 
@@ -151,24 +156,36 @@ function date_to_string_label($input, $air_date = false)
 	$difference = floor($datediff / (60 * 60 * 24));
 
 	if ($difference == 0) {
+		// Today
 		$air_string = 'Airs ';
+		$on = '';
 		$output = 'today';
 	} elseif ($difference == -1) {
+		// Yesterday
 		$air_string = 'Aired ';
+		$on = '';
 		$output = 'yesterday';
 	} elseif ($difference == 1) {
+		// Tomorrow
 		$air_string = 'Airs ';
+		$on = '';
 		$output = 'tomorrow';
 	} elseif ($difference > 1) {
-		$air_string = 'Airs on ';
+		// Future after tomorrow
+		$on = 'on ';
+		$air_string = 'Airs ' . $on;
 		$output = strftime(date_string_format(), $date);
 	} else {
-		$air_string = 'Aired on ';
+		// Past before yesterday
+		$on = 'on ';
+		$air_string = 'Aired ' . $on;
 		$output = strftime(date_string_format(), $date);
 	}
 
-	if ($air_date) {
+	if ($context === 'air') {
 		return $air_string . $output;
+	} elseif ($context) {
+		return $on . $output;
 	} else {
 		return ucfirst($output);
 	}
