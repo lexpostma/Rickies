@@ -9,12 +9,15 @@ function update_pick(pick) {
 		points.classList.remove('correct');
 		points.classList.add('wrong');
 		update_pick_points(points, 'wrong');
+		pick.classList.add('manual');
 	} else if (points.classList.contains('wrong')) {
 		points.classList.remove('wrong');
 		update_pick_points(points, 'unknown');
+		pick.classList.remove('manual');
 	} else {
 		points.classList.add('correct');
 		update_pick_points(points, 'correct');
+		pick.classList.add('manual');
 	}
 
 	// Update the host's total score

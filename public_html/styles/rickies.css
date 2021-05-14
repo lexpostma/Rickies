@@ -698,6 +698,11 @@ li.pick_item .note p {
 }
 li.pick_item.interactive {
   cursor: pointer;
+  background: var(--background-color);
+  transition: 300ms background ease-in-out;
+}
+li.pick_item.interactive + .interactive {
+  margin-top: 2px;
 }
 li.pick_item.interactive span.label {
   -webkit-user-select: none;
@@ -710,8 +715,6 @@ li.pick_item.interactive p.pick span.points {
 @media (hover: hover) {
   li.pick_item.interactive {
     border-radius: var(--element-corner-radius);
-    background: var(--background-color);
-    transition: 300ms background ease-in-out;
   }
   li.pick_item.interactive:hover {
     background: var(--element-hover-color);
@@ -722,6 +725,9 @@ li.pick_item.interactive p.pick span.points {
 }
 li.pick_item.interactive:active p.pick span.points {
   transform: scale(1.1);
+}
+li.pick_item.manual {
+  background-color: rgba(239, 123, 0, 0.2);
 }
 
 @keyframes gradient {

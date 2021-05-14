@@ -95,6 +95,11 @@ li.pick_item {
 	}
 	&.interactive {
 		cursor: pointer;
+		background: var(--background-color);
+		transition: var.$hover-duration background ease-in-out;
+		+ .interactive {
+			margin-top: 2px;
+		}
 		span.label {
 			-webkit-user-select: none;
 			-ms-user-select: none;
@@ -105,8 +110,6 @@ li.pick_item {
 		}
 		@media (hover: hover) {
 			border-radius: var(--element-corner-radius);
-			background: var(--background-color);
-			transition: var.$hover-duration background ease-in-out;
 			&:hover {
 				background: var(--element-hover-color);
 				p.pick span.points {
@@ -119,5 +122,8 @@ li.pick_item {
 				transform: scale(1.1);
 			}
 		}
+	}
+	&.manual {
+		background-color: rgba(239, 123, 0, 0.2);
 	}
 }
