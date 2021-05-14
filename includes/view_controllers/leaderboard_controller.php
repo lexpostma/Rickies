@@ -13,7 +13,7 @@ function leaderboard_item_bundle($input)
 	$chart_script = '<script>';
 	foreach ($input as $host_data) {
 		$output .= leaderboard_item($host_data);
-		$chart_script .= score_graph_script($host_data['stats']['picks'], $host_data['personal']['first_name']);
+		$chart_script .= score_chart_script($host_data['stats']['picks'], $host_data['personal']['first_name']);
 	}
 	$chart_script .= '</script>';
 	$output .= '</div></section>';
@@ -84,7 +84,7 @@ function leaderboard_item($host_data)
 
 	// Statistics
 	$output .= '<h4>Stats</h4>';
-	$output .= score_graph_item($host_data['stats']['picks'], strtolower($host_data['personal']['first_name']));
+	$output .= score_chart_item($host_data['stats']['picks'], strtolower($host_data['personal']['first_name']));
 	$output .= score_label_item($host_data['stats']['other'], $host_data['personal']['color']);
 
 	// Close host and content
@@ -125,23 +125,26 @@ function score_label_item($array, $color)
 	$output .= '</table>';
 	return $output;
 }
-function define_score_graph_id($host, $type)
+
+function define_score_chart_id($host, $type)
 {
 	return 'chart_' . strtolower($host) . '_' . strtolower($type);
 }
-function score_graph_script($chart_array, $host)
+
+// Define score chart script
+function score_chart_script($chart_array, $host)
 {
 	$chart_script = '';
-	foreach ($chart_array as $pick_type => $graph) {
+	foreach ($chart_array as $pick_type => $chart) {
 		if ($pick_type !== 'Scored' && $pick_type !== 'Overall') {
-			$chart_id = define_score_graph_id($host, $pick_type);
+			$chart_id = define_score_chart_id($host, $pick_type);
 			$chart_el = $chart_id . '_el';
 			$chart_var = $chart_id . '_var';
 
 			// Add a ChartJS chart data
 			$labels = [];
 			$data = [];
-			foreach ($graph as $key => $value) {
+			foreach ($chart as $key => $value) {
 				if ($key !== 'Total' && $key !== 'Rate') {
 					$labels[$key] = "'" . $key . "'";
 					$data[$key] = $value;
@@ -191,7 +194,9 @@ var $chart_var = new Chart($chart_el, {
 	}
 	return $chart_script;
 }
-function score_graph_item($chart_array, $host)
+
+// Define score charts
+function score_chart_item($chart_array, $host)
 {
 	$output = '<div class="charts">';
 	$emoji = [
@@ -202,9 +207,9 @@ function score_graph_item($chart_array, $host)
 		// "Overall" => "🪣",
 	];
 
-	foreach ($chart_array as $pick_type => $graph) {
+	foreach ($chart_array as $pick_type => $chart) {
 		if ($pick_type !== 'Scored' && $pick_type !== 'Overall') {
-			$chart_id = define_score_graph_id($host, $pick_type);
+			$chart_id = define_score_chart_id($host, $pick_type);
 			// Add a ChartJS chart canvas
 			$output .=
 				'<div class="chart_pick_type"><div class="chart-container"><canvas id="' .
