@@ -1,7 +1,7 @@
 <div class="footer_space"></div>
 <footer id="footer">
 	<p class="promote_webapp">This website is designed as a web app.<br />Add it to your home screen for the best experience.</p>
-	<p class="refresh_page"><a href="#" onclick="window.location.href=window.location.href">Refresh this page</a></p>
+	<p class="refresh_page"><a href onclick="location.reload()">Refresh this page</a></p>
 	<p>Designed and built with <?= random(['💚', '💛', '🧡', '❤️', '💜', '💙']) ?> by <a target="_blank" href="<?= $head[
  	'site_lex'
  ] ?>" <?= $head['site_lex_goat'] ?>><?= $head[
