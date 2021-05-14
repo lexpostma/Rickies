@@ -510,7 +510,3 @@ html {
   background-color: var(--background-color);
   color: var(--text-primary-color);
 }
-
-p + p {
-  margin-top: var(--space-between-md);
-}

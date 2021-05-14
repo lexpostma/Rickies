@@ -75,6 +75,10 @@ p {
   margin: 0;
 }
 
+section > p + p {
+  margin-top: var(--space-between-md);
+}
+
 #back_button {
   display: block;
   height: 40px;
