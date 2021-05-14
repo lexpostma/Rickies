@@ -259,7 +259,7 @@ $introduction =
 	digit_text($status_data__array['Ungraded']) .
 	' ungraded</b> Rickies, and picks from ' .
 	digit_text($status_data__array['Pre-Rickies']) .
-	' earlier episodes that predate the (<a href="/billof/keynote-sep-2018" title="The Bill of Rickies">Bill of</a>) Rickies as partial points had been awarded.</p>';
+	' earlier prediction episodes that predate the (<a href="/billof/keynote-sep-2018" title="The Bill of Rickies">Bill of</a>) Rickies as partial points had been awarded.</p>';
 
 $head_custom = [
 	'title' => 'Host Leaderboard • The Rickies',
