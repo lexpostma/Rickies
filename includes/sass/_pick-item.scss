@@ -109,11 +109,9 @@ li.pick_item {
 			transition: var.$hover-duration background ease-in-out;
 			&:hover {
 				background: var(--element-hover-color);
-			}
-		}
-		&:hover {
-			p.pick span.points {
-				transform: scale(1.2);
+				p.pick span.points {
+					transform: scale(1.2);
+				}
 			}
 		}
 		&:active {

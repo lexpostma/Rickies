@@ -716,9 +716,9 @@ li.pick_item.interactive p.pick span.points {
   li.pick_item.interactive:hover {
     background: var(--element-hover-color);
   }
-}
-li.pick_item.interactive:hover p.pick span.points {
-  transform: scale(1.2);
+  li.pick_item.interactive:hover p.pick span.points {
+    transform: scale(1.2);
+  }
 }
 li.pick_item.interactive:active p.pick span.points {
   transform: scale(1.1);
