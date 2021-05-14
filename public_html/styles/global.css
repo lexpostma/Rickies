@@ -115,7 +115,7 @@ p {
 }
 
 .footer_space {
-  margin-top: var(--space-between-lg);
+  margin-top: calc(var(--space-between-lg) * 2);
 }
 
 footer {
