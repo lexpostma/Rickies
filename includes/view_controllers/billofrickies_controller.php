@@ -85,14 +85,19 @@ if (!isset($current_selection)) {
 		'date' => end($event_slider_js_array['date']),
 		'date_string' => end($event_slider_js_array['date_string']),
 	];
+	$description = 'The Bill of Rickies as of the ' . end($event_slider_js_array['name']) . '. ';
+} else {
+	$description = '';
 }
 // echo '<pre>', var_dump($current_selection), '</pre>';
 
 $include_body = $incl_path . 'views/billofrickies.php';
 
+$description .=
+	'The rules that keep the Rickies straight since 2017. With the full history of the document just a slide away.';
+
 $head_custom = [
 	'title' => 'The Bill of Rickies',
-	// TODO: Write SEO description
-	'description' => '',
 	'favicon' => '/favicon-bill.png',
+	'description' => $description,
 ];

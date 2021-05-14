@@ -11,7 +11,7 @@
 		<img id="trophy" src="/images/trophy.png" onclick="confetti_go()"/>
 		<div class="hero_heading">
 			<h1>The Rickies</h1>
-			<p>Awards with risk, flexing, and passion.<br />On Connected at Relay FM.</p>
+			<?= $hero_tag ?>
 		</div>
 	</div>
 </header>
@@ -27,14 +27,7 @@
 
 <?= no_script_banner() ?>
 
-<section>
-	<div id="nav_anchor"></div>
-	<p>The Rickies are a prediction award show on the <a target="_blank" href="<?= $head['site_connected'] ?>" <?= $head[
-	'site_connected_goat'
-] ?>>Connected</a> podcast on <a target="_blank" href="<?= $head['site_relay'] ?>" <?= $head[
-	'site_relay_goat'
-] ?>>Relay FM</a>. Every year and every Apple event, Myke Hurley, Stephen Hackett, and Federico Viticci predict what Apple will announce next. Over the course of the show, the hosts have relied on <a href="/billof">The Bill of Rickies</a> to keep the record straight. Some predictions are risky, some are just to flex, most are formed with passion.</p>
-</section>
+<section><?= $introduction ?></section>
 
 <section id="list">
 	<ul class="list_item_group">

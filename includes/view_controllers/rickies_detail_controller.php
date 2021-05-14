@@ -339,10 +339,40 @@ function host_item_bundle($host_event_data, $event_type)
 	return $output;
 }
 
+// Define SEO description
+$description = 'The ' . $rickies_data['name'] . ', prediction awards of the Connected podcast. ';
+if ($rickies_data['type'] == 'annual' && $rickies_data['status'] == 'Ungraded') {
+	// Annual and ungraded, so future
+	$description .=
+		'What will Apple announce and release in ' .
+		strftime('%Y', $rickies_data['date']) .
+		'? And who will become Keynote Chairman? Follow along with the hosts as the year progresses with this interactive scorecard';
+} elseif ($rickies_data['type'] == 'annual') {
+	// Annual and graded, so past
+	$description .=
+		'What has Apple announced and released in ' .
+		strftime('%Y', $rickies_data['date']) .
+		'? And how did Myke, Stephen, and Federico perform with their yearly predictions?';
+} elseif ($rickies_data['status'] == 'Ungraded') {
+	// Ungraded, so future keynote
+	$description .=
+		'What will Apple announced at the keynote on ' .
+		date_to_string_label($rickies_data['details']['event_data']['date']) .
+		'? And who will become Annual Chairman? Follow along with the hosts as the keynote and episode progress with this interactive scorecard.';
+} else {
+	// Graded keynote, past
+	$description .=
+		'What did Apple announced at the keynote on ' .
+		date_to_string_label($rickies_data['details']['event_data']['date']) .
+		'? And how did Myke, Stephen, and Federico perform with their predictions for this event?';
+}
+
 $head_custom = [
 	'title' => $rickies_data['name'],
-	// TODO: Make Rickies description
-	// IDEA: Include scoring banner and Apple Event name
-	'description' => 'The ' . $rickies_data['name'] . ', about Apple and stuff',
-	'keywords' => ['wwdc', 'risky picks', 'flexies', 'charity'],
+	'description' => $description,
+	'keywords' => ['wwdc', 'keynote', 'risky picks', 'Flexies', 'charity', 'chairman'],
 ];
+
+if ($rickies_data['status'] == 'Ungraded') {
+	$head_custom['title'] = '🟠 ' . $head_custom['title'] . ' • Interactive scorecard';
+}

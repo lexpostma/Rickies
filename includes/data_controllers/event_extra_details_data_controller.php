@@ -93,6 +93,8 @@ $rickies_events__array[$id]['details'] = [
 		'label1' => check_key('Event name', $fields),
 		'label2' => check_key('Event tagline', $fields, false, 0),
 		'label3' => date_to_string_label(check_key('Event date', $fields, false, 0), 'air'),
+		'date' => check_key('Event date', $fields, false, 0),
+		'type' => check_key('Event type', $fields, false, 0),
 	],
 
 	// Episode data

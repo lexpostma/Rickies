@@ -247,8 +247,13 @@ foreach ($hosts_data__array as $host) {
 	array_push($leaderboard_data, $set);
 }
 
+// TODO: Rickies count as variable in the text
+$introduction =
+	'<p>With 6 Rickies behind us, and 2 ahead, this is the leaderboard of overall wins, picks and flexing power (FP) for the hosts of Connected.</p>';
+
 $head_custom = [
 	'title' => 'Host Leaderboard • The Rickies',
 	// TODO: Write SEO description
-	'description' => '',
+	'description' => strip_tags($introduction),
+	'keywords' => ['leaderboard', 'achievement', 'statistics', 'titles'],
 ];
