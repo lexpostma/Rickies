@@ -55,7 +55,7 @@ $resources = [
 		'url' => 'https://getconnectedpro.co',
 		'img_url' => '/images/connected-pro-artwork.jpg',
 	],
-	'Other Fan Resources',
+	'More Fan Efforts',
 	[
 		'label1' => 'Rickipedia',
 		'label2' => 'By Jason Biatek',
@@ -76,6 +76,20 @@ $resources = [
 		'label3' => 'Shared on Twitter on 30 June 2020',
 		'url' => 'https://twitter.com/kingtritium/status/1278081027387392006?s=21',
 		'img_url' => '/images/about/bill-of-rickies-mathias.png',
+	],
+	[
+		'label1' => 'Upgradies',
+		'label2' => 'By Zach Knox',
+		'label3' => 'Other great podcast',
+		'url' => 'https://upgradies.com',
+		'img_url' => '/images/about/upgradies.jpg',
+	],
+	[
+		'label1' => 'Upgrade Draft interactive scorecards',
+		'label2' => 'By Zach Knox',
+		'label3' => 'Inspiration for my interactive scorecard',
+		'url' => 'https://zachknox.com/bingo/drafts/',
+		'img_url' => '/images/about/upgrade-draft.jpg',
 	],
 ];
 
