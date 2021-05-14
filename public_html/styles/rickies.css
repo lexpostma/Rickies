@@ -63,6 +63,7 @@ header {
   position: relative;
   text-align: center;
   padding: var(--space-between-lg);
+  padding-top: max(var(--space-between-lg), env(safe-area-inset-top));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
