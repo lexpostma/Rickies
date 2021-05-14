@@ -86,7 +86,14 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 	</div>
 </nav>
 
-<?= no_script_banner(), pick_item_bundle($picks_data__array) ?>
+<?php
+echo no_script_banner();
+if ($rickies_data['status'] == 'Ungraded') {
+	echo pick_item_bundle($picks_data__array, true);
+} else {
+	echo pick_item_bundle($picks_data__array);
+}
+?>
 
 <section class="navigate_with_mobile_menu large_columns" id="hosts">
 	<h2>Hosts</h2>

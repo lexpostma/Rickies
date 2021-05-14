@@ -676,7 +676,7 @@ li.pick_item p.pick span.points.correct.flexy {
 li.pick_item p.pick span.points.wrong {
   background: var(--connected-red);
 }
-li.pick_item p.pick span.points.risky:after {
+li.pick_item p.pick span.points.risky.correct:after, li.pick_item p.pick span.points.risky.wrong:after {
   content: "";
   border-radius: 50%;
   border: 1px solid;
@@ -699,6 +699,11 @@ li.pick_item .note p {
 li.pick_item.interactive {
   cursor: pointer;
 }
+li.pick_item.interactive span.label {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 li.pick_item.interactive p.pick span.points {
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
@@ -712,8 +717,11 @@ li.pick_item.interactive p.pick span.points {
     background: var(--element-hover-color);
   }
 }
+li.pick_item.interactive:hover p.pick span.points {
+  transform: scale(1.2);
+}
 li.pick_item.interactive:active p.pick span.points {
-  transform: scale(1.3);
+  transform: scale(1.1);
 }
 
 @keyframes gradient {

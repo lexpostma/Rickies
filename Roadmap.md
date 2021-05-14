@@ -2,7 +2,7 @@
 
 Features I plan to add to the website.
 
--   [ ] Interactive score card for ungraded Rickies
+-   [x] Interactive score card for ungraded Rickies
 -   [ ] Store interactive picks for ungraded Rickies in cookie for future return, especially for Annual Rickies
 -   [ ] Better support for older browsers
 -   [ ] Host signatures on The Bill of Rickies
