@@ -32,12 +32,13 @@ Use the following referral links to give us both something extra and help suppor
 
 ## Tools
 
--   [Nova](https://nova.app) by Panic
--   [Figma](https://figma.com)
--   [Sketch](https://www.sketch.com)
--   [Pixelmator Pro](https://www.pixelmator.com/pro/)
+-   [Overcast](https://overcast.fm/) to listen to All the Great Shows™ (on Smart Speed + 1.5, I’m a monster)
+-   [Nova](https://nova.app) by Panic, with extensions:
+    -   [Prettier](https://extensions.panic.com/extensions/alexanderweiss/alexanderweiss.prettier/) for prettier code formatting
+    -   [Sass](https://extensions.panic.com/extensions/vinecode/vinecode.Sass/) to convert scss files into css files
 -   [Tower](https://www.git-tower.com/mac) Git client
--   [MAMP Pro](https://www.mamp.info/en/mamp-pro/mac/)
--   [ImageOptim](https://imageoptim.com/mac)
--   [Overcast](https://overcast.fm/)
--   [UptimeRobot](https://uptimerobot.com/)
+-   [Figma](https://figma.com) to design the website
+-   [Pixelmator Pro](https://www.pixelmator.com/pro/) to tweak some images
+-   [ImageOptim](https://imageoptim.com/mac) to reduce image sizes
+-   [MAMP Pro](https://www.mamp.info/en/mamp-pro/mac/) for local development
+-   [UptimeRobot](https://uptimerobot.com/) to check whether the site is up
