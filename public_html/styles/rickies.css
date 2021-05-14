@@ -193,7 +193,8 @@ header.leaderboard {
   background-image: url(/images/connected-map.png);
 }
 header.about, header.leaderboard {
-  height: 250px;
+  height: 100vw;
+  max-height: 250px;
   max-height: calc(250px + env(safe-area-inset-top));
 }
 
