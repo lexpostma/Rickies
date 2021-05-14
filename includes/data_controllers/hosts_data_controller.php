@@ -119,7 +119,7 @@ do {
 						'0hide' => true,
 					],
 					'donations' => [
-						'value' => check_key('Flexy Donation Amount', $fields),
+						'value' => check_key('Flexies Donation Amount', $fields),
 						'label' => 'donated to charities',
 						'unit' => "$",
 						'0hide' => true,
