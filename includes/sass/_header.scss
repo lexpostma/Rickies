@@ -136,7 +136,7 @@ header {
 	&.about,
 	&.leaderboard {
 		height: 100vw;
-		max-height: 250px;
-		max-height: calc(250px + #{var.$iX-top});
+		max-height: 300px;
+		max-height: calc(300px + #{var.$iX-top});
 	}
 }

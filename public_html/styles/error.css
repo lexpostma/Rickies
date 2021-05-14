@@ -258,8 +258,8 @@ header.leaderboard {
 }
 header.about, header.leaderboard {
   height: 100vw;
-  max-height: 250px;
-  max-height: calc(250px + env(safe-area-inset-top));
+  max-height: 300px;
+  max-height: calc(300px + env(safe-area-inset-top));
 }
 
 html {
