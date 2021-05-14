@@ -91,9 +91,9 @@ function round_if_decimal($value)
 function plural_points($value)
 {
 	if ($value == 1 || $value == -1) {
-		return $value . ' point';
+		return $value . '&nbsp;point';
 	} else {
-		return $value . ' points';
+		return $value . '&nbsp;points';
 	}
 }
 

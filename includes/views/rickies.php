@@ -19,8 +19,8 @@
 <nav id="nav_content" class="home" style="animation-delay: <?= rand(-50, 0) ?>s;">
 	<div class="nav_content--items">
 		<a class="active" href="#list"><span class="need_space">The </span>Rickies</a>
-		<a href="/leaderboard"><span class="need_space">Host </span>Leaderboard</a>
 		<a href="/billof"><span class="need_space">The </span>Bill of Rickies</a>
+		<a href="/leaderboard"><span class="need_space">Host </span>Leaderboard</a>
 		<a href="/about">About</a>
 	</div>
 </nav>

@@ -29,7 +29,10 @@
 		order: 0;
 		flex-grow: 1;
 		& + .host {
-			margin-left: 8px;
+			margin-left: var(--space-between-sm);
+			@media screen and (min-width: var.$break-sm) {
+				margin-left: var(--space-between-lg);
+			}
 		}
 		.avatar {
 			margin-bottom: 8px;

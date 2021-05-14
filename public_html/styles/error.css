@@ -38,6 +38,11 @@
   --graphic-size: 60px;
 }
 
+@media screen and (min-width: 768px) {
+  :root {
+    --graphic-size: 72px;
+  }
+}
 @media screen and (min-width: 1200px) {
   :root {
     --graphic-size: 80px;

@@ -76,11 +76,11 @@ function update_host_score(host_picks) {
 		new_points = rounded + '%';
 	} else {
 		if (score == 1 || score == -1) {
-			new_points = score + ' point';
+			new_points = score + '&nbsp;point';
 		} else {
-			new_points = score + ' points';
+			new_points = score + '&nbsp;points';
 		}
 	}
 	new_points = new_points + ' • ' + correct + '/' + count;
-	host_picks.getElementsByClassName('host_score')[0].innerText = new_points;
+	host_picks.getElementsByClassName('host_score')[0].innerHTML = new_points;
 }
