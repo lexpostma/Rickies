@@ -26,7 +26,7 @@
 }
 :root {
   --background-color: #fff;
-  --text-secondary-color: #777777;
+  --text-secondary-color: #818c96;
   --link-color: var(--connected-blue);
   --link-hover-color: #23527c;
   --element-hover-color: rgba(0, 0, 0, 0.1);
@@ -51,7 +51,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #000000;
-    --text-secondary-color: #929292;
+    --text-secondary-color: #637c96;
     --link-hover-color: #33adf1;
     --graphic-border: 1px solid rgba(255, 255, 255, 0.25);
     --element-hover-color: rgba(255, 255, 255, 0.1);
