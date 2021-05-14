@@ -2,7 +2,6 @@
 
 // About controller
 
-// TODO: Replace images and add more
 $resources = [
 	'This Project',
 	[
