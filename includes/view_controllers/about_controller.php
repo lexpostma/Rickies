@@ -1,7 +1,7 @@
 <?php
 
 // About controller
-
+$start_animation = rand(0, 30);
 $resources = [
 	'This Project',
 	[
@@ -9,28 +9,32 @@ $resources = [
 		'label2' => 'See the code, create issues. Public but not open source',
 		'label3' => '‘Read me’ was last updated ' . date_to_string_label(filemtime('../Readme.md'), true, false),
 		'url' => 'https://github.com/lexpostma/Rickies/blob/main/Readme.md',
-		'img_url' => ['src' => '/images/about/project.svg', 'type' => 'background', 'color' => 'random'],
+		'img_url' => ['src' => '/images/about/project.svg', 'type' => 'background', 'color' => $start_animation + 34],
 	],
 	[
 		'label1' => 'Changelog',
 		'label2' => 'What’s new',
 		'label3' => 'Last updated ' . date_to_string_label(filemtime('../Changelog.md'), true, false),
 		'url' => 'https://github.com/lexpostma/Rickies/blob/main/Changelog.md',
-		'img_url' => ['src' => '/images/about/changelog.svg', 'type' => 'background', 'color' => 'random'],
+		'img_url' => ['src' => '/images/about/changelog.svg', 'type' => 'background', 'color' => $start_animation + 25],
 	],
 	[
 		'label1' => 'Roadmap',
 		'label2' => 'My plans for future improvements',
 		'label3' => 'Last updated ' . date_to_string_label(filemtime('../Roadmap.md'), true, false),
 		'url' => 'https://github.com/lexpostma/Rickies/blob/main/Roadmap.md',
-		'img_url' => ['src' => '/images/about/roadmap.svg', 'type' => 'background', 'color' => 'random'],
+		'img_url' => ['src' => '/images/about/roadmap.svg', 'type' => 'background', 'color' => $start_animation + 17],
 	],
 	[
 		'label1' => 'Acknowledgements',
 		'label2' => 'Libraries, resources and tools I used',
 		'label3' => 'Last updated ' . date_to_string_label(filemtime('../Acknowledgements.md'), true, false),
 		'url' => 'https://github.com/lexpostma/Rickies/blob/main/Acknowledgements.md',
-		'img_url' => ['src' => '/images/about/acknowledgements.svg', 'type' => 'background', 'color' => 'random'],
+		'img_url' => [
+			'src' => '/images/about/acknowledgements.svg',
+			'type' => 'background',
+			'color' => $start_animation + 9,
+		],
 	],
 	'The Podcast',
 	[

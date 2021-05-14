@@ -49,6 +49,9 @@ function list_item_graphic($img_array = false, $avatar = false)
 				if (isset($img_array['color']) && $img_array['color'] == 'random') {
 					$class[] = 'placeholder';
 					$style[] = 'animation-delay: ' . rand(-50, 0) . 's;';
+				} elseif (isset($img_array['color']) && is_int($img_array['color'])) {
+					$class[] = 'placeholder';
+					$style[] = 'animation-delay: -' . $img_array['color'] . 's;';
 				} elseif (isset($img_array['color'])) {
 					$style[] = 'background-color: ' . $img_array['color'] . ';';
 				}
