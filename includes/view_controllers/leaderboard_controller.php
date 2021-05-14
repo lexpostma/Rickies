@@ -6,6 +6,7 @@ $hosts_data__params = [];
 $all_host_details = true;
 
 include '../includes/data_controllers/hosts_data_controller.php';
+include '../includes/data_controllers/status_data_controller.php';
 
 function leaderboard_item_bundle($input)
 {
@@ -200,11 +201,9 @@ function score_chart_item($chart_array, $host)
 {
 	$output = '<div class="charts">';
 	$emoji = [
-		'Regular' => '🧠',
+		'Regular' => '🎯',
 		'Risky' => '⚠️',
 		'Flexy' => '💪',
-		// "Scored" => "🎯",
-		// "Overall" => "🪣",
 	];
 
 	foreach ($chart_array as $pick_type => $chart) {
@@ -254,11 +253,18 @@ foreach ($hosts_data__array as $host) {
 
 // TODO: Rickies count as variable in the text
 $introduction =
-	'<p>With 6 Rickies behind us, and 2 ahead, this is the leaderboard of overall wins, picks and flexing power (FP) for the hosts of Connected.</p>';
+	'<p>With <b>' .
+	$status_data__array['Completed'] .
+	' graded</b> Rickies officially behind us, this is the leaderboard of overall wins, picks, and flexing power <span title="Pokémon 😉">(FP)</span> of the hosts of Connected.</p><p>The predictions charts and statistics also include picks from <b class="nowrap">' .
+	digit_text($status_data__array['Ungraded']) .
+	' ungraded</b> Rickies, and picks from ' .
+	digit_text($status_data__array['Pre-Rickies']) .
+	' earlier episodes that predate the (<a href="/billof/keynote-sep-2018" title="The Bill of Rickies">Bill of</a>) Rickies as partial points had been awarded.</p>';
 
 $head_custom = [
 	'title' => 'Host Leaderboard • The Rickies',
 	// TODO: Write SEO description
-	'description' => strip_tags($introduction),
+	'description' =>
+		'Charts, statistics, flexing power and other wonderful insights into the Rickies achievements of the Connected hosts.',
 	'keywords' => ['leaderboard', 'achievement', 'statistics', 'titles'],
 ];
