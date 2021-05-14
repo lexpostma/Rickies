@@ -18,7 +18,7 @@ do {
 			// Main details, required for the list overview
 			$rickies_events__array[$id] = [
 				'name' => check_key('Name', $fields),
-				'status' => check_key('Status', $fields),
+				'status' => check_key('Status', $fields, false, 0),
 				'type' => check_key('Rickies type', $fields),
 				'type_string' => check_key('Rickies type string', $fields),
 				'url_name' => check_key('URL', $fields),
