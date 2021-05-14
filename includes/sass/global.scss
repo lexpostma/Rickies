@@ -109,6 +109,14 @@ footer {
 	background: var(--relay-blue);
 	font-size: 0.875rem;
 	position: relative;
+	p.refresh_page,
+	p.promote_webapp {
+		display: none;
+	}
+	&.standalone p.refresh_page,
+	&.standalonable p.promote_webapp {
+		display: block;
+	}
 }
 
 // Links on colored/dark background

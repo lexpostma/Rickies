@@ -128,6 +128,13 @@ footer {
   font-size: 0.875rem;
   position: relative;
 }
+footer p.refresh_page,
+footer p.promote_webapp {
+  display: none;
+}
+footer.standalone p.refresh_page, footer.standalonable p.promote_webapp {
+  display: block;
+}
 
 .banner a:link, .banner a:visited,
 footer a:not(#footer_corner):link,
