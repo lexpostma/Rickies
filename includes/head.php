@@ -21,7 +21,7 @@ if ($environment !== 'production') {
 <link rel="canonical" href="<?= current_url() ?>" />
 
 <!-- Icons -->
-<link rel="shortcut icon" type="image/ico" href="<?= $head['favicon'] ?>" />
+<link rel="icon" type="image/png" sizes="256x256" href="<?= $head['favicon'] . '?v=' . date('s') ?>" />
 
 <!-- Standard SEO / Google -->
 <meta name="description" content="<?= $head['description'] ?>" />
