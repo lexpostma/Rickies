@@ -11,6 +11,7 @@ Features I plan to add to the website.
 -   [ ] Add Bill of Rickies reading theme song.
 -   [ ] Add show/hide toggle for Bill of Rickies history slider.
 -   [ ] Add pull-to-refresh to web app.
+-   [ ] Add adjudication statistics.
 -   [ ] Improve support for coin flips (heads/tails, best of 3, flip for which place, etc).
 -   [ ] Improve support for ties (earlier predictions did not always have winners).
 -   [ ] Add web app splash screens.
