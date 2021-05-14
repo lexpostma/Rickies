@@ -96,6 +96,7 @@ li.pick_item {
 	&.interactive {
 		cursor: pointer;
 		background: var(--background-color);
+		border-radius: var(--element-corner-radius);
 		transition: var.$hover-duration background ease-in-out;
 		+ .interactive {
 			margin-top: 2px;
@@ -109,7 +110,6 @@ li.pick_item {
 			transition: var.$pop-transition;
 		}
 		@media (hover: hover) {
-			border-radius: var(--element-corner-radius);
 			&:hover {
 				background: var(--element-hover-color);
 				p.pick span.points {

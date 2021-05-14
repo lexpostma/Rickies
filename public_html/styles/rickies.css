@@ -701,6 +701,7 @@ li.pick_item .note p {
 li.pick_item.interactive {
   cursor: pointer;
   background: var(--background-color);
+  border-radius: var(--element-corner-radius);
   transition: 300ms background ease-in-out;
 }
 li.pick_item.interactive + .interactive {
@@ -715,9 +716,6 @@ li.pick_item.interactive p.pick span.points {
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
 @media (hover: hover) {
-  li.pick_item.interactive {
-    border-radius: var(--element-corner-radius);
-  }
   li.pick_item.interactive:hover {
     background: var(--element-hover-color);
   }
