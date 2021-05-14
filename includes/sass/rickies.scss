@@ -57,10 +57,12 @@ a {
 				content: url('/images/twitter.svg');
 				transform: translate(0px, 1px);
 			}
-			&:hover {
-				&:after {
-					transform: translate(3px, 0px);
-					opacity: 1;
+			@media (hover: hover) {
+				&:hover {
+					&:after {
+						transform: translate(3px, 0px);
+						opacity: 1;
+					}
 				}
 			}
 		}
@@ -70,9 +72,11 @@ a {
 				content: url('/images/github.svg');
 				transform: translate(0px, 1px);
 			}
-			&:hover {
-				&:after {
-					transform: scale(1.2);
+			@media (hover: hover) {
+				&:hover {
+					&:after {
+						transform: scale(1.2);
+					}
 				}
 			}
 		}

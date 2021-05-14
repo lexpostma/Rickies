@@ -942,16 +942,20 @@ a:not(.list_item_content)[href^="https://twitter.com"]:after {
   content: url("/images/twitter.svg");
   transform: translate(0px, 1px);
 }
-a:not(.list_item_content)[href^="https://twitter.com"]:hover:after {
-  transform: translate(3px, 0px);
-  opacity: 1;
+@media (hover: hover) {
+  a:not(.list_item_content)[href^="https://twitter.com"]:hover:after {
+    transform: translate(3px, 0px);
+    opacity: 1;
+  }
 }
 a:not(.list_item_content)[href^="https://github.com"]:after {
   content: url("/images/github.svg");
   transform: translate(0px, 1px);
 }
-a:not(.list_item_content)[href^="https://github.com"]:hover:after {
-  transform: scale(1.2);
+@media (hover: hover) {
+  a:not(.list_item_content)[href^="https://github.com"]:hover:after {
+    transform: scale(1.2);
+  }
 }
 
 ul {
