@@ -59,9 +59,8 @@ if ($environment !== 'production') {
 <?include("ios_optimisation.php");?>
 
 
-<!-- Normalize and Google Font		 -->
+<!-- Normalize -->
 <link rel="stylesheet" href="/styles/normalize.css">
-<!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"> -->
 
 <!-- Style sheet -->
 <!-- TODO: put date() back to 'z' in URLs to allow caching daily instead of seconds -->
@@ -77,10 +76,11 @@ if ($environment !== 'production') {
 <? } else { // Track others elsewhere ?>
 <script data-goatcounter="https://rickies-test.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <? } if ($focus_site == 'rickies') { ?>
+
 <!-- Canvas Confetti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-
 <? } if ($url_view == 'leaderboard') { ?>
+
 <!-- Chart.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js" integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg==" crossorigin="anonymous"></script>
 <? }
