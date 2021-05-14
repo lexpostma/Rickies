@@ -112,9 +112,10 @@ footer {
 	p.refresh_page,
 	p.promote_webapp {
 		display: none;
+		margin-bottom: var(--space-between-md);
 	}
-	&.standalone p.refresh_page,
-	&.standalonable p.promote_webapp {
+	&.is_standalone p.refresh_page,
+	&.isnot_standalone p.promote_webapp {
 		display: block;
 	}
 }

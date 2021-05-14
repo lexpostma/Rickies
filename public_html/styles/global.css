@@ -131,8 +131,9 @@ footer {
 footer p.refresh_page,
 footer p.promote_webapp {
   display: none;
+  margin-bottom: var(--space-between-md);
 }
-footer.standalone p.refresh_page, footer.standalonable p.promote_webapp {
+footer.is_standalone p.refresh_page, footer.isnot_standalone p.promote_webapp {
   display: block;
 }
 
