@@ -161,7 +161,6 @@ header.about .big_year, header.details .big_year {
   font-weight: 900;
   font-size: 100px;
   margin-top: 30px;
-  margin-top: calc(30px + env(safe-area-inset-top));
   pointer-events: none;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -171,7 +170,6 @@ header.about .big_year, header.details .big_year {
 @media screen and (min-width: 375px) {
   header.about .big_year, header.details .big_year {
     margin-top: 50px;
-    margin-top: calc(50px + env(safe-area-inset-top));
     font-size: 120px;
   }
 }
@@ -179,7 +177,6 @@ header.about .big_year, header.details .big_year {
   header.about .big_year, header.details .big_year {
     font-size: 180px;
     margin-top: 0;
-    margin-top: env(safe-area-inset-top);
   }
 }
 header.about.custom.color, header.details.custom.color {

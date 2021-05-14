@@ -107,16 +107,13 @@ header {
 			font-weight: 900;
 			font-size: 100px;
 			margin-top: 30px;
-			margin-top: calc(30px + #{var.$iX-top});
 			@media screen and (min-width: var.$break-xs) {
 				margin-top: 50px;
-				margin-top: calc(50px + #{var.$iX-top});
 				font-size: 120px;
 			}
 			@media screen and (min-width: var.$break-md) {
 				font-size: 180px;
 				margin-top: 0;
-				margin-top: var.$iX-top;
 			}
 			pointer-events: none;
 			-webkit-user-select: none;
