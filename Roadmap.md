@@ -2,7 +2,7 @@
 
 Features I plan to add to the website.
 
--   [x] Interactive score card for ungraded Rickies.
+-   [x] Interactive scorecard for ungraded Rickies.
 -   [ ] Store interactive picks for ungraded Rickies in cookie for future return, especially for Annual Rickies.
 -   [ ] Improve support for older browsers.
 -   [ ] Improve accessibility.
