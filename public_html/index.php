@@ -32,6 +32,8 @@ include $incl_path . 'view_controllers/' . $focus_site . '_controller.php';
 		<? include($incl_path.'head.php'); ?>
 	</head>
 	<body>
-		<? include($include_body);?>
+		<? include($include_body);
+		echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/share_button.js') . '</script>';
+		?>
 	</body>
 </html>

@@ -132,13 +132,10 @@ footer {
   font-size: 0.875rem;
   position: relative;
 }
-footer p.refresh_page,
-footer p.promote_webapp {
+footer p#refresh_page,
+footer p#promote_webapp {
   display: none;
   margin-bottom: var(--space-between-md);
-}
-footer.is_standalone p.refresh_page, footer.isnot_standalone p.promote_webapp {
-  display: block;
 }
 
 /* For debugging */

@@ -112,14 +112,10 @@ footer {
 	background: var(--relay-blue);
 	font-size: 0.875rem;
 	position: relative;
-	p.refresh_page,
-	p.promote_webapp {
+	p#refresh_page,
+	p#promote_webapp {
 		display: none;
 		margin-bottom: var(--space-between-md);
-	}
-	&.is_standalone p.refresh_page,
-	&.isnot_standalone p.promote_webapp {
-		display: block;
 	}
 }
 

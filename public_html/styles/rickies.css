@@ -97,7 +97,26 @@ a:not(.list_item_content)[href^="https://github.com"]:after {
   }
 }
 
-.banner a:link, .banner a:visited,
+button.clean {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+footer button.js_link,
+.banner a.js_link,
+footer a:not(#footer_corner).js_link,
+nav a.js_link {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+footer button:link, footer button:visited,
+.banner a:link,
+.banner a:visited,
 footer a:not(#footer_corner):link,
 footer a:not(#footer_corner):visited,
 nav a:link,
@@ -105,13 +124,16 @@ nav a:visited {
   color: white;
   opacity: 0.8;
 }
-.banner a:hover, .banner a:focus,
+footer button:hover, footer button:focus,
+.banner a:hover,
+.banner a:focus,
 footer a:not(#footer_corner):hover,
 footer a:not(#footer_corner):focus,
 nav a:hover,
 nav a:focus {
   opacity: 1;
 }
+footer button:active,
 .banner a:active,
 footer a:not(#footer_corner):active,
 nav a:active {
