@@ -63,7 +63,12 @@ a {
 a:link, a:visited {
   color: var(--link-color);
 }
-a:hover, a:focus, a:active {
+@media (hover: hover) {
+  a:hover {
+    color: var(--link-hover-color);
+  }
+}
+a:focus, a:active {
   color: var(--link-hover-color);
 }
 a span.emoji {
@@ -124,18 +129,20 @@ nav a:visited {
   color: white;
   opacity: 0.8;
 }
-footer button:hover, footer button:focus,
+@media (hover: hover) {
+  footer button:hover,
 .banner a:hover,
-.banner a:focus,
 footer a:not(#footer_corner):hover,
-footer a:not(#footer_corner):focus,
-nav a:hover,
-nav a:focus {
-  opacity: 1;
+nav a:hover {
+    opacity: 1;
+  }
 }
-footer button:active,
+footer button:focus, footer button:active,
+.banner a:focus,
 .banner a:active,
+footer a:not(#footer_corner):focus,
 footer a:not(#footer_corner):active,
+nav a:focus,
 nav a:active {
   opacity: 1;
 }
