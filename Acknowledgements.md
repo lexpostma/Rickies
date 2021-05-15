@@ -31,6 +31,16 @@ Use the following referral links to give us both something extra and help suppor
 -   [DigitalOcean](https://m.do.co/c/c931041cf4fc), gets $100 in credit for cloud services.
 -   [Airtable](https://airtable.com/invite/r/srbbQalO), the familiarity of a spreadsheet, and the power of a database.
 
+## Testing
+
+Tested in the following browser versions. Anything different or older might not work properly for now. I hope to [improve that in the future](Roadmap.md).
+
+-   Safari on iOS 14.5
+-   Safari 14.1 on macOS 11.3
+-   Chrome 90 on Android 11
+-   Chrome 90 on macOS
+-   Firefox 87 on macOS
+
 ## Tools
 
 -   [Overcast](https://overcast.fm/) to listen to All the Great Shows™ (on Smart Speed + 1.5, I’m a monster)
