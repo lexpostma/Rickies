@@ -74,13 +74,25 @@ function leaderboard_item($host_data)
 
 	// Title
 	$output .= '<h4>Current titles</h4><ul>';
-	$output .= '<li>' . $host_data['titles'][0] . '</li><li>' . $host_data['titles'][1] . '</li>';
-	unset($host_data['titles'][0]);
-	unset($host_data['titles'][1]);
-	$output .= '<li>' . random($host_data['titles']) . '</li>';
-	// foreach ($host_data['titles'] as $key => $value) {
-	// $output .= '<li>' . $value . '</li>';
-	// }
+
+	// First show the priority titles
+	$title_count = 0;
+	foreach ($host_data['titles'] as $key => $value) {
+		if (strpos($value, 'priority') !== false) {
+			$output .= '<li>' . $value . '</li>';
+			unset($host_data['titles'][$key]);
+			$title_count++;
+		}
+	}
+	// Shuffle and show random leftover titles, until the total is 4
+	shuffle($host_data['titles']);
+	foreach ($host_data['titles'] as $key => $value) {
+		$output .= '<li>' . $value . '</li>';
+		$title_count++;
+		if ($title_count == 3) {
+			break;
+		}
+	}
 	$output .= '</ul>';
 
 	// Achievements
