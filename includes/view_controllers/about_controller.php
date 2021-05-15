@@ -47,7 +47,7 @@ $resources = [
 	[
 		'label1' => 'A Brief History of The Prompt and Connected',
 		'label2' => 'By Stephen Hackett',
-		'label3' => 'At MacStories on 18 April 2019',
+		'label3' => 'At MacStories on April 18, 2019',
 		'url' => 'https://www.macstories.net/stories/a-brief-history-of-the-prompt-and-connected/',
 		'img_url' => '/images/about/the-prompt.png',
 	],
@@ -62,21 +62,21 @@ $resources = [
 	[
 		'label1' => 'Rickipedia',
 		'label2' => 'By Jason Biatek',
-		'label3' => 'Shared in Discord on 3 May 2021',
+		'label3' => 'Shared in Discord on May 3, 2021',
 		'url' => 'https://rickies.net',
 		'img_url' => '/images/about/rickipedia.svg',
 	],
 	[
 		'label1' => 'The Rickies Notion Database',
 		'label2' => 'By Majd Koshakji',
-		'label3' => 'Shared in Discord on 24 March 2021',
+		'label3' => 'Shared in Discord on March 24, 2021',
 		'url' => 'https://www.notion.so/Connected-262725156a0041bd9b0248c172862cb0',
 		'img_url' => '/images/about/notion.png',
 	],
 	[
 		'label1' => 'The Bill of Rickies',
 		'label2' => 'By Mathias Bruggemann',
-		'label3' => 'Shared on Twitter on 30 June 2020',
+		'label3' => 'Shared on Twitter on June 30, 2020',
 		'url' => 'https://twitter.com/kingtritium/status/1278081027387392006?s=21',
 		'img_url' => '/images/about/bill-of-rickies-mathias.png',
 	],

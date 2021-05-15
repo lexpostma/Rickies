@@ -125,7 +125,7 @@ function no_script_banner($string = false)
 // Via https://stackoverflow.com/a/25623057
 function date_string_format()
 {
-	return '%e %B %Y';
+	return '%B %e, %Y';
 }
 function date_to_string_label($date, $context = false, $date_needs_conversion = true)
 {
