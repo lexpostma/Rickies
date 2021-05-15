@@ -74,9 +74,13 @@ function leaderboard_item($host_data)
 
 	// Title
 	$output .= '<h4>Current titles</h4><ul>';
-	foreach ($host_data['titles'] as $key => $value) {
-		$output .= '<li>' . $value . '</li>';
-	}
+	$output .= '<li>' . $host_data['titles'][0] . '</li><li>' . $host_data['titles'][1] . '</li>';
+	unset($host_data['titles'][0]);
+	unset($host_data['titles'][1]);
+	$output .= '<li>' . random($host_data['titles']) . '</li>';
+	// foreach ($host_data['titles'] as $key => $value) {
+	// $output .= '<li>' . $value . '</li>';
+	// }
 	$output .= '</ul>';
 
 	// Achievements
