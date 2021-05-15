@@ -78,10 +78,10 @@ if ($environment !== 'production') {
 <? } if ($focus_site == 'rickies') { ?>
 
 <!-- Canvas Confetti -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 <? } if ($url_view == 'leaderboard') { ?>
+<script src="/scripts/confetti.browser.min.js"></script>
 
 <!-- Chart.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js" integrity="sha512-VMsZqo0ar06BMtg0tPsdgRADvl0kDHpTbugCBBrL55KmucH6hP9zWdLIWY//OTfMnzz6xWQRxQqsUFefwHuHyg==" crossorigin="anonymous"></script>
+<script src="/scripts/chart.min.js"></script>
 <? }
 
