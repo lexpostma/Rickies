@@ -57,7 +57,7 @@ function leaderboard_item($host_data)
 		'">@' .
 		$host_data['personal']['twitter'] .
 		'</a>' .
-		' • <a target="_blank" href="' .
+		' • <a target="_blank" class="nowrap" href="' .
 		$host_data['personal']['website_url'] .
 		'"
 		data-goatcounter-click="' .

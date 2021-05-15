@@ -178,7 +178,7 @@ table.full_stats {
 			position: absolute;
 			left: 0;
 			right: 0;
-			top: 16px;
+			top: 18px;
 			z-index: -1;
 			text-align: center;
 		}
@@ -197,6 +197,11 @@ table.full_stats {
 		position: relative;
 		height: 60px;
 		width: 60px;
+	}
+	@media screen and (min-width: var.$break-md) {
+		.chart_pick_type .chart_emoji {
+			top: 16px;
+		}
 	}
 	@media screen and (min-width: var.$break-xxl) {
 		.chart_pick_type .chart_emoji {
