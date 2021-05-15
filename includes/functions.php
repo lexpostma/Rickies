@@ -28,9 +28,21 @@ function current_url()
 
 function back_button($location = '/')
 {
-	$output = '<a id="back_button" href="' . $location . '">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/back-button.svg');
+	$output = '<a id="back_button" title="Go back to Rickies overview" class="top_button" href="' . $location . '">';
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-back.svg');
 	$output .= '</a>';
+
+	return $output;
+}
+
+function share_button()
+{
+	$output =
+		'<button id="share_button" class="top_button clean offer_sheet" type="button" data-goatcounter-click="Open share sheet" title="Share this page" data-goatcounter-referrer="' .
+		current_url() .
+		'" onclick="open_share_sheet()">';
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-share.svg');
+	$output .= '</button>';
 
 	return $output;
 }

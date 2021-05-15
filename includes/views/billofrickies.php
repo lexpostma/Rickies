@@ -2,6 +2,8 @@
 echo back_button(), no_script_banner();
 if (isset($error)) {
 	echo $error;
+} else {
+	echo share_button();
 }
 ?>
 

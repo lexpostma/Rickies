@@ -3,7 +3,7 @@
 if (isset($back_to_overview)) {
 	echo back_button();
 }
-
+echo share_button();
 include $include_subbody;
 include $incl_path . 'footer.php';
 ?>

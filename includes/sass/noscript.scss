@@ -19,10 +19,10 @@ section.navigate_with_mobile_menu {
 }
 
 // Hide the charts elements if there's no JS to make them
-.charts {
-	display: none;
-}
-
-aside.slider {
+.charts,
+aside.slider,
+#share_button,
+p#promote_webapp,
+p#refresh_page {
 	display: none;
 }

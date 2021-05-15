@@ -62,7 +62,7 @@ section > p + p {
 	margin-top: var(--space-between-md);
 }
 
-#back_button {
+.top_button {
 	display: block;
 	height: 40px;
 	border-radius: 20px;
@@ -70,7 +70,6 @@ section > p + p {
 	position: absolute;
 	top: 20px;
 	top: max(20px, #{var.$iX-top});
-	left: 20px;
 	z-index: 11;
 	@media (hover: hover) {
 		transition: var.$pop-transition;
@@ -79,6 +78,12 @@ section > p + p {
 			transform: scale(1.2);
 		}
 	}
+}
+#back_button {
+	left: 20px;
+}
+#share_button {
+	right: 20px;
 }
 
 .banner {
@@ -117,6 +122,17 @@ footer {
 		display: none;
 		margin-bottom: var(--space-between-md);
 	}
+}
+
+button.clean {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+	-webkit-appearance: none;
 }
 
 /* For debugging */

@@ -79,23 +79,30 @@ section > p + p {
   margin-top: var(--space-between-md);
 }
 
-#back_button {
+.top_button {
   display: block;
   height: 40px;
   border-radius: 20px;
   position: absolute;
   top: 20px;
   top: max(20px, env(safe-area-inset-top));
-  left: 20px;
   z-index: 11;
 }
 @media (hover: hover) {
-  #back_button {
+  .top_button {
     transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
   }
-  #back_button:hover, #back_button:focus {
+  .top_button:hover, .top_button:focus {
     transform: scale(1.2);
   }
+}
+
+#back_button {
+  left: 20px;
+}
+
+#share_button {
+  right: 20px;
 }
 
 .banner {
@@ -136,6 +143,17 @@ footer p#refresh_page,
 footer p#promote_webapp {
   display: none;
   margin-bottom: var(--space-between-md);
+}
+
+button.clean {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  -webkit-appearance: none;
 }
 
 /* For debugging */

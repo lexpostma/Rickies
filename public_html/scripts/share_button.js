@@ -1,4 +1,4 @@
-function share_button() {
+function open_share_sheet() {
 	if (navigator.share) {
 		navigator
 			.share({
@@ -20,5 +20,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
 		Array.from(document.getElementsByClassName('offer_sheet')).forEach(function (el) {
 			el.style.display = 'none';
 		});
+	}
+
+	if (window.navigator.standalone == true) {
+		// Web app is on the home screen
+	} else {
+		// Not added to home screen, hide share button since it's in the browser
+		document.getElementById('share_button').style.display = 'none';
 	}
 });

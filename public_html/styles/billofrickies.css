@@ -422,12 +422,13 @@ li.rule.hidden.gone {
   display: none;
 }
 
-#back_button,
+.top_button,
 aside.slider {
   box-shadow: 0px 1px 4px rgba(84, 52, 4, 0.5);
 }
 
-#back_button svg path:last-of-type {
+#back_button svg path:last-of-type,
+#share_button svg g {
   fill: var(--text-document-color);
 }
 

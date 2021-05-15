@@ -15,10 +15,8 @@ section.navigate_with_mobile_menu h2 {
   display: block;
 }
 
-.charts {
-  display: none;
-}
-
-aside.slider {
+.charts,
+aside.slider,
+#share_button {
   display: none;
 }
