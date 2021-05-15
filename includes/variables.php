@@ -48,3 +48,9 @@ $head_defaults = [
 	'twitter_author' => '@lexpostma',
 	'twitter_connected' => '@_connectedfm',
 ];
+
+if ($environment == 'production') {
+	$head_defaults['site_goatcounter'] = 'https://rickies.goatcounter.com';
+} else {
+	$head_defaults['site_goatcounter'] = 'https://rickies-test.goatcounter.com';
+}

@@ -9,7 +9,14 @@ $resources = [
 		'label2' => 'See the code, create issues. Public but not open source',
 		'label3' => '‘Read me’ was last updated ' . date_to_string_label(filemtime('../Readme.md'), true, false),
 		'url' => 'https://github.com/lexpostma/Rickies/blob/main/Readme.md',
-		'img_url' => ['src' => '/images/about/project.svg', 'type' => 'background', 'color' => $start_animation + 34],
+		'img_url' => ['src' => '/images/about/project.svg', 'type' => 'background', 'color' => $start_animation + 42],
+	],
+	[
+		'label1' => 'Analytics with GoatCounter',
+		'label2' => 'No tracking of personal data',
+		'label3' => 'I made it public, there’s really not much there',
+		'url' => $head_defaults['site_goatcounter'],
+		'img_url' => ['src' => '/images/about/analytics.svg', 'type' => 'background', 'color' => $start_animation + 34],
 	],
 	[
 		'label1' => 'Changelog',
