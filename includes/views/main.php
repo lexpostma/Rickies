@@ -11,8 +11,15 @@ include $incl_path . 'footer.php';
 <script>
 <?php
 include 'scripts/confetti.js';
-if ($url_view == 'main') {
-	echo 'confetti_go()';
-}
-?>
+if ($url_view == 'main') {?>
+
+	if(!Cookies.get('confetti_popped')) {
+		confetti_go()
+		Cookies.set('confetti_popped', 'true', { expires: 2, path: '/' })
+	}
+
+<? } ?>
+
+
+
 </script>

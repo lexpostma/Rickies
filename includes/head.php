@@ -76,9 +76,12 @@ if ($environment !== 'production') {
 <? if ($focus_site == 'rickies') { ?>
 
 <!-- Canvas Confetti -->
-<? } if ($url_view == 'leaderboard') { ?>
 <script src="/scripts/confetti.browser.min.js"></script>
 
+<!-- JavaScript Cookie -->
+<script src="/scripts/js.cookie.js"></script>
+
+<? } if ($url_view == 'leaderboard') { ?>
 <!-- Chart.js -->
 <script src="/scripts/chart.min.js"></script>
 <? }

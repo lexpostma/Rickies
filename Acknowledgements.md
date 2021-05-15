@@ -19,6 +19,7 @@ The following libraries are used:
 -   [Chart.js](https://www.chartjs.org) for the charts on the [Leaderboard page](https://rickies.co/leaderboard)
 -   [Canvas Confetti](https://github.com/catdad/canvas-confetti) for the confetti on the [homepage](https://rickies.co/)
 -   [Normalize.css](https://necolas.github.io/normalize.css/) for CSS resets
+-   [JavaScript Cookie](https://github.com/js-cookie/js-cookie) API for handling cookies
 -   [Parsedown](https://parsedown.org) for parser Markdown in PHP
 -   [Goat Counter](https://www.goatcounter.com/) for simple analytics
 
