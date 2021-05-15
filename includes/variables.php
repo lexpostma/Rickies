@@ -51,6 +51,8 @@ $head_defaults = [
 
 if ($environment == 'production') {
 	$head_defaults['site_goatcounter'] = 'https://rickies.goatcounter.com';
+	$github = 'main';
 } else {
 	$head_defaults['site_goatcounter'] = 'https://rickies-test.goatcounter.com';
+	$github = 'development';
 }
