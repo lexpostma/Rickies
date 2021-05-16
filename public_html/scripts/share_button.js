@@ -16,6 +16,7 @@ function open_share_sheet() {
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
+	// Hide elements to trigger the share sheet, of share sheet is not supported by user-agent
 	if (!navigator.share) {
 		Array.from(document.getElementsByClassName('offer_sheet')).forEach(function (el) {
 			el.style.display = 'none';

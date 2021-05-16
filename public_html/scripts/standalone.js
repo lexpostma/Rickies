@@ -1,31 +1,23 @@
-// If it's a webapp, open links inside webapp instead of Safari
-// Via https://stackoverflow.com/a/8173161
+function refresh_inprogress(el) {
+	el.innerText = 'Refreshing…';
+}
 
-(function (element, userAgent, userAgentVar) {
-	if (userAgentVar in userAgent && userAgent[userAgentVar]) {
-		var d,
-			elementLocation = element.location,
-			f = /^(a|html)$/i;
-
-		element.addEventListener(
-			'click',
-			function (element) {
-				elementTarget = element.target;
-				while (!f.test(elementTarget.nodeName)) elementTarget = elementTarget.parentNode;
-
-				// links with target="_blank" should still open in Safari
-				var newTabLink = elementTarget.attributes.getNamedItem('target');
-				if (newTabLink && newTabLink.value == '_blank') return;
-
-				// links that start with # in href should have default behaviour
-				var anchorLink = elementTarget.attributes.getNamedItem('href');
-				if (anchorLink && anchorLink.value.startsWith('#')) return;
-
-				'href' in elementTarget &&
-					(elementTarget.href.indexOf('http') || ~elementTarget.href.indexOf(elementLocation.host)) &&
-					(element.preventDefault(), (elementLocation.href = elementTarget.href));
-			},
-			!1
-		);
+function promote_standalone() {
+	if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('iPad') != -1) {
+		if (window.navigator.standalone == true) {
+			// Added to home screen, offer refresh
+			document.getElementById('refresh_page').style.display = 'block';
+		} else {
+			// Not added to home screen, promote web app
+			document.getElementById('promote_webapp').style.display = 'block';
+			// Can be overwritten by lack of share sheet support of user-agent
+			// See /scripts/share_button.js
+		}
+	} else {
+		// Not iOS
 	}
-})(document, window.navigator, 'standalone');
+}
+
+document.addEventListener('DOMContentLoaded', function (event) {
+	promote_standalone();
+});

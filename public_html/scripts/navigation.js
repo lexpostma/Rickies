@@ -10,7 +10,9 @@ function get_anchor_from_url() {
 		navigate_section(anchor);
 	}
 }
-get_anchor_from_url();
+document.addEventListener('DOMContentLoaded', function (event) {
+	get_anchor_from_url();
+});
 
 // Show the active menu, hide the others
 function navigate_section(section) {

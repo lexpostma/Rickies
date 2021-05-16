@@ -15,26 +15,5 @@
 </footer>
 
 <script>
-	function refresh_inprogress(el) {
-		el.innerText = "Refreshing…";
-	}
-
-	function promote_standalone() {
-		if(
-			(navigator.userAgent.indexOf('iPhone') != -1) ||
-			(navigator.userAgent.indexOf('iPad') != -1)
-		) {
-			if(window.navigator.standalone == true){
-				// Added to home screen, offer refresh
-				document.getElementById('refresh_page').style.display = 'block';
-			} else {
-				// Not added to home screen, promote web app
-				document.getElementById('promote_webapp').style.display = 'block';
-			}
-		} else {
-			// Not iOS
-		}
-	}
-
-	promote_standalone()
+	<? echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/standalone.js')?>
 </script>

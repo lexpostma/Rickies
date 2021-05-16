@@ -6,7 +6,9 @@
 		<div onclick="confetti_go()" style="width: 100vw; height: 100vh"></div>
 		<script>
 			<? include("scripts/confetti.js")?>
-			confetti_go()
+			document.addEventListener('DOMContentLoaded', function (event) {
+				confetti_go()
+			});
 		</script>
 	</body>
 </html>
