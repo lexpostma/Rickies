@@ -110,6 +110,11 @@ section > p + p {
   color: white;
   padding: 8px 16px;
 }
+.banner p {
+  max-width: 650px;
+  margin-right: auto;
+  margin-left: auto;
+}
 .banner b {
   font-size: 1.2rem;
 }

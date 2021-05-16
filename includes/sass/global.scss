@@ -90,6 +90,11 @@ section > p + p {
 	text-align: center;
 	color: white;
 	padding: 8px 16px;
+	p {
+		max-width: var.$readability-width;
+		margin-right: auto;
+		margin-left: auto;
+	}
 	b {
 		font-size: 1.2rem;
 	}

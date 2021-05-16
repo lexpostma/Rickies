@@ -63,7 +63,7 @@ do {
 				$rickies_events__array[$id]['tag'] = 'Interactive';
 				$rickies_events__array[$id]['tag_color'] = 'orange';
 				$rickies_events__array[$id]['tag_banner'] =
-					'<b>Interactive scorecard</b><br /><span>Grade the Rickies and Flexies yourself until the official results are in</span>';
+					'<b>Interactive scorecard</b><br /><span>Grade the Rickies and Flexies yourself until the official results are in. Tap the picks to cycles through unknown, correct, and wrong states.</span>';
 			} elseif ($rickies_events__array[$id]['status'] == 'Pre-Rickies') {
 				$rickies_events__array[$id]['tag'] = $rickies_events__array[$id]['status'];
 				$rickies_events__array[$id]['tag_color'] = 'yellow';
