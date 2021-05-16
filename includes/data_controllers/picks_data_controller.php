@@ -4,7 +4,7 @@
 
 $picks_data__params = [
 	'filterByFormula' => "AND( URL = '$url_view' )",
-	'sort' => [['field' => 'Order', 'direction' => 'asc']],
+	'sort' => [['field' => 'Picking order', 'direction' => 'asc']],
 	// 	"fields" => ["Artwork", "Name", "URL", "Winner (manual)", "Episode date"],
 ];
 
