@@ -1,7 +1,9 @@
-var paper = document.getElementById('the_document');
 var document_date = document.getElementById('document_date');
+var paper = document.getElementById('the_document');
 var slider_label = document.getElementById('slider_label');
-var no_rules_string = document.getElementById('no_rules_string');
+var document_title = document.getElementById('document_title');
+var rickies_title = document.getElementById('rickies_title');
+var flexies_title = document.getElementById('flexies_title');
 
 function slide_event() {
 	window.goatcounter.count({
@@ -16,7 +18,29 @@ function update_rules(value) {
 	// Update labels
 	slider_label.innerHTML = rickies_event_names[value];
 	document_date.innerHTML = rickies_event_dates[value];
-	no_rules_string.innerHTML = rickies_event_names[value];
+
+	if (rickies_event_values[value] < rickies_start && rickies_event_values[value] < bill_start) {
+		document_title.innerHTML = 'Drafting Rules';
+		paper.classList.remove('scroll');
+	} else if (rickies_event_values[value] < bill_start) {
+		document_title.innerHTML = 'Rickies Rules';
+		paper.classList.remove('scroll');
+	} else {
+		document_title.innerHTML = 'The Bill of Rickies';
+		paper.classList.add('scroll');
+	}
+
+	if (rickies_event_values[value] < rickies_start) {
+		rickies_title.innerHTML = 'Predictions';
+	} else {
+		rickies_title.innerHTML = 'The Rickies';
+	}
+
+	if (rickies_event_values[value] < flexies_start) {
+		flexies_title.innerHTML = 'Non-graded extra picks';
+	} else {
+		flexies_title.innerHTML = 'The Flexies';
+	}
 
 	// Check is the list is empty (all <li> rules inside are hidden )
 	// If empty, also hide the title (previous sibling of the <ol>)
@@ -26,19 +50,19 @@ function update_rules(value) {
 		}
 	});
 
-	Array.from(document.querySelectorAll('li.rule')).forEach(function (el) {
+	Array.from(document.getElementsByClassName('rule')).forEach(function (el) {
 		if (el.dataset.startDate <= rickies_event_values[value] && el.dataset.endDate >= rickies_event_values[value]) {
 			// Show the rules that have started _on_ or _before_ the selected event data
 			// AND ended _on_ or _after_ the selected event data
 			// Remove class "hidden" from the <li>
 			show_rule(el);
 
-			// If a rule is shown, the entire paper and its title should also be shown
-			paper.classList.remove('hidden');
 			// Title <h2> is sibling before the <li>'s parent <ol>
-			show_rule(el.parentNode.previousSibling);
+			if (el.parentNode.tagName == 'OL') {
+				show_rule(el.parentNode.previousSibling);
+			}
 		} else {
-			// Add class "hidden" to the <li>
+			// Add class "hidden" to the rule
 			hide_rule(el);
 		}
 	});
@@ -50,12 +74,6 @@ function hide_rule(element) {
 	var delayInMilliseconds = 750;
 
 	element.classList.add('hidden');
-
-	// With each hiding of an element, check is paper still contains rules.
-	// Hide entire paper if it doesn't have content/rules
-	if (paper.querySelectorAll('li.rule:not(.hidden)').length === 0) {
-		paper.classList.add('hidden');
-	}
 
 	setTimeout(function () {
 		element.classList.add('gone');

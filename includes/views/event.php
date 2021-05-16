@@ -111,12 +111,7 @@ if ($rickies_data['status'] == 'Ungraded') {
 
 <script><? echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js'); ?></script>
 
-<?php
-// Term "Rickies" was coined on episode #245
-$rickies_start = strtotime('2019-05-28');
-
-// Term "Flexies" was coined on episode #275
-$flexies_start = strtotime('2019-12-31');
+<?
 
 // Change some strings to originals before the terms Rickies/Flexies were coined
 if (
@@ -136,4 +131,3 @@ if (
 
 	echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/pre-rickies.js') . '</script>';
 }
-

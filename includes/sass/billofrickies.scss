@@ -1,4 +1,5 @@
 @use "variables" as var;
+@use "rule-document";
 @use "rule-slider";
 
 @font-face {
@@ -21,136 +22,24 @@
 html {
 	line-height: 1.5;
 	background-color: var(--background-color);
-	color: var(--text-document-color);
 }
 
 body {
-}
-
-main {
-	font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
-
-	// Slightly wider than readability, due to paper's large padding
-	max-width: 750px;
-	padding: 24px;
-	margin: 0 auto 128px;
-	margin-top: var.$iX-top;
-
-	background-image: url(/images/parchment-border/light-top.png), url(/images/parchment-border/light-left.png),
-		url(/images/parchment-border/light-right.png), url(/images/parchment-border/light-bottom.png),
-		radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%),
-		url(/images/parchment-background.jpg);
-	background-position: left top, left top, right top, right bottom, center, center;
-	background-repeat: repeat-x, repeat-y, repeat-y, repeat-x, no-repeat, no-repeat;
-	background-size: auto 32px, 32px auto, 32px auto, auto 32px, cover, cover;
-
-	@media screen and (min-width: var.$break-sm) {
-		background-size: auto 64px, 64px auto, 64px auto, auto 64px, cover, cover;
-		padding: 48px 48px 64px;
-	}
-
+	padding-bottom: 128px;
+	padding-top: 0;
+	padding-top: var.$iX-top;
 	@media screen and (min-width: var.$break-md) {
-		margin-top: 32px;
-		margin-bottom: 150px;
-		margin-top: calc(#{var.$iX-top} + 32px);
-		margin-bottom: calc(#{var.$iX-bottom} + 150px);
-		padding: 64px;
-	}
+		padding-top: 32px;
+		padding-top: calc(#{var.$iX-top} + 32px);
 
-	@media (prefers-color-scheme: dark) {
-		background-image: url(/images/parchment-border/dark-top.png), url(/images/parchment-border/dark-left.png),
-			url(/images/parchment-border/dark-right.png), url(/images/parchment-border/dark-bottom.png),
-			radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%),
-			url(/images/parchment-background.jpg);
-	}
-}
-
-#document_date {
-	text-align: center;
-	margin: 5px 0 22px;
-}
-
-h1,
-h2 {
-	font-family: 'BlackChancery';
-}
-h1 {
-	text-align: center;
-	font-size: 3.7rem;
-	line-height: 96%;
-	margin: 0;
-}
-
-h2 {
-	font-size: 1.7rem;
-	margin: var(--space-between-lg) 0 4px;
-}
-
-ol {
-	margin: 0;
-	padding-left: 26px;
-}
-
-main {
-	transition: var.$pop-transition, 300ms margin ease-in-out;
-	transition-delay: 0ms;
-	&.hidden {
-		transform: scale(0);
-		margin: 0 auto;
-		transform-origin: center 20%;
-		transition-delay: 500ms;
-	}
-}
-aside.no_bill {
-	display: none;
-}
-main.hidden + aside.no_bill {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 60px;
-	left: 0;
-	padding: 32px 32px 60px;
-	display: flex;
-	align-items: center;
-	z-index: -1;
-	p {
-		width: 100%;
-		max-width: var.$readability-width;
-		margin: auto;
-		color: white;
-	}
-}
-
-main a {
-	padding: 2px 4px;
-	margin: -2px -4px;
-	border-radius: 4px;
-	transition: background 100ms;
-	background: rgba(215, 164, 87, 0);
-
-	&:link,
-	&:visited {
-		text-decoration-color: var(--link-color);
-		color: inherit;
-	}
-	@media (hover: hover) {
-		&:hover,
-		&:focus {
-			text-decoration-color: var(--text-document-color);
-			color: var(--text-document-color);
-			background: var(--link-color);
-		}
-		&:active {
-			text-decoration-color: black;
-			color: black;
-		}
+		padding-bottom: 150px;
+		padding-bottom: calc(#{var.$iX-bottom} + 150px);
 	}
 }
 
 $transition_time: 750ms;
 h2.rule_type,
-li.rule {
+.rule {
 	max-height: 150px;
 	opacity: 1;
 	transition: $transition_time max-height ease-in, ($transition_time * 0.66) opacity ease-in;

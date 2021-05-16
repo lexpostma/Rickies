@@ -56,3 +56,12 @@ if ($environment == 'production') {
 	$head_defaults['site_goatcounter'] = 'https://rickies-test.goatcounter.com';
 	$github = 'development';
 }
+
+// Term "Rickies" was coined on episode #245, officially branded in #259
+$rickies_start = strtotime('2019-09-04');
+
+// Term "Flexies" was coined on episode #275
+$flexies_start = strtotime('2020-01-01');
+
+// Term "Bill of Rickies" was coined on episode #300
+$bill_start = strtotime('2020-06-17');

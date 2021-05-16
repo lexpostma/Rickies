@@ -1,0 +1,114 @@
+@use "variables" as var;
+
+main {
+	// Slightly wider than readability, due to paper's large padding
+	max-width: 750px;
+	padding: 24px;
+	margin: 0 auto;
+	background-image: linear-gradient(170deg, #ffffff 0.21%, #f1f1f1 98.37%);
+	box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.35);
+	color: var(--text-primary-color);
+	@media screen and (min-width: var.$break-sm) {
+		padding: 48px 48px 64px;
+	}
+	@media (prefers-color-scheme: dark) {
+		background-image: linear-gradient(170deg, #0e0e0e 0.21%, #1e1e1e 98.37%);
+	}
+	@media screen and (min-width: var.$break-md) {
+		padding: 64px;
+	}
+	h1 {
+		text-align: center;
+		font-size: 3.7rem;
+		line-height: 96%;
+		margin: 0;
+	}
+
+	h2 {
+		font-size: 1.7rem;
+		margin: var(--space-between-lg) 0 4px;
+	}
+
+	&.scroll {
+		color: var(--text-document-color);
+		font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
+		h1,
+		h2 {
+			font-family: 'BlackChancery';
+		}
+		box-shadow: none;
+		background-image: url(/images/parchment-border/light-top.png), url(/images/parchment-border/light-left.png),
+			url(/images/parchment-border/light-right.png), url(/images/parchment-border/light-bottom.png),
+			radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%),
+			url(/images/parchment-background.jpg);
+		background-position: left top, left top, right top, right bottom, center, center;
+		background-repeat: repeat-x, repeat-y, repeat-y, repeat-x, no-repeat, no-repeat;
+		background-size: auto 32px, 32px auto, 32px auto, auto 32px, cover, cover;
+		@media screen and (min-width: var.$break-sm) {
+			background-size: auto 64px, 64px auto, 64px auto, auto 64px, cover, cover;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			background-image: url(/images/parchment-border/dark-top.png), url(/images/parchment-border/dark-left.png),
+				url(/images/parchment-border/dark-right.png), url(/images/parchment-border/dark-bottom.png),
+				radial-gradient(
+					107.69% 64.1% at 50.13% 51.34%,
+					rgba(255, 245, 225, 0.7) 0%,
+					rgba(255, 218, 184, 0.7) 100%
+				),
+				url(/images/parchment-background.jpg);
+		}
+	}
+}
+
+#document_date {
+	text-align: center;
+	margin: 5px 0 22px;
+}
+
+ol {
+	margin: 0;
+	padding-left: 26px;
+}
+
+div.rule p {
+	margin-top: var(--space-between-md);
+	del {
+		text-align: center;
+		text-decoration: none;
+		display: block;
+		opacity: 0.6;
+	}
+}
+main a {
+	padding: 2px 4px;
+	margin: -2px -4px;
+	border-radius: 4px;
+	transition: background 100ms;
+	background: rgba(215, 164, 87, 0);
+
+	&:link,
+	&:visited {
+		text-decoration-color: var(--link-color);
+		color: inherit;
+	}
+	@media (hover: hover) {
+		&:hover,
+		&:focus {
+			text-decoration-color: var(--text-document-color);
+			color: var(--text-document-color);
+			background: var(--link-color);
+		}
+		&:active {
+			text-decoration-color: black;
+			color: black;
+		}
+	}
+}
+
+main:not(.scroll) a {
+	text-decoration-color: var(--connected-blue);
+}
+main.scroll a {
+	text-decoration-color: var(--link-color);
+}

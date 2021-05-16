@@ -7,34 +7,51 @@ if (isset($error)) {
 }
 ?>
 
-<main id="the_document">
+<main id="the_document" class="scroll">
 	<p id="document_date"><?= $current_selection['date_string'] ?></p>
-	<h1>The Bill of Rickies</h1>
+	<h1 id="document_title">The Bill of Rickies</h1>
 
 <?php foreach ($rules__array as $type => $rules) {
-	echo '<h2 class="rule_type">The ' . ucfirst($type) . '</h2><ol class="rules">';
+	if ($type == 'Intro' || $type == 'Outro') {
+		foreach ($rules as $rule) {
+			echo '<div class="rule ';
 
-	foreach ($rules as $rule) {
-		echo '<li class="rule ';
-
-		// This is the same rule that's also in the JS
-		if ($rule['date_start'] <= $current_selection['date'] && $rule['date_end'] >= $current_selection['date']) {
-		} else {
-			echo 'hidden gone';
+			// This is the same rule that's also in the JS
+			if ($rule['date_start'] <= $current_selection['date'] && $rule['date_end'] >= $current_selection['date']) {
+			} else {
+				echo 'hidden gone';
+			}
+			echo '" id="rule' . $rule['id'] . '" ';
+			echo ' data-start-date="' . $rule['date_start'] . '" ';
+			echo ' data-end-date="' . $rule['date_end'] . '" ';
+			echo '>' . $rule['rule'] . '</div>';
 		}
-		echo '" id="rule' . $rule['id'] . '" ';
-		echo ' data-start-date="' . $rule['date_start'] . '" ';
-		echo ' data-end-date="' . $rule['date_end'] . '" ';
-		echo '>' . $rule['rule'] . '</li>';
-	}
+	} else {
+		echo '<h2 id="' .
+			strtolower(explode(' ', $type)[1]) .
+			'_title"class="rule_type">' .
+			$type .
+			'</h2><ol class="rules">';
 
-	echo '</ol>';
+		foreach ($rules as $rule) {
+			echo '<li class="rule ';
+
+			// This is the same rule that's also in the JS
+			if ($rule['date_start'] <= $current_selection['date'] && $rule['date_end'] >= $current_selection['date']) {
+			} else {
+				echo 'hidden gone';
+			}
+			echo '" id="rule' . $rule['id'] . '" ';
+			echo ' data-start-date="' . $rule['date_start'] . '" ';
+			echo ' data-end-date="' . $rule['date_end'] . '" ';
+			echo '>' . $rule['rule'] . '</li>';
+		}
+
+		echo '</ol>';
+	}
 } ?>
 
 </main>
-<aside class="no_bill">
-	<p>No rules were documented yet for the <span id="no_rules_string"></span>. Use the slider below to see The Bill of Rickies come into existence and progress over time.</p>
-</aside>
 <aside class="slider">
 	<div id="rule_slider">
 		<label id="slider_label" for="date_slider"><?= $current_selection['name'] ?></label>
@@ -60,6 +77,16 @@ if (isset($error)) {
 
 <script><?php
 echo $event_slider_js_vars;
+echo 'var rickies_start = ' .
+	$rickies_start .
+	'; var flexies_start = ' .
+	$flexies_start .
+	'; var bill_start = ' .
+	$bill_start .
+	';';
+
 include 'scripts/rules_slider.js';
-echo 'update_rules(' . $current_selection['index'] . ')';
+echo 'document.addEventListener(\'DOMContentLoaded\', function (event) { update_rules(' .
+	$current_selection['index'] .
+	');});';
 ?></script>
