@@ -2,7 +2,9 @@
 
 // Host Leaderboard _view_ controller
 
-$hosts_data__params = [];
+$hosts_data__params = [
+	'sort' => [['field' => 'Rickies Wins Total Latest Date', 'direction' => 'desc']],
+];
 $all_host_details = true;
 
 include '../includes/data_controllers/hosts_data_controller.php';
