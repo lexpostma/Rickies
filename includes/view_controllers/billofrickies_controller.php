@@ -107,4 +107,6 @@ if ($current_selection['date'] < $rickies_start && $current_selection['date'] < 
 	$head_custom['title'] = 'Drafting Rules';
 } elseif ($current_selection['date'] < $bill_start) {
 	$head_custom['title'] = 'Rickies Rules';
+} else {
+	$scroll = true;
 }
