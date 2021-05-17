@@ -1,6 +1,6 @@
 <div class="footer_space"></div>
 <footer id="footer">
-	<p id="promote_webapp" class="offer_sheet">This website is designed as a web app.<br /><button class="clean js_link" type="button" data-goatcounter-click="Add to home" title="Add it to your home screen" data-goatcounter-referrer="<?= current_url() ?>" onclick="open_share_sheet()">Add it to your home screen</button> for the best experience.</p>
+	<p id="promote_webapp" class="offer_sheet">This website is designed as a web app.<br />Add it to your home screen for the best experience.</p>
 	<p id="refresh_page"><button title="Refresh page" class="clean js_link" type="button" data-goatcounter-click="Refresh page" data-goatcounter-referrer="<?= current_url() ?>" onclick="refresh_inprogress(this), location.reload()">Refresh this page</button></p>
 	<p>Designed and built with <?= random(['💚', '💛', '🧡', '❤️', '💜', '💙']) ?> by <a target="_blank" href="<?= $head[
  	'site_lex'
