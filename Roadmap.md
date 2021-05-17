@@ -6,7 +6,8 @@ Features I plan to add to the website.
 -   [ ] Store interactive picks for ungraded Rickies in cookie for future return, especially for Annual Rickies.
 -   [ ] Improve support for older browsers.
 -   [ ] Improve accessibility.
--   [ ] Add host signatures to The Bill of Rickies.
+-   [x] Add host signatures to The Bill of Rickies.
+-   [ ] Replace some bitmap assets with vector version
 -   [ ] Cache Airtable data as JSON files to increase performance.
 -   [ ] Add Bill of Rickies reading theme song.
 -   [ ] Add show/hide toggle for Bill of Rickies history slider.
