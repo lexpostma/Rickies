@@ -165,7 +165,17 @@ function score_chart_script($chart_array, $host)
 			$data = [];
 			foreach ($chart as $key => $value) {
 				if ($key !== 'Total' && $key !== 'Rate') {
-					$labels[$key] = "'" . $key . "'";
+					switch ($key) {
+						case 'Correct':
+							$tooltip = '🟢';
+							break;
+						case 'Wrong':
+							$tooltip = '🔴';
+							break;
+						default:
+							$tooltip = '🟡';
+					}
+					$labels[$key] = "'" . $tooltip . "'";
 					$data[$key] = $value;
 				}
 			}
