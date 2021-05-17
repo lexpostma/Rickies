@@ -2,6 +2,7 @@ var document_date = document.getElementById('document_date');
 var paper = document.getElementById('the_document');
 var slider_label = document.getElementById('slider_label');
 var document_title = document.getElementById('document_title');
+var browser_title = document.getElementsByTagName('title')[0];
 var rickies_title = document.getElementById('rickies_title');
 var flexies_title = document.getElementById('flexies_title');
 
@@ -21,12 +22,18 @@ function update_rules(value) {
 
 	if (rickies_event_values[value] < rickies_start && rickies_event_values[value] < bill_start) {
 		document_title.innerHTML = 'Drafting Rules';
+		browser_title.innerText = browser_title.innerText.replace('The Bill of Rickies', 'Drafting Rules');
+		browser_title.innerText = browser_title.innerText.replace('Rickies Rules', 'Drafting Rules');
 		paper.classList.remove('scroll');
 	} else if (rickies_event_values[value] < bill_start) {
 		document_title.innerHTML = 'Rickies Rules';
+		browser_title.innerText = browser_title.innerText.replace('The Bill of Rickies', 'Rickies Rules');
+		browser_title.innerText = browser_title.innerText.replace('Drafting Rules', 'Rickies Rules');
 		paper.classList.remove('scroll');
 	} else {
 		document_title.innerHTML = 'The Bill of Rickies';
+		browser_title.innerText = browser_title.innerText.replace('Drafting Rules', 'The Bill of Rickies');
+		browser_title.innerText = browser_title.innerText.replace('Rickies Rules', 'The Bill of Rickies');
 		paper.classList.add('scroll');
 	}
 
