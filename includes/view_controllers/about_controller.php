@@ -88,6 +88,17 @@ $resources = [
 		'img_url' => '/images/about/bill-of-rickies-mathias.png',
 	],
 	[
+		'label1' => 'The Jeremies Gazette',
+		'label2' => 'By Jason Ryan Thompson',
+		'label3' => 'Shared in Discord on Octobor 7, 2020',
+		'url' => 'https://thejeremies.herokuapp.com',
+		'img_url' => [
+			'src' => '/images/about/weird-fish.png',
+			'type' => 'background',
+			'color' => 'var(--relay-blue)',
+		],
+	],
+	[
 		'label1' => 'Upgradies',
 		'label2' => 'By Zach Knox',
 		'label3' => 'Other great podcast',
