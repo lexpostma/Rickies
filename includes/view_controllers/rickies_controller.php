@@ -67,7 +67,12 @@ function list_item_graphic($img_array = false, $avatar = false)
 				break;
 			case 'avatar':
 				$class[] = 'avatar';
-				$img = '<img src="' . $img_array['src'] . '" />';
+				$img =
+					'<div class="ring" style="animation-delay: ' .
+					rand(-20, 0) .
+					's;"></div><img src="' .
+					$img_array['src'] .
+					'" />';
 				$style[] = 'background-color: var(--connected-' . $img_array['color'] . ')';
 				break;
 		}

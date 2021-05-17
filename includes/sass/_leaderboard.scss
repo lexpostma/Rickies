@@ -57,63 +57,60 @@
 			margin-bottom: 16px;
 			cursor: pointer;
 			// Winner ring
-			&:before,
-			&:after {
-				content: '';
+			.ring {
+				width: calc(var(--graphic-size) + 16px);
+				height: calc(var(--graphic-size) + 16px);
 				position: absolute;
 				border-radius: 50%;
-			}
-			&:before {
-				z-index: -1;
-				top: -4px;
-				left: -4px;
-				bottom: -4px;
-				right: -4px;
-				background: var(--background-color);
-			}
-			&:after {
-				z-index: -2;
-				top: -8px;
-				left: -8px;
-				bottom: -8px;
-				right: -8px;
+				// 8px + the border width
+				top: -9px;
+				left: -9px;
+				mask-image: url('/images/circle.svg');
+				-webkit-mask-image: url('/images/circle.svg');
+				mask-repeat: no-repeat;
+				-webkit-mask-repeat: no-repeat;
+				mask-size: calc(var(--graphic-size) + 16px);
+				-webkit-mask-size: calc(var(--graphic-size) + 16px);
 
 				background-color: var(--connected-orange);
 				background-image: linear-gradient(
 					-45deg,
+					var(--connected-purple),
+					var(--connected-blue),
 					var(--connected-green),
 					var(--connected-yellow),
 					var(--connected-orange),
 					var(--connected-red),
 					var(--connected-purple),
-					var(--connected-blue)
+					var(--connected-blue),
+					var(--connected-green),
+					var(--connected-yellow)
 				);
-				background-size: 300% 300%;
+				background-size: 500% 500%;
+				animation: linear;
 				animation-name: gradient;
-				animation-duration: 10s;
+				animation-duration: 20s;
 				animation-iteration-count: infinite;
+				// transform: scale(1);
 			}
 			@media (hover: hover) {
-				&:after,
-				&:before,
+				.ring,
 				img {
 					transition: var.$pop-transition;
 				}
-
 				&:hover {
-					&:before,
-					&:after {
+					.ring {
 						transform: scale(1.1);
 					}
 					img {
 						transform: scale(1.4) rotate(-10deg);
 					}
 				}
-				&:active {
-					&:before,
-					&:after {
-						transform: scale(0.95);
-					}
+			}
+			&:active {
+				.ring,
+				img {
+					transform: scale(0.95);
 				}
 			}
 		}
@@ -184,8 +181,7 @@ table.full_stats {
 			position: absolute;
 			left: 0;
 			right: 0;
-			top: 18px;
-			z-index: -1;
+			top: 16px;
 			text-align: center;
 		}
 		.chart_label {
@@ -203,11 +199,6 @@ table.full_stats {
 		position: relative;
 		height: 60px;
 		width: 60px;
-	}
-	@media screen and (min-width: var.$break-md) {
-		.chart_pick_type .chart_emoji {
-			top: 16px;
-		}
 	}
 	@media screen and (min-width: var.$break-xxl) {
 		.chart_pick_type .chart_emoji {

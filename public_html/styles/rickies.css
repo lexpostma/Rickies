@@ -878,46 +878,42 @@ li.pick_item.manual {
   margin-bottom: 16px;
   cursor: pointer;
 }
-.avatar_leaderboard .host.winner .avatar:before, .avatar_leaderboard .host.winner .avatar:after {
-  content: "";
+.avatar_leaderboard .host.winner .avatar .ring {
+  width: calc(var(--graphic-size) + 16px);
+  height: calc(var(--graphic-size) + 16px);
   position: absolute;
   border-radius: 50%;
-}
-.avatar_leaderboard .host.winner .avatar:before {
-  z-index: -1;
-  top: -4px;
-  left: -4px;
-  bottom: -4px;
-  right: -4px;
-  background: var(--background-color);
-}
-.avatar_leaderboard .host.winner .avatar:after {
-  z-index: -2;
-  top: -8px;
-  left: -8px;
-  bottom: -8px;
-  right: -8px;
+  top: -9px;
+  left: -9px;
+  mask-image: url("/images/circle.svg");
+  -webkit-mask-image: url("/images/circle.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: calc(var(--graphic-size) + 16px);
+  -webkit-mask-size: calc(var(--graphic-size) + 16px);
   background-color: var(--connected-orange);
-  background-image: linear-gradient(-45deg, var(--connected-green), var(--connected-yellow), var(--connected-orange), var(--connected-red), var(--connected-purple), var(--connected-blue));
-  background-size: 300% 300%;
+  background-image: linear-gradient(-45deg, var(--connected-purple), var(--connected-blue), var(--connected-green), var(--connected-yellow), var(--connected-orange), var(--connected-red), var(--connected-purple), var(--connected-blue), var(--connected-green), var(--connected-yellow));
+  background-size: 500% 500%;
+  animation: linear;
   animation-name: gradient;
-  animation-duration: 10s;
+  animation-duration: 20s;
   animation-iteration-count: infinite;
 }
 @media (hover: hover) {
-  .avatar_leaderboard .host.winner .avatar:after, .avatar_leaderboard .host.winner .avatar:before,
+  .avatar_leaderboard .host.winner .avatar .ring,
 .avatar_leaderboard .host.winner .avatar img {
     transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
   }
-  .avatar_leaderboard .host.winner .avatar:hover:before, .avatar_leaderboard .host.winner .avatar:hover:after {
+  .avatar_leaderboard .host.winner .avatar:hover .ring {
     transform: scale(1.1);
   }
   .avatar_leaderboard .host.winner .avatar:hover img {
     transform: scale(1.4) rotate(-10deg);
   }
-  .avatar_leaderboard .host.winner .avatar:active:before, .avatar_leaderboard .host.winner .avatar:active:after {
-    transform: scale(0.95);
-  }
+}
+.avatar_leaderboard .host.winner .avatar:active .ring,
+.avatar_leaderboard .host.winner .avatar:active img {
+  transform: scale(0.95);
 }
 
 .host_stats {
@@ -981,8 +977,7 @@ table.full_stats td.value {
   position: absolute;
   left: 0;
   right: 0;
-  top: 18px;
-  z-index: -1;
+  top: 16px;
   text-align: center;
 }
 .charts .chart_pick_type .chart_label {
@@ -999,11 +994,6 @@ table.full_stats td.value {
   position: relative;
   height: 60px;
   width: 60px;
-}
-@media screen and (min-width: 768px) {
-  .charts .chart_pick_type .chart_emoji {
-    top: 16px;
-  }
 }
 @media screen and (min-width: 1400px) {
   .charts .chart_pick_type .chart_emoji {

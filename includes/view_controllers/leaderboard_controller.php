@@ -229,11 +229,20 @@ function score_chart_item($chart_array, $host)
 			$chart_id = define_score_chart_id($host, $pick_type);
 			// Add a ChartJS chart canvas
 			$output .=
-				'<div class="chart_pick_type"><div class="chart-container"><canvas id="' .
+				'
+				<div class="chart_pick_type">
+					<span class="chart_emoji">' .
+				$emoji[$pick_type] .
+				'</span>
+					<div class="chart-container">
+						<canvas id="' .
 				$chart_id .
-				'"></canvas></div>';
-			$output .= '<span class="chart_emoji">' . $emoji[$pick_type] . '</span>';
-			$output .= '<span class="chart_label">' . $pick_type . '</span></div>';
+				'"></canvas>
+					</div>
+					<span class="chart_label">' .
+				$pick_type .
+				'</span>
+				</div>';
 		}
 	}
 
