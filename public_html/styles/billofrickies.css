@@ -456,6 +456,19 @@ body {
   }
 }
 
+.overscroll--top {
+  display: none;
+}
+
+.overscroll--bottom {
+  background: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  .overscroll--bottom {
+    background: black;
+  }
+}
+
 h2.rule_type,
 .rule {
   max-height: 150px;

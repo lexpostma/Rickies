@@ -9,6 +9,11 @@
 @use "pick-item";
 @use "leaderboard";
 
+.overscroll--top,
+.overscroll--bottom {
+	background: var(--relay-blue);
+}
+
 h3 {
 	margin: 0;
 	font-weight: 600;

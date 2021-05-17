@@ -64,11 +64,31 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   width: 100vw;
   overflow-x: hidden;
   min-height: 100vh;
+}
+
+.overscroll {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  height: 1000px;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.overscroll--top {
+  top: -1000px;
+}
+
+.overscroll--bottom {
+  bottom: -1000px;
 }
 
 p {
