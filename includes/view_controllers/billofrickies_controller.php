@@ -101,3 +101,10 @@ $head_custom = [
 	'favicon' => '/favicon-bill.png',
 	'description' => $description,
 ];
+
+// This is the same logic that's also dynamic in JS, and in Event details
+if ($current_selection['date'] < $rickies_start && $current_selection['date'] < $bill_start) {
+	$head_custom['title'] = 'Drafting Rules';
+} elseif ($current_selection['date'] < $bill_start) {
+	$head_custom['title'] = 'Rickies Rules';
+}
