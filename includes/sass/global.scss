@@ -56,11 +56,14 @@ body {
 	min-height: 100vh;
 }
 
+// Give overscroll a nice color
+// Via https://stackoverflow.com/a/56257456
 .overscroll {
 	position: fixed;
 	width: 100%;
 	left: 0;
 	height: 1000px;
+	// Fix for Safari: https://stackoverflow.com/a/58508206
 	-webkit-transform: translate3d(0, 0, 0);
 }
 .overscroll--top {
