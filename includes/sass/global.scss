@@ -45,32 +45,37 @@
 	box-sizing: border-box;
 }
 
-html {
+html,
+body {
 	overflow-x: hidden;
 }
 
 body {
 	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.container {
 	width: 100vw;
 	overflow-x: hidden;
 	min-height: 100vh;
-}
+	// Give overscroll a nice color
+	// Via https://stackoverflow.com/a/56257456
+	&:before,
+	&:after {
+		content: '';
+		position: fixed;
+		width: 100%;
+		left: 0;
+		height: 1000px;
+		// Fix for Safari: https://stackoverflow.com/a/58508206
+		-webkit-transform: translate3d(0, 0, 0);
+	}
 
-// Give overscroll a nice color
-// Via https://stackoverflow.com/a/56257456
-.overscroll {
-	position: fixed;
-	width: 100%;
-	left: 0;
-	height: 1000px;
-	// Fix for Safari: https://stackoverflow.com/a/58508206
-	-webkit-transform: translate3d(0, 0, 0);
-}
-.overscroll--top {
-	top: -1000px;
-}
-.overscroll--bottom {
-	bottom: -1000px;
+	&:before {
+		top: -1000px;
+	}
+	&:after {
+		bottom: -1000px;
+	}
 }
 
 p {

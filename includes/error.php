@@ -57,16 +57,18 @@ $head_custom = [
         <? include($incl_path.'head.php'); ?>
     </head>
     <body>
-        <?= back_button() ?>
-        <header class="details">
-            <div class="gradient"></div>
-            <div class="big_year"><?= $error_code ?></div>
-            <h1><?= $errors[$error_code][0] ?></h1>
-        </header>
-        <section>
-            <?= markdown($errors[$error_code][1]) ?>
-			<p><i>More about <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">HTTP response status codes</a> at Mozilla.</i></p>
-        </section>
-        <?include $incl_path.'footer.php';?>
+		<div class="container">
+	        <?= back_button() ?>
+	        <header class="details">
+	            <div class="gradient"></div>
+	            <div class="big_year"><?= $error_code ?></div>
+	            <h1><?= $errors[$error_code][0] ?></h1>
+	        </header>
+	        <section>
+	            <?= markdown($errors[$error_code][1]) ?>
+				<p><i>More about <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">HTTP response status codes</a> at Mozilla.</i></p>
+	        </section>
+	        <?include $incl_path.'footer.php';?>
+		</div>
     </body>
 </html>

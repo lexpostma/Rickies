@@ -32,10 +32,10 @@ include $incl_path . 'view_controllers/' . $focus_site . '_controller.php';
 		<? include($incl_path.'head.php'); ?>
 	</head>
 	<body>
-		<div class="overscroll overscroll--top"></div>
+		<div class="container">
 		<? include($include_body);
 		echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/share_button.js') . '</script>';
 		?>
-		<div class="overscroll overscroll--bottom"></div>
+		</div>
 	</body>
 </html>

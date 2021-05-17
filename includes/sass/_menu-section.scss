@@ -2,21 +2,22 @@
 
 html {
 	line-height: 1.5;
-	// background-color: var(--background-color);
 	background: var(--relay-blue);
 	color: var(--text-primary-color);
 }
-
 body {
+	background: var(--relay-blue);
+}
+
+.container {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
 	background-color: var(--background-color);
-}
-
-.overscroll--top,
-.overscroll--bottom {
-	background: var(--relay-blue);
+	&:before,
+	&:after {
+		background: var(--relay-blue);
+	}
 }
 
 $statusbar: var.$iX-top;

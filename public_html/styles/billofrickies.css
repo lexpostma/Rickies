@@ -443,28 +443,23 @@ html {
   background-color: var(--background-color);
 }
 
-body {
+.container {
   padding: var(--space-between-sm) var(--space-between-sm) 128px var(--space-between-sm);
   padding-top: calc(env(safe-area-inset-top) + var(--space-between-sm));
   padding-bottom: calc(env(safe-area-inset-bottom) + 128px);
   transition: 100ms padding ease-in-out;
 }
 @media screen and (min-width: 768px) {
-  body {
+  .container {
     padding-top: var(--space-side-padding);
     padding-top: calc(env(safe-area-inset-top) + var(--space-side-padding));
   }
 }
-
-.overscroll--top {
-  display: none;
-}
-
-.overscroll--bottom {
+.container:after {
   background: #fff;
 }
 @media (prefers-color-scheme: dark) {
-  .overscroll--bottom {
+  .container:after {
     background: black;
   }
 }

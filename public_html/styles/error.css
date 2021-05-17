@@ -288,14 +288,16 @@ html {
 }
 
 body {
+  background: var(--relay-blue);
+}
+
+.container {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   background-color: var(--background-color);
 }
-
-.overscroll--top,
-.overscroll--bottom {
+.container:before, .container:after {
   background: var(--relay-blue);
 }
 

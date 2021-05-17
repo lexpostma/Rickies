@@ -24,7 +24,7 @@ html {
 	background-color: var(--background-color);
 }
 
-body {
+.container {
 	padding: var(--space-between-sm) var(--space-between-sm) 128px var(--space-between-sm);
 	padding-top: calc(#{var.$iX-top} + var(--space-between-sm));
 	padding-bottom: calc(#{var.$iX-bottom} + 128px);
@@ -33,14 +33,11 @@ body {
 		padding-top: var(--space-side-padding);
 		padding-top: calc(#{var.$iX-top} + var(--space-side-padding));
 	}
-}
-.overscroll--top {
-	display: none;
-}
-.overscroll--bottom {
-	background: #fff;
-	@media (prefers-color-scheme: dark) {
-		background: black;
+	&:after {
+		background: #fff;
+		@media (prefers-color-scheme: dark) {
+			background: black;
+		}
 	}
 }
 
