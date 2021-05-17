@@ -14,4 +14,5 @@
 -   Standalone web app with support for the safe areas on your (iOS) devices. So you don’t get big black bars at top and bottom when you add it to your home screen.
 -   For ungraded Rickies the picks are interactive. When you change the state of a pick, the background changes so you see you edited it.
 -   The favicon changes between [The Rickies](https://rickies.co/) pages and [The Bill of Rickies](https://rickies.co/billof).
--   Leaderboard titles are randomised.
+-   Aside from Chairman titles, most titles on the leaderboard are randomised.
+-   [The Bill of Rickies](https://rickies.co/billof/annual-2017) document, including titles, styling, and [links to it](https://rickies.co/annual-2017#details), changes dependent on the date of the Rickies. To reflect when terms like Rickies, Flexies and The Bill of Rickies were coined.

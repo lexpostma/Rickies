@@ -170,3 +170,12 @@ if ($rickies_events__array[$id]['details']['more_data_charity']['label1'] == fal
 			$rickies_events__array[$id]['details']['more_data_charity']['img_url']['thumbnails']['large']['url'];
 	}
 }
+
+// Bill of Rickies data
+if ($rickies_events__array[$id]['date'] < $rickies_start && $rickies_events__array[$id]['date'] < $bill_start) {
+	$rickies_events__array[$id]['details']['more_data_rules']['label1'] = 'Drafting Rules';
+	$rickies_events__array[$id]['details']['more_data_rules']['img_url'] = '/images/rickies-rules-avatar.png';
+} elseif ($rickies_events__array[$id]['date'] < $bill_start) {
+	$rickies_events__array[$id]['details']['more_data_rules']['label1'] = 'Rickies Rules';
+	$rickies_events__array[$id]['details']['more_data_rules']['img_url'] = '/images/rickies-rules-avatar.png';
+}
