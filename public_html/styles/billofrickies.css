@@ -26,23 +26,27 @@
 }
 main {
   max-width: 750px;
-  padding: 24px 24px 48px;
   margin: 0 auto;
-  background-image: linear-gradient(170deg, #ffffff 0.21%, #f1f1f1 98.37%);
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
+  background-image: url(/images/parchment-border/light-top.png), url(/images/parchment-border/light-left.png), url(/images/parchment-border/light-right.png), url(/images/parchment-border/light-bottom.png), linear-gradient(170deg, #ffffff 0.21%, #f1f1f1 98.37%), url(/images/parchment-background.jpg);
+  background-repeat: repeat-x, repeat-y, repeat-y, repeat-x, no-repeat, no-repeat;
+  background-size: auto 32px, 32px auto, 32px auto, auto 32px, cover, cover;
+  background-position: left top -65px, left -65px top, right -65px top, right bottom -65px, center, center;
+  padding: 24px 24px 48px;
   color: var(--text-primary-color);
-  transition-property: padding, color;
-  transition-duration: 100ms, 500ms;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
+  transition-property: padding, color, background-position, box-shadow;
+  transition-duration: 100ms, 500ms, 600ms, 600ms;
+  transition-delay: 0, 0, 0, 600ms;
   transition-timing-function: ease-in-out;
+}
+@media (prefers-color-scheme: dark) {
+  main {
+    background-image: url(/images/parchment-border/dark-top.png), url(/images/parchment-border/dark-left.png), url(/images/parchment-border/dark-right.png), url(/images/parchment-border/dark-bottom.png), linear-gradient(170deg, #0e0e0e 0.21%, #1e1e1e 98.37%), url(/images/parchment-background.jpg);
+  }
 }
 @media screen and (min-width: 576px) {
   main {
     padding: 48px 48px 64px;
-  }
-}
-@media (prefers-color-scheme: dark) {
-  main {
-    background-image: linear-gradient(170deg, #0e0e0e 0.21%, #1e1e1e 98.37%);
   }
 }
 @media screen and (min-width: 768px) {
@@ -60,28 +64,28 @@ main h2 {
   font-size: 1.7rem;
   margin: var(--space-between-lg) 0 4px;
 }
+@media screen and (min-width: 576px) {
+  main {
+    background-size: auto 64px, 64px auto, 64px auto, auto 64px, cover, cover;
+  }
+}
 main.scroll {
+  transition-duration: 100ms, 500ms, 600ms, 300ms;
+  transition-delay: 0, 0, 300ms, 0ms;
   color: var(--text-document-color);
-  font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
   box-shadow: none;
   background-image: url(/images/parchment-border/light-top.png), url(/images/parchment-border/light-left.png), url(/images/parchment-border/light-right.png), url(/images/parchment-border/light-bottom.png), radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%), url(/images/parchment-background.jpg);
   background-position: left top, left top, right top, right bottom, center, center;
-  background-repeat: repeat-x, repeat-y, repeat-y, repeat-x, no-repeat, no-repeat;
-  background-size: auto 32px, 32px auto, 32px auto, auto 32px, cover, cover;
-}
-main.scroll h1,
-main.scroll h2 {
-  font-family: "BlackChancery";
-}
-@media screen and (min-width: 576px) {
-  main.scroll {
-    background-size: auto 64px, 64px auto, 64px auto, auto 64px, cover, cover;
-  }
+  font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
 }
 @media (prefers-color-scheme: dark) {
   main.scroll {
     background-image: url(/images/parchment-border/dark-top.png), url(/images/parchment-border/dark-left.png), url(/images/parchment-border/dark-right.png), url(/images/parchment-border/dark-bottom.png), radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%), url(/images/parchment-background.jpg);
   }
+}
+main.scroll h1,
+main.scroll h2 {
+  font-family: "BlackChancery";
 }
 main .document_footer {
   display: flex;
