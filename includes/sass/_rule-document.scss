@@ -45,7 +45,7 @@ main {
 		background-size: auto 64px, 64px auto, 64px auto, auto 64px, cover, cover;
 	}
 
-	&.scroll {
+	&.parchment {
 		transition-duration: 100ms, 500ms, 600ms, 300ms;
 		transition-delay: 0, 0, 300ms, 0ms;
 		color: var(--text-document-color);
@@ -108,7 +108,7 @@ main {
 			transform: rotate(-6deg);
 		}
 	}
-	&.scroll {
+	&.parchment {
 		.document_footer {
 			.signatures {
 				border-bottom-color: var(--text-document-color);
@@ -172,9 +172,9 @@ main a {
 	}
 }
 
-main:not(.scroll) a {
+main:not(.parchment) a {
 	text-decoration-color: var(--connected-blue);
 }
-main.scroll a {
+main.parchment a {
 	text-decoration-color: var(--link-color);
 }

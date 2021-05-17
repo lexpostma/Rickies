@@ -7,7 +7,7 @@ if (isset($error)) {
 }
 ?>
 
-<main id="the_document" <? if(isset($scroll)){ echo 'class="scroll"';}?>>
+<main id="the_document" <? if(isset($parchment)){ echo 'class="parchment"';}?>>
 	<p id="document_date"><?= $current_selection['date_string'] ?></p>
 	<h1 id="document_title"><?= $head['title'];?></h1>
 

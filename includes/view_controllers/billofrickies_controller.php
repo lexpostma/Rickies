@@ -108,5 +108,5 @@ if ($current_selection['date'] < $rickies_start && $current_selection['date'] < 
 } elseif ($current_selection['date'] < $bill_start) {
 	$head_custom['title'] = 'Rickies Rules';
 } else {
-	$scroll = true;
+	$parchment = true;
 }
