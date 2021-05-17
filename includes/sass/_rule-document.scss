@@ -66,6 +66,10 @@ main {
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-end;
+		padding: 0 16px;
+		@media screen and (min-width: var.$break-sm) {
+			padding: 0;
+		}
 		.signatures {
 			display: flex;
 			flex-direction: column;
@@ -80,7 +84,7 @@ main {
 			}
 		}
 		img.seal {
-			width: 30vw;
+			width: 24vw;
 			max-width: 120px;
 			align-self: flex-end;
 			margin-bottom: -10px;

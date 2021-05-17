@@ -87,6 +87,12 @@ main .document_footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding: 0 16px;
+}
+@media screen and (min-width: 576px) {
+  main .document_footer {
+    padding: 0;
+  }
 }
 main .document_footer .signatures {
   display: flex;
@@ -101,7 +107,7 @@ main .document_footer .signatures img {
   max-height: 2.3rem;
 }
 main .document_footer img.seal {
-  width: 30vw;
+  width: 24vw;
   max-width: 120px;
   align-self: flex-end;
   margin-bottom: -10px;
