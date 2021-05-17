@@ -106,6 +106,7 @@ if ($rickies_data['status'] == 'Ungraded') {
 	<h2>Details</h2>
 	<div class="section_group">
 <?= list_item_bundle($rickies_data['details']) ?>
+
 	</div>
 </section>
 

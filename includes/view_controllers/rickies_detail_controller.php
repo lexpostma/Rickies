@@ -297,13 +297,12 @@ function host_item_bundle($host_event_data, $event_type)
 			'
 <div class="section_group--list">
 	<ul class="list_item_group">
-	<li class="list_item host_details">
-		<div class="list_item_content">' .
+		<li class="list_item host_details">
+			<div class="list_item_content">' .
 			list_item_graphic($avatar_img_array, true) .
 			'
-			<div class="list_item_labels">
-				<p>
-					<a href="/leaderboard#' .
+				<div class="list_item_labels">
+					<p><a href="/leaderboard#' .
 			strtolower($event_details['details']['first_name']) .
 			'">' .
 			$event_details['details']['full_name'] .
@@ -313,19 +312,21 @@ function host_item_bundle($host_event_data, $event_type)
 			'</p>';
 		if ($event_details['rickies']['ranking'] !== false || $event_details['flexies']['ranking'] !== false) {
 			$output .= '
-				<div class="mini_stats">';
+					<div class="mini_stats">';
 			foreach ($html_strings['stats'] as $stat_title => $stat_data) {
 				$output .=
-					'<div class="mini_stats--list">
-					<h4>' .
+					'
+						<div class="mini_stats--list">
+							<h4>' .
 					$stat_title .
 					'</h4>
-					<p>' .
+							<p>' .
 					implode('<br />', $stat_data) .
 					'</p>
-					</div>';
+						</div>';
 			}
-			$output .= '</div>';
+			$output .= '
+					</div>';
 		}
 		$output .= '
 				</div>
@@ -335,7 +336,6 @@ function host_item_bundle($host_event_data, $event_type)
 </div>
 ';
 	}
-	$output .= '</ul></div>';
 	return $output;
 }
 

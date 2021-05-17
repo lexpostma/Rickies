@@ -206,21 +206,35 @@ function list_item_bundle($data)
 {
 	$previous_value = null;
 	$output = '';
+	$i = 0;
+	$len = count($data);
 	foreach ($data as $key => $value) {
-		if (is_array($value)) {
-			if (!is_array($previous_value)) {
-				$output .= '<ul class="list_item_group">';
-			}
-			$output .= list_item($value);
-			if ($key == count($data) - 1) {
-				$output .= '</ul></div>';
-			}
-		} else {
+		if (!is_array($value)) {
 			if (is_array($previous_value)) {
-				$output .= '</ul></div>';
+				// Previous was list item, so close the list first
+				$output .= '
+			</ul>
+		</div>';
 			}
-			$output .= '<div class="section_group--list"><h3>' . $value . '</h3>';
+			// Not a list item, so title and open new list
+			$output .=
+				'
+		<div class="section_group--list">
+			<h3>' .
+				$value .
+				'</h3>
+			<ul class="list_item_group">';
+		} else {
+			// List item, so add to new list
+			$output .= list_item($value);
+			if ($i == $len - 1) {
+				// If last item in foreach is list item/array, close the list
+				$output .= '
+			</ul>
+		</div>';
+			}
 		}
+		$i++;
 		$previous_value = $value;
 	}
 	return $output;
