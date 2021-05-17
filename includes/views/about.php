@@ -1,3 +1,4 @@
+<div id="statusbar"></div>
 <header class="about contain_img">
 	<div class="gradient"></div>
 	<img src="/images/lex_memoji.png" />

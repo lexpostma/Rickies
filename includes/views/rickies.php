@@ -1,3 +1,4 @@
+<div id="statusbar"></div>
 <header class="home">
 	<a
 		target="_blank"

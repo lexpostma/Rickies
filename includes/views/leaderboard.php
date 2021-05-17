@@ -1,3 +1,4 @@
+<div id="statusbar"></div>
 <header class="leaderboard">
 	<h1>Host Leaderboard</h1>
 </header>
