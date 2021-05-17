@@ -29,8 +29,11 @@ main {
   padding: 24px;
   margin: 0 auto;
   background-image: linear-gradient(170deg, #ffffff 0.21%, #f1f1f1 98.37%);
-  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.35);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
   color: var(--text-primary-color);
+  transition-property: padding, color;
+  transition-duration: 100ms, 500ms;
+  transition-timing-function: ease-in-out;
 }
 @media screen and (min-width: 576px) {
   main {
@@ -397,16 +400,15 @@ html {
 }
 
 body {
-  padding-bottom: 128px;
-  padding-top: 0;
-  padding-top: env(safe-area-inset-top);
+  padding: var(--space-between-sm) var(--space-between-sm) 128px var(--space-between-sm);
+  padding-top: calc(env(safe-area-inset-top) + var(--space-between-sm));
+  padding-bottom: calc(env(safe-area-inset-bottom) + 128px);
+  transition: 100ms padding ease-in-out;
 }
 @media screen and (min-width: 768px) {
   body {
-    padding-top: 32px;
-    padding-top: calc(env(safe-area-inset-top) + 32px);
-    padding-bottom: 150px;
-    padding-bottom: calc(env(safe-area-inset-bottom) + 150px);
+    padding-top: var(--space-side-padding);
+    padding-top: calc(env(safe-area-inset-top) + var(--space-side-padding));
   }
 }
 

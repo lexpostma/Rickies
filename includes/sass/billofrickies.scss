@@ -25,15 +25,13 @@ html {
 }
 
 body {
-	padding-bottom: 128px;
-	padding-top: 0;
-	padding-top: var.$iX-top;
+	padding: var(--space-between-sm) var(--space-between-sm) 128px var(--space-between-sm);
+	padding-top: calc(#{var.$iX-top} + var(--space-between-sm));
+	padding-bottom: calc(#{var.$iX-bottom} + 128px);
+	transition: 100ms padding ease-in-out;
 	@media screen and (min-width: var.$break-md) {
-		padding-top: 32px;
-		padding-top: calc(#{var.$iX-top} + 32px);
-
-		padding-bottom: 150px;
-		padding-bottom: calc(#{var.$iX-bottom} + 150px);
+		padding-top: var(--space-side-padding);
+		padding-top: calc(#{var.$iX-top} + var(--space-side-padding));
 	}
 }
 
