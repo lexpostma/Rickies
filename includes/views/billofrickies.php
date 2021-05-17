@@ -50,7 +50,19 @@ if (isset($error)) {
 		echo '</ol>';
 	}
 } ?>
+	<div class="document_footer">
+		<div class="signatures">
+			<img src="/images/signature-stephen.png" alt="Stephen Hackett signature"/>
+			<img src="/images/signature-federico.png" alt="Federico Viticci signature"/>
+			<img src="/images/signature-myke.png" alt="Myke Hurley signature"/>
+		</div>
+		<div class="seal">
+			<img id="ticci_seal"  class="seal" src="/images/viticci-seal-of-quality.png" alt="Viticci Seal of Quality"/>
+			<img id="scroll_seal" class="seal" src="/images/connected-seal.png" alt="Connected seal"/>
+		</div>
 
+
+	</div>
 </main>
 <aside class="slider">
 	<div id="rule_slider">

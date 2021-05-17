@@ -83,6 +83,50 @@ main.scroll h2 {
     background-image: url(/images/parchment-border/dark-top.png), url(/images/parchment-border/dark-left.png), url(/images/parchment-border/dark-right.png), url(/images/parchment-border/dark-bottom.png), radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%), url(/images/parchment-background.jpg);
   }
 }
+main .document_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+main .document_footer .signatures {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 32px;
+  border-bottom: 2px dotted var(--text-primary-color);
+  padding-right: 16px;
+}
+main .document_footer .signatures img {
+  margin-left: -16px;
+  max-height: 2.3rem;
+}
+main .document_footer img.seal {
+  width: 30vw;
+  max-width: 120px;
+  align-self: flex-end;
+  margin-bottom: -10px;
+}
+main .document_footer #ticci_seal {
+  transform: rotate(9deg);
+  filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.6));
+}
+main .document_footer #scroll_seal {
+  display: none;
+  transform: rotate(-6deg);
+}
+main.scroll .document_footer .signatures {
+  border-bottom-color: var(--text-document-color);
+}
+main.scroll .document_footer .signatures img {
+  filter: sepia(100%);
+  opacity: 0.9;
+}
+main.scroll #ticci_seal {
+  display: none;
+}
+main.scroll #scroll_seal {
+  display: block;
+}
 
 #document_date {
   text-align: center;
