@@ -254,7 +254,7 @@ header.about .big_year, header.details .big_year {
 }
 @media screen and (min-width: 375px) {
   header.about .big_year, header.details .big_year {
-    margin-top: 50px;
+    margin-top: 40px;
     font-size: 120px;
   }
 }
