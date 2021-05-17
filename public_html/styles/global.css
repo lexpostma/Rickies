@@ -106,7 +106,7 @@ section > p + p {
   position: absolute;
   top: 20px;
   top: max(20px, env(safe-area-inset-top));
-  z-index: 11;
+  z-index: 8;
 }
 @media (hover: hover) {
   .top_button {

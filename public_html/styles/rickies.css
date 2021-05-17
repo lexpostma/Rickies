@@ -283,7 +283,7 @@ header.about, header.leaderboard {
 
 html {
   line-height: 1.5;
-  background-color: var(--background-color);
+  background: var(--relay-blue);
   color: var(--text-primary-color);
 }
 
@@ -291,6 +291,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  background-color: var(--background-color);
+}
+
+.overscroll--top,
+.overscroll--bottom {
+  background: var(--relay-blue);
 }
 
 #statusbar {
@@ -300,8 +306,14 @@ body {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 10;
+  z-index: 9;
   pointer-events: none;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0));
+}
+@media (prefers-color-scheme: dark) {
+  #statusbar {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  }
 }
 
 #nav_content {
@@ -1004,11 +1016,6 @@ table.full_stats td.value {
     height: 80px;
     width: 80px;
   }
-}
-
-.overscroll--top,
-.overscroll--bottom {
-  background: var(--relay-blue);
 }
 
 h3 {
