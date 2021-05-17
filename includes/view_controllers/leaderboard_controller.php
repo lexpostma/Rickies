@@ -266,6 +266,10 @@ foreach ($hosts_data__array as $host) {
 			'color' => $host['personal']['color'],
 		],
 	];
+	if (strpos($host['titles'][0], '<a') !== false) {
+		$set['winner'] = true;
+	}
+
 	array_push($leaderboard_data, $set);
 }
 
