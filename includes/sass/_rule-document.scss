@@ -91,6 +91,9 @@ main {
 			img {
 				margin-left: -16px;
 				max-height: 2.3rem;
+				@media (prefers-color-scheme: dark) {
+					filter: brightness(100);
+				}
 			}
 		}
 		img.seal {

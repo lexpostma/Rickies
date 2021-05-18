@@ -110,6 +110,11 @@ main .document_footer .signatures img {
   margin-left: -16px;
   max-height: 2.3rem;
 }
+@media (prefers-color-scheme: dark) {
+  main .document_footer .signatures img {
+    filter: brightness(100);
+  }
+}
 main .document_footer img.seal {
   width: 24vw;
   max-width: 120px;
