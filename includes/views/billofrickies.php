@@ -27,27 +27,45 @@ if (isset($error)) {
 			echo '>' . $rule['rule'] . '</div>';
 		}
 	} else {
-		echo '<h2 id="' .
-			strtolower(explode(' ', $type)[1]) .
-			'_title"class="rule_type">' .
-			$type .
-			'</h2><ol class="rules">';
+		$i = 0;
+		$len = count($rules);
 
+		$output = '<ol class="rules">';
 		foreach ($rules as $rule) {
-			echo '<li class="rule ';
+			$output .= '<li class="rule ';
 
 			// This is the same rule that's also in the JS
 			if ($rule['date_start'] <= $current_selection['date'] && $rule['date_end'] >= $current_selection['date']) {
 			} else {
-				echo 'hidden gone';
+				$output .= 'hidden gone';
+				$i++;
 			}
-			echo '" id="rule' . $rule['id'] . '" ';
-			echo ' data-start-date="' . $rule['date_start'] . '" ';
-			echo ' data-end-date="' . $rule['date_end'] . '" ';
-			echo '>' . $rule['rule'] . '</li>';
+			$output .=
+				'" id="rule' .
+				$rule['id'] .
+				'"
+				data-start-date="' .
+				$rule['date_start'] .
+				'"
+				data-end-date="' .
+				$rule['date_end'] .
+				'"
+				>' .
+				$rule['rule'] .
+				'</li>';
 		}
 
-		echo '</ol>';
+		$output .= '</ol>';
+		$output_h2 = '<h2 id="' . strtolower(explode(' ', $type)[1]) . '_title" class="rule_type ';
+		if ($i == $len) {
+			// All rules in <ol> are hidden, so also hide <h2>
+			$output_h2 .= 'hidden gone';
+		}
+		$output_h2 .= '">' . $type . '</h2>';
+
+		echo $output_h2 . $output;
+		unset($output);
+		unset($output_h2);
 	}
 } ?>
 	<div class="document_footer">

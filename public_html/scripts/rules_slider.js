@@ -24,17 +24,17 @@ function update_rules(value) {
 		document_title.innerHTML = 'Drafting Rules';
 		browser_title.innerText = browser_title.innerText.replace('The Bill of Rickies', 'Drafting Rules');
 		browser_title.innerText = browser_title.innerText.replace('Rickies Rules', 'Drafting Rules');
-		paper.classList.remove('scroll');
+		paper.classList.remove('parchment');
 	} else if (rickies_event_values[value] < bill_start) {
 		document_title.innerHTML = 'Rickies Rules';
 		browser_title.innerText = browser_title.innerText.replace('The Bill of Rickies', 'Rickies Rules');
 		browser_title.innerText = browser_title.innerText.replace('Drafting Rules', 'Rickies Rules');
-		paper.classList.remove('scroll');
+		paper.classList.remove('parchment');
 	} else {
 		document_title.innerHTML = 'The Bill of Rickies';
 		browser_title.innerText = browser_title.innerText.replace('Drafting Rules', 'The Bill of Rickies');
 		browser_title.innerText = browser_title.innerText.replace('Rickies Rules', 'The Bill of Rickies');
-		paper.classList.add('scroll');
+		paper.classList.add('parchment');
 	}
 
 	if (rickies_event_values[value] < rickies_start) {
