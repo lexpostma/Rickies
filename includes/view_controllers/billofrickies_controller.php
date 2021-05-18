@@ -46,6 +46,7 @@ foreach ($rickies_events__array as $event) {
 			'date' => $event['date'],
 			'date_string' => $event['date_string'],
 		];
+		$description = 'As of the ' . $event['name'] . '. ';
 	}
 	$index++;
 }
@@ -85,8 +86,6 @@ if (!isset($current_selection)) {
 		'date' => end($event_slider_js_array['date']),
 		'date_string' => end($event_slider_js_array['date_string']),
 	];
-	$description = 'The Bill of Rickies as of the ' . end($event_slider_js_array['name']) . '. ';
-} else {
 	$description = '';
 }
 // echo '<pre>', var_dump($current_selection), '</pre>';
