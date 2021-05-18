@@ -340,7 +340,7 @@ function host_item_bundle($host_event_data, $event_type)
 }
 
 // Define SEO description
-$description = 'The prediction show of the Connected podcast. ';
+$description = 'The predictions show of Connected on Relay FM. ';
 if ($rickies_data['type'] == 'annual' && $rickies_data['status'] == 'Ungraded') {
 	// Annual and ungraded, so future
 	$description .=
