@@ -9,7 +9,7 @@ if (isset($error)) {
 
 <main id="the_document" <? if(isset($parchment)){ echo 'class="parchment"';}?>>
 	<p id="document_date"><?= $current_selection['date_string'] ?></p>
-	<h1 id="document_title"><?= $head['title'];?></h1>
+	<h1 id="document_title"><?= $head_custom['title'] ?></h1>
 
 <?php foreach ($rules__array as $type => $rules) {
 	if ($type == 'Intro' || $type == 'Outro') {
