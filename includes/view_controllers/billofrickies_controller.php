@@ -102,3 +102,12 @@ $head_custom = [
 	'description' => $description,
 	'image' => domain_url() . '/images/hero-billofrickies.jpg',
 ];
+
+// This is the same logic that's also dynamic in JS, and in Event details
+if ($current_selection['date'] < $rickies_start && $current_selection['date'] < $bill_start) {
+	$head_custom['title'] = 'Drafting Rules';
+} elseif ($current_selection['date'] < $bill_start) {
+	$head_custom['title'] = 'Rickies Rules';
+} else {
+	$parchment = true;
+}

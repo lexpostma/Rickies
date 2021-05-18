@@ -69,7 +69,7 @@ main h2 {
     background-size: auto 64px, 64px auto, 64px auto, auto 64px, cover, cover;
   }
 }
-main.scroll {
+main.parchment {
   transition-duration: 100ms, 500ms, 600ms, 300ms;
   transition-delay: 0, 0, 300ms, 0ms;
   color: var(--text-document-color);
@@ -79,12 +79,12 @@ main.scroll {
   font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
 }
 @media (prefers-color-scheme: dark) {
-  main.scroll {
+  main.parchment {
     background-image: url(/images/parchment-border/dark-top.png), url(/images/parchment-border/dark-left.png), url(/images/parchment-border/dark-right.png), url(/images/parchment-border/dark-bottom.png), radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%), url(/images/parchment-background.jpg);
   }
 }
-main.scroll h1,
-main.scroll h2 {
+main.parchment h1,
+main.parchment h2 {
   font-family: "BlackChancery";
 }
 main .document_footer {
@@ -110,6 +110,11 @@ main .document_footer .signatures img {
   margin-left: -16px;
   max-height: 2.3rem;
 }
+@media (prefers-color-scheme: dark) {
+  main .document_footer .signatures img {
+    filter: brightness(100);
+  }
+}
 main .document_footer img.seal {
   width: 24vw;
   max-width: 120px;
@@ -124,17 +129,17 @@ main .document_footer #scroll_seal {
   display: none;
   transform: rotate(-6deg);
 }
-main.scroll .document_footer .signatures {
+main.parchment .document_footer .signatures {
   border-bottom-color: var(--text-document-color);
 }
-main.scroll .document_footer .signatures img {
+main.parchment .document_footer .signatures img {
   filter: sepia(100%);
   opacity: 0.9;
 }
-main.scroll #ticci_seal {
+main.parchment #ticci_seal {
   display: none;
 }
-main.scroll #scroll_seal {
+main.parchment #scroll_seal {
   display: block;
 }
 
@@ -181,11 +186,11 @@ main a:link, main a:visited {
   }
 }
 
-main:not(.scroll) a {
+main:not(.parchment) a {
   text-decoration-color: var(--connected-blue);
 }
 
-main.scroll a {
+main.parchment a {
   text-decoration-color: var(--link-color);
 }
 
