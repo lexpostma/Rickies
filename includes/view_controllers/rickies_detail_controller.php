@@ -357,22 +357,22 @@ if ($rickies_data['type'] == 'annual' && $rickies_data['status'] == 'Ungraded') 
 	// Ungraded, so future keynote
 	$description .= $rickies_data['details']['event_data']['label2'] . 'What will Apple announced at the ';
 
-	if (isset($rickies_data['details']['event_data']['label2'])) {
-		$description .= '“' . $rickies_data['details']['event_data']['label2'] . '”';
+	if (!empty($rickies_data['details']['event_data']['label2'])) {
+		$description .= '“' . $rickies_data['details']['event_data']['label2'] . '” ';
 	}
 
 	$description .=
-		' keynote on ' .
+		'keynote on ' .
 		date_to_string_label($rickies_data['details']['event_data']['date']) .
 		'? And who will become Annual Chairman? Follow along with the hosts as the keynote and episode progress with this interactive scorecard.';
 } else {
 	// Graded keynote, past
 	$description .= 'What has Apple announced at the ';
-	if (isset($rickies_data['details']['event_data']['label2'])) {
-		$description .= '“' . $rickies_data['details']['event_data']['label2'] . '”';
+	if (!empty($rickies_data['details']['event_data']['label2'])) {
+		$description .= '“' . $rickies_data['details']['event_data']['label2'] . '” ';
 	}
 	$description .=
-		' keynote on ' .
+		'keynote on ' .
 		date_to_string_label($rickies_data['details']['event_data']['date']) .
 		'? And how did Myke, Stephen, and Federico perform with their predictions for this event?';
 }
