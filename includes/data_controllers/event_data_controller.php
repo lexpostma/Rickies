@@ -29,19 +29,22 @@ do {
 					'event' => airtable_image_url(check_key('Event artwork', $fields, false, 0)),
 					'predictions_ep' => airtable_image_url(check_key('Predictions episode artwork', $fields, false, 0)),
 					'results_ep' => airtable_image_url(check_key('Results episode artwork', $fields, false, 0)),
+					'seo' => airtable_image_url(check_key('Rickies SEO image', $fields, false, 0)),
 				],
 				'artwork_background_color' => check_key('Artwork background color', $fields),
 				'winner' => check_key('Rickies 1st (manual)', $fields),
 			];
 
-			// Set large thumbnail URL as the value of the main event artwork,
-			// but only the first not-false
+			// Set large thumbnail URL as the value of the main event artwork.
+			// The first one that's not-false will be set,
+			// excluding episode artwork and SEO images
 			foreach ($rickies_events__array[$id]['artwork'] as $source => $artwork) {
 				if (
 					$artwork !== false &&
 					!isset($rickies_events__array[$id]['img_url']) &&
 					$source !== 'results_ep' &&
-					$source !== 'predictions_ep'
+					$source !== 'predictions_ep' &&
+					$source !== 'seo'
 				) {
 					$rickies_events__array[$id]['img_url'] = $artwork;
 					break;

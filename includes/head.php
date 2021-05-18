@@ -40,21 +40,21 @@ if ($environment !== 'production') {
 <meta property="og:title" content="<?= $head['title'] ?>" />
 <meta property="og:description" content="<?= $head['description'] ?>" />
 <meta property="og:url" content="<?= current_url() ?>" />
-<meta property="og:image" content=""/>
-<meta property="og:image:secure_url" content=""/>
+<meta property="og:image" content="<?= $head['image'] ?>"/>
+<meta property="og:image:secure_url" content="<?= $head['image'] ?>"/>
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="<?= $head['name'] ?>" />
 <meta property="fb:admins" content="1308188724" />
 
 <!-- Twitter (Cards) -->
 <meta name="twitter:widgets:link-color" content="#106DC6" />
-<meta name="twitter:url" content="<?= current_url() ?>">
-<meta name="twitter:title" content="<?= $head['title'] ?>">
-<meta name="twitter:description" content="<?= $head['description'] ?>">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image:src" content="">
-<meta name="twitter:creator" content="<?= $head['twitter_author'] ?>">
-<meta name="twitter:site" content="<?= $head['twitter_connected'] ?>">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="<?= $head['twitter_connected'] ?>" />
+<meta name="twitter:creator" content="<?= $head['twitter_author'] ?>" />
+<meta name="twitter:title" content="<?= $head['title'] ?>" />
+<meta name="twitter:description" content="<?= $head['description'] ?>" />
+<meta name="twitter:image" content="<?= $head['image'] ?>" />
+<meta name="twitter:url" content="<?= current_url() ?>" />
 
 <?include("ios_optimisation.php");?>
 

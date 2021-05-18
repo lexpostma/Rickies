@@ -100,4 +100,5 @@ $head_custom = [
 	'title' => 'The Bill of Rickies',
 	'favicon' => '/favicon-bill.png',
 	'description' => $description,
+	'image' => domain_url() . '/images/hero-billofrickies.jpg',
 ];

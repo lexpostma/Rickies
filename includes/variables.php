@@ -18,6 +18,7 @@ $head_defaults = [
 	'title' => 'The Rickies',
 	'name' => 'The Rickies',
 	'favicon' => '/favicon.png',
+	'image' => domain_url() . '/images/hero-rickies.jpg',
 	'author' => 'Lex Postma',
 	'company' => 'Relay FM',
 	'description' => 'Apple predictions show with risk, flexing, and passion. On Connected at Relay FM.',

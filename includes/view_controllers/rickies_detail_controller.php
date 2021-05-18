@@ -376,3 +376,7 @@ $head_custom = [
 if ($rickies_data['status'] == 'Ungraded') {
 	$head_custom['title'] = '🟠 ' . $head_custom['title'] . ' • Interactive scorecard';
 }
+
+if ($rickies_data['artwork']['seo'] !== false) {
+	$head_custom['image'] = $rickies_data['artwork']['seo'];
+}
