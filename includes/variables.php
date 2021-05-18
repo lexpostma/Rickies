@@ -21,7 +21,8 @@ $head_defaults = [
 	'image' => domain_url() . '/images/hero-rickies.jpg',
 	'author' => 'Lex Postma',
 	'company' => 'Relay FM',
-	'description' => 'Apple predictions show with risk, flexing, and passion. On Connected at Relay FM.',
+	'description' => 'Apple predictions show with risk, flexing, and passion.
+On Connected at Relay FM.',
 	'keywords' => [
 		'Apple',
 		'podcast',

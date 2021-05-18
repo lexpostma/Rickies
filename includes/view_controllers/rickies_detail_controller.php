@@ -340,7 +340,7 @@ function host_item_bundle($host_event_data, $event_type)
 }
 
 // Define SEO description
-$description = 'The ' . $rickies_data['name'] . ', prediction awards of the Connected podcast. ';
+$description = 'The ' . $rickies_data['name'] . ', prediction show of the Connected podcast. ';
 if ($rickies_data['type'] == 'annual' && $rickies_data['status'] == 'Ungraded') {
 	// Annual and ungraded, so future
 	$description .=
@@ -355,14 +355,24 @@ if ($rickies_data['type'] == 'annual' && $rickies_data['status'] == 'Ungraded') 
 		'? And how did Myke, Stephen, and Federico perform with their yearly predictions?';
 } elseif ($rickies_data['status'] == 'Ungraded') {
 	// Ungraded, so future keynote
+	$description .= $rickies_data['details']['event_data']['label2'] . 'What will Apple announced at the ';
+
+	if (isset($rickies_data['details']['event_data']['label2'])) {
+		$description .= '“' . $rickies_data['details']['event_data']['label2'] . '”';
+	}
+
 	$description .=
-		'What will Apple announced at the keynote on ' .
+		' keynote on ' .
 		date_to_string_label($rickies_data['details']['event_data']['date']) .
 		'? And who will become Annual Chairman? Follow along with the hosts as the keynote and episode progress with this interactive scorecard.';
 } else {
 	// Graded keynote, past
+	$description .= 'What has Apple announced at the ';
+	if (isset($rickies_data['details']['event_data']['label2'])) {
+		$description .= '“' . $rickies_data['details']['event_data']['label2'] . '”';
+	}
 	$description .=
-		'What did Apple announced at the keynote on ' .
+		' keynote on ' .
 		date_to_string_label($rickies_data['details']['event_data']['date']) .
 		'? And how did Myke, Stephen, and Federico perform with their predictions for this event?';
 }

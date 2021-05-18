@@ -2,7 +2,7 @@
 <header class="about contain_img">
 	<div class="gradient"></div>
 	<img src="/images/lex_memoji.png" />
-	<h1>About this website</h1>
+	<h1>About Rickies.co</h1>
 </header>
 
 <section><?= $introduction ?></section>
