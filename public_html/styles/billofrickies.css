@@ -457,6 +457,10 @@ aside.slider #rule_slider input[type=range]:focus {
   display: block;
 }
 
+#music_button + #share_button {
+  right: 72px;
+}
+
 @font-face {
   font-family: "BlackChancery";
   src: url("/fonts/BlackChancery.eot");

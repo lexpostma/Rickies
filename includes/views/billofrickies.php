@@ -2,10 +2,11 @@
 echo back_button(), no_script_banner();
 if (isset($error)) {
 	echo $error;
-} else {
-	echo share_button();
 }
 echo music_button();
+if (!isset($error)) {
+	echo share_button();
+}
 ?>
 <main id="the_document" <? if(isset($parchment)){ echo 'class="parchment"';}?>>
 	<p id="document_date"><?= $current_selection['date_string'] ?></p>
