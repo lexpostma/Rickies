@@ -59,11 +59,8 @@ if ($environment !== 'production') {
 <?include("ios_optimisation.php");?>
 
 
-<!-- Normalize -->
-<link rel="stylesheet" href="/styles/normalize.css">
-
-<!-- Style sheet -->
-<!-- TODO: put date() back to 'z' in URLs to allow caching daily instead of seconds -->
+<!-- Style sheets -->
+<link rel="stylesheet" href="/styles/normalize.css"> <!-- Normalize -->
 <link rel="stylesheet" href="/styles/<?= $focus_site ?>.css?v=<?= date($refresh) ?>">
 <noscript>
 	<link rel="stylesheet" href="/styles/noscript.css?v=<?= date($refresh) ?>">
