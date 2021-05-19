@@ -83,6 +83,7 @@ if (!isset($error)) {
 
 	</div>
 </main>
+<?= close_button() ?>
 <aside class="slider">
 	<div id="rule_slider">
 		<label id="slider_label" for="date_slider"><?= $current_selection['name'] ?></label>
@@ -116,10 +117,8 @@ echo 'var rickies_start = ' .
 	$bill_start .
 	';';
 
-include 'scripts/rules_slider.js';
+include 'scripts/interactive_rules.js';
 echo 'document.addEventListener(\'DOMContentLoaded\', function (event) { update_rules(' .
 	$current_selection['index'] .
 	');});';
-
-include 'scripts/play_theme.js';
 ?></script>
