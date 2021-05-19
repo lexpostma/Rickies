@@ -1,8 +1,8 @@
-<img src="public_html/images/rickies-trophy.png" alt="Rickies trophy" width="128"/>
+<img src="public_html/images/rickies-trophy.png" alt="Rickies trophy" style="width: 128px; margin-bottom: -16px; float: right; margin-top: 16px; margin-left: 32px;"/>
 
 # The Rickies
 
-Predictions with risk, flexing, and passion.
+Predictions with risk, flexing, and passion.  
 On Connected at Relay FM.
 
 [The Rickies](https://rickies.co) are a prediction show on the [Connected ](https://relay.fm/connected) podcast at [Relay FM](https://relay.fm). Every year and every Apple event, Myke Hurley, Stephen Hackett, and Federico Viticci try to predict what Apple will announce next. Over the course of the show, the hosts have relied on [The Bill of Rickies](https://thebillof.rickies.co) to keep the record straight. Some predictions are risky, some are just to flex, most are formed with passion.
