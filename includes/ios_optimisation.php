@@ -34,7 +34,7 @@ foreach ($appIconSizes as $device => $size) {
 		'icon-' .
 		$size .
 		'.png?v=' .
-		date('w') .
+		$refresh .
 		'" /> <!-- ' .
 		$device .
 		' -->';

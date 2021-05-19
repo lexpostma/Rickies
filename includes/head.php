@@ -21,7 +21,7 @@ if ($environment !== 'production') {
 <link rel="canonical" href="<?= current_url() ?>" />
 
 <!-- Icons -->
-<link rel="icon" type="image/png" sizes="256x256" href="<?= $head['favicon'] . '?v=' . date('s') ?>" />
+<link rel="icon" type="image/png" sizes="256x256" href="<?= $head['favicon'] . '?v=' . $refresh ?>" />
 
 <!-- Standard SEO / Google -->
 <meta name="description" content="<?= $head['description'] ?>" />
@@ -61,9 +61,9 @@ if ($environment !== 'production') {
 
 <!-- Style sheets -->
 <link rel="stylesheet" href="/styles/normalize.css"> <!-- Normalize -->
-<link rel="stylesheet" href="/styles/<?= $focus_site ?>.css?v=<?= date($refresh) ?>">
+<link rel="stylesheet" href="/styles/<?= $focus_site ?>.css?v=<?= $refresh ?>">
 <noscript>
-	<link rel="stylesheet" href="/styles/noscript.css?v=<?= date($refresh) ?>">
+	<link rel="stylesheet" href="/styles/noscript.css?v=<?= $refresh ?>">
 </noscript>
 
 <!-- Goat Counter -->
