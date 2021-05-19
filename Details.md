@@ -16,3 +16,4 @@
 -   The favicon changes between [The Rickies](https://rickies.co/) pages and [The Bill of Rickies](https://rickies.co/billof).
 -   Aside from Chairman titles, most titles on the leaderboard are randomised.
 -   [The Bill of Rickies](https://rickies.co/billof/annual-2017) document, including titles, styling, and [links to it](https://rickies.co/annual-2017#details), changes dependent on the date of the Rickies. To reflect when terms like Rickies, Flexies and The Bill of Rickies were coined.
+-   There’s a button to play The Bill of Rickies theme music. It changes the icon between play and pause, but it also gets a fixed position while playing so you can always easily pause again.

@@ -12,6 +12,7 @@
 	}
 
 	&.is-playing {
+		position: fixed;
 		div.play {
 			display: none;
 		}

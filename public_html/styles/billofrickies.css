@@ -704,6 +704,9 @@ nav a:active {
 #music_button div.pause {
   display: none;
 }
+#music_button.is-playing {
+  position: fixed;
+}
 #music_button.is-playing div.play {
   display: none;
 }
