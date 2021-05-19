@@ -2,7 +2,6 @@
 
 // Regular links
 a {
-	font-weight: 500;
 	&:link,
 	&:visited {
 		color: var(--link-color);
@@ -17,54 +16,6 @@ a {
 	&:active {
 		color: var(--link-hover-color);
 	}
-	span.emoji {
-		text-decoration: none;
-		display: inline-block;
-		margin-right: 4px;
-	}
-
-	// Add Twitter/GitHub logos to their URLs
-	&:not(.list_item_content) {
-		&[href^="https://github.com"],
-	&[href^="https://twitter.com"]
-		{
-			&:after {
-				display: inline-block;
-				margin-left: 0.3em;
-				transition: var.$pop-transition;
-			}
-		}
-		&[href^="https://twitter.com"]
-		{
-			&:after {
-				opacity: 0.7;
-				content: url('/images/twitter.svg');
-				transform: translate(0px, 1px);
-			}
-			@media (hover: hover) {
-				&:hover {
-					&:after {
-						transform: translate(3px, 0px);
-						opacity: 1;
-					}
-				}
-			}
-		}
-		&[href^="https://github.com"]
-		{
-			&:after {
-				content: url('/images/github.svg');
-				transform: translate(0px, 1px);
-			}
-			@media (hover: hover) {
-				&:hover {
-					&:after {
-						transform: scale(1.2);
-					}
-				}
-			}
-		}
-	}
 }
 
 // Links on colored/dark background
@@ -72,6 +23,7 @@ footer button,
 .banner a,
 footer a:not(#footer_corner),
 nav a {
+	font-weight: 500;
 	&.js_link {
 		opacity: 0.8;
 		text-decoration: underline;

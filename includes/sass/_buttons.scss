@@ -1,0 +1,26 @@
+// @use "variables" as var;
+
+#back_button svg path:last-of-type,
+#share_button svg g {
+	fill: var(--document-text-color);
+}
+
+#music_button {
+	right: 20px;
+	div.pause {
+		display: none;
+	}
+
+	&.is-playing {
+		div.play {
+			display: none;
+		}
+		div.pause {
+			display: block;
+		}
+	}
+}
+
+#music_button + #share_button {
+	right: 72px;
+}

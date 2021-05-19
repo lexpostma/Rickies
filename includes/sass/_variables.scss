@@ -1,3 +1,106 @@
+$readability-width: 650px;
+$hover-duration: 300ms;
+$pop-transition: $hover-duration transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+$header-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
+
+// iOS safe-areas
+$iX-top: env(safe-area-inset-top);
+$iX-bottom: env(safe-area-inset-bottom);
+$iX-left: env(safe-area-inset-left);
+$iX-right: env(safe-area-inset-right);
+
+// Values copied from Bootstrap, they're smarter than me
+// https://getbootstrap.com/docs/5.0/layout/breakpoints/
+$break-xs: 375px;
+$break-sm: 576px;
+$break-md: 768px;
+$break-lg: 992px;
+$break-xl: 1200px;
+$break-xxl: 1400px;
+
+:root {
+	--connected-green: #449934;
+	--connected-yellow: #fcc200;
+	--connected-orange: #ef7b00;
+	--connected-red: #e51f2e;
+	--connected-purple: #9d3489;
+	--connected-blue: #0d87ca;
+	--relay-blue: #333f48;
+
+	--text-primary-color: #31373d;
+
+	--space-side-padding: 16px;
+	--space-between-sm: 8px;
+	--space-between-md: 16px;
+	--space-between-lg: 32px;
+
+	font-size: 14px;
+
+	--background-color: #fff;
+	--text-secondary-color: #5e6d7a;
+	--link-color: #106dc6;
+	--link-hover-color: #23527c;
+
+	--element-hover-color: rgba(0, 0, 0, 0.1);
+	--element-corner-radius: 8px;
+	--element-padding: 8px;
+	--element-padding-neg: -8px;
+
+	--corner-radius: 4px;
+
+	--graphic-border: 1px solid rgba(0, 0, 0, 0.1);
+	--graphic-size: 60px;
+
+	--document-background-color: var(--connected-blue);
+	--document-text-color: #543404;
+	--document-link-color: #d7a457;
+}
+@media screen and (min-width: $break-sm) {
+	:root {
+		font-size: 16px;
+	}
+}
+
+@media screen and (min-width: $break-md) {
+	:root {
+		--graphic-size: 72px;
+		--space-side-padding: 32px;
+		font-size: 18px;
+	}
+}
+
+@media screen and (min-width: $break-xl) {
+	:root {
+		--graphic-size: 80px;
+	}
+}
+
+@media screen and (min-width: $break-sm) {
+}
+@media screen and (min-width: $break-md) {
+}
+@media screen and (min-width: $break-lg) {
+}
+@media screen and (min-height: $break-xl) {
+}
+@media screen and (min-height: $break-xxl) {
+}
+@media (hover: hover) {
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-color: #000000;
+		--text-primary-color: #9baec1;
+		--text-secondary-color: #637c96;
+		--link-color: var(--connected-blue);
+		--link-hover-color: #33adf1;
+		--graphic-border: 1px solid rgba(255, 255, 255, 0.25);
+
+		--element-hover-color: rgba(255, 255, 255, 0.1);
+		--document-background-color: var(--relay-blue);
+	}
+}
+
 @mixin secondary-text {
 	color: var(--text-secondary-color);
 	font-size: 0.75rem;
@@ -34,41 +137,4 @@
 	100% {
 		background-color: var(--connected-green);
 	}
-}
-
-$readability-width: 650px;
-$hover-duration: 300ms;
-$pop-transition: $hover-duration transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
-$header-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
-
-// iOS safe-areas
-$iX-top: env(safe-area-inset-top);
-$iX-bottom: env(safe-area-inset-bottom);
-$iX-left: env(safe-area-inset-left);
-$iX-right: env(safe-area-inset-right);
-
-// Values copied from Bootstrap, they're smarter than me
-// https://getbootstrap.com/docs/5.0/layout/breakpoints/
-$break-xs: 375px;
-$break-sm: 576px;
-$break-md: 768px;
-$break-lg: 992px;
-$break-xl: 1200px;
-$break-xxl: 1400px;
-
-@media screen and (min-width: $break-sm) {
-}
-@media screen and (min-width: $break-md) {
-}
-@media screen and (min-width: $break-lg) {
-}
-@media screen and (min-height: $break-xl) {
-}
-@media screen and (min-height: $break-xxl) {
-}
-
-@media (prefers-color-scheme: dark) {
-}
-
-@media (hover: hover) {
 }

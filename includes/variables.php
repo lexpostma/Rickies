@@ -54,9 +54,11 @@ On Connected at Relay FM.',
 if ($environment == 'production') {
 	$head_defaults['site_goatcounter'] = 'https://rickies.goatcounter.com';
 	$github = 'main';
+	$refresh = 'z';
 } else {
 	$head_defaults['site_goatcounter'] = 'https://rickies-test.goatcounter.com';
 	$github = 'development';
+	$refresh = 's';
 }
 
 // Term "Rickies" was coined on episode #245, officially branded in #259

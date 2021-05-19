@@ -1,42 +1,5 @@
 @use "variables" as var;
 
-:root {
-	--connected-green: #449934;
-	--connected-yellow: #fcc200;
-	--connected-orange: #ef7b00;
-	--connected-red: #e51f2e;
-	--connected-purple: #9d3489;
-	--connected-blue: #0d87ca;
-	--relay-blue: #333f48;
-
-	--text-primary-color: #31373d;
-
-	--space-side-padding: 16px;
-	--space-between-sm: 8px;
-	--space-between-md: 16px;
-	--space-between-lg: 32px;
-
-	font-size: 14px;
-}
-
-@media screen and (min-width: var.$break-sm) {
-	:root {
-		font-size: 16px;
-	}
-}
-@media screen and (min-width: var.$break-md) {
-	:root {
-		--space-side-padding: 32px;
-		font-size: 18px;
-	}
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--text-primary-color: #9baec1;
-	}
-}
-
 *,
 *:before,
 *:after {
@@ -94,12 +57,15 @@ section > p + p {
 	top: 20px;
 	top: max(20px, #{var.$iX-top});
 	z-index: 8;
+	transition: var.$pop-transition;
 	@media (hover: hover) {
-		transition: var.$pop-transition;
 		&:hover,
 		&:focus {
 			transform: scale(1.2);
 		}
+	}
+	&:active {
+		transform: scale(1.1);
 	}
 }
 #back_button {

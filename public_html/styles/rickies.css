@@ -1,3 +1,62 @@
+:root {
+  --connected-green: #449934;
+  --connected-yellow: #fcc200;
+  --connected-orange: #ef7b00;
+  --connected-red: #e51f2e;
+  --connected-purple: #9d3489;
+  --connected-blue: #0d87ca;
+  --relay-blue: #333f48;
+  --text-primary-color: #31373d;
+  --space-side-padding: 16px;
+  --space-between-sm: 8px;
+  --space-between-md: 16px;
+  --space-between-lg: 32px;
+  font-size: 14px;
+  --background-color: #fff;
+  --text-secondary-color: #5e6d7a;
+  --link-color: #106dc6;
+  --link-hover-color: #23527c;
+  --element-hover-color: rgba(0, 0, 0, 0.1);
+  --element-corner-radius: 8px;
+  --element-padding: 8px;
+  --element-padding-neg: -8px;
+  --corner-radius: 4px;
+  --graphic-border: 1px solid rgba(0, 0, 0, 0.1);
+  --graphic-size: 60px;
+  --document-background-color: var(--connected-blue);
+  --document-text-color: #543404;
+  --document-link-color: #d7a457;
+}
+
+@media screen and (min-width: 576px) {
+  :root {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 768px) {
+  :root {
+    --graphic-size: 72px;
+    --space-side-padding: 32px;
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  :root {
+    --graphic-size: 80px;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #000000;
+    --text-primary-color: #9baec1;
+    --text-secondary-color: #637c96;
+    --link-color: var(--connected-blue);
+    --link-hover-color: #33adf1;
+    --graphic-border: 1px solid rgba(255, 255, 255, 0.25);
+    --element-hover-color: rgba(255, 255, 255, 0.1);
+    --document-background-color: var(--relay-blue);
+  }
+}
 @keyframes connected_colors {
   0% {
     background-color: var(--connected-green);
@@ -24,43 +83,148 @@
     background-color: var(--connected-green);
   }
 }
-:root {
-  --background-color: #fff;
-  --text-secondary-color: #5e6d7a;
-  --link-color: #106dc6;
-  --link-hover-color: #23527c;
-  --element-hover-color: rgba(0, 0, 0, 0.1);
-  --element-corner-radius: 8px;
-  --element-padding: 8px;
-  --element-padding-neg: -8px;
-  --corner-radius: 4px;
-  --graphic-border: 1px solid rgba(0, 0, 0, 0.1);
-  --graphic-size: 60px;
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-@media screen and (min-width: 768px) {
-  :root {
-    --graphic-size: 72px;
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.container {
+  width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+.container:before, .container:after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  left: 0;
+  height: 1000px;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.container:before {
+  top: -1000px;
+}
+.container:after {
+  bottom: -1000px;
+}
+
+p {
+  margin: 0;
+}
+
+section > p + p {
+  margin-top: var(--space-between-md);
+}
+
+.top_button {
+  display: block;
+  height: 40px;
+  border-radius: 20px;
+  position: absolute;
+  top: 20px;
+  top: max(20px, env(safe-area-inset-top));
+  z-index: 8;
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+}
+@media (hover: hover) {
+  .top_button:hover, .top_button:focus {
+    transform: scale(1.2);
   }
 }
-@media screen and (min-width: 1200px) {
-  :root {
-    --graphic-size: 80px;
-  }
+.top_button:active {
+  transform: scale(1.1);
+}
+
+#back_button {
+  left: 20px;
+}
+
+#share_button {
+  right: 20px;
+}
+
+.banner {
+  text-align: center;
+  color: white;
+  padding: 8px 16px;
+}
+.banner p {
+  max-width: 650px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.banner b {
+  font-size: 1.2rem;
+}
+.banner br + span {
+  opacity: 0.8;
+}
+
+.contrast {
+  text-shadow: 0px 0px 4px rgba(82, 53, 0, 0.8);
+  font-weight: 600;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.footer_space {
+  margin-top: calc(var(--space-between-lg) * 2);
+}
+
+footer {
+  margin-top: auto;
+  padding: var(--space-side-padding);
+  padding-bottom: max(var(--space-side-padding), env(safe-area-inset-bottom));
+  color: white;
+  text-align: center;
+  background: var(--relay-blue);
+  font-size: 0.875rem;
+  position: relative;
+}
+footer p#refresh_page,
+footer p#promote_webapp {
+  display: none;
+  margin-bottom: var(--space-between-md);
+}
+
+button.clean {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  -webkit-appearance: none;
+}
+
+/* For debugging */
+pre {
+  font-size: 0.8rem;
+  overflow-x: scroll;
+  padding: 10px;
+  background: pink;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #000000;
-    --text-secondary-color: #637c96;
-    --link-color: var(--connected-blue);
-    --link-hover-color: #33adf1;
-    --graphic-border: 1px solid rgba(255, 255, 255, 0.25);
-    --element-hover-color: rgba(255, 255, 255, 0.1);
+  pre {
+    background: #230034;
   }
 }
-a {
-  font-weight: 500;
-}
+
 a:link, a:visited {
   color: var(--link-color);
 }
@@ -72,37 +236,13 @@ a:link, a:visited {
 a:focus, a:active {
   color: var(--link-hover-color);
 }
-a span.emoji {
-  text-decoration: none;
-  display: inline-block;
-  margin-right: 4px;
-}
-a:not(.list_item_content)[href^="https://github.com"]:after, a:not(.list_item_content)[href^="https://twitter.com"]:after {
-  display: inline-block;
-  margin-left: 0.3em;
-  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
-}
-a:not(.list_item_content)[href^="https://twitter.com"]:after {
-  opacity: 0.7;
-  content: url("/images/twitter.svg");
-  transform: translate(0px, 1px);
-}
-@media (hover: hover) {
-  a:not(.list_item_content)[href^="https://twitter.com"]:hover:after {
-    transform: translate(3px, 0px);
-    opacity: 1;
-  }
-}
-a:not(.list_item_content)[href^="https://github.com"]:after {
-  content: url("/images/github.svg");
-  transform: translate(0px, 1px);
-}
-@media (hover: hover) {
-  a:not(.list_item_content)[href^="https://github.com"]:hover:after {
-    transform: scale(1.2);
-  }
-}
 
+footer button,
+.banner a,
+footer a:not(#footer_corner),
+nav a {
+  font-weight: 500;
+}
 footer button.js_link,
 .banner a.js_link,
 footer a:not(#footer_corner).js_link,
@@ -136,6 +276,40 @@ footer a:not(#footer_corner):active,
 nav a:focus,
 nav a:active {
   opacity: 1;
+}
+
+a {
+  font-weight: 500;
+}
+a span.emoji {
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 4px;
+}
+a:not(.list_item_content)[href^="https://github.com"]:after, a:not(.list_item_content)[href^="https://twitter.com"]:after {
+  display: inline-block;
+  margin-left: 0.3em;
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+}
+a:not(.list_item_content)[href^="https://twitter.com"]:after {
+  opacity: 0.7;
+  content: url("/images/twitter.svg");
+  transform: translate(0px, 1px);
+}
+@media (hover: hover) {
+  a:not(.list_item_content)[href^="https://twitter.com"]:hover:after {
+    transform: translate(3px, 0px);
+    opacity: 1;
+  }
+}
+a:not(.list_item_content)[href^="https://github.com"]:after {
+  content: url("/images/github.svg");
+  transform: translate(0px, 1px);
+}
+@media (hover: hover) {
+  a:not(.list_item_content)[href^="https://github.com"]:hover:after {
+    transform: scale(1.2);
+  }
 }
 
 h1 {
@@ -178,18 +352,18 @@ header.home .hero_content {
 }
 header.home .hero_content img.trophy {
   width: 128px;
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
 @media (hover: hover) {
   header.home .hero_content img.trophy {
-    transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
     cursor: pointer;
   }
   header.home .hero_content img.trophy:hover {
     transform: scale(1.05);
   }
-  header.home .hero_content img.trophy:active {
-    transform: scale(0.95);
-  }
+}
+header.home .hero_content img.trophy:active {
+  transform: scale(0.95);
 }
 header.home .hero_content img.trophy--dark {
   display: none;

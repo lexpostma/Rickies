@@ -48,7 +48,7 @@ main {
 	&.parchment {
 		transition-duration: 100ms, 500ms, 600ms, 300ms;
 		transition-delay: 0, 0, 300ms, 0ms;
-		color: var(--text-document-color);
+		color: var(--document-text-color);
 		box-shadow: none;
 		background-image: url(/images/parchment-border/light-top.png), url(/images/parchment-border/light-left.png),
 			url(/images/parchment-border/light-right.png), url(/images/parchment-border/light-bottom.png),
@@ -114,7 +114,7 @@ main {
 	&.parchment {
 		.document_footer {
 			.signatures {
-				border-bottom-color: var(--text-document-color);
+				border-bottom-color: var(--document-text-color);
 				img {
 					filter: sepia(100%);
 					opacity: 0.9;
@@ -158,15 +158,15 @@ main a {
 
 	&:link,
 	&:visited {
-		text-decoration-color: var(--link-color);
+		text-decoration-color: var(--document-link-color);
 		color: inherit;
 	}
 	@media (hover: hover) {
 		&:hover,
 		&:focus {
-			text-decoration-color: var(--text-document-color);
-			color: var(--text-document-color);
-			background: var(--link-color);
+			text-decoration-color: var(--document-text-color);
+			color: var(--document-text-color);
+			background: var(--document-link-color);
 		}
 		&:active {
 			text-decoration-color: black;
@@ -179,5 +179,5 @@ main:not(.parchment) a {
 	text-decoration-color: var(--connected-blue);
 }
 main.parchment a {
-	text-decoration-color: var(--link-color);
+	text-decoration-color: var(--document-link-color);
 }
