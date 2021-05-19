@@ -29,6 +29,7 @@
 #close_button {
 	position: fixed;
 	bottom: 52px;
+	bottom: max(52px, calc(44px + #{var.$iX-bottom}));
 	right: 10px;
 	z-index: 13;
 	top: unset;
@@ -50,6 +51,7 @@
 	&.show {
 		box-shadow: 0px -1px 4px rgba(84, 52, 4, 0.5);
 		transform: translate(-10px, 32px) rotate(-180deg);
+		transform: translate(-10px, max(32px, calc(24px + #{var.$iX-bottom}))) rotate(-180deg);
 	}
 	@media screen and (min-width: var.$break-md) {
 		bottom: 20px;
