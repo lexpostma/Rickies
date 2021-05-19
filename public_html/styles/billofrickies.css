@@ -725,6 +725,7 @@ nav a:active {
   z-index: 13;
   top: unset;
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54), 300ms box-shadow ease-in-out, 300ms bottom ease-in-out, 300ms right ease-in-out;
+  transform: rotate(0deg);
 }
 #close_button:not(.show) {
   box-shadow: none;
@@ -740,7 +741,7 @@ nav a:active {
 }
 #close_button.show {
   box-shadow: 0px -1px 4px rgba(84, 52, 4, 0.5);
-  transform: translate(-10px, 32px) rotate(180deg);
+  transform: translate(-10px, 32px) rotate(-180deg);
 }
 @media screen and (min-width: 768px) {
   #close_button {
@@ -748,7 +749,7 @@ nav a:active {
     right: 20px;
   }
   #close_button.show {
-    transform: rotate(180deg);
+    transform: rotate(-180deg);
   }
 }
 
