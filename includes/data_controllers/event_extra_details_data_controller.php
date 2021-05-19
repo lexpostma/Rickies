@@ -2,6 +2,8 @@
 
 // Rickies _data_ controller, extra details
 
+$rickies_events__array[$id]['custom_css'] = check_key('Custom hero CSS', $fields);
+
 $rickies_events__array[$id]['ranking'] = [
 	'rickies' => check_key('Rickies ranking', $fields),
 	'flexies' => check_key('Flexies ranking', $fields),

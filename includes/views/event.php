@@ -29,7 +29,13 @@ if (
 } else {
 	// Else -> empty header
 	echo '<header class="details"><div class="gradient"></div>';
-} ?>
+}
+
+// Add custom CSS is available
+if ($rickies_data['custom_css'] !== false) {
+	echo '<style>' . $rickies_data['custom_css'] . '</style>';
+}
+?>
 
 	<h1>
 <?php if ($rickies_data['type'] == 'keynote') {
