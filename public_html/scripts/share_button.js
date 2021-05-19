@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
 		// Web app is on the home screen
 	} else {
 		// Not added to home screen, hide share button since it's in the browser
-		document.getElementById('share_button').style.display = 'none';
+		if (document.getElementById('share_button')) {
+			document.getElementById('share_button').style.display = 'none';
+		}
 	}
 });
