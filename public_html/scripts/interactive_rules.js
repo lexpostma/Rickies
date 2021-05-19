@@ -98,6 +98,22 @@ function show_rule(element) {
 	}, delayInMilliseconds);
 }
 
+// Toggle rules slider open/closed
+document.getElementById('close_button').addEventListener('click', function () {
+	var slider = document.querySelector('aside.slider');
+	if (this.classList.contains('show')) {
+		// Slider is visible
+		this.classList.remove('show');
+		slider.classList.remove('hide');
+		this.title = 'Open the history slider';
+	} else {
+		// Slider is hidden
+		this.classList.add('show');
+		slider.classList.add('hide');
+		this.title = 'Hide the history slider';
+	}
+});
+
 // Play theme music
 // Via https://stackoverflow.com/a/44361533
 document.getElementById('music_button').addEventListener('click', function () {

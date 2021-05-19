@@ -1,4 +1,4 @@
-// @use "variables" as var;
+@use "variables" as var;
 
 #back_button svg path:last-of-type,
 #share_button svg g {
@@ -24,4 +24,45 @@
 
 #music_button + #share_button {
 	right: 72px;
+}
+
+#close_button {
+	position: fixed;
+	bottom: 52px;
+	right: 10px;
+	z-index: 13;
+	top: unset;
+	transition: var.$pop-transition, var.$hover-duration box-shadow ease-in-out, var.$hover-duration bottom ease-in-out,
+		var.$hover-duration right ease-in-out;
+	&:not(.show) {
+		box-shadow: none;
+		svg path {
+			transition: var.$hover-duration fill ease-in-out;
+			&:last-of-type {
+				fill: var(--text-primary-color);
+			}
+			&:first-of-type {
+				fill: rgba(255, 255, 255, 0);
+			}
+		}
+	}
+	&.show {
+		box-shadow: 0px -1px 4px rgba(84, 52, 4, 0.5);
+		transform: translate(-10px, 32px) rotate(180deg);
+	}
+	@media screen and (min-width: var.$break-md) {
+		bottom: 20px;
+		right: 20px;
+		&.show {
+			transform: rotate(180deg);
+		}
+	}
+}
+aside.slider {
+	padding-bottom: 100px;
+	transform: translateY(100px);
+	transition: var.$pop-transition;
+	&.hide {
+		transform: translateY(220px);
+	}
 }

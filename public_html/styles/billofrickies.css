@@ -718,6 +718,49 @@ nav a:active {
   right: 72px;
 }
 
+#close_button {
+  position: fixed;
+  bottom: 52px;
+  right: 10px;
+  z-index: 13;
+  top: unset;
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54), 300ms box-shadow ease-in-out, 300ms bottom ease-in-out, 300ms right ease-in-out;
+}
+#close_button:not(.show) {
+  box-shadow: none;
+}
+#close_button:not(.show) svg path {
+  transition: 300ms fill ease-in-out;
+}
+#close_button:not(.show) svg path:last-of-type {
+  fill: var(--text-primary-color);
+}
+#close_button:not(.show) svg path:first-of-type {
+  fill: rgba(255, 255, 255, 0);
+}
+#close_button.show {
+  box-shadow: 0px -1px 4px rgba(84, 52, 4, 0.5);
+  transform: translate(-10px, 32px) rotate(180deg);
+}
+@media screen and (min-width: 768px) {
+  #close_button {
+    bottom: 20px;
+    right: 20px;
+  }
+  #close_button.show {
+    transform: rotate(180deg);
+  }
+}
+
+aside.slider {
+  padding-bottom: 100px;
+  transform: translateY(100px);
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+}
+aside.slider.hide {
+  transform: translateY(220px);
+}
+
 @font-face {
   font-family: "BlackChancery";
   src: url("/fonts/BlackChancery.eot");

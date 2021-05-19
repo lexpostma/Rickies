@@ -62,6 +62,18 @@ function music_button()
 	return $output;
 }
 
+function close_button()
+{
+	$output =
+		'<button id="close_button" class="top_button clean" type="button" data-goatcounter-click="Hide slider" title="Hide the history slider" data-goatcounter-referrer="' .
+		current_url() .
+		'">';
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close.svg');
+	$output .= '</button>';
+
+	return $output;
+}
+
 // Does the key exists in the array or subarray,
 // and what to return if it is or it not?
 function check_key($key, $array, $default = false, $sub_array = false)
