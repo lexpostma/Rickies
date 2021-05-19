@@ -167,8 +167,8 @@ header.home {
 }
 @media screen and (min-width: 992px) {
   header.home {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
 }
 header.home .hero_content {
@@ -176,20 +176,30 @@ header.home .hero_content {
   flex-direction: column;
   align-items: center;
 }
-header.home .hero_content img#trophy {
-  height: 120px;
-  margin-bottom: var(--space-between-md);
+header.home .hero_content img.trophy {
+  width: 128px;
 }
 @media (hover: hover) {
-  header.home .hero_content img#trophy {
+  header.home .hero_content img.trophy {
     transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
     cursor: pointer;
   }
-  header.home .hero_content img#trophy:hover {
+  header.home .hero_content img.trophy:hover {
     transform: scale(1.05);
   }
-  header.home .hero_content img#trophy:active {
+  header.home .hero_content img.trophy:active {
     transform: scale(0.95);
+  }
+}
+header.home .hero_content img.trophy--dark {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  header.home .hero_content img.trophy--dark {
+    display: block;
+  }
+  header.home .hero_content img.trophy--light {
+    display: none;
   }
 }
 header.home .hero_content h1 {
@@ -200,9 +210,9 @@ header.home .hero_content h1 {
     flex-direction: row;
     justify-content: center;
   }
-  header.home .hero_content img#trophy {
-    height: 160px;
-    margin-bottom: 0;
+  header.home .hero_content img.trophy {
+    width: 200px;
+    margin-bottom: -48px;
     margin-right: var(--space-between-lg);
   }
   header.home .hero_content .hero_heading {

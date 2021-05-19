@@ -9,7 +9,8 @@
 		<img id="relay_logo" src="/images/relay-logo.png" alt="<?= $head['company'] ?> logo"/>
 	</a>
 	<div class="hero_content">
-		<img id="trophy" src="/images/trophy.png" onclick="confetti_go()"/>
+		<img class="trophy trophy--light" src="/images/rickies-trophy.png" onclick="confetti_go()"/>
+		<img class="trophy trophy--dark" src="/images/rickies-trophy-dark.png" onclick="confetti_go()"/>
 		<div class="hero_heading">
 			<h1>The Rickies</h1>
 			<?= $hero_tag ?>

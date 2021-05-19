@@ -1,4 +1,4 @@
-![Trophy](public_html/images/trophy.png)
+<img src="public_html/images/rickies-trophy.png" alt="Rickies trophy" width="128"/>
 
 # The Rickies
 

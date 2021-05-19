@@ -26,16 +26,15 @@ header {
 		padding: 48px var(--space-side-padding);
 		padding-top: calc(48px + #{var.$iX-top});
 		@media screen and (min-width: var.$break-lg) {
-			padding-top: 100px;
-			padding-bottom: 100px;
+			padding-top: 64px;
+			padding-bottom: 64px;
 		}
 		.hero_content {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			img#trophy {
-				height: 120px;
-				margin-bottom: var(--space-between-md);
+			img.trophy {
+				width: 128px;
 				@media (hover: hover) {
 					transition: var.$pop-transition;
 					cursor: pointer;
@@ -47,6 +46,17 @@ header {
 					}
 				}
 			}
+			img.trophy--dark {
+				display: none;
+			}
+			@media (prefers-color-scheme: dark) {
+				img.trophy--dark {
+					display: block;
+				}
+				img.trophy--light {
+					display: none;
+				}
+			}
 			h1 {
 				margin-bottom: 4px;
 			}
@@ -54,9 +64,9 @@ header {
 				flex-direction: row;
 				justify-content: center;
 
-				img#trophy {
-					height: 160px;
-					margin-bottom: 0;
+				img.trophy {
+					width: 200px;
+					margin-bottom: -48px;
 					margin-right: var(--space-between-lg);
 				}
 				.hero_heading {
