@@ -5,8 +5,8 @@ if (isset($error)) {
 } else {
 	echo share_button();
 }
+echo music_button();
 ?>
-
 <main id="the_document" <? if(isset($parchment)){ echo 'class="parchment"';}?>>
 	<p id="document_date"><?= $current_selection['date_string'] ?></p>
 	<h1 id="document_title"><?= $head_custom['title'] ?></h1>
@@ -104,7 +104,7 @@ if (isset($error)) {
 		</datalist>
 	</div>
 </aside>
-
+<audio id="theme_music" hidden src="/audio/native-land-dream-cave.mp3" type="audio/mpeg"></audio>
 <script><?php
 echo $event_slider_js_vars;
 echo 'var rickies_start = ' .
@@ -119,4 +119,6 @@ include 'scripts/rules_slider.js';
 echo 'document.addEventListener(\'DOMContentLoaded\', function (event) { update_rules(' .
 	$current_selection['index'] .
 	');});';
+
+include 'scripts/play_theme.js';
 ?></script>

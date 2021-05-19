@@ -47,6 +47,21 @@ function share_button()
 	return $output;
 }
 
+function music_button()
+{
+	$output =
+		'<button id="music_button" class="top_button clean" type="button" data-goatcounter-click="Theme music" title="Play theme music for The Bill of Rickies" data-goatcounter-referrer="' .
+		current_url() .
+		'">';
+	$output .=
+		'<div class="play">' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-play.svg') . '</div>';
+	$output .=
+		'<div class="pause">' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-pause.svg') . '</div>';
+	$output .= '</button>';
+
+	return $output;
+}
+
 // Does the key exists in the array or subarray,
 // and what to return if it is or it not?
 function check_key($key, $array, $default = false, $sub_array = false)

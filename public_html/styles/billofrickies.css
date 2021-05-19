@@ -439,6 +439,24 @@ aside.slider #rule_slider input[type=range]:focus {
   }
 }
 
+#back_button svg path:last-of-type,
+#share_button svg g {
+  fill: var(--text-document-color);
+}
+
+#music_button {
+  right: 20px;
+}
+#music_button div.pause {
+  display: none;
+}
+#music_button.is-playing div.play {
+  display: none;
+}
+#music_button.is-playing div.pause {
+  display: block;
+}
+
 @font-face {
   font-family: "BlackChancery";
   src: url("/fonts/BlackChancery.eot");
@@ -500,11 +518,6 @@ h2.rule_type.hidden.gone,
 .top_button,
 aside.slider {
   box-shadow: 0px 1px 4px rgba(84, 52, 4, 0.5);
-}
-
-#back_button svg path:last-of-type,
-#share_button svg g {
-  fill: var(--text-document-color);
 }
 
 @media (prefers-color-scheme: dark) {

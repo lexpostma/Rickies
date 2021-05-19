@@ -1,6 +1,7 @@
 @use "variables" as var;
 @use "rule-document";
 @use "rule-slider";
+@use "buttons";
 
 @font-face {
 	font-family: 'BlackChancery';
@@ -62,11 +63,6 @@ h2.rule_type,
 .top_button,
 aside.slider {
 	box-shadow: 0px 1px 4px rgba(84, 52, 4, 0.5);
-}
-
-#back_button svg path:last-of-type,
-#share_button svg g {
-	fill: var(--text-document-color);
 }
 
 @media (prefers-color-scheme: dark) {
