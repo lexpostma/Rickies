@@ -13,7 +13,7 @@ On Connected at Relay FM.
 -   For each Rickies, all details are together in one place.
 -   Ungraded Rickies are interactive so you can score live with the event before the official results are in.
 -   Leaderboard with full statistics and achievements for each host.
--   The Bill of Rickies, with complete history accessible through the slider.
+-   The Bill of Rickies, with complete history accessible through the slider, and theme music.
 -   Standalone web app, optimised for iOS devices with support for dark mode and safe areas.
 -   Built on top of an Airtable database. All data and most assets and calculations come from there.
 
