@@ -35,15 +35,15 @@ header {
 			align-items: center;
 			img.trophy {
 				width: 128px;
+				transition: var.$pop-transition;
 				@media (hover: hover) {
-					transition: var.$pop-transition;
 					cursor: pointer;
 					&:hover {
 						transform: scale(1.05);
 					}
-					&:active {
-						transform: scale(0.95);
-					}
+				}
+				&:active {
+					transform: scale(0.95);
 				}
 			}
 			img.trophy--dark {

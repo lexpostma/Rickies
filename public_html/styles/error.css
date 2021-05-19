@@ -178,18 +178,18 @@ header.home .hero_content {
 }
 header.home .hero_content img.trophy {
   width: 128px;
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
 @media (hover: hover) {
   header.home .hero_content img.trophy {
-    transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
     cursor: pointer;
   }
   header.home .hero_content img.trophy:hover {
     transform: scale(1.05);
   }
-  header.home .hero_content img.trophy:active {
-    transform: scale(0.95);
-  }
+}
+header.home .hero_content img.trophy:active {
+  transform: scale(0.95);
 }
 header.home .hero_content img.trophy--dark {
   display: none;

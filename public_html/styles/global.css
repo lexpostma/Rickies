@@ -109,14 +109,15 @@ section > p + p {
   top: 20px;
   top: max(20px, env(safe-area-inset-top));
   z-index: 8;
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
 @media (hover: hover) {
-  .top_button {
-    transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
-  }
   .top_button:hover, .top_button:focus {
     transform: scale(1.2);
   }
+}
+.top_button:active {
+  transform: scale(1.1);
 }
 
 #back_button {

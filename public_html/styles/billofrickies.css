@@ -255,9 +255,9 @@ aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
   aside.slider #rule_slider input[type=range]::-webkit-slider-thumb:hover {
     transform: scale(1.1);
   }
-  aside.slider #rule_slider input[type=range]::-webkit-slider-thumb:active {
-    transform: scale(1.2);
-  }
+}
+aside.slider #rule_slider input[type=range]::-webkit-slider-thumb:active {
+  transform: scale(1.2);
 }
 @media (prefers-color-scheme: dark) {
   aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
@@ -287,9 +287,9 @@ aside.slider #rule_slider input[type=range]::-moz-range-thumb {
   aside.slider #rule_slider input[type=range]::-moz-range-thumb:hover {
     transform: scale(1.1);
   }
-  aside.slider #rule_slider input[type=range]::-moz-range-thumb:active {
-    transform: scale(1.2);
-  }
+}
+aside.slider #rule_slider input[type=range]::-moz-range-thumb:active {
+  transform: scale(1.2);
 }
 @media (prefers-color-scheme: dark) {
   aside.slider #rule_slider input[type=range]::-moz-range-thumb {
@@ -319,9 +319,9 @@ aside.slider #rule_slider input[type=range]::-ms-thumb {
   aside.slider #rule_slider input[type=range]::-ms-thumb:hover {
     transform: scale(1.1);
   }
-  aside.slider #rule_slider input[type=range]::-ms-thumb:active {
-    transform: scale(1.2);
-  }
+}
+aside.slider #rule_slider input[type=range]::-ms-thumb:active {
+  transform: scale(1.2);
 }
 @media (prefers-color-scheme: dark) {
   aside.slider #rule_slider input[type=range]::-ms-thumb {
