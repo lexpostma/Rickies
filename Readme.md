@@ -1,4 +1,4 @@
-<img src="public_html/images/rickies-trophy.png" alt="Rickies trophy" style="width: 128px; margin-bottom: -16px; float: right; margin-top: 16px; margin-left: 32px;"/>
+<img src="public_html/images/rickies-trophy.png" alt="Rickies trophy" width="128" align="right"/>
 
 # The Rickies
 
