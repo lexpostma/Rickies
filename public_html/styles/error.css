@@ -16,7 +16,7 @@
   --text-secondary-color: #5e6d7a;
   --link-color: #106dc6;
   --link-hover-color: #23527c;
-  --element-hover-color: rgba(0, 0, 0, 0.1);
+  --element-hover-color: rgba(0, 0, 0, 0.05);
   --element-active-color: rgba(13, 135, 202, 0.1);
   --element-corner-radius: 8px;
   --element-padding: 8px;
@@ -573,10 +573,10 @@ section {
   padding: 0 var(--space-side-padding);
   padding-left: max(var(--space-side-padding), env(safe-area-inset-left));
   padding-right: max(var(--space-side-padding), env(safe-area-inset-right));
-  pointer-events: none;
 }
 section.navigate_with_mobile_menu {
   display: none;
+  pointer-events: none;
   padding-top: calc(var(--nav-height) + var(--space-side-padding));
   padding-top: calc(var(--nav-height) + var(--space-side-padding) + env(safe-area-inset-top));
   margin-top: calc(-1 * env(safe-area-inset-top));
@@ -588,6 +588,7 @@ section.navigate_with_mobile_menu h2 {
   display: none;
 }
 
+section h2,
 .section_group {
   pointer-events: all;
 }
