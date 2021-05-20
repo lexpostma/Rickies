@@ -10,13 +10,14 @@
 	height: calc(#{var.$iX-top} + 90px);
 	background-image: url('/images/triangle.svg');
 	background-size: cover;
-	img#relay_logo {
+	img {
 		width: 35px;
 		position: absolute;
 		right: 50px;
 		top: 10px;
 		right: calc(#{var.$iX-top} + 50px);
 		top: calc(#{var.$iX-top} + 10px);
+		transition: var.$pop-transition;
 	}
 	@media screen and (min-width: var.$break-lg) {
 		width: 120px;
@@ -24,24 +25,19 @@
 		width: calc(#{var.$iX-top} + 120px);
 		height: calc(#{var.$iX-top} + 120px);
 
-		img#relay_logo {
+		img {
 			width: 50px;
 			right: 65px;
 			right: calc(#{var.$iX-top} + 65px);
 		}
 	}
 	@media (hover: hover) {
-		img#relay_logo {
-			transition: var.$pop-transition;
+		&:hover img {
+			transform: scale(1.2) translate(0px, -1px);
 		}
-		&:hover {
-			img#relay_logo {
-				transform: scale(1.3) translate(0px, -1px);
-				@media screen and (min-width: var.$break-lg) {
-					transform: scale(1.2);
-				}
-			}
-		}
+	}
+	&:active img {
+		transform: scale(1.1);
 	}
 }
 
@@ -57,20 +53,16 @@
 		display: flex;
 		padding: var(--space-side-padding);
 		img {
+			transition: var.$pop-transition;
 			width: 2rem;
 		}
 	}
 	@media (hover: hover) {
-		img {
-			transition: var.$pop-transition;
+		&:hover img {
+			transform: scale(1.2);
 		}
-		&:hover {
-			img {
-				transform: scale(1.3);
-				@media screen and (min-width: var.$break-md) {
-					transform: scale(1.2);
-				}
-			}
-		}
+	}
+	&:active img {
+		transform: scale(1.1);
 	}
 }
