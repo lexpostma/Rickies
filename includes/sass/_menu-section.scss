@@ -106,6 +106,7 @@ section {
 	padding: 0 var(--space-side-padding);
 	padding-left: max(var(--space-side-padding), #{var.$iX-left});
 	padding-right: max(var(--space-side-padding), #{var.$iX-right});
+	pointer-events: none;
 	&.navigate_with_mobile_menu {
 		display: none;
 		padding-top: calc(var(--nav-height) + var(--space-side-padding));
@@ -119,7 +120,9 @@ section {
 		}
 	}
 }
-
+.section_group {
+	pointer-events: all;
+}
 .section_group--list {
 	&:not(:first-of-type) {
 		margin-top: var(--space-between-lg);
