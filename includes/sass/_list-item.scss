@@ -78,18 +78,25 @@ li.list_item {
 				color: var(--text-primary-color);
 			}
 		}
+		border-radius: var(--element-corner-radius);
+		background: var(--background-color);
+		transition: var.$hover-duration background ease-in-out;
+		.item_graphic {
+			transition: var.$pop-transition;
+		}
 		@media (hover: hover) {
-			border-radius: var(--element-corner-radius);
-			background: var(--background-color);
-			transition: var.$hover-duration background ease-in-out;
-			.item_graphic {
-				transition: var.$pop-transition;
-			}
 			&:hover {
 				background: var(--element-hover-color);
 				.item_graphic {
 					transform: scale(1.1);
 				}
+			}
+		}
+		&:active {
+			background: var(--element-active-color);
+			transition: none;
+			.item_graphic {
+				transform: scale(0.95);
 			}
 		}
 	}

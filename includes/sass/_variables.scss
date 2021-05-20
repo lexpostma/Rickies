@@ -42,6 +42,7 @@ $break-xxl: 1400px;
 	--link-hover-color: #23527c;
 
 	--element-hover-color: rgba(0, 0, 0, 0.1);
+	--element-active-color: rgba(13, 135, 202, 0.1);
 	--element-corner-radius: 8px;
 	--element-padding: 8px;
 	--element-padding-neg: -8px;
@@ -97,6 +98,7 @@ $break-xxl: 1400px;
 		--graphic-border: 1px solid rgba(255, 255, 255, 0.25);
 
 		--element-hover-color: rgba(255, 255, 255, 0.1);
+		--element-active-color: rgba(13, 135, 202, 0.3);
 		--document-background-color: var(--relay-blue);
 	}
 }

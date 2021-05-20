@@ -17,6 +17,7 @@
   --link-color: #106dc6;
   --link-hover-color: #23527c;
   --element-hover-color: rgba(0, 0, 0, 0.1);
+  --element-active-color: rgba(13, 135, 202, 0.1);
   --element-corner-radius: 8px;
   --element-padding: 8px;
   --element-padding-neg: -8px;
@@ -54,6 +55,7 @@
     --link-hover-color: #33adf1;
     --graphic-border: 1px solid rgba(255, 255, 255, 0.25);
     --element-hover-color: rgba(255, 255, 255, 0.1);
+    --element-active-color: rgba(13, 135, 202, 0.3);
     --document-background-color: var(--relay-blue);
   }
 }
@@ -842,6 +844,9 @@ li.list_item.host_details .list_item_content .list_item_labels .mini_stats .mini
 li.list_item a.list_item_content {
   text-decoration: none;
   font-weight: normal;
+  border-radius: var(--element-corner-radius);
+  background: var(--background-color);
+  transition: 300ms background ease-in-out;
 }
 li.list_item a.list_item_content .list_item_labels .label1 {
   font-weight: 500;
@@ -850,21 +855,23 @@ li.list_item a.list_item_content .list_item_labels .label1 {
 li.list_item a.list_item_content .list_item_labels .label2 {
   color: var(--text-primary-color);
 }
+li.list_item a.list_item_content .item_graphic {
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+}
 @media (hover: hover) {
-  li.list_item a.list_item_content {
-    border-radius: var(--element-corner-radius);
-    background: var(--background-color);
-    transition: 300ms background ease-in-out;
-  }
-  li.list_item a.list_item_content .item_graphic {
-    transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
-  }
   li.list_item a.list_item_content:hover {
     background: var(--element-hover-color);
   }
   li.list_item a.list_item_content:hover .item_graphic {
     transform: scale(1.1);
   }
+}
+li.list_item a.list_item_content:active {
+  background: var(--element-active-color);
+  transition: none;
+}
+li.list_item a.list_item_content:active .item_graphic {
+  transform: scale(0.95);
 }
 li.list_item a[href^="https://github.com"] .secondary_string:before,
 li.list_item a[href^="https://twitter.com"] .secondary_string:before,
@@ -998,6 +1005,10 @@ li.pick_item.interactive p.pick span.points {
   li.pick_item.interactive:hover p.pick span.points {
     transform: scale(1.2);
   }
+}
+li.pick_item.interactive:active {
+  background: var(--element-active-color);
+  transition: none;
 }
 li.pick_item.interactive:active p.pick span.points {
   transform: scale(1.1);
