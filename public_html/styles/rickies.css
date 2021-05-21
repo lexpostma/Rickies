@@ -540,10 +540,12 @@ body {
     display: inline;
   }
 }
-#nav_content .nav_content--items a.active {
-  opacity: 1;
-  font-weight: bold;
-  text-decoration: none;
+@media screen and (max-width: 768px) {
+  #nav_content .nav_content--items a.active {
+    opacity: 1;
+    font-weight: bold;
+    text-decoration: none;
+  }
 }
 @media (hover: hover) {
   #nav_content .nav_content--items a:hover {

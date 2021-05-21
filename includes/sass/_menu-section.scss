@@ -84,11 +84,12 @@ $statusbar: var.$iX-top;
 					display: inline;
 				}
 			}
-
-			&.active {
-				opacity: 1;
-				font-weight: bold;
-				text-decoration: none;
+			@media screen and (max-width: var.$break-md) {
+				&.active {
+					opacity: 1;
+					font-weight: bold;
+					text-decoration: none;
+				}
 			}
 			@media (hover: hover) {
 				&:hover {
