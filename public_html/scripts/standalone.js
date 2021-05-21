@@ -3,6 +3,7 @@ function refresh_inprogress(el) {
 }
 
 function promote_standalone() {
+	console.log(navigator.userAgent);
 	if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('iPad') != -1) {
 		if (window.navigator.standalone == true) {
 			// Added to home screen, offer refresh
