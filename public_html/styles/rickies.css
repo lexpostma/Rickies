@@ -563,6 +563,10 @@ body {
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
 
+#menu_back {
+  left: -50px;
+}
+
 #menu_top {
   right: -50px;
 }
@@ -583,8 +587,8 @@ nav.nav_container.sticky #nav_content {
   padding-top: env(safe-area-inset-top);
 }
 @media screen and (min-width: 576px) {
-  nav.nav_container.sticky .menu_fix {
-    position: absolute;
+  nav.nav_container.sticky #menu_back {
+    transform: translateX(40px);
   }
   nav.nav_container.sticky #menu_top {
     transform: translateX(-40px);

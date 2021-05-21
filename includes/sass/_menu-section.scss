@@ -108,6 +108,9 @@ $statusbar: var.$iX-top;
 	position: absolute;
 	transition: var.$pop-transition;
 }
+#menu_back {
+	left: -50px;
+}
 #menu_top {
 	right: -50px;
 }
@@ -130,9 +133,8 @@ nav.nav_container {
 			padding-top: $statusbar;
 		}
 		@media screen and (min-width: var.$break-sm) {
-			.menu_fix {
-				// display: block;
-				position: absolute;
+			#menu_back {
+				transform: translateX(40px);
 			}
 			#menu_top {
 				transform: translateX(-40px);
