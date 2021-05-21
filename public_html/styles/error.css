@@ -700,7 +700,7 @@ section h2,
     top: 0;
     bottom: 0;
     right: 0;
-    background-image: linear-gradient(110deg, rgba(51, 63, 72, 0.8) 30%, indigo 80%);
+    background-image: linear-gradient(104deg, #333f48 0%, #333f48 14.4%, #343d49 26.7%, #343b4b 37%, #35394e 45.6%, #363650 52.8%, #383254 58.8%, #392d58 63.9%, #3b295c 68.2%, #3d2460 72.1%, #3f1e65 75.9%, #41186a 79.6%, #431270 83.6%, #460c75 88.2%, #48067a 93.6%, #4a0080 100%);
     display: flex;
     padding: var(--space-side-padding);
   }
