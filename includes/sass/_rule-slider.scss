@@ -70,10 +70,7 @@ aside.slider {
 		}
 		@media screen and (min-width: var.$break-md) {
 			padding: 16px 32px 24px;
-			padding-bottom: max(24px, #{var.$iX-bottom});
-			label {
-				// margin-bottom: 16px;
-			}
+			padding-bottom: max(24px, calc(16px + #{var.$iX-bottom}));
 		}
 		// Reset the styling
 		// Via https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/

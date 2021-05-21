@@ -423,7 +423,7 @@ aside.slider #rule_slider label {
 @media screen and (min-width: 768px) {
   aside.slider #rule_slider {
     padding: 16px 32px 24px;
-    padding-bottom: max(24px, env(safe-area-inset-bottom));
+    padding-bottom: max(24px, calc(16px + env(safe-area-inset-bottom)));
   }
 }
 aside.slider #rule_slider input[type=range] {
@@ -764,7 +764,7 @@ aside.slider {
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
 aside.slider.hide {
-  transform: translateY(220px);
+  transform: translateY(230px);
 }
 
 @font-face {
