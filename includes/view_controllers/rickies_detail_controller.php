@@ -299,7 +299,7 @@ function host_item_bundle($host_event_data, $event_type)
 	<ul class="list_item_group">
 		<li class="list_item host_details">
 			<div class="list_item_content">' .
-			list_item_graphic($avatar_img_array, true) .
+			list_item_graphic($avatar_img_array) .
 			'
 				<div class="list_item_labels">
 					<p><a href="/leaderboard#' .

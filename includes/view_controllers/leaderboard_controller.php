@@ -34,7 +34,7 @@ function leaderboard_item($host_data)
 		'src' => $host_data['images']['memoji']['neutral'],
 		'color' => $host_data['personal']['color'],
 	];
-	$output .= list_item_graphic($img_array, true);
+	$output .= list_item_graphic($img_array);
 
 	// Name and personal details
 	$output .=

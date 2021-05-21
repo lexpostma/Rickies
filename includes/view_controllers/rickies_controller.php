@@ -29,7 +29,7 @@ switch ($url_view) {
 		$back_to_overview = true;
 }
 
-function list_item_graphic($img_array = false, $avatar = false)
+function list_item_graphic($img_array = false)
 {
 	// Image array types can be:
 	// * background: fill the background with src, optional color
@@ -76,10 +76,6 @@ function list_item_graphic($img_array = false, $avatar = false)
 				$style[] = 'background-color: var(--connected-' . $img_array['color'] . ')';
 				break;
 		}
-	}
-
-	if ($avatar == true) {
-		$class[] = 'avatar';
 	}
 
 	$output = '<div class="' . implode(' ', $class) . '" ';
@@ -278,7 +274,7 @@ function avatar_leaderboard($host_array)
 		} else {
 			$output .= '<div class="host">';
 		}
-		$output .= list_item_graphic($host['img_array'], true);
+		$output .= list_item_graphic($host['img_array']);
 		$output .=
 			'<span class="name">' .
 			$host['name'] .
