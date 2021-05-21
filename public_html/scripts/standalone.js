@@ -5,7 +5,7 @@ function refresh_inprogress(el) {
 function promote_standalone() {
 	console.log('Agent: ' + navigator.userAgent);
 	console.log('Standalone: ' + window.navigator.standalone);
-	console.log('Navigator: ' + window.navigator);
+	console.log('Navigator: ' + window.navigator.platform);
 
 	if (window.navigator.standalone == true) {
 		// Is on the home screen, offer refresh
