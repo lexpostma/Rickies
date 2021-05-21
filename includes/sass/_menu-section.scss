@@ -99,6 +99,19 @@ $statusbar: var.$iX-top;
 		}
 	}
 }
+
+.menu_fix svg {
+	margin-bottom: -2px;
+}
+
+.menu_fix {
+	position: absolute;
+	transition: var.$pop-transition;
+}
+#menu_top {
+	right: -50px;
+}
+
 nav.nav_container {
 	position: relative;
 	// To prevent margins of elements before/after from collapsing
@@ -116,14 +129,15 @@ nav.nav_container {
 			position: fixed;
 			padding-top: $statusbar;
 		}
-	}
-}
-#menu_top svg {
-	margin-bottom: -2px;
-}
-@media screen and (max-width: var.$break-sm) {
-	#menu_top {
-		display: none;
+		@media screen and (min-width: var.$break-sm) {
+			.menu_fix {
+				// display: block;
+				position: absolute;
+			}
+			#menu_top {
+				transform: translateX(-40px);
+			}
+		}
 	}
 }
 

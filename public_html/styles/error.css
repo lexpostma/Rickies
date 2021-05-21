@@ -554,6 +554,19 @@ body {
   }
 }
 
+.menu_fix svg {
+  margin-bottom: -2px;
+}
+
+.menu_fix {
+  position: absolute;
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+}
+
+#menu_top {
+  right: -50px;
+}
+
 nav.nav_container {
   position: relative;
   height: 1px;
@@ -569,16 +582,15 @@ nav.nav_container.sticky #nav_content {
   position: fixed;
   padding-top: env(safe-area-inset-top);
 }
-
-#menu_top svg {
-  margin-bottom: -2px;
-}
-
-@media screen and (max-width: 576px) {
-  #menu_top {
-    display: none;
+@media screen and (min-width: 576px) {
+  nav.nav_container.sticky .menu_fix {
+    position: absolute;
+  }
+  nav.nav_container.sticky #menu_top {
+    transform: translateX(-40px);
   }
 }
+
 :root {
   --nav-height: 53px;
 }
