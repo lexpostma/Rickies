@@ -30,7 +30,25 @@ $statusbar: var.$iX-top;
 	left: 0;
 	z-index: 9;
 	pointer-events: none;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+	background-image: linear-gradient(
+		to bottom,
+		hsla(0, 0%, 0%, 0.4) 0%,
+		hsla(0, 0%, 0%, 0.395) 9.7%,
+		hsla(0, 0%, 0%, 0.381) 18.7%,
+		hsla(0, 0%, 0%, 0.358) 27.2%,
+		hsla(0, 0%, 0%, 0.33) 35.1%,
+		hsla(0, 0%, 0%, 0.296) 42.6%,
+		hsla(0, 0%, 0%, 0.259) 49.6%,
+		hsla(0, 0%, 0%, 0.22) 56.2%,
+		hsla(0, 0%, 0%, 0.18) 62.5%,
+		hsla(0, 0%, 0%, 0.141) 68.4%,
+		hsla(0, 0%, 0%, 0.104) 74.1%,
+		hsla(0, 0%, 0%, 0.07) 79.5%,
+		hsla(0, 0%, 0%, 0.042) 84.8%,
+		hsla(0, 0%, 0%, 0.019) 89.9%,
+		hsla(0, 0%, 0%, 0.005) 95%,
+		hsla(0, 0%, 0%, 0) 100%
+	);
 }
 
 #nav_content {
