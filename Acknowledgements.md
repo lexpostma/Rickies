@@ -8,11 +8,7 @@ Obviously, 99% of the content on the website comes from the [Connected](https://
 
 [Airtable](https://airtable.com) is used as the backend of this web application. All data and most images are managed and hosted there.
 
--   Fonts
--   Memoji
--   [Native Land by Dream Cave](https://www.youtube.com/watch?v=0AnFfbTupEU) as theme music for The Bill of Rickies
-
-## Libraries and other inclusions
+## Libraries and other assets/inclusions
 
 The following libraries are used:
 
@@ -23,6 +19,11 @@ The following libraries are used:
 -   [JavaScript Cookie](https://github.com/js-cookie/js-cookie) API for handling cookies
 -   [Parsedown](https://parsedown.org) for parser Markdown in PHP
 -   [Goat Counter](https://www.goatcounter.com/) for simple analytics
+-   Host memoji designed by Apple of course, configured on my iPhone
+-   Fonts
+    -   System fonts are used across the website
+    -   Black Chancery by Doug Miles, for the titles on The Bill of Rickies (via [DaFont](https://www.dafont.com/black-chancery.font))
+-   [Native Land by Dream Cave](https://www.youtube.com/watch?v=0AnFfbTupEU) as theme music for The Bill of Rickies
 
 ## Referrals
 
