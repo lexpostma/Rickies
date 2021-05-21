@@ -72,5 +72,19 @@
 	"background_color": "#333f48",
 	"display": "standalone",
 	"scope": "/",
+	"shortcuts": [
+		{
+			"name": "The Bill of Rickies",
+			"url": "/billof"
+		},
+		{
+			"name": "Host Leaderboard",
+			"url": "/leaderboard"
+		},
+		{
+			"name": "About Rickies.co",
+			"url": "/about"
+		}
+	],
 	"theme_color": "#0d87ca"
 }
