@@ -37,6 +37,7 @@ Use the following referral links to give us both something extra and help suppor
 Tested in the following browser versions. Anything different or older might not work properly for now. I hope to [improve that in the future](Roadmap.md).
 
 -   Safari on iOS 14.5
+-   Safari on iPadOS 14.5
 -   Safari 14.1 on macOS 11.3
 -   Chrome 90 on Android 11
 -   Chrome 90 on macOS
