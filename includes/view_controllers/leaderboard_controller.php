@@ -292,7 +292,6 @@ foreach ($hosts_data__array as $host) {
 	array_push($leaderboard_data, $set);
 }
 
-// TODO: Rickies count as variable in the text
 $introduction =
 	'<p>With <b>' .
 	$status_data__array['Completed'] .
@@ -304,7 +303,6 @@ $introduction =
 
 $head_custom = [
 	'title' => 'Host Leaderboard • The Rickies',
-	// TODO: Write SEO description
 	'description' =>
 		'Charts, statistics, flexing power and other wonderful insights into the Rickies achievements of the Connected hosts.',
 	'keywords' => ['leaderboard', 'achievement', 'statistics', 'titles'],
