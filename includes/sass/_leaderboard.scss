@@ -1,4 +1,6 @@
 @use "variables" as var;
+$emoji-font: 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', Times, Symbola, Aegyptus, Code2000, Code2001,
+	Code2002, Musica, emoji, sans-serif;
 
 // Gradient background (aka winner ring) animation
 // Via https://codepen.io/P1N2O/pen/pyBNzX
@@ -124,11 +126,9 @@
 		margin-left: var(--space-between-md);
 		margin-top: 6px;
 		span.emoji {
-			font-family: 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', Times, Symbola, Aegyptus, Code2000,
-				Code2001, Code2002, Musica, sans-serif;
+			font-family: $emoji-font;
 			font-variant-emoji: emoji;
 			display: inline-block;
-			margin-right: 4px;
 			width: 1.6em;
 		}
 		h4 {
@@ -175,8 +175,7 @@ table.full_stats {
 	.chart_pick_type {
 		position: relative;
 		.chart_emoji {
-			font-family: 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', Times, Symbola, Aegyptus, Code2000,
-				Code2001, Code2002, Musica, sans-serif;
+			font-family: $emoji-font;
 			font-variant-emoji: emoji;
 			position: absolute;
 			left: 0;

@@ -99,7 +99,7 @@ body {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .container {
@@ -288,7 +288,7 @@ main.parchment {
 }
 main.parchment h1,
 main.parchment h2 {
-  font-family: "BlackChancery";
+  font-family: "BlackChancery", cursive;
 }
 main .document_footer {
   display: flex;
