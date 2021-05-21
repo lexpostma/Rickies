@@ -54,3 +54,5 @@ Tested in the following browser versions. Anything different or older might not 
 -   [ImageOptim](https://imageoptim.com/mac) to reduce image sizes
 -   [MAMP Pro](https://www.mamp.info/en/mamp-pro/mac/) for local development
 -   [UptimeRobot](https://uptimerobot.com/) to check whether the site is up
+-   [Online Converter](https://www.onlineconverter.com/compress-mp3) to compress the theme song MP3
+-   [Easing Gradients](https://larsenwork.com/easing-gradients/) to create smoother gradients
