@@ -567,6 +567,15 @@ nav.nav_container.sticky #nav_content {
   padding-top: env(safe-area-inset-top);
 }
 
+#menu_top svg {
+  margin-bottom: -2px;
+}
+
+@media screen and (max-width: 576px) {
+  #menu_top {
+    display: none;
+  }
+}
 :root {
   --nav-height: 53px;
 }

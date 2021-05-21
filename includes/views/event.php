@@ -88,6 +88,9 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 				data-goatcounter-click="Show details"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('details');">Details</a>
+			<a class="menu_item"
+				id="menu_top"
+				href="#top"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-top.svg') ?></a>
 		</div>
 	</div>
 </nav>
