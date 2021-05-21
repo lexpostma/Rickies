@@ -283,7 +283,7 @@ main.parchment {
 }
 @media (prefers-color-scheme: dark) {
   main.parchment {
-    background-image: url(/images/parchment-border/dark-top.png), url(/images/parchment-border/dark-left.png), url(/images/parchment-border/dark-right.png), url(/images/parchment-border/dark-bottom.png), radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%), url(/images/parchment-background.jpg);
+    background-image: url(/images/parchment-border/dark-top.png), url(/images/parchment-border/dark-left.png), url(/images/parchment-border/dark-right.png), url(/images/parchment-border/dark-bottom.png), radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 227, 170, 0.7) 0%, rgba(255, 155, 63, 0.7) 100%), url(/images/parchment-background.jpg);
   }
 }
 main.parchment h1,

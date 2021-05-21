@@ -331,14 +331,14 @@ header {
   background-repeat: no-repeat;
 }
 header.home {
-  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0.84) 100%), url("/images/confetti.svg");
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.306) 8.1%, rgba(255, 255, 255, 0.324) 15.5%, rgba(255, 255, 255, 0.352) 22.5%, rgba(255, 255, 255, 0.388) 29%, rgba(255, 255, 255, 0.43) 35.3%, rgba(255, 255, 255, 0.476) 41.2%, rgba(255, 255, 255, 0.525) 47.1%, rgba(255, 255, 255, 0.575) 52.9%, rgba(255, 255, 255, 0.624) 58.8%, rgba(255, 255, 255, 0.67) 64.7%, rgba(255, 255, 255, 0.712) 71%, rgba(255, 255, 255, 0.748) 77.5%, rgba(255, 255, 255, 0.776) 84.5%, rgba(255, 255, 255, 0.794) 91.9%, rgba(255, 255, 255, 0.8) 100%), url("/images/confetti.svg");
   padding: 48px var(--space-side-padding);
   padding-top: calc(48px + env(safe-area-inset-top));
 }
 @media (prefers-color-scheme: dark) {
   header.home {
     color: white;
-    background-image: linear-gradient(180deg, rgba(51, 63, 72, 0.33) 0%, rgba(51, 63, 72, 0.84) 100%), url("/images/confetti.svg");
+    background-image: linear-gradient(to bottom, rgba(51, 63, 72, 0.3) 0%, rgba(51, 63, 72, 0.306) 8.1%, rgba(51, 63, 72, 0.324) 15.5%, rgba(51, 63, 72, 0.352) 22.5%, rgba(51, 63, 72, 0.388) 29%, rgba(51, 63, 72, 0.43) 35.3%, rgba(51, 63, 72, 0.476) 41.2%, rgba(51, 63, 72, 0.525) 47.1%, rgba(51, 63, 72, 0.575) 52.9%, rgba(51, 63, 72, 0.624) 58.8%, rgba(51, 63, 72, 0.67) 64.7%, rgba(51, 63, 72, 0.712) 71%, rgba(51, 63, 72, 0.748) 77.5%, rgba(51, 63, 72, 0.776) 84.5%, rgba(51, 63, 72, 0.794) 91.9%, rgba(51, 63, 72, 0.8) 100%), url("/images/confetti.svg");
   }
 }
 @media screen and (min-width: 992px) {
