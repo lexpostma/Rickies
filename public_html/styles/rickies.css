@@ -421,11 +421,11 @@ header.about .gradient, header.details .gradient {
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: linear-gradient(180deg, rgba(51, 63, 72, 0) 75%, rgba(51, 63, 72, 0.2) 100%);
+  background-image: linear-gradient(to bottom, rgba(51, 63, 72, 0) 0%, rgba(51, 63, 72, 0.003) 18.7%, rgba(51, 63, 72, 0.01) 34.9%, rgba(51, 63, 72, 0.021) 48.8%, rgba(51, 63, 72, 0.035) 60.6%, rgba(51, 63, 72, 0.052) 70.4%, rgba(51, 63, 72, 0.07) 78.4%, rgba(51, 63, 72, 0.09) 84.8%, rgba(51, 63, 72, 0.11) 89.8%, rgba(51, 63, 72, 0.13) 93.6%, rgba(51, 63, 72, 0.148) 96.3%, rgba(51, 63, 72, 0.165) 98.1%, rgba(51, 63, 72, 0.179) 99.2%, rgba(51, 63, 72, 0.19) 99.8%, rgba(51, 63, 72, 0.197) 100%, rgba(51, 63, 72, 0.2) 100%);
 }
 @media (prefers-color-scheme: dark) {
   header.about .gradient, header.details .gradient {
-    background-image: linear-gradient(180deg, rgba(51, 63, 72, 0) 40%, rgba(51, 63, 72, 0.6) 100%);
+    background-image: linear-gradient(to bottom, rgba(51, 63, 72, 0) 0%, rgba(51, 63, 72, 0.008) 11.1%, rgba(51, 63, 72, 0.029) 21%, rgba(51, 63, 72, 0.062) 29.8%, rgba(51, 63, 72, 0.105) 37.6%, rgba(51, 63, 72, 0.156) 44.6%, rgba(51, 63, 72, 0.211) 50.9%, rgba(51, 63, 72, 0.27) 56.7%, rgba(51, 63, 72, 0.33) 62%, rgba(51, 63, 72, 0.389) 67.1%, rgba(51, 63, 72, 0.444) 72.1%, rgba(51, 63, 72, 0.495) 77.1%, rgba(51, 63, 72, 0.538) 82.2%, rgba(51, 63, 72, 0.571) 87.7%, rgba(51, 63, 72, 0.592) 93.5%, rgba(51, 63, 72, 0.6) 100%);
   }
 }
 header.about .big_year, header.details .big_year {
