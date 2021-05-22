@@ -16,7 +16,7 @@ if ($url_view == 'main') {?>
 	document.addEventListener('DOMContentLoaded', function (event) {
 		if(!Cookies.get('confetti_popped')) {
 			confetti_go()
-			Cookies.set('confetti_popped', 'true', { expires: 2, path: '/' })
+			Cookies.set('confetti_popped', 'true', { expires: 0.2, path: '/' })
 		}
 	});
 
