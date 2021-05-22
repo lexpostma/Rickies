@@ -72,7 +72,9 @@ function list_item_graphic($img_array = false)
 					rand(-20, 0) .
 					's;"></div><img src="' .
 					$img_array['src'] .
-					'" />';
+					'" alt="' .
+					$img_array['name'] .
+					'’s Memoji avatar"/>';
 				$style[] = 'background-color: var(--connected-' . $img_array['color'] . ')';
 				break;
 		}

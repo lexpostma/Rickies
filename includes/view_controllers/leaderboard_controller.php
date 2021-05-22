@@ -31,6 +31,7 @@ function leaderboard_item($host_data)
 	// Add avatar
 	$img_array = [
 		'type' => 'avatar',
+		'name' => $host_data['personal']['first_name'],
 		'src' => $host_data['images']['memoji']['neutral'],
 		'color' => $host_data['personal']['color'],
 	];
@@ -281,6 +282,7 @@ foreach ($hosts_data__array as $host) {
 			'&nbsp;FP',
 		'img_array' => [
 			'type' => 'avatar',
+			'name' => $host['personal']['first_name'],
 			'src' => $host['images']['memoji']['happy'],
 			'color' => $host['personal']['color'],
 		],

@@ -23,6 +23,7 @@ foreach ($rickies_data['hosts'] as $host) {
 		'string' => [],
 		'img_array' => [
 			'type' => 'avatar',
+			'name' => $host['details']['first_name'],
 			'src' => $host['details']['memoji']['neutral'],
 			'color' => $host['details']['color'],
 		],
@@ -289,6 +290,7 @@ function host_item_bundle($host_event_data, $event_type)
 
 		$avatar_img_array = [
 			'type' => 'avatar',
+			'name' => $event_details['details']['first_name'],
 			'src' => $event_details['details']['memoji']['neutral'],
 			'color' => $event_details['details']['color'],
 		];
