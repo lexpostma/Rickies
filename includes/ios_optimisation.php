@@ -42,8 +42,7 @@ foreach ($appIconSizes as $device => $size) {
 
 echo '
 
-<!-- iOS splash screens -->
-';
+<!-- iOS splash screens -->';
 $splashScreenSizes = [
 	'iPhone 5, 5s, SE' => [
 		'width' => '320',
@@ -118,15 +117,35 @@ $splashScreenSizes = [
 ];
 
 foreach ($splashScreenSizes as $device => $size) {
-	echo '<link rel="apple-touch-startup-image" href="/images/splashscreen.png"   media="(device-width: ' .
+	echo '
+<!-- ' .
+		$device .
+		' -->
+<link rel="apple-touch-startup-image" href="/images/splashscreens/splash-portrait-' .
+		$size['width'] .
+		'x' .
+		$size['height'] .
+		'@' .
+		$size['ratio'] .
+		'x.png"   media="(device-width: ' .
 		$size['width'] .
 		'px)  and (device-height: ' .
 		$size['height'] .
-		'px)  and (-webkit-device-pixel-ratio: ' .
+		'px)  and (orientation: portrait)  and (-webkit-device-pixel-ratio: ' .
 		$size['ratio'] .
-		')" /> <!-- ' .
-		$device .
-		' -->
-';
+		')" />
+<link rel="apple-touch-startup-image" href="/images/splashscreens/splash-landscape-' .
+		$size['width'] .
+		'x' .
+		$size['height'] .
+		'@' .
+		$size['ratio'] .
+		'x.png"   media="(device-width: ' .
+		$size['width'] .
+		'px)  and (device-height: ' .
+		$size['height'] .
+		'px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: ' .
+		$size['ratio'] .
+		')" />';
 }
 
