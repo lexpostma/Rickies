@@ -39,7 +39,12 @@ foreach ($appIconSizes as $device => $size) {
 		$device .
 		' -->';
 }
+?>
 
+
+<!-- iOS splashscreen -->
+<link rel="apple-touch-startup-image" href="/images/splashscreen.png" />
+<?
 /*
 echo '<!-- iOS splash screens -->';
 $splashScreenSizes = [
@@ -163,4 +168,3 @@ foreach ($splashScreenSizes as $device => $size) {
 		')" />';
 }
 */
-
