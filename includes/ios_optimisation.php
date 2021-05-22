@@ -39,14 +39,11 @@ foreach ($appIconSizes as $device => $size) {
 		$device .
 		' -->';
 }
-?>
 
+echo '
 
-<!-- iOS splashscreen -->
-<link rel="apple-touch-startup-image" href="/images/splashscreen.png" />
-<?
-/*
-echo '<!-- iOS splash screens -->';
+<!-- iOS splash screens -->
+';
 $splashScreenSizes = [
 	'iPhone 5, 5s, SE' => [
 		'width' => '320',
@@ -58,7 +55,7 @@ $splashScreenSizes = [
 		'height' => '667',
 		'ratio' => '2',
 	],
-	'iPhone 6, 6s, 7, 8 Plus' => [
+	'iPhone [6, 6s, 7, 8] Plus' => [
 		'width' => '414',
 		'height' => '736',
 		'ratio' => '3',
@@ -68,7 +65,12 @@ $splashScreenSizes = [
 		'height' => '812',
 		'ratio' => '3',
 	],
-	'iPhone XS, 11 Pro Max' => [
+	'iPhone 12, 12 Pro' => [
+		'width' => '390',
+		'height' => '844',
+		'ratio' => '3',
+	],
+	'iPhone [XS, 11 Pro] Max' => [
 		'width' => '414',
 		'height' => '896',
 		'ratio' => '3',
@@ -77,6 +79,11 @@ $splashScreenSizes = [
 		'width' => '414',
 		'height' => '896',
 		'ratio' => '2',
+	],
+	'iPhone 12 Pro Max' => [
+		'width' => '428',
+		'height' => '926',
+		'ratio' => '3',
 	],
 	'iPad 9.7 non-retina' => [
 		'width' => '768',
@@ -111,60 +118,15 @@ $splashScreenSizes = [
 ];
 
 foreach ($splashScreenSizes as $device => $size) {
-	echo '<!-- ' .
+	echo '<link rel="apple-touch-startup-image" href="/images/splashscreen.png"   media="(device-width: ' .
+		$size['width'] .
+		'px)  and (device-height: ' .
+		$size['height'] .
+		'px)  and (-webkit-device-pixel-ratio: ' .
+		$size['ratio'] .
+		')" /> <!-- ' .
 		$device .
 		' -->
-		<link rel="apple-touch-startup-image" href="/images/splashscreens/splash-' .
-		$size['width'] .
-		'x' .
-		$size['height'] .
-		'-light@' .
-		$size['ratio'] .
-		'x.png"   media="(device-width: ' .
-		$size['width'] .
-		'px)  and (device-height: ' .
-		$size['height'] .
-		'px)  and (orientation: portrait)  and (-webkit-device-pixel-ratio: ' .
-		$size['ratio'] .
-		')" />
-		<link rel="apple-touch-startup-image" href="/images/splashscreens/splash-' .
-		$size['height'] .
-		'x' .
-		$size['width'] .
-		'-light@' .
-		$size['ratio'] .
-		'x.png"   media="(device-width: ' .
-		$size['width'] .
-		'px)  and (device-height: ' .
-		$size['height'] .
-		'px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: ' .
-		$size['ratio'] .
-		')" />
-		<link rel="apple-touch-startup-image" href="/images/splashscreens/splash-' .
-		$size['width'] .
-		'x' .
-		$size['height'] .
-		'-dark@' .
-		$size['ratio'] .
-		'x.png"    media="(prefers-color-scheme: dark) and (device-width: ' .
-		$size['width'] .
-		'px)  and (device-height: ' .
-		$size['height'] .
-		'px)  and (orientation: portrait)  and (-webkit-device-pixel-ratio: ' .
-		$size['ratio'] .
-		')" />
-		<link rel="apple-touch-startup-image" href="/images/splashscreens/splash-' .
-		$size['height'] .
-		'x' .
-		$size['width'] .
-		'-dark@' .
-		$size['ratio'] .
-		'x.png"    media="(prefers-color-scheme: dark) and (device-width: ' .
-		$size['width'] .
-		'px)  and (device-height: ' .
-		$size['height'] .
-		'px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: ' .
-		$size['ratio'] .
-		')" />';
+';
 }
-*/
+
