@@ -734,7 +734,7 @@ section h2,
     top: 0;
     bottom: 0;
     right: 0;
-    background-image: linear-gradient(to right, #333f48 0%, #333e49 10.2%, #343c4b 18.8%, #35384e 26.2%, #373452 32.6%, #392f57 38.1%, #3b295c 43.1%, #3d2361 47.7%, #401c67 52.3%, #42166c 56.9%, #441071 61.9%, #460b76 67.4%, #48077a 73.8%, #49037d 81.2%, #4a017f 89.8%, #4a0080 100%);
+    background-image: linear-gradient(65deg, var(--relay-blue) 34%, indigo 70%);
     display: flex;
     padding: var(--space-side-padding);
   }
