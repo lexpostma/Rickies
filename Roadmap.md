@@ -8,7 +8,11 @@ Features I plan to add to the website.
 -   [ ] Improve accessibility.
 -   [ ] Fix contrast of scrollbar.
 -   [x] Add host signatures to The Bill of Rickies.
--   [ ] Replace some bitmap assets with vector version.
+-   [ ] Add Rickies filters for:
+    -   Keynote Rickies
+    -   Annual Rickies
+    -   Ungraded / Interactive
+-   [ ] Replace some bitmap assets with vector versions.
 -   [ ] Cache Airtable data as JSON files to increase performance.
 -   [x] Add Bill of Rickies reading theme song.
 -   [x] Add show/hide toggle for Bill of Rickies history slider.
@@ -16,4 +20,4 @@ Features I plan to add to the website.
 -   [ ] Add adjudication statistics.
 -   [ ] Improve support for coin flips (heads/tails, best of 3, flip for which place, etc).
 -   [ ] Improve support for ties (earlier predictions did not always have winners).
--   [ ] Add web app splash screens.
+-   [x] Add web app splash screens.
