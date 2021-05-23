@@ -131,13 +131,15 @@ nav.nav_container {
 		#nav_content {
 			position: fixed;
 			padding-top: $statusbar;
-		}
-		@media screen and (min-width: var.$break-sm) {
-			#menu_back {
-				transform: translateX(40px);
-			}
-			#menu_top {
-				transform: translateX(-40px);
+
+			@media screen and (min-width: var.$break-sm) {
+				overflow-x: hidden;
+				#menu_back {
+					transform: translateX(40px);
+				}
+				#menu_top {
+					transform: translateX(-40px);
+				}
 			}
 		}
 	}
@@ -226,13 +228,6 @@ section h2,
 @media screen and (min-width: var.$break-sm) {
 	:root {
 		--nav-height: 56px;
-	}
-
-	section {
-		&.navigate_with_mobile_menu {
-			// padding-top: 56px + 16px;
-			// padding-top: calc(56px + 16px + #{var.$iX-top});
-		}
 	}
 }
 @media screen and (min-width: var.$break-md) {

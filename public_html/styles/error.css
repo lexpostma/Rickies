@@ -588,10 +588,13 @@ nav.nav_container.sticky #nav_content {
   padding-top: env(safe-area-inset-top);
 }
 @media screen and (min-width: 576px) {
-  nav.nav_container.sticky #menu_back {
+  nav.nav_container.sticky #nav_content {
+    overflow-x: hidden;
+  }
+  nav.nav_container.sticky #nav_content #menu_back {
     transform: translateX(40px);
   }
-  nav.nav_container.sticky #menu_top {
+  nav.nav_container.sticky #nav_content #menu_top {
     transform: translateX(-40px);
   }
 }
