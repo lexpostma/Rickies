@@ -205,7 +205,8 @@ footer p#promote_webapp {
   margin-bottom: var(--space-between-md);
 }
 
-button.clean {
+button.clean,
+select.clean {
   background: none;
   color: inherit;
   border: none;

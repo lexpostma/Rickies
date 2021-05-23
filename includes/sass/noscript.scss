@@ -18,6 +18,17 @@ section.navigate_with_mobile_menu {
 	}
 }
 
+h2.list_title {
+	color: var(--text-primary-color) !important;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	pointer-events: none;
+	svg {
+		display: none;
+	}
+}
+
 // Hide the charts elements if there's no JS to make them
 .charts,
 aside.slider,

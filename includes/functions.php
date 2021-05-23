@@ -21,9 +21,13 @@ function domain_url()
 }
 
 // https://example.com/something
-function current_url()
+function current_url($filter = false)
 {
-	return domain_url() . $_SERVER['REQUEST_URI'];
+	if ($filter) {
+		return domain_url() . '/';
+	} else {
+		return domain_url() . $_SERVER['REQUEST_URI'];
+	}
 }
 
 function back_button($location = '/')

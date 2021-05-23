@@ -8,10 +8,7 @@ Features I plan to add to the website.
 -   [ ] Improve accessibility.
 -   [ ] Fix contrast of scrollbar.
 -   [x] Add host signatures to The Bill of Rickies.
--   [ ] Add Rickies filters for:
-    -   Keynote Rickies
-    -   Annual Rickies
-    -   Ungraded / Interactive
+-   [x] Add Rickies filters
 -   [ ] Replace some bitmap assets with vector versions.
 -   [ ] Cache Airtable data as JSON files to increase performance.
 -   [x] Add Bill of Rickies reading theme song.

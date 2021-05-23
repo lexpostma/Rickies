@@ -74,8 +74,11 @@ do {
 					'These predictions predate The Rickies and are not officially graded as such';
 			}
 		}
+	} elseif (isset($filter)) {
+		// No Rickies, but filter is set
+		$filter_error = 'No ' . $filter . ' Rickies were found. <a href="/#list">Show all Rickies</a>.';
 	} else {
-		// No Rickies/event (1 or more) found
+		// No Rickies/events (1 or more) found
 		// Continue with 404
 		$error_code = 404;
 		include $incl_path . 'error.php';

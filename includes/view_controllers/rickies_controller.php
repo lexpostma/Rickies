@@ -22,6 +22,26 @@ switch ($url_view) {
 		$include_subbody = '../includes/views/about.php';
 		$back_to_overview = true;
 		break;
+	case 'wwdc':
+		$filter = 'WWDC';
+		include '../includes/view_controllers/rickies_list_controller.php';
+		$include_subbody = '../includes/views/rickies.php';
+		break;
+	case 'annual':
+		$filter = 'Annual';
+		include '../includes/view_controllers/rickies_list_controller.php';
+		$include_subbody = '../includes/views/rickies.php';
+		break;
+	case 'keynote':
+		$filter = 'Keynote';
+		include '../includes/view_controllers/rickies_list_controller.php';
+		$include_subbody = '../includes/views/rickies.php';
+		break;
+	case 'ungraded':
+		$filter = 'Ungraded';
+		include '../includes/view_controllers/rickies_list_controller.php';
+		$include_subbody = '../includes/views/rickies.php';
+		break;
 	default:
 		// If non of the above, it's probably a Rickies event
 		include '../includes/view_controllers/rickies_detail_controller.php';
