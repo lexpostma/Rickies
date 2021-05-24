@@ -270,6 +270,9 @@ main h2 {
   font-size: 1.7rem;
   margin: var(--space-between-lg) 0 4px;
 }
+main em {
+  opacity: 0.6;
+}
 @media screen and (min-width: 576px) {
   main {
     background-size: auto 64px, 64px auto, 64px auto, auto 64px, cover, cover;
@@ -298,6 +301,7 @@ main .document_footer {
   justify-content: space-between;
   align-items: flex-end;
   padding: 0 16px;
+  margin-top: 32px;
 }
 @media screen and (min-width: 576px) {
   main .document_footer {
@@ -856,6 +860,7 @@ p.disclaimer {
   text-align: center;
   margin: var(--space-side-padding) auto;
   color: white;
+  opacity: 0.8;
   font-style: italic;
   max-width: 650px;
 }

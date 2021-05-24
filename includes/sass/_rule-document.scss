@@ -41,6 +41,10 @@ main {
 		margin: var(--space-between-lg) 0 4px;
 	}
 
+	em {
+		opacity: 0.6;
+	}
+
 	@media screen and (min-width: var.$break-sm) {
 		background-size: auto 64px, 64px auto, 64px auto, auto 64px, cover, cover;
 	}
@@ -77,6 +81,7 @@ main {
 		justify-content: space-between;
 		align-items: flex-end;
 		padding: 0 16px;
+		margin-top: 32px;
 		@media screen and (min-width: var.$break-sm) {
 			padding: 0;
 		}
