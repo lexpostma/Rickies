@@ -78,6 +78,11 @@ $statusbar: var.$iX-top;
 			span.need_space--sm {
 				display: none;
 			}
+			&.active {
+				opacity: 1;
+				font-weight: bold;
+				text-decoration: none;
+			}
 			@media screen and (min-width: var.$break-xs) {
 				span.need_space--xs {
 					display: inline;
@@ -87,13 +92,6 @@ $statusbar: var.$iX-top;
 				padding: var(--space-between-md);
 				span.need_space--sm {
 					display: inline;
-				}
-			}
-			@media screen and (max-width: var.$break-md) {
-				&.active {
-					opacity: 1;
-					font-weight: bold;
-					text-decoration: none;
 				}
 			}
 			@media (hover: hover) {

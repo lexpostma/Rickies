@@ -29,6 +29,9 @@ nav a {
 		cursor: pointer;
 		opacity: 0.8;
 		text-decoration: underline;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 	&:link,
 	&:visited {
