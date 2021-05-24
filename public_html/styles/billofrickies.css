@@ -860,7 +860,7 @@ p.disclaimer {
   text-align: center;
   margin: var(--space-side-padding) auto;
   color: white;
-  opacity: 0.8;
+  opacity: 0.4;
   font-style: italic;
   max-width: 650px;
 }
