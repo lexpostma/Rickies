@@ -22,6 +22,7 @@ do {
 				'type' => check_key('Rickies type', $fields),
 				'type_string' => check_key('Rickies type string', $fields),
 				'url_name' => check_key('URL', $fields),
+				'episode_number' => check_key('Predictions episode number', $fields, '?', 0),
 				'date_string' => date_to_string_label(check_key('Predictions episode date', $fields, false, 0)),
 				'date' => strtotime(check_key('Predictions episode date', $fields, false, 0)),
 				'artwork' => [
@@ -54,7 +55,10 @@ do {
 			if (!$all_event_details) {
 				// Only the details needed for the Rickies overview
 				$rickies_events__array[$id]['label1'] = $rickies_events__array[$id]['name'];
-				$rickies_events__array[$id]['label3'] = $rickies_events__array[$id]['date_string'];
+				$rickies_events__array[$id]['label3'] =
+					$rickies_events__array[$id]['date_string'] .
+					' • Episode&nbsp;#' .
+					$rickies_events__array[$id]['episode_number'];
 				$rickies_events__array[$id]['url'] = '/' . $rickies_events__array[$id]['url_name'];
 			} else {
 				// Add more details from Airtable to array, to build the detail page

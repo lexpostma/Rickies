@@ -10,6 +10,7 @@ $rickies_events__params = [
 		'Status',
 		'Rickies 1st (manual)',
 		'Predictions episode date',
+		'Predictions episode number',
 		'Predictions episode artwork',
 		'Rickies artwork',
 		'Event artwork',
