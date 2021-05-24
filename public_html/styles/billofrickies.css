@@ -837,3 +837,11 @@ h2.rule_type.hidden.gone,
 aside.slider {
   box-shadow: 0px 1px 4px rgba(84, 52, 4, 0.5);
 }
+
+p.disclaimer {
+  text-align: center;
+  margin: var(--space-side-padding) auto;
+  color: white;
+  font-style: italic;
+  max-width: 650px;
+}

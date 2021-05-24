@@ -83,6 +83,9 @@ if (!isset($error)) {
 
 	</div>
 </main>
+<p class="disclaimer">This is a living document. The One True Copy of <span id="disclaimer_title"><?= $head_custom[
+	'title'
+] ?></span> is in the Connected Google&nbsp;Doc.</p>
 <?= close_button() ?>
 <aside class="slider">
 	<div id="rule_slider">
