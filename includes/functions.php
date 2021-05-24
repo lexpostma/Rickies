@@ -310,3 +310,18 @@ function digit_text($digit)
 		return $digit;
 	}
 }
+
+function digit_placement($digit)
+{
+	$text = [
+		1 => '1st',
+		2 => '2nd',
+		3 => '3rd',
+	];
+
+	if (array_key_exists($digit, $text)) {
+		return $text[$digit];
+	} else {
+		return $digit . 'th';
+	}
+}

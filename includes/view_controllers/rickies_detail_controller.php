@@ -222,10 +222,13 @@ function host_item_bundle($host_event_data, $event_type)
 
 		if ($event_details['rickies']['ranking'] !== false && $event_details['rickies']['ranking'] == 0) {
 			array_push($html_strings['ranking'], '<b class="nowrap">Rickies winner</b> • ' . chairman_url($event_type));
-		} elseif ($event_details['rickies']['ranking'] == 1) {
-			array_push($html_strings['ranking'], '<span class="nowrap">Rickies 2nd place</span>');
-		} elseif ($event_details['rickies']['ranking'] == 2) {
-			array_push($html_strings['ranking'], '<span class="nowrap">Rickies 3rd place</span>');
+		} else {
+			array_push(
+				$html_strings['ranking'],
+				'<span class="nowrap">Rickies ' .
+					digit_placement($event_details['rickies']['ranking'] + 1) .
+					' place</span>'
+			);
 		}
 
 		if ($event_details['flexies']['ranking'] !== false && $event_details['flexies']['ranking'] == 0) {
@@ -234,13 +237,10 @@ function host_item_bundle($host_event_data, $event_type)
 			array_push($html_strings['ranking'], '<span class="nowrap">Flexies loser</span>');
 		}
 
-		if ($event_details['details']['round_robin'] == 0) {
-			array_push($html_strings['ranking'], '<span class="nowrap">Round Robin #1</span>');
-		} elseif ($event_details['details']['round_robin'] == 1) {
-			array_push($html_strings['ranking'], '<span class="nowrap">Round Robin #2</span>');
-		} elseif ($event_details['details']['round_robin'] == 2) {
-			array_push($html_strings['ranking'], '<span class="nowrap">Round Robin #3</span>');
-		}
+		array_push(
+			$html_strings['ranking'],
+			'<span class="nowrap">Picked ' . digit_placement($event_details['details']['round_robin'] + 1) . '</span>'
+		);
 
 		$html_strings['stats'] = [];
 		if ($event_details['rickies']['count'] !== 0) {
