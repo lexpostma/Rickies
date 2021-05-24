@@ -49,16 +49,32 @@ h2.rule_type,
 .rule {
 	max-height: 150px;
 	opacity: 1;
-	transition: $transition_time max-height ease-in, ($transition_time * 0.66) opacity ease-in;
+
+	// transition: $transition_time max-height ease-in, ($transition_time * 0.66) opacity ease-in;
+	transition-property: max-height, opacity;
+	transition-duration: $transition_time, ($transition_time * 0.66);
 	transition-delay: 0ms, ($transition_time * 0.33);
+	transition-timing-function: ease-in;
 	&.hidden {
 		max-height: 0px;
 		opacity: 0;
 		// "duration + delay" should be equal to the JS delay for adding "gone" class
-		transition: $transition_time max-height ease-out, ($transition_time * 0.66) opacity ease-out;
+		transition-timing-function: ease-out;
+		// transition: $transition_time max-height ease-out, ($transition_time * 0.66) opacity ease-out;
 		&.gone {
 			display: none;
 		}
+	}
+}
+span.rule {
+	display: inline-block;
+	white-space: nowrap;
+	max-height: unset;
+	max-width: 320px;
+	transition-property: max-width, opacity;
+	&.hidden {
+		max-height: unset;
+		max-width: 0;
 	}
 }
 

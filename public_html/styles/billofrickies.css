@@ -819,18 +819,32 @@ h2.rule_type,
 .rule {
   max-height: 150px;
   opacity: 1;
-  transition: 750ms max-height ease-in, 495ms opacity ease-in;
+  transition-property: max-height, opacity;
+  transition-duration: 750ms, 495ms;
   transition-delay: 0ms, 247.5ms;
+  transition-timing-function: ease-in;
 }
 h2.rule_type.hidden,
 .rule.hidden {
   max-height: 0px;
   opacity: 0;
-  transition: 750ms max-height ease-out, 495ms opacity ease-out;
+  transition-timing-function: ease-out;
 }
 h2.rule_type.hidden.gone,
 .rule.hidden.gone {
   display: none;
+}
+
+span.rule {
+  display: inline-block;
+  white-space: nowrap;
+  max-height: unset;
+  max-width: 320px;
+  transition-property: max-width, opacity;
+}
+span.rule.hidden {
+  max-height: unset;
+  max-width: 0;
 }
 
 .top_button,
