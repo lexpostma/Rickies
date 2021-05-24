@@ -32,16 +32,25 @@ function current_url($filter = false)
 
 function back_button($location = '/')
 {
-	$middle = 'id="back_button">' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-back.svg');
+	$middle = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-back.svg');
+	$link =
+		'<a href="' .
+		$location .
+		'" title="Go back to Rickies overview" class="back_button top_button">' .
+		$middle .
+		'</a>';
 
 	if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'rickies.co/') !== false) {
 		// Referrer is this website, so back should go back in history to referrer
-		return '<button onclick="window.history.go(-1); return false;" title="Go back to previous page" class="clean top_button" ' .
+		$button =
+			'<button onclick="window.history.go(-1); return false;" title="Go back to previous page" class="back_button clean top_button">' .
 			$middle .
 			'</button>';
+		$button .= '<noscript>' . $link . '</noscript>';
+		return $button;
 	} else {
 		// Referrer is another website, so back should go to Rickies homepage
-		return '<a href="' . $location . '" title="Go back to Rickies overview" class="top_button" ' . $middle . '</a>';
+		return $link;
 	}
 }
 

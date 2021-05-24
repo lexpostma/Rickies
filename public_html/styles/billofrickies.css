@@ -151,7 +151,7 @@ section > p + p {
   transform: scale(1.1);
 }
 
-#back_button {
+.back_button {
   left: 20px;
 }
 
@@ -700,7 +700,7 @@ nav a:active {
   opacity: 1;
 }
 
-#back_button svg path:last-of-type,
+.back_button svg path:last-of-type,
 #share_button svg g {
   fill: var(--document-text-color);
 }
