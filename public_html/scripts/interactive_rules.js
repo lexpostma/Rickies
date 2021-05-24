@@ -106,11 +106,13 @@ document.getElementById('close_button').addEventListener('click', function () {
 		this.classList.remove('show');
 		slider.classList.remove('hide');
 		this.title = 'Open the history slider';
+		this.setAttribute('data-goatcounter-click', 'Open history slider');
 	} else {
 		// Slider is hidden
 		this.classList.add('show');
 		slider.classList.add('hide');
 		this.title = 'Hide the history slider';
+		this.setAttribute('data-goatcounter-click', 'Hide history slider');
 	}
 });
 

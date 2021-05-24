@@ -69,7 +69,7 @@ function music_button()
 function close_button()
 {
 	$output =
-		'<button id="close_button" class="top_button clean" type="button" data-goatcounter-click="Hide slider" title="Hide the history slider" data-goatcounter-referrer="' .
+		'<button id="close_button" class="top_button clean" type="button" data-goatcounter-click="Hide history slider" title="Hide the history slider" data-goatcounter-title="Toggle Bill of Rickies slider" data-goatcounter-referrer="' .
 		current_url() .
 		'">';
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close.svg');
