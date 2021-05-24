@@ -667,6 +667,8 @@ footer button.js_link,
 .banner a.js_link,
 footer a:not(#footer_corner).js_link,
 nav a.js_link {
+  color: white;
+  cursor: pointer;
   opacity: 0.8;
   text-decoration: underline;
 }

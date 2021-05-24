@@ -25,6 +25,8 @@ footer a:not(#footer_corner),
 nav a {
 	font-weight: 500;
 	&.js_link {
+		color: white;
+		cursor: pointer;
 		opacity: 0.8;
 		text-decoration: underline;
 	}

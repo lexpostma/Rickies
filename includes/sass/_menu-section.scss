@@ -71,16 +71,21 @@ $statusbar: var.$iX-top;
 		justify-content: flex-start;
 		align-items: stretch;
 		a {
+			transition: 200ms padding ease-in-out;
 			padding: var(--space-between-md) var(--space-between-sm);
 			white-space: nowrap;
-			span.need_space {
+			span.need_space--xs,
+			span.need_space--sm {
 				display: none;
 			}
 			@media screen and (min-width: var.$break-xs) {
-				padding: var(--space-between-md);
+				span.need_space--xs {
+					display: inline;
+				}
 			}
 			@media screen and (min-width: var.$break-sm) {
-				span.need_space {
+				padding: var(--space-between-md);
+				span.need_space--sm {
 					display: inline;
 				}
 			}
@@ -100,19 +105,8 @@ $statusbar: var.$iX-top;
 	}
 }
 
-.menu_fix svg {
+#menu_top svg {
 	margin-bottom: -2px;
-}
-
-.menu_fix {
-	position: absolute;
-	transition: var.$pop-transition;
-}
-#menu_back {
-	left: -50px;
-}
-#menu_top {
-	right: -50px;
 }
 
 nav.nav_container {
@@ -131,16 +125,6 @@ nav.nav_container {
 		#nav_content {
 			position: fixed;
 			padding-top: $statusbar;
-
-			@media screen and (min-width: var.$break-sm) {
-				overflow-x: hidden;
-				#menu_back {
-					transform: translateX(40px);
-				}
-				#menu_top {
-					transform: translateX(-40px);
-				}
-			}
 		}
 	}
 }

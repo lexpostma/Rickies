@@ -62,40 +62,35 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 	<div id="nav_content">
 		<div class="nav_content--items">
 <? if(array_key_exists('Rickies', $picks_data__array)) {?>
-			<a class="menu_item"
+			<a class="menu_item js_link"
 				id="menu_rickies"
-				href="#rickies"
+
 				data-goatcounter-click="Show Rickies"
 				data-goatcounter-referrer="<?= current_url() ?>"
-				onclick="navigate_section('rickies');">The Rickies</a>
+				onclick="navigate_section('rickies');"><span class="need_space--xs">The </span>Rickies</a>
 <? } if(array_key_exists('Flexies', $picks_data__array)) {?>
-			<a class="menu_item"
+			<a class="menu_item js_link"
 				id="menu_flexies"
-				href="#flexies"
+
 				data-goatcounter-click="Show Flexies"
 				data-goatcounter-referrer="<?= current_url() ?>"
-				onclick="navigate_section('flexies');">The Flexies</a>
+				onclick="navigate_section('flexies');"><span class="need_space--xs">The </span>Flexies</a>
 <? } ?>
-			<a class="menu_item"
+			<a class="menu_item js_link"
 				id="menu_hosts"
-				href="#hosts"
+
 				data-goatcounter-click="Show hosts"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('hosts');">Hosts</a>
-			<a class="menu_item"
+			<a class="menu_item js_link"
 				id="menu_details"
-				href="#details"
 				data-goatcounter-click="Show details"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('details');">Details</a>
-			<a class="menu_item menu_fix"
-				id="menu_back"
-				title="Go back to Rickies overview"
-				href="/"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-back.svg') ?></a>
-			<a class="menu_item menu_fix"
+			<a class="menu_item js_link"
 				id="menu_top"
 				title="Scroll to the top"
-				href="#top"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-top.svg') ?></a>
+				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-top.svg') ?></a>
 		</div>
 	</div>
 </nav>

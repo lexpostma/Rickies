@@ -5,7 +5,7 @@ function get_anchor_from_url() {
 	if (anchor == '' || anchor == 'top') {
 		var menu_items = document.getElementsByClassName('menu_item');
 		var first_item = menu_items[0].id.replace('menu_', '');
-		navigate_section(first_item);
+		navigate_section(first_item, true);
 	} else {
 		navigate_section(anchor);
 	}
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 });
 
 // Show the active menu, hide the others
-function navigate_section(section) {
+function navigate_section(section, first = false) {
 	// Remove the "active" class from all menu items
 	Array.from(document.querySelectorAll('.menu_item')).forEach(function (el) {
 		el.classList.remove('active');
@@ -30,6 +30,11 @@ function navigate_section(section) {
 	var active_section = document.getElementById(section);
 	active_menu.classList.add('active');
 	active_section.classList.add('active');
+
+	if (!first) {
+		location.replace('#' + section);
+		active_section.scrollIntoView();
+	}
 }
 
 // STICKY MENU
