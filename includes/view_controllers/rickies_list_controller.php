@@ -48,7 +48,7 @@ $all_event_details = false;
 
 $hero_tag = '<p>Predictions with risk, flexing, and passion. <br />On Connected at Relay FM.</p>';
 $introduction =
-	'<p>The Rickies are a prediction show on the <a target="_blank" href="' .
+	'<p>The Rickies are a prediction draft show on the <a target="_blank" href="' .
 	$head_defaults['site_connected'] .
 	'" ' .
 	$head_defaults['site_connected_goat'] .
