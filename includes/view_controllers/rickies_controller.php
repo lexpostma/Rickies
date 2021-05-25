@@ -243,7 +243,9 @@ function list_item_bundle($data)
 			$output .=
 				'
 		<div class="section_group--list">
-			<h3>' .
+			<h3 id="' .
+				str_replace(' ', '_', strtolower($value)) .
+				'">' .
 				$value .
 				'</h3>
 			<ul class="list_item_group">';
