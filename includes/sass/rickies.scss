@@ -29,6 +29,22 @@ ul {
 	list-style: none;
 }
 
+ul > li {
+	display: flex;
+	margin: 8px 0;
+	span.emoji {
+		flex-shrink: 0;
+		margin-right: 8px;
+	}
+}
+
+.highlight {
+	padding: var(--space-between-sm) var(--space-between-md);
+	border-radius: var(--corner-radius);
+	margin: var(--space-between-md) auto;
+	border: 1px solid var(--connected-blue);
+}
+
 .top_button {
 	box-shadow: var.$header-shadow;
 }

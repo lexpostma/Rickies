@@ -1285,6 +1285,22 @@ ul {
   list-style: none;
 }
 
+ul > li {
+  display: flex;
+  margin: 8px 0;
+}
+ul > li span.emoji {
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.highlight {
+  padding: var(--space-between-sm) var(--space-between-md);
+  border-radius: var(--corner-radius);
+  margin: var(--space-between-md) auto;
+  border: 1px solid var(--connected-blue);
+}
+
 .top_button {
   box-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
 }
