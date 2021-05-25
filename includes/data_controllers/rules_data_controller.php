@@ -16,13 +16,6 @@ do {
 		// $id = json_decode(json_encode($array), true)["id"];
 		$fields = json_decode(json_encode($array), true)['fields'];
 
-		// if (check_key('Rule type', $fields) == 'Rickies') {
-		// 	$type = 'rickies';
-		// } elseif (check_key('Rule type', $fields) == 'Flexies') {
-		// 	$type = 'rickies';
-		// }else {
-		// 	$type = 'flexies';
-		// }
 		$rules__array[check_key('Rule type', $fields, '')][] = [
 			'id' => check_key('id', $fields),
 			'rule' => a_blank(markdown(check_key('Rule styled', $fields))),
