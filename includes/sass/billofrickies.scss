@@ -83,11 +83,15 @@ aside.slider {
 	box-shadow: 0px 1px 4px rgba(84, 52, 4, 0.5);
 }
 
-p.disclaimer {
+p.bill_footer {
 	text-align: center;
-	margin: var(--space-side-padding) auto;
+	margin: var(--space-side-padding) auto 0;
 	color: white;
 	opacity: 0.3;
 	font-style: italic;
 	max-width: var.$readability-width;
+}
+p#refresh_page button {
+	text-decoration: underline;
+	font-style: normal;
 }

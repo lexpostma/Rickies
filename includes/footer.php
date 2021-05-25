@@ -13,7 +13,3 @@
 		<img src="/images/lex-logo.svg" alt="<?= $head['author'] ?> logo"/>
     </a>
 </footer>
-
-<script>
-	<? echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/standalone.js')?>
-</script>

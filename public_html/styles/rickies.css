@@ -199,8 +199,9 @@ footer {
   font-size: 0.875rem;
   position: relative;
 }
-footer p#refresh_page,
-footer p#promote_webapp {
+
+p#refresh_page,
+p#promote_webapp {
   display: none;
   margin-bottom: var(--space-between-md);
 }

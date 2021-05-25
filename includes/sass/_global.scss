@@ -114,11 +114,11 @@ footer {
 	background: var(--relay-blue);
 	font-size: 0.875rem;
 	position: relative;
-	p#refresh_page,
-	p#promote_webapp {
-		display: none;
-		margin-bottom: var(--space-between-md);
-	}
+}
+p#refresh_page,
+p#promote_webapp {
+	display: none;
+	margin-bottom: var(--space-between-md);
 }
 
 button.clean,
