@@ -18,3 +18,5 @@ Features I plan to add to the website.
 -   [ ] Improve support for coin flips (heads/tails, best of 3, flip for which place, etc).
 -   [ ] Improve support for ties (earlier predictions did not always have winners).
 -   [x] Add web app splash screens.
+
+_See the [changelog](Changelog.md) with everything that’s already implemented._

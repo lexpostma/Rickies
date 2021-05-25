@@ -1,6 +1,6 @@
 # Changelog
 
-Initial release, just in time for the [WWDC21 Keynote Rickies](https://rickies.co/keynote-jun-2021)
+_Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
 #### 25 May 2021
 
@@ -59,6 +59,14 @@ Initial release, just in time for the [WWDC21 Keynote Rickies](https://rickies.c
 -   Add charts to leaderboard
 -   Add Memoji as host avatars
 -   Major styling improvements
+
+#### 27 April 2021
+
+-   Finish initial structure of Rickies detail pages, including:
+    -   Sticky menu
+    -   Prediction data
+    -   Scoring data
+    -   More event details
 
 #### 23 April 2021
 
