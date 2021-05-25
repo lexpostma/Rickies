@@ -77,7 +77,7 @@ if (!isset($error)) {
 		</div>
 		<div class="seal">
 			<img id="ticci_seal"  class="seal" src="/images/viticci-seal-of-quality.png" alt="Viticci Seal of Quality"/>
-			<img id="scroll_seal" class="seal" src="/images/connected-seal.png" alt="Connected classic wax seal"/>
+			<img id="wax_seal" class="seal" src="/images/connected-seal.png" alt="Connected classic wax seal"/>
 		</div>
 
 

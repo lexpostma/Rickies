@@ -111,9 +111,10 @@ main {
 			transform: rotate(9deg);
 			filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.6));
 		}
-		#scroll_seal {
+		#wax_seal {
 			display: none;
 			transform: rotate(-6deg);
+			filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.4));
 		}
 	}
 	&.parchment {
@@ -129,7 +130,7 @@ main {
 		#ticci_seal {
 			display: none;
 		}
-		#scroll_seal {
+		#wax_seal {
 			display: block;
 		}
 	}

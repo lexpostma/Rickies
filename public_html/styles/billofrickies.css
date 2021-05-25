@@ -336,9 +336,10 @@ main .document_footer #ticci_seal {
   transform: rotate(9deg);
   filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.6));
 }
-main .document_footer #scroll_seal {
+main .document_footer #wax_seal {
   display: none;
   transform: rotate(-6deg);
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.4));
 }
 main.parchment .document_footer .signatures {
   border-bottom-color: var(--document-text-color);
@@ -350,7 +351,7 @@ main.parchment .document_footer .signatures img {
 main.parchment #ticci_seal {
   display: none;
 }
-main.parchment #scroll_seal {
+main.parchment #wax_seal {
   display: block;
 }
 
