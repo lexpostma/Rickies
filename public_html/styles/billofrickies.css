@@ -26,7 +26,7 @@
   --graphic-size: 60px;
   --document-background-color: var(--connected-blue);
   --document-text-color: #543404;
-  --document-link-color: #d7a457;
+  --document-link-color: rgba(239, 123, 0, 0.5);
   --rounded-text: ui-rounded, "SF Pro Rounded", ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui,
   	"Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
@@ -382,28 +382,44 @@ main a {
   transition: background 100ms;
   background: rgba(215, 164, 87, 0);
 }
-main a:link, main a:visited {
-  text-decoration-color: var(--document-link-color);
-  color: inherit;
-}
-@media (hover: hover) {
-  main a:hover, main a:focus {
-    text-decoration-color: var(--document-text-color);
-    color: var(--document-text-color);
-    background: var(--document-link-color);
-  }
-  main a:active {
-    text-decoration-color: black;
-    color: black;
-  }
-}
 
 main:not(.parchment) a {
   text-decoration-color: var(--connected-blue);
 }
+main:not(.parchment) a:link, main:not(.parchment) a:visited {
+  text-decoration-color: var(--connected-blue);
+  color: inherit;
+}
+@media (hover: hover) {
+  main:not(.parchment) a:hover, main:not(.parchment) a:focus {
+    text-decoration-color: var(--link-hover-color);
+    color: var(--link-hover-color);
+    background: var(--element-hover-color);
+  }
+}
+main:not(.parchment) a:active {
+  text-decoration-color: var(--link-hover-color);
+  color: var(--link-hover-color);
+  background: var(--element-active-color);
+}
 
 main.parchment a {
   text-decoration-color: var(--document-link-color);
+}
+main.parchment a:link, main.parchment a:visited {
+  text-decoration-color: var(--document-link-color);
+  color: inherit;
+}
+@media (hover: hover) {
+  main.parchment a:hover, main.parchment a:focus {
+    text-decoration-color: var(--document-text-color);
+    color: var(--document-text-color);
+    background: var(--document-link-color);
+  }
+}
+main.parchment a:active {
+  text-decoration-color: black;
+  color: black;
 }
 
 aside.slider {
@@ -862,7 +878,7 @@ p.bill_footer {
   text-align: center;
   margin: var(--space-side-padding) auto 0;
   color: white;
-  opacity: 0.3;
+  opacity: 0.5;
   font-style: italic;
   max-width: 650px;
 }

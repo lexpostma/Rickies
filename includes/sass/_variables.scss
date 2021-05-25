@@ -54,7 +54,7 @@ $break-xxl: 1400px;
 
 	--document-background-color: var(--connected-blue);
 	--document-text-color: #543404;
-	--document-link-color: #d7a457;
+	--document-link-color: rgba(239, 123, 0, 0.5); // #d7a457
 
 	--rounded-text: ui-rounded, 'SF Pro Rounded', ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui,
 		'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';

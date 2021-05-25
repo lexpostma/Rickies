@@ -161,7 +161,31 @@ main a {
 	border-radius: 4px;
 	transition: background 100ms;
 	background: rgba(215, 164, 87, 0);
+}
 
+main:not(.parchment) a {
+	text-decoration-color: var(--connected-blue);
+	&:link,
+	&:visited {
+		text-decoration-color: var(--connected-blue);
+		color: inherit;
+	}
+	@media (hover: hover) {
+		&:hover,
+		&:focus {
+			text-decoration-color: var(--link-hover-color);
+			color: var(--link-hover-color);
+			background: var(--element-hover-color);
+		}
+	}
+	&:active {
+		text-decoration-color: var(--link-hover-color);
+		color: var(--link-hover-color);
+		background: var(--element-active-color);
+	}
+}
+main.parchment a {
+	text-decoration-color: var(--document-link-color);
 	&:link,
 	&:visited {
 		text-decoration-color: var(--document-link-color);
@@ -174,16 +198,9 @@ main a {
 			color: var(--document-text-color);
 			background: var(--document-link-color);
 		}
-		&:active {
-			text-decoration-color: black;
-			color: black;
-		}
 	}
-}
-
-main:not(.parchment) a {
-	text-decoration-color: var(--connected-blue);
-}
-main.parchment a {
-	text-decoration-color: var(--document-link-color);
+	&:active {
+		text-decoration-color: black;
+		color: black;
+	}
 }
