@@ -1,5 +1,14 @@
 {
-  "workspace.color" : 1,
+  "index.ignored_file_patterns" : [
+    "*.css"
+  ],
+  "VineCode.Sass.cssStyle" : "Expanded",
+  "VineCode.Sass.outputPath" : "\/public_html\/styles\/",
+  "VineCode.Sass.sourceMap" : "None",
+  "workspace.art_style" : 1,
+  "workspace.color" : 9,
   "workspace.name" : "Rickies",
-  "workspace.preview_root" : "public_html"
+  "workspace.preview_root" : "\/public_html\/",
+  "workspace.preview_type" : "custom",
+  "workspace.preview_url" : "dev.rickies.co"
 }

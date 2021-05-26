@@ -1,0 +1,53 @@
+@use "variables" as var;
+
+.item_graphic {
+	border-radius: var(--corner-radius);
+	border: var(--graphic-border);
+	width: var(--graphic-size);
+	height: var(--graphic-size);
+	flex-grow: 0;
+	flex-shrink: 0;
+	position: relative;
+	background-repeat: no-repeat;
+	// To extend image behind the transparant border
+	// https://stackoverflow.com/a/24231514
+	background-origin: border-box;
+	background-position: center;
+
+	&.avatar {
+		border-radius: 50%;
+		background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.85) 100%);
+		@media (prefers-color-scheme: dark) {
+			background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.3) 100%);
+		}
+
+		img {
+			width: 120%;
+			height: 120%;
+			object-fit: contain;
+			object-position: center;
+			position: absolute;
+			left: -10%;
+			top: -10%;
+		}
+	}
+	&.annual {
+		color: white;
+		text-align: center;
+		line-height: var(--graphic-size);
+		font-weight: 800;
+		font-size: calc(var(--graphic-size) / 1.8);
+	}
+	&.diagonal {
+		background-color: var(--connected-blue);
+		background-size: cover;
+		background-image: url(/images/diagonal-rainbow-header.svg);
+	}
+	&.fill_image {
+		background-size: cover;
+	}
+	&.placeholder {
+		background-color: var(--relay-blue);
+		@include var.connected_background(60s);
+	}
+}

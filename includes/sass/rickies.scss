@@ -1,0 +1,50 @@
+@use "variables" as var;
+@use "global";
+@use "links";
+@use "special-links";
+@use "header";
+@use "menu-section";
+@use "logo-tag";
+@use "list-graphic";
+@use "list-item";
+@use "pick-item";
+@use "leaderboard";
+
+h3 {
+	margin: 0;
+	font-weight: 600;
+	font-size: 1.25rem;
+}
+h4 {
+	text-transform: uppercase;
+	color: var(--text-secondary-color);
+	font-weight: bold;
+	font-size: 0.875rem;
+	margin: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul#bullet_list > li {
+	display: flex;
+	margin: 8px 0;
+	span.emoji {
+		flex-shrink: 0;
+		margin-right: 8px;
+	}
+}
+
+.highlight {
+	padding: var(--space-between-sm) var(--space-between-md);
+	border-radius: var(--corner-radius);
+	margin: var(--space-between-md) auto;
+	border: 1px solid var(--connected-blue);
+}
+
+.top_button {
+	box-shadow: var.$header-shadow;
+}

@@ -1,0 +1,38 @@
+nav.nav_container {
+  height: auto;
+}
+nav.nav_container #nav_content {
+  position: relative;
+}
+nav.nav_container.sticky #nav_content {
+  position: relative;
+}
+
+section.navigate_with_mobile_menu {
+  display: block;
+}
+section.navigate_with_mobile_menu h2 {
+  display: block;
+}
+
+h2.list_title {
+  color: var(--text-primary-color) !important;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+h2.list_title svg {
+  display: none;
+}
+
+.charts,
+aside.slider,
+button.back_button,
+#share_button,
+#music_button,
+#close_button,
+p#promote_webapp,
+p#refresh_page {
+  display: none;
+}

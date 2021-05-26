@@ -1,0 +1,211 @@
+@use "variables" as var;
+$emoji-font: 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', Times, Symbola, Aegyptus, Code2000, Code2001,
+	Code2002, Musica, emoji, sans-serif;
+
+// Gradient background (aka winner ring) animation
+// Via https://codepen.io/P1N2O/pen/pyBNzX
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.avatar_leaderboard {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	max-width: var.$readability-width;
+	margin: var(--space-between-lg) auto;
+	padding: 0 var(--space-side-padding);
+	.host {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		order: 0;
+		flex-grow: 1;
+		& + .host {
+			margin-left: var(--space-between-sm);
+			@media screen and (min-width: var.$break-sm) {
+				margin-left: var(--space-between-lg);
+			}
+		}
+		.avatar {
+			margin-bottom: 8px;
+			margin: 8px;
+		}
+		span:not(:first-of-type) {
+			margin-top: 4px;
+		}
+		.name {
+			font-weight: bold;
+		}
+		.title {
+			@include var.secondary-text;
+			span.emoji {
+				display: none;
+			}
+		}
+		.string {
+		}
+		&.winner .avatar {
+			margin-top: 0px;
+			margin-bottom: 16px;
+			cursor: pointer;
+			// Winner ring
+			.ring {
+				width: calc(var(--graphic-size) + 16px);
+				height: calc(var(--graphic-size) + 16px);
+				position: absolute;
+				border-radius: 50%;
+				// 8px + the border width
+				top: -9px;
+				left: -9px;
+				mask-image: url('/images/circle.svg');
+				-webkit-mask-image: url('/images/circle.svg');
+				mask-repeat: no-repeat;
+				-webkit-mask-repeat: no-repeat;
+				mask-size: calc(var(--graphic-size) + 16px);
+				-webkit-mask-size: calc(var(--graphic-size) + 16px);
+
+				background-color: var(--connected-orange);
+				background-image: linear-gradient(
+					-45deg,
+					var(--connected-purple),
+					var(--connected-blue),
+					var(--connected-green),
+					var(--connected-yellow),
+					var(--connected-orange),
+					var(--connected-red),
+					var(--connected-purple),
+					var(--connected-blue),
+					var(--connected-green),
+					var(--connected-yellow)
+				);
+				background-size: 500% 500%;
+				animation: linear;
+				animation-name: gradient;
+				animation-duration: 20s;
+				animation-iteration-count: infinite;
+				// transform: scale(1);
+			}
+			@media (hover: hover) {
+				.ring,
+				img {
+					transition: var.$pop-transition;
+				}
+				&:hover {
+					.ring {
+						transform: scale(1.1);
+					}
+					img {
+						transform: scale(1.4) rotate(-10deg);
+					}
+				}
+			}
+			&:active {
+				.ring,
+				img {
+					transform: scale(0.95);
+				}
+			}
+		}
+	}
+}
+.host_stats {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	.host_item_content {
+		margin-left: var(--space-between-md);
+		margin-top: 6px;
+		span.emoji {
+			font-family: $emoji-font;
+			font-variant-emoji: emoji;
+			display: inline-block;
+			width: 1.6em;
+		}
+		h4 {
+			margin-top: var(--space-between-md);
+		}
+		h3 + p {
+			@include var.secondary-text;
+		}
+	}
+}
+@media screen and (min-width: var.$break-md) and (max-width: var.$break-lg) {
+	.host_stats {
+		flex-direction: column;
+		// align-items: center;
+		.host_item_content {
+			margin-left: 0;
+			// h3,
+			// h3 + p {
+			// 	text-align: center;
+			// }
+		}
+	}
+}
+
+table.full_stats {
+	border-collapse: collapse;
+	border: none;
+	td {
+		vertical-align: top;
+	}
+	td.value {
+		font-weight: bold;
+		padding-right: 4px;
+		font-variant-numeric: tabular-nums;
+	}
+}
+
+.charts {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	margin: 8px 0;
+	flex-wrap: wrap;
+	.chart_pick_type {
+		position: relative;
+		.chart_emoji {
+			font-family: $emoji-font;
+			font-variant-emoji: emoji;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 16px;
+			text-align: center;
+		}
+		.chart_label {
+			@include var.secondary-text;
+			text-align: center;
+			display: block;
+			margin-top: 4px;
+		}
+	}
+	.chart_pick_type + .chart_pick_type {
+		margin-left: var(--space-between-md);
+	}
+
+	.chart-container {
+		position: relative;
+		height: 60px;
+		width: 60px;
+	}
+	@media screen and (min-width: var.$break-xxl) {
+		.chart_pick_type .chart_emoji {
+			top: 25px;
+		}
+		.chart-container {
+			height: 80px;
+			width: 80px;
+		}
+	}
+}

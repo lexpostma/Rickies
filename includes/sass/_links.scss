@@ -1,0 +1,50 @@
+@use "variables" as var;
+
+// Regular links
+a {
+	&:link,
+	&:visited {
+		color: var(--link-color);
+	}
+	@media (hover: hover) {
+		&:hover {
+			color: var(--link-hover-color);
+		}
+	}
+
+	&:focus,
+	&:active {
+		color: var(--link-hover-color);
+	}
+}
+
+// Links on colored/dark background
+footer button,
+.banner a,
+footer a:not(#footer_corner),
+nav a {
+	font-weight: 500;
+	&.js_link {
+		color: white;
+		cursor: pointer;
+		opacity: 0.8;
+		text-decoration: underline;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	&:link,
+	&:visited {
+		color: white;
+		opacity: 0.8;
+	}
+	@media (hover: hover) {
+		&:hover {
+			opacity: 1;
+		}
+	}
+	&:focus,
+	&:active {
+		opacity: 1;
+	}
+}

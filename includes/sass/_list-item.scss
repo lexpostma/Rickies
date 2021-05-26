@@ -1,0 +1,143 @@
+@use "variables" as var;
+
+ul.list_item_group {
+	margin-left: var(--element-padding-neg);
+	margin-right: var(--element-padding-neg);
+}
+li.list_item + li.list_item {
+	margin-top: var(--space-between-sm);
+}
+
+li.list_item {
+	.list_item_content {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		padding: var(--element-padding);
+		width: 100%;
+
+		.list_item_labels {
+			margin-left: var(--space-between-md);
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			flex-grow: 1;
+			width: 100%;
+			min-height: var(--graphic-size);
+			justify-content: center;
+			.secondary_string {
+				margin-top: 4px;
+				@include var.secondary-text;
+				.tag {
+					margin-right: 8px;
+					color: white;
+				}
+			}
+			.label2 + .secondary_string {
+				margin-top: 2px;
+			}
+		}
+	}
+	&.host_details .list_item_content {
+		align-items: flex-start;
+		.list_item_labels {
+			margin-top: 8px;
+			.ranking {
+				@include var.secondary-text;
+			}
+			.mini_stats {
+				display: flex;
+				flex-direction: row;
+				align-items: flex-start;
+				margin-top: 8px;
+				width: 100%;
+				.mini_stats--list {
+					width: 100%;
+					max-width: 200px;
+					& + .mini_stats--list {
+						margin-left: 8px;
+					}
+				}
+			}
+		}
+		@media screen and (min-width: var.$break-md) {
+			flex-direction: column;
+			.list_item_labels {
+				margin-left: 0;
+			}
+		}
+	}
+	a.list_item_content {
+		text-decoration: none;
+		font-weight: normal;
+		.list_item_labels {
+			.label1 {
+				font-weight: 500;
+				text-decoration: underline;
+			}
+			.label2 {
+				color: var(--text-primary-color);
+			}
+		}
+		border-radius: var(--element-corner-radius);
+		background: var(--element-neutral-color);
+		transition: var.$hover-duration background ease-in-out;
+		.item_graphic {
+			transition: var.$pop-transition;
+		}
+		@media (hover: hover) {
+			&:hover {
+				background: var(--element-hover-color);
+				.item_graphic {
+					transform: scale(1.1);
+				}
+			}
+		}
+		&:active {
+			background: var(--element-active-color);
+			transition: none;
+			.item_graphic {
+				transform: scale(0.95);
+			}
+		}
+	}
+	a[href^="https://github.com"],
+	a[href^="https://twitter.com"],
+	a[href^="https://www.youtube.com"]
+	{
+		.secondary_string:before {
+			display: inline-block;
+			margin-right: 0.3em;
+			transform: translate(0px, 1px);
+			// transition: var.$pop-transition;
+			// opacity: 0.7;
+			// transform: translate(0px, 1px);
+		}
+	}
+	a[href^="https://www.youtube.com"]
+	{
+		.secondary_string:before {
+			content: url('/images/youtube.svg');
+		}
+	}
+	a[href^="https://twitter.com"]
+	{
+		.secondary_string:before {
+			content: url('/images/twitter.svg');
+		}
+	}
+	a[href^="https://github.com"]
+	{
+		.secondary_string:before {
+			content: url('/images/github.svg');
+		}
+	}
+}
+
+span.tag {
+	color: #fff;
+	background: var(--tag-color);
+	padding: 0px 4px;
+	border-radius: var(--corner-radius);
+	border: var(--graphic-border);
+}

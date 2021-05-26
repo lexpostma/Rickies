@@ -1,0 +1,225 @@
+@use "variables" as var;
+
+h1 {
+	font-weight: 800;
+	font-size: 2rem;
+	line-height: 1;
+	margin: 0;
+}
+
+header {
+	position: relative;
+	text-align: center;
+	padding: var(--space-between-lg);
+	padding-top: calc(var(--space-between-lg) + #{var.$iX-top});
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	&.home {
+		background-image: linear-gradient(
+				to bottom,
+				hsla(0, 0%, 100%, 0.3) 0%,
+				hsla(0, 0%, 100%, 0.306) 8.1%,
+				hsla(0, 0%, 100%, 0.324) 15.5%,
+				hsla(0, 0%, 100%, 0.352) 22.5%,
+				hsla(0, 0%, 100%, 0.388) 29%,
+				hsla(0, 0%, 100%, 0.43) 35.3%,
+				hsla(0, 0%, 100%, 0.476) 41.2%,
+				hsla(0, 0%, 100%, 0.525) 47.1%,
+				hsla(0, 0%, 100%, 0.575) 52.9%,
+				hsla(0, 0%, 100%, 0.624) 58.8%,
+				hsla(0, 0%, 100%, 0.67) 64.7%,
+				hsla(0, 0%, 100%, 0.712) 71%,
+				hsla(0, 0%, 100%, 0.748) 77.5%,
+				hsla(0, 0%, 100%, 0.776) 84.5%,
+				hsla(0, 0%, 100%, 0.794) 91.9%,
+				hsla(0, 0%, 100%, 0.8) 100%
+			),
+			url('/images/confetti.svg');
+		@media (prefers-color-scheme: dark) {
+			color: white;
+			background-image: linear-gradient(
+					to bottom,
+					hsla(205.71, 17.07%, 24.12%, 0.3) 0%,
+					hsla(205.71, 17.07%, 24.12%, 0.306) 8.1%,
+					hsla(205.71, 17.07%, 24.12%, 0.324) 15.5%,
+					hsla(205.71, 17.07%, 24.12%, 0.352) 22.5%,
+					hsla(205.71, 17.07%, 24.12%, 0.388) 29%,
+					hsla(205.71, 17.07%, 24.12%, 0.43) 35.3%,
+					hsla(205.71, 17.07%, 24.12%, 0.476) 41.2%,
+					hsla(205.71, 17.07%, 24.12%, 0.525) 47.1%,
+					hsla(205.71, 17.07%, 24.12%, 0.575) 52.9%,
+					hsla(205.71, 17.07%, 24.12%, 0.624) 58.8%,
+					hsla(205.71, 17.07%, 24.12%, 0.67) 64.7%,
+					hsla(205.71, 17.07%, 24.12%, 0.712) 71%,
+					hsla(205.71, 17.07%, 24.12%, 0.748) 77.5%,
+					hsla(205.71, 17.07%, 24.12%, 0.776) 84.5%,
+					hsla(205.71, 17.07%, 24.12%, 0.794) 91.9%,
+					hsla(205.71, 17.07%, 24.12%, 0.8) 100%
+				),
+				url('/images/confetti.svg');
+		}
+		padding: 48px var(--space-side-padding);
+		padding-top: calc(48px + #{var.$iX-top});
+		@media screen and (min-width: var.$break-lg) {
+			padding-top: 64px;
+			padding-bottom: 64px;
+		}
+		.hero_content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			img.trophy {
+				width: 128px;
+				transition: var.$pop-transition;
+				@media (hover: hover) {
+					cursor: pointer;
+					&:hover {
+						transform: scale(1.05);
+					}
+				}
+				&:active {
+					transform: scale(0.95);
+				}
+			}
+			img.trophy--dark {
+				display: none;
+			}
+			@media (prefers-color-scheme: dark) {
+				img.trophy--dark {
+					display: block;
+				}
+				img.trophy--light {
+					display: none;
+				}
+			}
+			h1 {
+				margin-bottom: 4px;
+			}
+			@media screen and (min-width: var.$break-lg) {
+				flex-direction: row;
+				justify-content: center;
+
+				img.trophy {
+					width: 200px;
+					margin-bottom: -48px;
+					margin-right: var(--space-between-lg);
+				}
+				.hero_heading {
+					text-align: left;
+				}
+			}
+		}
+	}
+	&.about,
+	&.details,
+	&.leaderboard {
+		h1 {
+			text-transform: uppercase;
+			position: absolute;
+			z-index: 2;
+			color: white;
+			left: var(--space-between-lg);
+			right: var(--space-between-lg);
+			bottom: var(--space-between-lg);
+			text-shadow: var.$header-shadow;
+		}
+	}
+	&.details {
+		height: 100vw;
+		max-height: 375px;
+		max-height: calc(375px + #{var.$iX-top});
+	}
+	&.about,
+	&.details {
+		background-color: var(--connected-blue);
+		background-size: cover;
+		background-image: url(/images/diagonal-rainbow-header.svg);
+
+		// Relay blue gradient over the diagonal Connected colors
+		.gradient {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background-image: linear-gradient(
+				to bottom,
+				hsla(205.71, 17.07%, 24.12%, 0) 0%,
+				hsla(205.71, 17.07%, 24.12%, 0.003) 18.7%,
+				hsla(205.71, 17.07%, 24.12%, 0.01) 34.9%,
+				hsla(205.71, 17.07%, 24.12%, 0.021) 48.8%,
+				hsla(205.71, 17.07%, 24.12%, 0.035) 60.6%,
+				hsla(205.71, 17.07%, 24.12%, 0.052) 70.4%,
+				hsla(205.71, 17.07%, 24.12%, 0.07) 78.4%,
+				hsla(205.71, 17.07%, 24.12%, 0.09) 84.8%,
+				hsla(205.71, 17.07%, 24.12%, 0.11) 89.8%,
+				hsla(205.71, 17.07%, 24.12%, 0.13) 93.6%,
+				hsla(205.71, 17.07%, 24.12%, 0.148) 96.3%,
+				hsla(205.71, 17.07%, 24.12%, 0.165) 98.1%,
+				hsla(205.71, 17.07%, 24.12%, 0.179) 99.2%,
+				hsla(205.71, 17.07%, 24.12%, 0.19) 99.8%,
+				hsla(205.71, 17.07%, 24.12%, 0.197) 100%,
+				hsla(205.71, 17.07%, 24.12%, 0.2) 100%
+			);
+
+			@media (prefers-color-scheme: dark) {
+				background-image: linear-gradient(
+					to bottom,
+					hsla(205.71, 17.07%, 24.12%, 0) 0%,
+					hsla(205.71, 17.07%, 24.12%, 0.008) 11.1%,
+					hsla(205.71, 17.07%, 24.12%, 0.029) 21%,
+					hsla(205.71, 17.07%, 24.12%, 0.062) 29.8%,
+					hsla(205.71, 17.07%, 24.12%, 0.105) 37.6%,
+					hsla(205.71, 17.07%, 24.12%, 0.156) 44.6%,
+					hsla(205.71, 17.07%, 24.12%, 0.211) 50.9%,
+					hsla(205.71, 17.07%, 24.12%, 0.27) 56.7%,
+					hsla(205.71, 17.07%, 24.12%, 0.33) 62%,
+					hsla(205.71, 17.07%, 24.12%, 0.389) 67.1%,
+					hsla(205.71, 17.07%, 24.12%, 0.444) 72.1%,
+					hsla(205.71, 17.07%, 24.12%, 0.495) 77.1%,
+					hsla(205.71, 17.07%, 24.12%, 0.538) 82.2%,
+					hsla(205.71, 17.07%, 24.12%, 0.571) 87.7%,
+					hsla(205.71, 17.07%, 24.12%, 0.592) 93.5%,
+					hsla(205.71, 17.07%, 24.12%, 0.6) 100%
+				);
+			}
+		}
+		.big_year {
+			color: rgba(255, 255, 255, 0.8);
+			font-weight: 900;
+			font-size: 100px;
+			margin-top: 30px;
+			@media screen and (min-width: var.$break-xs) {
+				margin-top: 40px;
+				font-size: 120px;
+			}
+			@media screen and (min-width: var.$break-md) {
+				font-size: 180px;
+				margin-top: 0;
+			}
+			pointer-events: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			text-shadow: 0px 2px 8px rgba(51, 63, 72, 0.1);
+		}
+		&.custom.color {
+			background-size: auto 100%;
+		}
+		&.contain_img img {
+			height: 80%;
+			filter: drop-shadow(var.$header-shadow);
+			border-radius: var(--corner-radius);
+		}
+	}
+	&.leaderboard {
+		background-image: url(/images/connected-map.png);
+	}
+	&.about,
+	&.leaderboard {
+		height: 100vw;
+		max-height: 300px;
+		max-height: calc(300px + #{var.$iX-top});
+	}
+}

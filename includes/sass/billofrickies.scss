@@ -1,0 +1,97 @@
+@use "variables" as var;
+@use "global";
+@use "rule-document";
+@use "rule-slider";
+@use "links";
+@use "buttons";
+
+@font-face {
+	font-family: 'BlackChancery';
+	src: url('/fonts/BlackChancery.eot');
+	src: url('/fonts/BlackChancery.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/BlackChancery.woff2') format('woff2'), url('/fonts/BlackChancery.woff') format('woff'),
+		url('/fonts/BlackChancery.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+html {
+	line-height: 1.5;
+	background-color: var(--document-background-color);
+}
+
+.container {
+	padding: var(--space-between-sm) var(--space-between-sm) 128px var(--space-between-sm);
+	padding-top: calc(#{var.$iX-top} + var(--space-between-sm));
+	padding-bottom: calc(#{var.$iX-bottom} + 128px);
+	transition: 100ms padding ease-in-out;
+	@media screen and (min-width: var.$break-md) {
+		padding-top: var(--space-side-padding);
+		padding-top: calc(#{var.$iX-top} + var(--space-side-padding));
+	}
+	&:after {
+		background: #fff;
+		@media (prefers-color-scheme: dark) {
+			background: black;
+		}
+	}
+}
+
+.banner {
+	margin-left: calc(-1 * var(--space-between-sm));
+	margin-right: calc(-1 * var(--space-between-sm));
+	margin-bottom: var(--space-between-sm);
+}
+
+$transition_time: 750ms;
+h2.rule_type,
+.rule {
+	max-height: 150px;
+	opacity: 1;
+
+	// transition: $transition_time max-height ease-in, ($transition_time * 0.66) opacity ease-in;
+	transition-property: max-height, opacity;
+	transition-duration: $transition_time, ($transition_time * 0.66);
+	transition-delay: 0ms, ($transition_time * 0.33);
+	transition-timing-function: ease-in;
+	&.hidden {
+		max-height: 0px;
+		opacity: 0;
+		// "duration + delay" should be equal to the JS delay for adding "gone" class
+		transition-timing-function: ease-out;
+		// transition: $transition_time max-height ease-out, ($transition_time * 0.66) opacity ease-out;
+		&.gone {
+			display: none;
+		}
+	}
+}
+span.rule {
+	display: inline-block;
+	white-space: nowrap;
+	max-height: unset;
+	max-width: 320px;
+	transition-property: max-width, opacity;
+	&.hidden {
+		max-height: unset;
+		max-width: 0;
+	}
+}
+
+.top_button,
+aside.slider {
+	box-shadow: 0px 1px 4px rgba(84, 52, 4, 0.5);
+}
+
+p.bill_footer {
+	text-align: center;
+	margin: var(--space-side-padding) auto 0;
+	color: white;
+	opacity: 0.5;
+	font-style: italic;
+	max-width: var.$readability-width;
+}
+p#refresh_page button {
+	text-decoration: underline;
+	font-style: normal;
+}

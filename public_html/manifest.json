@@ -1,0 +1,90 @@
+{
+	"short_name": "Rickies",
+	"name": "Rickies",
+	"icons": [
+		{
+			"src": "/images/app-icons-29x29.png",
+			"type": "image/png",
+			"sizes": "29x29"
+		},
+		{
+			"src": "/images/app-icons-58x58.png",
+			"type": "image/png",
+			"sizes": "58x58"
+		},
+		{
+			"src": "/images/app-icons-60x60.png",
+			"type": "image/png",
+			"sizes": "60x60"
+		},
+		{
+			"src": "/images/app-icons-76x76.png",
+			"type": "image/png",
+			"sizes": "76x76"
+		},
+		{
+			"src": "/images/app-icons-80x80.png",
+			"type": "image/png",
+			"sizes": "80x80"
+		},
+		{
+			"src": "/images/app-icons-87x87.png",
+			"type": "image/png",
+			"sizes": "87x87"
+		},
+		{
+			"src": "/images/app-icons-120x120.png",
+			"type": "image/png",
+			"sizes": "120x120"
+		},
+		{
+			"src": "/images/app-icons-152x152.png",
+			"type": "image/png",
+			"sizes": "152x152"
+		},
+		{
+			"src": "/images/app-icons-167x167.png",
+			"type": "image/png",
+			"sizes": "167x167"
+		},
+		{
+			"src": "/images/app-icons-180x180.png",
+			"type": "image/png",
+			"sizes": "180x180"
+		},
+		{
+			"src": "/images/app-icons-192x192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/images/app-icons-512x512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		},
+		{
+			"src": "/images/app-icons.png",
+			"type": "image/png",
+			"sizes": "1024x1024"
+		}
+	],
+	"start_url": "/",
+	"background_color": "#333f48",
+	"display": "standalone",
+	"scope": "/",
+	"shortcuts": [
+		{
+			"name": "The Bill of Rickies",
+			"url": "/billof"
+		},
+		{
+			"name": "Host Leaderboard",
+			"url": "/leaderboard"
+		},
+		{
+			"name": "About Rickies.co",
+			"url": "/about"
+		}
+	],
+	"theme_color": "#0d87ca"
+}

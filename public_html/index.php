@@ -1,37 +1,45 @@
+<?php
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../includes/functions.php';
+
+// Define Airtable integration
+include $incl_path . 'airtable/Airtable.php';
+include $incl_path . 'airtable/Request.php';
+include $incl_path . 'airtable/Response.php';
+use TANIOS\Airtable\Airtable;
+
+$airtable = new Airtable([
+	'api_key' => getenv('AIRTABLE_API'),
+	'base' => getenv('AIRTABLE_BASE'),
+]);
+
+// Is "billof" a URL parameter?
+if ((isset($_GET['sub']) && $_GET['sub'] == 'billof') || $url_view == 'billof') {
+	// Does the URL include "thebillof" for The Bill of Rickies?
+	$focus_site = 'billofrickies';
+} else {
+	// Default "rickies"
+	$focus_site = 'rickies';
+}
+
+// Include the controller of get all the data before the HTML begins
+include $incl_path . 'view_controllers/' . $focus_site . '_controller.php';
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 	<head>
-		<title>The Rickies</title>
-		<style>
-			*, *:before, *:after {
-				-webkit-box-sizing: border-box;
-				   -moz-box-sizing: border-box;
-						box-sizing: border-box;
-			}
-			
-			html {
-				font-family: sans-serif;
-				color: #EEE;
-				background: #2e2e2e;
-				text-align: center;
-				width: 100%;
-				height: 100%;
-				line-height: 1.5;
-			}
-			
-			body {
-				max-width: 500px;
-				width: 100%;
-				margin: 50px auto 0;
-				padding: 20px;
-			}
-			a {
-				color: white;
-			}
-		</style>
+		<? include($incl_path.'head.php'); ?>
 	</head>
 	<body>
-		<h1>The Rickies</h1>
-		<p>Hello world! Fan-art website for The Rickies coming soon-ish. Just setting everything up. Enjoy the <a href="https://relay.fm/connected">Connected</a> podcast on Relay FM</p>
+		<div id="top" class="container">
+		<?php
+  include $include_body;
+  echo '<script>' .
+  	file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/share_button.js') .
+  	file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/standalone.js') .
+  	'</script>';
+  ?>
+		</div>
 	</body>
 </html>

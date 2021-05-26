@@ -1,0 +1,42 @@
+// Make the menu not sticky and show all sections at once
+nav.nav_container {
+	height: auto;
+	#nav_content {
+		position: relative;
+	}
+	&.sticky {
+		#nav_content {
+			position: relative;
+		}
+	}
+}
+
+section.navigate_with_mobile_menu {
+	display: block;
+	h2 {
+		display: block;
+	}
+}
+
+h2.list_title {
+	color: var(--text-primary-color) !important;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	pointer-events: none;
+	svg {
+		display: none;
+	}
+}
+
+// Hide the charts elements if there's no JS to make them
+.charts,
+aside.slider,
+button.back_button,
+#share_button,
+#music_button,
+#close_button,
+p#promote_webapp,
+p#refresh_page {
+	display: none;
+}
