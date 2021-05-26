@@ -193,6 +193,10 @@ section {
 			display: none;
 		}
 	}
+	&#list {
+		margin-top: 0;
+		padding-top: var(--space-between-lg);
+	}
 }
 h2 {
 	margin-top: 0;

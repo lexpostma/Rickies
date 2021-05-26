@@ -651,6 +651,10 @@ section.navigate_with_mobile_menu.active {
 section.navigate_with_mobile_menu h2 {
   display: none;
 }
+section#list {
+  margin-top: 0;
+  padding-top: var(--space-between-lg);
+}
 
 h2 {
   margin-top: 0;
