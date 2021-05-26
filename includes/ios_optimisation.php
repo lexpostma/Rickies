@@ -99,9 +99,14 @@ $splashScreenSizes = [
 		'height' => '1080',
 		'ratio' => '2',
 	],
-	'iPad Pro 10.5' => [
+	'iPad Pro 10.5, iPad Air 3rd' => [
 		'width' => '834',
 		'height' => '1112',
+		'ratio' => '2',
+	],
+	'iPad Air 4th' => [
+		'width' => '820',
+		'height' => '1180',
 		'ratio' => '2',
 	],
 	'iPad Pro 11' => [
