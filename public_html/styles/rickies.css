@@ -158,6 +158,7 @@ section > p + p {
 }
 
 #share_button {
+  display: none;
   right: 20px;
 }
 

@@ -16,20 +16,10 @@ function open_share_sheet() {
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
-	// Hide elements to trigger the share sheet, of share sheet is not supported by user-agent
-	if (!navigator.share) {
-		Array.from(document.getElementsByClassName('offer_sheet')).forEach(function (el) {
-			el.style.display = 'none';
-		});
-	}
+	if (window.navigator.standalone == true && document.getElementById('share_button') && navigator.canShare) {
+		// Web app is on the home screen,
+		// show share button since there's no browser UI
 
-	if (window.navigator.standalone == true) {
-		// Web app is on the home screen
-	} else {
-		// Not added to home screen, hide share button since it's in the browser
-		if (document.getElementById('share_button')) {
-			document.getElementById('share_button').style.display = 'none';
-		}
+		document.getElementById('share_button').style.display = 'block';
 	}
-	console.log(navigator.canShare);
 });
