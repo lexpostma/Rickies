@@ -80,7 +80,7 @@ li.list_item {
 			}
 		}
 		border-radius: var(--element-corner-radius);
-		background: var(--background-color);
+		background: var(--element-neutral-color);
 		transition: var.$hover-duration background ease-in-out;
 		.item_graphic {
 			transition: var.$pop-transition;

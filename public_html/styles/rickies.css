@@ -16,6 +16,7 @@
   --text-secondary-color: #5e6d7a;
   --link-color: #106dc6;
   --link-hover-color: #23527c;
+  --element-neutral-color: rgba(0, 0, 0, 0);
   --element-hover-color: rgba(0, 0, 0, 0.05);
   --element-active-color: rgba(13, 135, 202, 0.1);
   --element-corner-radius: 8px;
@@ -56,6 +57,7 @@
     --link-color: var(--connected-blue);
     --link-hover-color: #33adf1;
     --graphic-border: 1px solid rgba(255, 255, 255, 0.25);
+    --element-neutral-color: rgba(255, 255, 255, 0);
     --element-hover-color: rgba(255, 255, 255, 0.1);
     --element-active-color: rgba(13, 135, 202, 0.3);
     --document-background-color: var(--relay-blue);
@@ -915,7 +917,7 @@ li.list_item a.list_item_content {
   text-decoration: none;
   font-weight: normal;
   border-radius: var(--element-corner-radius);
-  background: var(--background-color);
+  background: var(--element-neutral-color);
   transition: 300ms background ease-in-out;
 }
 li.list_item a.list_item_content .list_item_labels .label1 {
@@ -1053,7 +1055,7 @@ li.pick_item .note p {
 }
 li.pick_item.interactive {
   cursor: pointer;
-  background: var(--background-color);
+  background: var(--element-neutral-color);
   border-radius: var(--element-corner-radius);
   transition: 300ms background ease-in-out;
 }

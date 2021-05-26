@@ -41,6 +41,7 @@ $break-xxl: 1400px;
 	--link-color: #106dc6;
 	--link-hover-color: #23527c;
 
+	--element-neutral-color: rgba(0, 0, 0, 0);
 	--element-hover-color: rgba(0, 0, 0, 0.05);
 	--element-active-color: rgba(13, 135, 202, 0.1);
 	--element-corner-radius: 8px;
@@ -58,6 +59,22 @@ $break-xxl: 1400px;
 
 	--rounded-text: ui-rounded, 'SF Pro Rounded', ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui,
 		'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-color: #000000;
+		--text-primary-color: #9baec1;
+		--text-secondary-color: #637c96;
+		--link-color: var(--connected-blue);
+		--link-hover-color: #33adf1;
+		--graphic-border: 1px solid rgba(255, 255, 255, 0.25);
+
+		--element-neutral-color: rgba(255, 255, 255, 0);
+		--element-hover-color: rgba(255, 255, 255, 0.1);
+		--element-active-color: rgba(13, 135, 202, 0.3);
+		--document-background-color: var(--relay-blue);
+	}
 }
 @media screen and (min-width: $break-sm) {
 	:root {
@@ -90,20 +107,6 @@ $break-xxl: 1400px;
 @media screen and (min-height: $break-xxl) {
 }
 @media (hover: hover) {
-}
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background-color: #000000;
-		--text-primary-color: #9baec1;
-		--text-secondary-color: #637c96;
-		--link-color: var(--connected-blue);
-		--link-hover-color: #33adf1;
-		--graphic-border: 1px solid rgba(255, 255, 255, 0.25);
-
-		--element-hover-color: rgba(255, 255, 255, 0.1);
-		--element-active-color: rgba(13, 135, 202, 0.3);
-		--document-background-color: var(--relay-blue);
-	}
 }
 
 @mixin secondary-text {

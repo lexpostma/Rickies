@@ -94,7 +94,7 @@ li.pick_item {
 	}
 	&.interactive {
 		cursor: pointer;
-		background: var(--background-color);
+		background: var(--element-neutral-color);
 		border-radius: var(--element-corner-radius);
 		transition: var.$hover-duration background ease-in-out;
 		+ .interactive {
