@@ -916,7 +916,6 @@ li.list_item a.list_item_content {
   font-weight: normal;
   border-radius: var(--element-corner-radius);
   background: var(--background-color);
-  transition: 300ms background ease-in-out;
 }
 li.list_item a.list_item_content .list_item_labels .label1 {
   font-weight: 500;
@@ -1055,7 +1054,6 @@ li.pick_item.interactive {
   cursor: pointer;
   background: var(--background-color);
   border-radius: var(--element-corner-radius);
-  transition: 300ms background ease-in-out;
 }
 li.pick_item.interactive + .interactive {
   margin-top: 2px;
