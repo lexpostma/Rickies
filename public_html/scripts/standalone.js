@@ -8,7 +8,9 @@ function promote_standalone() {
 		document.getElementById('refresh_page').style.display = 'block';
 	} else if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('iPad') != -1) {
 		// Not added to home screen, promote web app for iOS
-		document.getElementById('promote_webapp').style.display = 'block';
+		if (document.getElementById('promote_webapp')) {
+			document.getElementById('promote_webapp').style.display = 'block';
+		}
 		// Can be overwritten by lack of share sheet support of user-agent
 		// See /scripts/share_button.js
 	} else {
