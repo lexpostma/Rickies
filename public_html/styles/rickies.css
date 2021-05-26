@@ -831,7 +831,7 @@ section h2,
 .item_graphic.diagonal {
   background-color: var(--connected-blue);
   background-size: cover;
-  background-image: url(/images/diagonal-rainbow-header.svg);
+  background-image: url(/images/diagonal-rainbow.png);
 }
 .item_graphic.fill_image {
   background-size: cover;
