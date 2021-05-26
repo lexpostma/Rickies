@@ -31,4 +31,5 @@ document.addEventListener('DOMContentLoaded', function (event) {
 			document.getElementById('share_button').style.display = 'none';
 		}
 	}
+	console.log(navigator.canShare);
 });
