@@ -55,8 +55,8 @@ On Connected at Relay FM.',
 if ($environment == 'production') {
 	$head_defaults['site_goatcounter'] = 'https://rickies.goatcounter.com';
 	$github = 'main';
-	// TODO: use z for day, or w for week when going live
-	$refresh = date('s');
+	// NOTE: update for new releases
+	$refresh = 'v1.0';
 } else {
 	$head_defaults['site_goatcounter'] = 'https://rickies-test.goatcounter.com';
 	$github = 'development';
