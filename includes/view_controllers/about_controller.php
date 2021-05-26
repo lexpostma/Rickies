@@ -98,15 +98,15 @@ $resources = [
 		],
 	],
 	[
-		'label1' => 'Upgradies',
-		'label2' => 'Annual awards of Upgrade podcast',
+		'label1' => 'Upgradies Hall of Fame',
+		'label2' => 'Annual awards of the Upgrade podcast',
 		'label3' => 'By Zach Knox',
 		'url' => 'https://upgradies.com',
 		'img_url' => '/images/about/upgradies.jpg',
 	],
 	[
 		'label1' => 'Upgrade Draft interactive scorecards',
-		'label2' => 'Predictions of Upgrade podcast',
+		'label2' => 'Predictions draft of the Upgrade podcast',
 		'label3' => 'By Zach Knox',
 		'url' => 'https://zachknox.com/bingo/drafts/',
 		'img_url' => '/images/about/upgrade-draft.jpg',
