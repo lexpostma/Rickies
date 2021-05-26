@@ -32,8 +32,8 @@ $event_slider_js_array = [];
 $index = 0;
 foreach ($rickies_events__array as $event) {
 	$event_slider_js_array['date'][] = $event['date'];
-	$event_slider_js_array['name'][] = $event['name'];
 	$event_slider_js_array['url'][] = $event['url_name'];
+	$event_slider_js_array['name'][] = '<a href="' . '/' . $event['url_name'] . '">' . $event['name'] . '</a>';
 	$event_slider_js_array['date_string'][] =
 		'<a href="' . '/' . $event['url_name'] . '">' . $event['date_string'] . '</a>';
 

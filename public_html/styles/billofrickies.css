@@ -428,6 +428,9 @@ aside.slider {
   left: 0;
   right: 0;
   background: #fff;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 aside.slider #rule_slider {
   padding: 8px 24px 24px;
@@ -435,15 +438,11 @@ aside.slider #rule_slider {
   max-width: 650px;
   margin: 0 auto;
 }
-aside.slider #rule_slider label {
+aside.slider #rule_slider .label {
   display: block;
   text-align: center;
   color: var(--text-primary-color);
   margin-bottom: 16px;
-  pointer-events: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 @media screen and (min-width: 768px) {
   aside.slider #rule_slider {
@@ -767,7 +766,7 @@ nav a:active {
   transition: 300ms fill ease-in-out;
 }
 #close_button:not(.show) svg path:last-of-type {
-  fill: var(--text-primary-color);
+  fill: var(--link-color);
 }
 #close_button:not(.show) svg path:first-of-type {
   fill: rgba(255, 255, 255, 0);

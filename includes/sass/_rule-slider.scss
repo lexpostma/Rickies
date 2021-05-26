@@ -53,20 +53,20 @@ aside.slider {
 	left: 0;
 	right: 0;
 	background: #fff;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
 	#rule_slider {
 		padding: 8px 24px 24px;
 		padding-bottom: max(24px, calc(16px + #{var.$iX-bottom}));
 		max-width: var.$readability-width;
 		margin: 0 auto;
-		label {
+		.label {
 			display: block;
 			text-align: center;
 			color: var(--text-primary-color);
 			margin-bottom: 16px;
-			pointer-events: none;
-			-webkit-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
 		}
 		@media screen and (min-width: var.$break-md) {
 			padding: 16px 32px 24px;
