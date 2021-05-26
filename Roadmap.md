@@ -7,6 +7,7 @@ Features I plan to add to the website.
 -   [ ] Improve support for older browsers.
 -   [ ] Improve accessibility.
 -   [ ] Fix contrast of scrollbar.
+-   [ ] Fix rules slider sometimes being hard to grab on mobile devices.
 -   [x] Add host signatures to The Bill of Rickies.
 -   [x] Add Rickies filters
 -   [ ] Replace some bitmap assets with vector versions.

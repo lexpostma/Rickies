@@ -19,8 +19,8 @@ On Connected at Relay FM.
 
 ## More
 
--   [About Rickies.co](https://rickies.co/about)
--   [Changelog](Changelog.md)
--   [Roadmap](Roadmap.md)
--   [Acknowledgements](Acknowledgements.md)
+-   Read all [about Rickies.co](https://rickies.co/about)
+-   [Changelog](Changelog.md), what’s new
+-   [Roadmap](Roadmap.md), what’s coming
+-   [Acknowledgements](Acknowledgements.md), credits where credit’s due
 -   [License](License.md)

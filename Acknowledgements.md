@@ -4,13 +4,13 @@ Credits where credit’s due.
 
 ## Content
 
-Obviously, 99% of the content on the website comes from the [Connected](https://relay.fm/connected) podcast on [Relay FM](https://relay.fm). The website is meant as a tribute to the great show that Federico Viticci, Myke Hurley, and Stephen Hackett have hosted for many years.
+Obviously, 99% of the content on Rickies.co comes from the [Connected](https://relay.fm/connected) podcast on [Relay FM](https://relay.fm). The website is meant as a tribute to the great show that Federico Viticci, Myke Hurley, and Stephen Hackett have hosted for many years.
 
 [Airtable](https://airtable.com) is used as the backend of this web application. All data and most images are managed and hosted there.
 
 ## Libraries and other assets/inclusions
 
-The following libraries are used:
+The following are used:
 
 -   [airtable-php](https://github.com/sleiman/airtable-php), a PHP client for the Airtable API
 -   [Chart.js](https://www.chartjs.org) for the charts on the [Leaderboard page](https://rickies.co/leaderboard)
@@ -46,10 +46,10 @@ Tested in the following browser versions. Anything different or older might not 
 
 ## Tools
 
--   [Overcast](https://overcast.fm/) to listen to All the Great Shows™ (on Smart Speed + 1.5, I’m a monster)
+-   [Overcast](https://overcast.fm/) to listen to All the Great Shows™ (on Smart Speed + 1.5x speed, I’m a monster)
 -   [Nova](https://nova.app) by Panic, with extensions:
     -   [Prettier](https://extensions.panic.com/extensions/alexanderweiss/alexanderweiss.prettier/) for prettier code formatting
-    -   [Sass](https://extensions.panic.com/extensions/vinecode/vinecode.Sass/) to convert scss files into css files
+    -   [Sass](https://extensions.panic.com/extensions/vinecode/vinecode.Sass/) to compile CSS files
 -   [Tower](https://www.git-tower.com/mac) Git client
 -   [Figma](https://figma.com) to design the website
 -   [Pixelmator Pro](https://www.pixelmator.com/pro/) to tweak some images
