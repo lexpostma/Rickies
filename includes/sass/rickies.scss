@@ -29,7 +29,7 @@ ul {
 	list-style: none;
 }
 
-ul > li {
+ul#bullet_list > li {
 	display: flex;
 	margin: 8px 0;
 	span.emoji {
