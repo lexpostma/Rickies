@@ -74,7 +74,7 @@ $resources = [
 	],
 	[
 		'label1' => 'The Rickies Notion Database',
-		// 'label2' => 'By Majd Koshakji',
+		// 'label2' => '',
 		'label3' => 'By Majd Koshakji<br />Shared in Discord on March 24, 2021',
 		'url' => 'https://www.notion.so/Connected-262725156a0041bd9b0248c172862cb0',
 		'img_url' => '/images/about/notion.png',
