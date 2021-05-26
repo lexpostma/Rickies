@@ -297,7 +297,7 @@ foreach ($hosts_data__array as $host) {
 $introduction =
 	'<p>With <b>' .
 	$status_data__array['Completed'] .
-	' graded</b> Rickies officially behind us, this is the leaderboard of overall wins, picks, and <span title="Pokémon! 😉">flexing power (FP)</span> of the hosts of Connected.</p><p>The predictions charts and statistics also include picks from <b class="nowrap">' .
+	' graded</b> Rickies officially behind us, this is the leaderboard of overall wins, picks, risk, and <span title="Pokémon! 😉">flexing power (FP)</span> of the hosts of Connected.</p><p>The predictions charts and statistics also include picks from <b class="nowrap">' .
 	digit_text($status_data__array['Ungraded']) .
 	' ungraded</b> Rickies, and picks from ' .
 	digit_text($status_data__array['Pre-Rickies']) .
