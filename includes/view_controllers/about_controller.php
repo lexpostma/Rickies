@@ -59,7 +59,7 @@ $resources = [
 	],
 	[
 		'label1' => 'Get Connected Pro',
-		'label2' => 'Preshow, postshow, no ads.',
+		'label2' => 'Preshow, postshow, no ads',
 		// 'label3' => '',
 		'url' => 'https://getconnectedpro.co',
 		'img_url' => '/images/connected-pro-artwork.jpg',

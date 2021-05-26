@@ -1292,11 +1292,11 @@ ul {
   list-style: none;
 }
 
-ul#bullet_list > li {
+ul.bullet_list > li {
   display: flex;
   margin: 8px 0;
 }
-ul#bullet_list > li span.emoji {
+ul.bullet_list > li span.emoji {
   flex-shrink: 0;
   margin-right: 8px;
 }
