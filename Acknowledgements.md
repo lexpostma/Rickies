@@ -23,6 +23,8 @@ The following are used:
 -   Fonts
     -   System fonts are used across the website
     -   Black Chancery by Doug Miles, for the titles on The Bill of Rickies (via [DaFont](https://www.dafont.com/black-chancery.font))
+-   The Rickies trophy is a heavily customised version of some [clipart](https://freesvg.org/trophy-street-creator-earth) from the [Glitch video game](<https://en.wikipedia.org/wiki/Glitch_(video_game)>)
+-   The host signatures are copied from [The Bill of Rickies](https://twitter.com/kingtritium/status/1278081027387392006?s=21) pdf by Mathias Bruggemann
 -   [Native Land by Dream Cave](https://www.youtube.com/watch?v=0AnFfbTupEU) as theme music for The Bill of Rickies
 
 ## Referrals

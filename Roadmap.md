@@ -8,8 +8,11 @@ Features I plan to add to the website.
 -   [ ] Improve accessibility.
 -   [ ] Fix contrast of scrollbar.
 -   [ ] Fix rules slider sometimes being hard to grab on mobile devices.
+-   [ ] Add sitemap and other SEO improvements.
 -   [x] Add host signatures to The Bill of Rickies.
--   [x] Add Rickies filters
+-   [x] Add Rickies filters.
+-   [ ] Add search via DuckDuckGo.
+-   [ ] Add light/dark mode toggle.
 -   [ ] Replace some bitmap assets with vector versions.
 -   [ ] Cache Airtable data as JSON files to increase performance.
 -   [x] Add Bill of Rickies reading theme song.
