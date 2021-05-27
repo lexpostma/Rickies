@@ -24,6 +24,12 @@ do {
 				'url_name' => check_key('URL', $fields),
 				'episode_number' => check_key('Predictions episode number', $fields, '?', 0),
 				'date_string' => date_to_string_label(check_key('Predictions episode date', $fields, false, 0)),
+				'date_html' => date_to_string_label(
+					check_key('Predictions episode date', $fields, false, 0),
+					false,
+					true,
+					true
+				),
 				'date' => strtotime(check_key('Predictions episode date', $fields, false, 0)),
 				'artwork' => [
 					'rickies' => airtable_image_url(check_key('Rickies artwork', $fields, false, 0)),
@@ -56,7 +62,7 @@ do {
 				// Only the details needed for the Rickies overview
 				$rickies_events__array[$id]['label1'] = $rickies_events__array[$id]['name'];
 				$rickies_events__array[$id]['label3'] =
-					$rickies_events__array[$id]['date_string'] .
+					$rickies_events__array[$id]['date_html'] .
 					' • Episode&nbsp;#' .
 					$rickies_events__array[$id]['episode_number'];
 				$rickies_events__array[$id]['url'] = '/' . $rickies_events__array[$id]['url_name'];

@@ -35,7 +35,7 @@ foreach ($rickies_events__array as $event) {
 	$event_slider_js_array['url'][] = $event['url_name'];
 	$event_slider_js_array['name'][] = '<a href="' . '/' . $event['url_name'] . '">' . $event['name'] . '</a>';
 	$event_slider_js_array['date_string'][] =
-		'<a href="' . '/' . $event['url_name'] . '">' . $event['date_string'] . '</a>';
+		'<a href="' . '/' . $event['url_name'] . '">' . $event['date_html'] . '</a>';
 
 	// If the URL has an event param, check which event
 	if ($url_view !== 'main' && $event['url_name'] == $url_view) {
@@ -44,7 +44,7 @@ foreach ($rickies_events__array as $event) {
 			'index' => $index,
 			'name' => $event['name'],
 			'date' => $event['date'],
-			'date_string' => $event['date_string'],
+			'date_string' => $event['date_html'],
 		];
 		$description = 'As of the ' . $event['name'] . '. ';
 	}

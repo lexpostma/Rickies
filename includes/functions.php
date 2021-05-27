@@ -185,7 +185,7 @@ function date_string_format()
 {
 	return '%B %e, %Y';
 }
-function date_to_string_label($date, $context = false, $date_needs_conversion = true)
+function date_to_string_label($date, $context = false, $date_needs_conversion = true, $html_time = false)
 {
 	$current = strtotime(date('Y-m-d'));
 
@@ -225,6 +225,10 @@ function date_to_string_label($date, $context = false, $date_needs_conversion = 
 		$on = 'on ';
 		$air_string = 'Aired ' . $on;
 		$output = strftime(date_string_format(), $date);
+	}
+
+	if ($html_time) {
+		$output = '<time datetime="' . strftime('%Y-%m-%d', $date) . '">' . $output . '</time>';
 	}
 
 	if ($context === 'air') {
