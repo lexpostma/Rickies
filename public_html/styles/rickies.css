@@ -972,7 +972,7 @@ li.list_item a[href^="https://github.com"] .secondary_string:before {
 span.tag {
   color: #fff;
   background: var(--tag-color);
-  padding: 0px 4px;
+  padding: 0px 0.4em;
   border-radius: var(--corner-radius);
   border: var(--graphic-border);
 }
@@ -1205,7 +1205,7 @@ li.pick_item.manual {
   font-variant-emoji: emoji;
   display: inline-block;
   width: 1.3em;
-  margin-right: 4px;
+  margin-right: 0.4em;
   overflow: hidden;
   vertical-align: top;
   white-space: nowrap;
@@ -1235,7 +1235,7 @@ table.full_stats td {
 }
 table.full_stats td.value {
   font-weight: bold;
-  padding-right: 4px;
+  padding-right: 0.4em;
   font-variant-numeric: tabular-nums;
 }
 

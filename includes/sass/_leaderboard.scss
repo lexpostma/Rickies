@@ -130,7 +130,7 @@ $emoji-font: 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', Times, S
 			font-variant-emoji: emoji;
 			display: inline-block;
 			width: 1.3em;
-			margin-right: 4px;
+			margin-right: 0.4em;
 			overflow: hidden;
 			vertical-align: top;
 			white-space: nowrap;
@@ -165,7 +165,7 @@ table.full_stats {
 	}
 	td.value {
 		font-weight: bold;
-		padding-right: 4px;
+		padding-right: 0.4em;
 		font-variant-numeric: tabular-nums;
 	}
 }
