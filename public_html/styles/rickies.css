@@ -1204,7 +1204,11 @@ li.pick_item.manual {
   font-family: "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, emoji, sans-serif;
   font-variant-emoji: emoji;
   display: inline-block;
-  width: 1.6em;
+  width: 1.3em;
+  margin-right: 4px;
+  overflow: hidden;
+  vertical-align: top;
+  white-space: nowrap;
 }
 .host_stats .host_item_content h4 {
   margin-top: var(--space-between-md);
