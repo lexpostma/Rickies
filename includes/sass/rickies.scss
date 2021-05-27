@@ -43,6 +43,7 @@ ul.bullet_list > li {
 	border-radius: var(--corner-radius);
 	margin: var(--space-between-lg) auto;
 	border: 1px solid var(--connected-blue);
+	background: var(--element-active-color);
 }
 
 .top_button {

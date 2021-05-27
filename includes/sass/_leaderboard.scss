@@ -129,7 +129,11 @@ $emoji-font: 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', Times, S
 			font-family: $emoji-font;
 			font-variant-emoji: emoji;
 			display: inline-block;
-			width: 1.6em;
+			width: 1.3em;
+			margin-right: 4px;
+			overflow: hidden;
+			vertical-align: top;
+			white-space: nowrap;
 		}
 		h4 {
 			margin-top: var(--space-between-md);
