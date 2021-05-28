@@ -4,7 +4,9 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 
 ### 28 May 2021 v1.1
 
--   Support for Rickies that are pending the predictions episode, in preparation for the [WWDC21 Keynote Rickies](https://rickies.co/keynote-jun-2021)
+-   Support for Rickies statuses, in preparation for the [WWDC21 Keynote Rickies](https://rickies.co/keynote-jun-2021)
+    -   Pending a future predictions episode, to prepare the page details
+    -   Live episode, to follow along with the show and the predictions
 
 ## 27 May 2021
 
@@ -13,7 +15,7 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 
 ### 26 May 2021 v1.0
 
--   Initial release, just in time for the [WWDC21 Keynote Rickies](https://rickies.co/keynote-jun-2021)
+-   Initial release, just in time for the WWDC21 Keynote Rickies
 -   Finish documentation for GitHub
 
 #### 25 May 2021

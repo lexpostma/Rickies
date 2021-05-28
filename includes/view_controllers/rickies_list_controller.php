@@ -17,7 +17,7 @@ $rickies_events__params = [
 		'Artwork background color',
 	],
 	'filterByFormula' =>
-		"AND( OR(Status = 'Completed', Status = 'Ungraded', Status = 'Pending', Status = 'Pre-Rickies') )",
+		"AND( OR(Status = 'Completed', Status = 'Ungraded', Status = 'Pending', Status = 'Live', Status = 'Pre-Rickies') )",
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
 	// "maxRecords" => 150,
 	// "pageSize" => 50,
@@ -29,18 +29,18 @@ if (isset($filter)) {
 	if ($filter == 'Annual') {
 		$head_custom['title'] = 'Annual Rickies';
 		$rickies_events__params['filterByFormula'] =
-			"AND( OR(Status = 'Completed', Status = 'Ungraded', Status = 'Pending', Status = 'Pre-Rickies'), {Rickies type} = 'annual' )";
+			"AND( OR(Status = 'Completed', Status = 'Ungraded', Status = 'Pending', Status = 'Live', Status = 'Pre-Rickies'), {Rickies type} = 'annual' )";
 	} elseif ($filter == 'Keynote') {
 		$head_custom['title'] = 'Keynote Rickies';
 		$rickies_events__params['filterByFormula'] =
-			"AND( OR(Status = 'Completed', Status = 'Ungraded', Status = 'Pending', Status = 'Pre-Rickies'), {Rickies type} = 'keynote' )";
+			"AND( OR(Status = 'Completed', Status = 'Ungraded', Status = 'Pending', Status = 'Live', Status = 'Pre-Rickies'), {Rickies type} = 'keynote' )";
 	} elseif ($filter == 'WWDC') {
 		$head_custom['title'] = 'WWDC Rickies';
 		$rickies_events__params['filterByFormula'] =
-			"AND( OR(Status = 'Completed', Status = 'Ungraded', Status = 'Pending', Status = 'Pre-Rickies'), {Event type} = 'WWDC' )";
+			"AND( OR(Status = 'Completed', Status = 'Ungraded', Status = 'Pending', Status = 'Live', Status = 'Pre-Rickies'), {Event type} = 'WWDC' )";
 	} elseif ($filter == 'Ungraded') {
 		$head_custom['title'] = 'Ungraded Rickies';
-		$rickies_events__params['filterByFormula'] = "AND( Status = 'Ungraded')";
+		$rickies_events__params['filterByFormula'] = "AND( OR(Status = 'Ungraded', Status = 'Live'))";
 	}
 	$head_custom['canonical'] = current_url(true);
 }

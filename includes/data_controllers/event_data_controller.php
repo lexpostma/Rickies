@@ -81,6 +81,13 @@ do {
 				$rickies_events__array[$id]['tag'] = 'Awaiting show';
 				$rickies_events__array[$id]['tag_color'] = 'grey';
 				$rickies_events__array[$id]['tag_banner'] = 'Waiting for the predictions episode…';
+			} elseif ($rickies_events__array[$id]['status'] == 'Live') {
+				$rickies_events__array[$id]['tag'] = 'Live';
+				$rickies_events__array[$id]['tag_color'] = 'red';
+				$rickies_events__array[$id]['tag_banner'] =
+					'Updating now…<br /><a href="https://relay.fm/live" data-goatcounter-click="Relay live" title="Listen live" data-goatcounter-referrer="' .
+					current_url() .
+					'" >Listen live to the episode</a>';
 			} elseif ($rickies_events__array[$id]['status'] == 'Pre-Rickies') {
 				$rickies_events__array[$id]['tag'] = $rickies_events__array[$id]['status'];
 				$rickies_events__array[$id]['tag_color'] = 'yellow';
