@@ -222,7 +222,7 @@ function host_item_bundle($host_event_data, $event_type)
 
 		if ($event_details['rickies']['ranking'] !== false && $event_details['rickies']['ranking'] == 0) {
 			array_push($html_strings['ranking'], '<b class="nowrap">Rickies winner</b> • ' . chairman_url($event_type));
-		} else {
+		} elseif ($event_details['rickies']['ranking'] !== false) {
 			array_push(
 				$html_strings['ranking'],
 				'<span class="nowrap">Rickies ' .
