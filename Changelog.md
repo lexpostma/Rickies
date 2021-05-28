@@ -2,6 +2,10 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+### 28 May 2021 v1.1
+
+-   Support for Rickies that are pending the predictions episode, in preparation for the [WWDC21 Keynote Rickies](https://rickies.co/keynote-jun-2021)
+
 ## 27 May 2021
 
 -   Fix for new emoji on unsupported devices overlapping with text

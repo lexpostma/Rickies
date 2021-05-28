@@ -270,7 +270,9 @@ function episode_data($episode)
 {
 	if (array_key_exists('label1', $episode) && $episode['label1'] !== false) {
 		// Add episode number to title
-		$episode['label1'] = '#' . $episode['number'] . ': ' . $episode['label1'];
+		if ($episode['number'] !== false) {
+			$episode['label1'] = '#' . $episode['number'] . ': ' . $episode['label1'];
+		}
 		if ($episode['img_url'] == false) {
 			// No custom image, fallback to local default
 			if ($episode['number'] < 304) {

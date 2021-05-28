@@ -3,7 +3,7 @@
 // Rickies picks _data_ controller
 
 $picks_data__params = [
-	'filterByFormula' => "AND( URL = '$url_view' )",
+	'filterByFormula' => "AND( URL = '$url_view', Pick, {Host name} , Type, {Round set} )",
 	'sort' => [['field' => 'Picking order', 'direction' => 'asc']],
 	// 	"fields" => ["Artwork", "Name", "URL", "Winner (manual)", "Episode date"],
 ];
