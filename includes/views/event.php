@@ -75,13 +75,14 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 				data-goatcounter-click="Show Flexies"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('flexies');"><span class="need_space--xs">The </span>Flexies</a>
-<? } ?>
+<? } if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies', $picks_data__array)) {?>
 			<a class="menu_item js_link"
 				id="menu_hosts"
 				title="Hosts and ranking"
 				data-goatcounter-click="Show hosts"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('hosts');">Hosts</a>
+<? } ?>
 			<a class="menu_item js_link"
 				id="menu_details"
 				title="Details about these Rickies"
@@ -103,14 +104,12 @@ if ($rickies_data['status'] == 'Ungraded') {
 } else {
 	echo pick_item_bundle($picks_data__array);
 }
+
+if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies', $picks_data__array)) {
+	echo host_item_bundle($rickies_data['hosts'], $rickies_data['type']);
+}
 ?>
 
-<section class="navigate_with_mobile_menu large_columns" id="hosts">
-	<h2>Hosts</h2>
-	<div class="section_group">
-	<?= host_item_bundle($rickies_data['hosts'], $rickies_data['type']) ?>
-	</div>
-</section>
 
 <section class="navigate_with_mobile_menu large_columns" id="details">
 	<h2>Details</h2>

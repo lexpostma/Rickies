@@ -213,7 +213,10 @@ function pick_item_bundle($data, $interactive = false)
 
 function host_item_bundle($host_event_data, $event_type)
 {
-	$output = '';
+	$output = '<section class="navigate_with_mobile_menu large_columns" id="hosts">
+	<h2>Hosts</h2>
+	<div class="section_group">
+';
 
 	$html_strings = [];
 
@@ -338,6 +341,9 @@ function host_item_bundle($host_event_data, $event_type)
 </div>
 ';
 	}
+	$output .= '	</div>
+	</section>
+	';
 	return $output;
 }
 
