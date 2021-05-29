@@ -1149,6 +1149,9 @@ li.pick_item.manual {
 .avatar_leaderboard .host .title span.emoji {
   display: none;
 }
+.avatar_leaderboard .host .title a.priority {
+  white-space: nowrap;
+}
 .avatar_leaderboard .host.winner .avatar {
   margin-top: 0px;
   margin-bottom: 16px;
