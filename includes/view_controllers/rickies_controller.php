@@ -294,8 +294,10 @@ function episode_data($episode)
 function avatar_leaderboard($host_array)
 {
 	$output = '<div class="avatar_leaderboard">';
-	foreach ($host_array as &$host) {
-		if ($host['winner']) {
+	foreach ($host_array as $host) {
+		if ($host['winner'] === 2) {
+			$output .= '<div class="host winner mega_winner" onclick="confetti_go()">';
+		} elseif ($host['winner']) {
 			$output .= '<div class="host winner" onclick="confetti_go()">';
 		} else {
 			$output .= '<div class="host">';

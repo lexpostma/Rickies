@@ -67,8 +67,8 @@ $emoji-font: 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', Times, S
 				// 8px + the border width
 				top: -9px;
 				left: -9px;
-				mask-image: url('/images/circle.svg');
-				-webkit-mask-image: url('/images/circle.svg');
+				mask-image: url('/images/ring.svg');
+				-webkit-mask-image: url('/images/ring.svg');
 				mask-repeat: no-repeat;
 				-webkit-mask-repeat: no-repeat;
 				mask-size: calc(var(--graphic-size) + 16px);
@@ -114,6 +114,20 @@ $emoji-font: 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', Times, S
 				img {
 					transform: scale(0.95);
 				}
+			}
+		}
+		&.winner.mega_winner .avatar {
+			.ring {
+				width: calc(var(--graphic-size) + 32px);
+				height: calc(var(--graphic-size) + 32px);
+
+				top: -17px;
+				left: -17px;
+				mask-image: url('/images/ring-double.svg');
+				-webkit-mask-image: url('/images/ring-double.svg');
+
+				mask-size: calc(var(--graphic-size) + 32px);
+				-webkit-mask-size: calc(var(--graphic-size) + 32px);
 			}
 		}
 	}

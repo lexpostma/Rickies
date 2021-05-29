@@ -56,7 +56,7 @@ if ($environment == 'production') {
 	$head_defaults['site_goatcounter'] = 'https://rickies.goatcounter.com';
 	$github = 'main';
 	// NOTE: update for new releases
-	$refresh = 'v1.1.0';
+	$refresh = 'v1.2.0';
 } else {
 	$head_defaults['site_goatcounter'] = 'https://rickies-test.goatcounter.com';
 	$github = 'development';

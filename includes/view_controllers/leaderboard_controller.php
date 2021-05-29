@@ -264,10 +264,29 @@ function score_chart_item($chart_array, $host)
 // Define the data for the leaderboard at the top of the page
 $leaderboard_data = [];
 foreach ($hosts_data__array as $host) {
+	// First show all priority titles
+	// $title_count = 0;
+	$title_array = [];
+	foreach ($host['titles'] as $key => $value) {
+		if (strpos($value, 'priority') !== false) {
+			$title_array[] = $value;
+			unset($host['titles'][$key]);
+		}
+	}
+	// Show next titles, until the total is 2
+	foreach ($host['titles'] as $key => $value) {
+		if (count($title_array) < 2) {
+			$title_array[] = $value;
+			unset($host['titles'][$key]);
+		} else {
+			break;
+		}
+	}
+
 	$set = [
 		'name' => $host['personal']['first_name'],
 		'winner' => false,
-		'title' => $host['titles'][0] . '<br />' . $host['titles'][1],
+		'title' => implode('<br />', $title_array),
 		'string' =>
 			'Won ' .
 			$host['achievements']['rickies_wins']['value'] .
@@ -287,7 +306,9 @@ foreach ($hosts_data__array as $host) {
 			'color' => $host['personal']['color'],
 		],
 	];
-	if (strpos($host['titles'][0], '<a') !== false) {
+	if (strpos($set['title'], 'Mega Chairman') !== false) {
+		$set['winner'] = 2;
+	} elseif (strpos($set['title'], 'chairman') !== false) {
 		$set['winner'] = true;
 	}
 
