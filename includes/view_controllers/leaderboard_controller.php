@@ -3,7 +3,7 @@
 // Host Leaderboard _view_ controller
 
 $hosts_data__params = [
-	'sort' => [['field' => 'Rickies Wins Total Latest Date', 'direction' => 'desc']],
+	'sort' => [['field' => 'Order', 'direction' => 'asc']],
 ];
 $all_host_details = true;
 

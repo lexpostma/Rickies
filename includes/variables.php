@@ -71,3 +71,5 @@ $flexies_start = strtotime('2020-01-01');
 
 // Term "Bill of Rickies" was coined on episode #300
 $bill_start = strtotime('2020-06-17');
+
+$connected_colors = ['green', 'yellow', 'orange', 'red', 'purple', 'blue'];

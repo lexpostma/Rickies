@@ -2,7 +2,6 @@
 
 // Host _data_ controller
 
-$connected_colors = ['green', 'yellow', 'orange', 'red', 'purple', 'blue'];
 $hosts_data__array = [];
 $hosts_data__request = $airtable->getContent('Hosts', $hosts_data__params);
 do {
