@@ -370,7 +370,7 @@ if (
 	$rickies_data['status'] == 'Pending'
 ) {
 	// Ungraded, so future keynote
-	$description .= 'What will Apple announced at the ';
+	$description .= 'What will Apple announce at the ';
 
 	// if (!empty($rickies_data['details']['event_data']['label2'])) {
 	// 	$description .= '“' . $rickies_data['details']['event_data']['label2'] . '” ';
