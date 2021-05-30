@@ -73,15 +73,18 @@ do {
 
 			// If the status not Completed, add tag/banner
 			if ($rickies_events__array[$id]['status'] == 'Ungraded') {
+				// Ungraded Rickies
 				$rickies_events__array[$id]['tag'] = 'Interactive';
 				$rickies_events__array[$id]['tag_color'] = 'orange';
 				$rickies_events__array[$id]['tag_banner'] =
 					'<b>Interactive scorecard</b><br /><span>Grade the Rickies and Flexies yourself until the official results are in. Tap the picks to cycles through unknown, correct, and wrong states.</span>';
 			} elseif ($rickies_events__array[$id]['status'] == 'Pending') {
+				// Pending Rickies
 				$rickies_events__array[$id]['tag'] = 'Awaiting show';
 				$rickies_events__array[$id]['tag_color'] = 'grey';
 				$rickies_events__array[$id]['tag_banner'] = 'Waiting for the predictions episode…';
 			} elseif ($rickies_events__array[$id]['status'] == 'Live') {
+				// Live Rickies
 				$rickies_events__array[$id]['tag'] = 'Live';
 				$rickies_events__array[$id]['tag_color'] = 'red';
 				$rickies_events__array[$id]['tag_banner'] =
@@ -89,6 +92,7 @@ do {
 					current_url() .
 					'" >Listen live to the episode</a>';
 			} elseif ($rickies_events__array[$id]['status'] == 'Pre-Rickies') {
+				// Pre-Rickies
 				$rickies_events__array[$id]['tag'] = $rickies_events__array[$id]['status'];
 				$rickies_events__array[$id]['tag_color'] = 'yellow';
 				$rickies_events__array[$id]['tag_banner'] =

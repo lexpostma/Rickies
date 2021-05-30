@@ -349,7 +349,10 @@ function host_item_bundle($host_event_data, $event_type)
 
 // Define SEO description
 $description = 'The predictions show of Connected on Relay FM. ';
-if ($rickies_data['type'] == 'annual' && $rickies_data['status'] == 'Ungraded') {
+if (
+	$rickies_data['type'] == 'annual' &&
+	($rickies_data['status'] == 'Ungraded' || $rickies_data['status'] == 'Live' || $rickies_data['status'] == 'Pending')
+) {
 	// Annual and ungraded, so future
 	$description .=
 		'What will Apple announce in ' .
@@ -361,7 +364,11 @@ if ($rickies_data['type'] == 'annual' && $rickies_data['status'] == 'Ungraded') 
 		'What has Apple announced in ' .
 		strftime('%Y', $rickies_data['date']) .
 		'? And how did Myke, Stephen, and Federico perform with their yearly predictions?';
-} elseif ($rickies_data['status'] == 'Ungraded') {
+} elseif (
+	$rickies_data['status'] == 'Ungraded' ||
+	$rickies_data['status'] == 'Live' ||
+	$rickies_data['status'] == 'Pending'
+) {
 	// Ungraded, so future keynote
 	$description .= 'What will Apple announced at the ';
 
