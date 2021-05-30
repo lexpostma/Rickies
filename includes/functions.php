@@ -204,40 +204,48 @@ function date_to_string_label($date, $context = false, $date_needs_conversion = 
 		// Today
 		$air_string = 'Airs ';
 		$on = '';
-		$output = 'today';
+		$date_output = 'today';
 	} elseif ($difference == -1) {
 		// Yesterday
 		$air_string = 'Aired ';
 		$on = '';
-		$output = 'yesterday';
+		$date_output = 'yesterday';
 	} elseif ($difference == 1) {
 		// Tomorrow
 		$air_string = 'Airs ';
 		$on = '';
-		$output = 'tomorrow';
+		$date_output = 'tomorrow';
 	} elseif ($difference > 1) {
 		// Future after tomorrow
 		$on = 'on ';
 		$air_string = 'Airs ' . $on;
-		$output = strftime(date_string_format(), $date);
+		$date_output = strftime(date_string_format(), $date);
 	} else {
 		// Past before yesterday
 		$on = 'on ';
 		$air_string = 'Aired ' . $on;
-		$output = strftime(date_string_format(), $date);
+		$date_output = strftime(date_string_format(), $date);
 	}
 
 	if ($html_time) {
-		$output = '<time datetime="' . strftime('%Y-%m-%d', $date) . '">' . $output . '</time>';
+		$output = '<time datetime="' . strftime('%Y-%m-%d', $date) . '">';
+	} else {
+		$output = '';
 	}
 
 	if ($context === 'air') {
-		return $air_string . $output;
+		$output = $air_string . $output . $date_output;
 	} elseif ($context) {
-		return $on . $output;
+		$output = $on . $output . $date_output;
 	} else {
-		return ucfirst($output);
+		$output .= ucfirst($date_output);
 	}
+
+	if ($html_time) {
+		$output .= '</time>';
+	}
+
+	return $output;
 }
 
 // Assign the correct artwork URLs from array
