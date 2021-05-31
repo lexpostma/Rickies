@@ -742,15 +742,15 @@ section h2,
   background-size: cover;
 }
 #header_corner img {
-  width: 35px;
+  width: 34px;
   position: absolute;
-  right: 50px;
-  top: 10px;
-  right: calc(env(safe-area-inset-top) + 50px);
-  top: calc(env(safe-area-inset-top) + 10px);
+  right: 46px;
+  top: 5px;
+  right: calc(env(safe-area-inset-top) + 46px);
+  top: calc(env(safe-area-inset-top) + 5px);
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
   #header_corner {
     width: 120px;
     height: 120px;
@@ -758,8 +758,10 @@ section h2,
     height: calc(env(safe-area-inset-top) + 120px);
   }
   #header_corner img {
-    width: 50px;
+    width: 44px;
+    top: 7px;
     right: 65px;
+    top: calc(env(safe-area-inset-top) + 7px);
     right: calc(env(safe-area-inset-top) + 65px);
   }
 }

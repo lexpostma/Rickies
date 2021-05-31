@@ -11,23 +11,25 @@
 	background-image: url('/images/triangle.svg');
 	background-size: cover;
 	img {
-		width: 35px;
+		width: 34px;
 		position: absolute;
-		right: 50px;
-		top: 10px;
-		right: calc(#{var.$iX-top} + 50px);
-		top: calc(#{var.$iX-top} + 10px);
+		right: 46px;
+		top: 5px;
+		right: calc(#{var.$iX-top} + 46px);
+		top: calc(#{var.$iX-top} + 5px);
 		transition: var.$pop-transition;
 	}
-	@media screen and (min-width: var.$break-lg) {
+	@media screen and (min-width: var.$break-md) {
 		width: 120px;
 		height: 120px;
 		width: calc(#{var.$iX-top} + 120px);
 		height: calc(#{var.$iX-top} + 120px);
 
 		img {
-			width: 50px;
+			width: 44px;
+			top: 7px;
 			right: 65px;
+			top: calc(#{var.$iX-top} + 7px);
 			right: calc(#{var.$iX-top} + 65px);
 		}
 	}
