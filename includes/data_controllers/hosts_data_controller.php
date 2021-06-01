@@ -94,7 +94,7 @@ do {
 						'value' => check_key('Picks Flexy Total Count', $fields, 0),
 						'label' => 'Flexing Points overall',
 						'label1' => 'Flexing Point overall',
-						'unit' => ' FP',
+						'unit' => '&nbsp;FP',
 					],
 					'ricky_win_rate' => [
 						'value' => round_if_decimal(check_key('Rickies Wins Rate', $fields, 0) * 100),
