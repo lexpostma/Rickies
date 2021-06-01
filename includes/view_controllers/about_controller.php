@@ -110,7 +110,7 @@ $resources = [
 		'label1' => 'Upgrade Draft interactive scorecards',
 		'label2' => 'Predictions draft of the Upgrade podcast',
 		'label3' => 'By Zach Knox',
-		'url' => 'https://zachknox.com/bingo/drafts/',
+		'url' => 'https://upgrade.cards/',
 		'img_url' => '/images/about/upgrade-draft.jpg',
 	],
 ];
