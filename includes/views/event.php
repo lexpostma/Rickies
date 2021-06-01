@@ -99,7 +99,7 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 
 <?php
 echo no_script_banner();
-if ($rickies_data['status'] == 'Ungraded') {
+if ($rickies_data['status'] == 'Ungraded' || $rickies_data['status'] == 'Live') {
 	echo pick_item_bundle($picks_data__array, true);
 } else {
 	echo pick_item_bundle($picks_data__array);
