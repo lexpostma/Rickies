@@ -19,18 +19,25 @@ $resources = [
 		'img_url' => ['src' => '/images/about/analytics.png', 'type' => 'background', 'color' => $start_animation + 34],
 	],
 	[
+		'label1' => 'Little Details',
+		'label2' => 'The little details I’m proud of',
+		'label3' => 'Last updated ' . date_to_string_label(filemtime('../Details.md'), true, false, true),
+		'url' => 'https://github.com/lexpostma/Rickies/blob/' . $github . '/Details.md',
+		'img_url' => ['src' => '/images/about/details.png', 'type' => 'background', 'color' => $start_animation + 25],
+	],
+	[
 		'label1' => 'Changelog',
 		'label2' => 'What’s new',
 		'label3' => 'Last updated ' . date_to_string_label(filemtime('../Changelog.md'), true, false, true),
 		'url' => 'https://github.com/lexpostma/Rickies/blob/' . $github . '/Changelog.md',
-		'img_url' => ['src' => '/images/about/changelog.png', 'type' => 'background', 'color' => $start_animation + 25],
+		'img_url' => ['src' => '/images/about/changelog.png', 'type' => 'background', 'color' => $start_animation + 17],
 	],
 	[
 		'label1' => 'Roadmap',
 		'label2' => 'My plans for future improvements',
 		'label3' => 'Last updated ' . date_to_string_label(filemtime('../Roadmap.md'), true, false, true),
 		'url' => 'https://github.com/lexpostma/Rickies/blob/' . $github . '/Roadmap.md',
-		'img_url' => ['src' => '/images/about/roadmap.png', 'type' => 'background', 'color' => $start_animation + 17],
+		'img_url' => ['src' => '/images/about/roadmap.png', 'type' => 'background', 'color' => $start_animation + 9],
 	],
 	[
 		'label1' => 'Acknowledgements',
@@ -40,7 +47,7 @@ $resources = [
 		'img_url' => [
 			'src' => '/images/about/acknowledgements.png',
 			'type' => 'background',
-			'color' => $start_animation + 9,
+			'color' => $start_animation,
 		],
 	],
 	'The Podcast',
