@@ -362,7 +362,7 @@ if (
 	$description .=
 		'What will Apple announce in ' .
 		strftime('%Y', $rickies_data['date']) .
-		'? And who will become Keynote Chairman? Follow along with this interactive scorecard';
+		'? And who will become Annual Chairman? Follow along with this interactive scorecard';
 } elseif ($rickies_data['type'] == 'annual') {
 	// Annual and graded, so past
 	$description .=
@@ -384,7 +384,7 @@ if (
 	$description .=
 		'keynote on ' .
 		date_to_string_label($rickies_data['details']['event_data']['date']) .
-		'? And who will become Annual Chairman? Follow along with this interactive scorecard.';
+		'? And who will become Keynote Chairman? Follow along with this interactive scorecard.';
 } else {
 	// Graded keynote, past
 	$description .= 'What has Apple announced at the ';
