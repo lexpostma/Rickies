@@ -1068,14 +1068,12 @@ li.pick_item.interactive {
   background: var(--element-neutral-color);
   border-radius: var(--element-corner-radius);
   transition: 300ms background ease-in-out;
-}
-li.pick_item.interactive + .interactive {
-  margin-top: 2px;
-}
-li.pick_item.interactive span.label {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+li.pick_item.interactive + .interactive {
+  margin-top: 2px;
 }
 li.pick_item.interactive p.pick span.points {
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);

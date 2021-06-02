@@ -106,9 +106,14 @@ if (isset($leaderboard_order)) {
 function pick_item($data, $interactive = false)
 {
 	if ($interactive) {
-		$output = '<li class="pick_item interactive" onclick="update_pick(this)">';
+		$output =
+			'<li id="pick_' .
+			$data['id'] .
+			'" class="pick_item interactive" onclick="update_pick(this)" data-goatcounter-click="Interactive picks" title="Update pick state" data-goatcounter-referrer=' .
+			current_url() .
+			'>';
 	} else {
-		$output = '<li class="pick_item">';
+		$output = '<li id="pick_' . $data['id'] . '" class="pick_item">';
 	}
 
 	// If it's not a Flexy, the picks are in 3 rounds
