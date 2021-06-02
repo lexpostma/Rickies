@@ -97,13 +97,12 @@ li.pick_item {
 		background: var(--element-neutral-color);
 		border-radius: var(--element-corner-radius);
 		transition: var.$hover-duration background ease-in-out;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+
 		+ .interactive {
 			margin-top: 2px;
-		}
-		span.label {
-			-webkit-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
 		}
 		p.pick span.points {
 			transition: var.$pop-transition;
