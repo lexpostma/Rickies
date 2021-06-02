@@ -3,7 +3,7 @@
 Features I plan to add to the website.
 
 -   [x] Interactive scorecard for ungraded Rickies.
--   [ ] Store interactive picks for ungraded Rickies in cookie for future return, especially for Annual Rickies.
+-   [x] Store interactive picks for ungraded Rickies for future return, especially for Annual Rickies.
 -   [ ] Improve support for older browsers.
 -   [ ] Improve accessibility.
 -   [ ] Fix contrast of scrollbar.
@@ -13,7 +13,7 @@ Features I plan to add to the website.
 -   [x] Add Rickies filters.
 -   [ ] Add search via DuckDuckGo.
 -   [ ] Add light/dark mode toggle.
--   [ ] Replace some bitmap assets with vector versions.
+-   [x] Replace some bitmap assets with vector versions.
 -   [ ] Cache Airtable data as JSON files to increase performance.
 -   [x] Add Bill of Rickies reading theme song.
 -   [x] Add show/hide toggle for Bill of Rickies history slider.
