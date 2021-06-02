@@ -1,23 +1,31 @@
 // Update the interactive picks
-function update_pick(pick) {
+function update_pick(pick, state = null) {
 	// Get the points for this pick
 	var points = pick.getElementsByClassName('points')[0];
 
 	// Update the pick's state
 	// Unknown > Correct > Wrong > Unknown
-	if (points.classList.contains('correct')) {
+	if (points.classList.contains('correct') || state == 'wrong') {
 		points.classList.remove('correct');
 		points.classList.add('wrong');
 		update_pick_points(points, 'wrong');
 		pick.classList.add('manual');
-	} else if (points.classList.contains('wrong')) {
+		localStorage.setItem(pick.id, 'wrong');
+	} else if (points.classList.contains('wrong') || state == 'unknown') {
 		points.classList.remove('wrong');
 		update_pick_points(points, 'unknown');
 		pick.classList.remove('manual');
+		localStorage.removeItem(pick.id);
+	} else if (state == 'correct') {
+		points.classList.add('correct');
+		update_pick_points(points, 'correct');
+		pick.classList.add('manual');
+		localStorage.setItem(pick.id, 'correct');
 	} else {
 		points.classList.add('correct');
 		update_pick_points(points, 'correct');
 		pick.classList.add('manual');
+		localStorage.setItem(pick.id, 'correct');
 	}
 
 	// Update the host's total score
@@ -83,4 +91,25 @@ function update_host_score(host_picks) {
 	}
 	new_points = new_points + ' • ' + correct + '/' + count;
 	host_picks.getElementsByClassName('host_score')[0].innerHTML = new_points;
+}
+
+function clear_manual_score() {
+	// Get the id's from all picks on the page
+	Array.from(document.getElementsByClassName('pick_item')).forEach(function (el) {
+		// And remove each key this said id from localStorage
+		localStorage.removeItem(el.id);
+	});
+	// Then reload to the cleared localStorage, to reset the pick's visual states
+	location.reload();
+}
+
+if (window.localStorage.length !== 0) {
+	// Get all items from localStorage
+	for (var i = 0; i < localStorage.length; i++) {
+		// For each key in localStorage, check is there's an element that has same id
+		if (document.getElementById(localStorage.key(i))) {
+			// Update element state with value from localStorage
+			update_pick(document.getElementById(localStorage.key(i)), localStorage.getItem(localStorage.key(i)));
+		}
+	}
 }

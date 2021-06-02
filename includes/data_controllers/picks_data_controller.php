@@ -20,6 +20,7 @@ do {
 		$fields = json_decode(json_encode($array), true)['fields'];
 
 		$picks_data__array_temp = [
+			'id' => check_key('id', $fields),
 			'pick' => check_key('Pick', $fields),
 			'type' => check_key('Type', $fields),
 			'type_group' => check_key('Type group', $fields),
