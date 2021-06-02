@@ -9,6 +9,7 @@ Below are several little details I’m proud of for this project. I just wanted 
 -   All dates on the website show relative time. So yesterday, today, and tomorrow, or the actual date.
 -   Standalone web app with support for the safe areas on your (iOS) devices. So you don’t get big black bars at top and bottom when you add it to your home screen.
 -   Full support for the system light and dark mode.
+-   The rubberbanding overscroll at both the top and bottom background colour matches the content of the page itself and feels more native when installed as a web app.
 
 ## Rickies overview
 
@@ -26,6 +27,7 @@ Below are several little details I’m proud of for this project. I just wanted 
 -   Podcast episodes on the Rickies detail pages support [custom artwork](https://rickies.co/keynote-sep-2020#details). This also includes the switch from old white background to the new colourful one.
 -   Rickies episode titles have a predefined format since [episode 259](https://www.relay.fm/connected/archive), but thanks to Connected Pro we got insight into what the title would have been in an alternative timeline. If it was mentioned in the post-show the alternative title is on the [Rickies detail page](https://rickies.co/keynote-jun-2021).
 -   Terms like “Rickies”, “Flexies”, and “The Bill of Rickies” are different for earlier Rickies from before the terms were coined, e.g. “Bragging rights”.
+-   Some H1 titles have custom CSS to match the style of the header image, e.g. the Rickies for [April 2020](https://rickies.co/keynote-apr-2021), [September 2020](https://rickies.co/keynote-sep-2020) and [June 2019](https://rickies.co/keynote-jun-2019).
 
 ## The Bill of Rickies
 
