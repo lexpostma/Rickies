@@ -2,6 +2,10 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+### 2 June 2021 v1.3
+
+-   Interactive picks are now persistent. Manual states are stored in local storage so next time you visit the Rickies page, your scores are still there.
+
 ### 29 May 2021 v1.2
 
 -   Support for Mega Chairman, if a host has both titles at once
