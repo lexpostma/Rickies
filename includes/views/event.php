@@ -99,11 +99,7 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 
 <?php
 echo no_script_banner();
-if ($rickies_data['status'] == 'Ungraded' || $rickies_data['status'] == 'Live') {
-	echo pick_item_bundle($picks_data__array, true);
-} else {
-	echo pick_item_bundle($picks_data__array);
-}
+echo pick_item_bundle($picks_data__array, $rickies_data['interactive']);
 
 if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies', $picks_data__array)) {
 	echo host_item_bundle($rickies_data['hosts'], $rickies_data['type']);

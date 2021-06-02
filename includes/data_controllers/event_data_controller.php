@@ -31,6 +31,7 @@ do {
 					true
 				),
 				'date' => strtotime(check_key('Predictions episode date', $fields, false, 0)),
+				'interactive' => check_key('Interactive', $fields, false, 0),
 				'artwork' => [
 					'rickies' => airtable_image_url(check_key('Rickies artwork', $fields, false, 0)),
 					'event' => airtable_image_url(check_key('Event artwork', $fields, false, 0)),
@@ -41,6 +42,11 @@ do {
 				'artwork_background_color' => check_key('Artwork background color', $fields),
 				'winner' => check_key('Rickies 1st (manual)', $fields),
 			];
+
+			// If not TRUE, set to FALSE. Otherwise it's NULL
+			if ($rickies_events__array[$id]['interactive'] !== true) {
+				$rickies_events__array[$id]['interactive'] = false;
+			}
 
 			// Set large thumbnail URL as the value of the main event artwork.
 			// The first one that's not-false will be set,
