@@ -103,6 +103,7 @@ $head_custom = [
 	'favicon' => '/favicon-bill.png',
 	'description' => $description,
 	'image' => domain_url() . '/images/hero-billofrickies.jpg',
+	'canonical' => current_url(true) . 'billof',
 ];
 
 // This is the same logic that's also dynamic in JS, and in Event details
