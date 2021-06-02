@@ -83,7 +83,7 @@ do {
 				$rickies_events__array[$id]['tag'] = 'Interactive';
 				$rickies_events__array[$id]['tag_color'] = 'orange';
 				$rickies_events__array[$id]['tag_banner'] =
-					'<b>Interactive scorecard</b><br /><span>Grade the Rickies and Flexies yourself until the official results are in. Tap the picks to cycles through unknown, correct, and wrong states. <a class="clean js_link" onclick="clear_manual_score()" data-goatcounter-click="Clear interactive picks" title="Clear manual scores" data-goatcounter-referrer=' .
+					'<b>Interactive scorecard</b><br /><span>Grade the Rickies and Flexies yourself until the official results are in. Tap the picks to cycles through unknown, correct, and wrong states. <a class="clean js_link nowrap" onclick="clear_manual_score()" data-goatcounter-click="Clear interactive picks" title="Clear manual scores" data-goatcounter-referrer=' .
 					current_url() .
 					'>Clear manual scores</a></span>';
 			} elseif ($rickies_events__array[$id]['status'] == 'Pending') {
