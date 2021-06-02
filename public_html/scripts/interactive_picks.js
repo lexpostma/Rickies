@@ -93,7 +93,9 @@ function update_host_score(host_picks) {
 	host_picks.getElementsByClassName('host_score')[0].innerHTML = new_points;
 }
 
-function clear_manual_score() {
+function clear_manual_score(button) {
+	button.innerText = 'Clearing scores…';
+
 	// Get the id's from all picks on the page
 	Array.from(document.getElementsByClassName('pick_item')).forEach(function (el) {
 		// And remove each key this said id from localStorage
