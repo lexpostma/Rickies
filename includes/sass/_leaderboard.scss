@@ -16,6 +16,9 @@ $emoji-font: 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', Times, S
 	}
 }
 
+$winner_ring_size: calc(var(--graphic-size) + 16px);
+$winner_double_ring_size: calc(var(--graphic-size) + 42px);
+
 .avatar_leaderboard {
 	display: flex;
 	flex-direction: row;
@@ -63,8 +66,8 @@ $emoji-font: 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', Times, S
 			cursor: pointer;
 			// Winner ring
 			.ring {
-				width: calc(var(--graphic-size) + 16px);
-				height: calc(var(--graphic-size) + 16px);
+				width: $winner_ring_size;
+				height: $winner_ring_size;
 				position: absolute;
 				border-radius: 50%;
 				// 8px + the border width
@@ -74,8 +77,8 @@ $emoji-font: 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', Times, S
 				-webkit-mask-image: url('/images/ring.svg');
 				mask-repeat: no-repeat;
 				-webkit-mask-repeat: no-repeat;
-				mask-size: calc(var(--graphic-size) + 16px);
-				-webkit-mask-size: calc(var(--graphic-size) + 16px);
+				mask-size: $winner_ring_size;
+				-webkit-mask-size: $winner_ring_size;
 
 				background-color: var(--connected-orange);
 				background-image: linear-gradient(
@@ -121,16 +124,16 @@ $emoji-font: 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', Times, S
 		}
 		&.winner.mega_winner .avatar {
 			.ring {
-				width: calc(var(--graphic-size) + 32px);
-				height: calc(var(--graphic-size) + 32px);
+				width: $winner_double_ring_size;
+				height: $winner_double_ring_size;
 
-				top: -17px;
-				left: -17px;
+				top: -21px;
+				left: -21px;
 				mask-image: url('/images/ring-double.svg');
 				-webkit-mask-image: url('/images/ring-double.svg');
 
-				mask-size: calc(var(--graphic-size) + 32px);
-				-webkit-mask-size: calc(var(--graphic-size) + 32px);
+				mask-size: $winner_double_ring_size;
+				-webkit-mask-size: $winner_double_ring_size;
 			}
 		}
 	}

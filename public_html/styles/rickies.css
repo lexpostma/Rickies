@@ -1195,14 +1195,14 @@ li.pick_item.manual {
   transform: scale(0.95);
 }
 .avatar_leaderboard .host.winner.mega_winner .avatar .ring {
-  width: calc(var(--graphic-size) + 32px);
-  height: calc(var(--graphic-size) + 32px);
-  top: -17px;
-  left: -17px;
+  width: calc(var(--graphic-size) + 42px);
+  height: calc(var(--graphic-size) + 42px);
+  top: -21px;
+  left: -21px;
   mask-image: url("/images/ring-double.svg");
   -webkit-mask-image: url("/images/ring-double.svg");
-  mask-size: calc(var(--graphic-size) + 32px);
-  -webkit-mask-size: calc(var(--graphic-size) + 32px);
+  mask-size: calc(var(--graphic-size) + 42px);
+  -webkit-mask-size: calc(var(--graphic-size) + 42px);
 }
 
 .host_stats {
