@@ -23,7 +23,10 @@ $rickies_events__params = [
 	// "pageSize" => 50,
 ];
 
-$head_custom = [];
+$head_custom = [
+	'theme-color' => '#ffffff',
+	'theme-color-dark' => '#333f48',
+];
 
 if (isset($filter)) {
 	if ($filter == 'Annual') {

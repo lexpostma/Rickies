@@ -2,6 +2,10 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+## 23 June 2021
+
+-   Support for Safari 15 unified tabbar colours. Safe-areas for mobile Safari were already supported
+
 ### 2 June 2021 v1.3
 
 -   Interactive picks are now persistent. Manual states are stored in local storage so next time you visit the Rickies page, your scores are still there.

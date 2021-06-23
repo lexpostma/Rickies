@@ -81,4 +81,3 @@ if ($environment !== 'production') {
 <!-- Chart.js -->
 <script src="/scripts/chart.min.js"></script>
 <? }
-

@@ -4,7 +4,14 @@
 <!-- Apple / iOS web app-->
 <meta name="apple-mobile-web-app-title" content="Rickies" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<?if(array_key_exists("theme-color", $head) && array_key_exists("theme-color-dark", $head)){?>
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="<?= $head['theme-color'] ?>" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="<?= $head['theme-color-dark'] ?>" />
+<?} elseif(array_key_exists("theme-color", $head)){?>
+<meta name="theme-color" content="<?= $head['theme-color'] ?>" />
+<?}?>
 
 <?php
 echo '<!-- iOS home screen icons -->';
