@@ -873,6 +873,11 @@ span.rule {
   max-width: 320px;
   transition-property: max-width, opacity;
 }
+span.rule.wrap {
+  white-space: initial;
+  max-width: 700px;
+  display: inline;
+}
 span.rule.hidden {
   max-height: unset;
   max-width: 0;
