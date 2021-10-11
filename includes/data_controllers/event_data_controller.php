@@ -111,6 +111,8 @@ do {
 		// No Rickies, but filter is set
 		$filter_error = 'No ' . $filter . ' Rickies were found. <a href="/#list">Show all Rickies</a>.';
 	} else {
+		// TODO: if Airtable is down, so error that is not 404
+
 		// No Rickies/events (1 or more) found
 		// Continue with 404
 		$error_code = 404;
