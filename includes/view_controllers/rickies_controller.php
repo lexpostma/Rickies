@@ -266,11 +266,21 @@ function list_item_bundle($data)
 }
 
 // Tune the episode data
-function episode_data($episode)
+function episode_data($episode, $state = false)
 {
+	// $state = [ live | future ]
+	if ($state == 'live') {
+		$episode['label1'] = '🔴 Live now';
+		$episode['label2'] = 'Tune in live to enjoy the show!';
+		$episode['label3'] = 'On air';
+	} elseif ($state == 'future') {
+		$episode['label1'] = 'Future episode…';
+		$episode['label2'] = 'See schedule for recording time';
+	}
+
 	if (array_key_exists('label1', $episode) && $episode['label1'] !== false) {
 		// Add episode number to title
-		if ($episode['number'] !== false) {
+		if ($episode['number'] !== false && $state !== 'live') {
 			$episode['label1'] = '#' . $episode['number'] . ': ' . $episode['label1'];
 		}
 		if ($episode['img_url'] == false) {
