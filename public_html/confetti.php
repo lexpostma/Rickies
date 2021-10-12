@@ -5,7 +5,7 @@
 	<body>
 		<div onclick="confetti_go()" style="width: 100vw; height: 100vh"></div>
 		<script>
-			<? include("scripts/confetti.js")?>
+			<?php include 'scripts/confetti.js'; ?>
 			document.addEventListener('DOMContentLoaded', function (event) {
 				confetti_go()
 			});

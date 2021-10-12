@@ -56,7 +56,7 @@ $head_custom = [
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
-        <? include($incl_path.'head.php'); ?>
+        <?php include $incl_path . 'head.php'; ?>
     </head>
     <body>
 		<div class="container">

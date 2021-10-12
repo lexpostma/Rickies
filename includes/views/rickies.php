@@ -32,14 +32,26 @@
 <section><?= $introduction ?></section>
 
 <section id="list">
-	<h2 class="list_title <?if(isset($filter)){echo "active"; }?>">
+	<h2 class="list_title <?php if (isset($filter)) {
+ 	echo 'active';
+ } ?>">
 		<select class="clean" id="filter_menu">
-			<option <?if(!isset($filter)){echo "selected"; }?> value="/">All Rickies</option>
+			<option <?php if (!isset($filter)) {
+   	echo 'selected';
+   } ?> value="/">All Rickies</option>
 			<optgroup label="Filter the Rickies">
-				<option <?if(isset($filter) && $filter == 'Annual'){echo "selected"; }?> value="/annual#list">Annual Rickies</option>
-				<option <?if(isset($filter) && $filter == 'Keynote'){echo "selected"; }?> value="/keynote#list">Keynote Rickies</option>
-				<option <?if(isset($filter) && $filter == 'WWDC'){echo "selected"; }?> value="/wwdc#list">WWDC Rickies</option>
-				<option <?if(isset($filter) && $filter == 'Ungraded'){echo "selected"; }?> value="/ungraded#list">Ungraded Rickies</option>
+				<option <?php if (isset($filter) && $filter == 'Annual') {
+    	echo 'selected';
+    } ?> value="/annual#list">Annual Rickies</option>
+				<option <?php if (isset($filter) && $filter == 'Keynote') {
+    	echo 'selected';
+    } ?> value="/keynote#list">Keynote Rickies</option>
+				<option <?php if (isset($filter) && $filter == 'WWDC') {
+    	echo 'selected';
+    } ?> value="/wwdc#list">WWDC Rickies</option>
+				<option <?php if (isset($filter) && $filter == 'Ungraded') {
+    	echo 'selected';
+    } ?> value="/ungraded#list">Ungraded Rickies</option>
 			</optgroup>
 		</select>
 <?php if (!isset($filter)) {

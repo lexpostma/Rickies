@@ -8,7 +8,9 @@ if (!isset($error)) {
 	echo share_button();
 }
 ?>
-<main id="the_document" <? if(isset($parchment)){ echo 'class="parchment"';}?>>
+<main id="the_document" <?php if (isset($parchment)) {
+	echo 'class="parchment"';
+} ?>>
 	<p id="document_date"><?= $current_selection['date_string'] ?></p>
 	<h1 id="document_title"><?= $head_custom['title'] ?></h1>
 
