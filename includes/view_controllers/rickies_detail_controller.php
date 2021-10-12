@@ -375,24 +375,14 @@ if (
 	$rickies_data['status'] == 'Pending'
 ) {
 	// Ungraded, so future keynote
-	$description .= 'What will Apple announce at the ';
-
-	// if (!empty($rickies_data['details']['event_data']['label2'])) {
-	// 	$description .= '“' . $rickies_data['details']['event_data']['label2'] . '” ';
-	// }
-
 	$description .=
-		'keynote on ' .
+		'What will Apple announce at the keynote on ' .
 		date_to_string_label($rickies_data['details']['event_data']['date']) .
 		'? And who will become Keynote Chairman? Follow along with this interactive scorecard.';
 } else {
 	// Graded keynote, past
-	$description .= 'What has Apple announced at the ';
-	// if (!empty($rickies_data['details']['event_data']['label2'])) {
-	// 	$description .= '“' . $rickies_data['details']['event_data']['label2'] . '” ';
-	// }
 	$description .=
-		'keynote on ' .
+		'What has Apple announced at the keynote on ' .
 		date_to_string_label($rickies_data['details']['event_data']['date']) .
 		'? And how did Myke, Stephen, and Federico perform with their predictions for this event?';
 }
@@ -405,6 +395,8 @@ $head_custom = [
 
 if ($rickies_data['status'] == 'Ungraded') {
 	$head_custom['title'] = '🟠 ' . $head_custom['title'] . ' • Interactive scorecard';
+} elseif ($rickies_data['status'] == 'Live') {
+	$head_custom['title'] = '🔴 ' . $head_custom['title'] . ' • Live now, interactive scorecard';
 }
 
 if ($rickies_data['artwork']['seo'] !== false) {
