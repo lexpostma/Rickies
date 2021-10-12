@@ -65,6 +65,12 @@ class Request implements \ArrayAccess
 
         $request = $this->content_type;
 
+        $request_parts = explode( '/', $request );
+
+        $request_parts = array_map( 'rawurlencode', $request_parts );
+
+        $request = join( '/', $request_parts );
+
         $url_encoded = false;
 
         if( ! $this->is_post || strtolower( $this->is_post ) === 'delete' )

@@ -29,11 +29,9 @@ if ($environment !== 'production') {
 <meta name="author" content="<?= $head['author'] ?>" />
 <meta name="copyright" content="Copyright © <?= date('Y') ?> by <?= $head['author'] ?> and Relay FM" />
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<?
-	if($environment !== "production") {
-		echo '<meta name="robots" content="noindex,nofollow" />';
-	}
-?>
+<?php if ($environment !== 'production') {
+	echo '<meta name="robots" content="noindex,nofollow" />';
+} ?>
 
 
 <!-- Open Graph protocol / Facebook -->
@@ -56,7 +54,7 @@ if ($environment !== 'production') {
 <meta name="twitter:image" content="<?= $head['image'] ?>" />
 <meta name="twitter:url" content="<?= current_url() ?>" />
 
-<?include("ios_optimisation.php");?>
+<?php include 'ios_optimisation.php'; ?>
 
 
 <!-- Style sheets -->
@@ -69,7 +67,8 @@ if ($environment !== 'production') {
 <!-- Goat Counter -->
 <script data-goatcounter="<?= $head['site_goatcounter'] ?>/count" async src="//gc.zgo.at/count.js"></script>
 
-<? if ($focus_site == 'rickies') { ?>
+<?php
+if ($focus_site == 'rickies') { ?>
 
 <!-- Canvas Confetti -->
 <script src="/scripts/confetti.browser.min.js"></script>
@@ -77,7 +76,9 @@ if ($environment !== 'production') {
 <!-- JavaScript Cookie -->
 <script src="/scripts/js.cookie.js"></script>
 
-<? } if ($url_view == 'leaderboard') { ?>
+<?php }
+if ($url_view == 'leaderboard') { ?>
 <!-- Chart.js -->
 <script src="/scripts/chart.min.js"></script>
-<? }
+<?php }
+

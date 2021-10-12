@@ -61,28 +61,32 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 	<div id="nav_anchor"></div>
 	<div id="nav_content">
 		<div class="nav_content--items">
-<? if(array_key_exists('Rickies', $picks_data__array)) {?>
+<?php
+if (array_key_exists('Rickies', $picks_data__array)) { ?>
 			<a class="menu_item js_link"
 				id="menu_rickies"
 				title="The Rickies"
 				data-goatcounter-click="Show Rickies"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('rickies');"><span class="need_space--xs">The </span>Rickies</a>
-<? } if(array_key_exists('Flexies', $picks_data__array)) {?>
+<?php }
+if (array_key_exists('Flexies', $picks_data__array)) { ?>
 			<a class="menu_item js_link"
 				id="menu_flexies"
 				title="The Flexies"
 				data-goatcounter-click="Show Flexies"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('flexies');"><span class="need_space--xs">The </span>Flexies</a>
-<? } if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies', $picks_data__array)) {?>
+<?php }
+if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies', $picks_data__array)) { ?>
 			<a class="menu_item js_link"
 				id="menu_hosts"
 				title="Hosts and ranking"
 				data-goatcounter-click="Show hosts"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('hosts');">Hosts</a>
-<? } ?>
+<?php }
+?>
 			<a class="menu_item js_link"
 				id="menu_details"
 				title="Details about these Rickies"
@@ -115,9 +119,8 @@ if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies
 	</div>
 </section>
 
-<script><? echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js'); ?></script>
-
-<?
+<?php
+echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';
 
 // Change some strings to originals before the terms Rickies/Flexies were coined
 if (
@@ -137,3 +140,4 @@ if (
 
 	echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/pre-rickies.js') . '</script>';
 }
+
