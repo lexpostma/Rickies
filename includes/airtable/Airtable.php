@@ -122,9 +122,9 @@ class Airtable
         $params = "";
 
         if (!empty($field)&& !empty($value)){
-            
+
             $params = array(
-                "filterByFormula" => "AND({{$field}} = '$value')",
+                "filterByFormula" => 'AND({' . $field . '} = "' . $value .'")',
             );
         }
         
@@ -133,7 +133,7 @@ class Airtable
         $response = $request->getResponse();
         
      
-        $results['count'] = count($response->records);
+        $results['count'] = isset( $response->records ) ? count($response->records) : 0;
         $results['records'] = $response->records;
         
      
