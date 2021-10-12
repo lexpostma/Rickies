@@ -30,7 +30,9 @@ All available Rickies can be found on [the main overview](/).',
 	],
 	503 => [
 		'Service Unavailable',
-		'The server is not ready to handle the request. Common causes are a server that is down for maintenance or that is overloaded.',
+		'The server is not ready to handle the request. Common causes are a server that is down for maintenance or that is overloaded.
+
+In this case it probably means that Airtable is down or under maintenance. [Check Airtable’s status](https://status.airtable.com)',
 	],
 	504 => [
 		'Gateway Timeout',
