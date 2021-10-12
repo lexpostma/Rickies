@@ -22,6 +22,12 @@ switch ($url_view) {
 		$include_subbody = '../includes/views/about.php';
 		$back_to_overview = true;
 		break;
+	case 'search':
+		// Search query
+		include '../includes/view_controllers/search_controller.php';
+		$include_subbody = '../includes/views/search.php';
+		$back_to_overview = true;
+		break;
 	case 'wwdc':
 		$filter = 'WWDC';
 		include '../includes/view_controllers/rickies_list_controller.php';
