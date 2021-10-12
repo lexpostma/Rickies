@@ -114,7 +114,12 @@ do {
 			}
 		} elseif (isset($filter)) {
 			// Countable, but no Rickies (0 results), but filter is set
-			$filter_error = 'No ' . $filter . ' Rickies were found. <a href="/#list">Show all Rickies</a>.';
+			if ($filter == 'Ungraded') {
+				$filter_string = 'ungraded';
+			} else {
+				$filter_string = $filter;
+			}
+			$filter_error = 'No ' . $filter_string . ' Rickies were found. <a href="/#list">Show all Rickies</a>.';
 		} else {
 			// Countable, but no Rickies (0 results) and no filter
 			// Continue with 404 error
