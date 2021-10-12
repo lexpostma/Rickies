@@ -111,13 +111,20 @@ do {
 		// No Rickies, but filter is set
 		$filter_error = 'No ' . $filter . ' Rickies were found. <a href="/#list">Show all Rickies</a>.';
 	} else {
-		// TODO: if Airtable is down, so error that is not 404
-
 		// No Rickies/events (1 or more) found
-		// Continue with 404
-		$error_code = 404;
-		include $incl_path . 'error.php';
-		die();
+		if (!$all_event_details) {
+			// TODO: is this the only scenario for "no results, but not 404"?
+			// No other details => Rickies overview
+			// So should be 404. However, that probably means Airtable returns error
+			$error_code = 503;
+			include $incl_path . 'error.php';
+			die();
+		} else {
+			// Continue with 404
+			$error_code = 404;
+			include $incl_path . 'error.php';
+			die();
+		}
 	}
 } while ($rickies_events__request = $rickies_events__response->next());
 
