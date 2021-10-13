@@ -2,12 +2,6 @@
 
 // Rickies picks _data_ controller
 
-$picks_data__params = [
-	'filterByFormula' => "AND( URL = '$url_view', Pick, {Host name} , Type, {Round set} )",
-	'sort' => [['field' => 'Picking order', 'direction' => 'asc']],
-	// 	"fields" => ["Artwork", "Name", "URL", "Winner (manual)", "Episode date"],
-];
-
 $picks_data__empty = $picks_data__array = [
 	'Rickies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
 	'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
@@ -48,4 +42,4 @@ foreach ($picks_data__array as $type => $host_picks) {
 	}
 }
 
-// echo "<pre>", var_dump($picks_data__array), "</pre>";
+// echo '<pre>', var_dump($picks_data__array), '</pre>';
