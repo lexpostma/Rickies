@@ -921,6 +921,14 @@ section.results {
   }
 }
 
+mark {
+  background: var(--connected-yellow);
+  color: black;
+  padding: 0 1px;
+  margin: 0 -1px;
+  border-radius: 2px;
+}
+
 html {
   line-height: 1.5;
   background-color: var(--background-color);

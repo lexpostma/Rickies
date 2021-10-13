@@ -10,7 +10,7 @@
 <?php
 echo no_script_banner();
 if (empty($picks_data__array)) {
-	echo '<section class="results">No predictions match ‘<b>' . $query . '</b>’.</section>';
+	echo '<section class="results">No predictions match ‘<mark>' . $query . '</mark>’.</section>';
 } else {
 	 ?>
 
@@ -46,7 +46,17 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 		</div>
 	</div>
 </nav>
-<?php echo pick_item_bundle($picks_data__array, false, true);
-}
+<div class="search_results"><?= pick_item_bundle($picks_data__array, false, true) ?></div>
+<?php
 echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';
+echo '<script src="/scripts/mark.min.js"></script>';
+echo '<script>
+	var context = document.querySelector(".search_results"); // requires an element with class "search_results" to exist
+	var instance = new Mark(context);
+	instance.mark("' .
+	$query .
+	'"); // will mark the keyword "$query"
+</script>';
+
+}
 

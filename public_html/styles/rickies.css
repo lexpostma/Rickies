@@ -1417,6 +1417,14 @@ section.results {
   }
 }
 
+mark {
+  background: var(--connected-yellow);
+  color: black;
+  padding: 0 1px;
+  margin: 0 -1px;
+  border-radius: 2px;
+}
+
 h3 {
   margin: 0;
   font-weight: 600;
@@ -1446,7 +1454,7 @@ ul.bullet_list > li span.emoji {
   margin-right: 8px;
 }
 
-.highlight {
+.highlight_card {
   padding: var(--space-between-sm) var(--space-between-md);
   border-radius: var(--corner-radius);
   margin: var(--space-between-lg) auto;

@@ -18,6 +18,7 @@ The following are used:
 -   [Normalize.css](https://necolas.github.io/normalize.css/) for CSS resets
 -   [JavaScript Cookie](https://github.com/js-cookie/js-cookie) API for handling cookies
 -   [Parsedown](https://parsedown.org) for parser Markdown in PHP
+-   [mark.js](https://markjs.io) to highlight the search term in search results
 -   [Goat Counter](https://www.goatcounter.com/) for simple analytics
 -   Host memoji designed by Apple of course, configured on my iPhone
 -   Fonts
