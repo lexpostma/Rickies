@@ -2,30 +2,39 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
-## 23 June 2021
+## 12 October 2021 v1.4
+
+-   [Search](https://rickies.co/?search=refresh+rate)! You can now search for predictions across all Rickies events. Search for predictions, remarks, host, type, category, event, you name it
+-   There’s now also an [archive view](https://rickies.co/archive) with all the predictions in one page
+
+### 12 October 2021
+
+-   Improve (unpublished) episode listings during live recordings
+
+### 23 June 2021
 
 -   Support for Safari 15 unified tabbar colours. Safe-areas for mobile Safari were already supported
 
-### 2 June 2021 v1.3
+## 2 June 2021 v1.3
 
--   Interactive picks are now persistent. Manual states are stored in local storage so next time you visit the Rickies page, your scores are still there.
+-   Interactive picks are now persistent. Manual states are stored in local storage so next time you visit the Rickies page, your scores are still there
 
-### 29 May 2021 v1.2
+## 29 May 2021 v1.2
 
 -   Support for Mega Chairman, if a host has both titles at once
 
-### 28 May 2021 v1.1
+## 28 May 2021 v1.1
 
 -   Support for Rickies statuses, in preparation for the [WWDC21 Keynote Rickies](https://rickies.co/keynote-jun-2021)
     -   Pending a future predictions episode, to prepare the page details
     -   Live episode, to follow along with the show and the predictions
 
-## 27 May 2021
+### 27 May 2021
 
 -   Fix for new emoji on unsupported devices overlapping with text
 -   Add `<time>` tags to better SEO
 
-### 26 May 2021 v1.0
+## 26 May 2021 v1.0
 
 -   Initial release, just in time for the WWDC21 Keynote Rickies
 -   Finish documentation for GitHub
