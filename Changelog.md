@@ -2,6 +2,10 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+## 13 October 2021 v1.5
+
+-   Add search term highlighting with [mark.js](https://markjs.io)
+
 ## 13 October 2021 v1.4
 
 -   [Search](https://rickies.co/?search=refresh+rate)! You can now search for predictions across all Rickies events. Search for predictions, remarks, host, type, category, event, you name it
