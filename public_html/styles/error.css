@@ -897,6 +897,7 @@ section.results {
   left: 0;
   right: 0;
   bottom: 0;
+  bottom: calc(-1 * env(safe-area-inset-top));
   transition: 300ms background ease;
   padding: 40px var(--space-side-padding) var(--space-side-padding) var(--space-side-padding);
   pointer-events: none;
@@ -927,6 +928,7 @@ section.results {
 }
 #fixed_search.open #search_form {
   transform: translateY(200px);
+  transform: translateY(calc(200px + env(safe-area-inset-top)));
 }
 @media screen and (min-width: 768px) {
   #fixed_search.open #search_form {

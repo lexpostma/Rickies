@@ -97,11 +97,11 @@ function close_button()
 function search_button()
 {
 	$output = search_field(false, true);
-	$output .= '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/search.js') . '</script>';
 	$output .= '<button id="search_button" class="top_button clean" type="button" onclick="toggle_search()">';
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close2.svg');
 	$output .= '</button>';
+	$output .= '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/search.js') . '</script>';
 
 	return $output;
 }
