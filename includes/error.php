@@ -60,7 +60,7 @@ $head_custom = [
     </head>
     <body>
 		<div class="container">
-	        <?= back_button() ?>
+	        <?= back_button() . search_button() ?>
 	        <header class="details">
 	            <div class="gradient"></div>
 	            <div class="big_year"><?= $error_code ?></div>

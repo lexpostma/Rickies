@@ -10,7 +10,7 @@ h1 {
 header {
 	position: relative;
 	text-align: center;
-	padding: var(--space-between-lg);
+	padding: var(--space-between-lg) var(--space-side-padding);
 	padding-top: calc(var(--space-between-lg) + #{var.$iX-top});
 	background-size: cover;
 	background-position: center;
@@ -111,18 +111,26 @@ header {
 			}
 		}
 	}
+
 	&.about,
+	&.search,
 	&.details,
 	&.leaderboard {
 		h1 {
 			text-transform: uppercase;
+			color: white;
+			text-shadow: var.$header-shadow;
+		}
+	}
+	&.about,
+	&.details,
+	&.leaderboard {
+		h1 {
 			position: absolute;
 			z-index: 2;
-			color: white;
 			left: var(--space-between-lg);
 			right: var(--space-between-lg);
 			bottom: var(--space-between-lg);
-			text-shadow: var.$header-shadow;
 		}
 	}
 	&.details {
@@ -131,6 +139,7 @@ header {
 		max-height: calc(375px + #{var.$iX-top});
 	}
 	&.about,
+	&.search,
 	&.details {
 		background-color: var(--connected-blue);
 		background-size: cover;
@@ -215,6 +224,10 @@ header {
 	}
 	&.leaderboard {
 		background-image: url(/images/connected-map.png);
+	}
+	&.search {
+		padding-top: 80px;
+		padding-top: calc(80px + #{var.$iX-top});
 	}
 	&.about,
 	&.leaderboard {

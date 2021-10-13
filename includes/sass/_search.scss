@@ -1,0 +1,113 @@
+@use "variables" as var;
+
+.filters {
+	position: relative;
+	max-width: var.$readability-width;
+	width: 100%;
+	margin: var(--space-between-lg) auto 0 auto;
+	#inline_search {
+		width: 100%;
+		position: relative;
+		input[type='text'] {
+			width: 100%;
+			box-shadow: var.$header-shadow;
+			background: var(--background-color);
+			--height: 48px;
+			border-radius: var(--height);
+			height: var(--height);
+			padding-right: var(--height);
+			padding-left: 16px;
+		}
+
+		button {
+			position: absolute;
+			right: 4px;
+			top: 4px;
+		}
+		@media screen and (min-width: var.$break-md) {
+			input[type='text'] {
+				--height: 56px;
+				padding-left: 20px;
+			}
+			button {
+				right: 8px;
+				top: 8px;
+			}
+		}
+	}
+}
+
+input[type='text'] {
+	font-size: max(16px, 1em);
+}
+
+section.results {
+	text-align: center;
+}
+
+#search_button {
+	right: 20px;
+	z-index: 20;
+	transform: rotate(0);
+	transition: var.$pop-transition;
+	svg {
+		transition: var.$hover-duration opacity ease;
+	}
+	svg + svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+	}
+	&.open {
+		transform: rotate(180deg);
+		svg {
+			opacity: 0;
+		}
+		svg + svg {
+			opacity: 1;
+		}
+	}
+}
+
+#search_button + #share_button {
+	right: 72px;
+}
+
+#fixed_search {
+	position: absolute;
+	z-index: 18;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	transition: var.$hover-duration background ease;
+	padding: 40px var(--space-side-padding) var(--space-side-padding) var(--space-side-padding);
+
+	pointer-events: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	background: rgba(0, 0, 0, 0);
+	#search_form {
+		transition: var.$pop-transition;
+		transform: translateY(-160px);
+	}
+
+	&.open {
+		pointer-events: unset;
+		-webkit-user-select: initial;
+		-ms-user-select: initial;
+		user-select: initial;
+
+		background: rgba(0, 0, 0, 0.7);
+		#search_form {
+			transform: translateY(200px);
+			@media screen and (min-width: var.$break-md) {
+				transform: translateY(0px);
+			}
+		}
+	}
+}
