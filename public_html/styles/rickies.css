@@ -1393,6 +1393,7 @@ section.results {
   left: 0;
   right: 0;
   bottom: 0;
+  bottom: env(safe-area-inset-top);
   transition: 300ms background ease;
   padding: 40px var(--space-side-padding) var(--space-side-padding) var(--space-side-padding);
   pointer-events: none;
