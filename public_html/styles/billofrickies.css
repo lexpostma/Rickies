@@ -163,15 +163,6 @@ section > p + p {
   right: 20px;
 }
 
-#search_button {
-  right: 20px;
-  z-index: 20;
-}
-
-#search_button + #share_button {
-  right: 72px;
-}
-
 .banner {
   text-align: center;
   color: white;
@@ -498,6 +489,7 @@ aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
   background-repeat: no-repeat;
   background-position: center;
   filter: drop-shadow(0px 1px 2px rgba(51, 63, 72, 0.6));
+  box-shadow: none;
 }
 @media (hover: hover) {
   aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
@@ -530,6 +522,7 @@ aside.slider #rule_slider input[type=range]::-moz-range-thumb {
   background-repeat: no-repeat;
   background-position: center;
   filter: drop-shadow(0px 1px 2px rgba(51, 63, 72, 0.6));
+  box-shadow: none;
 }
 @media (hover: hover) {
   aside.slider #rule_slider input[type=range]::-moz-range-thumb {
@@ -562,6 +555,7 @@ aside.slider #rule_slider input[type=range]::-ms-thumb {
   background-repeat: no-repeat;
   background-position: center;
   filter: drop-shadow(0px 1px 2px rgba(51, 63, 72, 0.6));
+  box-shadow: none;
 }
 @media (hover: hover) {
   aside.slider #rule_slider input[type=range]::-ms-thumb {
