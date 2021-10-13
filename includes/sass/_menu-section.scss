@@ -34,7 +34,7 @@ $statusbar: var.$iX-top;
 	top: 0;
 	right: 0;
 	left: 0;
-	z-index: 9;
+	z-index: 22;
 	pointer-events: none;
 	background-image: linear-gradient(
 		to bottom,
@@ -118,9 +118,12 @@ nav.nav_container {
 		left: 0;
 		top: 0;
 
-		z-index: 10;
+		z-index: 11;
 	}
 	&.sticky {
+		#statusbar {
+			background-image: none;
+		}
 		#nav_content {
 			position: fixed;
 			padding-top: $statusbar;

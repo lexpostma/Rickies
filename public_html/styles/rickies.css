@@ -530,7 +530,7 @@ body {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 9;
+  z-index: 22;
   pointer-events: none;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.395) 9.7%, rgba(0, 0, 0, 0.381) 18.7%, rgba(0, 0, 0, 0.358) 27.2%, rgba(0, 0, 0, 0.33) 35.1%, rgba(0, 0, 0, 0.296) 42.6%, rgba(0, 0, 0, 0.259) 49.6%, rgba(0, 0, 0, 0.22) 56.2%, rgba(0, 0, 0, 0.18) 62.5%, rgba(0, 0, 0, 0.141) 68.4%, rgba(0, 0, 0, 0.104) 74.1%, rgba(0, 0, 0, 0.07) 79.5%, rgba(0, 0, 0, 0.042) 84.8%, rgba(0, 0, 0, 0.019) 89.9%, rgba(0, 0, 0, 0.005) 95%, rgba(0, 0, 0, 0) 100%);
 }
@@ -599,7 +599,10 @@ nav.nav_container #nav_content {
   right: 0;
   left: 0;
   top: 0;
-  z-index: 10;
+  z-index: 11;
+}
+nav.nav_container.sticky #statusbar {
+  background-image: none;
 }
 nav.nav_container.sticky #nav_content {
   position: fixed;
@@ -1355,7 +1358,7 @@ section.results {
 
 #search_button {
   right: 20px;
-  z-index: 20;
+  z-index: 21;
   transform: rotate(0);
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
@@ -1370,6 +1373,7 @@ section.results {
 }
 #search_button.open {
   transform: rotate(180deg);
+  position: fixed;
 }
 #search_button.open svg {
   opacity: 0;
@@ -1384,7 +1388,7 @@ section.results {
 
 #fixed_search {
   position: absolute;
-  z-index: 18;
+  z-index: 20;
   top: 0;
   left: 0;
   right: 0;
@@ -1406,6 +1410,7 @@ section.results {
   -webkit-user-select: initial;
   -ms-user-select: initial;
   user-select: initial;
+  position: fixed;
   background: rgba(0, 0, 0, 0.7);
 }
 #fixed_search.open #search_form {

@@ -47,7 +47,7 @@ section.results {
 
 #search_button {
 	right: 20px;
-	z-index: 20;
+	z-index: 21;
 	transform: rotate(0);
 	transition: var.$pop-transition;
 	svg {
@@ -61,6 +61,7 @@ section.results {
 	}
 	&.open {
 		transform: rotate(180deg);
+		position: fixed;
 		svg {
 			opacity: 0;
 		}
@@ -76,7 +77,7 @@ section.results {
 
 #fixed_search {
 	position: absolute;
-	z-index: 18;
+	z-index: 20;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -102,6 +103,7 @@ section.results {
 		-ms-user-select: initial;
 		user-select: initial;
 
+		position: fixed;
 		background: rgba(0, 0, 0, 0.7);
 		#search_form {
 			transform: translateY(200px);
