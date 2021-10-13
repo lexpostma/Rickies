@@ -1424,6 +1424,7 @@ section.results {
 }
 #fixed_search.open #search_form {
   transform: translateY(200px);
+  transform: translateY(calc(200px + env(safe-area-inset-top)));
 }
 @media screen and (min-width: 768px) {
   #fixed_search.open #search_form {

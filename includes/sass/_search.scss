@@ -114,6 +114,8 @@ section.results {
 		}
 		#search_form {
 			transform: translateY(200px);
+			transform: translateY(calc(200px + #{var.$iX-top}));
+
 			@media screen and (min-width: var.$break-md) {
 				transform: translateY(0px);
 			}
