@@ -102,118 +102,67 @@ if (isset($leaderboard_order)) {
 
 // echo "<pre>", var_dump($leaderboard_data), "</pre>";
 
-// Function to display picks
-function pick_item($data, $interactive = false)
-{
-	if ($interactive) {
-		$output =
-			'<li id="pick_' .
-			$data['id'] .
-			'" class="pick_item interactive" onclick="update_pick(this)" data-goatcounter-click="Interactive picks" title="Update pick state" data-goatcounter-referrer=' .
-			current_url() .
-			'>';
-	} else {
-		$output = '<li id="pick_' . $data['id'] . '" class="pick_item">';
-	}
+// Define SEO description
+$description = 'The predictions show of Connected on Relay FM. ';
+if (
+	$rickies_data['type'] == 'annual' &&
+	($rickies_data['status'] == 'Ungraded' || $rickies_data['status'] == 'Live' || $rickies_data['status'] == 'Pending')
+) {
+	// Annual and ungraded, so future
+	$description .=
+		'What will Apple announce in ' .
+		strftime('%Y', $rickies_data['date']) .
+		'? And who will become Annual Chairman? Follow along with this interactive scorecard';
+} elseif ($rickies_data['type'] == 'annual') {
+	// Annual and graded, so past
+	$description .=
+		'What has Apple announced in ' .
+		strftime('%Y', $rickies_data['date']) .
+		'? And how did Myke, Stephen, and Federico perform with their yearly predictions?';
+} elseif (
+	$rickies_data['status'] == 'Ungraded' ||
+	$rickies_data['status'] == 'Live' ||
+	$rickies_data['status'] == 'Pending'
+) {
+	// Ungraded, so future keynote
+	$description .= 'What will Apple announce at the ';
 
-	// If it's not a Flexy, the picks are in 3 rounds
-	if ($data['type'] !== 'Flexy') {
-		$output .= '<span class="round">' . $data['round'] . '</span>';
-	}
+	// if (!empty($rickies_data['details']['event_data']['label2'])) {
+	// 	$description .= '“' . $rickies_data['details']['event_data']['label2'] . '” ';
+	// }
 
-	// Define the pick label
-	$output .= '<p class="pick"><span class="label">' . $data['pick'] . '</span>';
-
-	// Define the point score
-	$output .= '<span class="points ' . strtolower($data['type']) . ' ' . strtolower($data['status']) . '">';
-	if ($data['status'] == false) {
-		$output .= '?';
-	} elseif ($data['points'] > 0 && $data['type'] == 'Flexy') {
-		$output .= '💪';
-	} elseif ($data['type'] == 'Flexy') {
-		$output .= '👎';
-	} elseif ($data['points'] >= 1) {
-		$output .= '+' . $data['points'];
-	} elseif ($data['points'] > 0) {
-		$output .= $data['points'];
-	} else {
-		$output .= $data['points'];
-	}
-	$output .= '</span>';
-
-	$output .= '</p>';
-
-	// Add optional note
-	if ($data['note']) {
-		$output .= '<div class="note">' . markdown($data['note']) . '</div>';
-	}
-	$output .= '</li>';
-	return $output;
+	$description .=
+		'keynote on ' .
+		date_to_string_label($rickies_data['details']['event_data']['date']) .
+		'? And who will become Keynote Chairman? Follow along with this interactive scorecard.';
+} else {
+	// Graded keynote, past
+	$description .= 'What has Apple announced at the ';
+	// if (!empty($rickies_data['details']['event_data']['label2'])) {
+	// 	$description .= '“' . $rickies_data['details']['event_data']['label2'] . '” ';
+	// }
+	$description .=
+		'keynote on ' .
+		date_to_string_label($rickies_data['details']['event_data']['date']) .
+		'? And how did Myke, Stephen, and Federico perform with their predictions for this event?';
 }
 
-function pick_item_bundle($data, $interactive = false)
-{
-	$output = '';
+$head_custom = [
+	'title' => $rickies_data['name'],
+	'description' => $description,
+	'keywords' => ['wwdc', 'keynote', 'risky picks', 'Flexies', 'charity', 'chairman'],
+];
 
-	// Split the data by type (Rickies or Flexies)
-	foreach ($data as $type => $hosts) {
-		$output .=
-			'<section class="navigate_with_mobile_menu large_columns" id="' .
-			strtolower($type) .
-			'"><h2 class="section_title">The ' .
-			$type .
-			'</h2><div class="section_group">';
+if ($rickies_data['status'] == 'Ungraded') {
+	$head_custom['title'] = '🟠 ' . $head_custom['title'] . ' • Interactive scorecard';
+}
 
-		// Split the data by host
-		foreach ($hosts as $host => $picks) {
-			$pick_items = '';
-			$score = [
-				'count' => 0,
-				'correct' => 0,
-				'points' => 0,
-			];
+if ($rickies_data['artwork']['seo'] !== false) {
+	$head_custom['image'] = $rickies_data['artwork']['seo'];
+}
 
-			// Get the picks for this host
-			foreach ($picks as $key => $value) {
-				// Count the scores of the picks for this host
-				$score['count']++;
-				$score['points'] = $score['points'] + $value['points'];
-				if ($value['status'] == 'Correct') {
-					$score['correct'] = $score['correct'] + $value['factor'];
-				}
-				$pick_items .= pick_item($value, $interactive);
-			}
-			if ($score['count'] !== 0) {
-				// Calculate the ratio of correct picks, if not 0 picks, and round it
-				$score['percentage'] = round_if_decimal(($score['correct'] / $score['count']) * 100);
-			}
-
-			// Output the gathered data
-			$output .=
-				'<div class="host_picks section_group--list" id="' .
-				strtolower($type) .
-				'_' .
-				strtolower($host) .
-				'"><h3>' .
-				$host .
-				'<span class="host_score">';
-			if ($type == 'Rickies') {
-				// Rickies have points
-				$output .= plural_points($score['points']) . ' • ' . $score['correct'] . '/' . $score['count'];
-			} elseif ($score['count'] !== 0) {
-				// Flexies have ratio, but only for more than 0 picks
-				$output .= $score['percentage'] . '% • ' . $score['correct'] . '/' . $score['count'];
-			}
-
-			$output .= '</span></h3><ul class="list_item_group">' . $pick_items . '</ul></div>';
-		}
-		$output .= '</div></section>';
-	}
-	if ($interactive) {
-		$output .=
-			'<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/interactive_picks.js') . '</script>';
-	}
-	return $output;
+if ($rickies_data['artwork_background_color'] !== false) {
+	$head_custom['theme-color'] = $rickies_data['artwork_background_color'];
 }
 
 function host_item_bundle($host_event_data, $event_type)
@@ -350,67 +299,4 @@ function host_item_bundle($host_event_data, $event_type)
 	</section>
 	';
 	return $output;
-}
-
-// Define SEO description
-$description = 'The predictions show of Connected on Relay FM. ';
-if (
-	$rickies_data['type'] == 'annual' &&
-	($rickies_data['status'] == 'Ungraded' || $rickies_data['status'] == 'Live' || $rickies_data['status'] == 'Pending')
-) {
-	// Annual and ungraded, so future
-	$description .=
-		'What will Apple announce in ' .
-		strftime('%Y', $rickies_data['date']) .
-		'? And who will become Annual Chairman? Follow along with this interactive scorecard';
-} elseif ($rickies_data['type'] == 'annual') {
-	// Annual and graded, so past
-	$description .=
-		'What has Apple announced in ' .
-		strftime('%Y', $rickies_data['date']) .
-		'? And how did Myke, Stephen, and Federico perform with their yearly predictions?';
-} elseif (
-	$rickies_data['status'] == 'Ungraded' ||
-	$rickies_data['status'] == 'Live' ||
-	$rickies_data['status'] == 'Pending'
-) {
-	// Ungraded, so future keynote
-	$description .= 'What will Apple announce at the ';
-
-	// if (!empty($rickies_data['details']['event_data']['label2'])) {
-	// 	$description .= '“' . $rickies_data['details']['event_data']['label2'] . '” ';
-	// }
-
-	$description .=
-		'keynote on ' .
-		date_to_string_label($rickies_data['details']['event_data']['date']) .
-		'? And who will become Keynote Chairman? Follow along with this interactive scorecard.';
-} else {
-	// Graded keynote, past
-	$description .= 'What has Apple announced at the ';
-	// if (!empty($rickies_data['details']['event_data']['label2'])) {
-	// 	$description .= '“' . $rickies_data['details']['event_data']['label2'] . '” ';
-	// }
-	$description .=
-		'keynote on ' .
-		date_to_string_label($rickies_data['details']['event_data']['date']) .
-		'? And how did Myke, Stephen, and Federico perform with their predictions for this event?';
-}
-
-$head_custom = [
-	'title' => $rickies_data['name'],
-	'description' => $description,
-	'keywords' => ['wwdc', 'keynote', 'risky picks', 'Flexies', 'charity', 'chairman'],
-];
-
-if ($rickies_data['status'] == 'Ungraded') {
-	$head_custom['title'] = '🟠 ' . $head_custom['title'] . ' • Interactive scorecard';
-}
-
-if ($rickies_data['artwork']['seo'] !== false) {
-	$head_custom['image'] = $rickies_data['artwork']['seo'];
-}
-
-if ($rickies_data['artwork_background_color'] !== false) {
-	$head_custom['theme-color'] = $rickies_data['artwork_background_color'];
 }
