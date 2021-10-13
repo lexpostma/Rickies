@@ -347,7 +347,7 @@ h1 {
 header {
   position: relative;
   text-align: center;
-  padding: var(--space-between-lg);
+  padding: var(--space-between-lg) var(--space-side-padding);
   padding-top: calc(var(--space-between-lg) + env(safe-area-inset-top));
   background-size: cover;
   background-position: center;
@@ -489,6 +489,7 @@ header.leaderboard {
 }
 header.search {
   padding-top: 80px;
+  padding-top: calc(80px + env(safe-area-inset-top));
 }
 header.about, header.leaderboard {
   height: 100vw;
