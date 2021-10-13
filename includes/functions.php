@@ -30,8 +30,9 @@ function current_url($filter = false)
 	}
 }
 
-function back_button($location = '/')
+function back_button()
 {
+	$location = '/';
 	$middle = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-back.svg');
 	$link =
 		'<a href="' .
