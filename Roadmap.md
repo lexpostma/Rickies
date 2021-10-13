@@ -11,7 +11,7 @@ Features I plan to add to the website.
 -   [ ] Add sitemap and other SEO improvements.
 -   [x] Add host signatures to The Bill of Rickies.
 -   [x] Add Rickies filters.
--   [ ] Add search via DuckDuckGo.
+-   [x] Add search via ~~DuckDuckGo~~ Airtable.
 -   [ ] Add light/dark mode toggle.
 -   [x] Replace some bitmap assets with vector versions.
 -   [ ] Cache Airtable data as JSON files to increase performance.
