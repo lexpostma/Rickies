@@ -5,9 +5,14 @@
 @use "header";
 @use "menu-section";
 @use "logo-tag";
+@use "search";
 
 html {
 	line-height: 1.5;
 	background-color: var(--background-color);
 	color: var(--text-primary-color);
+}
+
+.top_button {
+	box-shadow: var.$header-shadow;
 }
