@@ -104,6 +104,8 @@ $head_custom = [
 	'description' => $description,
 	'image' => domain_url() . '/images/hero-billofrickies.jpg',
 	'canonical' => current_url(true) . 'billof',
+	'theme-color' => '#0d87ca',
+	'theme-color-dark' => '#333f48',
 ];
 
 // This is the same logic that's also dynamic in JS, and in Event details

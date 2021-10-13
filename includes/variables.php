@@ -52,6 +52,7 @@ On Connected at Relay FM.',
 		'" ',
 	'twitter_author' => '@lexpostma',
 	'twitter_connected' => '@_connectedfm',
+	'theme-color' => '#333f48',
 ];
 
 if ($environment == 'production') {
