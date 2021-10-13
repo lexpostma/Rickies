@@ -23,23 +23,23 @@ if (empty($picks_data__array)) {
 if (array_key_exists('Rickies', $picks_data__array)) { ?>
 			<a class="menu_item js_link"
 				id="menu_rickies"
-				title="The Rickies"
+				title="Rickies"
 				data-goatcounter-click="Show Rickies"
 				data-goatcounter-referrer="<?= current_url() ?>"
-				onclick="navigate_section('rickies');"><span class="need_space--xs">The </span>Rickies</a>
+				onclick="navigate_section('rickies');">Rickies</a>
 <?php }
 if (array_key_exists('Flexies', $picks_data__array)) { ?>
 			<a class="menu_item js_link"
 				id="menu_flexies"
-				title="The Flexies"
+				title="Flexies"
 				data-goatcounter-click="Show Flexies"
 				data-goatcounter-referrer="<?= current_url() ?>"
-				onclick="navigate_section('flexies');"><span class="need_space--xs">The </span>Flexies</a>
+				onclick="navigate_section('flexies');">Flexies</a>
 <?php }
 ?>
 			<a class="menu_item js_link"
 				id="menu_top"
-				title="Scroll to the top"
+				title="Search at the top"
 				onclick="window.scrollTo(0,0); document.getElementById('search_input').focus()"><?= file_get_contents(
     	$_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-search.svg'
     ) ?></a>

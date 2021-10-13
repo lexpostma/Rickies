@@ -2,7 +2,7 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
-## 12 October 2021 v1.4
+## 13 October 2021 v1.4
 
 -   [Search](https://rickies.co/?search=refresh+rate)! You can now search for predictions across all Rickies events. Search for predictions, remarks, host, type, category, event, you name it
 -   There’s now also an [archive view](https://rickies.co/archive) with all the predictions in one page

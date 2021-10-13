@@ -404,9 +404,11 @@ function pick_item_bundle($data, $interactive = false, $search = false)
 		$output .=
 			'<section class="navigate_with_mobile_menu large_columns" id="' .
 			strtolower($type) .
-			'"><h2 class="section_title">The ' .
-			$type .
-			'</h2><div class="section_group">';
+			'"><h2 class="section_title">';
+		if (!$search) {
+			$output .= 'The ';
+		}
+		$output .= $type . '</h2><div class="section_group">';
 
 		// Split the data by host
 		foreach ($hosts as $host => $picks) {
