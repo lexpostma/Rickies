@@ -7,25 +7,15 @@ function toggle_search() {
 		searchbox.classList.remove('open');
 		toggle_button.classList.remove('open');
 		search_field.blur();
-		enableScroll();
+		document.body.style.overflowY = '';
+		document.body.style.height = '';
+		document.getElementsByTagName('html')[0].style.height = '';
 	} else {
 		searchbox.classList.add('open');
 		toggle_button.classList.add('open');
 		search_field.focus();
-		disableScroll();
+		document.body.style.overflowY = 'hidden';
+		document.body.style.height = '100%';
+		document.getElementsByTagName('html')[0].style.height = '100%';
 	}
-}
-
-function disableScroll() {
-	// Get the current page scroll position
-	scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-	(scrollLeft = window.pageXOffset || document.documentElement.scrollLeft),
-		// if any scroll is attempted, set this to the previous value
-		(window.onscroll = function () {
-			window.scrollTo(scrollLeft, scrollTop);
-		});
-}
-
-function enableScroll() {
-	window.onscroll = function () {};
 }
