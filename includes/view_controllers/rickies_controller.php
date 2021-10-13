@@ -151,7 +151,7 @@ function list_item($data)
 				$data['url'] .
 				'"
 				title="' .
-				$data['label1'] .
+				strip_tags($data['label1']) .
 				'"
 				data-goatcounter-referrer="' .
 				current_url() .
@@ -277,7 +277,7 @@ function episode_data($episode, $state = false)
 {
 	// $state = [ live | future ]
 	if ($state == 'live') {
-		$episode['label1'] = '🔴 Live now';
+		$episode['label1'] = '<span class="emoji">🔴&nbsp;</span>Live now';
 		$episode['label2'] = 'Tune in live to enjoy the show!';
 		$episode['label3'] = 'On air';
 	} elseif ($state == 'future') {

@@ -145,6 +145,11 @@ $winner_double_ring_size: calc(var(--graphic-size) + 42px);
 	.host_item_content {
 		margin-left: var(--space-between-md);
 		margin-top: 6px;
+		// TODO: Fixes wrapping below emoji, but disabled because it underlines the emoji too if <a>
+		& > ul > li > span,
+		& > ul > li > a {
+			// display: flex;
+		}
 		span.emoji {
 			font-family: $emoji-font;
 			font-variant-emoji: emoji;
