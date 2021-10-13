@@ -31,7 +31,7 @@ if (
 	echo '<header class="details"><div class="gradient"></div>';
 }
 
-// Add custom CSS is available
+// Add custom CSS if available
 if ($rickies_data['custom_css'] !== false) {
 	echo '<style>' . $rickies_data['custom_css'] . '</style>';
 }

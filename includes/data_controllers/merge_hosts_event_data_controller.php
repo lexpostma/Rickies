@@ -33,6 +33,10 @@ foreach ($rickies_data['hosts'] as $first_name => $host_data) {
 // echo '<pre>', var_dump($rickies_data), '</pre>';
 
 // Get picks data
+$picks_data__params = [
+	'filterByFormula' => "AND( URL = '$url_view', Pick, {Host name} , Type, {Round set} )",
+	'sort' => [['field' => 'Picking order', 'direction' => 'asc']],
+];
 include '../includes/data_controllers/picks_data_controller.php';
 
 // Sort picks data by ranking

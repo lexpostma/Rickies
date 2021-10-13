@@ -122,6 +122,7 @@ p#promote_webapp {
 	margin-bottom: var(--space-between-md);
 }
 
+input.clean,
 button.clean,
 select.clean {
 	background: none;
@@ -129,9 +130,13 @@ select.clean {
 	border: none;
 	padding: 0;
 	font: inherit;
-	cursor: pointer;
 	outline: inherit;
 	-webkit-appearance: none;
+}
+
+button.clean,
+select.clean {
+	cursor: pointer;
 }
 
 .img_emoji {

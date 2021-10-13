@@ -70,6 +70,7 @@ $statusbar: var.$iX-top;
 		flex-direction: row;
 		justify-content: flex-start;
 		align-items: stretch;
+		padding: 0 var(--space-between-sm);
 		a {
 			transition: 200ms padding ease-in-out;
 			padding: var(--space-between-md) var(--space-between-sm);
