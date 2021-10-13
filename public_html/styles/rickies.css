@@ -551,6 +551,7 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
+  padding: 0 var(--space-between-sm);
 }
 #nav_content .nav_content--items a {
   transition: 200ms padding ease-in-out;
