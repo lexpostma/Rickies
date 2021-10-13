@@ -8,6 +8,20 @@ if (isset($_GET['search'])) {
 	$query = '';
 }
 
+if ($url_view == 'archive') {
+	$head_custom = [
+		'title' => 'Rickies archive',
+		'description' => 'Archive of all Rickies predictions.',
+	];
+
+	$h1 = 'Rickies archive';
+} else {
+	$head_custom = [
+		'title' => 'Search for Rickies',
+		'description' => 'Search results for ‘' . $query . '’ on Rickies.co.',
+	];
+}
+
 $picks_data__params = [
 	'filterByFormula' => "AND(
 		OR(
@@ -15,6 +29,7 @@ $picks_data__params = [
 			SEARCH(LOWER('$query'),LOWER({Special remark})),
 			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Category name},','))),
 			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Category group},','))),
+			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Rickies name},','))),
 			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN(Host,','))),
 			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN(Type,','))),
 			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Type group},',')))
@@ -24,24 +39,6 @@ $picks_data__params = [
 		Type,
 		{Round set}
 	)",
-	'sort' => [['field' => 'Pick date', 'direction' => 'asc']],
+	'sort' => [['field' => 'Pick date', 'direction' => 'desc']],
 ];
 include '../includes/data_controllers/picks_data_controller.php';
-
-$head_custom = [
-	'title' => 'Searching Rickies.co',
-	'description' => 'Search results for \'TODO: SEARCH TERM\' on Rickies.co.',
-];
-
-/*
-Larger search query
-
-SEARCH(LOWER('$query'),LOWER(Pick)),
-SEARCH(LOWER('$query'),LOWER({Special remark})),
-SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Category name},','))),
-SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Category group},','))),
-SEARCH(LOWER('$query'),LOWER(ARRAYJOIN(Host,','))),
-SEARCH(LOWER('$query'),LOWER(ARRAYJOIN(Type,','))),
-SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Type group},',')))
-
-*/

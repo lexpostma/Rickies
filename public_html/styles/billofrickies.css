@@ -163,6 +163,15 @@ section > p + p {
   right: 20px;
 }
 
+#search_button {
+  right: 20px;
+  z-index: 20;
+}
+
+#search_button + #share_button {
+  right: 72px;
+}
+
 .banner {
   text-align: center;
   color: white;
@@ -210,6 +219,7 @@ p#promote_webapp {
   margin-bottom: var(--space-between-md);
 }
 
+input.clean,
 button.clean,
 select.clean {
   background: none;
@@ -217,9 +227,13 @@ select.clean {
   border: none;
   padding: 0;
   font: inherit;
-  cursor: pointer;
   outline: inherit;
   -webkit-appearance: none;
+}
+
+button.clean,
+select.clean {
+  cursor: pointer;
 }
 
 .img_emoji {

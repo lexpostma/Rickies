@@ -22,6 +22,7 @@ switch ($url_view) {
 		$include_subbody = '../includes/views/about.php';
 		$back_to_overview = true;
 		break;
+	case 'archive':
 	case 'search':
 		// Search query
 		include '../includes/view_controllers/search_controller.php';

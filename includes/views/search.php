@@ -1,16 +1,18 @@
 <div id="statusbar"></div>
-<header class="about contain_img">
+<header class="search">
 	<div class="gradient"></div>
-	<img src="/images/lex_memoji.png" alt="Lex’ Memoji"/>
-	<h1>Search Rickies</h1>
+	<h1><?= $head_custom['title'] ?></h1>
+	<?= search_field($query) ?>
+
 </header>
 
-<div class="filters">
-	<form>
-		<input type="text" name="search" placeholder="Search for picks" value="<?= $query ?>"/>
-		<button type="submit">Search</button>
-	</form>
-</div>
+
+<?php
+echo no_script_banner();
+if (empty($picks_data__array)) {
+	echo '<section class="results">No predictions match ‘<b>' . $query . '</b>’.</section>';
+} else {
+	 ?>
 
 <nav class="nav_container">
 	<div id="statusbar"></div>
@@ -42,9 +44,7 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 		</div>
 	</div>
 </nav>
-
-<?php
-echo no_script_banner();
-echo pick_item_bundle($picks_data__array, false, true);
+<?php echo pick_item_bundle($picks_data__array, false, true);
+}
 echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';
 
