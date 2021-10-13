@@ -23,6 +23,7 @@
 		<a class="active" href="#list"><span class="need_space--sm">The </span>Rickies</a>
 		<a href="/billof"><span class="need_space--xs">The </span>Bill of Rickies</a>
 		<a href="/leaderboard"><span class="need_space--sm">Host </span>Leaderboard</a>
+		<a href="/archive">Archive</a>
 		<a href="/about">About</a>
 	</div>
 </nav>
