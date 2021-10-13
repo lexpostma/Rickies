@@ -110,6 +110,7 @@ $rickies_events__array[$id]['details'] = [
 		'number' => check_key('Predictions episode number', $fields, false, 0),
 		'tag' => 'Predictions',
 		'tag_color' => 'blue',
+		'date' => check_key('Predictions episode date', $fields, false, 0),
 	],
 	'episode_data_results' => [
 		'url' => check_key('Results episode URL', $fields, false, 0),
@@ -120,6 +121,7 @@ $rickies_events__array[$id]['details'] = [
 		'number' => check_key('Results episode number', $fields, false, 0),
 		'tag' => 'Results',
 		'tag_color' => 'green',
+		'date' => check_key('Results episode date', $fields, false, 0),
 	],
 
 	// More data
@@ -147,20 +149,53 @@ if ($rickies_events__array[$id]['details']['event_data']['label1'] == false) {
 	unset($rickies_events__array[$id]['details']['event_data']);
 }
 
+// Episode states
+if (
+	$rickies_events__array[$id]['status'] == 'Live' &&
+	strtotime($rickies_events__array[$id]['details']['event_data']['date']) > strtotime('today')
+) {
+	// Rickies status == live && Event date > (bigger=before) today
+	$predictions_state = 'live';
+	$results_state = false;
+} elseif (
+	$rickies_events__array[$id]['status'] == 'Live' &&
+	strtotime($rickies_events__array[$id]['details']['event_data']['date']) < strtotime('today')
+) {
+	// Rickies status == live && Event date < (smaller=after) today
+	$predictions_state = false;
+	$results_state = 'live';
+} elseif (
+	$rickies_events__array[$id]['details']['episode_data_predictions']['label1'] == false &&
+	$rickies_events__array[$id]['details']['episode_data_results']['label1'] == false
+) {
+	// Prediction episode title == '' && Results episode title == ''
+	$predictions_state = 'future';
+	$results_state = false;
+} elseif ($rickies_events__array[$id]['details']['episode_data_results']['label1'] == false) {
+	// Results episode title == ''
+	$predictions_state = false;
+	$results_state = 'future';
+} else {
+	$predictions_state = false;
+	$results_state = false;
+}
+
 // Episode data
 $rickies_events__array[$id]['details']['episode_data_predictions'] = episode_data(
-	$rickies_events__array[$id]['details']['episode_data_predictions']
+	$rickies_events__array[$id]['details']['episode_data_predictions'],
+	$predictions_state
 );
 $rickies_events__array[$id]['details']['episode_data_results'] = episode_data(
-	$rickies_events__array[$id]['details']['episode_data_results']
+	$rickies_events__array[$id]['details']['episode_data_results'],
+	$results_state
 );
 
-if ($rickies_events__array[$id]['details']['episode_data_predictions']['label1'] == false) {
+if ($rickies_events__array[$id]['details']['episode_data_predictions'] == false) {
 	// No predictions episode
 	unset($rickies_events__array[$id]['details']['episode_title']);
 	unset($rickies_events__array[$id]['details']['episode_data_predictions']);
 	unset($rickies_events__array[$id]['details']['episode_data_results']);
-} elseif ($rickies_events__array[$id]['details']['episode_data_results']['label1'] == false) {
+} elseif ($rickies_events__array[$id]['details']['episode_data_results'] == false) {
 	// No results episode, clear details from array
 	unset($rickies_events__array[$id]['details']['episode_data_results']);
 }
