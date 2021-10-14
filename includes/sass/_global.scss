@@ -70,12 +70,18 @@ section > p + p {
 		transform: scale(1.1);
 	}
 }
+
 .back_button {
 	left: 20px;
 }
+
 #share_button {
 	display: none;
 	right: 20px;
+	#music_button + &,
+	#search_button + & {
+		right: 76px;
+	}
 }
 
 .banner {

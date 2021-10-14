@@ -162,6 +162,9 @@ section > p + p {
   display: none;
   right: 20px;
 }
+#music_button + #share_button, #search_button + #share_button {
+  right: 76px;
+}
 
 .banner {
   text-align: center;
@@ -761,10 +764,6 @@ nav a:active {
 }
 #music_button.is-playing div.pause {
   display: block;
-}
-
-#music_button + #share_button {
-  right: 72px;
 }
 
 #close_button {

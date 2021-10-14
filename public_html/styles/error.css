@@ -162,6 +162,9 @@ section > p + p {
   display: none;
   right: 20px;
 }
+#music_button + #share_button, #search_button + #share_button {
+  right: 76px;
+}
 
 .banner {
   text-align: center;
@@ -884,10 +887,6 @@ section.results {
 }
 #search_button.open svg + svg {
   opacity: 1;
-}
-
-#search_button + #share_button {
-  right: 72px;
 }
 
 #fixed_search {
