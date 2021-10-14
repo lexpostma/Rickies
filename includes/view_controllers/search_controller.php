@@ -22,6 +22,9 @@ if ($url_view == 'archive') {
 	];
 }
 
+$head_custom['canonical'] = domain_url() . '/archive';
+$head_custom['keywords'] = ['archive', 'history', 'search', 'filters'];
+
 $picks_data__params = [
 	'filterByFormula' => "AND(
 		OR(
