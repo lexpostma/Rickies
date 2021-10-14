@@ -30,8 +30,8 @@
 	}
 
 	animation-name: slider_thumb_hint;
-	animation-duration: 1s;
-	animation-delay: 1s;
+	animation-duration: 2s;
+	animation-delay: 3s;
 }
 
 @mixin slider-track {
@@ -89,8 +89,9 @@
 	pointer-events: none;
 	opacity: 0;
 	animation-name: slider_label_hint;
-	animation-duration: 2s;
-	animation-delay: 500ms;
+	animation-timing-function: ease;
+	animation-duration: 4s;
+	animation-delay: 2s;
 }
 aside.slider,
 #slider_hint {

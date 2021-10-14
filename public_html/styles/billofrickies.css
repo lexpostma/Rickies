@@ -473,8 +473,9 @@ main.parchment a:active {
   pointer-events: none;
   opacity: 0;
   animation-name: slider_label_hint;
-  animation-duration: 2s;
-  animation-delay: 500ms;
+  animation-timing-function: ease;
+  animation-duration: 4s;
+  animation-delay: 2s;
 }
 
 aside.slider,
@@ -541,8 +542,8 @@ aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
   filter: drop-shadow(0px 1px 2px rgba(51, 63, 72, 0.6));
   box-shadow: none;
   animation-name: slider_thumb_hint;
-  animation-duration: 1s;
-  animation-delay: 1s;
+  animation-duration: 2s;
+  animation-delay: 3s;
 }
 @media (hover: hover) {
   aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
@@ -577,8 +578,8 @@ aside.slider #rule_slider input[type=range]::-moz-range-thumb {
   filter: drop-shadow(0px 1px 2px rgba(51, 63, 72, 0.6));
   box-shadow: none;
   animation-name: slider_thumb_hint;
-  animation-duration: 1s;
-  animation-delay: 1s;
+  animation-duration: 2s;
+  animation-delay: 3s;
 }
 @media (hover: hover) {
   aside.slider #rule_slider input[type=range]::-moz-range-thumb {
@@ -613,8 +614,8 @@ aside.slider #rule_slider input[type=range]::-ms-thumb {
   filter: drop-shadow(0px 1px 2px rgba(51, 63, 72, 0.6));
   box-shadow: none;
   animation-name: slider_thumb_hint;
-  animation-duration: 1s;
-  animation-delay: 1s;
+  animation-duration: 2s;
+  animation-delay: 3s;
 }
 @media (hover: hover) {
   aside.slider #rule_slider input[type=range]::-ms-thumb {
