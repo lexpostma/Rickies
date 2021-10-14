@@ -10,6 +10,10 @@ echo share_button();
 include $include_subbody;
 include $incl_path . 'footer.php';
 
+if ($url_view !== 'search' && $url_view !== 'archive') {
+	echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/search.js') . '</script>';
+}
+
 echo '<script>';
 include 'scripts/confetti.js';
 if ($url_view == 'main') { ?>

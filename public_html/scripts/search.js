@@ -1,3 +1,4 @@
+// Script to interact with inline fixed searchbox
 const searchbox = document.getElementById('fixed_search');
 const toggle_button = document.getElementById('search_button');
 const search_field = document.getElementById('search_input');

@@ -101,8 +101,8 @@ function search_button()
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close2.svg');
 	$output .= '</button>';
-	$output .= '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/search.js') . '</script>';
 
+	// NOTE: Remember to add the search.js script to the footer separately
 	return $output;
 }
 
