@@ -440,23 +440,59 @@ main.parchment a:active {
   color: black;
 }
 
-@keyframes slider_hint {
+@keyframes slider_thumb_hint {
   0%, 100% {
     transform: translateX(0px);
   }
   25% {
-    transform: translateX(10px);
+    transform: translateX(-20px);
   }
   75% {
-    transform: translateX(-10px);
+    transform: translateX(20px);
   }
 }
+@keyframes slider_label_hint {
+  0%, 100% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+}
+#slider_label_container {
+  position: relative;
+}
+
+#slider_hint {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+  animation-name: slider_label_hint;
+  animation-duration: 2s;
+  animation-delay: 500ms;
+}
+
+aside.slider,
+#slider_hint {
+  background: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  aside.slider,
+#slider_hint {
+    background: black;
+  }
+}
+
 aside.slider {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: #fff;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -466,11 +502,11 @@ aside.slider #rule_slider {
   padding-bottom: max(24px, calc(16px + env(safe-area-inset-bottom)));
   max-width: 650px;
   margin: 0 auto;
+  color: var(--text-primary-color);
 }
 aside.slider #rule_slider .label {
   display: block;
   text-align: center;
-  color: var(--text-primary-color);
   margin-bottom: 16px;
 }
 @media screen and (min-width: 768px) {
@@ -504,8 +540,9 @@ aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
   background-position: center;
   filter: drop-shadow(0px 1px 2px rgba(51, 63, 72, 0.6));
   box-shadow: none;
-  animation-name: slider_hint;
+  animation-name: slider_thumb_hint;
   animation-duration: 1s;
+  animation-delay: 1s;
 }
 @media (hover: hover) {
   aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
@@ -539,8 +576,9 @@ aside.slider #rule_slider input[type=range]::-moz-range-thumb {
   background-position: center;
   filter: drop-shadow(0px 1px 2px rgba(51, 63, 72, 0.6));
   box-shadow: none;
-  animation-name: slider_hint;
+  animation-name: slider_thumb_hint;
   animation-duration: 1s;
+  animation-delay: 1s;
 }
 @media (hover: hover) {
   aside.slider #rule_slider input[type=range]::-moz-range-thumb {
@@ -574,8 +612,9 @@ aside.slider #rule_slider input[type=range]::-ms-thumb {
   background-position: center;
   filter: drop-shadow(0px 1px 2px rgba(51, 63, 72, 0.6));
   box-shadow: none;
-  animation-name: slider_hint;
+  animation-name: slider_thumb_hint;
   animation-duration: 1s;
+  animation-delay: 1s;
 }
 @media (hover: hover) {
   aside.slider #rule_slider input[type=range]::-ms-thumb {
@@ -698,7 +737,6 @@ aside.slider #rule_slider input[type=range]:focus {
 }
 @media (prefers-color-scheme: dark) {
   aside.slider {
-    background: black;
     box-shadow: none;
     border-top: 1px solid var(--text-primary-color);
   }

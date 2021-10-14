@@ -1,11 +1,11 @@
-var document_date = document.getElementById('document_date');
-var paper = document.getElementById('the_document');
-var slider_label = document.getElementById('slider_label');
-var document_title = document.getElementById('document_title');
-var disclaimer_title = document.getElementById('disclaimer_title');
-var browser_title = document.getElementsByTagName('title')[0];
-var rickies_title = document.getElementById('rickies_title');
-var flexies_title = document.getElementById('flexies_title');
+const document_date = document.getElementById('document_date');
+const paper = document.getElementById('the_document');
+const slider_label = document.getElementById('slider_label');
+const document_title = document.getElementById('document_title');
+const disclaimer_title = document.getElementById('disclaimer_title');
+const browser_title = document.getElementsByTagName('title')[0];
+const rickies_title = document.getElementById('rickies_title');
+const flexies_title = document.getElementById('flexies_title');
 
 function slide_event() {
 	window.goatcounter.count({
