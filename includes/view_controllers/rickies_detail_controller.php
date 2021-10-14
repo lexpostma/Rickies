@@ -102,69 +102,6 @@ if (isset($leaderboard_order)) {
 
 // echo "<pre>", var_dump($leaderboard_data), "</pre>";
 
-// Define SEO description
-$description = 'The predictions show of Connected on Relay FM. ';
-if (
-	$rickies_data['type'] == 'annual' &&
-	($rickies_data['status'] == 'Ungraded' || $rickies_data['status'] == 'Live' || $rickies_data['status'] == 'Pending')
-) {
-	// Annual and ungraded, so future
-	$description .=
-		'What will Apple announce in ' .
-		strftime('%Y', $rickies_data['date']) .
-		'? And who will become Annual Chairman? Follow along with this interactive scorecard';
-} elseif ($rickies_data['type'] == 'annual') {
-	// Annual and graded, so past
-	$description .=
-		'What has Apple announced in ' .
-		strftime('%Y', $rickies_data['date']) .
-		'? And how did Myke, Stephen, and Federico perform with their yearly predictions?';
-} elseif (
-	$rickies_data['status'] == 'Ungraded' ||
-	$rickies_data['status'] == 'Live' ||
-	$rickies_data['status'] == 'Pending'
-) {
-	// Ungraded, so future keynote
-	$description .= 'What will Apple announce at the ';
-
-	// if (!empty($rickies_data['details']['event_data']['label2'])) {
-	// 	$description .= '“' . $rickies_data['details']['event_data']['label2'] . '” ';
-	// }
-
-	$description .=
-		'keynote on ' .
-		date_to_string_label($rickies_data['details']['event_data']['date']) .
-		'? And who will become Keynote Chairman? Follow along with this interactive scorecard.';
-} else {
-	// Graded keynote, past
-	$description .= 'What has Apple announced at the ';
-	// if (!empty($rickies_data['details']['event_data']['label2'])) {
-	// 	$description .= '“' . $rickies_data['details']['event_data']['label2'] . '” ';
-	// }
-	$description .=
-		'keynote on ' .
-		date_to_string_label($rickies_data['details']['event_data']['date']) .
-		'? And how did Myke, Stephen, and Federico perform with their predictions for this event?';
-}
-
-$head_custom = [
-	'title' => $rickies_data['name'],
-	'description' => $description,
-	'keywords' => ['wwdc', 'keynote', 'risky picks', 'Flexies', 'charity', 'chairman'],
-];
-
-if ($rickies_data['status'] == 'Ungraded') {
-	$head_custom['title'] = '🟠 ' . $head_custom['title'] . ' • Interactive scorecard';
-}
-
-if ($rickies_data['artwork']['seo'] !== false) {
-	$head_custom['image'] = $rickies_data['artwork']['seo'];
-}
-
-if ($rickies_data['artwork_background_color'] !== false) {
-	$head_custom['theme-color'] = $rickies_data['artwork_background_color'];
-}
-
 function host_item_bundle($host_event_data, $event_type)
 {
 	$output = '<section class="navigate_with_mobile_menu large_columns" id="hosts">
