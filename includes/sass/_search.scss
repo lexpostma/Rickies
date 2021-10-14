@@ -121,6 +121,9 @@ section.results {
 			transform: translateY(calc(200px + #{var.$iX-top}));
 
 			@media screen and (min-width: var.$break-md) {
+				transform: translateY(0px);
+			}
+			@media screen and (min-width: var.$break-md) and (min-height: 500px) {
 				transform: translateY(110px);
 			}
 		}

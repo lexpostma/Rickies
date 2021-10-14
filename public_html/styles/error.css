@@ -935,6 +935,11 @@ section.results {
 }
 @media screen and (min-width: 768px) {
   #fixed_search.open #search_form {
+    transform: translateY(0px);
+  }
+}
+@media screen and (min-width: 768px) and (min-height: 500px) {
+  #fixed_search.open #search_form {
     transform: translateY(110px);
   }
 }
