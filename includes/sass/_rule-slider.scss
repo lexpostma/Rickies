@@ -28,6 +28,9 @@
 	@media (prefers-color-scheme: dark) {
 		filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
 	}
+
+	animation-name: slider_hint;
+	animation-duration: 1s;
 }
 
 @mixin slider-track {
@@ -45,6 +48,19 @@
 	border-radius: 4px;
 	@media (prefers-color-scheme: dark) {
 		background: #515151;
+	}
+}
+
+@keyframes slider_hint {
+	0%,
+	100% {
+		transform: translateX(0px);
+	}
+	25% {
+		transform: translateX(10px);
+	}
+	75% {
+		transform: translateX(-10px);
 	}
 }
 
