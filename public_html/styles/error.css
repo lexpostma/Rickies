@@ -891,19 +891,21 @@ section.results {
 }
 
 #fixed_search {
-  position: absolute;
+  position: fixed;
   z-index: 20;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   bottom: calc(-1 * env(safe-area-inset-top));
-  transition: 300ms background ease;
   padding: 40px var(--space-side-padding) var(--space-side-padding) var(--space-side-padding);
   pointer-events: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  transition-property: background, backdrop-filter, -webkit-backdrop-filter;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
   background: rgba(0, 0, 0, 0);
 }
 #fixed_search #search_form {
@@ -915,8 +917,9 @@ section.results {
   -webkit-user-select: initial;
   -ms-user-select: initial;
   user-select: initial;
-  position: fixed;
   background: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 @media (prefers-color-scheme: dark) {
   #fixed_search.open {
@@ -932,7 +935,7 @@ section.results {
 }
 @media screen and (min-width: 768px) {
   #fixed_search.open #search_form {
-    transform: translateY(0px);
+    transform: translateY(110px);
   }
 }
 

@@ -76,7 +76,7 @@ section.results {
 }
 
 #fixed_search {
-	position: absolute;
+	position: fixed;
 	z-index: 20;
 	top: 0;
 	left: 0;
@@ -84,13 +84,16 @@ section.results {
 	bottom: 0;
 	bottom: calc(-1 * #{var.$iX-top});
 
-	transition: var.$hover-duration background ease;
 	padding: 40px var(--space-side-padding) var(--space-side-padding) var(--space-side-padding);
 
 	pointer-events: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+
+	transition-property: background, backdrop-filter, -webkit-backdrop-filter;
+	transition-duration: var.$hover-duration;
+	transition-timing-function: ease;
 
 	background: rgba(0, 0, 0, 0);
 	#search_form {
@@ -104,8 +107,9 @@ section.results {
 		-ms-user-select: initial;
 		user-select: initial;
 
-		position: fixed;
 		background: rgba(0, 0, 0, 0.7);
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
 		@media (prefers-color-scheme: dark) {
 			background: rgba(106, 106, 106, 0.3);
 			#search_input {
@@ -117,7 +121,7 @@ section.results {
 			transform: translateY(calc(200px + #{var.$iX-top}));
 
 			@media screen and (min-width: var.$break-md) {
-				transform: translateY(0px);
+				transform: translateY(110px);
 			}
 		}
 	}
