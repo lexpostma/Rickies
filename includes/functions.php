@@ -30,6 +30,54 @@ function current_url($filter = false)
 	}
 }
 
+function navigation_bar($active = false)
+{
+	$output =
+		'
+
+<nav id="nav_content" class="home" style="animation-delay: ' .
+		rand(-50, 0) .
+		's;">
+	<div class="nav_content--items">
+		<a ';
+	if (!$active) {
+		$output .= 'class="active" ';
+	}
+	$output .= 'href="';
+	if (!$active) {
+		$output .= '#list';
+	} else {
+		$output .= '/';
+	}
+	$output .= '"><span class="need_space--sm">The </span>Rickies</a>
+		<a ';
+	if ($active == 'bill') {
+		$output .= 'class="active" ';
+	}
+	$output .= 'href="/billof"><span class="need_space--sm">The </span>Bill of Rickies</a>
+		<a ';
+	if ($active == 'leaderboard') {
+		$output .= 'class="active" ';
+	}
+	$output .= 'href="/leaderboard"><span class="need_space--sm">Host </span>Leaderboard</a>
+		<a ';
+	if ($active == 'archive') {
+		$output .= 'class="active" ';
+	}
+	$output .= 'href="/archive">Archive</a>
+		<a ';
+	if ($active == 'about') {
+		$output .= 'class="active" ';
+	}
+	$output .= 'href="/about">About</a>
+	</div>
+</nav>
+
+	';
+
+	return $output;
+}
+
 function back_button()
 {
 	$location = '/';

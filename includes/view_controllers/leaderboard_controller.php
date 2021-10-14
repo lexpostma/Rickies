@@ -87,10 +87,10 @@ function leaderboard_item($host_data)
 			$title_count++;
 		}
 	}
-	// Shuffle and show random leftover titles, until the total is 4
+	// Shuffle and show random leftover titles, until the total is 5
 	shuffle($host_data['titles']);
 	foreach ($host_data['titles'] as $key => $value) {
-		if ($title_count == 4) {
+		if ($title_count == 5) {
 			break;
 		} else {
 			$output .= '<li>' . $value . '</li>';
