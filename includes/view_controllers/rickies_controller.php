@@ -14,13 +14,11 @@ switch ($url_view) {
 		// Leaderboard query
 		include '../includes/view_controllers/leaderboard_controller.php';
 		$include_subbody = '../includes/views/leaderboard.php';
-		$back_to_overview = true;
 		break;
 	case 'about':
 		// About query
 		include '../includes/view_controllers/about_controller.php';
 		$include_subbody = '../includes/views/about.php';
-		$back_to_overview = true;
 		break;
 	case 'archive':
 	case 'search':

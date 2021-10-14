@@ -6,7 +6,6 @@
 
 </header>
 
-
 <?php
 echo no_script_banner();
 if (empty($picks_data__array)) {

@@ -18,17 +18,9 @@
 	</div>
 </header>
 
-<nav id="nav_content" class="home" style="animation-delay: <?= rand(-50, 0) ?>s;">
-	<div class="nav_content--items">
-		<a class="active" href="#list"><span class="need_space--sm">The </span>Rickies</a>
-		<a href="/billof"><span class="need_space--sm">The </span>Bill of Rickies</a>
-		<a href="/leaderboard"><span class="need_space--sm">Host </span>Leaderboard</a>
-		<a href="/archive">Archive</a>
-		<a href="/about">About</a>
-	</div>
-</nav>
 
-<?= no_script_banner() ?>
+
+<?= navigation_bar() . no_script_banner() ?>
 
 <section><?= $introduction ?></section>
 
