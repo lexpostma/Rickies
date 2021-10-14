@@ -93,7 +93,9 @@ if (!isset($error)) {
 <?= close_button() ?>
 <aside class="slider">
 	<div id="rule_slider">
-		<p class="label" id="slider_label" for="date_slider"><?= $current_selection['name'] ?></p>
+		<p id="slider_label_container"><span id="slider_hint">Slide to see the full history</span><span class="label" id="slider_label" for="date_slider"><?= $current_selection[
+  	'name'
+  ] ?></span></p>
 		<input
 			id="date_slider"
 			type="range"
