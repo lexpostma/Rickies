@@ -30,7 +30,7 @@ $picks_data__params = [
 		OR(
 			SEARCH(LOWER('$query'),LOWER(Pick)),
 			SEARCH(LOWER('$query'),LOWER({Special remark})),
-			SEARCH(LOWER('$query'),LOWER({Related search terms})),
+			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Related search terms}))),
 			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Category name},','))),
 			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Category group},','))),
 			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Rickies name},','))),
