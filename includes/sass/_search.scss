@@ -8,7 +8,7 @@
 	#inline_search {
 		width: 100%;
 		position: relative;
-		input[type='text'] {
+		input[type='search'] {
 			width: 100%;
 			box-shadow: var.$header-shadow;
 			background: var(--background-color);
@@ -25,7 +25,7 @@
 			top: 4px;
 		}
 		@media screen and (min-width: var.$break-md) {
-			input[type='text'] {
+			input[type='search'] {
 				--height: 56px;
 				padding-left: 20px;
 			}
@@ -37,7 +37,7 @@
 	}
 }
 
-input[type='text'] {
+input[type='search'] {
 	font-size: max(16px, 1em);
 }
 

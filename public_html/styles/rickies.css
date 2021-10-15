@@ -1325,7 +1325,7 @@ table.full_stats td.value {
   width: 100%;
   position: relative;
 }
-.filters #inline_search input[type=text] {
+.filters #inline_search input[type=search] {
   width: 100%;
   box-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
   background: var(--background-color);
@@ -1341,7 +1341,7 @@ table.full_stats td.value {
   top: 4px;
 }
 @media screen and (min-width: 768px) {
-  .filters #inline_search input[type=text] {
+  .filters #inline_search input[type=search] {
     --height: 56px;
     padding-left: 20px;
   }
@@ -1351,7 +1351,7 @@ table.full_stats td.value {
   }
 }
 
-input[type=text] {
+input[type=search] {
   font-size: max(16px, 1em);
 }
 

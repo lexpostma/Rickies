@@ -164,7 +164,7 @@ function search_field($query = false, $fixed = false)
 	$output .= '
 	<form method="get" action="/" class="filters" id="search_form">
 		<div id="inline_search">
-			<input id="search_input" class="clean" type="text" name="search" placeholder="Search for predictions" ';
+			<input id="search_input" class="clean" type="search" name="search" title="Search for predictions" placeholder="Search for predictions" ';
 	if ($query) {
 		$output .= ' value="' . $query . '" ';
 	}
