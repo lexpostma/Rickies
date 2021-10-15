@@ -532,10 +532,10 @@ aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
   cursor: ew-resize;
   margin-top: -20px;
   height: 44px;
-  width: 52.7175px;
+  width: 52.8px;
   border: none;
   background: none;
-  background-image: url("/images/connected-globe.png");
+  background-image: url("/images/connected-globe-on-light.png");
   background-size: 90% auto;
   background-repeat: no-repeat;
   background-position: center;
@@ -559,6 +559,7 @@ aside.slider #rule_slider input[type=range]::-webkit-slider-thumb:active {
 @media (prefers-color-scheme: dark) {
   aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
     filter: drop-shadow(0px 0px 2px black);
+    background-image: url("/images/connected-globe-on-dark.png");
   }
 }
 aside.slider #rule_slider input[type=range]::-moz-range-thumb {
@@ -568,10 +569,10 @@ aside.slider #rule_slider input[type=range]::-moz-range-thumb {
   cursor: ew-resize;
   margin-top: -20px;
   height: 44px;
-  width: 52.7175px;
+  width: 52.8px;
   border: none;
   background: none;
-  background-image: url("/images/connected-globe.png");
+  background-image: url("/images/connected-globe-on-light.png");
   background-size: 90% auto;
   background-repeat: no-repeat;
   background-position: center;
@@ -595,6 +596,7 @@ aside.slider #rule_slider input[type=range]::-moz-range-thumb:active {
 @media (prefers-color-scheme: dark) {
   aside.slider #rule_slider input[type=range]::-moz-range-thumb {
     filter: drop-shadow(0px 0px 2px black);
+    background-image: url("/images/connected-globe-on-dark.png");
   }
 }
 aside.slider #rule_slider input[type=range]::-ms-thumb {
@@ -604,10 +606,10 @@ aside.slider #rule_slider input[type=range]::-ms-thumb {
   cursor: ew-resize;
   margin-top: -20px;
   height: 44px;
-  width: 52.7175px;
+  width: 52.8px;
   border: none;
   background: none;
-  background-image: url("/images/connected-globe.png");
+  background-image: url("/images/connected-globe-on-light.png");
   background-size: 90% auto;
   background-repeat: no-repeat;
   background-position: center;
@@ -631,6 +633,7 @@ aside.slider #rule_slider input[type=range]::-ms-thumb:active {
 @media (prefers-color-scheme: dark) {
   aside.slider #rule_slider input[type=range]::-ms-thumb {
     filter: drop-shadow(0px 0px 2px black);
+    background-image: url("/images/connected-globe-on-dark.png");
   }
 }
 aside.slider #rule_slider input[type=range]::-webkit-slider-runnable-track {

@@ -6,6 +6,7 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 
 -   Replaced the back button with a navigation bar in a few places, for easier navigation
 -   Add an animation to the Bill of Rickies slider to hint that you can slide it to view the full history of the rules
+-   Also updated the slider globe to look better in light and dark mode, and be more like current artwork
 -   Tweaked some styling for search
 
 ## 13 October 2021 v1.5
