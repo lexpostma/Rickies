@@ -32,7 +32,7 @@ function navigate_section(section, first = false) {
 	active_section.classList.add('active');
 
 	if (!first) {
-		location.replace('#' + section);
+		location.replace(location.pathname + location.search + '#' + section);
 		active_section.scrollIntoView();
 	}
 }
