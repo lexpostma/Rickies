@@ -9,7 +9,7 @@
 <?php
 echo no_script_banner();
 if (empty($picks_data__array)) {
-	echo '<section class="results">No predictions match ‘<mark>' . $query . '</mark>’.</section>';
+	echo '<section class="results"><p>No predictions match ‘<mark>' . $query . '</mark>’.</p></section>';
 } else {
 	 ?>
 

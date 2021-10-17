@@ -418,18 +418,29 @@ function pick_item_bundle($data, $interactive = false, $search = false)
 			];
 
 			// Get the picks for this host
-			foreach ($picks as $key => $value) {
-				// Count the scores of the picks for this host
-				$score['count']++;
-				$score['points'] = $score['points'] + $value['points'];
-				if ($value['status'] == 'Correct') {
-					$score['correct'] = $score['correct'] + $value['factor'];
+			if (!empty($picks)) {
+				foreach ($picks as $key => $value) {
+					// Count the scores of the picks for this host
+					$score['count']++;
+					$score['points'] = $score['points'] + $value['points'];
+					if ($value['status'] == 'Correct') {
+						$score['correct'] = $score['correct'] + $value['factor'];
+					}
+					$pick_items .= pick_item($value, $interactive, $search);
 				}
-				$pick_items .= pick_item($value, $interactive, $search);
-			}
-			if ($score['count'] !== 0) {
-				// Calculate the ratio of correct picks, if not 0 picks, and round it
-				$score['percentage'] = round_if_decimal(($score['correct'] / $score['count']) * 100);
+				if ($score['count'] !== 0) {
+					// Calculate the ratio of correct picks, if not 0 picks, and round it
+					$score['percentage'] = round_if_decimal(($score['correct'] / $score['count']) * 100);
+				}
+			} else {
+				if (!$search && $type == 'Rickies') {
+					$pick_items .= '<li class="pick_item no_results">Waiting for ' . $host . '’s first pick…</li>';
+				} elseif (!$search && $type == 'Flexies') {
+					$pick_items .= '<li class="pick_item no_results">Waiting for ' . $host . '’s Flexies…</li>';
+				} else {
+					$pick_items .=
+						'<li class="pick_item no_results">No ' . $type . ' about this predicted by ' . $host . '.</li>';
+				}
 			}
 
 			// Output the gathered data

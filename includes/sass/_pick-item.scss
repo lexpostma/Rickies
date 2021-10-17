@@ -123,6 +123,9 @@ li.pick_item {
 			}
 		}
 	}
+	&.no_results {
+		color: var(--text-secondary-color);
+	}
 	&.manual {
 		background-color: rgba(239, 123, 0, 0.15);
 	}
