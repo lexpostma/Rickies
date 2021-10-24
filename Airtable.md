@@ -118,3 +118,42 @@ IF(
 Only return a value `IF()` there's a manual winner defined `AND()` the total length `LEN()` of the string is 23. The names don't change, only the order, so it's always 23 characters.
 
 If that's all true, we return the Winner and Loser. In between those there's a `SUBSTITUTE()` to find the 2nd place name, similar to the reverse coin flip method mentioned above.
+
+## Format time value with different units
+
+Some picks are predicted too early, and become true after scoring is finished. To calculate the time between the scoring of the pick and it becoming true anyway:
+
+```
+IF(
+	{Came true date},
+	DATETIME_DIFF(
+		{Came true date},
+		{Scoring date},
+		'days'
+	)
+)
+```
+
+This gives a value in days. Now I want to have a nicely formatted string to increases in unit if there are more days. This formula is the result:
+
+```
+IF(
+	{Picked too early [in days]},
+	IF(
+		{Picked too early [in days]}<14,
+		{Picked too early [in days]}&IF({Picked too early [in days]}=1," day"," days"),
+		IF(
+			{Picked too early [in days]}<56,
+			ROUND({Picked too early [in days]}/7,0)&IF(ROUND({Picked too early [in days]}/7,0)=1," week"," weeks"),
+			IF(
+				{Picked too early [in days]}<350,
+				ROUND({Picked too early [in days]}/30,0) & IF(ROUND({Picked too early [in days]}/30,0)=1 ," month"," months"),
+				ROUND({Picked too early [in days]}/365,1)& IF(ROUND({Picked too early [in days]}/365,1)=1," year" ," years" )
+			)
+		)
+	)
+)
+
+```
+
+So here, it goes from 13 days to 1 week, 8 weeks to 2 months, and 12 months to 1 year etc.
