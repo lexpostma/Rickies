@@ -3,6 +3,7 @@
 $incl_path = $_SERVER['DOCUMENT_ROOT'] . '/../includes/';
 include_once $incl_path . 'Parsedown.php';
 include_once $incl_path . 'variables.php';
+include_once $incl_path . 'search_functions.php';
 
 // Is the current URL accessed via http or https?
 function url_protocol()
@@ -138,46 +139,6 @@ function close_button()
 		'">';
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close.svg');
 	$output .= '</button>';
-
-	return $output;
-}
-
-function search_button()
-{
-	$output = search_field(false, true);
-	$output .= '<button id="search_button" class="top_button clean" type="button" onclick="toggle_search()">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close2.svg');
-	$output .= '</button>';
-
-	// NOTE: Remember to add the search.js script to the footer separately
-	return $output;
-}
-
-function search_field($query = false, $fixed = false)
-{
-	$output = '';
-	if ($fixed) {
-		$output .= '<div id="fixed_search" class="">';
-	}
-
-	$output .= '
-	<form method="get" action="/" class="filters" id="search_form">
-		<div id="inline_search">
-			<input id="search_input" class="clean" type="search" name="search" title="Search for predictions" placeholder="Search for predictions" ';
-	if ($query) {
-		$output .= ' value="' . $query . '" ';
-	}
-	$output .= '/>
-			<button class="clean top_button" title="Search" form="search_form" type="submit">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
-	$output .= '</button>
-		</div>
-	</form>';
-
-	if ($fixed) {
-		$output .= '</div>';
-	}
 
 	return $output;
 }

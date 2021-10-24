@@ -2,14 +2,18 @@
 <header class="search">
 	<div class="gradient"></div>
 	<h1><?= $head_custom['title'] ?></h1>
-	<?= search_field($query) ?>
+	<?= search_field($search_string) ?>
 
 </header>
 
 <?php
 echo no_script_banner();
 if (empty($picks_data__array)) {
-	echo '<section class="results"><p>No predictions match ‘<mark>' . $query . '</mark>’.</p></section>';
+	if ($search_query) {
+		echo '<section class="results"><p>No predictions match ‘<mark>' . $search_string . '</mark>’.</p></section>';
+	} else {
+		echo '<section class="results"><p>No predictions match these filters.</p></section>';
+	}
 } else {
 	 ?>
 
@@ -59,8 +63,8 @@ echo '<script>
 		]
 	};
 	instance.mark("' .
-	$query .
-	'", mark_options); // will mark the keyword "$query"
+	$search_string .
+	'", mark_options); // will mark the keyword "$search_string"
 </script>';
 
 }
