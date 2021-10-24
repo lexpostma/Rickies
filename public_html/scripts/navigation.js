@@ -32,7 +32,7 @@ function navigate_section(section, first = false) {
 	active_section.classList.add('active');
 
 	if (!first) {
-		location.replace('#' + section);
+		location.replace(location.pathname + location.search + '#' + section);
 		active_section.scrollIntoView();
 	}
 }
@@ -42,7 +42,7 @@ const nav_content = document.getElementById('nav_content');
 const nav_anchor = document.getElementById('nav_anchor');
 var nav_position = nav_anchor.getBoundingClientRect().top;
 var statusbar_height = document.getElementById('statusbar').offsetHeight;
-const theme_color_original = document.querySelector("meta[name=theme-color]").getAttribute("content");
+const theme_color_original = document.querySelector('meta[name=theme-color]').getAttribute('content');
 
 const add_class_on_scroll = () => nav_content.parentElement.classList.add('sticky');
 const remove_class_on_scroll = () => nav_content.parentElement.classList.remove('sticky');
@@ -55,11 +55,11 @@ function make_nav_sticky() {
 	if (nav_position <= statusbar_height) {
 		// Make nav sticky
 		add_class_on_scroll();
-		document.querySelector("meta[name=theme-color]").setAttribute("content","#0d87ca");
+		document.querySelector('meta[name=theme-color]').setAttribute('content', '#0d87ca');
 	} else {
 		// Remove stickiness
 		remove_class_on_scroll();
-		document.querySelector("meta[name=theme-color]").setAttribute("content",theme_color_original);
+		document.querySelector('meta[name=theme-color]').setAttribute('content', theme_color_original);
 	}
 }
 

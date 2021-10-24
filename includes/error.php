@@ -70,7 +70,10 @@ $head_custom = [
 	            <?= markdown($errors[$error_code][1]) ?>
 				<p><i>More about <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">HTTP response status codes</a> at Mozilla.</i></p>
 	        </section>
-	        <?include $incl_path.'footer.php';?>
+<?php
+include $incl_path . 'footer.php';
+echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/standalone.js') . '</script>';
+?>
 		</div>
     </body>
 </html>

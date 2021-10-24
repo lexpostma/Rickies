@@ -9,7 +9,7 @@
 <?php
 echo no_script_banner();
 if (empty($picks_data__array)) {
-	echo '<section class="results">No predictions match ‘<mark>' . $query . '</mark>’.</section>';
+	echo '<section class="results"><p>No predictions match ‘<mark>' . $query . '</mark>’.</p></section>';
 } else {
 	 ?>
 
@@ -52,9 +52,15 @@ echo '<script src="/scripts/mark.min.js"></script>';
 echo '<script>
 	var context = document.querySelector(".search_results"); // requires an element with class "search_results" to exist
 	var instance = new Mark(context);
+	var mark_options = {
+		"separateWordSearch": false,
+		"exclude": [
+			".no_results"
+		]
+	};
 	instance.mark("' .
 	$query .
-	'"); // will mark the keyword "$query"
+	'", mark_options); // will mark the keyword "$query"
 </script>';
 
 }
