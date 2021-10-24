@@ -366,7 +366,11 @@ function pick_item($data, $interactive = false, $search = false)
 	$output .= '<p class="pick"><span class="label">' . $data['pick'] . '</span>';
 
 	// Define the point score
-	$output .= '<span class="points ' . strtolower($data['type']) . ' ' . strtolower($data['status']) . '">';
+	$output .= '<span class="points ' . strtolower($data['type']) . ' ' . strtolower($data['status']);
+	if ($data['status_later']) {
+		$output .= ' eventually';
+	}
+	$output .= '">';
 	if ($data['status'] == false) {
 		$output .= '?';
 	} elseif ($data['points'] > 0 && $data['type'] == 'Flexy') {
@@ -385,8 +389,15 @@ function pick_item($data, $interactive = false, $search = false)
 	$output .= '</p>';
 
 	// Add optional note
-	if ($data['note']) {
-		$output .= '<div class="note">' . markdown($data['note']) . '</div>';
+	if ($data['note'] || $data['status_later']) {
+		$output .= '<div class="note">';
+		if ($data['note']) {
+			$output .= markdown($data['note']);
+		}
+		if ($data['status_later']) {
+			$output .= markdown($data['status_later']);
+		}
+		$output .= '</div>';
 	}
 
 	$output .= '</li>';

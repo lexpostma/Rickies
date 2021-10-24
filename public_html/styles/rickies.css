@@ -1061,6 +1061,11 @@ li.pick_item p.pick span.points.correct.flexy {
 li.pick_item p.pick span.points.wrong {
   background: var(--connected-red);
 }
+li.pick_item p.pick span.points.wrong.eventually {
+  background-image: linear-gradient(120deg, var(--connected-red) 30%, var(--connected-green) 90%);
+  background-origin: border-box;
+  background-position: center;
+}
 li.pick_item p.pick span.points.risky.correct:after, li.pick_item p.pick span.points.risky.wrong:after {
   content: "";
   border-radius: 50%;
@@ -1080,6 +1085,9 @@ li.pick_item p.pick span.points.risky.wrong:after {
 li.pick_item .note p {
   color: var(--text-secondary-color);
   font-size: 0.75rem;
+}
+li.pick_item .note p + p {
+  margin-top: 4px;
 }
 li.pick_item.interactive {
   cursor: pointer;
