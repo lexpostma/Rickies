@@ -1,0 +1,244 @@
+@use "variables" as var;
+
+@mixin input-icon {
+	opacity: 0.4;
+	width: 1.4rem;
+	height: 1.4rem;
+	background-size: contain;
+	background-repeat: no-repeat;
+	@media (hover: hover) {
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+}
+
+details.filter_sheet {
+	margin-top: var(--space-between-md);
+	padding: var(--space-between-md) var(--space-between-md) 0;
+	position: relative;
+	summary {
+		outline: none;
+		text-align: right;
+
+		cursor: pointer;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+
+		color: var(--link-color);
+		@media (hover: hover) {
+			&:hover {
+				color: var(--link-hover-color);
+			}
+		}
+		&:focus,
+		&:active {
+			color: var(--link-hover-color);
+		}
+		.closed {
+			color: white;
+			display: inline;
+			.filter_icon svg g {
+				fill: white;
+			}
+		}
+		.opened {
+			display: none;
+		}
+		.filter_icon {
+			margin-left: 8px;
+			transform: translateY(2px);
+			display: inline-block;
+			svg {
+				height: 1.2rem;
+				width: auto;
+			}
+		}
+
+		list-style: none;
+	}
+	summary::-webkit-details-marker {
+		display: none;
+	}
+	&[open] {
+		summary {
+			.closed {
+				display: none;
+			}
+			.opened {
+				display: inline;
+			}
+		}
+		border-radius: calc(var(--search-height) / 2);
+
+		overflow: hidden;
+		box-shadow: var.$header-shadow;
+		background: var(--background-color);
+	}
+
+	fieldset {
+		border: none;
+		margin: var(--space-between-md) 0 0 0;
+		padding: var(--space-between-sm);
+
+		display: flex;
+		background: rgba(13, 135, 202, 0.05);
+		border-radius: 4px;
+		text-align: left;
+
+		@media (prefers-color-scheme: dark) {
+			background: rgba(13, 135, 202, 0.15);
+		}
+
+		&.hosts {
+			justify-content: center;
+			align-items: center;
+
+			.host {
+				flex-basis: calc(100% / 3);
+				max-width: 120px;
+				input[type='checkbox'] {
+					display: none;
+				}
+				label {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					img {
+						filter: grayscale(100%);
+						opacity: 0.3;
+						@media (prefers-color-scheme: dark) {
+							opacity: 0.5;
+						}
+						display: block;
+						&:first-of-type {
+							display: none;
+						}
+					}
+					span {
+						display: block;
+						margin-top: -8px;
+					}
+				}
+				input[type='checkbox']:checked + label {
+					img {
+						filter: grayscale(0%);
+						opacity: 1;
+
+						&:first-of-type {
+							display: block;
+						}
+						&:nth-of-type(2) {
+							display: none;
+						}
+					}
+				}
+			}
+			.host + .host {
+				margin-left: var(--space-between-md);
+			}
+		}
+
+		.filter_option {
+			display: flex;
+			justify-content: left;
+			align-items: center;
+			label,
+			select {
+				flex-grow: 1;
+			}
+		}
+		.filter_option + .filter_option {
+			margin-top: 4px;
+		}
+		.select {
+			position: relative;
+			select {
+				padding-left: calc(1.4rem + 4px);
+			}
+			select:not([data-chosen='']) {
+			}
+			.select_icon {
+				@include input-icon;
+				background-image: url('/images/input-unselect.svg');
+				position: absolute;
+				pointer-events: none;
+			}
+			select:not([data-chosen='']) + .select_icon {
+				background-image: url('/images/input-select.svg');
+				opacity: 1;
+			}
+		}
+		input[type='checkbox'] {
+			@include input-icon;
+			background-image: url('/images/input-uncheck.svg');
+			margin-right: 4px;
+			flex-shrink: 0;
+			&:checked {
+				background-image: url('/images/input-check.svg');
+				opacity: 1;
+			}
+		}
+	}
+	.columns {
+		fieldset {
+			flex-direction: column;
+		}
+		@media screen and (min-width: var.$break-sm) {
+			display: flex;
+			fieldset {
+				flex-basis: 50%;
+			}
+			fieldset + fieldset {
+				margin-left: var(--space-between-md);
+			}
+		}
+	}
+	label {
+		img {
+			width: 100%;
+			max-width: 100px;
+			height: auto;
+		}
+		.emoji {
+			margin-right: 4px;
+		}
+	}
+}
+
+#reset_button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: var(--space-between-md) 8px 8px var(--space-between-md);
+	&:disabled {
+		color: var(--text-secondary-color);
+	}
+}
+
+#search_button_plus {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	box-shadow: var.$header-shadow;
+	background: white;
+	margin: 16px auto;
+	padding-left: 16px;
+	border-radius: 26px;
+	font-weight: 500;
+
+	svg {
+		margin-left: var(--space-between-sm);
+		transition: var.$pop-transition;
+		transform: rotate(180deg) translateX(4px) scale(0.85);
+	}
+	@media (hover: hover) {
+		&:hover {
+			svg {
+				transform: rotate(180deg) translateX(0px) scale(0.95);
+			}
+		}
+	}
+}
