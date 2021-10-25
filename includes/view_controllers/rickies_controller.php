@@ -355,7 +355,7 @@ function pick_item($data, $interactive = false, $search = false)
 	}
 
 	if ($search && $data['type'] !== 'Flexy') {
-		$output .= '<span class="round">' . $pick_link . ' • ' . $data['round'] . '</span>';
+		$output .= '<span class="round">' . $pick_link . ' • <span class="nowrap">' . $data['round'] . '</span></span>';
 	} elseif ($search) {
 		$output .= '<span class="round">' . $pick_link . '</span>';
 	} elseif ($data['type'] !== 'Flexy') {
