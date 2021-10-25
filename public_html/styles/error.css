@@ -858,6 +858,16 @@ section h2,
 input[type=search] {
   font-size: max(16px, 1em);
 }
+input[type=search]::placeholder {
+  color: var(--text-secondary-color);
+  opacity: 1;
+}
+input[type=search]:-ms-input-placeholder {
+  color: var(--text-secondary-color);
+}
+input[type=search]::-ms-input-placeholder {
+  color: var(--text-secondary-color);
+}
 
 section.results {
   text-align: center;
