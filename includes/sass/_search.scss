@@ -5,6 +5,10 @@
 	max-width: var.$readability-width;
 	width: 100%;
 	margin: var(--space-between-lg) auto 0 auto;
+	--search-height: 48px;
+	@media screen and (min-width: var.$break-md) {
+		--search-height: 56px;
+	}
 	#inline_search {
 		width: 100%;
 		position: relative;
@@ -12,10 +16,9 @@
 			width: 100%;
 			box-shadow: var.$header-shadow;
 			background: var(--background-color);
-			--height: 48px;
-			border-radius: var(--height);
-			height: var(--height);
-			padding-right: var(--height);
+			border-radius: calc(var(--search-height) / 2);
+			height: var(--search-height);
+			padding-right: var(--search-height);
 			padding-left: 16px;
 		}
 
@@ -26,7 +29,6 @@
 		}
 		@media screen and (min-width: var.$break-md) {
 			input[type='search'] {
-				--height: 56px;
 				padding-left: 20px;
 			}
 			button {

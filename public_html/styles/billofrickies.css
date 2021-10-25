@@ -225,6 +225,7 @@ select.clean {
   -webkit-appearance: none;
 }
 
+input[type=checkbox].clean,
 button.clean,
 select.clean {
   cursor: pointer;
@@ -755,6 +756,18 @@ a:link, a:visited {
   }
 }
 a:focus, a:active {
+  color: var(--link-hover-color);
+}
+
+button.js_link {
+  color: var(--link-color);
+}
+@media (hover: hover) {
+  button.js_link:hover {
+    color: var(--link-hover-color);
+  }
+}
+button.js_link:focus, button.js_link:active {
   color: var(--link-hover-color);
 }
 

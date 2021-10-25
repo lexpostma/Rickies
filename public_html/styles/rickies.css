@@ -225,6 +225,7 @@ select.clean {
   -webkit-appearance: none;
 }
 
+input[type=checkbox].clean,
 button.clean,
 select.clean {
   cursor: pointer;
@@ -258,6 +259,18 @@ a:link, a:visited {
   }
 }
 a:focus, a:active {
+  color: var(--link-hover-color);
+}
+
+button.js_link {
+  color: var(--link-color);
+}
+@media (hover: hover) {
+  button.js_link:hover {
+    color: var(--link-hover-color);
+  }
+}
+button.js_link:focus, button.js_link:active {
   color: var(--link-hover-color);
 }
 
@@ -1336,6 +1349,12 @@ table.full_stats td.value {
   max-width: 650px;
   width: 100%;
   margin: var(--space-between-lg) auto 0 auto;
+  --search-height: 48px;
+}
+@media screen and (min-width: 768px) {
+  .filters {
+    --search-height: 56px;
+  }
 }
 .filters #inline_search {
   width: 100%;
@@ -1345,10 +1364,9 @@ table.full_stats td.value {
   width: 100%;
   box-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
   background: var(--background-color);
-  --height: 48px;
-  border-radius: var(--height);
-  height: var(--height);
-  padding-right: var(--height);
+  border-radius: calc(var(--search-height) / 2);
+  height: var(--search-height);
+  padding-right: var(--search-height);
   padding-left: 16px;
 }
 .filters #inline_search button {
@@ -1358,7 +1376,6 @@ table.full_stats td.value {
 }
 @media screen and (min-width: 768px) {
   .filters #inline_search input[type=search] {
-    --height: 56px;
     padding-left: 20px;
   }
   .filters #inline_search button {
