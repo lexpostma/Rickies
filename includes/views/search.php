@@ -2,14 +2,14 @@
 <header class="search">
 	<div class="gradient"></div>
 	<h1><?= $head_custom['title'] ?></h1>
-	<?= search_field($search_string) ?>
+	<?= search_field($search_string, false, $search_filters) ?>
 
 </header>
 
 <?php
 echo no_script_banner();
 if (empty($picks_data__array)) {
-	if ($search_query) {
+	if ($search_string) {
 		echo '<section class="results"><p>No predictions match ‘<mark>' . $search_string . '</mark>’.</p></section>';
 	} else {
 		echo '<section class="results"><p>No predictions match these filters.</p></section>';

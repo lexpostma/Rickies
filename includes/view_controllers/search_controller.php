@@ -5,7 +5,7 @@
 // Define search query
 if (isset($_GET['search']) && $_GET['search'] !== '') {
 	$search_string = trim($_GET['search']);
-	$search_query = "
+	$search_query_formula = "
 	OR(
 		SEARCH(LOWER('$search_string'),LOWER(Pick)),
 		SEARCH(LOWER('$search_string'),LOWER({Special remark})),
@@ -13,7 +13,7 @@ if (isset($_GET['search']) && $_GET['search'] !== '') {
 		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Related search terms}))),
 		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Category name},','))),
 		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Category group},','))),
-		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Rickies name},',')))
+		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Rickies},',')))
 	),";
 
 	/*
@@ -22,21 +22,44 @@ SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN(Type,','))),
 SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Type group},',')))
 */
 } else {
-	$search_string = $search_query = false;
+	$search_string = $search_query_formula = false;
 }
 
 // Define filters in query
 $search_filters = [];
 if (isset($_GET['reuse']) && $_GET['reuse'] === 'on') {
-	$search_filters[] = '{Eligible for reuse}=TRUE()';
+	$search_filters['reuse'] = '{Eligible for reuse}=TRUE()';
 }
 
 if (isset($_GET['buzzkill']) && $_GET['buzzkill'] === 'on') {
-	$search_filters[] = '{Negative pick}';
+	$search_filters['buzzkill'] = '{Negative pick}';
 }
 
 if (isset($_GET['eventually']) && $_GET['eventually'] === 'on') {
-	$search_filters[] = '{Came true date}';
+	$search_filters['eventually'] = '{Came true date}';
+}
+
+if (isset($_GET['adjudicated']) && $_GET['adjudicated'] === 'on') {
+	$search_filters['adjudicated'] = '{Adjudicated}';
+}
+
+if (isset($_GET['event'])) {
+	switch ($_GET['event']) {
+		case 'annual':
+			$search_filters['event'] = '{Rickies type}="annual"';
+			break;
+		case 'keynote':
+			$search_filters['event'] = '{Rickies type}="keynote"';
+			break;
+		case 'wwdc':
+			$search_filters['event'] = '{Event type}="WWDC"';
+			break;
+		case 'ungraded':
+			$search_filters['event'] = 'OR({Rickies status} = "Ungraded", {Rickies status} = "Live")';
+			break;
+		default:
+			break;
+	}
 }
 
 // Get the pick types filter as array
@@ -47,7 +70,7 @@ if (isset($_GET['type']) && is_array($_GET['type'])) {
 		$types_filter[] = 'Type="' . ucfirst($type) . '"';
 	}
 	if (!empty($types_filter)) {
-		$search_filters[] = 'OR(' . implode(',', $types_filter) . ')';
+		$search_filters['type'] = 'OR(' . implode(',', $types_filter) . ')';
 	}
 }
 
@@ -59,22 +82,22 @@ if (isset($_GET['host']) && is_array($_GET['host'])) {
 		$hosts_filter[] = 'Host="' . ucfirst($type) . '"';
 	}
 	if (!empty($hosts_filter)) {
-		$search_filters[] = 'OR(' . implode(',', $hosts_filter) . ')';
+		$search_filters['host'] = 'OR(' . implode(',', $hosts_filter) . ')';
 	}
 }
 
 if (!empty($search_filters)) {
-	$search_filters = implode(',', $search_filters) . ',';
+	$search_filters_formula = implode(',', $search_filters) . ',';
 } else {
-	$search_filters = '';
+	$search_filters_formula = '';
 }
 
 $filterByFormula =
 	"
 AND(
 	" .
-	$search_query .
-	$search_filters .
+	$search_query_formula .
+	$search_filters_formula .
 	"
 	Pick,
 	{Host name} ,
@@ -88,7 +111,7 @@ $picks_data__params = [
 ];
 
 include '../includes/data_controllers/picks_data_controller.php';
-echo '<pre>' . $filterByFormula . '</pre>';
+// echo '<pre>' . $filterByFormula . '</pre>';
 
 // Define SEO for search/archive page
 if ($url_view == 'archive') {
