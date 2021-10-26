@@ -219,7 +219,7 @@ function search_filters($filters = [])
 		$output .= 'checked';
 	}
 	$output .= '/>
-				<label for="eventually"><span class="emoji">🔮</span>Ahead of his Time</label>
+				<label for="eventually"><span class="emoji">🔮</span>Ahead of its Time</label>
 			</div>
 
 			<div class="filter_option">
