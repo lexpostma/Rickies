@@ -58,10 +58,9 @@ section.results {
 }
 
 #search_button {
+	color: var(--link-color);
 	right: 20px;
 	z-index: 21;
-	transform: rotate(0);
-	transition: var.$pop-transition;
 	svg {
 		transition: var.$hover-duration opacity ease;
 	}
@@ -72,7 +71,17 @@ section.results {
 		opacity: 0;
 	}
 	&.open {
-		transform: rotate(180deg);
+		transform: rotate(180deg) scale(1);
+		@media (hover: hover) {
+			&:hover {
+				transform: rotate(180deg) scale(1.2);
+			}
+		}
+		&:focus,
+		&:active {
+			transform: rotate(180deg) scale(1.1);
+		}
+
 		position: fixed;
 		svg {
 			opacity: 0;
@@ -120,9 +129,6 @@ section.results {
 		backdrop-filter: blur(10px);
 		@media (prefers-color-scheme: dark) {
 			background: rgba(106, 106, 106, 0.3);
-			#search_input {
-				border: 1px solid var(--connected-blue);
-			}
 		}
 		#search_form {
 			transform: translateY(200px);

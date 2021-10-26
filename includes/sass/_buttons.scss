@@ -1,8 +1,8 @@
 @use "variables" as var;
 
-.back_button svg path:last-of-type,
-#share_button svg g {
-	fill: var(--document-text-color);
+button.top_button,
+#close_button {
+	color: var(--document-text-color);
 }
 
 #music_button {
@@ -48,6 +48,17 @@
 		box-shadow: 0px -1px 4px rgba(84, 52, 4, 0.5);
 		transform: scale(1) translate(-20px, 32px) rotate(-180deg);
 		transform: scale(1) translate(-20px, max(32px, calc(24px + #{var.$iX-bottom}))) rotate(-180deg);
+		@media (hover: hover) {
+			&:hover {
+				transform: scale(1.2) translate(-17px, 27px) rotate(-180deg);
+				transform: scale(1.2) translate(-17px, max(27px, calc(20px + #{var.$iX-bottom}))) rotate(-180deg);
+			}
+		}
+		&:focus,
+		&:active {
+			transform: scale(1.1) translate(-18px, 29px) rotate(-180deg);
+			transform: scale(1.1) translate(-18px, max(29px, calc(22px + #{var.$iX-bottom}))) rotate(-180deg);
+		}
 	}
 	@media screen and (min-width: var.$break-md) {
 		bottom: 20px;

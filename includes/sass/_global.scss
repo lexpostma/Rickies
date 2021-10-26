@@ -8,6 +8,24 @@
 	box-sizing: border-box;
 }
 
+input.clean,
+button.clean,
+select.clean {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	outline: inherit;
+	-webkit-appearance: none;
+}
+
+input[type='checkbox'].clean,
+button.clean,
+select.clean {
+	cursor: pointer;
+}
+
 html,
 body {
 	overflow-x: hidden;
@@ -50,22 +68,23 @@ section > p + p {
 	margin-top: var(--space-between-md);
 }
 
-.top_button {
+.top_button,
+button.top_button {
 	display: block;
 	height: 40px;
 	border-radius: 20px;
-
+	color: var(--link-color);
 	position: absolute;
 	top: 20px;
 	top: max(20px, #{var.$iX-top});
 	z-index: 8;
 	transition: var.$pop-transition;
 	@media (hover: hover) {
-		&:hover,
-		&:focus {
+		&:hover {
 			transform: scale(1.2);
 		}
 	}
+	&:focus,
 	&:active {
 		transform: scale(1.1);
 	}
@@ -126,24 +145,6 @@ p#refresh_page,
 p#promote_webapp {
 	display: none;
 	margin-bottom: var(--space-between-md);
-}
-
-input.clean,
-button.clean,
-select.clean {
-	background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	outline: inherit;
-	-webkit-appearance: none;
-}
-
-input[type='checkbox'].clean,
-button.clean,
-select.clean {
-	cursor: pointer;
 }
 
 .img_emoji {

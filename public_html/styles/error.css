@@ -98,6 +98,24 @@
   box-sizing: border-box;
 }
 
+input.clean,
+button.clean,
+select.clean {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+  -webkit-appearance: none;
+}
+
+input[type=checkbox].clean,
+button.clean,
+select.clean {
+  cursor: pointer;
+}
+
 html,
 body {
   overflow-x: hidden;
@@ -135,10 +153,12 @@ section > p + p {
   margin-top: var(--space-between-md);
 }
 
-.top_button {
+.top_button,
+button.top_button {
   display: block;
   height: 40px;
   border-radius: 20px;
+  color: var(--link-color);
   position: absolute;
   top: 20px;
   top: max(20px, env(safe-area-inset-top));
@@ -146,11 +166,14 @@ section > p + p {
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
 @media (hover: hover) {
-  .top_button:hover, .top_button:focus {
+  .top_button:hover,
+button.top_button:hover {
     transform: scale(1.2);
   }
 }
-.top_button:active {
+.top_button:focus, .top_button:active,
+button.top_button:focus,
+button.top_button:active {
   transform: scale(1.1);
 }
 
@@ -211,24 +234,6 @@ p#refresh_page,
 p#promote_webapp {
   display: none;
   margin-bottom: var(--space-between-md);
-}
-
-input.clean,
-button.clean,
-select.clean {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  outline: inherit;
-  -webkit-appearance: none;
-}
-
-input[type=checkbox].clean,
-button.clean,
-select.clean {
-  cursor: pointer;
 }
 
 .img_emoji {
@@ -891,10 +896,9 @@ section.results {
 }
 
 #search_button {
+  color: var(--link-color);
   right: 20px;
   z-index: 21;
-  transform: rotate(0);
-  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
 #search_button svg {
   transition: 300ms opacity ease;
@@ -906,8 +910,16 @@ section.results {
   opacity: 0;
 }
 #search_button.open {
-  transform: rotate(180deg);
+  transform: rotate(180deg) scale(1);
   position: fixed;
+}
+@media (hover: hover) {
+  #search_button.open:hover {
+    transform: rotate(180deg) scale(1.2);
+  }
+}
+#search_button.open:focus, #search_button.open:active {
+  transform: rotate(180deg) scale(1.1);
 }
 #search_button.open svg {
   opacity: 0;
@@ -950,9 +962,6 @@ section.results {
 @media (prefers-color-scheme: dark) {
   #fixed_search.open {
     background: rgba(106, 106, 106, 0.3);
-  }
-  #fixed_search.open #search_input {
-    border: 1px solid var(--connected-blue);
   }
 }
 #fixed_search.open #search_form {
