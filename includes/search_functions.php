@@ -201,7 +201,7 @@ function search_filters($filters = [])
 		$output .= 'checked';
 	}
 	$output .= '/>
-				<label for="reuse"><span class="emoji">♻️</span>Eligible for Reuse</label>
+				<label for="reuse"><span class="emoji">♻️</span>Eligible for reuse</label>
 			</div>
 
 			<div class="filter_option">
@@ -219,7 +219,7 @@ function search_filters($filters = [])
 		$output .= 'checked';
 	}
 	$output .= '/>
-				<label for="eventually"><span class="emoji">🔮</span>Ahead of its Time</label>
+				<label for="eventually"><span class="emoji">🔮</span>Ahead of its time</label>
 			</div>
 
 			<div class="filter_option">
