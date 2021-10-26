@@ -278,10 +278,11 @@
 	align-items: center;
 
 	box-shadow: var.$header-shadow;
-	background: var(--background-color);
-	@media (prefers-color-scheme: dark) {
-		border: 1px solid var(--connected-blue);
-	}
+	background: white;
+	// background: var(--background-color);
+	// @media (prefers-color-scheme: dark) {
+	// 	border: 1px solid var(--connected-blue);
+	// }
 	padding-left: 16px;
 	border-radius: 26px;
 	font-weight: 500;
