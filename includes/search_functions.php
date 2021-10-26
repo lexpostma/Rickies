@@ -2,7 +2,7 @@
 
 function search_button()
 {
-	$output = search_field(false, true);
+	$output = search_content(false, true);
 	$output .= '<button id="search_button" class="top_button clean" type="button" onclick="toggle_search()">';
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close2.svg');
@@ -12,16 +12,40 @@ function search_button()
 	return $output;
 }
 
-function search_field($search_string = false, $fixed = false, $filters = '')
+function search_content($search_string = false, $fixed = false, $filters = '')
 {
 	$output = '';
+
 	if ($fixed) {
 		$output .= '<div id="fixed_search" class="">';
 	}
 
-	$output .= '
-	<form method="get" action="/" class="filters" id="search_form">
-		<div id="inline_search">
+	$output .= '<form method="get" action="/" class="filters" id="search_form">';
+
+	if ($fixed) {
+		$output .= search_field($search_string);
+	} else {
+		$output .= search_field($search_string, true);
+		$output .= search_filters($filters);
+	}
+
+	$output .= '	</form>';
+
+	if ($fixed) {
+		$output .= '</div>';
+	}
+
+	return $output;
+}
+
+function search_field($search_string = false, $filters = false)
+{
+	$output = '
+		<div id="inline_search" class="';
+	if ($filters) {
+		$output .= 'in_summary';
+	}
+	$output .= '">
 			<input id="search_input" class="clean" type="search" name="search" title="Search for predictions" placeholder="Search for predictions" ';
 	if ($search_string) {
 		$output .= ' value="' . $search_string . '" ';
@@ -31,14 +55,6 @@ function search_field($search_string = false, $fixed = false, $filters = '')
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
 	$output .= '</button>
 		</div>';
-	if (!$fixed) {
-		$output .= search_filters($filters);
-	}
-	$output .= '	</form>';
-
-	if ($fixed) {
-		$output .= '</div>';
-	}
 
 	return $output;
 }
@@ -49,7 +65,7 @@ function search_filters($filters = [])
 		$filters = [];
 	}
 
-	$output = '<details class="filter_sheet" ';
+	$output = '<details id="filter_details" ';
 
 	if (!empty($filters)) {
 		$output .= ' open';
@@ -61,7 +77,8 @@ function search_filters($filters = [])
 		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter.svg') .
 		'</span></span><span class="opened">Hide filters<span class="filter_icon">' .
 		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter-active.svg') .
-		'</span></span></summary>';
+		'</span></span></summary>
+	<div class="filter_content content">';
 
 	// Filter for hosts
 	$output .= '
@@ -118,28 +135,28 @@ function search_filters($filters = [])
 		$output .= 'data-chosen';
 	}
 	$output .= '>
-					<option value>🏆 From all Rickies</option>
-					<optgroup label="Filter by Rickies event type">
+					<option value>🏆 All Rickies</option>
+					<optgroup label="Only show picks from…">
 						<option value="annual" ';
 	if (key_exists('event', $filters) && strpos($filters['event'], 'annual') !== false) {
 		$output .= 'selected';
 	}
-	$output .= '>📆 From Annual Rickies</option>
+	$output .= '>📆 Annual Rickies</option>
 						<option value="keynote" ';
 	if (key_exists('event', $filters) && strpos($filters['event'], 'keynote') !== false) {
 		$output .= 'selected';
 	}
-	$output .= '>📽 From Keynote Rickies</option>
+	$output .= '>📽 Keynote Rickies</option>
 						<option value="wwdc" ';
 	if (key_exists('event', $filters) && strpos($filters['event'], 'WWDC') !== false) {
 		$output .= 'selected';
 	}
-	$output .= '>💻 From WWDC Rickies</option>
+	$output .= '>💻 WWDC Rickies</option>
 						<option value="ungraded" ';
 	if (key_exists('event', $filters) && strpos($filters['event'], 'Ungraded') !== false) {
 		$output .= 'selected';
 	}
-	$output .= '>🟠 From ungraded Rickies</option>
+	$output .= '>🟠 Ungraded Rickies</option>
 					</optgroup>
 				</select>
 				<div class="select_icon"></div>
@@ -220,6 +237,7 @@ function search_filters($filters = [])
 
 	$output .=
 		'
+	<div class="button_section">
 		<button id="search_button_plus" class="clean js_link" title="Search and filter" form="search_form" type="submit">Search picks' .
 		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-back.svg') .
 		'</button>
@@ -229,7 +247,7 @@ function search_filters($filters = [])
 	}
 	$output .= '>Reset filters</button>';
 
-	$output .= '</details>';
+	$output .= '</div></div></details>';
 
 	$output .= '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/filter.js') . '</script>';
 
