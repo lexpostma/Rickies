@@ -201,7 +201,7 @@ function search_filters($filters = [])
 		$output .= 'checked';
 	}
 	$output .= '/>
-				<label for="reuse"><span class="emoji">♻️</span>Eligible to reuse</label>
+				<label for="reuse"><span class="emoji">♻️</span>Eligible for Reuse</label>
 			</div>
 
 			<div class="filter_option">
