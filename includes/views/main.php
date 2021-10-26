@@ -26,4 +26,5 @@ if ($url_view == 'main') { ?>
 	});
 
 <?php }
-echo '</script>';
+echo '</script>
+<script src="/scripts/accordion.js"></script>';
