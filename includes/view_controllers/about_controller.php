@@ -74,10 +74,10 @@ $resources = [
 	],
 	[
 		'label1' => 'MagTricky',
-		'label2' => 'Keep up with the Annual & Keynote Chairmen — wherever you are in the world',
+		'label2' => 'Magnetic Chairman tracker',
 		// 'label3' => '',
 		'url' => 'https://magtricky.com',
-		'img_url' => '/images/about/magtricky.jpg',
+		'img_url' => '/images/about/magtricky-' . rand(1, 2) . '.jpg',
 	],
 	'More Fan Efforts',
 	[
