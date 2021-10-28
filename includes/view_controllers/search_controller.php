@@ -134,13 +134,12 @@ if ($url_view == 'archive') {
 	];
 
 	$h1 = 'Rickies archive';
+} elseif ($search_string) {
+	$head_custom['title'] = 'Search Rickies for ‘' . $search_string . '’';
+	$head_custom['description'] = 'Search and filter results for ‘' . $search_string . '’ on Rickies.co.';
 } else {
 	$head_custom['title'] = 'Search for Rickies';
-	if ($search_string) {
-		$head_custom['description'] = 'Search and filter results for ‘' . $search_string . '’ on Rickies.co.';
-	} else {
-		$head_custom['description'] = 'Search and filter results on Rickies.co.';
-	}
+	$head_custom['description'] = 'Search and filter results on Rickies.co.';
 }
 
 $head_custom['canonical'] = domain_url() . '/archive';
