@@ -108,6 +108,14 @@ function leaderboard_item($host_data)
 	$output .= score_chart_item($host_data['stats']['picks'], strtolower($host_data['personal']['first_name']));
 	$output .= score_label_item($host_data['stats']['other'], $host_data['personal']['color']);
 
+	// Coin flips
+	$output .= '<h4>Coin flips</h4>';
+	$output .= score_label_item($host_data['stats']['coin_flips'], $host_data['personal']['color']);
+
+	// Ahead of its time
+	$output .= '<h4>Ahead of his time</h4>';
+	$output .= score_label_item($host_data['stats']['too_soon'], $host_data['personal']['color']);
+
 	// Close host and content
 	$output .= '</div></div>';
 

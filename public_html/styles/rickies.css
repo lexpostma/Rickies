@@ -1277,7 +1277,7 @@ li.pick_item.manual {
   white-space: nowrap;
 }
 .host_stats .host_item_content h4 {
-  margin-top: var(--space-between-md);
+  margin-top: var(--space-between-lg);
 }
 .host_stats .host_item_content h3 + p {
   color: var(--text-secondary-color);

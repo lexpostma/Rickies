@@ -161,7 +161,7 @@ $winner_double_ring_size: calc(var(--graphic-size) + 42px);
 			white-space: nowrap;
 		}
 		h4 {
-			margin-top: var(--space-between-md);
+			margin-top: var(--space-between-lg);
 		}
 		h3 + p {
 			@include var.secondary-text;
@@ -171,13 +171,8 @@ $winner_double_ring_size: calc(var(--graphic-size) + 42px);
 @media screen and (min-width: var.$break-md) and (max-width: var.$break-lg) {
 	.host_stats {
 		flex-direction: column;
-		// align-items: center;
 		.host_item_content {
 			margin-left: 0;
-			// h3,
-			// h3 + p {
-			// 	text-align: center;
-			// }
 		}
 	}
 }

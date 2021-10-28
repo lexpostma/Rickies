@@ -2,6 +2,8 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+-   Added new stats for coin flips, ahead of its time, adjudication, and buzzkillers
+
 ### 14 October 2021
 
 -   Replaced the back button with a navigation bar in a few places, for easier navigation
