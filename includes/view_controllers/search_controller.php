@@ -86,6 +86,18 @@ if (isset($_GET['host']) && is_array($_GET['host'])) {
 	}
 }
 
+// Get the categories filter as array
+if (isset($_GET['category']) && is_array($_GET['category'])) {
+	// let's iterate thru the array
+	foreach ($_GET['category'] as $category) {
+		// do some super-magic here
+		$categories_filter[] = '{Category name}="' . ucfirst($category) . '"';
+	}
+	if (!empty($categories_filter)) {
+		$search_filters['category'] = 'OR(' . implode(',', $categories_filter) . ')';
+	}
+}
+
 if (!empty($search_filters)) {
 	$search_filters_formula = implode(',', $search_filters) . ',';
 } else {
@@ -111,6 +123,7 @@ $picks_data__params = [
 ];
 
 include '../includes/data_controllers/picks_data_controller.php';
+include '../includes/data_controllers/categories_data_controller.php';
 // echo '<pre>' . $filterByFormula . '</pre>';
 
 // Define SEO for search/archive page

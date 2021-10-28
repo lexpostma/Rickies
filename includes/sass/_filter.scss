@@ -5,9 +5,10 @@
 	@media (prefers-color-scheme: dark) {
 		opacity: 0.6;
 	}
-	width: 1.4rem;
-	height: 1.4rem;
+	width: 1.5em;
+	height: 1.5em;
 	background-size: contain;
+	background-position: center;
 	background-repeat: no-repeat;
 	@media (hover: hover) {
 		&:hover {
@@ -17,12 +18,6 @@
 }
 
 #filter_details {
-	// padding-top: calc(var(--search-height) + 4px);
-	// margin-top: var(--space-between-md);
-	// padding: calc(var(--search-height) + 8px + var(--space-between-md)) var(--space-between-md) 0;
-
-	// padding: calc(var(--search-height) + var(--space-between-md)) var(--space-between-md) 8px 8px;
-
 	position: relative;
 	border-radius: calc((var(--search-height) / 2) + 4px);
 	@media screen and (min-width: var.$break-md) {
@@ -31,10 +26,8 @@
 
 	overflow: hidden;
 	transition-duration: var.$hover-duration;
-	// transition-duration: 0s;
 	transition-timing-function: ease;
 	transition-property: background, box-shadow, -webkit-backdrop-filter, backdrop-filter;
-	// transition-delay: 200ms;
 
 	& > summary {
 		list-style: none;
@@ -94,8 +87,8 @@
 		transition-duration: var.$hover-duration;
 		box-shadow: var.$header-shadow;
 		background: rgba(255, 255, 255, 0.8);
-		-webkit-backdrop-filter: blur(10px);
-		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(20px);
+		backdrop-filter: blur(20px);
 
 		@media (prefers-color-scheme: dark) {
 			background: rgba(0, 0, 0, 0.8);
@@ -103,23 +96,37 @@
 	}
 }
 .filter_content {
-	position: relative;
 	margin: 0 var(--space-between-md) var(--space-between-md);
-	& > *:not(:first-child) {
-		margin-top: var(--space-between-md);
+	display: grid;
+	gap: var(--space-between-md);
+	grid-gap: var(--space-between-md);
+	justify-items: stretch;
+	align-items: stretch;
+
+	grid-template-columns: 1fr;
+	@media screen and (min-width: var.$break-sm) {
+		grid-template-columns: 1fr 1fr;
+		& > fieldset.hosts,
+		& > fieldset.categories,
+		& > .button_section {
+			grid-column-start: 1;
+			grid-column-end: 3;
+		}
 	}
 	fieldset {
 		border: none;
 		margin: 0;
-		&:not(:first-child) {
-			// margin-top: var(--space-between-md);
-		}
-		padding: var(--space-between-sm);
-
+		padding: 0;
 		display: flex;
+		&.list {
+			flex-direction: column;
+		}
+		text-align: left;
+	}
+	& > fieldset {
+		padding: var(--space-between-sm);
 		background: rgba(13, 135, 202, 0.05);
 		border-radius: 4px;
-		text-align: left;
 
 		@media (prefers-color-scheme: dark) {
 			background: rgba(13, 135, 202, 0.15);
@@ -128,6 +135,8 @@
 		&.hosts {
 			justify-content: center;
 			align-items: center;
+			// grid-column-start: [col1];
+			// grid-column-end: [col2];
 			.host {
 				flex-basis: calc(100% / 3);
 				max-width: 120px;
@@ -188,11 +197,31 @@
 				margin-left: var(--space-between-md);
 			}
 		}
+		&.categories {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			@media screen and (min-width: var.$break-sm) {
+				grid-template-columns: 1fr 1fr 1fr 1fr;
+			}
+
+			gap: var(--space-between-lg);
+			grid-gap: var(--space-between-lg);
+			justify-items: stretch;
+			& > fieldset {
+				// flex-basis: 25%;
+				// background: pink;
+				ul {
+					margin-top: 4px;
+					font-size: 0.75rem;
+					padding-left: 4px;
+				}
+			}
+		}
 
 		.filter_option {
 			display: flex;
 			justify-content: left;
-			align-items: center;
+			align-items: flex-start;
 			label,
 			select {
 				flex-grow: 1;
@@ -224,23 +253,13 @@
 			background-image: url('/images/input-uncheck.svg');
 			margin-right: 4px;
 			flex-shrink: 0;
+			&:indeterminate {
+				background-image: url('/images/input-check-indeterminate.svg');
+				opacity: 1;
+			}
 			&:checked {
 				background-image: url('/images/input-check.svg');
 				opacity: 1;
-			}
-		}
-	}
-	.columns {
-		fieldset {
-			flex-direction: column;
-		}
-		@media screen and (min-width: var.$break-sm) {
-			display: flex;
-			fieldset {
-				flex-basis: 50%;
-			}
-			fieldset + fieldset {
-				margin-left: var(--space-between-md);
 			}
 		}
 	}
@@ -261,15 +280,9 @@
 	flex-direction: row-reverse;
 	justify-content: space-between;
 }
-#reset_button {
-	// position: absolute;
-	// bottom: 0;
-	// left: 0;
-	// height: 40px;
-	// padding: var(--space-between-md) 8px 8px var(--space-between-md);
-	&:disabled {
-		color: var(--text-secondary-color);
-	}
+#reset_button:disabled {
+	color: var(--text-secondary-color);
+	opacity: 0.7;
 }
 
 #search_button_plus {

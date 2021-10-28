@@ -12,7 +12,7 @@ function search_button()
 	return $output;
 }
 
-function search_content($search_string = false, $fixed = false, $filters = '')
+function search_content($search_string = false, $fixed = false, $filters = [], $categories = [])
 {
 	$output = '';
 
@@ -26,7 +26,7 @@ function search_content($search_string = false, $fixed = false, $filters = '')
 		$output .= search_field($search_string);
 	} else {
 		$output .= search_field($search_string, true);
-		$output .= search_filters($filters);
+		$output .= search_filters($filters, $categories);
 	}
 
 	$output .= '	</form>';
@@ -59,7 +59,7 @@ function search_field($search_string = false, $filters = false)
 	return $output;
 }
 
-function search_filters($filters = [])
+function search_filters($filters = [], $categories)
 {
 	if ($filters == '') {
 		$filters = [];
@@ -124,9 +124,9 @@ function search_filters($filters = [])
 	</fieldset>';
 
 	// Filter for pick types
-	$output .= '
-	<div class="columns">
-		<fieldset>
+	// $output .= '
+	// <div class="columns">
+	$output .= '	<fieldset class="list">
 			<div class="filter_option select">
 				<select class="clean" name="event" onchange=" this.dataset.chosen = this.value; " ';
 	if (key_exists('event', $filters)) {
@@ -193,7 +193,7 @@ function search_filters($filters = [])
 
 	// Filter for interesting stats
 	$output .= '
-		<fieldset>
+		<fieldset class="list">
 
 			<div class="filter_option">
 				<input type="checkbox" name="reuse" id="reuse" class="clean" ';
@@ -232,10 +232,11 @@ function search_filters($filters = [])
 			</div>';
 
 	$output .= '
-		</fieldset>
-	</div>';
+		</fieldset>';
+	// </div>';
 
 	$output .=
+		category_filters($categories) .
 		'
 	<div class="button_section">
 		<button id="search_button_plus" class="clean js_link" title="Search and filter" form="search_form" type="submit">Search picks' .
@@ -251,5 +252,47 @@ function search_filters($filters = [])
 
 	$output .= '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/filter.js') . '</script>';
 
+	return $output;
+}
+
+function category_filters($categories)
+{
+	$output = '<fieldset class="categories">';
+	// include '../includes/data_controllers/categories_data_controller.php';
+
+	foreach ($categories as $group => $category) {
+		$output .=
+			'
+	<fieldset class="list">
+		<div class="filter_option">
+			<input type="checkbox" class="clean" id="' .
+			strtolower($group) .
+			'"/>
+			<label for="' .
+			strtolower($group) .
+			'">' .
+			$group .
+			'</label>
+		</div>
+		<ul>';
+
+		foreach ($category as $label) {
+			$output .=
+				'<div class="filter_option"><input type="checkbox" name="category[]" id="cat_' .
+				$label['value'] .
+				'"" class="clean" value="' .
+				$label['value'] .
+				'"/>';
+			$output .= '<label for="cat_' . $label['value'] . '">' . $label['label'] . '</label></div>';
+		}
+		$output .= '
+		</ul>
+	</fieldset>';
+	}
+
+	$output .= '</fieldset>';
+	// $output .= '<pre>';
+	// $output .= var_dump($categories);
+	// $output .= '</pre>';
 	return $output;
 }
