@@ -1627,7 +1627,7 @@ mark {
 }
 @media screen and (min-width: 576px) {
   .filter_content {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .filter_content > fieldset.hosts, .filter_content > fieldset.categories, .filter_content > .button_section {
     grid-column-start: 1;
@@ -1713,14 +1713,14 @@ mark {
 }
 .filter_content > fieldset.categories {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-between-lg);
   grid-gap: var(--space-between-lg);
   justify-items: stretch;
 }
 @media screen and (min-width: 576px) {
   .filter_content > fieldset.categories {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 .filter_content > fieldset.categories > fieldset ul {

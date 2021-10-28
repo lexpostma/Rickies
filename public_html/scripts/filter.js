@@ -31,3 +31,6 @@ filter_details.addEventListener('toggle', function () {
 		inline_search.classList.remove('summary_open');
 	}
 });
+
+var checkbox = document.getElementById('cat_group-services');
+checkbox.indeterminate = true;

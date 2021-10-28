@@ -258,41 +258,53 @@ function search_filters($filters = [], $categories)
 function category_filters($categories)
 {
 	$output = '<fieldset class="categories">';
-	// include '../includes/data_controllers/categories_data_controller.php';
 
-	foreach ($categories as $group => $category) {
+	foreach ($categories as $group => $group_content) {
 		$output .=
 			'
 	<fieldset class="list">
 		<div class="filter_option">
-			<input type="checkbox" class="clean" id="' .
-			strtolower($group) .
+			<input type="checkbox" class="clean group" data-cat-group="' .
+			$group_content['value'] .
+			'" id="cat_group-' .
+			$group_content['value'] .
 			'"/>
-			<label for="' .
-			strtolower($group) .
-			'">' .
+			<label for="cat_group-' .
+			$group_content['value'] .
+			'"><span class="emoji">' .
+			$group_content['emoji'] .
+			'</span>' .
 			$group .
 			'</label>
 		</div>
 		<ul>';
 
-		foreach ($category as $label) {
+		foreach ($group_content['categories'] as $category => $value) {
 			$output .=
-				'<div class="filter_option"><input type="checkbox" name="category[]" id="cat_' .
-				$label['value'] .
+				'
+			<li class="filter_option">
+				<input type="checkbox" name="category[]" data-cat-group="' .
+				$group_content['value'] .
+				'" id="cat-' .
+				$value .
 				'"" class="clean" value="' .
-				$label['value'] .
+				$value .
 				'"/>';
-			$output .= '<label for="cat_' . $label['value'] . '">' . $label['label'] . '</label></div>';
+			$output .=
+				'
+				<label for="cat-' .
+				$value .
+				'">' .
+				$category .
+				'</label>
+			</li>';
 		}
+
 		$output .= '
 		</ul>
 	</fieldset>';
 	}
 
 	$output .= '</fieldset>';
-	// $output .= '<pre>';
-	// $output .= var_dump($categories);
-	// $output .= '</pre>';
 	return $output;
 }
