@@ -1714,27 +1714,35 @@ mark {
 .filter_content > fieldset.categories {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-between-lg);
-  grid-gap: var(--space-between-lg);
+  gap: var(--space-between-md);
+  grid-gap: var(--space-between-md);
   justify-items: stretch;
 }
 @media screen and (min-width: 576px) {
   .filter_content > fieldset.categories {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-between-lg);
+    grid-gap: var(--space-between-lg);
   }
 }
-.filter_content > fieldset.categories > fieldset ul {
+.filter_content > fieldset.categories > fieldset ul > li > ul {
   margin-top: 4px;
   font-size: 0.75rem;
   padding-left: 4px;
+  flex-basis: 100%;
+}
+.filter_content > fieldset.categories > fieldset ul > li.filter_option label {
+  margin-right: calc(-1 * var(--space-between-md));
 }
 .filter_content > fieldset .filter_option {
   display: flex;
   justify-content: left;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 .filter_content > fieldset .filter_option label,
 .filter_content > fieldset .filter_option select {
+  flex-basis: 0;
   flex-grow: 1;
 }
 .filter_content > fieldset .filter_option + .filter_option {
@@ -1832,7 +1840,7 @@ mark {
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
 #search_button_plus svg {
-  transform: rotate(180deg) scale(0.85);
+  transform: scale(0.8);
 }
 #search_button_plus svg path:first-child {
   fill: none;
