@@ -2,7 +2,7 @@
 <header class="search">
 	<div class="gradient"></div>
 	<h1><?= $head_custom['title'] ?></h1>
-	<?= search_content($search_string, false, $search_filters, $categories__array) ?>
+	<?= search_content($search_string, false, $search_filters, $categories__array, $categories_filter) ?>
 
 </header>
 

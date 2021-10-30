@@ -64,37 +64,27 @@ if (isset($_GET['event'])) {
 
 // Get the pick types filter as array
 if (isset($_GET['type']) && is_array($_GET['type'])) {
-	// let's iterate thru the array
+	// Let's iterate through the array
 	foreach ($_GET['type'] as $type) {
-		// do some super-magic here
+		// Add a part to the formula for each type
 		$types_filter[] = 'Type="' . ucfirst($type) . '"';
 	}
 	if (!empty($types_filter)) {
+		// Combine the parts into the formula
 		$search_filters['type'] = 'OR(' . implode(',', $types_filter) . ')';
 	}
 }
 
 // Get the hosts filter as array
 if (isset($_GET['host']) && is_array($_GET['host'])) {
-	// let's iterate thru the array
+	// Let's iterate through the array
 	foreach ($_GET['host'] as $type) {
-		// do some super-magic here
+		// Add a part to the formula for each host
 		$hosts_filter[] = 'Host="' . ucfirst($type) . '"';
 	}
 	if (!empty($hosts_filter)) {
+		// Combine the parts into the formula
 		$search_filters['host'] = 'OR(' . implode(',', $hosts_filter) . ')';
-	}
-}
-
-// Get the categories filter as array
-if (isset($_GET['category']) && is_array($_GET['category'])) {
-	// let's iterate thru the array
-	foreach ($_GET['category'] as $category) {
-		// do some super-magic here
-		$categories_filter[] = '{Category name}="' . ucfirst($category) . '"';
-	}
-	if (!empty($categories_filter)) {
-		$search_filters['category'] = 'OR(' . implode(',', $categories_filter) . ')';
 	}
 }
 
@@ -124,7 +114,42 @@ $picks_data__params = [
 
 include '../includes/data_controllers/picks_data_controller.php';
 include '../includes/data_controllers/categories_data_controller.php';
+
 // echo '<pre>' . $filterByFormula . '</pre>';
+
+// Get the categories filter as array
+if (isset($_GET['category']) && is_array($_GET['category'])) {
+	// let's iterate thru the array
+	foreach ($_GET['category'] as $category) {
+		// do some super-magic here
+		$categories_filter[] = $category;
+	}
+	if (!empty($categories_filter)) {
+		// echo '<pre>', var_dump($categories_filter), '</pre>';
+
+		// Category are filtered server-side, not in Airtable,
+		// due to difficulty to the formula and the different levels
+		// This removes the picks from the array when they don't match any of the category filters
+		foreach ($picks_data__array as $pick_type => $host_picks) {
+			foreach ($host_picks as $host => $picks) {
+				foreach ($picks as $pick => $pick_data) {
+					$cat_found = count(array_intersect($categories_filter, $pick_data['categories_compare']))
+						? true
+						: false;
+					if (!$cat_found) {
+						unset($picks_data__array[$pick_type][$host][$pick]);
+					}
+				}
+			}
+		}
+	} else {
+		$categories_filter = false;
+	}
+} else {
+	$categories_filter = false;
+}
+
+// echo '<pre>', var_dump($picks_data__array), '</pre>';
 
 // Define SEO for search/archive page
 if ($url_view == 'archive') {

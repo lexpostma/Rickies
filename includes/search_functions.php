@@ -12,7 +12,7 @@ function search_button()
 	return $output;
 }
 
-function search_content($search_string = false, $fixed = false, $filters = [], $categories = [])
+function search_content($search_string = false, $fixed = false, $filters = [], $categories = [], $cat_selected = false)
 {
 	$output = '';
 
@@ -26,7 +26,7 @@ function search_content($search_string = false, $fixed = false, $filters = [], $
 		$output .= search_field($search_string);
 	} else {
 		$output .= search_field($search_string, true);
-		$output .= search_filters($filters, $categories);
+		$output .= search_filters($filters, $categories, $cat_selected);
 	}
 
 	$output .= '	</form>';
@@ -59,7 +59,7 @@ function search_field($search_string = false, $filters = false)
 	return $output;
 }
 
-function search_filters($filters = [], $categories)
+function search_filters($filters = [], $categories, $cat_selected = false)
 {
 	if ($filters == '') {
 		$filters = [];
@@ -67,7 +67,7 @@ function search_filters($filters = [], $categories)
 
 	$output = '<details id="filter_details" ';
 
-	if (!empty($filters)) {
+	if (!empty($filters) || $cat_selected) {
 		$output .= ' open';
 	}
 
@@ -234,7 +234,7 @@ function search_filters($filters = [], $categories)
 	</fieldset>';
 
 	$output .=
-		category_filters($categories) .
+		category_filters($categories, $cat_selected) .
 		'
 	<div class="button_section">
 		<button id="search_button_plus" class="clean js_link" title="Search and filter" form="search_form" type="submit">Search picks' .
@@ -253,7 +253,7 @@ function search_filters($filters = [], $categories)
 	return $output;
 }
 
-function category_filters($categories)
+function category_filters($categories, $selected = false)
 {
 	$output = '<fieldset class="categories">';
 
@@ -263,9 +263,7 @@ function category_filters($categories)
 	<fieldset class="list">
 		<ul>
 			<li class="filter_option">
-				<input type="checkbox" class="clean category" name="cat_group[]" id="cat_group-' .
-			$group_content['value'] .
-			'" value="' .
+				<input type="checkbox" class="clean category" id="cat_group-' .
 			$group_content['value'] .
 			'" />
 				<label for="cat_group-' .
@@ -286,7 +284,12 @@ function category_filters($categories)
 				$value .
 				'"" value="' .
 				$value .
-				'"/>
+				'" ';
+			if ($selected && in_array($value, $selected)) {
+				$output .= ' checked ';
+			}
+			$output .=
+				'/>
 						<label for="cat-' .
 				$value .
 				'">' .

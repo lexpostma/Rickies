@@ -36,6 +36,7 @@ do {
 			$cat_keys = explode(';', check_key('Categories flat (web)', $fields));
 
 			$pick_categories = [];
+			$pick_categories_compare = [];
 			foreach ($cat_strings as $index => $string) {
 				// NOTE: This also automatically removes duplicates
 				switch ($string) {
@@ -57,10 +58,12 @@ do {
 					'value' => $cat_keys[$index],
 					'color' => $color,
 				];
+				$pick_categories_compare[] = $cat_keys[$index];
 			}
 			unset($color);
 		}
 		$picks_data__array_temp['categories'] = $pick_categories;
+		$picks_data__array_temp['categories_compare'] = $pick_categories_compare;
 
 		array_push(
 			$picks_data__array[check_key('Type group', $fields)][check_key('Host name', $fields, false, 0)],
@@ -68,6 +71,7 @@ do {
 		);
 		unset($picks_data__array_temp);
 		unset($pick_categories);
+		unset($pick_categories_compare);
 	}
 } while ($picks_data__request = $picks_data__response->next());
 
