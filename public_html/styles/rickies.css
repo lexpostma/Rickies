@@ -1,12 +1,20 @@
 :root {
-  --connected-green: #449934;
-  --connected-yellow: #fcc200;
-  --connected-orange: #ef7b00;
-  --connected-red: #e51f2e;
-  --connected-purple: #9d3489;
-  --connected-blue: #0d87ca;
-  --relay-blue: #333f48;
-  --connected-grey: #6b8aa4;
+  --connected-green-rgb: 68, 153, 52;
+  --connected-yellow-rgb: 252, 194, 0;
+  --connected-orange-rgb: 239, 123, 0;
+  --connected-red-rgb: 229, 31, 46;
+  --connected-purple-rgb: 157, 52, 137;
+  --connected-blue-rgb: 13, 135, 202;
+  --connected-grey-rgb: 107, 138, 164;
+  --relay-blue-rgb: 51, 63, 72;
+  --connected-green: rgb(var(--connected-green-rgb));
+  --connected-yellow: rgb(var(--connected-yellow-rgb));
+  --connected-orange: rgb(var(--connected-orange-rgb));
+  --connected-red: rgb(var(--connected-red-rgb));
+  --connected-purple: rgb(var(--connected-purple-rgb));
+  --connected-blue: rgb(var(--connected-blue-rgb));
+  --connected-grey: rgb(var(--connected-grey-rgb));
+  --relay-blue: rgb(var(--relay-blue-rgb));
   --text-primary-color: #31373d;
   --space-side-padding: 16px;
   --space-between-sm: 8px;

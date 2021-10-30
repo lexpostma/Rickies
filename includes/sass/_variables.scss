@@ -19,15 +19,23 @@ $break-xl: 1200px;
 $break-xxl: 1400px;
 
 :root {
-	--connected-green: #449934;
-	--connected-yellow: #fcc200;
-	--connected-orange: #ef7b00;
-	--connected-red: #e51f2e;
-	--connected-purple: #9d3489;
-	--connected-blue: #0d87ca;
-	--relay-blue: #333f48;
+	--connected-green-rgb: 68, 153, 52; // #449934
+	--connected-yellow-rgb: 252, 194, 0; // #fcc200
+	--connected-orange-rgb: 239, 123, 0; // #ef7b00
+	--connected-red-rgb: 229, 31, 46; // #e51f2e
+	--connected-purple-rgb: 157, 52, 137; // #9d3489
+	--connected-blue-rgb: 13, 135, 202; // #0d87ca
+	--connected-grey-rgb: 107, 138, 164; // Not official #6b8aa4
+	--relay-blue-rgb: 51, 63, 72; // #333f48
 
-	--connected-grey: #6b8aa4; // Not official
+	--connected-green: rgb(var(--connected-green-rgb));
+	--connected-yellow: rgb(var(--connected-yellow-rgb));
+	--connected-orange: rgb(var(--connected-orange-rgb));
+	--connected-red: rgb(var(--connected-red-rgb));
+	--connected-purple: rgb(var(--connected-purple-rgb));
+	--connected-blue: rgb(var(--connected-blue-rgb));
+	--connected-grey: rgb(var(--connected-grey-rgb));
+	--relay-blue: rgb(var(--relay-blue-rgb));
 
 	--text-primary-color: #31373d;
 
