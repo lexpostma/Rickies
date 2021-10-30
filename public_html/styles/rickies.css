@@ -1022,6 +1022,41 @@ span.tag {
   padding: 0px 0.4em;
   border-radius: var(--corner-radius);
   border: var(--graphic-border);
+  --first-color: 0.7;
+  --next-color: 0.5;
+}
+span.tag ~ span.tag {
+  margin-left: 4px;
+}
+@media (prefers-color-scheme: dark) {
+  span.tag {
+    --first-color: 0.6;
+    --next-color: 0.3;
+  }
+}
+span.tag.cat_hw {
+  background: rgba(var(--relay-blue-rgb), var(--first-color));
+}
+span.tag.cat_hw ~ span.tag.cat_hw {
+  background: rgba(var(--relay-blue-rgb), var(--next-color));
+}
+span.tag.cat_sw {
+  background: rgba(var(--connected-blue-rgb), var(--first-color));
+}
+span.tag.cat_sw ~ span.tag.cat_sw {
+  background: rgba(var(--connected-blue-rgb), var(--next-color));
+}
+span.tag.cat_cloud {
+  background: rgba(var(--connected-purple-rgb), var(--first-color));
+}
+span.tag.cat_cloud ~ span.tag.cat_cloud {
+  background: rgba(var(--connected-purple-rgb), var(--next-color));
+}
+span.tag.cat_people {
+  background: rgba(var(--connected-green-rgb), var(--first-color));
+}
+span.tag.cat_people ~ span.tag.cat_people {
+  background: rgba(var(--connected-green-rgb), var(--next-color));
 }
 
 .host_picks h3 {

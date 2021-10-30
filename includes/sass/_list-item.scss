@@ -140,4 +140,37 @@ span.tag {
 	padding: 0px 0.4em;
 	border-radius: var(--corner-radius);
 	border: var(--graphic-border);
+	& ~ span.tag {
+		margin-left: 4px;
+	}
+	--first-color: 0.7;
+	--next-color: 0.5;
+	@media (prefers-color-scheme: dark) {
+		--first-color: 0.6;
+		--next-color: 0.3;
+	}
+	&.cat_hw {
+		background: rgba(var(--relay-blue-rgb), var(--first-color));
+	}
+	&.cat_hw ~ &.cat_hw {
+		background: rgba(var(--relay-blue-rgb), var(--next-color));
+	}
+	&.cat_sw {
+		background: rgba(var(--connected-blue-rgb), var(--first-color));
+	}
+	&.cat_sw ~ &.cat_sw {
+		background: rgba(var(--connected-blue-rgb), var(--next-color));
+	}
+	&.cat_cloud {
+		background: rgba(var(--connected-purple-rgb), var(--first-color));
+	}
+	&.cat_cloud ~ &.cat_cloud {
+		background: rgba(var(--connected-purple-rgb), var(--next-color));
+	}
+	&.cat_people {
+		background: rgba(var(--connected-green-rgb), var(--first-color));
+	}
+	&.cat_people ~ &.cat_people {
+		background: rgba(var(--connected-green-rgb), var(--next-color));
+	}
 }

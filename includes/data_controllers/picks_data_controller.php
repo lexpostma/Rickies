@@ -31,11 +31,43 @@ do {
 			'status_later' => check_key('Came true string', $fields),
 		];
 
+		if (check_key('Category', $fields)) {
+			$cat_strings = explode(';', check_key('Categories flat', $fields));
+			$cat_keys = explode(';', check_key('Categories flat (web)', $fields));
+
+			$pick_categories = [];
+			foreach ($cat_strings as $index => $string) {
+				// NOTE: This also automatically removes duplicates
+				switch ($string) {
+					case 'Hardware':
+						$color = 'cat_hw';
+						break;
+					case 'Software':
+						$color = 'cat_sw';
+						break;
+					case 'Services':
+						$color = 'cat_cloud';
+						break;
+					case 'People':
+						$color = 'cat_people';
+						break;
+				}
+				$pick_categories[$cat_keys[$index]] = [
+					'string' => $string,
+					'value' => $cat_keys[$index],
+					'color' => $color,
+				];
+			}
+			unset($color);
+		}
+		$picks_data__array_temp['categories'] = $pick_categories;
+
 		array_push(
 			$picks_data__array[check_key('Type group', $fields)][check_key('Host name', $fields, false, 0)],
 			$picks_data__array_temp
 		);
 		unset($picks_data__array_temp);
+		unset($pick_categories);
 	}
 } while ($picks_data__request = $picks_data__response->next());
 

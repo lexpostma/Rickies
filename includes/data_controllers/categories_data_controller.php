@@ -3,7 +3,7 @@
 // Rickies pick categories _data_ controller
 
 $categories__params = [
-	'fields' => ['Name', 'Web safe name', 'Group L1', 'Group L1 emoji', 'Group L2', 'Web safe group L2'],
+	'fields' => ['Name', 'Name (web)', 'Group L1', 'Group L1 emoji', 'Group L2', 'Group L2 (web)'],
 	'filterByFormula' => 'AND( {Picks} )',
 	'sort' => [['field' => 'Group L1', 'direction' => 'asc'], ['field' => 'Order', 'direction' => 'asc']],
 ];
@@ -20,11 +20,11 @@ do {
 
 		if (check_key('Group L2', $fields)) {
 			$categories__array[$group]['categories'][check_key('Group L2', $fields)] = check_key(
-				'Web safe group L2',
+				'Group L2 (web)',
 				$fields
 			);
 		} else {
-			$categories__array[$group]['categories'][check_key('Name', $fields)] = check_key('Web safe name', $fields);
+			$categories__array[$group]['categories'][check_key('Name', $fields)] = check_key('Name (web)', $fields);
 		}
 
 		// $categories__array[$group] = [

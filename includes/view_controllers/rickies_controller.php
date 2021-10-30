@@ -193,7 +193,7 @@ function list_item($data)
 		$output .= '<p class="label2">' . $data['label2'] . '</p>';
 	}
 
-	// Is there an 3nd label OR tag, yes/no?
+	// Is there a 3rd label OR tag, yes/no?
 	if (isset($data['tag']) || isset($data['label3'])) {
 		$output .= '<p class="secondary_string">';
 		if (isset($data['tag'])) {
@@ -389,7 +389,7 @@ function pick_item($data, $interactive = false, $search = false)
 	$output .= '</p>';
 
 	// Add optional note
-	if ($data['note'] || $data['status_later']) {
+	if ($data['note'] || $data['status_later'] || $data['categories']) {
 		$output .= '<div class="note">';
 		if ($data['note']) {
 			$output .= markdown($data['note']);
@@ -397,6 +397,14 @@ function pick_item($data, $interactive = false, $search = false)
 		if ($data['status_later']) {
 			$output .= markdown($data['status_later']);
 		}
+		if ($data['categories']) {
+			$output .= '<p>';
+			foreach ($data['categories'] as $cat_data) {
+				$output .= '<span class="tag ' . $cat_data['color'] . '">' . $cat_data['string'] . '</span>';
+			}
+			$output .= '</p>';
+		}
+
 		$output .= '</div>';
 	}
 
