@@ -82,6 +82,10 @@
 			"url": "/leaderboard"
 		},
 		{
+			"name": "Rickies archive and search",
+			"url": "/archive"
+		},
+		{
 			"name": "About Rickies.co",
 			"url": "/about"
 		}
