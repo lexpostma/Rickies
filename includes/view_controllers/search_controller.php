@@ -43,6 +43,10 @@ if (isset($_GET['adjudicated']) && $_GET['adjudicated'] === 'on') {
 	$search_filters['adjudicated'] = '{Adjudicated}';
 }
 
+if (isset($_GET['half_points']) && $_GET['half_points'] === 'on') {
+	$search_filters['half_points'] = 'Factor<1';
+}
+
 if (isset($_GET['event'])) {
 	switch ($_GET['event']) {
 		case 'annual':
@@ -72,6 +76,23 @@ if (isset($_GET['type']) && is_array($_GET['type'])) {
 	if (!empty($types_filter)) {
 		// Combine the parts into the formula
 		$search_filters['type'] = 'OR(' . implode(',', $types_filter) . ')';
+	}
+}
+
+// Get the pick types filter as array
+if (isset($_GET['status']) && is_array($_GET['status'])) {
+	// Let's iterate through the array
+	foreach ($_GET['status'] as $status) {
+		// Add a part to the formula for each status
+		if ($status == 'unknown') {
+			$status_filter[] = 'Status=""';
+		} else {
+			$status_filter[] = 'Status="' . ucfirst($status) . '"';
+		}
+	}
+	if (!empty($status_filter)) {
+		// Combine the parts into the formula
+		$search_filters['status'] = 'OR(' . implode(',', $status_filter) . ')';
 	}
 }
 
@@ -133,6 +154,8 @@ if (isset($_GET['category']) && is_array($_GET['category'])) {
 		foreach ($picks_data__array as $pick_type => $host_picks) {
 			foreach ($host_picks as $host => $picks) {
 				foreach ($picks as $pick => $pick_data) {
+					// Compare 2 arrays to see if pick category array have any in common with category filter
+					// Via https://stackoverflow.com/a/8736291
 					$cat_found = count(array_intersect($categories_filter, $pick_data['categories_compare']))
 						? true
 						: false;
@@ -142,11 +165,23 @@ if (isset($_GET['category']) && is_array($_GET['category'])) {
 				}
 			}
 		}
+
+		foreach ($picks_data__array as $type => $host_picks) {
+			if ($picks_data__array[$type] == $picks_data__empty[$type]) {
+				unset($picks_data__array[$type]);
+			}
+		}
 	} else {
 		$categories_filter = false;
 	}
 } else {
 	$categories_filter = false;
+}
+
+// If no search string and no filters, redirect to /archive
+if ($url_view !== 'archive' && !$search_string && empty($search_filters) && !$categories_filter) {
+	header('Location: ' . domain_url() . '/archive');
+	die();
 }
 
 // echo '<pre>', var_dump($picks_data__array), '</pre>';

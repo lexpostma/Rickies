@@ -250,6 +250,21 @@ p#promote_webapp {
   display: inline;
 }
 
+span.need_space--xs,
+span.need_space--sm {
+  display: none;
+}
+
+@media screen and (min-width: 375px) {
+  span.need_space--xs {
+    display: inline;
+  }
+}
+@media screen and (min-width: 576px) {
+  span.need_space--sm {
+    display: inline;
+  }
+}
 /* For debugging */
 pre {
   font-size: 0.8rem;
@@ -587,26 +602,14 @@ body {
   padding: var(--space-between-md) var(--space-between-sm);
   white-space: nowrap;
 }
-#nav_content .nav_content--items a span.need_space--xs,
-#nav_content .nav_content--items a span.need_space--sm {
-  display: none;
-}
 #nav_content .nav_content--items a.active {
   opacity: 1;
   font-weight: bold;
   text-decoration: none;
 }
-@media screen and (min-width: 375px) {
-  #nav_content .nav_content--items a span.need_space--xs {
-    display: inline;
-  }
-}
 @media screen and (min-width: 576px) {
   #nav_content .nav_content--items a {
     padding: var(--space-between-md);
-  }
-  #nav_content .nav_content--items a span.need_space--sm {
-    display: inline;
   }
 }
 @media (hover: hover) {
@@ -645,7 +648,10 @@ h2.list_title select {
   width: calc(100% + 2 * var(--element-padding));
   margin: var(--element-padding-neg);
   padding: var(--element-padding);
+  padding-right: calc(1em + var(--element-padding));
   border-radius: var(--element-corner-radius);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 h2.list_title.active {
   color: var(--link-color);

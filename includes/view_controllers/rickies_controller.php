@@ -398,9 +398,18 @@ function pick_item($data, $interactive = false, $search = false)
 			$output .= markdown($data['status_later']);
 		}
 		if ($data['categories']) {
-			$output .= '<p>';
+			$output .= '<p class="category_tags">';
 			foreach ($data['categories'] as $cat_data) {
-				$output .= '<span class="tag ' . $cat_data['color'] . '">' . $cat_data['string'] . '</span>';
+				$output .=
+					'<a class="tag ' .
+					$cat_data['color'] .
+					'" href="' .
+					domain_url() .
+					'?search=&category%5B%5D=' .
+					$cat_data['value'] .
+					'">' .
+					$cat_data['string'] .
+					'</a>';
 			}
 			$output .= '</p>';
 		}

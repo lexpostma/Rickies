@@ -75,25 +75,13 @@ $statusbar: var.$iX-top;
 			transition: 200ms padding ease-in-out;
 			padding: var(--space-between-md) var(--space-between-sm);
 			white-space: nowrap;
-			span.need_space--xs,
-			span.need_space--sm {
-				display: none;
-			}
 			&.active {
 				opacity: 1;
 				font-weight: bold;
 				text-decoration: none;
 			}
-			@media screen and (min-width: var.$break-xs) {
-				span.need_space--xs {
-					display: inline;
-				}
-			}
 			@media screen and (min-width: var.$break-sm) {
 				padding: var(--space-between-md);
-				span.need_space--sm {
-					display: inline;
-				}
 			}
 			@media (hover: hover) {
 				&:hover {
@@ -137,7 +125,10 @@ h2.list_title {
 		width: calc(100% + 2 * var(--element-padding));
 		margin: var(--element-padding-neg);
 		padding: var(--element-padding);
+		padding-right: calc(1em + var(--element-padding));
 		border-radius: var(--element-corner-radius);
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 	&.active {
 		color: var(--link-color);

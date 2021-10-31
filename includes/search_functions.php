@@ -125,8 +125,106 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 	// Filter for pick types
 	$output .= '
-	<fieldset class="list">
+	<fieldset class="list pick_types">
 		<ul>
+			<li class="filter_option">
+				<input type="checkbox" name="type[]" value="regular" id="type_regular" class="clean" ';
+	if (key_exists('type', $filters) && strpos($filters['type'], 'Regular') !== false) {
+		$output .= 'checked';
+	}
+	$output .= '/>
+				<label for="type_regular"><span class="emoji">🧠</span>Regular<span class="need_space--sm"> picks</span></label>
+			</li>
+
+			<li class="filter_option">
+				<input type="checkbox" name="type[]" value="risky" id="type_risky" class="clean" ';
+	if (key_exists('type', $filters) && strpos($filters['type'], 'Risky') !== false) {
+		$output .= 'checked';
+	}
+	$output .= '/>
+				<label for="type_risky"><span class="emoji">⚠️</span>Risky<span class="need_space--sm"> picks</span></label>
+			</li>
+
+			<li class="filter_option">
+				<input type="checkbox" name="type[]" value="flexy" id="type_flexy" class="clean" ';
+	if (key_exists('type', $filters) && strpos($filters['type'], 'Flexy') !== false) {
+		$output .= 'checked';
+	}
+	$output .= '/>
+				<label for="type_flexy"><span class="emoji">💪</span>Flexy<span class="need_space--sm"> picks</span></label>
+			</li>
+		</ul>
+	</fieldset>';
+
+	// Filter for pick states
+	$output .= '
+	<fieldset class="list pick_status">
+		<ul>
+			<li class="filter_option">
+				<input type="checkbox" name="status[]" value="correct" id="status_correct" class="clean" ';
+	if (key_exists('status', $filters) && strpos($filters['status'], 'Correct') !== false) {
+		$output .= 'checked';
+	}
+	$output .= '/>
+				<label for="status_correct"><span class="emoji">🟢</span>Correct<span class="need_space--sm"> picks</span></label>
+			</li>
+
+			<li class="filter_option">
+				<input type="checkbox" name="status[]" value="wrong" id="status_wrong" class="clean" ';
+	if (key_exists('status', $filters) && strpos($filters['status'], 'Wrong') !== false) {
+		$output .= 'checked';
+	}
+	$output .= '/>
+				<label for="status_wrong"><span class="emoji">🔴</span>Wrong<span class="need_space--sm"> picks</span></label>
+			</li>
+
+			<li class="filter_option">
+				<input type="checkbox" name="status[]" value="unknown" id="status_unknown" class="clean" ';
+	if (key_exists('status', $filters) && strpos($filters['status'], '""') !== false) {
+		$output .= 'checked';
+	}
+	$output .= '/>
+				<label for="status_unknown"><span class="emoji">🟡</span>Unknown<span class="need_space--sm"> picks</span></label>
+			</li>
+
+
+		</ul>
+	</fieldset>';
+
+	// TODO: Enable changing view filters
+	// Filter for changing view
+	// 	$output .= '
+	// 	<fieldset class="list">
+	// 		<ul>
+	//
+	// 			<li class="filter_option"><b>Change view</b></li>
+	//
+	// 			<li class="filter_option">
+	// 				<input type="checkbox" name="view[]" value="categories" id="view_cat" class="clean" ';
+	// 	if (key_exists('view', $filters) && strpos($filters['view'], 'categories') !== false) {
+	// 		$output .= 'checked';
+	// 	}
+	// 	$output .= '/>
+	// 				<label for="view_cat"><span class="emoji">🏷</span>Show categories</label>
+	// 			</li>
+	//
+	// 			<li class="filter_option">
+	// 				<input type="checkbox" name="view[]" value="age" id="view_age" class="clean" ';
+	// 	if (key_exists('view', $filters) && strpos($filters['view'], 'age') !== false) {
+	// 		$output .= 'checked';
+	// 	}
+	// 	$output .= '/>
+	// 				<label for="view_age"><span class="emoji">🗓</span>Show pick age</label>
+	// 			</li>
+	// 		</ul>
+	// 	</fieldset>';
+
+	// Filter for interesting stats
+	$output .= '
+	<fieldset class="list pick_metadata">
+		<ul>
+
+
 			<li class="filter_option select">
 				<select class="clean" name="event" onchange=" this.dataset.chosen = this.value; " ';
 	if (key_exists('event', $filters)) {
@@ -163,39 +261,6 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 			</li>
 
 			<li class="filter_option">
-				<input type="checkbox" name="type[]" value="regular" id="type_regular" class="clean" ';
-	if (key_exists('type', $filters) && strpos($filters['type'], 'Regular') !== false) {
-		$output .= 'checked';
-	}
-	$output .= '/>
-				<label for="type_regular"><span class="emoji">🧠</span>Regular picks</label>
-			</li>
-
-			<li class="filter_option">
-				<input type="checkbox" name="type[]" value="risky" id="type_risky" class="clean" ';
-	if (key_exists('type', $filters) && strpos($filters['type'], 'Risky') !== false) {
-		$output .= 'checked';
-	}
-	$output .= '/>
-				<label for="type_risky"><span class="emoji">⚠️</span>Risky picks</label>
-			</li>
-
-			<li class="filter_option">
-				<input type="checkbox" name="type[]" value="flexy" id="type_flexy" class="clean" ';
-	if (key_exists('type', $filters) && strpos($filters['type'], 'Flexy') !== false) {
-		$output .= 'checked';
-	}
-	$output .= '/>
-				<label for="type_flexy"><span class="emoji">💪</span>Flexy picks</label>
-			</li>
-		</ul>
-	</fieldset>';
-
-	// Filter for interesting stats
-	$output .= '
-	<fieldset class="list">
-		<ul>
-			<li class="filter_option">
 				<input type="checkbox" name="reuse" id="reuse" class="clean" ';
 	if (key_exists('reuse', $filters)) {
 		$output .= 'checked';
@@ -229,6 +294,15 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 	}
 	$output .= '/>
 				<label for="adjudicated"><span class="emoji">🧑‍⚖️</span>Adjudicated</label>
+			</li>
+
+			<li class="filter_option">
+				<input type="checkbox" name="half_points" id="half_points" class="clean" ';
+	if (key_exists('half_points', $filters)) {
+		$output .= 'checked';
+	}
+	$output .= '/>
+				<label for="half_points"><span class="emoji">➗</span>Half correct</label>
 			</li>
 		</ul>
 	</fieldset>';
@@ -265,7 +339,12 @@ function category_filters($categories, $selected = false)
 			<li class="filter_option">
 				<input type="checkbox" class="clean category" id="cat_group-' .
 			$group_content['value'] .
-			'" />
+			'" ';
+		if ($selected && in_array($group_content['value'], $selected)) {
+			$output .= ' checked ';
+		}
+		$output .=
+			'/>
 				<label for="cat_group-' .
 			$group_content['value'] .
 			'"><span class="emoji">' .
