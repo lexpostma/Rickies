@@ -1618,6 +1618,15 @@ mark {
   border-radius: 2px;
 }
 
+:root {
+  --label-padding: 4px;
+}
+@media (hover: hover) {
+  :root {
+    --label-padding: 0px;
+  }
+}
+
 #pick_filter_sheet {
   position: relative;
   border-radius: calc((var(--search-height) / 2) + 4px);
@@ -1718,6 +1727,7 @@ mark {
 }
 #pick_filter_sheet > .content > fieldset {
   padding: var(--space-between-sm);
+  padding: calc(var(--space-between-sm) - var(--label-padding)) var(--space-between-sm);
   background: rgba(13, 135, 202, 0.05);
   border-radius: 4px;
 }
@@ -1839,13 +1849,13 @@ mark {
   position: relative;
 }
 #pick_filter_sheet > .content > fieldset .select select {
-  padding-left: calc(1.4rem + 4px);
+  padding: var(--label-padding) 0 var(--label-padding) calc(1.4rem + 4px);
   width: 100%;
 }
 #pick_filter_sheet > .content > fieldset .select .select_icon {
   opacity: 0.3;
   width: 1.5em;
-  height: 1.5em;
+  height: calc(1.5em + 2 * (var(--label-padding)));
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -1870,7 +1880,7 @@ mark {
 #pick_filter_sheet > .content > fieldset input[type=checkbox] {
   opacity: 0.3;
   width: 1.5em;
-  height: 1.5em;
+  height: calc(1.5em + 2 * (var(--label-padding)));
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -1895,6 +1905,9 @@ mark {
 #pick_filter_sheet > .content > fieldset input[type=checkbox]:checked {
   background-image: url("/images/input-check.svg");
   opacity: 1;
+}
+#pick_filter_sheet > .content label {
+  padding: var(--label-padding) 0;
 }
 #pick_filter_sheet > .content label img {
   width: 100%;

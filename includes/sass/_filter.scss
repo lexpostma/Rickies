@@ -1,12 +1,19 @@
 @use "variables" as var;
 
+:root {
+	--label-padding: 4px;
+	@media (hover: hover) {
+		--label-padding: 0px;
+	}
+}
+
 @mixin input-icon {
 	opacity: 0.3;
 	@media (prefers-color-scheme: dark) {
 		opacity: 0.6;
 	}
 	width: 1.5em;
-	height: 1.5em;
+	height: calc(1.5em + 2 * (var(--label-padding)));
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -123,6 +130,7 @@
 	}
 	& > fieldset {
 		padding: var(--space-between-sm);
+		padding: calc(var(--space-between-sm) - var(--label-padding)) var(--space-between-sm);
 		background: rgba(13, 135, 202, 0.05);
 		border-radius: 4px;
 
@@ -253,7 +261,7 @@
 		.select {
 			position: relative;
 			select {
-				padding-left: calc(1.4rem + 4px);
+				padding: var(--label-padding) 0 var(--label-padding) calc(1.4rem + 4px);
 				width: 100%;
 			}
 			select:not([data-chosen='']) {
@@ -285,6 +293,7 @@
 		}
 	}
 	label {
+		padding: var(--label-padding) 0;
 		img {
 			width: 100%;
 			max-width: 100px;

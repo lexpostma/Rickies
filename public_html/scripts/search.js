@@ -43,7 +43,7 @@ document.onkeydown = function (evt) {
 	}
 };
 
-// Click outside the search box to close, but not the search box itself
+// Click outside the search box, but not the search box itself, to close the modal
 // Via https://stackoverflow.com/a/41178624
 searchbox.onclick = function () {
 	close_search();
