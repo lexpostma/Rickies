@@ -11,7 +11,7 @@
 	}
 }
 
-#inline_search {
+#search_field_combo {
 	width: 100%;
 	position: relative;
 	input[type='search'] {
@@ -150,7 +150,7 @@ section.results {
 	transition-timing-function: ease;
 
 	background: rgba(0, 0, 0, 0);
-	#search_form {
+	#pick_filter_form {
 		transition: var.$pop-transition;
 		transform: translateY(-160px);
 	}
@@ -167,7 +167,7 @@ section.results {
 		@media (prefers-color-scheme: dark) {
 			background: rgba(106, 106, 106, 0.3);
 		}
-		#search_form {
+		#pick_filter_form {
 			transform: translateY(200px);
 			transform: translateY(calc(200px + #{var.$iX-top}));
 

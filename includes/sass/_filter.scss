@@ -17,7 +17,7 @@
 	}
 }
 
-#filter_details {
+#pick_filter_sheet {
 	position: relative;
 	border-radius: calc((var(--search-height) / 2) + 4px);
 	@media screen and (min-width: var.$break-md) {
@@ -95,7 +95,7 @@
 		}
 	}
 }
-.filter_content {
+#pick_filter_sheet > .content {
 	margin: 0 var(--space-between-md) var(--space-between-md);
 	display: grid;
 	gap: var(--space-between-md);
@@ -103,8 +103,6 @@
 	justify-items: stretch;
 	align-items: stretch;
 
-	// grid-template-columns: 1fr;
-	// @media screen and (min-width: var.$break-sm) {
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	& > fieldset.hosts,
 	& > fieldset.categories,
@@ -113,7 +111,6 @@
 		grid-column-start: 1;
 		grid-column-end: 3;
 	}
-	// }
 	fieldset {
 		border: none;
 		margin: 0;

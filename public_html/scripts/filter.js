@@ -19,16 +19,16 @@ document.addEventListener('input', (evt) => {
 	button.disabled = false;
 });
 
-const inline_search = document.getElementById('inline_search');
-const filter_details = document.getElementById('filter_details');
+const search_field_combo = document.getElementById('search_field_combo');
+const pick_filter_sheet = document.getElementById('pick_filter_sheet');
 
 // Show/hide the original search button when filters are opened.
 // There's an extra button inside the "details"
-filter_details.addEventListener('toggle', function () {
-	if (filter_details.open) {
-		inline_search.classList.add('summary_open');
+pick_filter_sheet.addEventListener('toggle', function () {
+	if (pick_filter_sheet.open) {
+		search_field_combo.classList.add('summary_open');
 	} else {
-		inline_search.classList.remove('summary_open');
+		search_field_combo.classList.remove('summary_open');
 	}
 });
 

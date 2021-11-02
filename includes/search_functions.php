@@ -1,8 +1,11 @@
 <?php
+/* Function for searching and filtering predictions/picks  */
 
+// Fixed search button in the top right corner of many pages, opens a modal search field
+// Includes a search field that's always fixed, otherwise there's no search button needed on the page
 function search_button()
 {
-	$output = search_content(false, true);
+	$output = pick_filter_element(false, true);
 	$output .= '<button id="search_button" class="top_button clean" type="button" onclick="toggle_search()">';
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close2.svg');
@@ -12,37 +15,48 @@ function search_button()
 	return $output;
 }
 
-function search_content($search_string = false, $fixed = false, $filters = [], $categories = [], $cat_selected = false)
+/* The content of the search element
+
+Parameters are:
+	$user_input 		-> the input from the user, e.g. checkboxes checked, search query etc.
+	$displayed_as_modal -> whether the search content in modally opened, or inline
+	$categories 		-> optionally insert al the possible categories as array
+*/
+function pick_filter_element($user_input = false, $displayed_as_modal = false, $categories = [])
 {
 	$output = '';
+	if (empty($user_input['search'])) {
+		$user_input['search']['string'] = false;
+	}
 
-	if ($fixed) {
+	if ($displayed_as_modal) {
 		$output .= '<div id="fixed_search" class="">';
 	}
 
-	$output .= '<form method="get" action="/" class="filters" id="search_form">';
+	$output .= '<form method="get" action="/" class="filters" id="pick_filter_form">';
 
-	if ($fixed) {
-		$output .= search_field($search_string);
+	if ($displayed_as_modal) {
+		$output .= search_field($user_input['search']['string']);
 	} else {
-		$output .= search_field($search_string, true);
-		$output .= search_filters($filters, $categories, $cat_selected);
+		$output .= search_field($user_input['search']['string'], true);
+		$output .= pick_filter_expandable_sheet($categories, $user_input);
 	}
 
 	$output .= '	</form>';
 
-	if ($fixed) {
+	if ($displayed_as_modal) {
 		$output .= '</div>';
 	}
 
 	return $output;
 }
 
-function search_field($search_string = false, $filters = false)
+/* The search input field */
+function search_field($search_string = false, $part_of_filters = false)
 {
 	$output = '
-		<div id="inline_search" class="';
-	if ($filters) {
+		<div id="search_field_combo" class="';
+	if ($part_of_filters) {
 		$output .= 'in_summary';
 	}
 	$output .= '">
@@ -51,7 +65,7 @@ function search_field($search_string = false, $filters = false)
 		$output .= ' value="' . $search_string . '" ';
 	}
 	$output .= '/>
-			<button class="clean top_button" title="Search" form="search_form" type="submit">';
+			<button class="clean top_button" title="Search" form="pick_filter_form" type="submit">';
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
 	$output .= '</button>
 		</div>';
@@ -59,15 +73,28 @@ function search_field($search_string = false, $filters = false)
 	return $output;
 }
 
-function search_filters($filters = [], $categories, $cat_selected = false)
+/* All the pick filters inside an expandable <details> sheet
+
+Includes filters for
+- Host
+- Pick status (correct, wrong, unknown)
+- Pick type (regular, risky, flexy)
+- Event
+- Metadata (reusable, buzzkill, ahead of its time, half correct, adjudication)
+- Categories via pick_category_filters() function
+
+Parameters are:
+	$categories	-> array of all categories available to be selected, to be forwarded to pick_category_filters() function
+	$user_input -> array of selected filters by the user, separated into 'filter_other' and 'filter_categories'
+*/
+function pick_filter_expandable_sheet($categories, $user_input = [])
 {
-	if ($filters == '') {
-		$filters = [];
+	$output = '<details id="pick_filter_sheet" ';
+	if (empty($user_input['filter_other'])) {
+		$user_input['filter_other'] = [];
 	}
 
-	$output = '<details id="filter_details" ';
-
-	if (!empty($filters) || $cat_selected) {
+	if (!empty($user_input['filter_other']) || !empty($user_input['filter_categories'])) {
 		$output .= ' open';
 	}
 
@@ -78,14 +105,17 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 		'</span></span><span class="opened">Hide filters<span class="filter_icon">' .
 		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter-active.svg') .
 		'</span></span></summary>
-	<div class="filter_content content">';
+	<div class="content">';
 
 	// Filter for hosts
 	$output .= '
 	<fieldset class="hosts">
 		<div class="host">
 			<input type="checkbox" name="host[]" value="myke" id="host_myke" class="" ';
-	if (key_exists('host', $filters) && strpos($filters['host'], 'Myke') !== false) {
+	if (
+		key_exists('host', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['host'], 'Myke') !== false
+	) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -98,7 +128,10 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 		<div class="host">
 			<input type="checkbox" name="host[]" value="federico" id="host_federico" class="" ';
-	if (key_exists('host', $filters) && strpos($filters['host'], 'Federico') !== false) {
+	if (
+		key_exists('host', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['host'], 'Federico') !== false
+	) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -111,7 +144,10 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 		<div class="host">
 			<input type="checkbox" name="host[]" value="stephen" id="host_stephen" class="" ';
-	if (key_exists('host', $filters) && strpos($filters['host'], 'Stephen') !== false) {
+	if (
+		key_exists('host', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['host'], 'Stephen') !== false
+	) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -129,7 +165,10 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 		<ul>
 			<li class="filter_option">
 				<input type="checkbox" name="type[]" value="regular" id="type_regular" class="clean" ';
-	if (key_exists('type', $filters) && strpos($filters['type'], 'Regular') !== false) {
+	if (
+		key_exists('type', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['type'], 'Regular') !== false
+	) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -138,7 +177,10 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 			<li class="filter_option">
 				<input type="checkbox" name="type[]" value="risky" id="type_risky" class="clean" ';
-	if (key_exists('type', $filters) && strpos($filters['type'], 'Risky') !== false) {
+	if (
+		key_exists('type', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['type'], 'Risky') !== false
+	) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -147,7 +189,10 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 			<li class="filter_option">
 				<input type="checkbox" name="type[]" value="flexy" id="type_flexy" class="clean" ';
-	if (key_exists('type', $filters) && strpos($filters['type'], 'Flexy') !== false) {
+	if (
+		key_exists('type', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['type'], 'Flexy') !== false
+	) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -162,7 +207,10 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 		<ul>
 			<li class="filter_option">
 				<input type="checkbox" name="status[]" value="correct" id="status_correct" class="clean" ';
-	if (key_exists('status', $filters) && strpos($filters['status'], 'Correct') !== false) {
+	if (
+		key_exists('status', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['status'], 'Correct') !== false
+	) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -171,7 +219,10 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 			<li class="filter_option">
 				<input type="checkbox" name="status[]" value="wrong" id="status_wrong" class="clean" ';
-	if (key_exists('status', $filters) && strpos($filters['status'], 'Wrong') !== false) {
+	if (
+		key_exists('status', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['status'], 'Wrong') !== false
+	) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -180,7 +231,10 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 			<li class="filter_option">
 				<input type="checkbox" name="status[]" value="unknown" id="status_unknown" class="clean" ';
-	if (key_exists('status', $filters) && strpos($filters['status'], '""') !== false) {
+	if (
+		key_exists('status', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['status'], '""') !== false
+	) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -227,7 +281,7 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 			<li class="filter_option select">
 				<select class="clean" name="event" onchange=" this.dataset.chosen = this.value; " ';
-	if (key_exists('event', $filters)) {
+	if (key_exists('event', $user_input['filter_other'])) {
 		$output .= 'data-chosen="set"';
 	} else {
 		$output .= 'data-chosen';
@@ -236,22 +290,34 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 					<option value>🏆 All Rickies</option>
 					<optgroup label="Only show picks from…">
 						<option value="annual" ';
-	if (key_exists('event', $filters) && strpos($filters['event'], 'annual') !== false) {
+	if (
+		key_exists('event', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['event'], 'annual') !== false
+	) {
 		$output .= 'selected';
 	}
 	$output .= '>📆 Annual Rickies</option>
 						<option value="keynote" ';
-	if (key_exists('event', $filters) && strpos($filters['event'], 'keynote') !== false) {
+	if (
+		key_exists('event', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['event'], 'keynote') !== false
+	) {
 		$output .= 'selected';
 	}
 	$output .= '>📽 Keynote Rickies</option>
 						<option value="wwdc" ';
-	if (key_exists('event', $filters) && strpos($filters['event'], 'WWDC') !== false) {
+	if (
+		key_exists('event', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['event'], 'WWDC') !== false
+	) {
 		$output .= 'selected';
 	}
 	$output .= '>💻 WWDC Rickies</option>
 						<option value="ungraded" ';
-	if (key_exists('event', $filters) && strpos($filters['event'], 'Ungraded') !== false) {
+	if (
+		key_exists('event', $user_input['filter_other']) &&
+		strpos($user_input['filter_other']['event'], 'Ungraded') !== false
+	) {
 		$output .= 'selected';
 	}
 	$output .= '>🟠 Ungraded Rickies</option>
@@ -262,7 +328,7 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 			<li class="filter_option">
 				<input type="checkbox" name="reuse" id="reuse" class="clean" ';
-	if (key_exists('reuse', $filters)) {
+	if (key_exists('reuse', $user_input['filter_other'])) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -271,7 +337,7 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 			<li class="filter_option">
 				<input type="checkbox" name="buzzkill" id="buzzkill" class="clean" ';
-	if (key_exists('buzzkill', $filters)) {
+	if (key_exists('buzzkill', $user_input['filter_other'])) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -280,7 +346,7 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 			<li class="filter_option">
 				<input type="checkbox" name="eventually" id="eventually" class="clean" ';
-	if (key_exists('eventually', $filters)) {
+	if (key_exists('eventually', $user_input['filter_other'])) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -289,7 +355,7 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 			<li class="filter_option">
 				<input type="checkbox" name="adjudicated" id="adjudicated" class="clean" ';
-	if (key_exists('adjudicated', $filters)) {
+	if (key_exists('adjudicated', $user_input['filter_other'])) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -298,7 +364,7 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 
 			<li class="filter_option">
 				<input type="checkbox" name="half_points" id="half_points" class="clean" ';
-	if (key_exists('half_points', $filters)) {
+	if (key_exists('half_points', $user_input['filter_other'])) {
 		$output .= 'checked';
 	}
 	$output .= '/>
@@ -308,16 +374,16 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 	</fieldset>';
 
 	$output .=
-		category_filters($categories, $cat_selected) .
+		pick_category_filters($categories, $user_input['filter_categories']) .
 		'
 	<div class="button_section">
-		<button id="search_button_plus" class="clean js_link" title="Search and filter" form="search_form" type="submit">Search picks' .
+		<button id="search_button_plus" class="clean js_link" title="Search and filter" form="pick_filter_form" type="submit">Search picks' .
 		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg') .
 		'</button>
 		<button class="clean js_link" id="reset_button" type="button" onclick="reset_filter()" ';
-	if (empty($filters)) {
-		$output .= 'disabled';
-	}
+	// if (empty($filters)) {
+	// 	$output .= 'disabled';
+	// }
 	$output .= '>Reset filters</button>';
 
 	$output .= '</div></div></details>';
@@ -327,7 +393,13 @@ function search_filters($filters = [], $categories, $cat_selected = false)
 	return $output;
 }
 
-function category_filters($categories, $selected = false)
+/* All the category checkboxes
+Parameters are:
+	$categories	-> array of all categories available to be selected
+	$user_input -> array of categories selected by the user
+*/
+
+function pick_category_filters($categories, $user_input = false)
 {
 	$output = '<fieldset class="categories">';
 
@@ -342,7 +414,7 @@ function category_filters($categories, $selected = false)
 			'"" value="' .
 			$groupL1_data['value'] .
 			'" ';
-		if ($selected && in_array($groupL1_data['value'], $selected)) {
+		if ($user_input && in_array($groupL1_data['value'], $user_input)) {
 			$output .= ' checked ';
 		}
 		$output .=
@@ -366,7 +438,7 @@ function category_filters($categories, $selected = false)
 				'"" value="' .
 				$groupL2_data['value'] .
 				'" ';
-			if ($selected && in_array($groupL2_data['value'], $selected)) {
+			if ($user_input && in_array($groupL2_data['value'], $user_input)) {
 				$output .= ' checked ';
 			}
 			$output .=
@@ -382,7 +454,11 @@ function category_filters($categories, $selected = false)
 			// AND this category has another level of categories that it could be in,
 			// BUT the group itself is not selected
 			// -> Start collecting the possible checkboxes
-			if ($selected && key_exists('categories', $groupL2_data) && !in_array($groupL2_data['value'], $selected)) {
+			if (
+				$user_input &&
+				key_exists('categories', $groupL2_data) &&
+				!in_array($groupL2_data['value'], $user_input)
+			) {
 				$groupL3_group_selected = false;
 
 				$groupL3_boxes = '<ul>';
@@ -395,7 +471,7 @@ function category_filters($categories, $selected = false)
 						'"" value="' .
 						$groupL3_data['value'] .
 						'" ';
-					if (in_array($groupL3_data['value'], $selected)) {
+					if (in_array($groupL3_data['value'], $user_input)) {
 						$groupL3_boxes .= ' checked ';
 						$groupL3_group_selected = true;
 					}

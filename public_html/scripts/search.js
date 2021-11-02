@@ -49,7 +49,7 @@ searchbox.onclick = function () {
 	close_search();
 	// alert('You clicked on parent');
 };
-document.getElementById('search_form').onclick = function () {
+document.getElementById('pick_filter_form').onclick = function () {
 	event.stopPropagation();
 	// alert('You clicked on child');
 };

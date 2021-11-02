@@ -2,15 +2,17 @@
 <header class="search">
 	<div class="gradient"></div>
 	<h1><?= $head_custom['title'] ?></h1>
-	<?= search_content($search_string, false, $search_filters, $categories__array, $categories_filter) ?>
+	<?= pick_filter_element($pick_filter, false, $categories__array) ?>
 
 </header>
 
 <?php
 echo no_script_banner();
 if (empty($picks_data__array)) {
-	if ($search_string) {
-		echo '<section class="results"><p>No predictions match ‘<mark>' . $search_string . '</mark>’.</p></section>';
+	if (!empty($pick_filter['search'])) {
+		echo '<section class="results"><p>No predictions match ‘<mark>' .
+			$pick_filter['search']['string'] .
+			'</mark>’.</p></section>';
 	} else {
 		echo '<section class="results"><p>No predictions match these filters.</p></section>';
 	}
@@ -57,20 +59,22 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 ]) ?></div>
 <?php
 echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';
-echo '<script src="/scripts/mark.min.js"></script>';
-echo '<script>
-	var context = document.querySelector(".search_results"); // requires an element with class "search_results" to exist
-	var instance = new Mark(context);
-	var mark_options = {
-		"separateWordSearch": false,
-		"exclude": [
-			".no_results"
-		]
-	};
-	instance.mark("' .
-	$search_string .
-	'", mark_options); // will mark the keyword "$search_string"
-</script>';
+if (!empty($pick_filter['search'])) {
+	echo '<script src="/scripts/mark.min.js"></script>';
+	echo '<script>
+		var context = document.querySelector(".search_results"); // requires an element with class "search_results" to exist
+		var instance = new Mark(context);
+		var mark_options = {
+			"separateWordSearch": false,
+			"exclude": [
+				".no_results"
+			]
+		};
+		instance.mark("' .
+		$pick_filter['search']['string'] .
+		'", mark_options); // will mark the search string keywords
+	</script>';
+}
 
 }
 

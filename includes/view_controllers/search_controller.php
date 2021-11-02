@@ -2,10 +2,21 @@
 
 // Search controller
 
+// Define the filtering array
+$pick_filter = $pick_filter_empty = [
+	'search' => [],
+	'filter_other' => [],
+	'filter_categories' => [],
+	// 'view' => [],
+];
+
 // Define search query
 if (isset($_GET['search']) && $_GET['search'] !== '') {
 	$search_string = trim($_GET['search']);
-	$search_query_formula = "
+
+	$pick_filter['search'] = [
+		'string' => $search_string,
+		'formula' => "
 	OR(
 		SEARCH(LOWER('$search_string'),LOWER(Pick)),
 		SEARCH(LOWER('$search_string'),LOWER({Special remark})),
@@ -14,46 +25,45 @@ if (isset($_GET['search']) && $_GET['search'] !== '') {
 		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Category name},','))),
 		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Category group},','))),
 		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Rickies},',')))
-	),";
-} else {
-	$search_string = $search_query_formula = false;
+	),",
+	];
+	unset($search_string);
 }
 
 // Define filters in query
-$search_filters = [];
 if (isset($_GET['reuse']) && $_GET['reuse'] === 'on') {
-	$search_filters['reuse'] = '{Eligible for reuse}=TRUE()';
+	$pick_filter['filter_other']['reuse'] = '{Eligible for reuse}=TRUE()';
 }
 
 if (isset($_GET['buzzkill']) && $_GET['buzzkill'] === 'on') {
-	$search_filters['buzzkill'] = '{Negative pick}';
+	$pick_filter['filter_other']['buzzkill'] = '{Negative pick}';
 }
 
 if (isset($_GET['eventually']) && $_GET['eventually'] === 'on') {
-	$search_filters['eventually'] = '{Came true date}';
+	$pick_filter['filter_other']['eventually'] = '{Came true date}';
 }
 
 if (isset($_GET['adjudicated']) && $_GET['adjudicated'] === 'on') {
-	$search_filters['adjudicated'] = '{Adjudicated}';
+	$pick_filter['filter_other']['adjudicated'] = '{Adjudicated}';
 }
 
 if (isset($_GET['half_points']) && $_GET['half_points'] === 'on') {
-	$search_filters['half_points'] = 'OR(Factor<1, {Half correct})';
+	$pick_filter['filter_other']['half_points'] = 'OR(Factor<1, {Half correct})';
 }
 
 if (isset($_GET['event'])) {
 	switch ($_GET['event']) {
 		case 'annual':
-			$search_filters['event'] = '{Rickies type}="annual"';
+			$pick_filter['filter_other']['event'] = '{Rickies type}="annual"';
 			break;
 		case 'keynote':
-			$search_filters['event'] = '{Rickies type}="keynote"';
+			$pick_filter['filter_other']['event'] = '{Rickies type}="keynote"';
 			break;
 		case 'wwdc':
-			$search_filters['event'] = '{Event type}="WWDC"';
+			$pick_filter['filter_other']['event'] = '{Event type}="WWDC"';
 			break;
 		case 'ungraded':
-			$search_filters['event'] = 'OR({Rickies status} = "Ungraded", {Rickies status} = "Live")';
+			$pick_filter['filter_other']['event'] = 'OR({Rickies status} = "Ungraded", {Rickies status} = "Live")';
 			break;
 		default:
 			break;
@@ -69,8 +79,9 @@ if (isset($_GET['type']) && is_array($_GET['type'])) {
 	}
 	if (!empty($types_filter)) {
 		// Combine the parts into the formula
-		$search_filters['type'] = 'OR(' . implode(',', $types_filter) . ')';
+		$pick_filter['filter_other']['type'] = 'OR(' . implode(',', $types_filter) . ')';
 	}
+	unset($types_filter);
 }
 
 // Get the pick types filter as array
@@ -86,8 +97,9 @@ if (isset($_GET['status']) && is_array($_GET['status'])) {
 	}
 	if (!empty($status_filter)) {
 		// Combine the parts into the formula
-		$search_filters['status'] = 'OR(' . implode(',', $status_filter) . ')';
+		$pick_filter['filter_other']['status'] = 'OR(' . implode(',', $status_filter) . ')';
 	}
+	unset($status_filter);
 }
 
 // Get the hosts filter as array
@@ -99,23 +111,21 @@ if (isset($_GET['host']) && is_array($_GET['host'])) {
 	}
 	if (!empty($hosts_filter)) {
 		// Combine the parts into the formula
-		$search_filters['host'] = 'OR(' . implode(',', $hosts_filter) . ')';
+		$pick_filter['filter_other']['host'] = 'OR(' . implode(',', $hosts_filter) . ')';
 	}
+	unset($hosts_filter);
 }
 
-if (!empty($search_filters)) {
-	$search_filters_formula = implode(',', $search_filters) . ',';
-} else {
-	$search_filters_formula = '';
-}
-
-$filterByFormula =
-	"
+$filterByFormula = "
 AND(
-	" .
-	$search_query_formula .
-	$search_filters_formula .
-	"
+	";
+if (!empty($pick_filter['search'])) {
+	$filterByFormula .= $pick_filter['search']['formula'];
+}
+if (!empty($pick_filter['filter_other'])) {
+	$filterByFormula .= implode(',', $pick_filter['filter_other']) . ',';
+}
+$filterByFormula .= "
 	Pick,
 	{Host name} ,
 	Type,
@@ -137,9 +147,9 @@ if (isset($_GET['category']) && is_array($_GET['category'])) {
 	// let's iterate thru the array
 	foreach ($_GET['category'] as $category) {
 		// do some super-magic here
-		$categories_filter[] = $category;
+		$pick_filter['filter_categories'][] = $category;
 	}
-	if (!empty($categories_filter)) {
+	if (!empty($pick_filter['filter_categories'])) {
 		// echo '<pre>', var_dump($categories_filter), '</pre>';
 
 		// Category are filtered server-side, not in Airtable,
@@ -150,7 +160,9 @@ if (isset($_GET['category']) && is_array($_GET['category'])) {
 				foreach ($picks as $pick => $pick_data) {
 					// Compare 2 arrays to see if pick category array have any in common with category filter
 					// Via https://stackoverflow.com/a/8736291
-					$cat_found = count(array_intersect($categories_filter, $pick_data['categories_compare']))
+					$cat_found = count(
+						array_intersect($pick_filter['filter_categories'], $pick_data['categories_compare'])
+					)
 						? true
 						: false;
 					if (!$cat_found) {
@@ -165,15 +177,11 @@ if (isset($_GET['category']) && is_array($_GET['category'])) {
 				unset($picks_data__array[$type]);
 			}
 		}
-	} else {
-		$categories_filter = false;
 	}
-} else {
-	$categories_filter = false;
 }
 
 // If no search string and no filters, redirect to /archive
-if ($url_view !== 'archive' && !$search_string && empty($search_filters) && !$categories_filter) {
+if ($url_view !== 'archive' && $pick_filter_empty === $pick_filter) {
 	header('Location: ' . domain_url() . '/archive');
 	die();
 }
@@ -188,9 +196,10 @@ if ($url_view == 'archive') {
 	];
 
 	$h1 = 'Rickies archive';
-} elseif ($search_string) {
-	$head_custom['title'] = 'Search Rickies for ‘' . $search_string . '’';
-	$head_custom['description'] = 'Search and filter results for ‘' . $search_string . '’ on Rickies.co.';
+} elseif (!empty($pick_filter['search'])) {
+	$head_custom['title'] = 'Search Rickies for ‘' . $pick_filter['search']['string'] . '’';
+	$head_custom['description'] =
+		'Search and filter results for ‘' . $pick_filter['search']['string'] . '’ on Rickies.co.';
 } else {
 	$head_custom['title'] = 'Search for Rickies';
 	$head_custom['description'] = 'Search and filter results on Rickies.co.';
