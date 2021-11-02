@@ -335,7 +335,7 @@ function avatar_leaderboard($host_array)
 }
 
 // Function to display picks
-function pick_item($data, $interactive = false, $search = false)
+function pick_item($data, $interactive = false, $view = [])
 {
 	if ($interactive) {
 		$output =
@@ -349,14 +349,14 @@ function pick_item($data, $interactive = false, $search = false)
 	}
 
 	// If it's not a Flexy, the picks are in 3 rounds
-	if ($search) {
+	if (in_array('search', $view)) {
 		$pick_link =
 			'<a href="/' . $data['url'] . '#' . strtolower($data['type_group']) . '">' . $data['rickies'] . '</a>';
 	}
 
-	if ($search && $data['type'] !== 'Flexy') {
+	if (in_array('search', $view) && $data['type'] !== 'Flexy') {
 		$output .= '<span class="round">' . $pick_link . ' • <span class="nowrap">' . $data['round'] . '</span></span>';
-	} elseif ($search) {
+	} elseif (in_array('search', $view)) {
 		$output .= '<span class="round">' . $pick_link . '</span>';
 	} elseif ($data['type'] !== 'Flexy') {
 		$output .= '<span class="round">' . $data['round'] . '</span>';
@@ -389,7 +389,13 @@ function pick_item($data, $interactive = false, $search = false)
 	$output .= '</p>';
 
 	// Add optional note
-	if ($data['note'] || $data['status_later'] || $data['categories']) {
+	if (
+		$data['note'] ||
+		$data['status_later'] ||
+		($data['categories'] && in_array('categories', $view)) ||
+		($data['age'] && in_array('age', $view)) ||
+		($data['buzzkill'] && in_array('buzzkill', $view))
+	) {
 		$output .= '<div class="note">';
 		if ($data['note']) {
 			$output .= markdown($data['note']);
@@ -397,7 +403,7 @@ function pick_item($data, $interactive = false, $search = false)
 		if ($data['status_later']) {
 			$output .= markdown($data['status_later']);
 		}
-		if ($data['categories']) {
+		if ($data['categories'] && in_array('categories', $view)) {
 			$output .= '<p class="category_tags">';
 			foreach ($data['categories'] as $cat_data) {
 				$output .=
@@ -413,7 +419,12 @@ function pick_item($data, $interactive = false, $search = false)
 			}
 			$output .= '</p>';
 		}
-
+		if ($data['age'] && in_array('age', $view)) {
+			$output .= markdown($data['age']);
+		}
+		if ($data['buzzkill'] && in_array('buzzkill', $view)) {
+			$output .= markdown($data['buzzkill']);
+		}
 		$output .= '</div>';
 	}
 
@@ -421,7 +432,7 @@ function pick_item($data, $interactive = false, $search = false)
 	return $output;
 }
 
-function pick_item_bundle($data, $interactive = false, $search = false)
+function pick_item_bundle($data, $interactive = false, $view = [])
 {
 	$output = '';
 
@@ -431,7 +442,7 @@ function pick_item_bundle($data, $interactive = false, $search = false)
 			'<section class="navigate_with_mobile_menu large_columns" id="' .
 			strtolower($type) .
 			'"><h2 class="section_title">';
-		if (!$search) {
+		if (!in_array('search', $view)) {
 			$output .= 'The ';
 		}
 		$output .= $type . '</h2><div class="section_group">';
@@ -454,16 +465,16 @@ function pick_item_bundle($data, $interactive = false, $search = false)
 					if ($value['status'] == 'Correct') {
 						$score['correct'] = $score['correct'] + $value['factor'];
 					}
-					$pick_items .= pick_item($value, $interactive, $search);
+					$pick_items .= pick_item($value, $interactive, $view);
 				}
 				if ($score['count'] !== 0) {
 					// Calculate the ratio of correct picks, if not 0 picks, and round it
 					$score['percentage'] = round_if_decimal(($score['correct'] / $score['count']) * 100);
 				}
 			} else {
-				if (!$search && $type == 'Rickies') {
+				if (!in_array('search', $view) && $type == 'Rickies') {
 					$pick_items .= '<li class="pick_item no_results">Waiting for ' . $host . '’s first pick…</li>';
-				} elseif (!$search && $type == 'Flexies') {
+				} elseif (!in_array('search', $view) && $type == 'Flexies') {
 					$pick_items .= '<li class="pick_item no_results">Waiting for ' . $host . '’s Flexies…</li>';
 				} else {
 					$pick_items .=

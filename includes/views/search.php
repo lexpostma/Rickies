@@ -49,7 +49,12 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 		</div>
 	</div>
 </nav>
-<div class="search_results"><?= pick_item_bundle($picks_data__array, false, true) ?></div>
+<div class="search_results"><?= pick_item_bundle($picks_data__array, false, [
+	'search',
+	'categories',
+	'buzzkill',
+	'age',
+]) ?></div>
 <?php
 echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';
 echo '<script src="/scripts/mark.min.js"></script>';

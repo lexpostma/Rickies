@@ -15,12 +15,6 @@ if (isset($_GET['search']) && $_GET['search'] !== '') {
 		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Category group},','))),
 		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Rickies},',')))
 	),";
-
-	/*
-SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN(Host,','))),
-SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN(Type,','))),
-SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Type group},',')))
-*/
 } else {
 	$search_string = $search_query_formula = false;
 }

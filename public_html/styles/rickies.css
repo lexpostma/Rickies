@@ -1110,6 +1110,9 @@ li.pick_item {
   align-items: flex-start;
   padding: var(--element-padding);
 }
+li.pick_item + li.pick_item {
+  margin-top: var(--space-between-sm);
+}
 li.pick_item span.round {
   color: var(--text-secondary-color);
   font-size: 0.75rem;
@@ -1195,7 +1198,7 @@ li.pick_item.interactive {
   -ms-user-select: none;
   user-select: none;
 }
-li.pick_item.interactive + .interactive {
+li.pick_item.interactive + li.pick_item.interactive {
   margin-top: 2px;
 }
 li.pick_item.interactive p.pick span.points {

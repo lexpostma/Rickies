@@ -29,6 +29,8 @@ do {
 			'url' => check_key('URL', $fields, false, 0),
 			'rickies' => check_key('Rickies name', $fields, false, 0),
 			'status_later' => check_key('Came true string', $fields),
+			'age' => check_key('Age string', $fields),
+			'buzzkill' => check_key('Buzzkill string', $fields),
 		];
 
 		if (check_key('Category', $fields)) {

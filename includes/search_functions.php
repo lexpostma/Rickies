@@ -337,7 +337,7 @@ function category_filters($categories, $selected = false)
 	<fieldset class="list">
 		<ul>
 			<li class="filter_option">
-				<input type="checkbox" name="category[]" class="clean category" id="cat_group-' .
+				<input type="checkbox" name="category[]" class="clean category" id="catL1-' .
 			$groupL1_data['value'] .
 			'"" value="' .
 			$groupL1_data['value'] .
@@ -347,7 +347,7 @@ function category_filters($categories, $selected = false)
 		}
 		$output .=
 			'/>
-				<label for="cat_group-' .
+				<label for="catL1-' .
 			$groupL1_data['value'] .
 			'"><span class="emoji">' .
 			$groupL1_data['emoji'] .
@@ -361,7 +361,7 @@ function category_filters($categories, $selected = false)
 			$output .=
 				'
 					<li class="filter_option">
-						<input type="checkbox" name="category[]" class="clean category" id="cat-' .
+						<input type="checkbox" name="category[]" class="clean category" id="catL2-' .
 				$groupL2_data['value'] .
 				'"" value="' .
 				$groupL2_data['value'] .
@@ -371,7 +371,7 @@ function category_filters($categories, $selected = false)
 			}
 			$output .=
 				'/>
-						<label for="cat-' .
+						<label for="catL2-' .
 				$groupL2_data['value'] .
 				'">' .
 				$groupL2 .
@@ -390,7 +390,7 @@ function category_filters($categories, $selected = false)
 					$groupL3_boxes .=
 						'
 							<li class="filter_option">
-								<input type="checkbox" name="category[]" class="clean category" id="cat_sub-' .
+								<input type="checkbox" name="category[]" class="clean category" id="catL3-' .
 						$groupL3_data['value'] .
 						'"" value="' .
 						$groupL3_data['value'] .
@@ -401,7 +401,7 @@ function category_filters($categories, $selected = false)
 					}
 					$groupL3_boxes .=
 						'/>
-								<label for="cat_sub-' .
+								<label for="catL3-' .
 						$groupL3_data['value'] .
 						'">' .
 						$groupL3 .

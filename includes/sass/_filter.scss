@@ -209,16 +209,14 @@
 				grid-gap: var(--space-between-lg);
 			}
 
-			& > fieldset {
-				// flex-basis: 25%;
-				// background: pink;
-				ul > li > ul {
+			& > fieldset ul > li {
+				& > ul {
 					margin-top: 4px;
 					font-size: 0.75em;
 					padding-left: 4px;
 					flex-basis: 100%;
 				}
-				ul > li.filter_option label {
+				&.filter_option label {
 					margin-right: calc(-1 * var(--space-between-md));
 				}
 			}
