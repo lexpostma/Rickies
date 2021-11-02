@@ -197,7 +197,13 @@ if ($url_view == 'archive') {
 
 	$h1 = 'Rickies archive';
 } elseif (!empty($pick_filter['search'])) {
-	$head_custom['title'] = 'Search Rickies for ‘' . $pick_filter['search']['string'] . '’';
+	if (strlen($pick_filter['search']['string']) < 20) {
+		// If string is less than 20 characters, show full string in title
+		$head_custom['title'] = 'Search Rickies for ‘' . $pick_filter['search']['string'] . '’';
+	} else {
+		// Else, truncate the string at 16 characters
+		$head_custom['title'] = 'Search Rickies for ‘' . substr($pick_filter['search']['string'], 0, 16) . '…’';
+	}
 	$head_custom['description'] =
 		'Search and filter results for ‘' . $pick_filter['search']['string'] . '’ on Rickies.co.';
 } else {

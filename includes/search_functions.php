@@ -108,98 +108,66 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 	<div class="content">';
 
 	// Filter for hosts
-	$output .= '
-	<fieldset class="hosts">
-		<div class="host">
-			<input type="checkbox" name="host[]" value="myke" id="host_myke" class="" ';
-	if (
-		key_exists('host', $user_input['filter_other']) &&
-		strpos($user_input['filter_other']['host'], 'Myke') !== false
-	) {
-		$output .= 'checked';
+	$hosts = ['myke', 'federico', 'stephen'];
+	$output .= '<fieldset class="hosts">';
+	foreach ($hosts as $host) {
+		$output .=
+			'<div class="host"><input type="checkbox" name="host[]" value="' .
+			$host .
+			'" id="host_' .
+			$host .
+			'" class="" ';
+		if (
+			key_exists('host', $user_input['filter_other']) &&
+			strpos($user_input['filter_other']['host'], ucfirst($host)) !== false
+		) {
+			$output .= 'checked';
+		}
+		$output .=
+			'/><label for="host_' .
+			$host .
+			'" title="' .
+			ucfirst($host) .
+			'"><img src="/images/memoji-' .
+			$host .
+			'-default.png"><img src="/images/memoji-' .
+			$host .
+			'-disabled.png"><span>' .
+			ucfirst($host) .
+			'</span></label></div>';
 	}
-	$output .= '/>
-			<label for="host_myke" title="Myke">
-				<img src="/images/memoji-myke-default.png">
-				<img src="/images/memoji-myke-disabled.png">
-				<span>Myke</span>
-			</label>
-		</div>
-
-		<div class="host">
-			<input type="checkbox" name="host[]" value="federico" id="host_federico" class="" ';
-	if (
-		key_exists('host', $user_input['filter_other']) &&
-		strpos($user_input['filter_other']['host'], 'Federico') !== false
-	) {
-		$output .= 'checked';
-	}
-	$output .= '/>
-			<label for="host_federico" title="Federico">
-				<img src="/images/memoji-federico-default.png">
-				<img src="/images/memoji-federico-disabled.png">
-				<span>Federico</span>
-			</label>
-		</div>
-
-		<div class="host">
-			<input type="checkbox" name="host[]" value="stephen" id="host_stephen" class="" ';
-	if (
-		key_exists('host', $user_input['filter_other']) &&
-		strpos($user_input['filter_other']['host'], 'Stephen') !== false
-	) {
-		$output .= 'checked';
-	}
-	$output .= '/>
-			<label for="host_stephen" title="Stephen">
-				<img src="/images/memoji-stephen-default.png">
-				<img src="/images/memoji-stephen-disabled.png">
-				<span>Stephen</span>
-			</label>
-		</div>
-	</fieldset>';
+	$output .= '</fieldset>';
 
 	// Filter for pick types
-	$output .= '
-	<fieldset class="list pick_types">
-		<ul>
-			<li class="filter_option">
-				<input type="checkbox" name="type[]" value="regular" id="type_regular" class="clean" ';
-	if (
-		key_exists('type', $user_input['filter_other']) &&
-		strpos($user_input['filter_other']['type'], 'Regular') !== false
-	) {
-		$output .= 'checked';
+	$types = [
+		'regular' => '🧠',
+		'risky' => '⚠️',
+		'flexy' => '💪',
+	];
+	$output .= '<fieldset class="list pick_types"><ul>';
+	foreach ($types as $type => $emoji) {
+		$output .=
+			'<li class="filter_option"><input type="checkbox" name="type[]" value="' .
+			$type .
+			'" id="type_' .
+			$type .
+			'" class="clean" ';
+		if (
+			key_exists('type', $user_input['filter_other']) &&
+			strpos($user_input['filter_other']['type'], ucfirst($type)) !== false
+		) {
+			$output .= 'checked';
+		}
+		$output .=
+			'/><label for="type_' .
+			$type .
+			'"><span class="emoji">' .
+			$emoji .
+			'</span>' .
+			ucfirst($type) .
+			'<span class="need_space--sm"> picks</span></label></li>';
 	}
-	$output .= '/>
-				<label for="type_regular"><span class="emoji">🧠</span>Regular<span class="need_space--sm"> picks</span></label>
-			</li>
-
-			<li class="filter_option">
-				<input type="checkbox" name="type[]" value="risky" id="type_risky" class="clean" ';
-	if (
-		key_exists('type', $user_input['filter_other']) &&
-		strpos($user_input['filter_other']['type'], 'Risky') !== false
-	) {
-		$output .= 'checked';
-	}
-	$output .= '/>
-				<label for="type_risky"><span class="emoji">⚠️</span>Risky<span class="need_space--sm"> picks</span></label>
-			</li>
-
-			<li class="filter_option">
-				<input type="checkbox" name="type[]" value="flexy" id="type_flexy" class="clean" ';
-	if (
-		key_exists('type', $user_input['filter_other']) &&
-		strpos($user_input['filter_other']['type'], 'Flexy') !== false
-	) {
-		$output .= 'checked';
-	}
-	$output .= '/>
-				<label for="type_flexy"><span class="emoji">💪</span>Flexy<span class="need_space--sm"> picks</span></label>
-			</li>
-		</ul>
-	</fieldset>';
+	$output .= '</ul></fieldset>';
 
 	// Filter for pick states
 	$output .= '
@@ -240,8 +208,6 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 	$output .= '/>
 				<label for="status_unknown"><span class="emoji">🟡</span>Unknown<span class="need_space--sm"> picks</span></label>
 			</li>
-
-
 		</ul>
 	</fieldset>';
 
@@ -273,12 +239,16 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 	// 		</ul>
 	// 	</fieldset>';
 
-	// Filter for interesting stats
+	// Filter for interesting stats and metadata
+	$event_select = [
+		'annual' => '📆 Annual Rickies',
+		'keynote' => '📽 Keynote Rickies',
+		'WWDC' => '💻 WWDC Rickies',
+		'ungraded' => '🟠 Ungraded Rickies',
+	];
 	$output .= '
 	<fieldset class="list pick_metadata">
 		<ul>
-
-
 			<li class="filter_option select">
 				<select class="clean" name="event" onchange=" this.dataset.chosen = this.value; " ';
 	if (key_exists('event', $user_input['filter_other'])) {
@@ -288,107 +258,83 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 	}
 	$output .= '>
 					<option value>🏆 All Rickies</option>
-					<optgroup label="Only show picks from…">
-						<option value="annual" ';
-	if (
-		key_exists('event', $user_input['filter_other']) &&
-		strpos($user_input['filter_other']['event'], 'annual') !== false
-	) {
-		$output .= 'selected';
+					<optgroup label="Only show picks from…">';
+	foreach ($event_select as $value => $label) {
+		$output .= '<option value="' . strtolower($value) . '" ';
+		if (
+			key_exists('event', $user_input['filter_other']) &&
+			strpos($user_input['filter_other']['event'], $value) !== false
+		) {
+			$output .= 'selected';
+		}
+		$output .= '>' . $label . '</option>';
 	}
-	$output .= '>📆 Annual Rickies</option>
-						<option value="keynote" ';
-	if (
-		key_exists('event', $user_input['filter_other']) &&
-		strpos($user_input['filter_other']['event'], 'keynote') !== false
-	) {
-		$output .= 'selected';
-	}
-	$output .= '>📽 Keynote Rickies</option>
-						<option value="wwdc" ';
-	if (
-		key_exists('event', $user_input['filter_other']) &&
-		strpos($user_input['filter_other']['event'], 'WWDC') !== false
-	) {
-		$output .= 'selected';
-	}
-	$output .= '>💻 WWDC Rickies</option>
-						<option value="ungraded" ';
-	if (
-		key_exists('event', $user_input['filter_other']) &&
-		strpos($user_input['filter_other']['event'], 'Ungraded') !== false
-	) {
-		$output .= 'selected';
-	}
-	$output .= '>🟠 Ungraded Rickies</option>
-					</optgroup>
+	$output .= '</optgroup>
 				</select>
 				<div class="select_icon"></div>
-			</li>
+			</li>';
 
-			<li class="filter_option">
-				<input type="checkbox" name="reuse" id="reuse" class="clean" ';
-	if (key_exists('reuse', $user_input['filter_other'])) {
-		$output .= 'checked';
+	$metadata = [
+		'reuse' => [
+			'label' => 'Eligible for reuse',
+			'emoji' => '♻️',
+		],
+		'buzzkill' => [
+			'label' => 'Buzzkill',
+			'emoji' => '🐝',
+		],
+		'eventually' => [
+			'label' => 'Ahead of its time',
+			'emoji' => '🔮',
+		],
+		'adjudicated' => [
+			'label' => 'Adjudicated',
+			'emoji' => '🧑‍⚖️',
+		],
+		'half_points' => [
+			'label' => 'Half correct',
+			'emoji' => '➗',
+		],
+	];
+	foreach ($metadata as $value => $visual) {
+		$output .=
+			'<li class="filter_option">
+				<input type="checkbox" name="' .
+			$value .
+			'" id="' .
+			$value .
+			'" class="clean" ';
+		if (key_exists($value, $user_input['filter_other'])) {
+			$output .= 'checked';
+		}
+		$output .=
+			'/>
+				<label for="' .
+			$value .
+			'"><span class="emoji">' .
+			$visual['emoji'] .
+			'</span>' .
+			$visual['label'] .
+			'</label>
+			</li>';
 	}
-	$output .= '/>
-				<label for="reuse"><span class="emoji">♻️</span>Eligible for reuse</label>
-			</li>
+	$output .= '</ul></fieldset>';
 
-			<li class="filter_option">
-				<input type="checkbox" name="buzzkill" id="buzzkill" class="clean" ';
-	if (key_exists('buzzkill', $user_input['filter_other'])) {
-		$output .= 'checked';
-	}
-	$output .= '/>
-				<label for="buzzkill"><span class="emoji">🐝</span>Buzzkill</label>
-			</li>
-
-			<li class="filter_option">
-				<input type="checkbox" name="eventually" id="eventually" class="clean" ';
-	if (key_exists('eventually', $user_input['filter_other'])) {
-		$output .= 'checked';
-	}
-	$output .= '/>
-				<label for="eventually"><span class="emoji">🔮</span>Ahead of its time</label>
-			</li>
-
-			<li class="filter_option">
-				<input type="checkbox" name="adjudicated" id="adjudicated" class="clean" ';
-	if (key_exists('adjudicated', $user_input['filter_other'])) {
-		$output .= 'checked';
-	}
-	$output .= '/>
-				<label for="adjudicated"><span class="emoji">🧑‍⚖️</span>Adjudicated</label>
-			</li>
-
-			<li class="filter_option">
-				<input type="checkbox" name="half_points" id="half_points" class="clean" ';
-	if (key_exists('half_points', $user_input['filter_other'])) {
-		$output .= 'checked';
-	}
-	$output .= '/>
-				<label for="half_points"><span class="emoji">➗</span>Half correct</label>
-			</li>
-		</ul>
-	</fieldset>';
-
+	// Add category filter, and button section, and closing the .content and <details>
 	$output .=
 		pick_category_filters($categories, $user_input['filter_categories']) .
 		'
-	<div class="button_section">
-		<button id="search_button_plus" class="clean js_link" title="Search and filter" form="pick_filter_form" type="submit">Search picks' .
+		<div class="button_section">
+			<button id="search_button_plus" class="clean js_link" title="Search and filter" form="pick_filter_form" type="submit">Search picks' .
 		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg') .
 		'</button>
-		<button class="clean js_link" id="reset_button" type="button" onclick="reset_filter()" ';
-	// if (empty($filters)) {
-	// 	$output .= 'disabled';
-	// }
-	$output .= '>Reset filters</button>';
-
-	$output .= '</div></div></details>';
-
-	$output .= '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/filter.js') . '</script>';
+			<button class="clean js_link" id="reset_button" type="button" onclick="reset_filter()">Reset filters</button>
+		</div>
+	</div>
+</details>
+<script>' .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/filter.js') .
+		'</script>';
 
 	return $output;
 }

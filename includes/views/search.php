@@ -67,7 +67,8 @@ if (!empty($pick_filter['search'])) {
 		var mark_options = {
 			"separateWordSearch": false,
 			"exclude": [
-				".no_results"
+				".no_results",
+				".tag",
 			]
 		};
 		instance.mark("' .
