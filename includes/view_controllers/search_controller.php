@@ -44,7 +44,7 @@ if (isset($_GET['adjudicated']) && $_GET['adjudicated'] === 'on') {
 }
 
 if (isset($_GET['half_points']) && $_GET['half_points'] === 'on') {
-	$search_filters['half_points'] = 'Factor<1';
+	$search_filters['half_points'] = 'OR(Factor<1, {Half correct})';
 }
 
 if (isset($_GET['event'])) {
