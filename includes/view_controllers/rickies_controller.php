@@ -28,22 +28,22 @@ switch ($url_view) {
 		$back_to_overview = true;
 		break;
 	case 'wwdc':
-		$filter = 'WWDC';
+		$rickies_filter = 'WWDC';
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
 		break;
 	case 'annual':
-		$filter = 'Annual';
+		$rickies_filter = 'Annual';
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
 		break;
 	case 'keynote':
-		$filter = 'Keynote';
+		$rickies_filter = 'Keynote';
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
 		break;
 	case 'ungraded':
-		$filter = 'Ungraded';
+		$rickies_filter = 'Ungraded';
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
 		break;

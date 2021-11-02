@@ -112,14 +112,15 @@ do {
 						'These predictions predate The Rickies and are not officially graded as such';
 				}
 			}
-		} elseif (isset($filter)) {
+		} elseif (isset($rickies_filter)) {
 			// Countable, but no Rickies (0 results), but filter is set
-			if ($filter == 'Ungraded') {
-				$filter_string = 'ungraded';
+			if ($rickies_filter == 'Ungraded') {
+				$rickies_title_string = 'ungraded';
 			} else {
-				$filter_string = $filter;
+				$rickies_title_string = $rickies_filter;
 			}
-			$filter_error = 'No ' . $filter_string . ' Rickies were found. <a href="/#list">Show all Rickies</a>.';
+			$rickies_filter_empty =
+				'No ' . $rickies_title_string . ' Rickies were found. <a href="/#list">Show all Rickies</a>.';
 		} else {
 			// Countable, but no Rickies (0 results) and no filter
 			// Continue with 404 error

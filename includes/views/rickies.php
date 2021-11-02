@@ -25,29 +25,29 @@
 <section><?= $introduction ?></section>
 
 <section id="list">
-	<h2 class="list_title <?php if (isset($filter)) {
+	<h2 class="list_title <?php if (isset($rickies_filter)) {
  	echo 'active';
  } ?>">
 		<select class="clean" id="filter_menu">
-			<option <?php if (!isset($filter)) {
+			<option <?php if (!isset($rickies_filter)) {
    	echo 'selected';
-   } ?> value="/">All Rickies</option>
+   } ?> value="/#list">All Rickies</option>
 			<optgroup label="Filter the Rickies">
-				<option <?php if (isset($filter) && $filter == 'Annual') {
+				<option <?php if (isset($rickies_filter) && $rickies_filter == 'Annual') {
     	echo 'selected';
     } ?> value="/annual#list">Annual Rickies</option>
-				<option <?php if (isset($filter) && $filter == 'Keynote') {
+				<option <?php if (isset($rickies_filter) && $rickies_filter == 'Keynote') {
     	echo 'selected';
     } ?> value="/keynote#list">Keynote Rickies</option>
-				<option <?php if (isset($filter) && $filter == 'WWDC') {
+				<option <?php if (isset($rickies_filter) && $rickies_filter == 'WWDC') {
     	echo 'selected';
     } ?> value="/wwdc#list">WWDC Rickies</option>
-				<option <?php if (isset($filter) && $filter == 'Ungraded') {
+				<option <?php if (isset($rickies_filter) && $rickies_filter == 'Ungraded') {
     	echo 'selected';
     } ?> value="/ungraded#list">Ungraded Rickies</option>
 			</optgroup>
 		</select>
-<?php if (!isset($filter)) {
+<?php if (!isset($rickies_filter)) {
 	echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter.svg');
 } else {
 	echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter-active.svg');
@@ -65,13 +65,13 @@
 			window.open( this.options[ this.selectedIndex ].value, '_self');
 		 };
 	</script>
-<?php if (!isset($filter_error)) {
+<?php if (!isset($rickies_filter_empty)) {
 	echo '<ul class="list_item_group">';
 	foreach ($rickies_events__array as $event) {
 		echo list_item($event);
 	}
 	echo '</ul>';
 } else {
-	echo '<p>' . $filter_error . '</p>';
+	echo '<p>' . $rickies_filter_empty . '</p>';
 } ?>
 </section>

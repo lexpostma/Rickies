@@ -22,12 +22,14 @@ function domain_url()
 }
 
 // https://example.com/something
-function current_url($filter = false)
+// Custom is 'false' by default -> so it returns the actual full URL
+// If 'true' -> return bare URL
+function current_url($custom = false)
 {
-	if ($filter) {
-		return domain_url() . '/';
-	} else {
+	if (!$custom) {
 		return domain_url() . $_SERVER['REQUEST_URI'];
+	} else {
+		return domain_url() . '/';
 	}
 }
 

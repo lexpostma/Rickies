@@ -28,17 +28,17 @@ $head_custom = [
 	'theme-color-dark' => '#333f48',
 ];
 
-if (isset($filter)) {
-	if ($filter == 'Annual') {
+if (isset($rickies_filter)) {
+	if ($rickies_filter == 'Annual') {
 		$head_custom['title'] = 'Annual Rickies';
 		$rickies_events__params['filterByFormula'] = "AND( Published = TRUE(), {Rickies type} = 'annual' )";
-	} elseif ($filter == 'Keynote') {
+	} elseif ($rickies_filter == 'Keynote') {
 		$head_custom['title'] = 'Keynote Rickies';
 		$rickies_events__params['filterByFormula'] = "AND( Published = TRUE(), {Rickies type} = 'keynote' )";
-	} elseif ($filter == 'WWDC') {
+	} elseif ($rickies_filter == 'WWDC') {
 		$head_custom['title'] = 'WWDC Rickies';
 		$rickies_events__params['filterByFormula'] = "AND( Published = TRUE(), {Event type} = 'WWDC' )";
-	} elseif ($filter == 'Ungraded') {
+	} elseif ($rickies_filter == 'Ungraded') {
 		$head_custom['title'] = 'Ungraded Rickies';
 		$rickies_events__params['filterByFormula'] =
 			"AND( Published = TRUE(), OR(Status = 'Ungraded', Status = 'Live'))";

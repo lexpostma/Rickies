@@ -196,5 +196,5 @@ if ($url_view == 'archive') {
 	$head_custom['description'] = 'Search and filter results on Rickies.co.';
 }
 
-$head_custom['canonical'] = domain_url() . '/archive';
+$head_custom['canonical'] = current_url(true) . 'archive';
 $head_custom['keywords'] = ['archive', 'history', 'search', 'filters'];
