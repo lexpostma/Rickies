@@ -1037,8 +1037,8 @@ li.list_item a[href^="https://github.com"] .secondary_string:before {
 }
 @media (prefers-color-scheme: dark) {
   .tag {
-    --first-color: 0.6;
-    --next-color: 0.3;
+    --first-color: 0.8;
+    --next-color: 0.4;
   }
 }
 .tag.cat_hw {
