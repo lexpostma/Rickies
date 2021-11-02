@@ -5,7 +5,11 @@
 $categories__params = [
 	'fields' => ['Name', 'Name (web)', 'Group L1', 'Group L1 emoji', 'Group L2', 'Group L2 (web)'],
 	'filterByFormula' => 'AND( {Picks} )',
-	'sort' => [['field' => 'Group L1', 'direction' => 'asc'], ['field' => 'Order', 'direction' => 'asc']],
+	'sort' => [
+		['field' => 'Group L1', 'direction' => 'asc'],
+		['field' => 'Order', 'direction' => 'asc'],
+		['field' => 'Pick count', 'direction' => 'desc'],
+	],
 ];
 
 $categories__array = [];
