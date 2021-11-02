@@ -19,12 +19,18 @@ do {
 		$group = check_key('Group L1', $fields);
 
 		if (check_key('Group L2', $fields)) {
-			$categories__array[$group]['categories'][check_key('Group L2', $fields)] = check_key(
+			$categories__array[$group]['categories'][check_key('Group L2', $fields)]['value'] = check_key(
 				'Group L2 (web)',
 				$fields
 			);
+			$categories__array[$group]['categories'][check_key('Group L2', $fields)]['categories'][
+				check_key('Name', $fields)
+			]['value'] = check_key('Name (web)', $fields);
 		} else {
-			$categories__array[$group]['categories'][check_key('Name', $fields)] = check_key('Name (web)', $fields);
+			$categories__array[$group]['categories'][check_key('Name', $fields)]['value'] = check_key(
+				'Name (web)',
+				$fields
+			);
 		}
 
 		// $categories__array[$group] = [

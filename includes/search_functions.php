@@ -331,51 +331,91 @@ function category_filters($categories, $selected = false)
 {
 	$output = '<fieldset class="categories">';
 
-	foreach ($categories as $group => $group_content) {
+	foreach ($categories as $groupL1 => $groupL1_data) {
 		$output .=
 			'
 	<fieldset class="list">
 		<ul>
 			<li class="filter_option">
-				<input type="checkbox" class="clean category" id="cat_group-' .
-			$group_content['value'] .
+				<input type="checkbox" name="category[]" class="clean category" id="cat_group-' .
+			$groupL1_data['value'] .
+			'"" value="' .
+			$groupL1_data['value'] .
 			'" ';
-		if ($selected && in_array($group_content['value'], $selected)) {
+		if ($selected && in_array($groupL1_data['value'], $selected)) {
 			$output .= ' checked ';
 		}
 		$output .=
 			'/>
 				<label for="cat_group-' .
-			$group_content['value'] .
+			$groupL1_data['value'] .
 			'"><span class="emoji">' .
-			$group_content['emoji'] .
+			$groupL1_data['emoji'] .
 			'</span>' .
-			$group .
+			$groupL1 .
 			'</label>
 
 				<ul>';
 
-		foreach ($group_content['categories'] as $category => $value) {
+		foreach ($groupL1_data['categories'] as $groupL2 => $groupL2_data) {
 			$output .=
 				'
 					<li class="filter_option">
 						<input type="checkbox" name="category[]" class="clean category" id="cat-' .
-				$value .
+				$groupL2_data['value'] .
 				'"" value="' .
-				$value .
+				$groupL2_data['value'] .
 				'" ';
-			if ($selected && in_array($value, $selected)) {
+			if ($selected && in_array($groupL2_data['value'], $selected)) {
 				$output .= ' checked ';
 			}
 			$output .=
 				'/>
 						<label for="cat-' .
-				$value .
+				$groupL2_data['value'] .
 				'">' .
-				$category .
-				'</label>
+				$groupL2 .
+				'</label>';
 
-					</li>';
+			// IF:
+			// A category is selected,
+			// AND this category has another level of categories that it could be in,
+			// BUT the group itself is not selected
+			// -> Start collecting the possible checkboxes
+			if ($selected && key_exists('categories', $groupL2_data) && !in_array($groupL2_data['value'], $selected)) {
+				$groupL3_group_selected = false;
+
+				$groupL3_boxes = '<ul>';
+				foreach ($groupL2_data['categories'] as $groupL3 => $groupL3_data) {
+					$groupL3_boxes .=
+						'
+							<li class="filter_option">
+								<input type="checkbox" name="category[]" class="clean category" id="cat_sub-' .
+						$groupL3_data['value'] .
+						'"" value="' .
+						$groupL3_data['value'] .
+						'" ';
+					if (in_array($groupL3_data['value'], $selected)) {
+						$groupL3_boxes .= ' checked ';
+						$groupL3_group_selected = true;
+					}
+					$groupL3_boxes .=
+						'/>
+								<label for="cat_sub-' .
+						$groupL3_data['value'] .
+						'">' .
+						$groupL3 .
+						'</label>
+							</li>';
+				}
+				$groupL3_boxes .= '</ul>';
+
+				// If something in the group is selected, add the checkbox list to the output to be displayed
+				if ($groupL3_group_selected) {
+					$output .= $groupL3_boxes;
+				}
+			}
+			$output .= '</li>';
 		}
 
 		$output .= '
