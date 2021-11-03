@@ -33,7 +33,7 @@ function pick_filter_element($user_input = false, $displayed_as_modal = false, $
 		$output .= '<div id="fixed_search" class="">';
 	}
 
-	$output .= '<form method="get" action="/" class="filters" id="pick_filter_form">';
+	$output .= '<form method="get" action="/#results" class="filters" id="pick_filter_form">';
 
 	if ($displayed_as_modal) {
 		$output .= search_field($user_input['search']['string']);
