@@ -331,10 +331,7 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 			<button class="clean js_link" id="reset_button" type="button" onclick="reset_filter()">Reset filters</button>
 		</div>
 	</div>
-</details>
-<script>' .
-		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/filter.js') .
-		'</script>';
+</details>';
 
 	return $output;
 }

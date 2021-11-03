@@ -1,4 +1,4 @@
-const button = document.getElementById('reset_button');
+const reset_button = document.getElementById('reset_button');
 const selectTags = document.getElementsByTagName('select');
 const inputTags = document.getElementsByTagName('input');
 
@@ -12,11 +12,11 @@ function reset_filter() {
 		selectTags[i].setAttribute('data-chosen', '');
 	}
 
-	button.disabled = true;
+	reset_button.disabled = true;
 }
 
 document.addEventListener('input', (evt) => {
-	button.disabled = false;
+	reset_button.disabled = false;
 });
 
 const search_field_combo = document.getElementById('search_field_combo');

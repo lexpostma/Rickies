@@ -59,6 +59,7 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 ]) ?></div>
 <?php
 echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';
+echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/filter.js') . '</script>';
 if (!empty($pick_filter['search'])) {
 	echo '<script src="/scripts/mark.min.js"></script>';
 	echo '<script>
