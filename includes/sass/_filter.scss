@@ -1,7 +1,7 @@
 @use "variables" as var;
 
 :root {
-	--label-padding: 4px;
+	--label-padding: 0.3em;
 	@media (hover: hover) {
 		--label-padding: 0px;
 	}

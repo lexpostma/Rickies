@@ -1619,7 +1619,7 @@ mark {
 }
 
 :root {
-  --label-padding: 4px;
+  --label-padding: 0.3em;
 }
 @media (hover: hover) {
   :root {
