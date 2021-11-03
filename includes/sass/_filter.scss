@@ -341,3 +341,8 @@
 		transform: scale(1.05);
 	}
 }
+
+#results {
+	margin-top: calc(-1 * env(safe-area-inset-top));
+	padding-top: calc(env(safe-area-inset-top));
+}
