@@ -47,6 +47,18 @@ switch ($url_view) {
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
 		break;
+	case 'latest':
+		$auto_select_rickies = 'latest';
+		include '../includes/view_controllers/rickies_list_controller.php';
+		break;
+	case 'latest-keynote':
+		$auto_select_rickies = 'keynote';
+		include '../includes/view_controllers/rickies_list_controller.php';
+		break;
+	case 'latest-annual':
+		$auto_select_rickies = 'annual';
+		include '../includes/view_controllers/rickies_list_controller.php';
+		break;
 	default:
 		// If non of the above, it's probably a Rickies event
 		include '../includes/view_controllers/rickies_detail_controller.php';

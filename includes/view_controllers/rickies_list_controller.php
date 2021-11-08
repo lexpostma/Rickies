@@ -46,6 +46,18 @@ if (isset($rickies_filter)) {
 	$head_custom['canonical'] = current_url(true);
 }
 
+if (isset($auto_select_rickies)) {
+	if ($auto_select_rickies == 'latest') {
+		$rickies_events__params['maxRecords'] = 1;
+	} elseif ($auto_select_rickies == 'keynote') {
+		$rickies_events__params['filterByFormula'] = "AND( Published = TRUE(), {Rickies type} = 'keynote' )";
+		$rickies_events__params['maxRecords'] = 1;
+	} elseif ($auto_select_rickies == 'annual') {
+		$rickies_events__params['filterByFormula'] = "AND( Published = TRUE(), {Rickies type} = 'annual' )";
+		$rickies_events__params['maxRecords'] = 1;
+	}
+}
+
 $all_event_details = false;
 
 $hero_tag = '<p>Predictions with risk, flexing, and passion. <br />On Connected at Relay FM.</p>';
@@ -61,3 +73,9 @@ $introduction =
 	'>Relay FM</a>. Every year and every Apple event, Myke Hurley, Stephen Hackett, and Federico Viticci try to predict what Apple will announce next. Over the course of the show, the hosts have relied on <a href="/billof">The Bill of Rickies</a> to keep the record straight. Some predictions are risky, some are just to flex, most are formed with passion.</p>';
 
 include '../includes/data_controllers/event_data_controller.php';
+
+if (isset($auto_select_rickies)) {
+	// echo $rickies_events__array[array_key_first($rickies_events__array)]['url'];
+	header('Location: ' . domain_url() . $rickies_events__array[array_key_first($rickies_events__array)]['url']);
+	die();
+}
