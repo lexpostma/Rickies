@@ -2,14 +2,19 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
--   Added new stats for coin flips, ahead of its time, adjudication, and buzzkillers
+-   Add new stats for coin flips, ahead of its time, adjudication, and buzzkillers
+-   Add links in footer to:
+    -   Filter Rickies (was already possible with filter button in list)
+    -   Go to [latest Rickies](https://rickies.co/latest), [latest Keynote Rickies](https://rickies.co/latest-keynote) or [latest Annual Rickies](https://rickies.co/latest-annual)
+    -   Go to some highlighted filters
+    -   [About Rickies.co](https://rickies.co/about) is moved to footer too
 
 ### 14 October 2021
 
--   Replaced the back button with a navigation bar in a few places, for easier navigation
+-   Replace the back button with a navigation bar in a few places, for easier navigation
 -   Add an animation to the Bill of Rickies slider to hint that you can slide it to view the full history of the rules
--   Also updated the slider globe to look better in light and dark mode, and be more like current artwork
--   Tweaked some styling for search
+-   Update the slider globe to look better in light and dark mode, and be more like current artwork
+-   Tweak some styling for search
 
 ## 13 October 2021 v1.5
 
