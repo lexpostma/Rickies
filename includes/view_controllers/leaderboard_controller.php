@@ -315,7 +315,7 @@ foreach ($hosts_data__array as $host) {
 			'color' => $host['personal']['color'],
 		],
 	];
-	if (strpos($set['title'], 'Mega Chairman') !== false) {
+	if (strpos($set['title'], 'Mega Chairman') !== false || strpos($set['title'], 'Consolidated Champion') !== false) {
 		$set['winner'] = 2;
 	} elseif (strpos($set['title'], 'chairman') !== false) {
 		$set['winner'] = true;
