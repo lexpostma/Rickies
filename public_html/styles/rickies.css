@@ -1708,7 +1708,12 @@ mark {
   padding: var(--space-between-sm);
   padding: calc(var(--space-between-sm) - var(--label-padding)) var(--space-between-sm);
   background: rgba(13, 135, 202, 0.05);
-  border-radius: 4px;
+  border-radius: 12px;
+}
+@media screen and (min-width: 768px) {
+  #pick_filter_sheet > .content > fieldset {
+    border-radius: 4px;
+  }
 }
 @media (prefers-color-scheme: dark) {
   #pick_filter_sheet > .content > fieldset {
@@ -1915,9 +1920,14 @@ mark {
   box-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
   background: white;
   padding-left: 16px;
-  border-radius: 26px;
+  border-radius: 12px;
   font-weight: 500;
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+}
+@media screen and (min-width: 768px) {
+  #search_button_plus {
+    border-radius: 26px;
+  }
 }
 #search_button_plus svg {
   transform: scale(0.8);

@@ -132,7 +132,10 @@
 		padding: var(--space-between-sm);
 		padding: calc(var(--space-between-sm) - var(--label-padding)) var(--space-between-sm);
 		background: rgba(13, 135, 202, 0.05);
-		border-radius: 4px;
+		border-radius: 12px;
+		@media screen and (min-width: var.$break-md) {
+			border-radius: 4px;
+		}
 
 		@media (prefers-color-scheme: dark) {
 			background: rgba(13, 135, 202, 0.15);
@@ -322,7 +325,11 @@
 	box-shadow: var.$header-shadow;
 	background: white;
 	padding-left: 16px;
-	border-radius: 26px;
+	border-radius: 12px;
+	@media screen and (min-width: var.$break-md) {
+		border-radius: 26px;
+	}
+
 	font-weight: 500;
 	transition: var.$pop-transition;
 	svg {
