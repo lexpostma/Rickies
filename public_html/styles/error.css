@@ -223,27 +223,6 @@ button.top_button:active {
   white-space: nowrap;
 }
 
-.footer_space {
-  margin-top: calc(var(--space-between-lg) * 2);
-}
-
-footer {
-  margin-top: auto;
-  padding: var(--space-side-padding);
-  padding-bottom: max(var(--space-side-padding), env(safe-area-inset-bottom));
-  color: white;
-  text-align: center;
-  background: var(--relay-blue);
-  font-size: 0.875rem;
-  position: relative;
-}
-
-p#refresh_page,
-p#promote_webapp {
-  display: none;
-  margin-bottom: var(--space-between-md);
-}
-
 .img_emoji {
   height: 1em;
   width: auto;
@@ -1041,6 +1020,54 @@ mark {
   padding: 0 1px;
   margin: 0 -1px;
   border-radius: 2px;
+}
+
+.footer_space {
+  margin-top: calc(var(--space-between-lg) * 2);
+}
+
+footer {
+  padding: var(--space-side-padding);
+  color: white;
+  text-align: center;
+  font-size: 0.875rem;
+}
+footer:first-of-type {
+  margin-top: auto;
+}
+footer p {
+  max-width: 650px;
+  margin: auto;
+}
+footer#footer {
+  padding-bottom: max(var(--space-side-padding), env(safe-area-inset-bottom));
+  background: var(--relay-blue);
+  position: relative;
+}
+footer#footer p#refresh_page,
+footer#footer p#promote_webapp {
+  margin-bottom: var(--space-between-md);
+}
+footer#footer_links {
+  background: rgba(var(--relay-blue-rgb), 0.8);
+}
+footer#footer_links div {
+  margin: auto;
+  max-width: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+footer#footer_links p {
+  margin: 0 auto;
+}
+footer#footer_links a {
+  white-space: nowrap;
+}
+
+p#refresh_page,
+p#promote_webapp {
+  display: none;
 }
 
 html {

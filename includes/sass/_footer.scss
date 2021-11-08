@@ -1,0 +1,48 @@
+@use "variables" as var;
+
+.footer_space {
+	margin-top: calc(var(--space-between-lg) * 2);
+}
+footer {
+	padding: var(--space-side-padding);
+	color: white;
+	text-align: center;
+	font-size: 0.875rem;
+	&:first-of-type {
+		margin-top: auto;
+	}
+	p {
+		max-width: var.$readability-width;
+		margin: auto;
+	}
+	&#footer {
+		padding-bottom: max(var(--space-side-padding), #{var.$iX-bottom});
+		background: var(--relay-blue);
+		position: relative;
+
+		p#refresh_page,
+		p#promote_webapp {
+			margin-bottom: var(--space-between-md);
+		}
+	}
+	&#footer_links {
+		background: rgba(var(--relay-blue-rgb), 0.8);
+		div {
+			margin: auto;
+			max-width: var.$readability-width;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+		}
+		p {
+			margin: 0 auto;
+		}
+		a {
+			white-space: nowrap;
+		}
+	}
+}
+p#refresh_page,
+p#promote_webapp {
+	display: none;
+}

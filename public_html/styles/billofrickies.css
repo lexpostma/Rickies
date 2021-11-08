@@ -223,27 +223,6 @@ button.top_button:active {
   white-space: nowrap;
 }
 
-.footer_space {
-  margin-top: calc(var(--space-between-lg) * 2);
-}
-
-footer {
-  margin-top: auto;
-  padding: var(--space-side-padding);
-  padding-bottom: max(var(--space-side-padding), env(safe-area-inset-bottom));
-  color: white;
-  text-align: center;
-  background: var(--relay-blue);
-  font-size: 0.875rem;
-  position: relative;
-}
-
-p#refresh_page,
-p#promote_webapp {
-  display: none;
-  margin-bottom: var(--space-between-md);
-}
-
 .img_emoji {
   height: 1em;
   width: auto;
