@@ -65,6 +65,13 @@ if ($environment !== 'production') {
 </noscript>
 
 <!-- Goat Counter -->
+<?php if ($url_view == 'search') { ?>
+<script>
+	window.goatcounter = {
+		path: location.pathname + location.search || '/',
+	}
+</script>
+<?php } ?>
 <script data-goatcounter="<?= $head['site_goatcounter'] ?>/count" async src="//gc.zgo.at/count.js"></script>
 
 <?php
