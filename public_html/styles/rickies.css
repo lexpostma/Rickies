@@ -1975,8 +1975,7 @@ mark {
   filter: grayscale(100%);
 }
 .avatar_leaderboard .with_chart .chart-container.no_results {
-  border: 1px solid rgba(var(--relay-blue-rgb), 0.2);
-  background: rgba(var(--relay-blue-rgb), 0.1);
+  border: 8px solid rgba(var(--relay-blue-rgb), 0.05);
   border-radius: 50%;
 }
 
