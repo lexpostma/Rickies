@@ -67,14 +67,14 @@ if ($environment !== 'production') {
 <!-- Goat Counter -->
 <script data-goatcounter="<?= $head['site_goatcounter'] ?>/count" async src="//gc.zgo.at/count.js"></script>
 
+<!-- JavaScript Cookie -->
+<script src="/scripts/js.cookie.js"></script>
+
 <?php
 if ($focus_site == 'rickies') { ?>
 
 <!-- Canvas Confetti -->
 <script src="/scripts/confetti.browser.min.js"></script>
-
-<!-- JavaScript Cookie -->
-<script src="/scripts/js.cookie.js"></script>
 
 <?php }
 if ($url_view == 'leaderboard') { ?>
