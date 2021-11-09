@@ -42,7 +42,7 @@ function score_chart_item($chart_array, $host)
 }
 
 // Define score chart script
-function score_chart_script($chart_array, $host)
+function score_chart_script($chart_array, $host, $cutout = '66.7%')
 {
 	$chart_script = '';
 	foreach ($chart_array as $pick_type => $chart) {
@@ -104,7 +104,9 @@ var $chart_var = new Chart($chart_el, {
 		}]
 	},
 	options: {
-		cutout: '66.7%',
+		cutout: '" .
+				$cutout .
+				"',
 		plugins: {
 			tooltip: {
 				displayColors: false
