@@ -7,6 +7,10 @@ $picks_data__empty = $picks_data__array = [
 	'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
 ];
 
+$picks_type_count = [
+	'Rickies' => 0,
+	'Flexies' => 0,
+];
 $picks_chart__array = [
 	'Myke' => [
 		'Correct' => 0,
@@ -77,6 +81,8 @@ do {
 			$picks_chart__array[$picks_data__array_temp['host']]['Wrong']++;
 		}
 
+		$picks_type_count[$picks_data__array_temp['type_group']]++;
+
 		if (check_key('Category', $fields)) {
 			$cat_strings = explode(';', check_key('Categories flat', $fields));
 			$cat_keys = explode(';', check_key('Categories flat (web)', $fields));
@@ -131,5 +137,24 @@ foreach ($picks_data__array as $type => $host_picks) {
 foreach ($picks_chart__array as $host => $chart_data) {
 	$picks_chart__array[$host]['Total'] = array_sum($chart_data);
 }
+
+// Format the total picks per type
+if ($picks_type_count['Rickies'] === 0) {
+	unset($picks_type_count['Rickies']);
+} elseif ($picks_type_count['Rickies'] === 1) {
+	$picks_type_count['Rickies'] = '1 Ricky';
+} else {
+	$picks_type_count['Rickies'] = $picks_type_count['Rickies'] . ' Rickies';
+}
+
+if ($picks_type_count['Flexies'] === 0) {
+	unset($picks_type_count['Flexies']);
+} elseif ($picks_type_count['Flexies'] === 1) {
+	$picks_type_count['Flexies'] = '1 Flexy';
+} else {
+	$picks_type_count['Flexies'] = $picks_type_count['Flexies'] . ' Flexies';
+}
+
 // echo '<pre>', var_dump($picks_data__array), '</pre>';
 // echo '<pre>', var_dump($picks_chart__array), '</pre>';
+// echo '<pre>', var_dump($picks_type_count), '</pre>';

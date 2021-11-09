@@ -60,7 +60,7 @@ if (array_key_exists('Rickies', $picks_data__array)) { ?>
 				title="Rickies"
 				data-goatcounter-click="Show Rickies"
 				data-goatcounter-referrer="<?= current_url() ?>"
-				onclick="navigate_section('rickies');">Rickies</a>
+				onclick="navigate_section('rickies');"><?= $picks_type_count['Rickies'] ?></a>
 <?php }
 if (array_key_exists('Flexies', $picks_data__array)) { ?>
 			<a class="menu_item js_link"
@@ -68,7 +68,7 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 				title="Flexies"
 				data-goatcounter-click="Show Flexies"
 				data-goatcounter-referrer="<?= current_url() ?>"
-				onclick="navigate_section('flexies');">Flexies</a>
+				onclick="navigate_section('flexies');"><?= $picks_type_count['Flexies'] ?></a>
 <?php }
 ?>
 			<a class="menu_item js_link"
