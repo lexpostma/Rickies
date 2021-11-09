@@ -87,7 +87,7 @@ echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/naviga
 if (!empty($pick_filter['search'])) {
 	echo '<script src="/scripts/mark.min.js"></script>';
 	echo '<script>
-		var context = document.getElementById("results"); // requires an element with class "results" to exist
+		var context = document.getElementById("picks"); // requires an element with class "results" to exist
 		var instance = new Mark(context);
 		var mark_options = {
 			"separateWordSearch": false,
