@@ -1,5 +1,5 @@
 <div class="footer_space"></div>
-<footer id="footer_links">
+<!-- <footer id="footer_links">
 	<div >
 		<p>
 			<a href="/about">About Rickies.co</a><br/><br/>
@@ -14,8 +14,13 @@
 			<a href="/wwdc">WWDC Rickies</a><br/>
 			<a href="/ungraded">Ungraded Rickies</a>
 		</p>
+		<p>
+			<b>Filter picks</b><br/>
+			<a href="/?search=&eventually=on#results">Ahead of its time</a><br/>
+			<a href="/?search=&reuse=on#results">Eligible for reuse</a><br/>
+		</p>
 	</div>
-</footer>
+</footer> -->
 <footer id="footer">
 	<p id="promote_webapp">This website is designed as a web app.<br />Add it to your home screen for the best experience.</p>
 	<p id="refresh_page"><button title="Refresh page" class="clean js_link" type="button" data-goatcounter-click="Refresh page" data-goatcounter-referrer="<?= current_url() ?>" onclick="refresh_inprogress(this), location.reload()">Refresh this page</button></p>
