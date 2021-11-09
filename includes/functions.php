@@ -74,6 +74,11 @@ function navigation_bar($active = false)
 		$output .= 'class="active" ';
 	}
 	$output .= 'href="/archive">Archive</a>
+		<a ';
+	if ($active == 'about') {
+		$output .= 'class="active" ';
+	}
+	$output .= 'href="/about">About</a>
 	</div>
 </nav>
 
