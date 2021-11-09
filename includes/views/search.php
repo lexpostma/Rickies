@@ -42,6 +42,34 @@ if (empty($picks_data__array)) {
 				echo $chart['Total'] . ' picks';
 		}
 		echo '</span>';
+		if ($chart['Total'] !== 0) {
+			$sub_title_string = '<span class="title">';
+
+			if ($chart['Correct'] !== 0 && $chart['Correct'] == $chart['Total']) {
+				$sub_title_string .= 'All&nbsp;correct';
+			} elseif ($chart['Correct'] !== 0) {
+				$sub_title_string .= $chart['Correct'] . '&nbsp;correct';
+			}
+
+			if ($chart['Correct'] !== 0 && $chart['Wrong'] + $chart['Eventually'] !== 0) {
+				$sub_title_string .= ' • ';
+			}
+
+			if ($chart['Wrong'] !== 0 && $chart['Wrong'] == $chart['Total']) {
+				$sub_title_string .= 'All&nbsp;wrong';
+			} elseif ($chart['Wrong'] + $chart['Eventually'] !== 0) {
+				$sub_title_string .= $chart['Wrong'] + $chart['Eventually'] . '&nbsp;wrong';
+			}
+
+			if ($chart['Eventually'] !== 0 && $chart['Eventually'] == $chart['Eventually'] + $chart['Wrong']) {
+				$sub_title_string .= ', all&nbsp;of which were ahead&nbsp;of its&nbsp;time';
+			} elseif ($chart['Eventually'] !== 0) {
+				$sub_title_string .= ', ' . $chart['Eventually'] . '&nbsp;of which were ahead&nbsp;of its&nbsp;time';
+			}
+			$sub_title_string .= '</span>';
+			echo $sub_title_string;
+			unset($sub_title_string);
+		}
 		echo '</div>';
 	}
 	echo '</div>';
