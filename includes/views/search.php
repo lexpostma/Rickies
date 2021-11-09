@@ -10,14 +10,40 @@
 echo no_script_banner();
 if (empty($picks_data__array)) {
 	if (!empty($pick_filter['search'])) {
-		echo '<section class="results"><p>No predictions match ‘<mark>' .
+		echo '<section id="results"><p>No predictions match ‘<mark>' .
 			$pick_filter['search']['string'] .
 			'</mark>’.</p></section>';
 	} else {
-		echo '<section class="results"><p>No predictions match these filters.</p></section>';
+		echo '<section id="results"><p>No predictions match these filters.</p></section>';
 	}
 } else {
-	 ?>
+
+	echo '<div id="results" class="avatar_leaderboard">';
+	foreach ($picks_chart__array as $host => $chart) {
+		echo '<div class="host with_chart">';
+		if (array_sum($chart) === 0) {
+			echo '<img src="/images/memoji-' . $host . '-disabled.png" class="no_results" />';
+			echo '<div class="avatar chart-container no_results">';
+		} else {
+			echo '<img src="/images/memoji-' . $host . '-default.png" />';
+			echo '<div class="avatar chart-container">';
+		}
+
+		echo '<canvas id="' . define_score_chart_id('search', $host) . '"></canvas></div>';
+		echo '<span class="name">' . $host . '</span><span class="string">';
+		if (array_sum($chart) === 0) {
+			echo 'No picks';
+		} elseif (array_sum($chart) === 1) {
+			echo '1 pick';
+		} else {
+			echo array_sum($chart) . ' picks';
+		}
+		echo '</span>';
+		echo '</div>';
+	}
+	echo '</div>';
+	echo '<script>' . score_chart_script($picks_chart__array, 'search', '78%') . '</script>';
+	?>
 
 <nav class="nav_container">
 	<div id="statusbar"></div>
@@ -51,10 +77,10 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 		</div>
 	</div>
 </nav>
-<div id="results"><?= pick_item_bundle($picks_data__array, false, ['search', 'categories', 'buzzkill', 'age']) ?></div>
+<div id="picks"><?= pick_item_bundle($picks_data__array, false, ['search', 'categories', 'buzzkill', 'age']) ?></div>
 <?php
 echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';
-echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/filter.js') . '</script>';
+
 if (!empty($pick_filter['search'])) {
 	echo '<script src="/scripts/mark.min.js"></script>';
 	echo '<script>
@@ -74,4 +100,6 @@ if (!empty($pick_filter['search'])) {
 }
 
 }
+
+echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/filter.js') . '</script>';
 

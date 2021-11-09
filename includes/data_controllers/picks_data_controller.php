@@ -6,6 +6,28 @@ $picks_data__empty = $picks_data__array = [
 	'Rickies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
 	'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
 ];
+
+$picks_chart__array = [
+	'Myke' => [
+		'Correct' => 0,
+		'Wrong' => 0,
+		'Eventually' => 0,
+		'Unknown' => 0,
+	],
+	'Federico' => [
+		'Correct' => 0,
+		'Wrong' => 0,
+		'Eventually' => 0,
+		'Unknown' => 0,
+	],
+	'Stephen' => [
+		'Correct' => 0,
+		'Wrong' => 0,
+		'Eventually' => 0,
+		'Unknown' => 0,
+	],
+];
+
 $picks_data__request = $airtable->getContent('Picks', $picks_data__params);
 do {
 	$picks_data__response = $picks_data__request->getResponse();
@@ -32,6 +54,25 @@ do {
 			'age' => check_key('Age string', $fields),
 			'buzzkill' => check_key('Buzzkill string', $fields),
 		];
+
+		if (!$picks_data__array_temp['status']) {
+			$picks_chart__array[$picks_data__array_temp['host']]['Unknown']++;
+		} elseif ($picks_data__array_temp['status_later']) {
+			$picks_chart__array[$picks_data__array_temp['host']]['Eventually']++;
+		} elseif ($picks_data__array_temp['status'] == 'Correct') {
+			if ($picks_data__array_temp['factor'] == 1) {
+				$picks_chart__array[$picks_data__array_temp['host']]['Correct']++;
+			} else {
+				$picks_chart__array[$picks_data__array_temp['host']]['Correct'] =
+					$picks_chart__array[$picks_data__array_temp['host']]['Correct'] + $picks_data__array_temp['factor'];
+				$picks_chart__array[$picks_data__array_temp['host']]['Wrong'] =
+					$picks_chart__array[$picks_data__array_temp['host']]['Wrong'] +
+					1 -
+					$picks_data__array_temp['factor'];
+			}
+		} else {
+			$picks_chart__array[$picks_data__array_temp['host']]['Wrong']++;
+		}
 
 		if (check_key('Category', $fields)) {
 			$cat_strings = explode(';', check_key('Categories flat', $fields));
@@ -84,3 +125,4 @@ foreach ($picks_data__array as $type => $host_picks) {
 }
 
 // echo '<pre>', var_dump($picks_data__array), '</pre>';
+// echo '<pre>', var_dump($picks_chart__array), '</pre>';

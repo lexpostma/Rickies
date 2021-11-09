@@ -349,7 +349,36 @@
 	}
 }
 
-#results {
+#picks {
 	margin-top: calc(-1 * env(safe-area-inset-top));
 	padding-top: calc(env(safe-area-inset-top));
+}
+
+#results {
+	margin-top: 0;
+	padding-top: var(--space-between-lg);
+	text-align: center;
+}
+.avatar_leaderboard {
+	.chart-container {
+		height: calc(var(--graphic-size) * 1.5);
+		width: calc(var(--graphic-size) * 1.5);
+	}
+	.with_chart {
+		position: relative;
+		img {
+			width: calc(var(--graphic-size) * 1.2);
+			position: absolute;
+			top: calc(var(--graphic-size) / 3.75);
+
+			&.no_results {
+				opacity: 0.3;
+			}
+		}
+		.chart-container.no_results {
+			border: 1px solid rgba(var(--relay-blue-rgb), 0.2);
+			background: rgba(var(--relay-blue-rgb), 0.1);
+			border-radius: 50%;
+		}
+	}
 }

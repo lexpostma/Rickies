@@ -926,10 +926,6 @@ input[type=search]::-ms-input-placeholder {
   color: var(--text-secondary-color);
 }
 
-section.results {
-  text-align: center;
-}
-
 #search_button {
   color: var(--link-color);
   right: 20px;
