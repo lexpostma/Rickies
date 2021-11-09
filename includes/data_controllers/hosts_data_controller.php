@@ -89,19 +89,28 @@ do {
 				'picks' => [
 					'Regular' => [
 						'Correct' => check_key('Picks Regular Correct Count', $fields, 0),
-						'Wrong' => check_key('Picks Regular Wrong Count', $fields, 0),
+						'Wrong' =>
+							check_key('Picks Regular Wrong Count', $fields, 0) -
+							check_key('Picks Regular Eventually Count', $fields, 0),
+						'Eventually' => check_key('Picks Regular Eventually Count', $fields, 0),
 						'Unknown' => check_key('Picks Regular Unknown Count', $fields, 0),
 						'Total' => check_key('Picks Regular Total Count', $fields, 0),
 					],
 					'Risky' => [
 						'Correct' => check_key('Picks Risky Correct Count', $fields, 0),
-						'Wrong' => check_key('Picks Risky Wrong Count', $fields, 0),
+						'Wrong' =>
+							check_key('Picks Risky Wrong Count', $fields, 0) -
+							check_key('Picks Risky Eventually Count', $fields, 0),
+						'Eventually' => check_key('Picks Risky Eventually Count', $fields, 0),
 						'Unknown' => check_key('Picks Risky Unknown Count', $fields, 0),
 						'Total' => check_key('Picks Risky Total Count', $fields, 0),
 					],
 					'Flexy' => [
 						'Correct' => check_key('Picks Flexy Correct Count', $fields, 0),
-						'Wrong' => check_key('Picks Flexy Wrong Count', $fields, 0),
+						'Wrong' =>
+							check_key('Picks Flexy Wrong Count', $fields, 0) -
+							check_key('Picks Flexy Eventually Count', $fields, 0),
+						'Eventually' => check_key('Picks Flexy Eventually Count', $fields, 0),
 						'Unknown' => check_key('Picks Flexy Unknown Count', $fields, 0),
 						'Total' => check_key('Picks Flexy Total Count', $fields, 0),
 					],
@@ -195,6 +204,15 @@ do {
 							round_if_decimal(check_key('Most Time Picked Too Soon', $fields) / 365) .
 							' years</b> to soon.',
 						// '0hide' => true,
+					],
+					'would_have_correct' => [
+						'value' => check_key('Picks Correct By Now', $fields),
+						'string' =>
+							'As of today, he would have had <b>' .
+							check_key('Picks Correct By Now', $fields) .
+							'</b> picks correct instead of ' .
+							check_key('Picks Total Correct Count', $fields) .
+							'.',
 					],
 				],
 			];
