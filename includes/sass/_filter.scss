@@ -373,6 +373,7 @@
 
 			&.no_results {
 				opacity: 0.3;
+				filter: grayscale(100%);
 			}
 		}
 		.chart-container.no_results {

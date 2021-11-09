@@ -56,21 +56,24 @@ do {
 		];
 
 		if (!$picks_data__array_temp['status']) {
+			// Status is Unknown
 			$picks_chart__array[$picks_data__array_temp['host']]['Unknown']++;
 		} elseif ($picks_data__array_temp['status_later']) {
+			// Status is Wrong, but Came true later
 			$picks_chart__array[$picks_data__array_temp['host']]['Eventually']++;
+		} elseif ($picks_data__array_temp['status'] == 'Correct' && $picks_data__array_temp['factor'] == 1) {
+			// Status is Correct, and full points
+			$picks_chart__array[$picks_data__array_temp['host']]['Correct']++;
 		} elseif ($picks_data__array_temp['status'] == 'Correct') {
-			if ($picks_data__array_temp['factor'] == 1) {
-				$picks_chart__array[$picks_data__array_temp['host']]['Correct']++;
-			} else {
-				$picks_chart__array[$picks_data__array_temp['host']]['Correct'] =
-					$picks_chart__array[$picks_data__array_temp['host']]['Correct'] + $picks_data__array_temp['factor'];
-				$picks_chart__array[$picks_data__array_temp['host']]['Wrong'] =
-					$picks_chart__array[$picks_data__array_temp['host']]['Wrong'] +
-					1 -
-					$picks_data__array_temp['factor'];
-			}
+			// Status is Correct, but not full points
+			// Count partial points as Correct
+			$picks_chart__array[$picks_data__array_temp['host']]['Correct'] =
+				$picks_chart__array[$picks_data__array_temp['host']]['Correct'] + $picks_data__array_temp['factor'];
+			// Count remaining points as Wrong
+			$picks_chart__array[$picks_data__array_temp['host']]['Wrong'] =
+				$picks_chart__array[$picks_data__array_temp['host']]['Wrong'] + 1 - $picks_data__array_temp['factor'];
 		} else {
+			// Status is Wrong
 			$picks_chart__array[$picks_data__array_temp['host']]['Wrong']++;
 		}
 
@@ -124,5 +127,9 @@ foreach ($picks_data__array as $type => $host_picks) {
 	}
 }
 
+// Count the total picks per host
+foreach ($picks_chart__array as $host => $chart_data) {
+	$picks_chart__array[$host]['Total'] = array_sum($chart_data);
+}
 // echo '<pre>', var_dump($picks_data__array), '</pre>';
 // echo '<pre>', var_dump($picks_chart__array), '</pre>';

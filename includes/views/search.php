@@ -21,7 +21,7 @@ if (empty($picks_data__array)) {
 	echo '<div id="results" class="avatar_leaderboard">';
 	foreach ($picks_chart__array as $host => $chart) {
 		echo '<div class="host with_chart">';
-		if (array_sum($chart) === 0) {
+		if ($chart['Total'] === 0) {
 			echo '<img src="/images/memoji-' . strtolower($host) . '-disabled.png" class="no_results" />';
 			echo '<div class="avatar chart-container no_results">';
 		} else {
@@ -31,12 +31,15 @@ if (empty($picks_data__array)) {
 
 		echo '<canvas id="' . define_score_chart_id('search', $host) . '"></canvas></div>';
 		echo '<span class="name">' . $host . '</span><span class="string">';
-		if (array_sum($chart) === 0) {
-			echo 'No picks';
-		} elseif (array_sum($chart) === 1) {
-			echo '1 pick';
-		} else {
-			echo array_sum($chart) . ' picks';
+		switch ($chart['Total']) {
+			case 0:
+				echo 'No picks';
+				break;
+			case 1:
+				echo '1 pick';
+				break;
+			default:
+				echo $chart['Total'] . ' picks';
 		}
 		echo '</span>';
 		echo '</div>';

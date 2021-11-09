@@ -1972,6 +1972,7 @@ mark {
 }
 .avatar_leaderboard .with_chart img.no_results {
   opacity: 0.3;
+  filter: grayscale(100%);
 }
 .avatar_leaderboard .with_chart .chart-container.no_results {
   border: 1px solid rgba(var(--relay-blue-rgb), 0.2);
