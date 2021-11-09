@@ -103,54 +103,71 @@ function leaderboard_item($host_data)
 	$output .= '<h4>Achievements</h4>';
 	$output .= score_label_item($host_data['achievements'], $host_data['personal']['color']);
 
+	$output .= '<h4>Successes</h4>';
+	$output .= score_label_item($host_data['stats']['events'], $host_data['personal']['color']);
+
 	// Statistics
-	$output .= '<h4>Stats</h4>';
+	$output .= '<h4>Picks</h4>';
 	$output .= score_chart_item($host_data['stats']['picks'], strtolower($host_data['personal']['first_name']));
-	$output .= score_label_item($host_data['stats']['other'], $host_data['personal']['color']);
+	$output .= score_label_item($host_data['stats']['picks_strings'], $host_data['personal']['color']);
 
 	// Coin flips
 	$output .= '<h4>Coin flips</h4>';
-	$output .= score_label_item($host_data['stats']['coin_flips'], $host_data['personal']['color']);
+	$output .= score_label_item($host_data['stats']['coin_flips'], $host_data['personal']['color'], true);
 
 	// Ahead of its time
 	$output .= '<h4>Ahead of his time</h4>';
-	$output .= score_label_item($host_data['stats']['too_soon'], $host_data['personal']['color']);
+	$output .= score_label_item($host_data['stats']['too_soon'], $host_data['personal']['color'], true);
 
 	// Close host and content
 	$output .= '</div></div>';
 
 	return $output;
 }
-// echo "<pre>", var_dump($hosts_data), "</pre>";
 
-function score_label_item($array, $color)
+function score_label_item($array, $color, $display_as_paragraph = false)
 {
-	$output = "<table class='full_stats'>";
+	$output = '<table class="full_stats">';
+	if ($display_as_paragraph) {
+		$output .= '<tr><td colspan="2" class="string" style="--highlight-color: var(--connected-' . $color . ');">';
+	}
 	foreach ($array as $stat) {
-		if ($stat['value'] !== false && !($stat['value'] == 0 && array_key_exists('0hide', $stat))) {
-			if ($stat['value'] == 1 && array_key_exists('label1', $stat)) {
-				$stat['label'] = $stat['label1'];
+		if ($display_as_paragraph) {
+			if ($stat['value'] !== false && !($stat['value'] == 0 && array_key_exists('0hide', $stat))) {
+				$output .= $stat['string'] . ' ';
 			}
-			if (array_key_exists('unit', $stat)) {
-				if ($stat['unit'] == '%') {
-					$stat['value'] = $stat['value'] . '%';
-				} elseif ($stat['unit'] == '$') {
-					$stat['value'] = '$' . $stat['value'];
-				} else {
-					$stat['value'] = $stat['value'] . $stat['unit'];
+		} else {
+			if ($stat['value'] !== false && !($stat['value'] == 0 && array_key_exists('0hide', $stat))) {
+				if ($stat['value'] == 1 && array_key_exists('label1', $stat)) {
+					$stat['label'] = $stat['label1'];
 				}
+				if (array_key_exists('unit', $stat)) {
+					if ($stat['unit'] == '%') {
+						$stat['value'] = $stat['value'] . '%';
+					} elseif ($stat['unit'] == '$') {
+						$stat['value'] = '$' . $stat['value'];
+					} else {
+						$stat['value'] = $stat['value'] . $stat['unit'];
+					}
+				}
+				$output .=
+					'<tr>
+				<td class="value" style="color: var(--connected-' .
+					$color .
+					');">' .
+					$stat['value'] .
+					'</td>
+				<td>' .
+					$stat['label'] .
+					'</td>
+				</tr>';
 			}
-			$output .=
-				"<tr>
-				<td class='value' style='color: var(--connected-$color);'>" .
-				$stat['value'] .
-				"</td>
-				<td>" .
-				$stat['label'] .
-				"</td>
-				</tr>";
 		}
 	}
+	if ($display_as_paragraph) {
+		$output .= '</td></tr>';
+	}
+
 	$output .= '</table>';
 	return $output;
 }
@@ -298,15 +315,16 @@ foreach ($hosts_data__array as $host) {
 		'title' => implode('<br />', $title_array),
 		'string' =>
 			'Won ' .
-			$host['achievements']['rickies_wins']['value'] .
+			($host['achievements']['annual_rickies_wins']['value'] +
+				$host['achievements']['keynote_rickies_wins']['value']) .
 			" Rickies<br />
 		" .
 			$host['stats']['picks']['Overall']['Rate'] .
 			"% correct picks<br />
 		" .
-			$host['stats']['other']['scored_points']['value'] .
+			$host['stats']['picks_strings']['scored_points']['value'] .
 			'&nbsp;points • <span class="nowrap" title="Flexing Power">' .
-			$host['stats']['other']['correct_flexies']['value'] .
+			$host['stats']['picks_strings']['correct_flexies']['value'] .
 			' FP</span>',
 		'img_array' => [
 			'type' => 'avatar',

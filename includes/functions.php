@@ -33,6 +33,11 @@ function current_url($custom = false)
 	}
 }
 
+function filter_url($query = '')
+{
+	return current_url(true) . '?search=' . $query;
+}
+
 function navigation_bar($active = false)
 {
 	$output =

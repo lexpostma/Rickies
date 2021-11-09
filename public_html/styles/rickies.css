@@ -1360,6 +1360,10 @@ table.full_stats td.value {
   padding-right: 0.4em;
   font-variant-numeric: tabular-nums;
 }
+table.full_stats td.string b,
+table.full_stats td.string strong {
+  color: var(--highlight-color);
+}
 
 .charts {
   display: flex;

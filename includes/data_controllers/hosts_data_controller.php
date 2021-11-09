@@ -46,12 +46,11 @@ do {
 					'label' => 'time Keynote Chairman',
 					'0hide' => true,
 				],
-				'rickies_wins' => [
-					'value' => check_key('Rickies Wins Total Count', $fields),
-					'label' => 'time Rickies winner',
-					'0hide' => true,
-				],
-
+				// 'rickies_wins' => [
+				// 	'value' => check_key('Rickies Wins Total Count', $fields),
+				// 	'label' => 'time Rickies winner',
+				// 	'0hide' => true,
+				// ],
 				'flexies_wins' => [
 					'value' => check_key('Flexies Wins Total Count', $fields),
 					'label' => 'time Flexies winner',
@@ -64,6 +63,29 @@ do {
 				],
 			];
 			$hosts_data__array[$id]['stats'] = [
+				'events' => [
+					'ricky_win_rate' => [
+						'value' => round_if_decimal(check_key('Rickies Wins Rate', $fields, 0) * 100),
+						'label' => 'Rickies win rate',
+						'unit' => '%',
+					],
+					'flexy_win_rate' => [
+						'value' => round_if_decimal(check_key('Flexies Wins Rate', $fields, 0) * 100),
+						'label' => 'Flexies win rate',
+						'unit' => '%',
+					],
+					'flexy_loss_rate' => [
+						'value' => round_if_decimal(check_key('Flexies Lost Rate', $fields, 0) * 100),
+						'label' => 'Flexies lose rate',
+						'unit' => '%',
+					],
+					'donations' => [
+						'value' => check_key('Flexies Donation Amount', $fields),
+						'label' => 'donated to charities',
+						'unit' => "$",
+						'0hide' => true,
+					],
+				],
 				'picks' => [
 					'Regular' => [
 						'Correct' => check_key('Picks Regular Correct Count', $fields, 0),
@@ -84,7 +106,7 @@ do {
 						'Total' => check_key('Picks Flexy Total Count', $fields, 0),
 					],
 				],
-				'other' => [
+				'picks_strings' => [
 					'scored_points' => [
 						'value' => check_key('Points Scored Total', $fields, 0),
 						'label' => 'Ricky points scored overall',
@@ -96,86 +118,83 @@ do {
 						'label1' => 'Flexing Point overall',
 						'unit' => '&nbsp;FP',
 					],
-					'ricky_win_rate' => [
-						'value' => round_if_decimal(check_key('Rickies Wins Rate', $fields, 0) * 100),
-						'label' => 'Rickies win rate',
-						'unit' => '%',
-					],
-					'flexy_win_rate' => [
-						'value' => round_if_decimal(check_key('Flexies Wins Rate', $fields, 0) * 100),
-						'label' => 'Flexies win rate',
-						'unit' => '%',
-					],
-					'flexy_loss_rate' => [
-						'value' => round_if_decimal(check_key('Flexies Lost Rate', $fields, 0) * 100),
-						'label' => 'Flexies lose rate',
-						'unit' => '%',
-					],
-					'flexy_loss_rate' => [
+					'buzzkillers' => [
 						'value' => round_if_decimal(check_key('Negative Rate', $fields, 0) * 100),
-						'label' => 'of picks are buzzkillers',
+						'label' => 'of picks are <a href="' . filter_url('&buzzkill=on') . '">buzzkillers</a>',
 						'unit' => '%',
 					],
-					'flexy_loss_rate' => [
+					'adjudicated' => [
 						'value' => check_key('Picks Adjudicated Count', $fields, 0),
-						'label' => 'picks had to be adjudicated',
+						'label' => 'picks had to be <a href="' . filter_url('&adjudicated=on') . '">adjudicated</a>',
 						// 'unit' => '%',
-						'0hide' => true,
-					],
-					'donations' => [
-						'value' => check_key('Flexies Donation Amount', $fields),
-						'label' => 'donated to charities',
-						'unit' => "$",
 						'0hide' => true,
 					],
 				],
 				'coin_flips' => [
-					'coin_flips_win_rate' => [
-						'value' => round_if_decimal(check_key('Coin Flip Win Rate', $fields, 0) * 100),
-						'label' => 'of his coin flip won',
-						'unit' => '%',
-						'label1' => 'coin flip won',
-						// '0hide' => true,
-					],
 					'coin_flips_won' => [
 						'value' => check_key('Coin Flip Wins Total', $fields),
-						'label' => 'coin flips won',
-						'label1' => 'coin flip won',
-						// '0hide' => true,
+						'string' =>
+							$id .
+							' has won <b>' .
+							check_key('Coin Flip Wins Total', $fields) .
+							' of ' .
+							check_key('Coin Flip Participation Count', $fields) .
+							'</b> coin flips, that’s a <b>' .
+							round_if_decimal(check_key('Coin Flip Win Rate', $fields, 0) * 100) .
+							'%</b> win rate.',
 					],
-					'coin_flips_lost' => [
-						'value' => check_key('Coin Flip Losses Total', $fields),
-						'label' => 'coin flips lost',
-						'label1' => 'coin flip lost',
-						// '0hide' => true,
+					'rickies_1_by_coin_flip' => [
+						'value' => check_key('Rickies 1st by Coin Flip', $fields),
+						'string' =>
+							'<b>' .
+							check_key('Rickies 1st by Coin Flip', $fields) .
+							'</b> of these granted him a chairman title.',
+						'0hide' => true,
+					],
+					'preferred_coin_side' => [
+						'value' => check_key('Preferred Coin Side', $fields),
+						'string' =>
+							'He has a preference for <b>' .
+							strtolower(check_key('Preferred Coin Side', $fields)) .
+							'</b> which he chose <b>' .
+							check_key(
+								'Count ' . check_key('Preferred Coin Side', $fields) . ' at Coin Flips',
+								$fields
+							) .
+							'</b> times.',
 					],
 				],
 				'too_soon' => [
-					'too_soon_avg' => [
-						'value' => round_if_decimal(check_key('Avg Time Picked Too Soon', $fields) / 365),
-						'label' => 'years ahead of his time',
-						// 'unit' => '',
-						'0hide' => true,
-					],
 					'too_soon_rate' => [
 						'value' => round_if_decimal(check_key('Too Soon Rate', $fields, 0) * 100),
-						'label' => 'of wrong picks came true later',
-						'unit' => '%',
+						'string' =>
+							'<b>' .
+							round_if_decimal(check_key('Too Soon Rate', $fields, 0) * 100) .
+							'%</b> of ' .
+							$id .
+							'’s <a href="' .
+							filter_url('&eventually=on') .
+							'">wrong picks came true later</a>.',
 						'0hide' => true,
 					],
+					'too_soon_avg' => [
+						'value' => round_if_decimal(check_key('Avg Time Picked Too Soon', $fields) / 365),
+						'string' =>
+							'On average he is <b>' .
+							round_if_decimal(check_key('Avg Time Picked Too Soon', $fields) / 365) .
+							' years</b> ahead of his time.',
+						'0hide' => true,
+					],
+
 					'too_soon_min' => [
 						'value' => round_if_decimal(check_key('Least Time Picked Too Soon', $fields)),
-						'label' => 'days too soon at the least',
-						'label1' => 'day too soon at the least',
-						// 'unit' => '',
-						'0hide' => true,
-					],
-					'too_soon_max' => [
-						'value' => round_if_decimal(check_key('Most Time Picked Too Soon', $fields) / 365),
-						'label' => 'years too soon at the most',
-						'label1' => 'year too soon at the most',
-						// 'unit' => '',
-						'0hide' => true,
+						'string' =>
+							'His wrong predictions are between <b>' .
+							round_if_decimal(check_key('Least Time Picked Too Soon', $fields)) .
+							' days</b> and <b>' .
+							round_if_decimal(check_key('Most Time Picked Too Soon', $fields) / 365) .
+							' years</b> to soon.',
+						// '0hide' => true,
 					],
 				],
 			];

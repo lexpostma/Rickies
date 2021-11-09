@@ -188,6 +188,12 @@ table.full_stats {
 		padding-right: 0.4em;
 		font-variant-numeric: tabular-nums;
 	}
+	td.string {
+		b,
+		strong {
+			color: var(--highlight-color);
+		}
+	}
 }
 
 .charts {
