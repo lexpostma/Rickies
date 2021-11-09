@@ -1632,32 +1632,17 @@ mark {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--link-color);
+  color: white;
 }
 #pick_filter_sheet > summary::-webkit-details-marker {
   display: none;
-}
-@media (hover: hover) {
-  #pick_filter_sheet > summary:hover {
-    color: var(--link-hover-color);
-  }
-}
-#pick_filter_sheet > summary:focus, #pick_filter_sheet > summary:active {
-  color: var(--link-hover-color);
-}
-#pick_filter_sheet > summary .closed {
-  color: white;
-  display: inline;
-}
-#pick_filter_sheet > summary .closed .filter_icon svg g {
-  fill: white;
 }
 #pick_filter_sheet > summary .opened {
   display: none;
 }
 #pick_filter_sheet > summary .filter_icon {
   margin-left: 8px;
-  transform: translateY(2px);
+  transform: translateY(4px);
   display: inline-block;
 }
 #pick_filter_sheet > summary .filter_icon svg {
@@ -1671,6 +1656,17 @@ mark {
   background: rgba(255, 255, 255, 0.8);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
+}
+#pick_filter_sheet[open] > summary {
+  color: var(--link-color);
+}
+@media (hover: hover) {
+  #pick_filter_sheet[open] > summary:hover {
+    color: var(--link-hover-color);
+  }
+}
+#pick_filter_sheet[open] > summary:focus, #pick_filter_sheet[open] > summary:active {
+  color: var(--link-hover-color);
 }
 #pick_filter_sheet[open] > summary .closed {
   display: none;

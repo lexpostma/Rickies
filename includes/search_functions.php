@@ -98,13 +98,20 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 		$output .= ' open';
 	}
 
-	$output .=
-		'>
-	<summary><span class="closed">Show filters<span class="filter_icon">' .
-		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter.svg') .
-		'</span></span><span class="opened">Hide filters<span class="filter_icon">' .
-		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter-active.svg') .
-		'</span></span></summary>
+	$output .= '>
+	<summary>';
+	if (!empty($user_input['filter_other']) || !empty($user_input['filter_categories'])) {
+		$output .=
+			'<span class="closed">Show</span><span class="opened">Hide</span> <b>active</b> filters<span class="filter_icon">' .
+			file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter-active.svg') .
+			'</span>';
+	} else {
+		$output .=
+			'<span class="closed">Show</span><span class="opened">Hide</span> filters<span class="filter_icon">' .
+			file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter.svg') .
+			'</span>';
+	}
+	$output .= '</summary>
 	<div class="content">';
 
 	// Filter for hosts
