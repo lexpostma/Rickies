@@ -61,8 +61,12 @@ if (empty($picks_data__array)) {
 				$sub_title_string .= $chart['Wrong'] + $chart['Eventually'] . '&nbsp;wrong';
 			}
 
-			if ($chart['Eventually'] !== 0 && $chart['Eventually'] == $chart['Eventually'] + $chart['Wrong']) {
+			if ($chart['Eventually'] === 1 && $chart['Eventually'] + $chart['Wrong'] === 1) {
+				$sub_title_string .= ', which was ahead&nbsp;of its&nbsp;time';
+			} elseif ($chart['Eventually'] !== 0 && $chart['Eventually'] == $chart['Eventually'] + $chart['Wrong']) {
 				$sub_title_string .= ', all&nbsp;of which were ahead&nbsp;of its&nbsp;time';
+			} elseif ($chart['Eventually'] === 1) {
+				$sub_title_string .= ', ' . $chart['Eventually'] . '&nbsp;of which was ahead&nbsp;of its&nbsp;time';
 			} elseif ($chart['Eventually'] !== 0) {
 				$sub_title_string .= ', ' . $chart['Eventually'] . '&nbsp;of which were ahead&nbsp;of its&nbsp;time';
 			}
