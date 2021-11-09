@@ -4,7 +4,10 @@ const inputTags = document.getElementsByTagName('input');
 
 function reset_filter() {
 	for (var i = 0; i < inputTags.length; ++i) {
-		inputTags[i].checked = false;
+		if (inputTags[i].type == 'checkbox') {
+			inputTags[i].checked = false;
+			inputTags[i].indeterminate = false;
+		}
 	}
 
 	for (var i = 0; i < selectTags.length; i++) {
@@ -15,9 +18,24 @@ function reset_filter() {
 	reset_button.disabled = true;
 }
 
-document.addEventListener('input', (evt) => {
-	reset_button.disabled = false;
-});
+function check_elements_for_state() {
+	// Check if any select is selected
+	for (var i = 0; i < selectTags.length; i++) {
+		if (selectTags[i].selectedIndex !== 0) {
+			return true;
+		}
+	}
+
+	// Check if any checkbox is checked
+	for (var i = 0; i < inputTags.length; ++i) {
+		if (inputTags[i].type == 'checkbox' && inputTags[i].checked == true) {
+			return true;
+		}
+	}
+
+	// Nothing is checked or selected
+	return false;
+}
 
 const search_field_combo = document.getElementById('search_field_combo');
 const pick_filter_sheet = document.getElementById('pick_filter_sheet');
@@ -46,6 +64,14 @@ const allThings = nodeArray('input.category');
 
 //  global listener
 addEventListener('change', (e) => {
+	// On any change, check if reset button should be enabled of not
+	if (check_elements_for_state()) {
+		reset_button.disabled = false;
+	} else {
+		reset_button.disabled = true;
+	}
+
+	// define the element that triggered the event
 	let check = e.target;
 
 	//  exit if change event did not come from
@@ -75,5 +101,29 @@ addEventListener('change', (e) => {
 
 		//  prepare for next loop
 		check = check != parent ? parent : 0;
+	}
+});
+
+document.addEventListener('DOMContentLoaded', function (event) {
+	// On Load, get all checked category checkboxes
+	// and mark (grand)parent as indeterminate if those are not checked
+	var cats_checked = document.querySelectorAll('input.category:checked');
+
+	if (cats_checked.length !== 0) {
+		for (const element of cats_checked) {
+			var parent = element.closest(['ul']).parentNode.querySelector('input');
+			var grandparent = parent.closest(['ul']).parentNode.querySelector('input');
+			if (!parent.checked) {
+				parent.indeterminate = true;
+			}
+			if (!grandparent.checked) {
+				grandparent.indeterminate = true;
+			}
+		}
+	}
+
+	// Check if sheet is open, so the original button is hidden
+	if (pick_filter_sheet.open) {
+		search_field_combo.classList.add('summary_open');
 	}
 });
