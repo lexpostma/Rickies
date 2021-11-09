@@ -3,6 +3,8 @@
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
 -   Add new stats for coin flips, ahead of its time, adjudication, and buzzkillers
+-   Add filters
+-   Add charts to archive and search results. They change depending of results
 -   Add links in footer to:
     -   Filter Rickies (was already possible with filter button in list)
     -   Go to [latest Rickies](https://rickies.co/latest), [latest Keynote Rickies](https://rickies.co/latest-keynote) or [latest Annual Rickies](https://rickies.co/latest-annual)
