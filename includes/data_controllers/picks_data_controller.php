@@ -7,31 +7,6 @@ $picks_data__empty = $picks_data__array = [
 	'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
 ];
 
-$picks_type_count = [
-	'Rickies' => 0,
-	'Flexies' => 0,
-];
-$picks_chart__array = [
-	'Myke' => [
-		'Correct' => 0,
-		'Wrong' => 0,
-		'Eventually' => 0,
-		'Unknown' => 0,
-	],
-	'Federico' => [
-		'Correct' => 0,
-		'Wrong' => 0,
-		'Eventually' => 0,
-		'Unknown' => 0,
-	],
-	'Stephen' => [
-		'Correct' => 0,
-		'Wrong' => 0,
-		'Eventually' => 0,
-		'Unknown' => 0,
-	],
-];
-
 $picks_data__request = $airtable->getContent('Picks', $picks_data__params);
 do {
 	$picks_data__response = $picks_data__request->getResponse();
@@ -58,30 +33,6 @@ do {
 			'age' => check_key('Age string', $fields),
 			'buzzkill' => check_key('Buzzkill string', $fields),
 		];
-
-		if (!$picks_data__array_temp['status']) {
-			// Status is Unknown
-			$picks_chart__array[$picks_data__array_temp['host']]['Unknown']++;
-		} elseif ($picks_data__array_temp['status_later']) {
-			// Status is Wrong, but Came true later
-			$picks_chart__array[$picks_data__array_temp['host']]['Eventually']++;
-		} elseif ($picks_data__array_temp['status'] == 'Correct' && $picks_data__array_temp['factor'] == 1) {
-			// Status is Correct, and full points
-			$picks_chart__array[$picks_data__array_temp['host']]['Correct']++;
-		} elseif ($picks_data__array_temp['status'] == 'Correct') {
-			// Status is Correct, but not full points
-			// Count partial points as Correct
-			$picks_chart__array[$picks_data__array_temp['host']]['Correct'] =
-				$picks_chart__array[$picks_data__array_temp['host']]['Correct'] + $picks_data__array_temp['factor'];
-			// Count remaining points as Wrong
-			$picks_chart__array[$picks_data__array_temp['host']]['Wrong'] =
-				$picks_chart__array[$picks_data__array_temp['host']]['Wrong'] + 1 - $picks_data__array_temp['factor'];
-		} else {
-			// Status is Wrong
-			$picks_chart__array[$picks_data__array_temp['host']]['Wrong']++;
-		}
-
-		$picks_type_count[$picks_data__array_temp['type_group']]++;
 
 		if (check_key('Category', $fields)) {
 			$cat_strings = explode(';', check_key('Categories flat', $fields));
@@ -133,28 +84,4 @@ foreach ($picks_data__array as $type => $host_picks) {
 	}
 }
 
-// Count the total picks per host
-foreach ($picks_chart__array as $host => $chart_data) {
-	$picks_chart__array[$host]['Total'] = array_sum($chart_data);
-}
-
-// Format the total picks per type
-if ($picks_type_count['Rickies'] === 0) {
-	unset($picks_type_count['Rickies']);
-} elseif ($picks_type_count['Rickies'] === 1) {
-	$picks_type_count['Rickies'] = '1 Ricky';
-} else {
-	$picks_type_count['Rickies'] = $picks_type_count['Rickies'] . ' Rickies';
-}
-
-if ($picks_type_count['Flexies'] === 0) {
-	unset($picks_type_count['Flexies']);
-} elseif ($picks_type_count['Flexies'] === 1) {
-	$picks_type_count['Flexies'] = '1 Flexy';
-} else {
-	$picks_type_count['Flexies'] = $picks_type_count['Flexies'] . ' Flexies';
-}
-
 // echo '<pre>', var_dump($picks_data__array), '</pre>';
-// echo '<pre>', var_dump($picks_chart__array), '</pre>';
-// echo '<pre>', var_dump($picks_type_count), '</pre>';

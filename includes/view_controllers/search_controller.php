@@ -179,6 +179,7 @@ if (isset($_GET['category']) && is_array($_GET['category'])) {
 		}
 	}
 }
+// echo '<pre>', var_dump($picks_data__array), '</pre>';
 
 // If no search string and no filters, redirect to /archive
 if ($url_view !== 'archive' && $pick_filter_empty === $pick_filter) {
@@ -186,7 +187,88 @@ if ($url_view !== 'archive' && $pick_filter_empty === $pick_filter) {
 	die();
 }
 
-// echo '<pre>', var_dump($picks_data__array), '</pre>';
+// Define counters and chart data
+// Has to happens separate from getting pick data from Airtable,
+// because the category filtering is also separate
+$picks_type_count = [
+	'Rickies' => 0,
+	'Flexies' => 0,
+];
+
+$picks_chart__array = [
+	'Myke' => [
+		'Correct' => 0,
+		'Wrong' => 0,
+		'Eventually' => 0,
+		'Unknown' => 0,
+	],
+	'Federico' => [
+		'Correct' => 0,
+		'Wrong' => 0,
+		'Eventually' => 0,
+		'Unknown' => 0,
+	],
+	'Stephen' => [
+		'Correct' => 0,
+		'Wrong' => 0,
+		'Eventually' => 0,
+		'Unknown' => 0,
+	],
+];
+
+foreach ($picks_data__array as $type => $hosts) {
+	foreach ($hosts as $host => $picks) {
+		foreach ($picks as $pick) {
+			// Increment the count of this type
+			$picks_type_count[$type]++;
+
+			// Increment the count of this status for this host
+			if (!$pick['status']) {
+				// Status is Unknown
+				$picks_chart__array[$host]['Unknown']++;
+			} elseif ($pick['status_later']) {
+				// Status is Wrong, but Came true later
+				$picks_chart__array[$host]['Eventually']++;
+			} elseif ($pick['status'] == 'Correct' && $pick['factor'] == 1) {
+				// Status is Correct, and full points
+				$picks_chart__array[$host]['Correct']++;
+			} elseif ($pick['status'] == 'Correct') {
+				// Status is Correct, but not full points
+				// Count partial points as Correct
+				$picks_chart__array[$host]['Correct'] = $picks_chart__array[$host]['Correct'] + $pick['factor'];
+				// Count remaining points as Wrong
+				$picks_chart__array[$host]['Wrong'] = $picks_chart__array[$host]['Wrong'] + 1 - $pick['factor'];
+			} else {
+				// Status is Wrong
+				$picks_chart__array[$host]['Wrong']++;
+			}
+		}
+	}
+}
+
+// Count the total picks per host
+foreach ($picks_chart__array as $host => $chart_data) {
+	$picks_chart__array[$host]['Total'] = array_sum($chart_data);
+}
+// echo '<pre>', var_dump($picks_chart__array), '</pre>';
+
+// Format the total picks per type
+if ($picks_type_count['Rickies'] === 0) {
+	unset($picks_type_count['Rickies']);
+} elseif ($picks_type_count['Rickies'] === 1) {
+	$picks_type_count['Rickies'] = '1 Ricky';
+} else {
+	$picks_type_count['Rickies'] = $picks_type_count['Rickies'] . ' Rickies';
+}
+
+if ($picks_type_count['Flexies'] === 0) {
+	unset($picks_type_count['Flexies']);
+} elseif ($picks_type_count['Flexies'] === 1) {
+	$picks_type_count['Flexies'] = '1 Flexy';
+} else {
+	$picks_type_count['Flexies'] = $picks_type_count['Flexies'] . ' Flexies';
+}
+// echo '<pre>', var_dump($picks_type_count), '</pre>';
 
 // Define SEO for search/archive page
 if ($url_view == 'archive') {
