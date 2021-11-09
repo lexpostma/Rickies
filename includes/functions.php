@@ -4,6 +4,7 @@ $incl_path = $_SERVER['DOCUMENT_ROOT'] . '/../includes/';
 include_once $incl_path . 'Parsedown.php';
 include_once $incl_path . 'variables.php';
 include_once $incl_path . 'search_functions.php';
+include_once $incl_path . 'chart_functions.php';
 
 // Is the current URL accessed via http or https?
 function url_protocol()
