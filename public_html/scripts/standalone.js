@@ -21,3 +21,11 @@ function promote_standalone() {
 document.addEventListener('DOMContentLoaded', function (event) {
 	promote_standalone();
 });
+
+/* global PullToRefresh */
+PullToRefresh.init({
+	mainElement: 'main',
+	onRefresh: function () {
+		alert('refresh');
+	},
+});
