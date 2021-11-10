@@ -8,8 +8,8 @@ if (getenv('ENVIRONMENT') !== false) {
 }
 
 // What view is requested?
-if (isset($_GET['page'])) {
-	$url_view = $_GET['page'];
+if (isset($_GET['view'])) {
+	$url_view = $_GET['view'];
 } elseif (isset($_GET['search'])) {
 	$url_view = 'search';
 } else {
