@@ -17,7 +17,7 @@ Features I plan to add to the website.
 -   [ ] Cache Airtable data as JSON files to increase performance.
 -   [x] Add Bill of Rickies reading theme song.
 -   [x] Add show/hide toggle for Bill of Rickies history slider.
--   [ ] Add pull-to-refresh to web app.
+-   [x] Add pull-to-refresh to web app.
 -   [ ] Add adjudication statistics.
 -   [ ] Improve support for coin flips (heads/tails, best of 3, flip for which place, etc).
 -   [ ] Improve support for ties (earlier predictions did not always have winners).

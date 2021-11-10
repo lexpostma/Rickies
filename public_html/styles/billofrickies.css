@@ -992,8 +992,3 @@ p.bill_footer {
   font-style: italic;
   max-width: 650px;
 }
-
-p#refresh_page button {
-  text-decoration: underline;
-  font-style: normal;
-}

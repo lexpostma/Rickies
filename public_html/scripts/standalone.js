@@ -1,11 +1,13 @@
-function refresh_inprogress(el) {
-	el.innerText = 'Refreshing…';
-}
-
 function promote_standalone() {
 	if (window.navigator.standalone == true) {
-		// Is on the home screen, offer refresh
-		document.getElementById('refresh_page').style.display = 'block';
+		// Is on the home screen, offer pull-to-refresh
+		PullToRefresh.init({
+			mainElement: '.container',
+			onRefresh: function () {
+				alert('refresh');
+				// window.location.reload();
+			},
+		});
 	} else if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('iPad') != -1) {
 		// Not added to home screen, promote web app for iOS
 		if (document.getElementById('promote_webapp')) {
@@ -20,12 +22,4 @@ function promote_standalone() {
 
 document.addEventListener('DOMContentLoaded', function (event) {
 	promote_standalone();
-});
-
-/* global PullToRefresh */
-PullToRefresh.init({
-	mainElement: '.container',
-	onRefresh: function () {
-		alert('refresh');
-	},
 });

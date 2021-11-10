@@ -1040,7 +1040,6 @@ footer#footer {
   background: var(--relay-blue);
   position: relative;
 }
-footer#footer p#refresh_page,
 footer#footer p#promote_webapp {
   margin-bottom: var(--space-between-md);
 }
@@ -1061,7 +1060,6 @@ footer#footer_links a {
   white-space: nowrap;
 }
 
-p#refresh_page,
 p#promote_webapp {
   display: none;
 }
