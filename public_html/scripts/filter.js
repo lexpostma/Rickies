@@ -122,8 +122,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
 		}
 	}
 
-	// Check if sheet is open, so the original button is hidden
+	// Check if sheet is open, to know if filters are active on load
 	if (pick_filter_sheet.open) {
+		// If open, hide the original search button
 		search_field_combo.classList.add('summary_open');
+		// And make reset button enabled
+		reset_button.disabled = false;
+	} else {
+		// And make reset button disabled
+		reset_button.disabled = true;
 	}
 });
