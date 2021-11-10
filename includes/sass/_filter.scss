@@ -355,16 +355,21 @@
 	text-align: center;
 }
 .avatar_leaderboard {
+	--chart-size-factor: 1.2;
+	@media screen and (min-width: var.$break-xs) {
+		--chart-size-factor: 1.5;
+	}
 	.chart-container {
-		height: calc(var(--graphic-size) * 1.5);
-		width: calc(var(--graphic-size) * 1.5);
+		height: calc(var(--graphic-size) * var(--chart-size-factor));
+		width: calc(var(--graphic-size) * var(--chart-size-factor));
 	}
 	.with_chart {
 		position: relative;
 		img {
-			width: calc(var(--graphic-size) * 1.2);
+			width: calc(var(--graphic-size) * var(--chart-size-factor));
 			position: absolute;
-			top: calc(var(--graphic-size) / 3.75);
+			top: 8px;
+			padding: 8px;
 
 			&.no_results {
 				opacity: 0.3;

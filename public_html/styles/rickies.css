@@ -1954,17 +1954,26 @@ mark {
   text-align: center;
 }
 
+.avatar_leaderboard {
+  --chart-size-factor: 1.2;
+}
+@media screen and (min-width: 375px) {
+  .avatar_leaderboard {
+    --chart-size-factor: 1.5;
+  }
+}
 .avatar_leaderboard .chart-container {
-  height: calc(var(--graphic-size) * 1.5);
-  width: calc(var(--graphic-size) * 1.5);
+  height: calc(var(--graphic-size) * var(--chart-size-factor));
+  width: calc(var(--graphic-size) * var(--chart-size-factor));
 }
 .avatar_leaderboard .with_chart {
   position: relative;
 }
 .avatar_leaderboard .with_chart img {
-  width: calc(var(--graphic-size) * 1.2);
+  width: calc(var(--graphic-size) * var(--chart-size-factor));
   position: absolute;
-  top: calc(var(--graphic-size) / 3.75);
+  top: 8px;
+  padding: 8px;
 }
 .avatar_leaderboard .with_chart img.no_results {
   opacity: 0.3;
