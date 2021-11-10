@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 /* global PullToRefresh */
 PullToRefresh.init({
-	mainElement: 'main',
+	mainElement: '.container',
 	onRefresh: function () {
 		alert('refresh');
 	},
