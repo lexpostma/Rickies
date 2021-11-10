@@ -350,9 +350,11 @@
 }
 
 #results {
-	margin-top: 0;
-	padding-top: var(--space-between-lg);
+	margin: 0 auto;
+	padding: var(--space-between-lg) 0 var(--space-between-lg) var(--space-side-padding);
 	text-align: center;
+	overflow: scroll;
+	width: 100%;
 }
 .avatar_leaderboard {
 	--chart-size-factor: 1.2;
@@ -363,7 +365,7 @@
 		height: calc(var(--graphic-size) * var(--chart-size-factor));
 		width: calc(var(--graphic-size) * var(--chart-size-factor));
 	}
-	.with_chart {
+	.host.with_chart {
 		position: relative;
 		img {
 			width: calc(var(--graphic-size) * var(--chart-size-factor));
@@ -379,6 +381,10 @@
 		.chart-container.no_results {
 			border: 8px solid rgba(var(--relay-blue-rgb), 0.05);
 			border-radius: 50%;
+		}
+		&:nth-of-type(4) {
+			color: var(--text-secondary-color);
+			padding-right: var(--space-side-padding);
 		}
 	}
 }

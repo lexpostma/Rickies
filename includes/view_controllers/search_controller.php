@@ -214,6 +214,12 @@ $picks_chart__array = [
 		'Eventually' => 0,
 		'Unknown' => 0,
 	],
+	'All' => [
+		'Correct' => 0,
+		'Wrong' => 0,
+		'Eventually' => 0,
+		'Unknown' => 0,
+	],
 ];
 
 foreach ($picks_data__array as $type => $hosts) {
@@ -226,21 +232,27 @@ foreach ($picks_data__array as $type => $hosts) {
 			if (!$pick['status']) {
 				// Status is Unknown
 				$picks_chart__array[$host]['Unknown']++;
+				$picks_chart__array['All']['Unknown']++;
 			} elseif ($pick['status_later']) {
 				// Status is Wrong, but Came true later
 				$picks_chart__array[$host]['Eventually']++;
+				$picks_chart__array['All']['Eventually']++;
 			} elseif ($pick['status'] == 'Correct' && $pick['factor'] == 1) {
 				// Status is Correct, and full points
 				$picks_chart__array[$host]['Correct']++;
+				$picks_chart__array['All']['Correct']++;
 			} elseif ($pick['status'] == 'Correct') {
 				// Status is Correct, but not full points
 				// Count partial points as Correct
 				$picks_chart__array[$host]['Correct'] = $picks_chart__array[$host]['Correct'] + $pick['factor'];
+				$picks_chart__array['All']['Correct'] = $picks_chart__array['All']['Correct'] + $pick['factor'];
 				// Count remaining points as Wrong
 				$picks_chart__array[$host]['Wrong'] = $picks_chart__array[$host]['Wrong'] + 1 - $pick['factor'];
+				$picks_chart__array['All']['Wrong'] = $picks_chart__array['All']['Wrong'] + 1 - $pick['factor'];
 			} else {
 				// Status is Wrong
 				$picks_chart__array[$host]['Wrong']++;
+				$picks_chart__array['All']['Wrong']++;
 			}
 		}
 	}
