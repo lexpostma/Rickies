@@ -98,13 +98,21 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 		$user_input['filter_other'] = [];
 	}
 
-	if (!empty($user_input['filter_other']) || !empty($user_input['filter_categories'])) {
+	if (
+		!empty($user_input['filter_other']) ||
+		!empty($user_input['filter_categories']) ||
+		!empty($user_input['display'])
+	) {
 		$output .= ' open';
 	}
 
 	$output .= '>
 	<summary>';
-	if (!empty($user_input['filter_other']) || !empty($user_input['filter_categories'])) {
+	if (
+		!empty($user_input['filter_other']) ||
+		!empty($user_input['filter_categories']) ||
+		!empty($user_input['display'])
+	) {
 		$output .=
 			'<span class="closed">Show</span><span class="opened">Hide</span> <b>active</b> filters<span class="filter_icon">' .
 			file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter-active.svg') .
@@ -222,34 +230,6 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 		</ul>
 	</fieldset>';
 
-	// TODO: Enable changing view filters
-	// Filter for changing view
-	// 	$output .= '
-	// 	<fieldset class="list">
-	// 		<ul>
-	//
-	// 			<li class="filter_option"><b>Change view</b></li>
-	//
-	// 			<li class="filter_option">
-	// 				<input type="checkbox" name="view[]" value="categories" id="view_cat" class="clean" ';
-	// 	if (key_exists('view', $filters) && strpos($filters['view'], 'categories') !== false) {
-	// 		$output .= 'checked';
-	// 	}
-	// 	$output .= '/>
-	// 				<label for="view_cat"><span class="emoji">🏷</span>Show categories</label>
-	// 			</li>
-	//
-	// 			<li class="filter_option">
-	// 				<input type="checkbox" name="view[]" value="age" id="view_age" class="clean" ';
-	// 	if (key_exists('view', $filters) && strpos($filters['view'], 'age') !== false) {
-	// 		$output .= 'checked';
-	// 	}
-	// 	$output .= '/>
-	// 				<label for="view_age"><span class="emoji">🗓</span>Show pick age</label>
-	// 			</li>
-	// 		</ul>
-	// 	</fieldset>';
-
 	// Filter for interesting stats and metadata
 	$event_select = [
 		'annual' => '📆 Annual Rickies',
@@ -329,6 +309,36 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 			'</label>
 			</li>';
 	}
+
+	// Filter for changing view
+	$pick_display_select = [
+		'clean' => '🧹 Just the picks',
+		'categories' => '🏷 Show categories',
+		'age' => '🗓 Show age of picks',
+		// 'became_true' => '⏳ Show how pick became true',
+	];
+	$output .= '
+			<li class="filter_option select">
+				<select class="clean" name="display" onchange=" this.dataset.chosen = this.value; " ';
+	if (!empty($user_input['display'])) {
+		$output .= 'data-chosen="set"';
+	} else {
+		$output .= 'data-chosen';
+	}
+	$output .= '>
+					<option value>🗂 All metadata</option>
+					<optgroup label="Show picks and…">';
+	foreach ($pick_display_select as $value => $label) {
+		$output .= '<option value="' . $value . '" ';
+		if ($user_input['display'] === $value) {
+			$output .= 'selected';
+		}
+		$output .= '>' . $label . '</option>';
+	}
+	$output .= '</optgroup>
+				</select>
+				<div class="select_icon"></div>
+			</li>';
 	$output .= '</ul></fieldset>';
 
 	// Add category filter, and button section, and closing the .content and <details>

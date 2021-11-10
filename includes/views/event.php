@@ -103,7 +103,7 @@ if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies
 
 <?php
 echo no_script_banner();
-echo pick_item_bundle($picks_data__array, $rickies_data['interactive']);
+echo pick_item_bundle($picks_data__array, $rickies_data['interactive'], ['ahead_of_its_time']);
 
 if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies', $picks_data__array)) {
 	echo host_item_bundle($rickies_data['hosts'], $rickies_data['type']);

@@ -18,6 +18,7 @@ if (empty($picks_data__array)) {
 	}
 } else {
 
+	// Define charts
 	echo '<div id="results" class="avatar_leaderboard">';
 	foreach ($picks_chart__array as $host => $chart) {
 		echo '<div class="host with_chart">';
@@ -116,7 +117,7 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 		</div>
 	</div>
 </nav>
-<div id="picks"><?= pick_item_bundle($picks_data__array, false, ['search', 'categories', 'buzzkill', 'age']) ?></div>
+<div id="picks"><?= pick_item_bundle($picks_data__array, false, $pick_display) ?></div>
 <?php
 echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';
 

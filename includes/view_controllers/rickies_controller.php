@@ -412,7 +412,7 @@ function pick_item($data, $interactive = false, $view = [])
 		if ($data['note']) {
 			$output .= markdown($data['note']);
 		}
-		if ($data['status_later']) {
+		if ($data['status_later'] && in_array('ahead_of_its_time', $view)) {
 			$output .= markdown($data['status_later']);
 		}
 		if ($data['categories'] && in_array('categories', $view)) {

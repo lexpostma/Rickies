@@ -7,7 +7,7 @@ $pick_filter = $pick_filter_empty = [
 	'search' => [],
 	'filter_other' => [],
 	'filter_categories' => [],
-	// 'view' => [],
+	'display' => [],
 ];
 
 // Define search query
@@ -28,6 +28,28 @@ if (isset($_GET['search']) && $_GET['search'] !== '') {
 	),",
 	];
 	unset($search_string);
+}
+
+// Define how picks are displayed
+if (isset($_GET['display'])) {
+	$pick_filter['display'] = $_GET['display'];
+	switch ($pick_filter['display']) {
+		case 'categories':
+			$pick_display = ['search', 'ahead_of_its_time', 'categories'];
+			break;
+		case 'age':
+			$pick_display = ['search', 'ahead_of_its_time', 'age'];
+			break;
+		// case 'became_true':
+		// 	$pick_display = ['search', 'ahead_of_its_time'];
+		// 	break;
+		case 'clean':
+			$pick_display = ['search'];
+			break;
+		default:
+			$pick_display = ['search', 'ahead_of_its_time', 'categories', 'buzzkill', 'age'];
+			break;
+	}
 }
 
 // Define filters in query
