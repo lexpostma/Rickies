@@ -1690,6 +1690,15 @@ mark {
   grid-column-start: 1;
   grid-column-end: 3;
 }
+@media screen and (min-width: 1200px) {
+  #pick_filter_sheet > .content {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  #pick_filter_sheet > .content > .button_section {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+}
 #pick_filter_sheet > .content fieldset {
   border: none;
   margin: 0;
@@ -1806,6 +1815,22 @@ mark {
     grid-row-end: 4;
     grid-column-start: 2;
     grid-column-end: 3;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #pick_filter_sheet > .content > fieldset.pick_status {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+  #pick_filter_sheet > .content > fieldset.pick_metadata {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+  #pick_filter_sheet > .content > fieldset.categories {
+    grid-column-start: 1;
+    grid-column-end: 4;
   }
 }
 #pick_filter_sheet > .content > fieldset .filter_option {
@@ -1992,6 +2017,11 @@ mark {
   color: var(--text-secondary-color);
 }
 
+@media screen and (min-width: 1200px) {
+  .filters.with_sheet {
+    max-width: 800px;
+  }
+}
 .footer_space {
   margin-top: calc(var(--space-between-lg) * 2);
 }

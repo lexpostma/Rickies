@@ -113,6 +113,13 @@
 		grid-column-start: 1;
 		grid-column-end: 3;
 	}
+	@media screen and (min-width: var.$break-xl) {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		& > .button_section {
+			grid-column-start: 1;
+			grid-column-end: 4;
+		}
+	}
 	fieldset {
 		border: none;
 		margin: 0;
@@ -236,6 +243,24 @@
 				grid-row-end: 4;
 				grid-column-start: 2;
 				grid-column-end: 3;
+			}
+		}
+		@media screen and (min-width: var.$break-xl) {
+			&.pick_types {
+			}
+			&.pick_status {
+				grid-column-start: 2;
+				grid-column-end: 3;
+			}
+			&.pick_metadata {
+				grid-row-start: 1;
+				grid-row-end: 3;
+				grid-column-start: 3;
+				grid-column-end: 4;
+			}
+			&.categories {
+				grid-column-start: 1;
+				grid-column-end: 4;
 			}
 		}
 		.filter_option {
@@ -389,5 +414,11 @@
 		&:nth-of-type(4) {
 			color: var(--text-secondary-color);
 		}
+	}
+}
+
+@media screen and (min-width: var.$break-xl) {
+	.filters.with_sheet {
+		max-width: 800px;
 	}
 }
