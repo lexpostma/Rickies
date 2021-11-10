@@ -4,13 +4,13 @@
 
 ## [Rickies](https://rickies.co/)
 
-![alt text](public_html/images/hero-leaderboard.jpg)
-
-## [Leaderboard](https://rickies.co/leaderboard)
-
 ![alt text](public_html/images/hero-billofrickies.jpg)
 
 ## [The Bill of Rickies](https://rickies.co/billof)
+
+![alt text](public_html/images/hero-leaderboard.jpg)
+
+## [Host Leaderboard](https://rickies.co/leaderboard)
 
 ![alt text](public_html/images/hero-archive.jpg)
 
