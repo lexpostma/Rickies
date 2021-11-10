@@ -152,8 +152,10 @@ span.need_space--sm {
 /* Custom pull-to-refresh styling */
 .ptr--icon,
 .ptr--text {
-	// padding-top: var.$iX-top;
 	color: white !important;
+}
+.ptr--box {
+	padding-top: var.$iX-top !important;
 }
 
 /* For debugging */

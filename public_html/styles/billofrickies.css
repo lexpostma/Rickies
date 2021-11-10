@@ -250,6 +250,10 @@ span.need_space--sm {
   color: white !important;
 }
 
+.ptr--box {
+  padding-top: env(safe-area-inset-top) !important;
+}
+
 /* For debugging */
 pre {
   font-size: 0.8rem;
