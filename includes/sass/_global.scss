@@ -149,6 +149,12 @@ span.need_space--sm {
 	}
 }
 
+/* Custom pull-to-refresh styling */
+.ptr--ptr {
+	padding-top: var.$iX-top;
+	color: white;
+}
+
 /* For debugging */
 pre {
 	font-size: 0.8rem;

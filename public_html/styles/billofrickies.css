@@ -244,6 +244,12 @@ span.need_space--sm {
     display: inline;
   }
 }
+/* Custom pull-to-refresh styling */
+.ptr--ptr {
+  padding-top: env(safe-area-inset-top);
+  color: white;
+}
+
 /* For debugging */
 pre {
   font-size: 0.8rem;
