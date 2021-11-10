@@ -20,9 +20,12 @@ $winner_ring_size: calc(var(--graphic-size) + 16px);
 $winner_double_ring_size: calc(var(--graphic-size) + 42px);
 
 .avatar_leaderboard {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--space-between-sm);
+	@media screen and (min-width: var.$break-sm) {
+		gap: var(--space-between-lg);
+	}
 	max-width: var.$readability-width;
 	margin: var(--space-between-lg) auto;
 	padding: 0 var(--space-side-padding);
@@ -33,12 +36,6 @@ $winner_double_ring_size: calc(var(--graphic-size) + 42px);
 		align-items: center;
 		order: 0;
 		flex-grow: 1;
-		& + .host {
-			margin-left: var(--space-between-sm);
-			@media screen and (min-width: var.$break-sm) {
-				margin-left: var(--space-between-lg);
-			}
-		}
 		.avatar {
 			margin-bottom: 8px;
 			margin: 8px;

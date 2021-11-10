@@ -351,7 +351,8 @@
 
 #results {
 	margin: 0 auto;
-	padding: var(--space-between-lg) 0 var(--space-between-lg) var(--space-side-padding);
+	grid-template-columns: repeat(4, minmax(88px, 1fr));
+	padding: var(--space-between-lg) var(--space-side-padding);
 	text-align: center;
 	overflow: scroll;
 	width: 100%;
@@ -359,6 +360,9 @@
 .avatar_leaderboard {
 	--chart-size-factor: 1.2;
 	@media screen and (min-width: var.$break-xs) {
+		--chart-size-factor: 1.4;
+	}
+	@media screen and (min-width: var.$break-sm) {
 		--chart-size-factor: 1.5;
 	}
 	.chart-container {
@@ -384,7 +388,6 @@
 		}
 		&:nth-of-type(4) {
 			color: var(--text-secondary-color);
-			padding-right: var(--space-side-padding);
 		}
 	}
 }
