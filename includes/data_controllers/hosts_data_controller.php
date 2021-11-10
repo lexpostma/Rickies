@@ -129,7 +129,7 @@ do {
 					],
 					'buzzkillers' => [
 						'value' => round_if_decimal(check_key('Negative Rate', $fields, 0) * 100),
-						'label' => 'of picks are <a href="' . filter_url('&buzzkill=on') . '">buzzkillers</a>',
+						'label' => 'of picks are <a href="' . filter_url('&buzzkiller=on') . '">buzzkillers</a>',
 						'unit' => '%',
 					],
 					'adjudicated' => [
@@ -182,7 +182,7 @@ do {
 							'%</b> of ' .
 							$id .
 							'’s <a href="' .
-							filter_url('&eventually=on') .
+							filter_url('&ahead_of_its_time=on') .
 							'">wrong picks came true later</a>.',
 						'0hide' => true,
 					],

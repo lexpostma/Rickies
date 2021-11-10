@@ -80,7 +80,7 @@ Includes filters for
 - Pick status (correct, wrong, unknown)
 - Pick type (regular, risky, flexy)
 - Event
-- Metadata (reusable, buzzkill, ahead of its time, half correct, adjudication)
+- Metadata (reusable, buzzkiller, ahead of its time, half correct, adjudication)
 - Categories via pick_category_filters() function
 
 Parameters are:
@@ -282,15 +282,15 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 			</li>';
 
 	$metadata = [
-		'reuse' => [
+		'reusable' => [
 			'label' => 'Eligible for reuse',
 			'emoji' => '♻️',
 		],
-		'buzzkill' => [
-			'label' => 'Buzzkill',
+		'buzzkiller' => [
+			'label' => 'Buzzkiller',
 			'emoji' => '🐝',
 		],
-		'eventually' => [
+		'ahead_of_its_time' => [
 			'label' => 'Ahead of its time',
 			'emoji' => '🔮',
 		],

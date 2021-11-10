@@ -16,8 +16,8 @@
 		</p>
 		<p>
 			<b>Filter picks</b><br/>
-			<a href="/?search=&eventually=on#results">Ahead of its time</a><br/>
-			<a href="/?search=&reuse=on#results">Eligible for reuse</a><br/>
+			<a href="/?search=&ahead_of_its_time=on#results">Ahead of its time</a><br/>
+			<a href="/?search=&reusable=on#results">Eligible for reuse</a><br/>
 		</p>
 	</div>
 </footer> -->

@@ -31,16 +31,16 @@ if (isset($_GET['search']) && $_GET['search'] !== '') {
 }
 
 // Define filters in query
-if (isset($_GET['reuse']) && $_GET['reuse'] === 'on') {
-	$pick_filter['filter_other']['reuse'] = '{Eligible for reuse}=TRUE()';
+if (isset($_GET['reusable']) && $_GET['reusable'] === 'on') {
+	$pick_filter['filter_other']['reusable'] = '{Eligible for reuse}=TRUE()';
 }
 
-if (isset($_GET['buzzkill']) && $_GET['buzzkill'] === 'on') {
-	$pick_filter['filter_other']['buzzkill'] = '{Negative pick}';
+if (isset($_GET['buzzkiller']) && $_GET['buzzkiller'] === 'on') {
+	$pick_filter['filter_other']['buzzkiller'] = '{Negative pick}';
 }
 
-if (isset($_GET['eventually']) && $_GET['eventually'] === 'on') {
-	$pick_filter['filter_other']['eventually'] = '{Came true date}';
+if (isset($_GET['ahead_of_its_time']) && $_GET['ahead_of_its_time'] === 'on') {
+	$pick_filter['filter_other']['ahead_of_its_time'] = '{Came true date}';
 }
 
 if (isset($_GET['adjudicated']) && $_GET['adjudicated'] === 'on') {
@@ -150,8 +150,6 @@ if (isset($_GET['category']) && is_array($_GET['category'])) {
 		$pick_filter['filter_categories'][] = $category;
 	}
 	if (!empty($pick_filter['filter_categories'])) {
-		// echo '<pre>', var_dump($categories_filter), '</pre>';
-
 		// Category are filtered server-side, not in Airtable,
 		// due to difficulty to the formula and the different levels
 		// This removes the picks from the array when they don't match any of the category filters
@@ -180,6 +178,7 @@ if (isset($_GET['category']) && is_array($_GET['category'])) {
 	}
 }
 // echo '<pre>', var_dump($picks_data__array), '</pre>';
+// echo '<pre>', var_dump($pick_filter), '</pre>';
 
 // If no search string and no filters, redirect to /archive
 if ($url_view !== 'archive' && $pick_filter_empty === $pick_filter) {
