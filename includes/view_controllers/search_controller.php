@@ -299,12 +299,27 @@ if ($url_view == 'archive') {
 		$head_custom['title'] = 'Search Rickies for ‘' . substr($pick_filter['search']['string'], 0, 16) . '…’';
 	}
 	$head_custom['description'] =
-		'Search and filter results for ‘' . $pick_filter['search']['string'] . '’ on Rickies.co.';
+		$picks_chart__array['All']['Total'] .
+		' picks were found while searching for ‘' .
+		$pick_filter['search']['string'] .
+		'’ on Rickies.co.';
 	$head_custom['image'] = domain_url() . '/images/hero-search.jpg';
 } else {
 	$head_custom['title'] = 'Search for Rickies';
-	$head_custom['description'] = 'Search and filter results on Rickies.co.';
+	$head_custom['description'] =
+		$picks_chart__array['All']['Total'] . ' picks were found while searching and filtering on Rickies.co.';
 	$head_custom['image'] = domain_url() . '/images/hero-search.jpg';
+}
+
+// Add the enabled filters to the SEO description
+if (!empty($pick_filter['filter_other']) || !empty($pick_filter['filter_categories'])) {
+	$seo_description_add[] = implode(', ', array_keys($pick_filter['filter_other']));
+	if (!empty($pick_filter['filter_categories'])) {
+		$seo_description_add[] = 'categories';
+	}
+	$seo_description_add = implode(', ', $seo_description_add);
+	$head_custom['description'] =
+		$head_custom['description'] . ' Enabled filters are: ' . str_replace('_', ' ', $seo_description_add) . '.';
 }
 
 $head_custom['canonical'] = current_url(true) . 'archive';
