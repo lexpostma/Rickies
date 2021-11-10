@@ -150,9 +150,10 @@ span.need_space--sm {
 }
 
 /* Custom pull-to-refresh styling */
-.ptr--ptr {
-	padding-top: var.$iX-top;
-	color: white;
+.ptr--icon,
+.ptr--text {
+	// padding-top: var.$iX-top;
+	color: white !important;
 }
 
 /* For debugging */
