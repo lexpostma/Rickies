@@ -51,19 +51,19 @@ if (isset($_GET['half_points']) && $_GET['half_points'] === 'on') {
 	$pick_filter['filter_other']['half_points'] = 'OR(Factor<1, {Half correct})';
 }
 
-if (isset($_GET['event'])) {
-	switch ($_GET['event']) {
+if (isset($_GET['event_type'])) {
+	switch ($_GET['event_type']) {
 		case 'annual':
-			$pick_filter['filter_other']['event'] = '{Rickies type}="annual"';
+			$pick_filter['filter_other']['event_type'] = '{Rickies type}="annual"';
 			break;
 		case 'keynote':
-			$pick_filter['filter_other']['event'] = '{Rickies type}="keynote"';
+			$pick_filter['filter_other']['event_type'] = '{Rickies type}="keynote"';
 			break;
 		case 'wwdc':
-			$pick_filter['filter_other']['event'] = '{Event type}="WWDC"';
+			$pick_filter['filter_other']['event_type'] = '{Event type}="WWDC"';
 			break;
 		case 'ungraded':
-			$pick_filter['filter_other']['event'] = 'OR({Rickies status} = "Ungraded", {Rickies status} = "Live")';
+			$pick_filter['filter_other']['event_type'] = 'OR({Rickies status} = "Ungraded", {Rickies status} = "Live")';
 			break;
 		default:
 			break;
@@ -71,15 +71,15 @@ if (isset($_GET['event'])) {
 }
 
 // Get the pick types filter as array
-if (isset($_GET['type']) && is_array($_GET['type'])) {
+if (isset($_GET['pick_type']) && is_array($_GET['pick_type'])) {
 	// Let's iterate through the array
-	foreach ($_GET['type'] as $type) {
+	foreach ($_GET['pick_type'] as $type) {
 		// Add a part to the formula for each type
 		$types_filter[] = 'Type="' . ucfirst($type) . '"';
 	}
 	if (!empty($types_filter)) {
 		// Combine the parts into the formula
-		$pick_filter['filter_other']['type'] = 'OR(' . implode(',', $types_filter) . ')';
+		$pick_filter['filter_other']['pick_type'] = 'OR(' . implode(',', $types_filter) . ')';
 	}
 	unset($types_filter);
 }
@@ -313,6 +313,9 @@ if ($url_view == 'archive') {
 
 // Add the enabled filters to the SEO description
 if (!empty($pick_filter['filter_other']) || !empty($pick_filter['filter_categories'])) {
+	if (!empty($pick_filter['search'])) {
+		$seo_description_add[] = 'search';
+	}
 	$seo_description_add[] = implode(', ', array_keys($pick_filter['filter_other']));
 	if (!empty($pick_filter['filter_categories'])) {
 		$seo_description_add[] = 'categories';

@@ -154,19 +154,19 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 	$output .= '<fieldset class="list pick_types"><ul>';
 	foreach ($types as $type => $emoji) {
 		$output .=
-			'<li class="filter_option"><input type="checkbox" name="type[]" value="' .
+			'<li class="filter_option"><input type="checkbox" name="pick_type[]" value="' .
 			$type .
-			'" id="type_' .
+			'" id="pick_type_' .
 			$type .
 			'" class="clean" ';
 		if (
-			key_exists('type', $user_input['filter_other']) &&
-			strpos($user_input['filter_other']['type'], ucfirst($type)) !== false
+			key_exists('pick_type', $user_input['filter_other']) &&
+			strpos($user_input['filter_other']['pick_type'], ucfirst($type)) !== false
 		) {
 			$output .= 'checked';
 		}
 		$output .=
-			'/><label for="type_' .
+			'/><label for="pick_type_' .
 			$type .
 			'"><span class="emoji">' .
 			$emoji .
@@ -257,8 +257,8 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 	<fieldset class="list pick_metadata">
 		<ul>
 			<li class="filter_option select">
-				<select class="clean" name="event" onchange=" this.dataset.chosen = this.value; " ';
-	if (key_exists('event', $user_input['filter_other'])) {
+				<select class="clean" name="event_type" onchange=" this.dataset.chosen = this.value; " ';
+	if (key_exists('event_type', $user_input['filter_other'])) {
 		$output .= 'data-chosen="set"';
 	} else {
 		$output .= 'data-chosen';
@@ -269,8 +269,8 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 	foreach ($event_select as $value => $label) {
 		$output .= '<option value="' . strtolower($value) . '" ';
 		if (
-			key_exists('event', $user_input['filter_other']) &&
-			strpos($user_input['filter_other']['event'], $value) !== false
+			key_exists('event_type', $user_input['filter_other']) &&
+			strpos($user_input['filter_other']['event_type'], $value) !== false
 		) {
 			$output .= 'selected';
 		}
