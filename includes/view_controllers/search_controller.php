@@ -275,6 +275,7 @@ if ($url_view == 'archive') {
 	$head_custom = [
 		'title' => 'Rickies archive',
 		'description' => 'Archive of all Rickies predictions.',
+		'image' => domain_url() . '/images/hero-archive.jpg',
 	];
 
 	$h1 = 'Rickies archive';
