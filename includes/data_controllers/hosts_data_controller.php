@@ -63,13 +63,30 @@ do {
 					'0hide' => true,
 				],
 			];
+
 			$hosts_data__array[$id]['stats'] = [
-				'events' => [
+				'rickies' => [
 					'ricky_win_rate' => [
 						'value' => round_if_decimal(check_key('Rickies Wins Rate', $fields, 0) * 100),
 						'label' => 'Rickies win rate',
 						'unit' => '%',
 					],
+					'days_annual_chairman' => [
+						'value' => check_key('Days of Annual Chairman', $fields, 0),
+						'label' => 'he’s been Annual Chairman',
+						'unit' => '&nbsp;days',
+						'unit1' => '&nbsp;day',
+						'0hide' => true,
+					],
+					'days_keynote_chairman' => [
+						'value' => check_key('Days of Keynote Chairman', $fields, 0),
+						'label' => 'he’s been Keynote Chairman',
+						'unit' => '&nbsp;days',
+						'unit1' => '&nbsp;day',
+						'0hide' => true,
+					],
+				],
+				'flexies' => [
 					'flexy_win_rate' => [
 						'value' => round_if_decimal(check_key('Flexies Wins Rate', $fields, 0) * 100),
 						'label' => 'Flexies win rate',

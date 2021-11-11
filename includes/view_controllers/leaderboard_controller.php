@@ -111,8 +111,11 @@ function leaderboard_item($host_data)
 	$output .= '<h4>Achievements</h4>';
 	$output .= score_label_item($host_data['achievements'], $host_data['personal']['color']);
 
-	$output .= '<h4>Successes</h4>';
-	$output .= score_label_item($host_data['stats']['events'], $host_data['personal']['color']);
+	$output .= '<h4>Rickies</h4>';
+	$output .= score_label_item($host_data['stats']['rickies'], $host_data['personal']['color']);
+
+	$output .= '<h4>Flexies</h4>';
+	$output .= score_label_item($host_data['stats']['flexies'], $host_data['personal']['color']);
 
 	// Statistics
 	$output .= '<h4>Picks</h4>';
@@ -154,6 +157,8 @@ function score_label_item($array, $color, $display_as_paragraph = false)
 						$stat['value'] = $stat['value'] . '%';
 					} elseif ($stat['unit'] == '$') {
 						$stat['value'] = '$' . $stat['value'];
+					} elseif ($stat['value'] == 1 && array_key_exists('unit1', $stat)) {
+						$stat['value'] = $stat['value'] . $stat['unit1'];
 					} else {
 						$stat['value'] = $stat['value'] . $stat['unit'];
 					}
