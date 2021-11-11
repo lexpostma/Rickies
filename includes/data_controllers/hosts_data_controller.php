@@ -140,79 +140,15 @@ do {
 					],
 				],
 				'coin_flips' => [
-					'coin_flips_won' => [
-						'value' => check_key('Coin Flip Wins Total', $fields),
-						'string' =>
-							$id .
-							' has won <b>' .
-							check_key('Coin Flip Wins Total', $fields) .
-							' of ' .
-							check_key('Coin Flip Participation Count', $fields) .
-							'</b> coin flips, that’s a <b>' .
-							round_if_decimal(check_key('Coin Flip Win Rate', $fields, 0) * 100) .
-							'%</b> win rate.',
-					],
-					'rickies_1_by_coin_flip' => [
-						'value' => check_key('Rickies 1st by Coin Flip', $fields),
-						'string' =>
-							'<b>' .
-							check_key('Rickies 1st by Coin Flip', $fields) .
-							'</b> of these granted him a chairman title.',
-						'0hide' => true,
-					],
-					'preferred_coin_side' => [
-						'value' => check_key('Preferred Coin Side', $fields),
-						'string' =>
-							'He has a preference for <b>' .
-							strtolower(check_key('Preferred Coin Side', $fields)) .
-							'</b> which he chose <b>' .
-							check_key(
-								'Count ' . check_key('Preferred Coin Side', $fields) . ' at Coin Flips',
-								$fields
-							) .
-							'</b> times.',
+					'coin_flips_string' => [
+						'value' => true,
+						'string' => check_key('Coin Flip String', $fields),
 					],
 				],
 				'too_soon' => [
-					'too_soon_rate' => [
-						'value' => round_if_decimal(check_key('Too Soon Rate', $fields, 0) * 100),
-						'string' =>
-							'<b>' .
-							round_if_decimal(check_key('Too Soon Rate', $fields, 0) * 100) .
-							'%</b> of ' .
-							$id .
-							'’s <a href="' .
-							filter_url('&ahead_of_its_time=on') .
-							'">wrong picks came true later</a>.',
-						'0hide' => true,
-					],
-					'too_soon_avg' => [
-						'value' => round_if_decimal(check_key('Avg Time Picked Too Soon', $fields) / 365),
-						'string' =>
-							'On average he is <b>' .
-							round_if_decimal(check_key('Avg Time Picked Too Soon', $fields) / 365) .
-							' years</b> ahead of his time.',
-						'0hide' => true,
-					],
-
-					'too_soon_min' => [
-						'value' => round_if_decimal(check_key('Least Time Picked Too Soon', $fields)),
-						'string' =>
-							'His wrong predictions are between <b>' .
-							round_if_decimal(check_key('Least Time Picked Too Soon', $fields)) .
-							' days</b> and <b>' .
-							round_if_decimal(check_key('Most Time Picked Too Soon', $fields) / 365) .
-							' years</b> to soon.',
-						// '0hide' => true,
-					],
-					'would_have_correct' => [
-						'value' => check_key('Picks Correct By Now', $fields),
-						'string' =>
-							'As of today, he would have had <b>' .
-							check_key('Picks Correct By Now', $fields) .
-							'</b> picks correct instead of ' .
-							check_key('Picks Total Correct Count', $fields) .
-							'.',
+					'too_soon_string' => [
+						'value' => true,
+						'string' => check_key('Ahead of its Time String', $fields),
 					],
 				],
 			];
