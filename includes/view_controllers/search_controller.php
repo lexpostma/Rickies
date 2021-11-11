@@ -122,6 +122,8 @@ if (isset($_GET['host']) && is_array($_GET['host'])) {
 // Get the Rickies event filter
 if (isset($_GET['rickies_event'])) {
 	switch ($_GET['rickies_event']) {
+		case '':
+			break;
 		case 'annual':
 			$pick_filter['filter_other']['rickies_event'] = '{Rickies type}="annual"';
 			break;
