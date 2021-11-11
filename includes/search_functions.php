@@ -22,7 +22,7 @@ Parameters are:
 	$displayed_as_modal -> whether the search content in modally opened, or inline
 	$categories 		-> optionally insert al the possible categories as array
 */
-function pick_filter_element($user_input = false, $displayed_as_modal = false, $categories = [])
+function pick_filter_element($user_input = false, $displayed_as_modal = false, $categories = [], $rickies_events = [])
 {
 	$output = '';
 	if (empty($user_input['search'])) {
@@ -43,7 +43,7 @@ function pick_filter_element($user_input = false, $displayed_as_modal = false, $
 		$output .= search_field($user_input['search']['string']);
 	} else {
 		$output .= search_field($user_input['search']['string'], true);
-		$output .= pick_filter_expandable_sheet($categories, $user_input);
+		$output .= pick_filter_expandable_sheet($categories, $rickies_events, $user_input);
 	}
 
 	$output .= '	</form>';
@@ -91,7 +91,7 @@ Parameters are:
 	$categories	-> array of all categories available to be selected, to be forwarded to pick_category_filters() function
 	$user_input -> array of selected filters by the user, separated into 'filter_other' and 'filter_categories'
 */
-function pick_filter_expandable_sheet($categories, $user_input = [])
+function pick_filter_expandable_sheet($categories, $rickies_events, $user_input = [])
 {
 	$output = '<details id="pick_filter_sheet" ';
 	if (empty($user_input['filter_other'])) {
@@ -251,6 +251,18 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 					<option value>🏆 All Rickies</option>
 					<optgroup label="Only show picks from…">';
 	foreach ($event_select as $value => $label) {
+		$output .= '<option value="' . strtolower($value) . '" ';
+		if (
+			key_exists('rickies_event', $user_input['filter_other']) &&
+			strpos($user_input['filter_other']['rickies_event'], $value) !== false
+		) {
+			$output .= 'selected';
+		}
+		$output .= '>' . $label . '</option>';
+	}
+	$output .= '</optgroup>
+					<optgroup label="From specific Rickies">';
+	foreach ($rickies_events as $value => $label) {
 		$output .= '<option value="' . strtolower($value) . '" ';
 		if (
 			key_exists('rickies_event', $user_input['filter_other']) &&

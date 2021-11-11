@@ -6,6 +6,7 @@ if (!isset($rickies_events__params['fields']) && !$all_event_details) {
 	$rickies_events__params['fields'] = [
 		'Name',
 		'Rickies type',
+		'Event type',
 		'URL',
 		'Status',
 		'Rickies 1st (manual)',
@@ -44,6 +45,7 @@ do {
 					'name' => check_key('Name', $fields),
 					'status' => check_key('Status', $fields, false, 0),
 					'type' => check_key('Rickies type', $fields),
+					'event_type' => check_key('Event type', $fields, false, 0),
 					'type_string' => check_key('Rickies type string', $fields),
 					'url_name' => check_key('URL', $fields),
 					'episode_number' => check_key('Predictions episode number', $fields, '?', 0),
