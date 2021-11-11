@@ -241,8 +241,8 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 	<fieldset class="list pick_metadata">
 		<ul>
 			<li class="filter_option select">
-				<select class="clean" name="event_type" onchange=" this.dataset.chosen = this.value; " ';
-	if (key_exists('event_type', $user_input['filter_other'])) {
+				<select class="clean" name="rickies_event" onchange=" this.dataset.chosen = this.value; " ';
+	if (key_exists('rickies_event', $user_input['filter_other'])) {
 		$output .= 'data-chosen="set"';
 	} else {
 		$output .= 'data-chosen';
@@ -253,8 +253,8 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 	foreach ($event_select as $value => $label) {
 		$output .= '<option value="' . strtolower($value) . '" ';
 		if (
-			key_exists('event_type', $user_input['filter_other']) &&
-			strpos($user_input['filter_other']['event_type'], $value) !== false
+			key_exists('rickies_event', $user_input['filter_other']) &&
+			strpos($user_input['filter_other']['rickies_event'], $value) !== false
 		) {
 			$output .= 'selected';
 		}

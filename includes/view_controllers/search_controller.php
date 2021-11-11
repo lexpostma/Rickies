@@ -73,19 +73,20 @@ if (isset($_GET['half_points']) && $_GET['half_points'] === 'on') {
 	$pick_filter['filter_other']['half_points'] = 'OR(Factor<1, {Half correct})';
 }
 
-if (isset($_GET['event_type'])) {
-	switch ($_GET['event_type']) {
+if (isset($_GET['rickies_event'])) {
+	switch ($_GET['rickies_event']) {
 		case 'annual':
-			$pick_filter['filter_other']['event_type'] = '{Rickies type}="annual"';
+			$pick_filter['filter_other']['rickies_event'] = '{Rickies type}="annual"';
 			break;
 		case 'keynote':
-			$pick_filter['filter_other']['event_type'] = '{Rickies type}="keynote"';
+			$pick_filter['filter_other']['rickies_event'] = '{Rickies type}="keynote"';
 			break;
 		case 'wwdc':
-			$pick_filter['filter_other']['event_type'] = '{Event type}="WWDC"';
+			$pick_filter['filter_other']['rickies_event'] = '{Event type}="WWDC"';
 			break;
 		case 'ungraded':
-			$pick_filter['filter_other']['event_type'] = 'OR({Rickies status} = "Ungraded", {Rickies status} = "Live")';
+			$pick_filter['filter_other']['rickies_event'] =
+				'OR({Rickies status} = "Ungraded", {Rickies status} = "Live")';
 			break;
 		default:
 			break;
@@ -341,12 +342,13 @@ if ($url_view == 'archive') {
 // Add the enabled filters to the SEO description
 if (!empty($pick_filter['filter_other']) || !empty($pick_filter['filter_categories'])) {
 	if (!empty($pick_filter['search'])) {
-		$seo_description_add[] = 'search';
+		$seo_description_add[] = 'Search';
 	}
-	$seo_description_add[] = implode(', ', array_keys($pick_filter['filter_other']));
+	$seo_description_add[] = ucwords(implode(', ', array_keys($pick_filter['filter_other'])));
 	if (!empty($pick_filter['filter_categories'])) {
-		$seo_description_add[] = 'categories';
+		$seo_description_add[] = 'Categories';
 	}
+
 	$seo_description_add = implode(', ', $seo_description_add);
 	$head_custom['description'] =
 		$head_custom['description'] . ' Enabled filters are: ' . str_replace('_', ' ', $seo_description_add) . '.';
