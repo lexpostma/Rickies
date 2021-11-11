@@ -263,13 +263,13 @@ if (
 	// Ungraded, so future keynote
 	$description .=
 		'What will Apple announce at the keynote on ' .
-		date_to_string_label($rickies_data['details']['event_data']['date']) .
+		date_to_string_label($rickies_data['details']['link_data_apple']['date']) .
 		'? And who will become Keynote Chairman? Follow along with this interactive scorecard.';
 } else {
 	// Graded keynote, past
 	$description .=
 		'What has Apple announced at the keynote on ' .
-		date_to_string_label($rickies_data['details']['event_data']['date']) .
+		date_to_string_label($rickies_data['details']['link_data_apple']['date']) .
 		'? And how did Myke, Stephen, and Federico perform with their predictions for this event?';
 }
 
