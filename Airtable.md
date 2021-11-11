@@ -157,3 +157,69 @@ IF(
 ```
 
 So here, it goes from 13 days to 1 week, 8 weeks to 2 months, and 12 months to 1 year etc.
+
+## Paragraph with statistics
+
+Stats about how hosts are ahead of its time
+
+```
+'<b>'
+& ROUND({Too Soon Rate}*100,1)
+& '%</b> of '
+& {First name}
+& '’s <a href="/?search=&ahead_of_its_time=on">wrong picks came true later</a>.'
+
+& ' On average he is <b>'
+& ROUND({Avg Time Picked Too Soon}/365,1)
+& ' years</b> ahead of his time.'
+
+& ' His wrong predictions are between <b>' 
+& {Least Time Picked Too Soon}
+& ' days</b> and <b>'
+& ROUND({Most Time Picked Too Soon}/365,1) 
+& ' years</b> to soon.'
+
+& ' As of today, he would have had <b>'
+& {Picks Correct By Now}
+& '</b> picks correct instead of '
+& {Picks Total Correct Count}
+& '.'
+```
+
+Stats about the host’s coin flips
+
+```
+{First name}
+& ' has won <b>' 
+& {Coin Flip Wins Total}
+& ' of ' 
+& {Coin Flip Participation Count}
+& '</b> coin flips, that’s a <b>'
+& ROUND({Coin Flip Win Rate}*100,1)
+& '%</b> win rate.'
+
+& IF(
+	{Rickies 1st by Coin Flip},
+	' <b>'
+	& {Rickies 1st by Coin Flip}
+	& '</b> of these granted him a chairman title.'
+)
+& IF(
+	{Preferred Coin Side},
+	' He has a preference for <b>'
+	& LOWER({Preferred Coin Side})
+	& '</b> which he chose <b>'
+	& IF(
+		{Preferred Coin Side} = "Heads",
+		{Count Heads at Coin Flips},
+		{Count Tails at Coin Flips}
+	)
+	& '</b> times, and won <b>'
+	& IF(
+		{Preferred Coin Side} = "Heads",
+		{Count Wins with Heads at Coin Flips},
+		{Count Wins with Tails at Coin Flips}
+	)
+	& '</b> times with.'
+)
+```
