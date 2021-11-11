@@ -1001,74 +1001,6 @@ li.list_item a[href^="https://github.com"] .secondary_string:before {
   content: url("/images/github.svg");
 }
 
-.tag {
-  color: #fff !important;
-  display: inline-block;
-  background: var(--tag-color);
-  padding: 0px 0.4em;
-  border-radius: var(--corner-radius);
-  border: var(--graphic-border);
-  --first-color: 0.7;
-  --next-color: 0.5;
-}
-.tag:not(:last-of-type) {
-  margin-right: 4px;
-}
-@media (prefers-color-scheme: dark) {
-  .tag {
-    --first-color: 0.8;
-    --next-color: 0.4;
-  }
-}
-.tag.cat_hw {
-  background: rgba(var(--relay-blue-rgb), var(--first-color));
-}
-.tag.cat_hw ~ .tag.cat_hw {
-  background: rgba(var(--relay-blue-rgb), var(--next-color));
-}
-.tag.cat_sw {
-  background: rgba(var(--connected-blue-rgb), var(--first-color));
-}
-.tag.cat_sw ~ .tag.cat_sw {
-  background: rgba(var(--connected-blue-rgb), var(--next-color));
-}
-.tag.cat_cloud {
-  background: rgba(var(--connected-purple-rgb), var(--first-color));
-}
-.tag.cat_cloud ~ .tag.cat_cloud {
-  background: rgba(var(--connected-purple-rgb), var(--next-color));
-}
-.tag.cat_people {
-  background: rgba(var(--connected-green-rgb), var(--first-color));
-}
-.tag.cat_people ~ .tag.cat_people {
-  background: rgba(var(--connected-green-rgb), var(--next-color));
-}
-
-a.tag {
-  text-decoration: none;
-  transition: 300ms background ease;
-}
-a.tag:hover.cat_hw {
-  background: var(--relay-blue) !important;
-}
-a.tag:hover.cat_sw {
-  background: var(--connected-blue) !important;
-}
-a.tag:hover.cat_cloud {
-  background: var(--connected-purple) !important;
-}
-a.tag:hover.cat_people {
-  background: var(--connected-green) !important;
-}
-
-p.category_tags {
-  margin-bottom: -4px;
-}
-p.category_tags .tag {
-  margin-bottom: 4px;
-}
-
 .host_picks h3 {
   overflow: auto;
 }
@@ -1203,6 +1135,74 @@ li.pick_item.no_results {
 }
 li.pick_item.manual {
   background-color: rgba(239, 123, 0, 0.15);
+}
+
+.tag {
+  color: #fff !important;
+  display: inline-block;
+  background: var(--tag-color);
+  padding: 0px 0.4em;
+  border-radius: var(--corner-radius);
+  border: var(--graphic-border);
+  --first-color: 0.7;
+  --next-color: 0.5;
+}
+.tag:not(:last-of-type) {
+  margin-right: 4px;
+}
+@media (prefers-color-scheme: dark) {
+  .tag {
+    --first-color: 0.8;
+    --next-color: 0.4;
+  }
+}
+.tag.cat_hw {
+  background: rgba(var(--relay-blue-rgb), var(--first-color));
+}
+.tag.cat_hw ~ .tag.cat_hw {
+  background: rgba(var(--relay-blue-rgb), var(--next-color));
+}
+.tag.cat_sw {
+  background: rgba(var(--connected-blue-rgb), var(--first-color));
+}
+.tag.cat_sw ~ .tag.cat_sw {
+  background: rgba(var(--connected-blue-rgb), var(--next-color));
+}
+.tag.cat_cloud {
+  background: rgba(var(--connected-purple-rgb), var(--first-color));
+}
+.tag.cat_cloud ~ .tag.cat_cloud {
+  background: rgba(var(--connected-purple-rgb), var(--next-color));
+}
+.tag.cat_people {
+  background: rgba(var(--connected-green-rgb), var(--first-color));
+}
+.tag.cat_people ~ .tag.cat_people {
+  background: rgba(var(--connected-green-rgb), var(--next-color));
+}
+
+a.tag {
+  text-decoration: none;
+  transition: 300ms background ease;
+}
+a.tag:hover.cat_hw {
+  background: var(--relay-blue) !important;
+}
+a.tag:hover.cat_sw {
+  background: var(--connected-blue) !important;
+}
+a.tag:hover.cat_cloud {
+  background: var(--connected-purple) !important;
+}
+a.tag:hover.cat_people {
+  background: var(--connected-green) !important;
+}
+
+p.category_tags {
+  margin-bottom: -4px;
+}
+p.category_tags .tag {
+  margin-bottom: 4px;
 }
 
 @keyframes gradient {
