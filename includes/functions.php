@@ -36,7 +36,7 @@ function current_url($custom = false)
 
 function filter_url($query = '')
 {
-	return current_url(true) . '?search=' . $query;
+	return current_url(true) . '?search=' . $query . '#results';
 }
 
 function navigation_bar($active = false)
