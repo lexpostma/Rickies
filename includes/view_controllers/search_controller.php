@@ -282,6 +282,11 @@ foreach ($picks_data__array as $type => $hosts) {
 // Count the total picks per host
 foreach ($picks_chart__array as $host => $chart_data) {
 	$picks_chart__array[$host]['Total'] = array_sum($chart_data);
+	if (!in_array('ahead_of_its_time', $pick_display)) {
+		$picks_chart__array[$host]['Wrong'] =
+			$picks_chart__array[$host]['Wrong'] + $picks_chart__array[$host]['Eventually'];
+		$picks_chart__array[$host]['Eventually'] = 0;
+	}
 }
 // echo '<pre>', var_dump($picks_chart__array), '</pre>';
 
