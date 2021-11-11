@@ -1070,12 +1070,7 @@ li.pick_item p.pick span.points.wrong {
 li.pick_item p.pick span.points.wrong.eventually {
   background-origin: border-box;
   background-position: center;
-}
-li.pick_item p.pick span.points.wrong.eventually.regular, li.pick_item p.pick span.points.wrong.eventually.risky {
-  background-image: linear-gradient(120deg, var(--connected-red) 30%, var(--connected-green) 90%);
-}
-li.pick_item p.pick span.points.wrong.eventually.flexy {
-  background-image: linear-gradient(120deg, var(--connected-red) 30%, var(--connected-blue) 90%);
+  background-image: linear-gradient(120deg, var(--connected-red) 10%, var(--connected-purple) 80%);
 }
 li.pick_item p.pick span.points.risky.correct:after, li.pick_item p.pick span.points.risky.wrong:after {
   content: "";
