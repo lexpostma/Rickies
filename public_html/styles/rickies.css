@@ -1097,6 +1097,7 @@ li.pick_item .note p {
   color: var(--text-secondary-color);
   font-size: 0.75rem;
 }
+li.pick_item .note p.category_tags,
 li.pick_item .note p + p {
   margin-top: 4px;
 }
