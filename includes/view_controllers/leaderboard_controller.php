@@ -23,6 +23,32 @@ function leaderboard_item_bundle($input)
 	return $output . $chart_script;
 }
 
+function host_titles($title_array)
+{
+	$output = '<ul>';
+	// First show the priority titles
+	$title_count = 0;
+	foreach ($title_array as $key => $value) {
+		if (strpos($value, 'priority') !== false) {
+			$output .= '<li>' . $value . '</li>';
+			unset($title_array[$key]);
+			$title_count++;
+		}
+	}
+	// Shuffle and show random leftover titles, until the total is 5
+	shuffle($title_array);
+	foreach ($title_array as $key => $value) {
+		if ($title_count == 5) {
+			break;
+		} else {
+			$output .= '<li>' . $value . '</li>';
+			$title_count++;
+		}
+	}
+	$output .= '</ul>';
+	return $output;
+}
+
 function leaderboard_item($host_data)
 {
 	// Open section
@@ -75,29 +101,11 @@ function leaderboard_item($host_data)
 		$host_data['personal']['website_name'] .
 		'</a></p>';
 
-	// Title
-	$output .= '<h4>Current titles</h4><ul>';
+	// Core Titles
+	$output .= '<h4>Current titles</h4>' . host_titles($host_data['titles']);
 
-	// First show the priority titles
-	$title_count = 0;
-	foreach ($host_data['titles'] as $key => $value) {
-		if (strpos($value, 'priority') !== false) {
-			$output .= '<li>' . $value . '</li>';
-			unset($host_data['titles'][$key]);
-			$title_count++;
-		}
-	}
-	// Shuffle and show random leftover titles, until the total is 5
-	shuffle($host_data['titles']);
-	foreach ($host_data['titles'] as $key => $value) {
-		if ($title_count == 5) {
-			break;
-		} else {
-			$output .= '<li>' . $value . '</li>';
-			$title_count++;
-		}
-	}
-	$output .= '</ul>';
+	// Other Titles
+	$output .= '<h4>Other titles</h4>' . host_titles($host_data['titles_other']);
 
 	// Achievements
 	$output .= '<h4>Achievements</h4>';

@@ -34,6 +34,7 @@ do {
 			$hosts_data__array[$id]['personal']['twitter_url'] = check_key('Twitter', $fields);
 			$hosts_data__array[$id]['images']['photo'] = airtable_image_url(check_key('Photo', $fields, false, 0));
 			$hosts_data__array[$id]['titles'] = goat_referral(check_key('Titles HTML', $fields));
+			$hosts_data__array[$id]['titles_other'] = goat_referral(check_key('Other Titles HTML', $fields));
 
 			$hosts_data__array[$id]['achievements'] = [
 				'annual_rickies_wins' => [
