@@ -80,9 +80,15 @@ do {
 						'label' => 'Flexies lose rate',
 						'unit' => '%',
 					],
-					'donations' => [
+					'donations_total' => [
 						'value' => check_key('Flexies Donation Amount', $fields),
 						'label' => 'donated to charities',
+						'unit' => "$",
+						'0hide' => true,
+					],
+					'donations_biggest' => [
+						'value' => check_key('Flexies Biggest Single Donation Amount', $fields),
+						'label' => 'biggest single donation',
 						'unit' => "$",
 						'0hide' => true,
 					],
