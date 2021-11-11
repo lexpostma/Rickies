@@ -80,7 +80,7 @@ do {
 					],
 					'days_keynote_chairman' => [
 						'value' => check_key('Days of Keynote Chairman', $fields, 0),
-						'label' => 'he’s been Keynote Chairman',
+						'label' => 'acting Keynote Chairman',
 						'unit' => '&nbsp;days',
 						'unit1' => '&nbsp;day',
 						'0hide' => true,
@@ -91,6 +91,11 @@ do {
 						'value' => round_if_decimal(check_key('Flexies Wins Rate', $fields, 0) * 100),
 						'label' => 'Flexies win rate',
 						'unit' => '%',
+					],
+					'charity_choice_due_to_coin' => [
+						'value' => check_key('Chose Charity Due to Coin Flip', $fields),
+						'label' => 'Flexies won thanks to a coin flip',
+						'0hide' => true,
 					],
 					'flexy_loss_rate' => [
 						'value' => round_if_decimal(check_key('Flexies Lost Rate', $fields, 0) * 100),
@@ -107,6 +112,12 @@ do {
 						'value' => check_key('Flexies Biggest Single Donation Amount', $fields),
 						'label' => 'biggest single donation',
 						'unit' => "$",
+						'0hide' => true,
+					],
+					'donation_due_to_coin' => [
+						'value' => check_key('Donated Due to Coin Flip', $fields),
+						'label' => 'donations due to a coin flip',
+						'label1' => 'donation due to a coin flip',
 						'0hide' => true,
 					],
 				],

@@ -261,7 +261,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 		$output .= '>' . $label . '</option>';
 	}
 	$output .= '</optgroup>
-					<optgroup label="From specific Rickies">';
+					<optgroup label="Or from specific Rickies…">';
 	foreach ($rickies_events as $value => $label) {
 		$output .= '<option value="' . strtolower($value) . '" ';
 		if (

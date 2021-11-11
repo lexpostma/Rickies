@@ -892,6 +892,16 @@ button.top_button,
     transform: rotate(-180deg);
   }
 }
+@media screen and (min-width: 768px) and (hover: hover) {
+  #close_button.show:hover {
+    transform: scale(1.2) rotate(-180deg);
+  }
+}
+@media screen and (min-width: 768px) {
+  #close_button.show:focus, #close_button.show:active {
+    transform: scale(1.1) rotate(-180deg);
+  }
+}
 
 aside.slider {
   padding-bottom: 100px;

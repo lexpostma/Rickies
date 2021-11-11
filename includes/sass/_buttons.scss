@@ -66,6 +66,15 @@ button.top_button,
 		transform: scale(1) rotate(0deg);
 		&.show {
 			transform: rotate(-180deg);
+			@media (hover: hover) {
+				&:hover {
+					transform: scale(1.2) rotate(-180deg);
+				}
+			}
+			&:focus,
+			&:active {
+				transform: scale(1.1) rotate(-180deg);
+			}
 		}
 	}
 }
