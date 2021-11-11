@@ -143,9 +143,9 @@ $rickies_events__array[$id]['details'] = [
 	'more_data_archive' => [
 		'url' => filter_url('&rickies_event=' . $rickies_events__array[$id]['url_name']),
 		'url_internal' => true,
-		// 'img_url' => '/images/bill-of-rickies-avatar.png',
+		'img_url' => '/images/archive-avatar.png',
 		'label1' => 'Show picks in archive',
-		'label3' => 'Complete with metadata',
+		'label3' => 'Complete with metadata and filter options',
 	],
 ];
 
