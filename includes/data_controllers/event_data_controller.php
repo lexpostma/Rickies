@@ -2,6 +2,27 @@
 
 // Rickies _data_ controller, general
 
+if (!isset($rickies_events__params['fields']) && !$all_event_details) {
+	$rickies_events__params['fields'] = [
+		'Name',
+		'Rickies type',
+		'URL',
+		'Status',
+		'Rickies 1st (manual)',
+		'Predictions episode date',
+		'Predictions episode number',
+		'Predictions episode artwork',
+		'Rickies artwork',
+		'Event artwork',
+		'Artwork background color',
+		'Interactive',
+	];
+}
+
+if (!isset($rickies_events__params['filterByFormula'])) {
+	$rickies_events__params['filterByFormula'] = 'AND( Published = TRUE() )';
+}
+
 $rickies_events__array = [];
 $rickies_events__request = $airtable->getContent('Rickies', $rickies_events__params);
 do {
