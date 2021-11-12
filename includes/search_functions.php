@@ -232,10 +232,10 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 
 	// Filter for interesting stats and metadata
 	$event_select = [
-		'annual' => '📆 Annual Rickies',
-		'keynote' => '📽 Keynote Rickies',
-		'WWDC' => '💻 WWDC Rickies',
-		'ungraded' => '🟠 Ungraded Rickies',
+		'annual' => '📆&emsp14;&emsp14;Annual Rickies',
+		'keynote' => '📽&emsp14;&emsp14;Keynote Rickies',
+		'WWDC' => '💻&emsp14;&emsp14;WWDC Rickies',
+		'ungraded' => '🟠&emsp14;&emsp14;Ungraded Rickies',
 	];
 	$output .= '
 	<fieldset class="list pick_metadata">
@@ -248,7 +248,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 		$output .= 'data-chosen';
 	}
 	$output .= '>
-					<option value>🏆 All Rickies</option>
+					<option value>🏆&emsp14;&emsp14;All Rickies</option>
 					<optgroup label="Only show picks from…">';
 	foreach ($event_select as $value => $label) {
 		$output .= '<option value="' . strtolower($value) . '" ';
@@ -324,10 +324,9 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 
 	// Filter for changing view
 	$pick_display_select = [
-		'clean' => '🧹 Just the picks',
-		'categories' => '🏷 Show categories',
-		'age' => '🗓 Show age of picks',
-		// 'became_true' => '⏳ Show how pick became true',
+		'clean' => '🧹&emsp14;&emsp14;Just the picks',
+		'categories' => '🏷&emsp14;&emsp14;Show categories',
+		'age' => '🗓&emsp14;&emsp14;Show age of picks',
 	];
 	$output .= '
 			<li class="filter_option select">
@@ -338,7 +337,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 		$output .= 'data-chosen';
 	}
 	$output .= '>
-					<option value>🗂 All metadata</option>
+					<option value>🗂&emsp14;&emsp14;All metadata</option>
 					<optgroup label="Show picks and…">';
 	foreach ($pick_display_select as $value => $label) {
 		$output .= '<option value="' . $value . '" ';

@@ -2,10 +2,6 @@
 
 a {
 	font-weight: 500;
-	span.emoji {
-		text-decoration: none;
-		display: inline-block;
-	}
 
 	// Add Twitter/GitHub logos to their URLs
 	&:not(.list_item_content) {

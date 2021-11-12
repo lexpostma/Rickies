@@ -330,10 +330,6 @@ nav a:active {
 a {
   font-weight: 500;
 }
-a span.emoji {
-  text-decoration: none;
-  display: inline-block;
-}
 a:not(.list_item_content)[href^="https://github.com"]:after, a:not(.list_item_content)[href^="https://twitter.com"]:after {
   display: inline-block;
   margin-left: 0.3em;
@@ -1334,16 +1330,6 @@ p.category_tags .tag {
   margin-left: var(--space-between-md);
   margin-top: 6px;
 }
-.host_stats .host_item_content span.emoji {
-  font-family: "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, emoji, sans-serif;
-  font-variant-emoji: emoji;
-  display: inline-block;
-  width: 1.3em;
-  margin-right: 0.4em;
-  overflow: hidden;
-  vertical-align: top;
-  white-space: nowrap;
-}
 .host_stats .host_item_content h4 {
   margin-top: var(--space-between-lg);
 }
@@ -1934,9 +1920,6 @@ mark {
   max-width: 100px;
   height: auto;
 }
-#pick_filter_sheet > .content label .emoji {
-  margin-right: 4px;
-}
 
 .button_section {
   display: flex;
@@ -2099,6 +2082,19 @@ h4 {
   margin: 0;
 }
 
+span.emoji {
+  font-family: "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, emoji, sans-serif;
+  font-variant-emoji: emoji;
+  display: inline-block;
+  width: 1.3em;
+  margin-right: 0.4em;
+  overflow: hidden;
+  vertical-align: top;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -2110,7 +2106,6 @@ ul.bullet_list > li {
   margin: 8px 0;
 }
 ul.bullet_list > li span.emoji {
-  flex-shrink: 0;
   margin-right: 8px;
 }
 

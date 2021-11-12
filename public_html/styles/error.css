@@ -330,10 +330,6 @@ nav a:active {
 a {
   font-weight: 500;
 }
-a span.emoji {
-  text-decoration: none;
-  display: inline-block;
-}
 a:not(.list_item_content)[href^="https://github.com"]:after, a:not(.list_item_content)[href^="https://twitter.com"]:after {
   display: inline-block;
   margin-left: 0.3em;

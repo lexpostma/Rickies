@@ -27,6 +27,19 @@ h4 {
 	margin: 0;
 }
 
+span.emoji {
+	font-family: var.$emoji-font;
+	font-variant-emoji: emoji;
+	display: inline-block;
+	width: 1.3em;
+	margin-right: 0.4em;
+	overflow: hidden;
+	vertical-align: top;
+	white-space: nowrap;
+	flex-shrink: 0;
+	text-decoration: none;
+}
+
 ul {
 	margin: 0;
 	padding: 0;
@@ -37,7 +50,6 @@ ul.bullet_list > li {
 	display: flex;
 	margin: 8px 0;
 	span.emoji {
-		flex-shrink: 0;
 		margin-right: 8px;
 	}
 }

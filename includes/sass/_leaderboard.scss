@@ -1,6 +1,4 @@
 @use "variables" as var;
-$emoji-font: 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', Times, Symbola, Aegyptus, Code2000, Code2001,
-	Code2002, Musica, emoji, sans-serif;
 
 // Gradient background (aka winner ring) animation
 // Via https://codepen.io/P1N2O/pen/pyBNzX
@@ -146,16 +144,6 @@ $winner_double_ring_size: calc(var(--graphic-size) + 42px);
 		& > ul > li > a {
 			// display: flex;
 		}
-		span.emoji {
-			font-family: $emoji-font;
-			font-variant-emoji: emoji;
-			display: inline-block;
-			width: 1.3em;
-			margin-right: 0.4em;
-			overflow: hidden;
-			vertical-align: top;
-			white-space: nowrap;
-		}
 		h4 {
 			margin-top: var(--space-between-lg);
 		}
@@ -201,7 +189,7 @@ table.full_stats {
 	.chart_pick_type {
 		position: relative;
 		.chart_emoji {
-			font-family: $emoji-font;
+			font-family: var.$emoji-font;
 			font-variant-emoji: emoji;
 			position: absolute;
 			left: 0;
