@@ -1069,22 +1069,6 @@ footer#footer p#refresh_page,
 footer#footer p#promote_webapp {
   margin-bottom: var(--space-between-md);
 }
-footer#footer_links {
-  background: rgba(var(--relay-blue-rgb), 0.8);
-}
-footer#footer_links div {
-  margin: auto;
-  max-width: 650px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-footer#footer_links p {
-  margin: 0 auto;
-}
-footer#footer_links a {
-  white-space: nowrap;
-}
 
 p#refresh_page,
 p#promote_webapp {

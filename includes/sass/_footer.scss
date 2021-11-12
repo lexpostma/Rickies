@@ -25,22 +25,6 @@ footer {
 			margin-bottom: var(--space-between-md);
 		}
 	}
-	&#footer_links {
-		background: rgba(var(--relay-blue-rgb), 0.8);
-		div {
-			margin: auto;
-			max-width: var.$readability-width;
-			display: flex;
-			justify-content: center;
-			align-items: flex-start;
-		}
-		p {
-			margin: 0 auto;
-		}
-		a {
-			white-space: nowrap;
-		}
-	}
 }
 p#refresh_page,
 p#promote_webapp {
