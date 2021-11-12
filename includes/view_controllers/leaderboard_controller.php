@@ -38,10 +38,10 @@ function host_titles($title_array)
 			$title_count++;
 		}
 	}
-	// Shuffle and show random leftover titles, until the total is 5
+	// Shuffle and show random leftover titles, until the total is 4
 	shuffle($title_array);
 	foreach ($title_array as $key => $value) {
-		if ($title_count == 5) {
+		if ($title_count == 4) {
 			break;
 		} else {
 			$output .= '<li>' . $value . '</li>';
