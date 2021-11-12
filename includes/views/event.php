@@ -59,7 +59,7 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 <nav class="nav_container">
 	<div id="statusbar"></div>
 	<div id="nav_anchor"></div>
-	<div id="nav_content">
+	<div id="nav_content_sticky" class="nav_content">
 		<div class="nav_content--items">
 <?php
 if (array_key_exists('Rickies', $picks_data__array)) { ?>

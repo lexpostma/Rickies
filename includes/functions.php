@@ -44,7 +44,7 @@ function navigation_bar($active = false)
 	$output =
 		'
 
-<nav id="nav_content" class="home" style="animation-delay: ' .
+<nav class="nav_content multicolor" style="animation-delay: ' .
 		rand(-50, 0) .
 		's;">
 	<div class="nav_content--items">

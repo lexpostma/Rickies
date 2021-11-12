@@ -57,9 +57,9 @@ $statusbar: var.$iX-top;
 	);
 }
 
-#nav_content {
+.nav_content {
 	background-color: var(--connected-blue);
-	&.home {
+	&.multicolor {
 		@include var.connected_background(40s);
 	}
 	text-align: center;
@@ -100,7 +100,7 @@ nav.nav_container {
 	position: relative;
 	// To prevent margins of elements before/after from collapsing
 	height: 1px;
-	#nav_content {
+	#nav_content_sticky {
 		position: absolute;
 		right: 0;
 		left: 0;
@@ -112,7 +112,7 @@ nav.nav_container {
 		#statusbar {
 			background-image: none;
 		}
-		#nav_content {
+		#nav_content_sticky {
 			position: fixed;
 			padding-top: $statusbar;
 		}

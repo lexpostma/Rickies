@@ -558,41 +558,41 @@ body {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.395) 9.7%, rgba(0, 0, 0, 0.381) 18.7%, rgba(0, 0, 0, 0.358) 27.2%, rgba(0, 0, 0, 0.33) 35.1%, rgba(0, 0, 0, 0.296) 42.6%, rgba(0, 0, 0, 0.259) 49.6%, rgba(0, 0, 0, 0.22) 56.2%, rgba(0, 0, 0, 0.18) 62.5%, rgba(0, 0, 0, 0.141) 68.4%, rgba(0, 0, 0, 0.104) 74.1%, rgba(0, 0, 0, 0.07) 79.5%, rgba(0, 0, 0, 0.042) 84.8%, rgba(0, 0, 0, 0.019) 89.9%, rgba(0, 0, 0, 0.005) 95%, rgba(0, 0, 0, 0) 100%);
 }
 
-#nav_content {
+.nav_content {
   background-color: var(--connected-blue);
   text-align: center;
   padding: 0;
   overflow-x: auto;
 }
-#nav_content.home {
+.nav_content.multicolor {
   animation-name: connected_colors;
   animation-duration: 40s;
   animation-iteration-count: infinite;
 }
-#nav_content .nav_content--items {
+.nav_content .nav_content--items {
   display: inline-flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
   padding: 0 var(--space-between-sm);
 }
-#nav_content .nav_content--items a {
+.nav_content .nav_content--items a {
   transition: 200ms padding ease-in-out;
   padding: var(--space-between-md) var(--space-between-sm);
   white-space: nowrap;
 }
-#nav_content .nav_content--items a.active {
+.nav_content .nav_content--items a.active {
   opacity: 1;
   font-weight: bold;
   text-decoration: none;
 }
 @media screen and (min-width: 576px) {
-  #nav_content .nav_content--items a {
+  .nav_content .nav_content--items a {
     padding: var(--space-between-md);
   }
 }
 @media (hover: hover) {
-  #nav_content .nav_content--items a:hover {
+  .nav_content .nav_content--items a:hover {
     background: var(--element-hover-color);
   }
 }
@@ -605,7 +605,7 @@ nav.nav_container {
   position: relative;
   height: 1px;
 }
-nav.nav_container #nav_content {
+nav.nav_container #nav_content_sticky {
   position: absolute;
   right: 0;
   left: 0;
@@ -615,7 +615,7 @@ nav.nav_container #nav_content {
 nav.nav_container.sticky #statusbar {
   background-image: none;
 }
-nav.nav_container.sticky #nav_content {
+nav.nav_container.sticky #nav_content_sticky {
   position: fixed;
   padding-top: env(safe-area-inset-top);
 }

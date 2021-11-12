@@ -38,7 +38,7 @@ function navigate_section(section, first = false) {
 }
 
 // STICKY MENU
-const nav_content = document.getElementById('nav_content');
+const nav_content = document.getElementById('nav_content_sticky');
 const nav_anchor = document.getElementById('nav_anchor');
 var nav_position = nav_anchor.getBoundingClientRect().top;
 var statusbar_height = document.getElementById('statusbar').offsetHeight;

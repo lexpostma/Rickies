@@ -7,7 +7,8 @@
 </header>
 
 <?php
-echo no_script_banner();
+echo navigation_bar($url_view) . no_script_banner();
+
 if (empty($picks_data__array)) {
 	if (!empty($pick_filter['search'])) {
 		echo '<section id="results"><p>No predictions match ‘<mark>' .
@@ -88,7 +89,7 @@ if (empty($picks_data__array)) {
 <nav class="nav_container">
 	<div id="statusbar"></div>
 	<div id="nav_anchor"></div>
-	<div id="nav_content">
+	<div id="nav_content_sticky" class="nav_content">
 		<div class="nav_content--items">
 <?php
 if (array_key_exists('Rickies', $picks_data__array)) { ?>
