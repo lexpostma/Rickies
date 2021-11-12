@@ -243,9 +243,9 @@ foreach ($hosts_data__array as $host) {
 $introduction =
 	'<p>With <b>' .
 	$status_data__array['Completed'] .
-	' graded</b> Rickies officially behind us, this is the leaderboard of overall wins, picks, risk, and <span title="Pokémon! 😉">flexing power (FP)</span> of the hosts of Connected.</p><p>The predictions charts and statistics also include picks from <b class="nowrap">' .
+	' graded</b> Rickies officially behind us, this is the leaderboard of overall wins, picks, risk, and <span title="Pokémon! 😉">flexing power (FP)</span> of the hosts of Connected.</p><p>The predictions charts and statistics include picks from all Rickies, including the <a href="/latest-keynote">latest Keynote Rickies</a> and <a href="/latest-annual">Annual Rickies</a>, picks from <a href="/ungraded"><b class="nowrap">' .
 	digit_text($status_data__array['Ungraded']) .
-	' ungraded</b> Rickies, and picks from ' .
+	' ungraded</b></a> Rickies, and picks from ' .
 	digit_text($status_data__array['Pre-Rickies']) .
 	' earlier prediction episodes that predate the (<a href="/billof/keynote-sep-2018" title="The Bill of Rickies">Bill of</a>) Rickies as partial points had been awarded.</p>';
 
