@@ -376,7 +376,7 @@
 	grid-template-columns: repeat(4, minmax(96px, 1fr));
 	padding: var(--space-between-lg) var(--space-side-padding);
 	text-align: center;
-	overflow-x: scroll;
+	overflow: scroll hidden;
 	width: 100%;
 }
 .avatar_leaderboard {
