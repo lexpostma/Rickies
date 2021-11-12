@@ -131,6 +131,10 @@ $break-xxl: 1400px;
 	animation-duration: $duration;
 	animation-iteration-count: infinite;
 }
+@mixin underline() {
+	text-decoration: underline;
+	text-underline-offset: 0.14em;
+}
 
 @keyframes connected_colors {
 	0% {

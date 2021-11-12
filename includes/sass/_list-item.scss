@@ -73,7 +73,7 @@ li.list_item {
 		.list_item_labels {
 			.label1 {
 				font-weight: 500;
-				text-decoration: underline;
+				@include var.underline;
 			}
 			.label2 {
 				color: var(--text-primary-color);

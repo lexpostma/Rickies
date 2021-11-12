@@ -259,6 +259,8 @@ pre {
 
 a:link, a:visited {
   color: var(--link-color);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
 }
 @media (hover: hover) {
   a:hover {
@@ -295,6 +297,7 @@ nav a.js_link {
   cursor: pointer;
   opacity: 0.8;
   text-decoration: underline;
+  text-underline-offset: 0.14em;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -576,6 +579,7 @@ body {
   transition: 300ms padding ease-in-out, 300ms background ease-in-out;
   padding: var(--space-between-md) var(--space-between-sm);
   white-space: nowrap;
+  text-decoration: none;
 }
 .nav_content .nav_content--items a.active {
   opacity: 1;
@@ -605,7 +609,12 @@ body {
 }
 @media (hover: hover) {
   .nav_content .nav_content--items a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
     background: var(--element-hover-color);
+  }
+  .nav_content .nav_content--items a:hover.active {
+    text-decoration: none;
   }
   .nav_content .nav_content--items a:hover.active:after {
     border-width: 1px;
@@ -978,6 +987,7 @@ li.list_item a.list_item_content {
 li.list_item a.list_item_content .list_item_labels .label1 {
   font-weight: 500;
   text-decoration: underline;
+  text-underline-offset: 0.14em;
 }
 li.list_item a.list_item_content .list_item_labels .label2 {
   color: var(--text-primary-color);

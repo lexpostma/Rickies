@@ -97,6 +97,6 @@ p.bill_footer {
 	max-width: var.$readability-width;
 }
 p#refresh_page button {
-	text-decoration: underline;
+	@include var.underline;
 	font-style: normal;
 }

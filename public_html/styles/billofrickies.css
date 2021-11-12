@@ -756,6 +756,8 @@ aside.slider #rule_slider input[type=range]:focus {
 
 a:link, a:visited {
   color: var(--link-color);
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
 }
 @media (hover: hover) {
   a:hover {
@@ -792,6 +794,7 @@ nav a.js_link {
   cursor: pointer;
   opacity: 0.8;
   text-decoration: underline;
+  text-underline-offset: 0.14em;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -1005,5 +1008,6 @@ p.bill_footer {
 
 p#refresh_page button {
   text-decoration: underline;
+  text-underline-offset: 0.14em;
   font-style: normal;
 }

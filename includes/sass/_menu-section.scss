@@ -75,6 +75,7 @@ $statusbar: var.$iX-top;
 			transition: var.$hover-duration padding ease-in-out, var.$hover-duration background ease-in-out;
 			padding: var(--space-between-md) var(--space-between-sm);
 			white-space: nowrap;
+			text-decoration: none;
 			&.active {
 				opacity: 1;
 				font-weight: bold;
@@ -101,10 +102,14 @@ $statusbar: var.$iX-top;
 			}
 			@media (hover: hover) {
 				&:hover {
+					@include var.underline;
 					background: var(--element-hover-color);
-					&.active:after {
-						border-width: 1px;
-						transform: scale(1.04);
+					&.active {
+						text-decoration: none;
+						&:after {
+							border-width: 1px;
+							transform: scale(1.04);
+						}
 					}
 				}
 			}
