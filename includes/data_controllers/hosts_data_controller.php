@@ -73,16 +73,16 @@ do {
 					],
 					'days_annual_chairman' => [
 						'value' => check_key('Days of Annual Chairman', $fields, 0),
-						'label' => 'days he’s been Annual Chairman',
-						'label1' => 'day he’s been Annual Chairman',
+						'label' => 'days he’s been Annual&nbsp;Chairman',
+						'label1' => 'day he’s been Annual&nbsp;Chairman',
 						// 'unit' => '&nbsp;days',
 						// 'unit1' => '&nbsp;day',
 						'0hide' => true,
 					],
 					'days_keynote_chairman' => [
 						'value' => check_key('Days of Keynote Chairman', $fields, 0),
-						'label' => 'days acting Keynote Chairman',
-						'label1' => 'day acting Keynote Chairman',
+						'label' => 'days acting Keynote&nbsp;Chairman',
+						'label1' => 'day acting Keynote&nbsp;Chairman',
 						// 'unit' => '&nbsp;days',
 						// 'unit1' => '&nbsp;day',
 						'0hide' => true,
@@ -96,7 +96,7 @@ do {
 					],
 					'charity_choice_due_to_coin' => [
 						'value' => check_key('Chose Charity Due to Coin Flip', $fields),
-						'label' => 'Flexies won thanks to a coin flip',
+						'label' => 'Flexies won by coin flip',
 						'0hide' => true,
 					],
 					'flexy_loss_rate' => [
