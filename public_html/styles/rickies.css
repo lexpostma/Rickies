@@ -1439,6 +1439,29 @@ table.full_stats td.string strong {
   position: relative;
 }
 
+@-webkit-keyframes rotateCoin {
+  to {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
+@keyframes rotateCoin {
+  to {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
+.rotate_coin {
+  display: inline-block;
+  -webkit-perspective: 100px;
+  perspective: 100px;
+}
+.rotate_coin span {
+  display: inline-block;
+  -webkit-animation: rotateCoin 3s infinite linear;
+  animation: rotateCoin 3s infinite linear;
+}
+
 .filters {
   position: relative;
   max-width: 650px;

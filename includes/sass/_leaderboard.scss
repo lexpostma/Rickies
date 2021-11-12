@@ -219,3 +219,28 @@ table.full_stats {
 .chart-container {
 	position: relative;
 }
+
+@-webkit-keyframes rotateCoin {
+	to {
+		-webkit-transform: rotateY(360deg);
+		transform: rotateY(360deg);
+	}
+}
+
+@keyframes rotateCoin {
+	to {
+		-webkit-transform: rotateY(360deg);
+		transform: rotateY(360deg);
+	}
+}
+
+.rotate_coin {
+	display: inline-block;
+	-webkit-perspective: 100px;
+	perspective: 100px;
+	span {
+		display: inline-block;
+		-webkit-animation: rotateCoin 3s infinite linear;
+		animation: rotateCoin 3s infinite linear;
+	}
+}

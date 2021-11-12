@@ -161,7 +161,7 @@ function leaderboard_item($host_data, $column = 1)
 
 	// Coin flips
 	$output .= host_stats_item(
-		'Coin flips 🪙',
+		'<span class="rotate_coin"><span style="animation-delay: ' . rand(-3000, 0) . 'ms;">🪙</span></span> Coin flips',
 		score_label_item($host_data['stats']['coin_flips'], $host_data['personal']['color'], true),
 		$column
 	);
