@@ -154,7 +154,7 @@ function leaderboard_item($host_data, $column = 1)
 
 	// Ahead of its time
 	$output .= host_stats_item(
-		'Ahead of his time 🔮',
+		'<span class="pulse_orb" style="animation-delay: ' . rand(-2000, 0) . 'ms;">🔮</span> Ahead of his time',
 		score_label_item($host_data['stats']['too_soon'], $host_data['personal']['color'], true),
 		$column
 	);

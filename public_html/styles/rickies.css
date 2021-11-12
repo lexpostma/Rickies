@@ -1462,6 +1462,28 @@ table.full_stats td.string strong {
   animation: rotateCoin 3s infinite linear;
 }
 
+.pulse_orb {
+  display: inline-block;
+  animation: pulsePurple 2s infinite;
+  border-radius: 50%;
+  width: 1.5em;
+  text-align: center;
+}
+
+@keyframes pulsePurple {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(var(--connected-purple-rgb), 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(var(--connected-purple-rgb), 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(var(--connected-purple-rgb), 0);
+  }
+}
 .filters {
   position: relative;
   max-width: 650px;
