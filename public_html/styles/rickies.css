@@ -1231,7 +1231,6 @@ p.category_tags .tag {
   flex-direction: column;
   align-items: center;
   order: 0;
-  flex-grow: 1;
 }
 .avatar_leaderboard .host .avatar {
   margin-bottom: 8px;
@@ -1968,7 +1967,7 @@ mark {
 
 #results {
   margin: 0 auto;
-  grid-template-columns: repeat(4, minmax(88px, 1fr));
+  grid-template-columns: repeat(4, minmax(96px, 1fr));
   padding: var(--space-between-lg) var(--space-side-padding);
   text-align: center;
   overflow: scroll;

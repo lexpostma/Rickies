@@ -376,7 +376,7 @@
 
 #results {
 	margin: 0 auto;
-	grid-template-columns: repeat(4, minmax(88px, 1fr));
+	grid-template-columns: repeat(4, minmax(96px, 1fr));
 	padding: var(--space-between-lg) var(--space-side-padding);
 	text-align: center;
 	overflow: scroll;
