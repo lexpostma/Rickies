@@ -12,12 +12,15 @@ include '../includes/data_controllers/status_data_controller.php';
 
 function leaderboard_item_bundle($input)
 {
-	$output = '<section class="large_columns"><div class="section_group">';
+	$output = '<section class="large_columns"><div class="section_grid">';
 	$chart_script = '<script>';
+	$column = 1;
 	foreach ($input as $host_data) {
-		$output .= leaderboard_item($host_data);
+		$output .= leaderboard_item($host_data, $column);
 		$chart_script .= score_chart_script($host_data['stats']['picks'], $host_data['personal']['first_name']);
+		$column++;
 	}
+	unset($column);
 	$chart_script .= '</script>';
 	$output .= '</div></section>';
 	return $output . $chart_script;
@@ -49,10 +52,26 @@ function host_titles($title_array)
 	return $output;
 }
 
-function leaderboard_item($host_data)
+function host_stats_item($title, $content, $column)
+{
+	return '
+		<div class="host_stats column' .
+		$column .
+		'">
+			<h4>' .
+		$title .
+		'</h4>
+			' .
+		$content .
+		'
+		</div>';
+}
+
+function leaderboard_item($host_data, $column = 1)
 {
 	// Open section
-	$output = '<div class="section_group--list host_stats">';
+	// $output = '<div class="section_group--list host_stats">';
+	$output = '<div class="host_stats column' . $column . '">';
 
 	// Add avatar
 	$img_array = [
@@ -65,8 +84,7 @@ function leaderboard_item($host_data)
 
 	// Name and personal details
 	$output .=
-		'<div class="host_item_content">
-		<h3 id="' .
+		'<h3 id="' .
 		strtolower($host_data['personal']['first_name']) .
 		'">' .
 		$host_data['personal']['full_name'] .
@@ -99,39 +117,58 @@ function leaderboard_item($host_data)
 		current_url() .
 		'">' .
 		$host_data['personal']['website_name'] .
-		'</a></p>';
+		'</a></p></div>';
 
 	// Core Titles
-	$output .= '<h4>Current titles</h4>' . host_titles($host_data['titles']);
+	$output .= host_stats_item('Current titles', host_titles($host_data['titles']), $column);
 
 	// Other Titles
-	$output .= '<h4>Other titles</h4>' . host_titles($host_data['titles_other']);
+	$output .= host_stats_item('Other titles', host_titles($host_data['titles_other']), $column);
 
 	// Achievements
-	$output .= '<h4>Achievements</h4>';
-	$output .= score_label_item($host_data['achievements'], $host_data['personal']['color']);
+	$output .= host_stats_item(
+		'Achievements',
+		score_label_item($host_data['achievements'], $host_data['personal']['color']),
+		$column
+	);
 
-	$output .= '<h4>Rickies</h4>';
-	$output .= score_label_item($host_data['stats']['rickies'], $host_data['personal']['color']);
+	$output .= host_stats_item(
+		'Rickies',
+		score_label_item($host_data['stats']['rickies'], $host_data['personal']['color']),
+		$column
+	);
 
-	$output .= '<h4>Flexies</h4>';
-	$output .= score_label_item($host_data['stats']['flexies'], $host_data['personal']['color']);
+	$output .= host_stats_item(
+		'Flexies',
+		score_label_item($host_data['stats']['flexies'], $host_data['personal']['color']),
+		$column
+	);
 
 	// Statistics
-	$output .= '<h4>Picks</h4>';
-	$output .= score_chart_item($host_data['stats']['picks'], strtolower($host_data['personal']['first_name']));
-	$output .= score_label_item($host_data['stats']['picks_strings'], $host_data['personal']['color']);
+	$output .= host_stats_item(
+		'Picks',
+		score_chart_item($host_data['stats']['picks'], strtolower($host_data['personal']['first_name'])) .
+			score_label_item($host_data['stats']['picks_strings'], $host_data['personal']['color']),
+		$column
+	);
 
 	// Ahead of its time
-	$output .= '<h4>Ahead of his time 🔮</h4>';
-	$output .= score_label_item($host_data['stats']['too_soon'], $host_data['personal']['color'], true);
+	$output .= host_stats_item(
+		'Ahead of his time 🔮',
+		score_label_item($host_data['stats']['too_soon'], $host_data['personal']['color'], true),
+		$column
+	);
 
 	// Coin flips
-	$output .= '<h4>Coin flips 🪙</h4>';
-	$output .= score_label_item($host_data['stats']['coin_flips'], $host_data['personal']['color'], true);
+	$output .= host_stats_item(
+		'Coin flips 🪙',
+		score_label_item($host_data['stats']['coin_flips'], $host_data['personal']['color'], true),
+		$column
+	);
 
 	// Close host and content
-	$output .= '</div></div>';
+	// $output .= '</div></div>';
+	// $output .= '</div>';
 
 	return $output;
 }

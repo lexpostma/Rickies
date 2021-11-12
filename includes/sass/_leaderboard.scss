@@ -132,31 +132,24 @@ $winner_double_ring_size: calc(var(--graphic-size) + 42px);
 		}
 	}
 }
+
 .host_stats {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	.host_item_content {
-		margin-left: var(--space-between-md);
-		margin-top: 6px;
-		// TODO: Fixes wrapping below emoji, but disabled because it underlines the emoji too if <a>
-		& > ul > li > span,
-		& > ul > li > a {
-			// display: flex;
-		}
-		h4 {
-			margin-top: var(--space-between-lg);
-		}
-		h3 + p {
-			@include var.secondary-text;
-		}
+	position: relative;
+	padding-left: calc(var(--space-between-md) + var(--graphic-size));
+	.avatar {
+		position: absolute;
+		left: 0;
+		top: -6px;
+	}
+	h3 + p {
+		@include var.secondary-text;
 	}
 }
 @media screen and (min-width: var.$break-md) and (max-width: var.$break-lg) {
 	.host_stats {
-		flex-direction: column;
-		.host_item_content {
-			margin-left: 0;
+		padding-left: 0;
+		.avatar {
+			position: relative;
 		}
 	}
 }
