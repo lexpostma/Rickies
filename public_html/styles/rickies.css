@@ -594,7 +594,7 @@ body {
   right: 2px;
   bottom: var(--space-between-sm);
   left: 2px;
-  border-radius: 50px;
+  border-radius: 4px;
   box-shadow: 0 1px 6px rgba(51, 63, 72, 0.5);
   border: 0.5px solid rgba(0, 0, 0, 0.3);
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
@@ -602,6 +602,9 @@ body {
 @media screen and (min-width: 576px) {
   .nav_content .nav_content--items a {
     padding: var(--space-between-md);
+  }
+  .nav_content .nav_content--items a.active:after {
+    border-radius: 50px;
   }
 }
 @media (hover: hover) {
