@@ -1009,5 +1009,6 @@ p.bill_footer {
 p#refresh_page button {
   text-decoration: underline;
   text-underline-offset: 0.14em;
+  color: white;
   font-style: normal;
 }

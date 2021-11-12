@@ -98,5 +98,6 @@ p.bill_footer {
 }
 p#refresh_page button {
 	@include var.underline;
+	color: white;
 	font-style: normal;
 }
