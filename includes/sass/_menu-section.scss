@@ -72,13 +72,26 @@ $statusbar: var.$iX-top;
 		align-items: stretch;
 		padding: 0 var(--space-between-sm);
 		a {
-			transition: 200ms padding ease-in-out;
+			transition: var.$hover-duration padding ease-in-out, var.$hover-duration background ease-in-out;
 			padding: var(--space-between-md) var(--space-between-sm);
 			white-space: nowrap;
 			&.active {
 				opacity: 1;
 				font-weight: bold;
 				text-decoration: none;
+				position: relative;
+				&:after {
+					content: '';
+					position: absolute;
+					top: var(--space-between-sm);
+					right: 2px;
+					bottom: var(--space-between-sm);
+					left: 2px;
+					border-radius: 50px;
+					box-shadow: 0 1px 6px rgba(51, 63, 72, 0.5);
+					border: 0.5px solid rgba(0, 0, 0, 0.3);
+					transition: var.$pop-transition;
+				}
 			}
 			@media screen and (min-width: var.$break-sm) {
 				padding: var(--space-between-md);
@@ -86,6 +99,10 @@ $statusbar: var.$iX-top;
 			@media (hover: hover) {
 				&:hover {
 					background: var(--element-hover-color);
+					&.active:after {
+						border-width: 1px;
+						transform: scale(1.04);
+					}
 				}
 			}
 		}
