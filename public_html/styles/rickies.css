@@ -1762,16 +1762,14 @@ mark {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 #pick_filter_sheet > .content > fieldset.hosts, #pick_filter_sheet > .content > fieldset.categories, #pick_filter_sheet > .content > fieldset.pick_metadata, #pick_filter_sheet > .content > .button_section {
-  grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column: 1/3;
 }
 @media screen and (min-width: 1200px) {
   #pick_filter_sheet > .content {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   #pick_filter_sheet > .content > .button_section {
-    grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column: 1/4;
   }
 }
 #pick_filter_sheet > .content fieldset {
@@ -1787,8 +1785,8 @@ mark {
 #pick_filter_sheet > .content > fieldset {
   padding: var(--space-between-sm);
   padding: calc(var(--space-between-sm) - var(--label-padding)) var(--space-between-sm);
-  background: rgba(13, 135, 202, 0.05);
   border-radius: 12px;
+  background: rgba(var(--connected-blue-rgb), 0.05);
 }
 @media screen and (min-width: 768px) {
   #pick_filter_sheet > .content > fieldset {
@@ -1797,7 +1795,7 @@ mark {
 }
 @media (prefers-color-scheme: dark) {
   #pick_filter_sheet > .content > fieldset {
-    background: rgba(13, 135, 202, 0.15);
+    background: rgba(var(--connected-blue-rgb), 0.15);
   }
 }
 #pick_filter_sheet > .content > fieldset.hosts {
@@ -1807,7 +1805,6 @@ mark {
 #pick_filter_sheet > .content > fieldset.hosts .host {
   flex-basis: calc(100% / 3);
   max-width: 120px;
-  cursor: pointer;
 }
 #pick_filter_sheet > .content > fieldset.hosts .host input[type=checkbox] {
   display: none;
@@ -1816,6 +1813,7 @@ mark {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 #pick_filter_sheet > .content > fieldset.hosts .host label img {
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
@@ -1848,6 +1846,7 @@ mark {
 }
 @media (hover: hover) {
   #pick_filter_sheet > .content > fieldset.hosts .host:hover img {
+    filter: grayscale(50%);
     transform: scale(1.2) rotate(-2deg);
   }
 }
@@ -1871,41 +1870,38 @@ mark {
     grid-gap: var(--space-between-lg);
   }
 }
-#pick_filter_sheet > .content > fieldset.categories > fieldset ul > li > ul {
+#pick_filter_sheet > .content > fieldset.categories > fieldset:not(:last-child) {
+  margin-right: -24px;
+}
+#pick_filter_sheet > .content > fieldset.categories > fieldset > ul > li > ul {
   margin-top: 4px;
-  font-size: 0.75em;
-  padding-left: 4px;
   flex-basis: 100%;
 }
-#pick_filter_sheet > .content > fieldset.categories > fieldset ul > li.filter_option label {
-  margin-right: calc(-1 * var(--space-between-md));
+#pick_filter_sheet > .content > fieldset.categories > fieldset > ul > li > ul li.filter_option {
+  font-size: 0.75em;
+  margin-left: 4px;
+  margin-right: 4px;
+  border-radius: 4px;
 }
 @media screen and (min-width: 576px) {
   #pick_filter_sheet > .content > fieldset.pick_status {
-    grid-column-start: 1;
-    grid-column-end: 2;
+    grid-column: 1/2;
   }
   #pick_filter_sheet > .content > fieldset.pick_metadata {
-    grid-row-start: 2;
-    grid-row-end: 4;
-    grid-column-start: 2;
-    grid-column-end: 3;
+    grid-row: 2/4;
+    grid-column: 2/3;
   }
 }
 @media screen and (min-width: 1200px) {
   #pick_filter_sheet > .content > fieldset.pick_status {
-    grid-column-start: 2;
-    grid-column-end: 3;
+    grid-column: 2/3;
   }
   #pick_filter_sheet > .content > fieldset.pick_metadata {
-    grid-row-start: 1;
-    grid-row-end: 3;
-    grid-column-start: 3;
-    grid-column-end: 4;
+    grid-row: 1/3;
+    grid-column: 3/4;
   }
   #pick_filter_sheet > .content > fieldset.categories {
-    grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column: 1/4;
   }
 }
 #pick_filter_sheet > .content > fieldset .filter_option {
@@ -1913,6 +1909,15 @@ mark {
   justify-content: left;
   align-items: flex-start;
   flex-wrap: wrap;
+  border-radius: 5px;
+}
+@media (hover: hover) {
+  #pick_filter_sheet > .content > fieldset .filter_option:hover {
+    background-color: var(--element-hover-color);
+  }
+}
+#pick_filter_sheet > .content > fieldset .filter_option:focus, #pick_filter_sheet > .content > fieldset .filter_option:active {
+  background-color: var(--element-active-color);
 }
 #pick_filter_sheet > .content > fieldset .filter_option label,
 #pick_filter_sheet > .content > fieldset .filter_option select {
@@ -1921,6 +1926,7 @@ mark {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
 }
 #pick_filter_sheet > .content > fieldset .filter_option + .filter_option {
   margin-top: 4px;
@@ -1995,12 +2001,49 @@ mark {
   height: auto;
 }
 
+.filter_sheet_toggle {
+  display: inline-block;
+  margin: var(--element-padding-neg);
+  padding: var(--element-padding);
+  border-radius: var(--element-corner-radius);
+}
+@media (hover: hover) {
+  .filter_sheet_toggle:hover {
+    background-color: var(--element-hover-color);
+  }
+}
+.filter_sheet_toggle:focus, .filter_sheet_toggle:active {
+  background-color: var(--element-active-color);
+}
+
 .button_section {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
 }
 
+#reset_button,
+#search_button_plus {
+  border-radius: 12px;
+}
+@media screen and (min-width: 768px) {
+  #reset_button,
+#search_button_plus {
+    border-radius: 26px;
+  }
+}
+
+#reset_button {
+  padding: 0 var(--element-padding);
+}
+@media (hover: hover) {
+  #reset_button:not(:disabled):hover {
+    background-color: var(--element-hover-color);
+  }
+}
+#reset_button:not(:disabled):focus, #reset_button:not(:disabled):active {
+  background-color: var(--element-active-color);
+}
 #reset_button:disabled {
   color: var(--text-secondary-color);
   opacity: 0.7;
@@ -2013,14 +2056,8 @@ mark {
   box-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
   background: white;
   padding-left: 16px;
-  border-radius: 12px;
   font-weight: 500;
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
-}
-@media screen and (min-width: 768px) {
-  #search_button_plus {
-    border-radius: 26px;
-  }
 }
 #search_button_plus svg {
   transform: scale(0.8);

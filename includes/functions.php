@@ -73,7 +73,11 @@ function navigation_bar($active = false)
 	if ($active == 'archive') {
 		$output .= 'class="active" ';
 	}
-	$output .= 'href="/archive">Archive</a>
+	$output .= 'href="/archive">Archive';
+	if ($active == 'search') {
+		$output .= '<span> &#8634;</span>';
+	}
+	$output .= '</a>
 		<a ';
 	if ($active == 'about') {
 		$output .= 'class="active" ';

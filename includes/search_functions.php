@@ -107,7 +107,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 	}
 
 	$output .= '>
-	<summary>';
+	<summary><div class="filter_sheet_toggle">';
 	if (
 		!empty($user_input['filter_other']) ||
 		!empty($user_input['filter_categories']) ||
@@ -123,7 +123,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 			file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter.svg') .
 			'</span>';
 	}
-	$output .= '</summary>
+	$output .= '</div></summary>
 	<div class="content">';
 
 	// Filter for hosts
