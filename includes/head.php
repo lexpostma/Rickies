@@ -33,6 +33,7 @@ if ($environment !== 'production') {
 	echo '<meta name="robots" content="noindex,nofollow" />';
 } ?>
 
+<link rel="sitemap" type="application/xml" title="Sitemap" href="<?= domain_url() ?>/sitemap.xml" />
 
 <!-- Open Graph protocol / Facebook -->
 <meta property="og:title" content="<?= $head['title'] ?>" />
