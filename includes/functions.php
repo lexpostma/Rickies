@@ -147,10 +147,8 @@ function music_button()
 		'<button id="music_button" class="top_button clean" type="button" data-goatcounter-click="Theme music" title="Play theme music for The Bill of Rickies" data-goatcounter-referrer="' .
 		current_url() .
 		'">';
-	$output .=
-		'<div class="play">' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-play.svg') . '</div>';
-	$output .=
-		'<div class="pause">' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-pause.svg') . '</div>';
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-play.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-pause.svg');
 	$output .= '</button>';
 
 	return $output;

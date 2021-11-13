@@ -469,12 +469,16 @@ main.parchment a:active {
 }
 #slider_label_container {
   position: relative;
+  display: block;
 }
-
-#slider_hint {
+#slider_label_container span {
+  display: block;
+  text-align: center;
+  margin-bottom: 16px;
+}
+#slider_label_container span#slider_hint {
   position: absolute;
   width: 100%;
-  text-align: center;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -512,11 +516,6 @@ aside.slider #rule_slider {
   max-width: 650px;
   margin: 0 auto;
   color: var(--text-primary-color);
-}
-aside.slider #rule_slider .label {
-  display: block;
-  text-align: center;
-  margin-bottom: 16px;
 }
 @media screen and (min-width: 768px) {
   aside.slider #rule_slider {
@@ -835,16 +834,16 @@ button.top_button,
 #music_button {
   right: 20px;
 }
-#music_button div.pause {
+#music_button svg.pause {
   display: none;
 }
 #music_button.is-playing {
   position: fixed;
 }
-#music_button.is-playing div.play {
+#music_button.is-playing svg.play {
   display: none;
 }
-#music_button.is-playing div.pause {
+#music_button.is-playing svg.pause {
   display: block;
 }
 

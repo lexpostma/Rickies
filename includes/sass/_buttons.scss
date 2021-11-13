@@ -7,16 +7,16 @@ button.top_button,
 
 #music_button {
 	right: 20px;
-	div.pause {
+	svg.pause {
 		display: none;
 	}
 
 	&.is-playing {
 		position: fixed;
-		div.play {
+		svg.play {
 			display: none;
 		}
-		div.pause {
+		svg.pause {
 			display: block;
 		}
 	}
