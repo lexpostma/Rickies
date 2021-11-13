@@ -93,8 +93,7 @@ if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies
 				data-goatcounter-click="Show details"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('details');">Details</a>
-			<a class="menu_item js_link"
-				id="menu_top"
+			<a class="menu_item js_link menu_top"
 				title="Scroll to the top"
 				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-top.svg') ?></a>
 		</div>
