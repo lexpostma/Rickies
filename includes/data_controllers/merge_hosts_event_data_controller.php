@@ -15,7 +15,6 @@ include '../includes/data_controllers/event_data_controller.php';
 $hosts_data__params = [
 	'fields' => ['First name', 'Full name', 'Memoji neutral', 'Memoji happy', 'Memoji sad'],
 ];
-$all_host_details = false;
 include '../includes/data_controllers/hosts_data_controller.php';
 // echo '<pre>', var_dump($hosts_data__array), '</pre>';
 

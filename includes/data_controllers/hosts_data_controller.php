@@ -26,7 +26,7 @@ do {
 			],
 		];
 
-		if ($all_host_details) {
+		if (isset($all_host_details)) {
 			$hosts_data__array[$id]['personal']['location'] = check_key('Location', $fields);
 			$hosts_data__array[$id]['personal']['website_url'] = check_key('Website URL', $fields);
 			$hosts_data__array[$id]['personal']['website_name'] = check_key('Website name', $fields);

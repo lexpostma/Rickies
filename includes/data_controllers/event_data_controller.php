@@ -1,6 +1,9 @@
 <?php
 
 // Rickies _data_ controller, general
+if (!isset($all_event_details)) {
+	$all_event_details = false;
+}
 
 if (!isset($rickies_events__params['fields']) && !$all_event_details) {
 	$rickies_events__params['fields'] = [
