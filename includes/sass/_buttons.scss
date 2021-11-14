@@ -1,6 +1,7 @@
 @use "variables" as var;
 
 button.top_button,
+#share_button,
 #close_button {
 	color: var(--document-text-color);
 }

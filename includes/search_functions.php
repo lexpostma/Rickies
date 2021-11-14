@@ -11,7 +11,6 @@ function search_button()
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close2.svg');
 	$output .= '</button>';
 
-	// NOTE: Remember to add the search.js script to the footer separately
 	return $output;
 }
 
@@ -59,7 +58,7 @@ function pick_filter_element($user_input = false, $displayed_as_modal = false, $
 function search_field($search_string = false, $part_of_filters = false)
 {
 	$output = '
-		<div id="search_field_combo" class="';
+		<div id="search_field_combo" class="input_button_combo ';
 	if ($part_of_filters) {
 		$output .= 'in_summary';
 	}

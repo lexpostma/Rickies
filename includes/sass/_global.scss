@@ -26,6 +26,21 @@ select.clean {
 	cursor: pointer;
 }
 
+input[type='text'],
+input[type='search'] {
+	font-size: max(16px, 1em);
+	&::placeholder {
+		color: var(--text-secondary-color);
+		opacity: 1;
+	}
+	&:-ms-input-placeholder {
+		color: var(--text-secondary-color);
+	}
+	&::-ms-input-placeholder {
+		color: var(--text-secondary-color);
+	}
+}
+
 html,
 body {
 	overflow-x: hidden;
