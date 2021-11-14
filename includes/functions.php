@@ -134,10 +134,24 @@ function share_button()
 	$output =
 		'<button id="share_button" class="top_button clean" type="button" data-goatcounter-click="Open share sheet" title="Share this page" data-goatcounter-referrer="' .
 		current_url() .
-		'" onclick="open_share_sheet()">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-share.svg');
-	$output .= '</button>';
+		'" onclick="open_share_sheet()">' .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-share.svg') .
+		'</button>
 
+		<div id="custom_share_sheet" class="">
+			<form class="filters" id="share_sheet_form">
+				<div id="share_field_combo" class="input_button_combo">
+					<input id="share_input" class="clean" type="text" name="text" title="Current URL" placeholder="Current URL" value="' .
+		current_url() .
+		'" />
+					<button class="clean top_button" title="Copy current URL" form="share_sheet_form" type="button" onclick="copyTextToClipboard()">' .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-copy.svg') .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-clipboard.svg') .
+		'</button>
+				</div>
+				<p><span>URL copied to clipboard</span></p>
+			</form>
+		</div>';
 	return $output;
 }
 

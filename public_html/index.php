@@ -25,7 +25,7 @@ include $incl_path . 'view_controllers/' . $focus_site . '_controller.php';
 		<?php
   include $include_body;
   echo '<script>' .
-  	file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/share_button.js') .
+  	file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/share_and_search.js') .
   	file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/standalone.js') .
   	'</script>';
   ?>
