@@ -2,11 +2,25 @@
 
 // Rickies rules _data_ controller
 
-$rules__params = [
-	'fields' => ['Rule styled', 'Start date', 'End date', 'Order', 'id', 'Rule type', 'Applied to Rickies'],
-	'filterByFormula' => 'AND( {Applied to Rickies} )',
-	'sort' => [['field' => 'Type', 'direction' => 'asc'], ['field' => 'Order', 'direction' => 'asc']],
-];
+if (!isset($rules__params['filterByFormula'])) {
+	$rules__params['filterByFormula'] = 'AND( {Applied to Rickies} )';
+}
+
+if (!isset($rules__params['fields'])) {
+	$rules__params['fields'] = [
+		'Rule styled',
+		'Start date',
+		'End date',
+		'Order',
+		'id',
+		'Rule type',
+		'Applied to Rickies',
+		'Last edit date',
+	];
+}
+if (!isset($rules__params['sort'])) {
+	$rules__params['sort'] = [['field' => 'Type', 'direction' => 'asc'], ['field' => 'Order', 'direction' => 'asc']];
+}
 
 $rules__array = [];
 $rules__request = $airtable->getContent('Rules', $rules__params);
@@ -23,6 +37,7 @@ do {
 			'date_end' => strtotime(check_key('End date', $fields)),
 			'events' => check_key('Applied to Rickies', $fields),
 			'order' => check_key('Order', $fields),
+			'last_edited' => check_key('Last edit date', $fields),
 		];
 	}
 } while ($rules__request = $rules__response->next());

@@ -13,6 +13,7 @@ do {
 		$id = check_key('First name', $fields);
 
 		$hosts_data__array[$id] = [
+			'last_edited' => check_key('Last edit date', $fields),
 			'personal' => [
 				'first_name' => $id,
 				'full_name' => check_key('Full name', $fields),
@@ -26,7 +27,7 @@ do {
 			],
 		];
 
-		if ($all_host_details) {
+		if (isset($all_host_details)) {
 			$hosts_data__array[$id]['personal']['location'] = check_key('Location', $fields);
 			$hosts_data__array[$id]['personal']['website_url'] = check_key('Website URL', $fields);
 			$hosts_data__array[$id]['personal']['website_name'] = check_key('Website name', $fields);
@@ -236,7 +237,10 @@ do {
 		}
 
 		foreach ($hosts_data__array[$id]['images']['memoji'] as $mood => $images) {
-			$hosts_data__array[$id]['images']['memoji'][$mood] = airtable_image_url(random($images));
+			if ($images && is_array($images)) {
+				// $images must not be false, and need to be array
+				$hosts_data__array[$id]['images']['memoji'][$mood] = airtable_image_url(random($images));
+			}
 		}
 
 		$hosts_data__array[$id]['personal']['color'] = random($connected_colors);

@@ -198,11 +198,11 @@ function host_item_bundle($host_event_data, $event_type)
 			list_item_graphic($avatar_img_array) .
 			'
 				<div class="list_item_labels">
-					<p><a href="/leaderboard#' .
+					<h3><a href="/leaderboard#' .
 			strtolower($event_details['details']['first_name']) .
 			'">' .
 			$event_details['details']['full_name'] .
-			'</a></p>
+			'</a></h3>
 					<p class="ranking">' .
 			implode(' • ', $html_strings['ranking']) .
 			'</p>';

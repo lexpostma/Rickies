@@ -109,12 +109,14 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 				onclick="navigate_section('flexies');"><?= $picks_type_count['Flexies'] ?></a>
 <?php }
 ?>
-			<a class="menu_item js_link"
-				id="menu_top"
+			<a class="menu_item js_link menu_top"
 				title="Search at the top"
 				onclick="window.scrollTo(0,0); document.getElementById('search_input').focus()"><?= file_get_contents(
     	$_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-search.svg'
     ) ?></a>
+			<a class="menu_item js_link menu_top"
+				title="Scroll to the top"
+				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-top.svg') ?></a>
 		</div>
 	</div>
 </nav>

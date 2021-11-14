@@ -1,6 +1,9 @@
 <?php
 
 // Rickies _data_ controller, general
+if (!isset($all_event_details)) {
+	$all_event_details = false;
+}
 
 if (!isset($rickies_events__params['fields']) && !$all_event_details) {
 	$rickies_events__params['fields'] = [
@@ -17,6 +20,7 @@ if (!isset($rickies_events__params['fields']) && !$all_event_details) {
 		'Event artwork',
 		'Artwork background color',
 		'Interactive',
+		'Last edit date',
 	];
 }
 
@@ -69,6 +73,7 @@ do {
 					],
 					'artwork_background_color' => check_key('Artwork background color', $fields),
 					'winner' => check_key('Rickies 1st (manual)', $fields),
+					'last_edited' => check_key('Last edit date', $fields),
 				];
 
 				// If not TRUE, set to FALSE. Otherwise it's NULL

@@ -58,8 +58,6 @@ if (isset($auto_select_rickies)) {
 	}
 }
 
-$all_event_details = false;
-
 $hero_tag = '<p>Predictions with risk, flexing, and passion. <br />On Connected at Relay FM.</p>';
 $introduction =
 	'<p>The Rickies are the prediction draft episodes of the <a target="_blank" href="' .

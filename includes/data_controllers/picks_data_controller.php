@@ -32,6 +32,7 @@ do {
 			'status_later' => check_key('Came true string', $fields),
 			'age' => check_key('Age string', $fields),
 			'buzzkill' => check_key('Buzzkill string', $fields),
+			'last_edited' => check_key('Last edit date', $fields),
 		];
 
 		if (check_key('Category', $fields)) {

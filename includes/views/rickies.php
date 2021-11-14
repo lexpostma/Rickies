@@ -53,7 +53,7 @@
 	echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter-active.svg');
 } ?>
 	</h2>
-	<script type="text/javascript">
+	<script>
 		 var urlmenu = document.getElementById( 'filter_menu' );
 		 urlmenu.onchange = function() {
 			window.goatcounter.count({

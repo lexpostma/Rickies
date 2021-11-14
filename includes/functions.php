@@ -1,6 +1,19 @@
 <?php
 
 $incl_path = $_SERVER['DOCUMENT_ROOT'] . '/../includes/';
+
+// Define Airtable integration
+include $incl_path . 'airtable/Airtable.php';
+include $incl_path . 'airtable/Request.php';
+include $incl_path . 'airtable/Response.php';
+
+use TANIOS\Airtable\Airtable;
+$airtable = new Airtable([
+	'api_key' => getenv('AIRTABLE_API'),
+	'base' => getenv('AIRTABLE_BASE'),
+]);
+
+// Include other functions
 include_once $incl_path . 'Parsedown.php';
 include_once $incl_path . 'variables.php';
 include_once $incl_path . 'search_functions.php';
@@ -134,10 +147,8 @@ function music_button()
 		'<button id="music_button" class="top_button clean" type="button" data-goatcounter-click="Theme music" title="Play theme music for The Bill of Rickies" data-goatcounter-referrer="' .
 		current_url() .
 		'">';
-	$output .=
-		'<div class="play">' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-play.svg') . '</div>';
-	$output .=
-		'<div class="pause">' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-pause.svg') . '</div>';
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-play.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-pause.svg');
 	$output .= '</button>';
 
 	return $output;

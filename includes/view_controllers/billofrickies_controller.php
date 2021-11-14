@@ -11,7 +11,6 @@ $rickies_events__params = [
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'asc']],
 ];
 
-$all_event_details = false;
 include '../includes/data_controllers/event_data_controller.php';
 // echo '<pre>', var_dump($rickies_events__array), '</pre>';
 
