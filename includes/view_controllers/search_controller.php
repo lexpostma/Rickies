@@ -164,7 +164,7 @@ $picks_data__params = [
 ];
 include '../includes/data_controllers/picks_data_controller.php';
 
-// Get all events from Airtable
+// Get all Rickies events from Airtable
 $rickies_events__params = [
 	'filterByFormula' => 'AND( Published = TRUE(), Picks)',
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],

@@ -58,7 +58,7 @@ On Connected at Relay FM.',
 if ($environment == 'production') {
 	$head_defaults['site_goatcounter'] = 'https://rickies.goatcounter.com';
 	$github = 'main';
-	// NOTE: update for new releases
+	// NOTE: Update for new releases
 	$refresh = 'v1.5.11';
 } else {
 	$head_defaults['site_goatcounter'] = 'https://rickies-test.goatcounter.com';
