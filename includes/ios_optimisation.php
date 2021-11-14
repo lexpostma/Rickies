@@ -76,7 +76,7 @@ $splashScreenSizes = [
 		'height' => '896',
 		'ratio' => '2',
 	],
-	'iPhone 12, 12 Pro' => [
+	'iPhone 12, 13, [12, 13] Pro' => [
 		'width' => '390',
 		'height' => '844',
 		'ratio' => '3',
@@ -86,7 +86,12 @@ $splashScreenSizes = [
 		'height' => '896',
 		'ratio' => '3',
 	],
-	'iPhone 12 Pro Max' => [
+	'iPhone [12, 13] mini' => [
+		'width' => '360',
+		'height' => '780',
+		'ratio' => '3',
+	],
+	'iPhone [12, 13] Pro Max' => [
 		'width' => '428',
 		'height' => '926',
 		'ratio' => '3',
@@ -124,6 +129,11 @@ $splashScreenSizes = [
 	'iPad Pro 12.9' => [
 		'width' => '1024',
 		'height' => '1366',
+		'ratio' => '2',
+	],
+	'iPad mini 8.3' => [
+		'width' => '744',
+		'height' => '1133',
 		'ratio' => '2',
 	],
 ];
