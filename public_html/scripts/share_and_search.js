@@ -140,16 +140,6 @@ function copy_successfull() {
 	}, delayInMilliseconds);
 }
 
-document.addEventListener('DOMContentLoaded', function (event) {
-	if (window.navigator.standalone == true && document.getElementById('share_button') && share_button) {
-		// if (share_button) { // NOTE: This is a debugging IF
-		// Web app is on the home screen,
-		// show share button since there's no browser UI
-
-		share_button.style.display = 'block';
-	}
-});
-
 // Click outside the search/share box, but not the search/share box itself, to close the modal
 // Via https://stackoverflow.com/a/41178624
 if (document.getElementById('share_sheet_form') && custom_share_sheet) {
