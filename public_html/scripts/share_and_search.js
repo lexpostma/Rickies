@@ -141,8 +141,8 @@ function copy_successfull() {
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {
-	if (share_button) {
-		// if (window.navigator.standalone == true && document.getElementById('share_button') && share_button) {
+	if (window.navigator.standalone == true && document.getElementById('share_button') && share_button) {
+		// if (share_button) { // NOTE: This is a debugging IF
 		// Web app is on the home screen,
 		// show share button since there's no browser UI
 
