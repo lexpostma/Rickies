@@ -28,7 +28,6 @@ if ($environment !== 'production') {
 <meta name="keywords" content="<?= implode(',', $head['keywords']) ?>" />
 <meta name="author" content="<?= $head['author'] ?>" />
 <meta name="copyright" content="Copyright © <?= date('Y') ?> by <?= $head['author'] ?> and Relay FM" />
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <?php if ($environment !== 'production') {
 	echo '<meta name="robots" content="noindex,nofollow" />';
 } ?>
