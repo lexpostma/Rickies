@@ -12,7 +12,7 @@ include '../includes/data_controllers/status_data_controller.php';
 
 function leaderboard_item_bundle($input)
 {
-	$output = '<section class="large_columns"><div class="section_grid">';
+	$output = '<section class="large_columns navigate_with_mobile_menu leaderboard"><div class="section_grid">';
 	$chart_script = '<script>';
 	$column = 1;
 	foreach ($input as $host_data) {
@@ -71,7 +71,12 @@ function leaderboard_item($host_data, $column = 1)
 {
 	// Open section
 	// $output = '<div class="section_group--list host_stats">';
-	$output = '<div class="host_stats column' . $column . '">';
+	$output =
+		'<div id="' .
+		strtolower($host_data['personal']['first_name']) .
+		'" class="host_stats column' .
+		$column .
+		' host_byline">';
 
 	// Add avatar
 	$img_array = [
@@ -84,9 +89,7 @@ function leaderboard_item($host_data, $column = 1)
 
 	// Name and personal details
 	$output .=
-		'<h3 id="' .
-		strtolower($host_data['personal']['first_name']) .
-		'">' .
+		'<h3>' .
 		$host_data['personal']['full_name'] .
 		'</h3><p>' .
 		$host_data['personal']['location'] .

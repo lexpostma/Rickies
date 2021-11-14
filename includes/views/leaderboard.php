@@ -10,8 +10,7 @@ echo no_script_banner('Charts can’t be shown with Javascript disabled'),
 	avatar_leaderboard($leaderboard_data);
 ?>
 
-
-<nav class="nav_container">
+<nav class="nav_container leaderboard">
 	<div id="statusbar"></div>
 	<div id="nav_anchor"></div>
 	<div id="nav_content_sticky" class="nav_content">
@@ -39,7 +38,7 @@ echo no_script_banner('Charts can’t be shown with Javascript disabled'),
 				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-top.svg') ?></a>
 		</div>
 	</div>
-</nav>	
-	
-<?php
-echo leaderboard_item_bundle($hosts_data__array), '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';
+</nav>
+
+<?php echo leaderboard_item_bundle($hosts_data__array),
+	'<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';

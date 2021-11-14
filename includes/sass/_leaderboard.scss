@@ -139,7 +139,11 @@ $winner_double_ring_size: calc(var(--graphic-size) + 42px);
 	.avatar {
 		position: absolute;
 		left: 0;
-		top: -6px;
+		bottom: -6px;
+		@media screen and (min-width: var.$break-md) {
+			top: -6px;
+			bottom: unset;
+		}
 	}
 	h3 + p {
 		@include var.secondary-text;

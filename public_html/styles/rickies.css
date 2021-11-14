@@ -703,11 +703,17 @@ section {
   padding-right: max(var(--space-side-padding), env(safe-area-inset-right));
 }
 section.navigate_with_mobile_menu {
-  display: none;
   pointer-events: none;
+  margin-top: calc(-1 * env(safe-area-inset-top));
+}
+section.navigate_with_mobile_menu:not(.leaderboard) {
+  display: none;
   padding-top: calc(var(--nav-height) + var(--space-side-padding));
   padding-top: calc(var(--nav-height) + var(--space-side-padding) + env(safe-area-inset-top));
-  margin-top: calc(-1 * env(safe-area-inset-top));
+}
+section.navigate_with_mobile_menu.leaderboard {
+  padding-top: var(--nav-height);
+  padding-top: calc(var(--nav-height) + env(safe-area-inset-top));
 }
 section.navigate_with_mobile_menu.active {
   display: block;
@@ -718,6 +724,13 @@ section.navigate_with_mobile_menu h2 {
 section#list {
   margin-top: 0;
   padding-top: var(--space-between-lg);
+}
+
+section.navigate_with_mobile_menu,
+.host_byline {
+  padding-top: calc(var(--nav-height) + var(--space-side-padding));
+  padding-top: calc(var(--nav-height) + var(--space-side-padding) + env(safe-area-inset-top));
+  margin-top: calc(-1 * env(safe-area-inset-top));
 }
 
 h2 {
@@ -749,6 +762,15 @@ section h2,
 @media screen and (min-width: 768px) {
   :root {
     --nav-height: 59px;
+  }
+
+  .nav_container.leaderboard {
+    display: none;
+  }
+
+  .host_byline {
+    padding-top: 0;
+    margin-top: 0;
   }
 
   section {
@@ -1360,7 +1382,13 @@ p.category_tags .tag {
 .host_stats .avatar {
   position: absolute;
   left: 0;
-  top: -6px;
+  bottom: -6px;
+}
+@media screen and (min-width: 768px) {
+  .host_stats .avatar {
+    top: -6px;
+    bottom: unset;
+  }
 }
 .host_stats h3 + p {
   color: var(--text-secondary-color);

@@ -201,10 +201,16 @@ section {
 	padding-left: max(var(--space-side-padding), #{var.$iX-left});
 	padding-right: max(var(--space-side-padding), #{var.$iX-right});
 	&.navigate_with_mobile_menu {
-		display: none;
+		&:not(.leaderboard) {
+			display: none;
+			padding-top: calc(var(--nav-height) + var(--space-side-padding));
+			padding-top: calc(var(--nav-height) + var(--space-side-padding) + #{var.$iX-top});
+		}
+		&.leaderboard {
+			padding-top: var(--nav-height);
+			padding-top: calc(var(--nav-height) + #{var.$iX-top});
+		}
 		pointer-events: none;
-		padding-top: calc(var(--nav-height) + var(--space-side-padding));
-		padding-top: calc(var(--nav-height) + var(--space-side-padding) + #{var.$iX-top});
 		margin-top: calc(-1 * #{var.$iX-top});
 		&.active {
 			display: block;
@@ -218,6 +224,14 @@ section {
 		padding-top: var(--space-between-lg);
 	}
 }
+
+section.navigate_with_mobile_menu,
+.host_byline {
+	padding-top: calc(var(--nav-height) + var(--space-side-padding));
+	padding-top: calc(var(--nav-height) + var(--space-side-padding) + #{var.$iX-top});
+	margin-top: calc(-1 * #{var.$iX-top});
+}
+
 h2 {
 	margin-top: 0;
 	margin-bottom: var(--space-between-md);
@@ -232,8 +246,6 @@ section h2,
 	display: grid;
 	gap: var(--space-between-lg) var(--space-between-md);
 	grid-gap: var(--space-between-lg) var(--space-between-md);
-	// justify-items: stretch;
-	// align-items: stretch;
 }
 
 .section_group--list {
@@ -252,7 +264,13 @@ section h2,
 	:root {
 		--nav-height: 59px;
 	}
-
+	.nav_container.leaderboard {
+		display: none;
+	}
+	.host_byline {
+		padding-top: 0;
+		margin-top: 0;
+	}
 	section {
 		max-width: var.$readability-width;
 		&.large_columns {
