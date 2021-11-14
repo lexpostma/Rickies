@@ -76,6 +76,7 @@ foreach ($rickies_events__array as $event) {
 		unset($ungraded_filter);
 	}
 	echo sitemap_url('/' . $event['url_name'], $event['last_edited']);
+	echo sitemap_url('/billof/' . $event['url_name'], $event['last_edited_rules'], 'monthly', '0.1');
 }
 
 // Rules data for /billof

@@ -21,6 +21,7 @@ if (!isset($rickies_events__params['fields']) && !$all_event_details) {
 		'Artwork background color',
 		'Interactive',
 		'Last edit date',
+		'Rules episode last edited',
 	];
 }
 
@@ -74,6 +75,7 @@ do {
 					'artwork_background_color' => check_key('Artwork background color', $fields),
 					'winner' => check_key('Rickies 1st (manual)', $fields),
 					'last_edited' => check_key('Last edit date', $fields),
+					'last_edited_rules' => check_key('Rules episode last edited', $fields),
 				];
 
 				// If not TRUE, set to FALSE. Otherwise it's NULL
