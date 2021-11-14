@@ -73,7 +73,7 @@ $introduction =
 include '../includes/data_controllers/event_data_controller.php';
 
 if (isset($auto_select_rickies)) {
-	// echo $rickies_events__array[array_key_first($rickies_events__array)]['url'];
+	// Redirect to the first key (Rickies) in the array
 	header('Location: ' . domain_url() . $rickies_events__array[array_key_first($rickies_events__array)]['url']);
 	die();
 }

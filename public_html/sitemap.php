@@ -36,6 +36,9 @@ echo '<' . '?' . 'xml version="1.0" encoding="UTF-8"' . '?' . '>';
 echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 
 // Data for home, Rickies and filtered Rickies
+$rickies_events__params = [
+	'sort' => $airtable_sorting,
+];
 include '../includes/data_controllers/event_data_controller.php';
 $home = $latest = $latest_keynote = $latest_annual = $ungraded_filter = $wwdc_filter = $keynote_filter = $annual_filter = true;
 
