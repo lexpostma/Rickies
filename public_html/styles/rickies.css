@@ -1856,6 +1856,11 @@ mark {
 #pick_filter_sheet[open] > summary .opened {
   display: inline;
 }
+@supports not ((-webkit-backdrop-filter: blur(20px)) and (backdrop-filter: blur(20px))) {
+  #pick_filter_sheet[open] {
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
 @media (prefers-color-scheme: dark) {
   #pick_filter_sheet[open] {
     background: rgba(0, 0, 0, 0.8);
