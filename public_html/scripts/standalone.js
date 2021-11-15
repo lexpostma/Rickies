@@ -2,8 +2,18 @@ function refresh_inprogress(el) {
 	el.innerText = 'Refreshing…';
 }
 
+// Check whether webapp is in standalone mode
+function is_standalone() {
+	// iOS or Android
+	if (window.navigator.standalone == true || window.matchMedia('(display-mode: standalone)').matches) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 function promote_standalone() {
-	if (window.navigator.standalone == true) {
+	if (is_standalone()) {
 		// Is on the home screen, offer refresh
 		document.getElementById('refresh_page').style.display = 'block';
 	} else if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('iPad') != -1) {
@@ -21,7 +31,7 @@ function promote_standalone() {
 document.addEventListener('DOMContentLoaded', function (event) {
 	promote_standalone();
 
-	if (window.navigator.standalone == true && share_button) {
+	if (is_standalone() && share_button) {
 		// if (share_button) {
 		// NOTE: This is a debugging IF
 		// Web app is on the home screen and share button is in DOM,
