@@ -2113,8 +2113,8 @@ mark {
 
 .filter_sheet_toggle {
   display: inline-block;
-  margin: var(--element-padding-neg);
-  padding: var(--element-padding);
+  margin: calc(var(--element-padding-neg) / 2) 0;
+  padding: calc(var(--element-padding) / 2) var(--element-padding);
   border-radius: var(--element-corner-radius);
 }
 @media (hover: hover) {
@@ -2145,6 +2145,11 @@ mark {
 
 #reset_button {
   padding: 0 var(--element-padding);
+}
+@media screen and (min-width: 768px) {
+  #reset_button {
+    padding: 0 var(--space-between-md);
+  }
 }
 @media (hover: hover) {
   #reset_button:not(:disabled):hover {
