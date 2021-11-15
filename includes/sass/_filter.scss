@@ -340,17 +340,17 @@
 
 .filter_sheet_toggle {
 	display: inline-block;
-	margin: calc(var(--element-padding-neg) / 2) 0;
-	padding: calc(var(--element-padding) / 2) var(--element-padding);
 	border-radius: var(--element-corner-radius);
 	@media (hover: hover) {
+		margin: calc(var(--element-padding-neg) / 2) 0;
+		padding: calc(var(--element-padding) / 2) var(--element-padding);
 		&:hover {
 			background-color: var(--element-hover-color);
 		}
-	}
-	&:focus,
-	&:active {
-		background-color: var(--element-active-color);
+		&:focus,
+		&:active {
+			background-color: var(--element-active-color);
+		}
 	}
 }
 
