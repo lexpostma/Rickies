@@ -239,7 +239,6 @@ table.full_stats {
 }
 
 .rotate_coin {
-	display: inline-block;
 	-webkit-perspective: 100px;
 	perspective: 100px;
 	span {
@@ -250,12 +249,8 @@ table.full_stats {
 }
 
 .pulse_orb {
-	display: inline-block;
 	animation: pulsePurple 2s infinite;
 	border-radius: 50%;
-	// 1.5 is the line-height, to make the shadow round instead of oval
-	// Use !important to overwrite .emoji
-	width: 1.5em !important;
 }
 
 @keyframes pulsePurple {

@@ -1227,6 +1227,53 @@ li.pick_item.manual {
   background-color: rgba(239, 123, 0, 0.15);
 }
 
+.pick_item:hover .recycle, .pick_item:focus .recycle, .pick_item:active .recycle {
+  animation: rotateInThirds 8s infinite;
+}
+.pick_item:hover .hourglass, .pick_item:focus .hourglass, .pick_item:active .hourglass {
+  animation: rotateInHalfs 6s infinite;
+}
+
+@keyframes rotateInThirds {
+  0%, 30% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateX(2px) translateY(2px) rotate(129deg);
+  }
+  35%, 63% {
+    transform: translateX(2px) translateY(2px) rotate(120deg);
+  }
+  66% {
+    transform: translateX(-2px) translateY(1px) rotate(249deg);
+  }
+  68%, 96% {
+    transform: translateX(-2px) translateY(1px) rotate(240deg);
+  }
+  98% {
+    transform: translateX(0px) translateY(0px) rotate(369deg);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) rotate(360deg);
+  }
+}
+@keyframes rotateInHalfs {
+  0%, 45% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(2px) rotate(190deg);
+  }
+  55%, 90% {
+    transform: translateY(2px) rotate(180deg);
+  }
+  95% {
+    transform: translateY(0px) rotate(370deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg);
+  }
+}
 .tag {
   color: #fff !important;
   display: inline-block;
@@ -1504,7 +1551,6 @@ table.full_stats td.string strong {
   }
 }
 .rotate_coin {
-  display: inline-block;
   -webkit-perspective: 100px;
   perspective: 100px;
 }
@@ -1515,10 +1561,8 @@ table.full_stats td.string strong {
 }
 
 .pulse_orb {
-  display: inline-block;
   animation: pulsePurple 2s infinite;
   border-radius: 50%;
-  width: 1.5em !important;
 }
 
 @keyframes pulsePurple {
