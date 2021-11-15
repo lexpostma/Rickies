@@ -177,7 +177,7 @@ foreach ($splashScreenSizes as $device => $size) {
 
 <!-- Android -->
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="shortcut icon" sizes="196x196" href="<?= $appIconDirectory ?>icon-196x196.png?v=<?= $refresh ?>">
+<!-- <link rel="shortcut icon" sizes="196x196" href="<?= $appIconDirectory ?>icon-196x196.png?v=<?= $refresh ?>">
 <link rel="shortcut icon" sizes="128x128" href="<?= $appIconDirectory ?>icon-128x128.png?v=<?= $refresh ?>">
 <link rel="shortcut icon" sizes="512x512" href="<?= $appIconDirectory ?>icon-512x512.png?v=<?= $refresh ?>">
-<link rel="shortcut icon" sizes="128x128" href="<?= $appIconDirectory ?>icon-1024x1024.png?v=<?= $refresh ?>">
+<link rel="shortcut icon" sizes="128x128" href="<?= $appIconDirectory ?>icon-1024x1024.png?v=<?= $refresh ?>"> -->
