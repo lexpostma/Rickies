@@ -38,6 +38,11 @@
 			"sizes": "120x120"
 		},
 		{
+			"src": "/images/app-icons-128x128.png",
+			"type": "image/png",
+			"sizes": "128x128"
+		},
+		{
 			"src": "/images/app-icons-152x152.png",
 			"type": "image/png",
 			"sizes": "152x152"
@@ -58,12 +63,17 @@
 			"sizes": "192x192"
 		},
 		{
+			"src": "/images/app-icons-196x196.png",
+			"type": "image/png",
+			"sizes": "196x196"
+		},
+		{
 			"src": "/images/app-icons-512x512.png",
 			"type": "image/png",
 			"sizes": "512x512"
 		},
 		{
-			"src": "/images/app-icons.png",
+			"src": "/images/app-icons-1024x1024.png",
 			"type": "image/png",
 			"sizes": "1024x1024"
 		}
