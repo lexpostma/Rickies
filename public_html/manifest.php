@@ -25,7 +25,7 @@ foreach ($appIconSizes as $device => $size) {
 		{
 			"src": "' .
 		$appIconDirectory .
-		'icon-' .
+		'icon-transparent-' .
 		$size .
 		'.png",
 			"type": "image/png",
