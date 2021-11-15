@@ -50,20 +50,49 @@ echo '{
 	"scope": "/",
 	"shortcuts": [
 		{
+			"name": "Latest Rickies",
+			"url": "/latest",
+			"icons": [{
+				"src": "/images/shortcut-latest.svg",
+				"sizes": "96x96",
+				"type": "image/svg"
+			}]
+		},
+		{
 			"name": "The Bill of Rickies",
-			"url": "/billof"
+			"url": "/billof",
+			"icons": [{
+				"src": "/images/shortcut-bill.svg",
+				"sizes": "96x96",
+				"type": "image/svg"
+			}]
 		},
 		{
 			"name": "Host Leaderboard",
-			"url": "/leaderboard"
+			"url": "/leaderboard",
+			"icons": [{
+				"src": "/images/shortcut-leaderboard.svg",
+				"sizes": "96x96",
+				"type": "image/svg"
+			}]
 		},
 		{
 			"name": "Rickies archive and search",
-			"url": "/archive"
+			"url": "/archive",
+			"icons": [{
+				"src": "/images/shortcut-archive.svg",
+				"sizes": "96x96",
+				"type": "image/svg"
+			}]
 		},
 		{
 			"name": "About Rickies.co",
-			"url": "/about"
+			"url": "/about",
+			"icons": [{
+				"src": "/images/shortcut-about.svg",
+				"sizes": "96x96",
+				"type": "image/svg"
+			}]
 		}
 	],
 	"icons": [' .
