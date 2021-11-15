@@ -8,25 +8,24 @@ $icons = [];
 foreach ($appIconSizes as $device => $size) {
 	$icons[] =
 		'
-	{
-		"src": "/images/app-icons-' .
+		{
+			"src": "/images/app-icons-' .
 		$size .
 		'.png",
-		"type": "image/png",
-		"sizes": "' .
+			"type": "image/png",
+			"sizes": "' .
 		$size .
 		'",
-		"purpose": "maskable any"
-	}';
+			"purpose": "maskable any"
+		}';
 }
 
-echo '
-{
+echo '{
 	"short_name": "' .
-	$head['short_name'] .
+	$head_defaults['short_name'] .
 	'",
 	"name": "' .
-	$head['short_name'] .
+	$head_defaults['short_name'] .
 	'",
 	"start_url": "/",
 	"background_color": "#333f48",
@@ -53,5 +52,6 @@ echo '
 	],
 	"icons": [' .
 	implode(',', $icons) .
-	']
+	'
+	]
 }';
