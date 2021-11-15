@@ -57,11 +57,13 @@ On Connected at Relay FM.',
 ];
 
 if ($environment == 'production') {
+	$appIconDirectory = '/images/app-icons/';
 	$head_defaults['site_goatcounter'] = 'https://rickies.goatcounter.com';
 	$github = 'main';
 	// NOTE: Update for new releases
 	$refresh = 'v1.5.11';
 } else {
+	$appIconDirectory = '/images/app-icons/' . $environment . '/';
 	$head_defaults['site_goatcounter'] = 'https://rickies-test.goatcounter.com';
 	$github = 'development';
 	$refresh = date('s');
@@ -82,7 +84,8 @@ $appIconSizes = [
 	'App Store @1x' => '512x512',
 	'App Store @2x' => '1024x1024',
 	'Generic 1' => '128x128',
-	'Generic 2' => '196x196',
+	'Generic 2' => '144x144',
+	'Generic 3' => '196x196',
 ];
 
 // Term "Rickies" was coined on episode #245, officially branded in #259

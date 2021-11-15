@@ -15,11 +15,6 @@ if (array_key_exists('theme-color', $head) && array_key_exists('theme-color-dark
 
 echo '
 <!-- iOS home screen icons -->';
-if ($environment !== 'production') {
-	$appIconDirectory = '/images/app-icons/' . $environment . '/';
-} else {
-	$appIconDirectory = '/images/app-icons/';
-}
 foreach ($appIconSizes as $device => $size) {
 	echo '
 <link rel="apple-touch-icon-precomposed" sizes="' .
