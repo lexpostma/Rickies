@@ -54,8 +54,7 @@ if ($environment !== 'production') {
 <meta name="twitter:image" content="<?= $head['image'] ?>" />
 <meta name="twitter:url" content="<?= current_url() ?>" />
 
-<?php include 'ios_optimisation.php'; ?>
-
+<?php include 'webapp_optimisation.php'; ?>
 
 <!-- Style sheets -->
 <link rel="stylesheet" href="/styles/normalize.css"> <!-- Normalize -->

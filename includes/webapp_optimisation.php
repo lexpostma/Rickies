@@ -170,4 +170,10 @@ foreach ($splashScreenSizes as $device => $size) {
 		$size['ratio'] .
 		')" />';
 }
+?>
 
+
+<!-- Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="shortcut icon" sizes="196x196" href="<?= $appIconDirectory ?>icon-196x196.png?v=<?= $refresh ?>">
+<link rel="shortcut icon" sizes="128x128" href="<?= $appIconDirectory ?>icon-128x128.png?v=<?= $refresh ?>">
