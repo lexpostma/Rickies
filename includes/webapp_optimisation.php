@@ -15,20 +15,6 @@ if (array_key_exists('theme-color', $head) && array_key_exists('theme-color-dark
 
 echo '
 <!-- iOS home screen icons -->';
-$appIconSizes = [
-	'iPhone @1x' => '60x60',
-	'iPhone @2x' => '120x120',
-	'iPhone @3x' => '180x180',
-	'iPad @1x' => '76x76',
-	'iPad @2x' => '152x152',
-	'iPad Pro @2x' => '167x167',
-	'Spotlight iPhone @2x' => '80x80',
-	'Settings iPhone @1x' => '29x29',
-	'Settings iPhone @2x' => '58x58',
-	'Settings iPhone @3x' => '87x87',
-	'App Store @1x' => '512x512',
-	'App Store @2x' => '1024x1024',
-];
 if ($environment !== 'production') {
 	$appIconDirectory = '/images/app-icons/' . $environment . '/';
 } else {
@@ -172,12 +158,20 @@ foreach ($splashScreenSizes as $device => $size) {
 		$size['ratio'] .
 		')" />';
 }
-?>
 
-
+echo '
 <!-- Android -->
-<meta name="mobile-web-app-capable" content="yes">
-<link rel="shortcut icon" sizes="196x196" href="<?= $appIconDirectory ?>icon-196x196.png?v=<?= $refresh ?>">
-<link rel="shortcut icon" sizes="128x128" href="<?= $appIconDirectory ?>icon-128x128.png?v=<?= $refresh ?>">
-<link rel="shortcut icon" sizes="512x512" href="<?= $appIconDirectory ?>icon-512x512.png?v=<?= $refresh ?>">
-<link rel="shortcut icon" sizes="128x128" href="<?= $appIconDirectory ?>icon-1024x1024.png?v=<?= $refresh ?>">
+<meta name="mobile-web-app-capable" content="yes">';
+foreach ($appIconSizes as $device => $size) {
+	echo '
+<link rel="shortcut icon" sizes="' .
+		$size .
+		'" href="' .
+		$appIconDirectory .
+		'icon-' .
+		$size .
+		'.png?v=' .
+		$refresh .
+		'" />';
+}
+
