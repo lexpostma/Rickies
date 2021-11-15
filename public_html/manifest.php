@@ -37,13 +37,15 @@ foreach ($appIconSizes as $device => $size) {
 }
 
 echo '{
-	"short_name": "' .
-	$head_defaults['short_name'] .
-	'",
 	"name": "' .
 	$head_defaults['short_name'] .
 	'",
+	"short_name": "' .
+	$head_defaults['short_name'] .
+	'",
 	"start_url": "/",
+	"lang": "en",
+	"orientation": "any",
 	"background_color": "#333f48",
 	"theme_color": "#0d87ca",
 	"display": "standalone",
