@@ -231,10 +231,10 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 
 	// Filter for interesting stats and metadata
 	$event_select = [
-		'annual' => '📆&emsp14;&emsp14;Annual Rickies',
-		'keynote' => '📽&emsp14;&emsp14;Keynote Rickies',
-		'WWDC' => '💻&emsp14;&emsp14;WWDC Rickies',
-		'ungraded' => '🟠&emsp14;&emsp14;Ungraded Rickies',
+		'annual' => '📆' . $emoji_select_spacing . 'Annual Rickies',
+		'keynote' => '📽' . $emoji_select_spacing . 'Keynote Rickies',
+		'WWDC' => '💻' . $emoji_select_spacing . 'WWDC Rickies',
+		'ungraded' => '🟠' . $emoji_select_spacing . 'Ungraded Rickies',
 	];
 	$output .= '
 	<fieldset class="list pick_metadata">
@@ -246,8 +246,11 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 	} else {
 		$output .= 'data-chosen';
 	}
-	$output .= '>
-					<option value>🏆&emsp14;&emsp14;All Rickies</option>
+	$output .=
+		'>
+					<option value>🏆' .
+		$emoji_select_spacing .
+		'All Rickies</option>
 					<optgroup label="Only show picks from…">';
 	foreach ($event_select as $value => $label) {
 		$output .= '<option value="' . strtolower($value) . '" ';
@@ -323,9 +326,9 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 
 	// Filter for changing view
 	$pick_display_select = [
-		'clean' => '🧹&emsp14;&emsp14;Just the picks',
-		'categories' => '🏷&emsp14;&emsp14;Show categories',
-		'age' => '🗓&emsp14;&emsp14;Show age of picks',
+		'clean' => '🧹' . $emoji_select_spacing . 'Just the picks',
+		'categories' => '🏷' . $emoji_select_spacing . 'Show categories',
+		'age' => '🗓' . $emoji_select_spacing . 'Show age of picks',
 	];
 	$output .= '
 			<li class="filter_option select">
@@ -335,8 +338,11 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 	} else {
 		$output .= 'data-chosen';
 	}
-	$output .= '>
-					<option value>🗂&emsp14;&emsp14;All metadata</option>
+	$output .=
+		'>
+					<option value>🗂' .
+		$emoji_select_spacing .
+		'All metadata</option>
 					<optgroup label="Show picks and…">';
 	foreach ($pick_display_select as $value => $label) {
 		$output .= '<option value="' . $value . '" ';

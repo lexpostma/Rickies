@@ -185,11 +185,9 @@ foreach ($rickies_events__array as $event) {
 	} else {
 		$emoji = '📽';
 	}
-	// The "&emsp14;" is a narrower 4-per-em space
-	// Via https://stackoverflow.com/a/8515417
 	$rickies_events_options[$event['url_name']] =
 		$emoji .
-		'&emsp14;&emsp14;' .
+		$emoji_select_spacing .
 		str_replace(
 			'Keynote WWDC',
 			'WWDC',

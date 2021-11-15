@@ -1516,8 +1516,7 @@ table.full_stats td.string strong {
   display: inline-block;
   animation: pulsePurple 2s infinite;
   border-radius: 50%;
-  width: 1.5em;
-  text-align: center;
+  width: 1.5em !important;
 }
 
 @keyframes pulsePurple {
@@ -2305,13 +2304,14 @@ span.emoji {
   font-family: "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, emoji, sans-serif;
   font-variant-emoji: emoji;
   display: inline-block;
-  width: 1.3em;
+  width: 1.5em;
   margin-right: 0.4em;
   overflow: hidden;
   vertical-align: top;
   white-space: nowrap;
   flex-shrink: 0;
   text-decoration: none;
+  text-align: center;
 }
 
 ul {
