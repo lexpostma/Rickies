@@ -157,16 +157,4 @@ foreach ($splashScreenSizes as $device => $size) {
 echo '
 <!-- Android -->
 <meta name="mobile-web-app-capable" content="yes">';
-// foreach ($appIconSizes as $device => $size) {
-// 	echo '
-// <link rel="shortcut icon" sizes="' .
-// 		$size .
-// 		'" href="' .
-// 		$appIconDirectory .
-// 		'icon-' .
-// 		$size .
-// 		'.png?v=' .
-// 		$refresh .
-// 		'" />';
-// }
 
