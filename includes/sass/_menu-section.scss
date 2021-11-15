@@ -281,24 +281,15 @@ section h2,
 		}
 
 		&.navigate_with_mobile_menu {
-			// &:not(.leaderboard) {
-			// 	display: none;
-			// 	padding-top: calc(var(--nav-height) + var(--space-side-padding));
-			// 	padding-top: calc(var(--nav-height) + var(--space-side-padding) + #{var.$iX-top});
-			// }
-			// &.leaderboard {
-			// 	padding-top: var(--nav-height);
-			// 	padding-top: calc(var(--nav-height) + #{var.$iX-top});
-			// }
 			margin-top: var(--space-between-lg);
 			&:not(.leaderboard) {
 				display: block;
-				padding-top: calc(var(--nav-height) + var(--space-side-padding));
-				// padding-top: calc(var(--nav-height) + var(--space-side-padding) + #{var.$iX-top});
+				padding-top: var(--nav-height);
+				padding-top: calc(var(--nav-height) + #{var.$iX-top});
 			}
 			&.leaderboard {
 				padding-top: var(--nav-height);
-				// padding-top: calc(var(--nav-height) + #{var.$iX-top});
+				padding-top: calc(var(--nav-height) + #{var.$iX-top});
 			}
 			&:not(:last-of-type) {
 				margin-bottom: calc(-1 * (var(--nav-height)));

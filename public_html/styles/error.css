@@ -805,10 +805,12 @@ section h2,
   }
   section.navigate_with_mobile_menu:not(.leaderboard) {
     display: block;
-    padding-top: calc(var(--nav-height) + var(--space-side-padding));
+    padding-top: var(--nav-height);
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top));
   }
   section.navigate_with_mobile_menu.leaderboard {
     padding-top: var(--nav-height);
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top));
   }
   section.navigate_with_mobile_menu:not(:last-of-type) {
     margin-bottom: calc(-1 * (var(--nav-height)));

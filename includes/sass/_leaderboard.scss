@@ -253,8 +253,9 @@ table.full_stats {
 	display: inline-block;
 	animation: pulsePurple 2s infinite;
 	border-radius: 50%;
-	width: 1.5em; // = line-height
-	text-align: center;
+	// 1.5 is the line-height, to make the shadow round instead of oval
+	// Use !important to overwrite .emoji
+	width: 1.5em !important;
 }
 
 @keyframes pulsePurple {

@@ -157,14 +157,16 @@ function leaderboard_item($host_data, $column = 1)
 
 	// Ahead of its time
 	$output .= host_stats_item(
-		'<span class="pulse_orb" style="animation-delay: ' . rand(-2000, 0) . 'ms;">🔮</span> Ahead of his time',
+		'<span class="emoji pulse_orb" style="animation-delay: ' . rand(-2000, 0) . 'ms;">🔮</span>Ahead of his time',
 		score_label_item($host_data['stats']['too_soon'], $host_data['personal']['color'], true),
 		$column
 	);
 
 	// Coin flips
 	$output .= host_stats_item(
-		'<span class="rotate_coin"><span style="animation-delay: ' . rand(-3000, 0) . 'ms;">🪙</span></span> Coin flips',
+		'<span class="emoji rotate_coin"><span style="animation-delay: ' .
+			rand(-3000, 0) .
+			'ms;">🪙</span></span>Coin flips',
 		score_label_item($host_data['stats']['coin_flips'], $host_data['personal']['color'], true),
 		$column
 	);
