@@ -259,3 +259,50 @@ DATETIME_PARSE(
 	'X'
 )
 ```
+
+## Title string
+
+```
+IF(
+	URL,
+	'<a target="_blank" href="'
+	& URL
+	& '" data-goatcounter-click="'
+	& URL
+	& '" data-goatcounter-title="'
+	& Name
+	& ' ',
+	'<span '
+)
+& 'class="'
+& IF(
+	Priority,
+	'priority '
+)
+& IF(
+	{Special emoji class} = "rotate_coin",
+	'rotate_coin '
+)
+& '">'
+
+& IF(
+	Emoji,
+	'<span class="emoji '
+	& IF(
+		AND(
+			{Special emoji class},
+			{Special emoji class} != "rotate_coin"
+		),
+		{Special emoji class}
+	)
+	& '">'
+	& Emoji
+	& '</span>'
+)
+& Name
+& IF(
+	URL,
+	'</a>',
+	'</span>'
+)
+```
