@@ -31,7 +31,7 @@ if (isset($_GET['search']) && $_GET['search'] !== '') {
 }
 
 // Define how picks are displayed
-if (isset($_GET['display'])) {
+if (isset($_GET['display']) && $_GET['display'] !== '') {
 	$pick_filter['display'] = $_GET['display'];
 }
 switch ($pick_filter['display']) {
