@@ -85,11 +85,6 @@ $appIconSizes = [
 	'Generic 2' => '196x196',
 ];
 
-// The "&emsp14;" is a narrower 4-per-em space
-// It's used to tweak the spacing of emoji inside a <select>
-// Via https://stackoverflow.com/a/8515417
-$emoji_select_spacing = '&emsp14;&emsp14;';
-
 // Term "Rickies" was coined on episode #245, officially branded in #259
 $rickies_start = strtotime('2019-09-04');
 

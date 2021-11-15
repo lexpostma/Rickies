@@ -1,6 +1,14 @@
 <?php
 /* Function for searching and filtering predictions/picks  */
 
+// The "&emsp14;" is a narrower 4-per-em space
+// It's used to tweak the spacing of emoji inside a <select>
+// Via https://stackoverflow.com/a/8515417
+function emoji_select_spacing($emoji)
+{
+	return $emoji . '&emsp14;&emsp14;';
+}
+
 // Fixed search button in the top right corner of many pages, opens a modal search field
 // Includes a search field that's always fixed, otherwise there's no search button needed on the page
 function search_button()
@@ -231,10 +239,10 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 
 	// Filter for interesting stats and metadata
 	$event_select = [
-		'annual' => '📆' . $emoji_select_spacing . 'Annual Rickies',
-		'keynote' => '📽' . $emoji_select_spacing . 'Keynote Rickies',
-		'WWDC' => '💻' . $emoji_select_spacing . 'WWDC Rickies',
-		'ungraded' => '🟠' . $emoji_select_spacing . 'Ungraded Rickies',
+		'annual' => emoji_select_spacing('📆') . 'Annual Rickies',
+		'keynote' => emoji_select_spacing('📽') . 'Keynote Rickies',
+		'WWDC' => emoji_select_spacing('💻') . 'WWDC Rickies',
+		'ungraded' => emoji_select_spacing('🟠') . 'Ungraded Rickies',
 	];
 	$output .= '
 	<fieldset class="list pick_metadata">
@@ -248,8 +256,8 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 	}
 	$output .=
 		'>
-					<option value>🏆' .
-		$emoji_select_spacing .
+					<option value>' .
+		emoji_select_spacing('🏆') .
 		'All Rickies</option>
 					<optgroup label="Only show picks from…">';
 	foreach ($event_select as $value => $label) {
@@ -326,9 +334,9 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 
 	// Filter for changing view
 	$pick_display_select = [
-		'clean' => '🧹' . $emoji_select_spacing . 'Just the picks',
-		'categories' => '🏷' . $emoji_select_spacing . 'Show categories',
-		'age' => '🗓' . $emoji_select_spacing . 'Show age of picks',
+		'clean' => emoji_select_spacing('🧹') . 'Just the picks',
+		'categories' => emoji_select_spacing('🏷') . 'Show categories',
+		'age' => emoji_select_spacing('🗓') . 'Show age of picks',
 	];
 	$output .= '
 			<li class="filter_option select">
@@ -340,8 +348,8 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 	}
 	$output .=
 		'>
-					<option value>🗂' .
-		$emoji_select_spacing .
+					<option value>' .
+		emoji_select_spacing('🗂') .
 		'All metadata</option>
 					<optgroup label="Show picks and…">';
 	foreach ($pick_display_select as $value => $label) {

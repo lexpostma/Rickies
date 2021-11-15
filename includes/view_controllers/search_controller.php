@@ -186,8 +186,7 @@ foreach ($rickies_events__array as $event) {
 		$emoji = '📽';
 	}
 	$rickies_events_options[$event['url_name']] =
-		$emoji .
-		$emoji_select_spacing .
+		emoji_select_spacing($emoji) .
 		str_replace(
 			'Keynote WWDC',
 			'WWDC',

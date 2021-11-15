@@ -2053,7 +2053,7 @@ mark {
   position: relative;
 }
 #pick_filter_sheet > .content > fieldset .select select {
-  padding: var(--label-padding) 0 var(--label-padding) calc(1.4rem + 4px);
+  padding: var(--label-padding) 0 var(--label-padding) calc(1.4rem + 8px);
   width: 100%;
 }
 #pick_filter_sheet > .content > fieldset .select .select_icon {
