@@ -6,6 +6,18 @@ header('Content-type: application/manifest+json');
 
 $icons = [];
 foreach ($appIconSizes as $device => $size) {
+	// $icons[] =
+	// 	'
+	// {
+	// 	"src": "/images/app-icons-' .
+	// 	$size .
+	// 	'.png",
+	// 	"type": "image/png",
+	// 	"sizes": "' .
+	// 	$size .
+	// 	'",
+	// 	"purpose": "any"
+	// }';
 	$icons[] =
 		'
 		{
@@ -16,7 +28,7 @@ foreach ($appIconSizes as $device => $size) {
 			"sizes": "' .
 		$size .
 		'",
-			"purpose": "maskable any"
+			"purpose": "maskable"
 		}';
 }
 
