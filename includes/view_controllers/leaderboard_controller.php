@@ -12,7 +12,8 @@ include '../includes/data_controllers/status_data_controller.php';
 
 function leaderboard_item_bundle($input)
 {
-	$output = '<section class="large_columns navigate_with_mobile_menu leaderboard"><div class="section_grid">';
+	$output =
+		'<section class="large_columns navigate_with_mobile_menu leaderboard"><h2>Host Stats</h2><div class="section_grid">';
 	$chart_script = '<script>';
 	$column = 1;
 	foreach ($input as $host_data) {
@@ -224,6 +225,14 @@ function score_label_item($array, $color, $display_as_paragraph = false)
 	}
 
 	$output .= '</table>';
+	return $output;
+}
+
+function chairman_timeline($host_data = [], $event_data = [])
+{
+	$output = '<section class="large_columns navigate_with_mobile_menu leaderboard"><div id="timeline">';
+	$output .= '<h2>Chairman Timeline</h2><p>This is going to be the chairman timeline!!</p>';
+	$output .= '</div></section>';
 	return $output;
 }
 

@@ -16,6 +16,12 @@ echo no_script_banner('Charts can’t be shown with Javascript disabled'),
 	<div id="nav_content_sticky" class="nav_content">
 		<div class="nav_content--items">
 			<a class="menu_item js_link"
+				id="menu_timeline"
+				title="Chairman timeline"
+				data-goatcounter-click="Show chairman timeline"
+				data-goatcounter-referrer="<?= current_url() ?>"
+				onclick="navigate_section('timeline');">Timeline</a>
+			<a class="menu_item js_link"
 				id="menu_myke"
 				title="Myke’s stats"
 				data-goatcounter-click="Show Myke’s stats"
@@ -40,5 +46,6 @@ echo no_script_banner('Charts can’t be shown with Javascript disabled'),
 	</div>
 </nav>
 
-<?php echo leaderboard_item_bundle($hosts_data__array),
+<?php echo chairman_timeline($hosts_data__array),
+	leaderboard_item_bundle($hosts_data__array),
 	'<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';
