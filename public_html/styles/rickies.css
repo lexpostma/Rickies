@@ -802,9 +802,13 @@ section h2,
   }
   section.navigate_with_mobile_menu {
     margin-top: var(--space-between-lg);
-    padding-top: var(--nav-height)var(--space-side-padding);
-    padding-top: calc(var(--nav-height) + env(safe-area-inset-top));
+  }
+  section.navigate_with_mobile_menu:not(.leaderboard) {
     display: block;
+    padding-top: calc(var(--nav-height) + var(--space-side-padding));
+  }
+  section.navigate_with_mobile_menu.leaderboard {
+    padding-top: var(--nav-height);
   }
   section.navigate_with_mobile_menu:not(:last-of-type) {
     margin-bottom: calc(-1 * (var(--nav-height)));
@@ -1856,6 +1860,11 @@ mark {
 #pick_filter_sheet[open] > summary .opened {
   display: inline;
 }
+@supports not ((-webkit-backdrop-filter: blur(20px)) and (backdrop-filter: blur(20px))) {
+  #pick_filter_sheet[open] {
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
 @media (prefers-color-scheme: dark) {
   #pick_filter_sheet[open] {
     background: rgba(0, 0, 0, 0.8);
@@ -2113,8 +2122,8 @@ mark {
 
 .filter_sheet_toggle {
   display: inline-block;
-  margin: var(--element-padding-neg);
-  padding: var(--element-padding);
+  margin: calc(var(--element-padding-neg) / 2) 0;
+  padding: calc(var(--element-padding) / 2) var(--element-padding);
   border-radius: var(--element-corner-radius);
 }
 @media (hover: hover) {
@@ -2145,6 +2154,11 @@ mark {
 
 #reset_button {
   padding: 0 var(--element-padding);
+}
+@media screen and (min-width: 768px) {
+  #reset_button {
+    padding: 0 var(--space-between-md);
+  }
 }
 @media (hover: hover) {
   #reset_button:not(:disabled):hover {

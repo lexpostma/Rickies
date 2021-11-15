@@ -89,6 +89,9 @@
 		transition-duration: var.$hover-duration;
 		box-shadow: var.$header-shadow;
 		background: rgba(255, 255, 255, 0.8);
+		@supports not ((-webkit-backdrop-filter: blur(20px)) and (backdrop-filter: blur(20px))) {
+			background: rgba(255, 255, 255, 0.9);
+		}
 		-webkit-backdrop-filter: blur(20px);
 		backdrop-filter: blur(20px);
 
@@ -337,8 +340,8 @@
 
 .filter_sheet_toggle {
 	display: inline-block;
-	margin: var(--element-padding-neg);
-	padding: var(--element-padding);
+	margin: calc(var(--element-padding-neg) / 2) 0;
+	padding: calc(var(--element-padding) / 2) var(--element-padding);
 	border-radius: var(--element-corner-radius);
 	@media (hover: hover) {
 		&:hover {
@@ -365,6 +368,9 @@
 }
 #reset_button {
 	padding: 0 var(--element-padding);
+	@media screen and (min-width: var.$break-md) {
+		padding: 0 var(--space-between-md);
+	}
 	// background: rgba(var(--connected-blue-rgb), 0.05);
 	// @media (prefers-color-scheme: dark) {
 	// 	background: rgba(var(--connected-blue-rgb), 0.15);
