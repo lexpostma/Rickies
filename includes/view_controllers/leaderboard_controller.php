@@ -13,7 +13,7 @@ include '../includes/data_controllers/status_data_controller.php';
 function leaderboard_item_bundle($input)
 {
 	$output =
-		'<section class="large_columns navigate_with_mobile_menu leaderboard"><h2>Host Stats</h2><div class="section_grid">';
+		'<section class="large_columns navigate_with_mobile_menu leaderboard" id="stats"><h2>Host Stats</h2><div class="section_grid">';
 	$chart_script = '<script>';
 	$column = 1;
 	foreach ($input as $host_data) {
@@ -246,8 +246,8 @@ function chairman_timeline($host_data = [], $event_data = [])
 	];
 	$start = 1;
 	$output = '
-<section class="large_columns navigate_with_mobile_menu leaderboard">
-	<div id="timeline" class="timeline--container">
+<section class="large_columns navigate_with_mobile_menu leaderboard" id="timeline" >
+	<div class="timeline--container">
 		<h2>Chairman Timeline</h2>
 		<div class="timeline--content">
 			<div class="timeline--host-track legend">';
