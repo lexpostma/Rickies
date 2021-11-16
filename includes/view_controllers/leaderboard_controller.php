@@ -230,9 +230,84 @@ function score_label_item($array, $color, $display_as_paragraph = false)
 
 function chairman_timeline($host_data = [], $event_data = [])
 {
-	$output = '<section class="large_columns navigate_with_mobile_menu leaderboard"><div id="timeline">';
-	$output .= '<h2>Chairman Timeline</h2><p>This is going to be the chairman timeline!!</p>';
-	$output .= '</div></section>';
+	$months = [
+		'January' => 31,
+		'February' => 28,
+		'March' => 31,
+		'April' => 30,
+		'May' => 31,
+		'June' => 30,
+		'July' => 31,
+		'August' => 31,
+		'September' => 30,
+		'October' => 31,
+		'November' => 30,
+		'December' => 31,
+	];
+	$start = 1;
+	$output = '
+<section class="large_columns navigate_with_mobile_menu leaderboard">
+	<div id="timeline" class="timeline--container">
+		<h2>Chairman Timeline</h2>
+		<div class="timeline--content">
+			<div class="timeline--host-track legend">';
+	foreach ($months as $month_name => $days) {
+		$output .=
+			'<div class="month" style="left: calc(' .
+			$start .
+			' * var(--day-width)); width: calc(' .
+			$days .
+			' * var(--day-width));">' .
+			$month_name .
+			'</div>';
+		$start = $start + $days;
+	}
+	$output .= '</div>
+			<div class="timeline--host-track host1">
+				<div class="timeline--chairman annual">
+					<div class="chairman" style="left: calc(107 * var(--day-width)); width: calc(4 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(40 * var(--day-width)); width: calc(3 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(70 * var(--day-width)); width: calc(2 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(102 * var(--day-width)); width: calc(4 * var(--day-width));"></div>
+				</div>
+				<div class="timeline--chairman keynote">
+					<div class="chairman" style="left: calc(10 * var(--day-width)); width: calc(4 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(40 * var(--day-width)); width: calc(3 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(50 * var(--day-width)); width: calc(2 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(96 * var(--day-width)); width: calc(4 * var(--day-width));"></div>
+				</div>
+			</div>
+			<div class="timeline--host-track host2">
+				<div class="timeline--chairman annual">
+					<div class="chairman" style="left: calc(157 * var(--day-width)); width: calc(4 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(45 * var(--day-width)); width: calc(3 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(72 * var(--day-width)); width: calc(2 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(128 * var(--day-width)); width: calc(4 * var(--day-width));"></div>
+				</div>
+				<div class="timeline--chairman keynote">
+					<div class="chairman" style="left: calc(25 * var(--day-width)); width: calc(4 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(52 * var(--day-width)); width: calc(3 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(98 * var(--day-width)); width: calc(2 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(130 * var(--day-width)); width: calc(4 * var(--day-width));"></div>
+				</div>
+			</div>
+			<div class="timeline--host-track host3">
+				<div class="timeline--chairman annual">
+					<div class="chairman" style="left: calc(137 * var(--day-width)); width: calc(4 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(46 * var(--day-width)); width: calc(3 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(73 * var(--day-width)); width: calc(2 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(122 * var(--day-width)); width: calc(4 * var(--day-width));"></div>
+				</div>
+				<div class="timeline--chairman keynote">
+					<div class="chairman" style="left: calc(175 * var(--day-width)); width: calc(4 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(43 * var(--day-width)); width: calc(3 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(76 * var(--day-width)); width: calc(2 * var(--day-width));"></div>
+					<div class="chairman" style="left: calc(120 * var(--day-width)); width: calc(4 * var(--day-width));"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>';
 	return $output;
 }
 

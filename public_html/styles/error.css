@@ -721,17 +721,11 @@ section {
   padding-right: max(var(--space-side-padding), env(safe-area-inset-right));
 }
 section.navigate_with_mobile_menu {
-  pointer-events: none;
-  margin-top: calc(-1 * env(safe-area-inset-top));
-}
-section.navigate_with_mobile_menu:not(.leaderboard) {
   display: none;
   padding-top: calc(var(--nav-height) + var(--space-side-padding));
   padding-top: calc(var(--nav-height) + var(--space-side-padding) + env(safe-area-inset-top));
-}
-section.navigate_with_mobile_menu.leaderboard {
-  padding-top: var(--nav-height);
-  padding-top: calc(var(--nav-height) + env(safe-area-inset-top));
+  pointer-events: none;
+  margin-top: calc(-1 * env(safe-area-inset-top));
 }
 section.navigate_with_mobile_menu.active {
   display: block;
@@ -757,6 +751,7 @@ h2 {
 }
 
 section h2,
+.timeline--container,
 .section_group,
 .section_grid {
   pointer-events: all;
@@ -782,10 +777,6 @@ section h2,
     --nav-height: 59px;
   }
 
-  .nav_container.leaderboard {
-    display: none;
-  }
-
   .host_byline {
     padding-top: 0;
     margin-top: 0;
@@ -802,13 +793,7 @@ section h2,
   }
   section.navigate_with_mobile_menu {
     margin-top: var(--space-between-lg);
-  }
-  section.navigate_with_mobile_menu:not(.leaderboard) {
     display: block;
-    padding-top: var(--nav-height);
-    padding-top: calc(var(--nav-height) + env(safe-area-inset-top));
-  }
-  section.navigate_with_mobile_menu.leaderboard {
     padding-top: var(--nav-height);
     padding-top: calc(var(--nav-height) + env(safe-area-inset-top));
   }
