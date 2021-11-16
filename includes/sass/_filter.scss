@@ -88,19 +88,18 @@
 		transition-delay: 0s;
 		transition-duration: var.$hover-duration;
 		box-shadow: var.$header-shadow;
-		background: rgba(255, 255, 255, 0.8);
+		background: rgba(255, 255, 255, 0.9);
 		@media (prefers-color-scheme: dark) {
-			background: rgba(0, 0, 0, 0.8);
+			background: rgba(0, 0, 0, 0.95);
 		}
-
-		@supports not ((-webkit-backdrop-filter: blur(20px)) and (backdrop-filter: blur(20px))) {
-			background: rgba(255, 255, 255, 0.9);
+		@supports ((-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px))) {
+			-webkit-backdrop-filter: blur(20px);
+			backdrop-filter: blur(20px);
+			background: rgba(255, 255, 255, 0.8);
 			@media (prefers-color-scheme: dark) {
-				background: rgba(0, 0, 0, 0.95);
+				background: rgba(0, 0, 0, 0.8);
 			}
 		}
-		-webkit-backdrop-filter: blur(20px);
-		backdrop-filter: blur(20px);
 	}
 }
 #pick_filter_sheet > .content {
