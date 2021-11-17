@@ -1,0 +1,54 @@
+@use "variables" as var;
+
+.timeline--container {
+	--day-width: 4px;
+	background: rgba(255, 0, 0, 0.1);
+}
+.timeline--content {
+	overflow-x: scroll;
+	background: rgba(0, 255, 0, 0.1);
+	// width: 200%;
+}
+
+.timeline--host-track {
+	// height: 150px;
+	padding: 32px 0;
+	// width: 200%;
+
+	background: rgba(255, 0, 0, 0.1);
+	& + & {
+		margin-top: 16px;
+	}
+	&.legend {
+		position: relative;
+		.month {
+			position: absolute;
+			height: 2px;
+			color: white;
+			background: black;
+			&:nth-child(2n) {
+				background: red;
+			}
+		}
+	}
+}
+
+.timeline--chairman {
+	position: relative;
+	background: rgba(255, 0, 0, 0.1);
+	height: 16px;
+	& + & {
+		margin-top: 16px;
+	}
+	&.annual .chairman {
+		background: var(--connected-orange);
+	}
+	&.keynote .chairman {
+		background: var(--connected-yellow);
+	}
+	.chairman {
+		position: absolute;
+		height: 100%;
+		border-radius: 8px;
+	}
+}

@@ -22,6 +22,12 @@ echo no_script_banner('Charts can’t be shown with Javascript disabled'),
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('timeline');">Timeline</a>
 			<a class="menu_item js_link"
+				id="menu_stats"
+				title="Host stats"
+				data-goatcounter-click="Show host stats"
+				data-goatcounter-referrer="<?= current_url() ?>"
+				onclick="navigate_section('stats');">Stats</a>
+			<a class="menu_item js_link"
 				id="menu_myke"
 				title="Myke’s stats"
 				data-goatcounter-click="Show Myke’s stats"
