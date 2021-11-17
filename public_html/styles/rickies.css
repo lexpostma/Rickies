@@ -840,7 +840,7 @@ section h2,
   .section_grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-auto-flow: row dense;
-    gap: var(--space-between-lg);
+    gap: var(--space-between-lg) 0;
   }
   .section_grid .column1 {
     grid-column: 1/2;
