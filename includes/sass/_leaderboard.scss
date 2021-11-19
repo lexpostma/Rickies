@@ -269,3 +269,19 @@ table.full_stats {
 		box-shadow: 0 0 0 0 rgba(var(--connected-purple-rgb), 0);
 	}
 }
+
+#menu_stats {
+	display: none;
+}
+
+@media screen and (min-width: var.$break-md) {
+	#menu_stats {
+		display: block;
+	}
+	// TODO: Does not work yet with the mobile menu JS
+	#menu_myke,
+	#menu_federico,
+	#menu_stephen {
+		display: none;
+	}
+}
