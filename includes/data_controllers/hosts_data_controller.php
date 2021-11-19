@@ -3,6 +3,12 @@
 // Host _data_ controller
 
 $hosts_data__array = [];
+$memoji_used_index = [
+	'neutral' => [],
+	'happy' => [],
+	'sad' => [],
+];
+
 $hosts_data__request = $airtable->getContent('Hosts', $hosts_data__params);
 do {
 	$hosts_data__response = $hosts_data__request->getResponse();
@@ -237,9 +243,15 @@ do {
 		}
 
 		foreach ($hosts_data__array[$id]['images']['memoji'] as $mood => $images) {
+			// $images must not be false, and need to be array
 			if ($images && is_array($images)) {
-				// $images must not be false, and need to be array
-				$hosts_data__array[$id]['images']['memoji'][$mood] = airtable_image_url(random($images));
+				// Grab a random memoji from the array
+				$image = random($images, $memoji_used_index[$mood]);
+				// Define the URL of the selected memoji
+				$hosts_data__array[$id]['images']['memoji'][$mood] = airtable_image_url($image[0]);
+				// Make sure the same memoji is not also used for other hosts
+				$memoji_used_index[$mood][] = $image[1];
+				unset($image);
 			}
 		}
 
@@ -250,4 +262,5 @@ do {
 	}
 } while ($hosts_data__request = $hosts_data__response->next());
 
+unset($memoji_used_index);
 // echo '<pre>', var_dump($hosts_data__array), '</pre>';

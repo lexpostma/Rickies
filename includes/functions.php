@@ -207,9 +207,24 @@ function markdown($markdown)
 }
 
 // Return random value from an array
-function random($array)
+function random($array, $disallowed_indeces = false)
 {
-	return $array[array_rand($array)];
+	if ($disallowed_indeces !== false) {
+		// Define the index
+		$index = false;
+
+		// Check if index is allowed to be used
+		// If not, draw another random index
+		while (in_array($index, $disallowed_indeces)) {
+			$index = array_rand($array);
+		}
+
+		// Return an array with value of the array on random index, and the chosen index
+		return [$array[$index], $index];
+	} else {
+		// Return the value of the array on random index
+		return $array[array_rand($array)];
+	}
 }
 
 // Round the percentage to 1 decimal if it has decimals
