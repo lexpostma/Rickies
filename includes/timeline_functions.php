@@ -2,6 +2,12 @@
 
 function chairman_timeline($host_data = [], $event_data = [])
 {
+	$first_date = strtotime('2018-12-26 00:00');
+	$today = time();
+
+	$datediff = $today - $first_date;
+	$datediff = round($datediff / (60 * 60 * 24));
+
 	$months = [
 		'January' => 31,
 		'February' => 28,
@@ -17,12 +23,15 @@ function chairman_timeline($host_data = [], $event_data = [])
 		'December' => 31,
 	];
 	$start = 1;
-	$output = '
+	$output =
+		'
 <section class="large_columns navigate_with_mobile_menu leaderboard" id="timeline" >
 	<div class="timeline--container">
 		<h2>Chairman Timeline</h2>
 		<div class="timeline--content">
-			<div class="timeline--host-track legend">';
+			<div class="timeline--host-track legend" style="width: calc(' .
+		$datediff .
+		' * var(--day-width));">';
 	foreach ($months as $month_name => $days) {
 		$output .=
 			'<div class="month" style="left: calc(' .
@@ -38,6 +47,17 @@ function chairman_timeline($host_data = [], $event_data = [])
 
 	foreach ($event_data as $host => $types) {
 		$output .= '<div class="timeline--host-track host_' . strtolower($host) . '">';
+
+		$img_array = [
+			'type' => 'avatar',
+			'name' => $host_data[$host]['personal']['first_name'],
+			'src' => $host_data[$host]['images']['memoji']['neutral'],
+			'color' => $host_data[$host]['personal']['color'],
+		];
+
+		$output .= '<div class="timeline--host-avatar">' . list_item_graphic($img_array) . '</div>';
+		unset($img_array);
+
 		foreach ($types as $type => $events) {
 			$output .= '<div class="timeline--chairman ' . $type . '">';
 			foreach ($events as $event) {

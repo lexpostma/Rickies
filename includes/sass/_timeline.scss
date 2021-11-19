@@ -1,13 +1,16 @@
 @use "variables" as var;
 
 .timeline--container {
-	--day-width: 4px;
-	background: rgba(255, 0, 0, 0.1);
+	--day-width: 2px;
+	@media screen and (min-width: var.$break-md) {
+		--day-width: 4px;
+	}
+	// background: rgba(255, 0, 0, 0.1);
 }
 
 .timeline--container h2,
-.timeline--content {
-	padding-left: max(calc((100vw - #{var.$break-xxl}) / 2 + var(--space-side-padding)), var(--space-side-padding));
+.timeline--content > * > * {
+	margin-left: max(calc((100vw - #{var.$break-xxl}) / 2 + var(--space-side-padding)), var(--space-side-padding));
 }
 .timeline--content {
 	& > * {
@@ -16,7 +19,7 @@
 	}
 
 	overflow-x: scroll;
-	background: rgba(0, 255, 0, 0.1);
+	// background: rgba(0, 255, 0, 0.1);
 	// width: 200%;
 }
 
@@ -26,17 +29,22 @@
 	padding-bottom: 32px;
 	// width: 200%;
 
-	background: rgba(255, 0, 0, 0.1);
+	// background: rgba(255, 0, 0, 0.1);
+	&:nth-child(2n) {
+		background: rgba(255, 0, 0, 0.1);
+	}
 	& + & {
 		margin-top: 16px;
 	}
+
 	&.legend {
 		position: relative;
+		background: darkblue;
 		.month {
 			position: absolute;
 			height: 2px;
 			color: white;
-			background: black;
+			background: lime;
 			&:nth-child(2n) {
 				background: red;
 			}
@@ -44,9 +52,13 @@
 	}
 }
 
+.timeline--host-avatar {
+	position: absolute;
+}
+
 .timeline--chairman {
 	position: relative;
-	background: rgba(255, 0, 0, 0.1);
+	// background: rgba(255, 0, 0, 0.1);
 	height: 1.5rem;
 	& + & {
 		margin-top: 16px;
@@ -63,6 +75,9 @@
 		border-radius: 1.5rem;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		transition-duration: var.$hover-duration;
+		transition-timing-function: ease-out;
+		transition-property: width, left;
 	}
 }
 
