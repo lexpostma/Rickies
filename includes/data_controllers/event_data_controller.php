@@ -1,11 +1,11 @@
 <?php
 
 // Rickies _data_ controller, general
-if (!isset($all_event_details)) {
-	$all_event_details = false;
+if (!isset($rickies_event_data_set)) {
+	$rickies_event_data_set = false;
 }
 
-if (!isset($rickies_events__params['fields']) && !$all_event_details) {
+if (!isset($rickies_events__params['fields']) && !$rickies_event_data_set) {
 	$rickies_events__params['fields'] = [
 		'Name',
 		'Rickies type',
@@ -99,7 +99,7 @@ do {
 					}
 				}
 
-				if (!$all_event_details) {
+				if (!$rickies_event_data_set) {
 					// Only the details needed for the Rickies overview
 					$rickies_events__array[$id]['label1'] = $rickies_events__array[$id]['name'];
 					$rickies_events__array[$id]['label3'] =
