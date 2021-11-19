@@ -4,7 +4,17 @@
 	--day-width: 4px;
 	background: rgba(255, 0, 0, 0.1);
 }
+
+.timeline--container h2,
 .timeline--content {
+	padding-left: max(calc((100vw - #{var.$break-xxl}) / 2 + var(--space-side-padding)), var(--space-side-padding));
+}
+.timeline--content {
+	& > * {
+		// padding-left: 200px;
+		// padding-right: calc((100vw-1400px) / 2);
+	}
+
 	overflow-x: scroll;
 	background: rgba(0, 255, 0, 0.1);
 	// width: 200%;
@@ -12,7 +22,8 @@
 
 .timeline--host-track {
 	// height: 150px;
-	padding: 32px 0;
+	padding-top: 32px;
+	padding-bottom: 32px;
 	// width: 200%;
 
 	background: rgba(255, 0, 0, 0.1);
@@ -36,7 +47,7 @@
 .timeline--chairman {
 	position: relative;
 	background: rgba(255, 0, 0, 0.1);
-	height: 16px;
+	height: 1.5rem;
 	& + & {
 		margin-top: 16px;
 	}
@@ -49,6 +60,16 @@
 	.chairman {
 		position: absolute;
 		height: 100%;
-		border-radius: 8px;
+		border-radius: 1.5rem;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
+}
+
+section#timeline {
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 0;
+	padding-right: 0;
+	max-width: unset;
 }

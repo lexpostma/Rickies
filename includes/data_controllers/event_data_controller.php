@@ -12,7 +12,6 @@ if (!isset($rickies_events__params['fields']) && !$rickies_event_data_set) {
 		'Event type',
 		'URL',
 		'Status',
-		'Rickies 1st (manual)',
 		'Predictions episode date',
 		'Predictions episode number',
 		'Predictions episode artwork',
@@ -73,7 +72,6 @@ do {
 						'seo' => airtable_image_url(check_key('Rickies SEO image', $fields, false, 0)),
 					],
 					'artwork_background_color' => check_key('Artwork background color', $fields),
-					'winner' => check_key('Rickies 1st (manual)', $fields),
 					'last_edited' => check_key('Last edit date', $fields),
 					'last_edited_rules' => check_key('Rules episode last edited', $fields),
 				];
@@ -107,9 +105,11 @@ do {
 						' • Episode&nbsp;#' .
 						$rickies_events__array[$id]['episode_number'];
 					$rickies_events__array[$id]['url'] = '/' . $rickies_events__array[$id]['url_name'];
-				} else {
+				} elseif ($rickies_event_data_set == 'details') {
 					// Add more details from Airtable to array, to build the detail page
 					include 'event_extra_details_data_controller.php';
+				} elseif ($rickies_event_data_set == 'timeline') {
+					include 'event_extra_timeline_data_controller.php';
 				}
 
 				// If the status not Completed, add tag/banner

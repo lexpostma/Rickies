@@ -52,6 +52,6 @@ echo no_script_banner('Charts can’t be shown with Javascript disabled'),
 	</div>
 </nav>
 
-<?php echo chairman_timeline($hosts_data__array),
+<?php echo chairman_timeline($hosts_data__array, $timeline_array),
 	leaderboard_item_bundle($hosts_data__array),
 	'<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';

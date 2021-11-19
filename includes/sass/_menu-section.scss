@@ -275,7 +275,7 @@ section h2,
 	section {
 		max-width: var.$readability-width;
 		&.large_columns {
-			max-width: 1400px;
+			max-width: var.$break-xxl;
 			&:not(.navigate_with_mobile_menu) {
 				padding-top: var(--space-between-lg);
 			}
