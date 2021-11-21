@@ -2,52 +2,81 @@
 
 function chairman_timeline($host_data = [], $event_data = [])
 {
-	$first_date = strtotime('2018-12-26 00:00');
-	$today = time();
+	// Define the timeline's scale
+	$timeline_scale = '
+<div class="timeline--scale">';
+	$first_date = $day_count = new DateTimeImmutable('2018-12-01 00:00');
+	$prev_year = $prev_month = '';
+	$year_position = $month_position = $full_width = 0;
+	$today = new DateTimeImmutable();
 
-	$datediff = $today - $first_date;
-	$datediff = round($datediff / (60 * 60 * 24));
+	while ($day_count < $today) {
+		// Start a new year
+		if ($day_count->format('Y') !== $prev_year) {
+			$year_position = $year_position + $month_position;
+			$full_width = $full_width + $year_position;
+			if ($day_count->format('L') == 1) {
+				$year_size = 366;
+			} else {
+				$year_size = 365;
+			}
 
-	$months = [
-		'January' => 31,
-		'February' => 28,
-		'March' => 31,
-		'April' => 30,
-		'May' => 31,
-		'June' => 30,
-		'July' => 31,
-		'August' => 31,
-		'September' => 30,
-		'October' => 31,
-		'November' => 30,
-		'December' => 31,
-	];
-	$start = 1;
+			$month_position = 0;
+
+			if ($prev_year !== '') {
+				$timeline_scale .= '
+	</div>';
+			}
+			$timeline_scale .=
+				'
+	<div class="year" style="width: calc(' .
+				$year_size .
+				' * var(--day-width)); left: calc(' .
+				$year_position .
+				' * var(--day-width));"><span>' .
+				$day_count->format('Y') .
+				'</span>';
+			$prev_year = $day_count->format('Y');
+		}
+		// Create a new month
+		if ($day_count->format('m') !== $prev_month) {
+			$timeline_scale .=
+				'
+		<div class="month" style="width: calc(' .
+				$day_count->format('t') .
+				' * var(--day-width)); left: calc(' .
+				$month_position .
+				' * var(--day-width));"><span>' .
+				$day_count->format('F') .
+				'</span></div>';
+			$prev_month = $day_count->format('m');
+			$month_position = $month_position + $day_count->format('t');
+		}
+		$day_count = $day_count->modify('+1 day');
+	}
+	// Close the final year, and the whole timeline's scale
+	$timeline_scale .= '
+	</div>
+</div>
+';
+
+	// Start the section
 	$output =
 		'
 <section class="large_columns navigate_with_mobile_menu leaderboard" id="timeline" >
+	<h2>Chairman Timeline</h2>
 	<div class="timeline--container">
-		<h2>Chairman Timeline</h2>
-		<div class="timeline--content">
-			<div class="timeline--host-track legend" style="width: calc(' .
-		$datediff .
-		' * var(--day-width));">';
-	foreach ($months as $month_name => $days) {
-		$output .=
-			'<div class="month" style="left: calc(' .
-			$start .
-			' * var(--day-width)); width: calc(' .
-			$days .
-			' * var(--day-width));">' .
-			$month_name .
-			'</div>';
-		$start = $start + $days;
-	}
-	$output .= '</div>';
+		<div class="timeline--content">' . $timeline_scale;
 
+	// Create a track for each host
 	foreach ($event_data as $host => $types) {
-		$output .= '<div class="timeline--host-track host_' . strtolower($host) . '">';
-
+		$output .=
+			'<div class="timeline--host-track host_' .
+			strtolower($host) .
+			'" style="width: calc(' .
+			$full_width .
+			' * var(--day-width));">';
+		// Define host's avatar
 		$img_array = [
 			'type' => 'avatar',
 			'name' => $host_data[$host]['personal']['first_name'],
@@ -58,6 +87,7 @@ function chairman_timeline($host_data = [], $event_data = [])
 		$output .= '<div class="timeline--host-avatar">' . list_item_graphic($img_array) . '</div>';
 		unset($img_array);
 
+		// Create chairman track for each type of Rickies (annual and keynote)
 		foreach ($types as $type => $events) {
 			$output .= '<div class="timeline--chairman ' . $type . '">';
 			foreach ($events as $event) {
@@ -80,6 +110,11 @@ function chairman_timeline($host_data = [], $event_data = [])
 	}
 	$output .= '
 		</div>
+		<div class="timeline--elements">
+			<div class="timeline--gradient-start"></div>
+			<div class="timeline--gradient-end"></div>
+		</div>
+
 	</div>
 </section>';
 	return $output;

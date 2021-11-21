@@ -1,59 +1,120 @@
 @use "variables" as var;
 
-.timeline--container {
-	--day-width: 2px;
-	@media screen and (min-width: var.$break-md) {
-		--day-width: 4px;
+section#timeline {
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 0;
+	padding-right: 0;
+	max-width: unset;
+
+	// Set the default width of the day
+	--day-scale: 2;
+
+	// Set section padding which would otherwise have been "auto"
+	--auto-padding: max(calc((100vw - #{var.$break-xxl}) / 2 + var(--space-side-padding)), var(--space-side-padding));
+	.chairman,
+	.year,
+	.month {
+		transition-duration: var.$hover-duration;
+		transition-timing-function: ease-out;
+		transition-property: width, left;
 	}
-	// background: rgba(255, 0, 0, 0.1);
+	h2 {
+		margin-left: var(--auto-padding);
+	}
 }
 
-.timeline--container h2,
-.timeline--content > * > * {
-	margin-left: max(calc((100vw - #{var.$break-xxl}) / 2 + var(--space-side-padding)), var(--space-side-padding));
+.timeline--container {
+	position: relative;
+	--scale-line-width: 1px;
+	--day-width: calc(var(--day-scale) * 1px);
+	@media screen and (min-width: var.$break-md) {
+		--day-width: calc(var(--day-scale) * 2px);
+	}
+
+	// background: rgba(255, 0, 0, 0.1);
+}
+#timeline h2 {
+	// .timeline--container h2,
+	// .timeline--content > * > * {
 }
 .timeline--content {
+	overflow: scroll hidden;
+	padding-left: calc(var(--auto-padding) + var(--graphic-size) + var(--space-side-padding));
 	& > * {
 		// padding-left: 200px;
 		// padding-right: calc((100vw-1400px) / 2);
 	}
 
-	overflow-x: scroll;
 	// background: rgba(0, 255, 0, 0.1);
 	// width: 200%;
 }
 
 .timeline--host-track {
 	// height: 150px;
-	padding-top: 32px;
-	padding-bottom: 32px;
+	padding-top: var(--space-between-lg);
+	padding-bottom: var(--space-between-lg);
+
 	// width: 200%;
 
 	// background: rgba(255, 0, 0, 0.1);
-	&:nth-child(2n) {
-		background: rgba(255, 0, 0, 0.1);
+	&:nth-child(even) {
+		// background: rgba(255, 0, 0, 0.1);
+		background: var(--element-hover-color);
 	}
 	& + & {
-		margin-top: 16px;
+		// margin-top: 16px;
 	}
+}
 
-	&.legend {
-		position: relative;
-		background: darkblue;
-		.month {
+.timeline--scale {
+	position: relative;
+	pointer-events: none;
+	// background: pink;
+	height: 2.5rem;
+	.year,
+	.month {
+		position: absolute;
+		height: 1000px;
+		& > span {
 			position: absolute;
-			height: 2px;
-			color: white;
-			background: lime;
-			&:nth-child(2n) {
-				background: red;
-			}
+			// font-size: 0.75rem;
+			@include var.secondary-text();
+			left: 4px;
+			right: 0;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
+	}
+	.year {
+		margin-left: calc(-1 * var(--scale-line-width));
+		> span {
+			font-weight: bold;
+		}
+		border-left: var(--scale-line-width) solid rgba(var(--connected-grey-rgb), 0.8);
+		// color: black;
+		// background: aqua;
+		// &:nth-child(2n) {
+		// 	background: yellow;
+		// }
+	}
+	.month {
+		top: 1rem;
+
+		// position: absolute;
+		border-right: var(--scale-line-width) solid rgba(var(--connected-grey-rgb), 0.3);
+		// color: white;
+		// background: green;
+		// &:nth-child(2n) {
+		// 	background: blue;
+		// }
 	}
 }
 
 .timeline--host-avatar {
 	position: absolute;
+	left: var(--auto-padding);
+	z-index: 10;
 }
 
 .timeline--chairman {
@@ -75,16 +136,24 @@
 		border-radius: 1.5rem;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		transition-duration: var.$hover-duration;
-		transition-timing-function: ease-out;
-		transition-property: width, left;
 	}
 }
 
-section#timeline {
-	margin-left: 0;
-	margin-right: 0;
-	padding-left: 0;
-	padding-right: 0;
-	max-width: unset;
+
+.timeline--gradient-start,
+.timeline--gradient-end {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+.timeline--gradient-start {
+	left: 0;
+	width: calc(var(--auto-padding) + var(--graphic-size) + var(--space-side-padding));
+	background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 30%);
+}
+.timeline--gradient-end {
+	right: 0;
+	width: var(--space-side-padding);
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
+	// background: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.85) 100%)
 }
