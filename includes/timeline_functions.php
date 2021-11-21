@@ -139,8 +139,8 @@ function chairman_timeline($host_data = [], $event_data = [])
 		</div>
 	</div>
 	<ul class="timeline--legend">
-		<li class="keynote">Keynote Chairman</li>
 		<li class="annual">Annual Chairman</li>
+		<li class="keynote">Keynote Chairman</li>
 	</ul>
 </section>';
 	return $output;

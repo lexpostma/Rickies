@@ -1793,6 +1793,7 @@ section#timeline .timeline--legend {
   width: 1em;
   border-radius: 50%;
   border: var(--graphic-border);
+  transform: translateY(2px);
 }
 .timeline--legend li.keynote:before {
   background: var(--connected-yellow);
