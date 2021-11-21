@@ -127,10 +127,10 @@ function chairman_timeline($host_data = [], $event_data = [])
 			<div class="timeline--gradient-end"></div>
 			<div class="timeline--zoom">
 				<button title="Zoom in on timeline" class="clean" onclick="timeline_zoom(\'in\');">' .
-		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-zoomin.svg') .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-zoomin.svg') .
 		'</button>
 				<button title="Zoom out on timeline" class="clean" onclick="timeline_zoom(\'out\');">' .
-		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-zoomout.svg') .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-zoomout.svg') .
 		'</button>
 			</div>
 		</div>

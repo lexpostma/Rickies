@@ -304,26 +304,26 @@
 			}
 			.select_icon {
 				@include input-icon;
-				background-image: url('/images/input-unselect.svg');
+				background-image: url('/images/buttons/input-unselect.svg');
 				position: absolute;
 				pointer-events: none;
 			}
 			select:not([data-chosen='']) + .select_icon {
-				background-image: url('/images/input-select.svg');
+				background-image: url('/images/buttons/input-select.svg');
 				opacity: 1;
 			}
 		}
 		input[type='checkbox'] {
 			@include input-icon;
-			background-image: url('/images/input-uncheck.svg');
+			background-image: url('/images/buttons/input-uncheck.svg');
 			margin-right: 4px;
 			flex-shrink: 0;
 			&:indeterminate {
-				background-image: url('/images/input-check-indeterminate.svg');
+				background-image: url('/images/buttons/input-check-indeterminate.svg');
 				opacity: 1;
 			}
 			&:checked {
-				background-image: url('/images/input-check.svg');
+				background-image: url('/images/buttons/input-check.svg');
 				opacity: 1;
 			}
 		}

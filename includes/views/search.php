@@ -112,11 +112,11 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 			<a class="menu_item js_link menu_top"
 				title="Search at the top"
 				onclick="window.scrollTo(0,0); document.getElementById('search_input').focus()"><?= file_get_contents(
-    	$_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-search.svg'
+    	$_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-menu-search.svg'
     ) ?></a>
 			<a class="menu_item js_link menu_top"
 				title="Scroll to the top"
-				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-top.svg') ?></a>
+				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-menu-top.svg') ?></a>
 		</div>
 	</div>
 </nav>

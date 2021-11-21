@@ -47,7 +47,7 @@ echo no_script_banner('Charts can’t be shown with Javascript disabled'),
 				onclick="navigate_section('stephen');">Stephen</a>
 			<a class="menu_item js_link menu_top"
 				title="Scroll to the top"
-				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-top.svg') ?></a>
+				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-menu-top.svg') ?></a>
 		</div>
 	</div>
 </nav>
