@@ -82,7 +82,9 @@ function chairman_timeline($host_data = [], $event_data = [])
 			strtolower($host) .
 			'" style="width: calc(' .
 			$full_width .
-			' * var(--day-width));">';
+			' * var(--day-width)); background: rgba(var(--connected-' .
+			$host_data[$host]['personal']['color'] .
+			'-rgb), 0.05)">';
 		// Define host's avatar
 		$img_array = [
 			'type' => 'avatar',
@@ -112,7 +114,7 @@ function chairman_timeline($host_data = [], $event_data = [])
 					'" title="' .
 					$event['name'] .
 					'">' .
-					$event['name'] .
+					$event['name_short'] .
 					'</a></div>';
 			}
 			$output .= '</div>';

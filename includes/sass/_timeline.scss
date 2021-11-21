@@ -64,7 +64,7 @@ section#timeline {
 	// background: rgba(255, 0, 0, 0.1);
 	&:nth-child(even) {
 		// background: rgba(255, 0, 0, 0.1);
-		background: var(--element-hover-color);
+		// background: var(--element-hover-color);
 	}
 	& + & {
 		// margin-top: 16px;
@@ -129,22 +129,24 @@ section#timeline {
 	// background: rgba(255, 0, 0, 0.1);
 	height: 1.5rem;
 	& + & {
-		margin-top: var(--space-side-padding);
+		margin-top: var(--space-between-md);
 	}
 	.chairman {
 		position: absolute;
 		height: 100%;
 		border-radius: 1.5rem;
+		border: var(--graphic-border);
 		@include var.truncate();
 		padding-left: 8px;
 		font-size: 0.75rem;
 		color: white;
 		a {
-			line-height: 1.5rem;
+			line-height: calc(1.5rem - 2px);
 		}
 		&.open_ended {
 			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
+			border-right-width: 0px;
 		}
 	}
 	&.annual .chairman {

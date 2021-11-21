@@ -1630,9 +1630,6 @@ section#timeline h2 {
   padding-top: var(--space-side-padding);
   padding-bottom: var(--space-side-padding);
 }
-.timeline--host-track:nth-child(even) {
-  background: var(--element-hover-color);
-}
 .timeline--scale {
   position: relative;
   pointer-events: none;
@@ -1676,12 +1673,13 @@ section#timeline h2 {
   height: 1.5rem;
 }
 .timeline--chairman + .timeline--chairman {
-  margin-top: var(--space-side-padding);
+  margin-top: var(--space-between-md);
 }
 .timeline--chairman .chairman {
   position: absolute;
   height: 100%;
   border-radius: 1.5rem;
+  border: var(--graphic-border);
   overflow: hidden;
   text-overflow: ellipsis;
   padding-left: 8px;
@@ -1689,11 +1687,12 @@ section#timeline h2 {
   color: white;
 }
 .timeline--chairman .chairman a {
-  line-height: 1.5rem;
+  line-height: calc(1.5rem - 2px);
 }
 .timeline--chairman .chairman.open_ended {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  border-right-width: 0px;
 }
 .timeline--chairman.annual .chairman {
   background: var(--connected-orange);
