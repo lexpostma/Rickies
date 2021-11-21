@@ -98,7 +98,7 @@ function chairman_timeline($host_data = [], $event_data = [])
 
 		// Create chairman track for each type of Rickies (annual and keynote)
 		foreach ($types as $type => $events) {
-			$output .= '<div class="timeline--chairman ' . $type . '">';
+			$output .= '<div class="timeline--chairman-track ' . $type . '">';
 			foreach ($events as $event) {
 				$output .= '<div class="chairman ';
 				if (!$event['timeline_end']) {

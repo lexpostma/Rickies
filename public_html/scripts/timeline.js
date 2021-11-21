@@ -17,11 +17,14 @@ function timeline_zoom(direction) {
 	console.log('old: ' + currentWidth + ' • new: ' + newWidth);
 }
 
+// Make sure the end of the timeline is in view on load
+// Via: https://stackoverflow.com/a/56747348
 document.addEventListener('DOMContentLoaded', function (event) {
 	timeline_content.scrollLeft = timeline_content.scrollWidth;
 });
 
 // Allow drag to scroll on timeline
+// Via: https://codepen.io/thenutz/pen/VwYeYEE
 let isDown = false;
 let startX;
 let scrollLeft;
@@ -44,7 +47,7 @@ timeline_content.addEventListener('mousemove', (e) => {
 	if (!isDown) return;
 	e.preventDefault();
 	const x = e.pageX - timeline_content.offsetLeft;
-	const walk = (x - startX) * 3; //scroll-fast
+	const walk = (x - startX) * 1; //scroll-fast
 	timeline_content.scrollLeft = scrollLeft - walk;
-	console.log(walk);
+	// console.log(walk);
 });
