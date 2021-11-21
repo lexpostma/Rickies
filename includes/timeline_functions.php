@@ -113,6 +113,11 @@ function chairman_timeline($host_data = [], $event_data = [])
 		<div class="timeline--elements">
 			<div class="timeline--gradient-start"></div>
 			<div class="timeline--gradient-end"></div>
+			<div class="timeline--zoom">
+				<button onclick="timeline_zoom(\'in\');">+</button>
+				<button onclick="timeline_zoom(\'out\');">–</button>
+				<button onclick="timeline_zoom();">Reset</button>
+			</div>
 		</div>
 
 	</div>

@@ -139,6 +139,16 @@ section#timeline {
 	}
 }
 
+.timeline--zoom {
+	position: absolute;
+	// TODO: Add styling to zoom buttons
+	top: 20px;
+	right: 20px;
+	opacity: 0.7;
+	&:hover {
+		opacity: 1;
+	}
+}
 
 .timeline--gradient-start,
 .timeline--gradient-end {

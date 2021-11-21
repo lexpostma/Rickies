@@ -1680,6 +1680,15 @@ section#timeline h2 {
   text-overflow: ellipsis;
 }
 
+.timeline--zoom {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 0.7;
+}
+.timeline--zoom:hover {
+  opacity: 1;
+}
 
 .timeline--gradient-start,
 .timeline--gradient-end {
