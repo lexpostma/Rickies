@@ -44,6 +44,7 @@ section#timeline {
 	// .timeline--content > * > * {
 }
 .timeline--content {
+	cursor: ew-resize;
 	overflow: scroll hidden;
 	// padding-left: calc(var(--auto-padding) + var(--graphic-size) + var(--space-side-padding));
 	padding-left: calc(var(--graphic-size) + var(--space-side-padding) + var(--space-between-md));

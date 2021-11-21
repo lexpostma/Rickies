@@ -1625,6 +1625,7 @@ section#timeline .timeline--legend {
 }
 
 .timeline--content {
+  cursor: ew-resize;
   overflow: scroll hidden;
   padding-left: calc(var(--graphic-size) + var(--space-side-padding) + var(--space-between-md));
 }
