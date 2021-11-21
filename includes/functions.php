@@ -210,7 +210,7 @@ function markdown($markdown)
 function random($array, $disallowed_indeces = false)
 {
 	if ($disallowed_indeces !== false) {
-		// Define the index
+		// Define the initial index
 		$index = false;
 
 		// Check if index is allowed to be used
@@ -219,7 +219,9 @@ function random($array, $disallowed_indeces = false)
 			$index = array_rand($array);
 		}
 
-		// Return an array with value of the array on random index, and the chosen index
+		// Return an array with
+		// 0. value of the array on random index
+		// 1. and the chosen index
 		return [$array[$index], $index];
 	} else {
 		// Return the value of the array on random index
