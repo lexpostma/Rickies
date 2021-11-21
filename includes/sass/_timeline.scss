@@ -28,6 +28,9 @@ section#timeline {
 	position: relative;
 	--scale-line-width: 1px;
 	--day-width: calc(var(--day-scale) * 1px);
+	@media screen and (max-width: var.$break-sm) {
+		--graphic-size: 32px;
+	}
 	@media screen and (min-width: var.$break-md) {
 		--day-width: calc(var(--day-scale) * 2px);
 	}
@@ -52,8 +55,8 @@ section#timeline {
 
 .timeline--host-track {
 	// height: 150px;
-	padding-top: var(--space-between-lg);
-	padding-bottom: var(--space-between-lg);
+	padding-top: var(--space-side-padding);
+	padding-bottom: var(--space-side-padding);
 
 	// width: 200%;
 
@@ -122,7 +125,7 @@ section#timeline {
 	// background: rgba(255, 0, 0, 0.1);
 	height: 1.5rem;
 	& + & {
-		margin-top: 16px;
+		margin-top: var(--space-side-padding);
 	}
 	&.annual .chairman {
 		background: var(--connected-orange);
@@ -136,6 +139,7 @@ section#timeline {
 		border-radius: 1.5rem;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		padding-left: 4px;
 	}
 }
 

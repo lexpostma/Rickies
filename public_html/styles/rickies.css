@@ -1604,6 +1604,11 @@ section#timeline h2 {
   --scale-line-width: 1px;
   --day-width: calc(var(--day-scale) * 1px);
 }
+@media screen and (max-width: 576px) {
+  .timeline--container {
+    --graphic-size: 32px;
+  }
+}
 @media screen and (min-width: 768px) {
   .timeline--container {
     --day-width: calc(var(--day-scale) * 2px);
@@ -1615,8 +1620,8 @@ section#timeline h2 {
   padding-left: calc(var(--auto-padding) + var(--graphic-size) + var(--space-side-padding));
 }
 .timeline--host-track {
-  padding-top: var(--space-between-lg);
-  padding-bottom: var(--space-between-lg);
+  padding-top: var(--space-side-padding);
+  padding-bottom: var(--space-side-padding);
 }
 .timeline--host-track:nth-child(even) {
   background: var(--element-hover-color);
@@ -1664,7 +1669,7 @@ section#timeline h2 {
   height: 1.5rem;
 }
 .timeline--chairman + .timeline--chairman {
-  margin-top: 16px;
+  margin-top: var(--space-side-padding);
 }
 .timeline--chairman.annual .chairman {
   background: var(--connected-orange);
@@ -1678,6 +1683,7 @@ section#timeline h2 {
   border-radius: 1.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-left: 4px;
 }
 
 .timeline--zoom {
