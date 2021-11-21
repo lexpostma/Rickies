@@ -2289,9 +2289,9 @@ mark {
   flex-basis: 0;
   flex-grow: 1;
   white-space: nowrap;
+  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
-  cursor: pointer;
 }
 #pick_filter_sheet > .content > fieldset .filter_option + .filter_option {
   margin-top: 4px;
@@ -2310,7 +2310,7 @@ mark {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("/images/input-unselect.svg");
+  background-image: url("/images/buttons/input-unselect.svg");
   position: absolute;
   pointer-events: none;
 }
@@ -2325,7 +2325,7 @@ mark {
   }
 }
 #pick_filter_sheet > .content > fieldset .select select:not([data-chosen=""]) + .select_icon {
-  background-image: url("/images/input-select.svg");
+  background-image: url("/images/buttons/input-select.svg");
   opacity: 1;
 }
 #pick_filter_sheet > .content > fieldset input[type=checkbox] {
@@ -2335,7 +2335,7 @@ mark {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("/images/input-uncheck.svg");
+  background-image: url("/images/buttons/input-uncheck.svg");
   margin-right: 4px;
   flex-shrink: 0;
 }
@@ -2350,11 +2350,11 @@ mark {
   }
 }
 #pick_filter_sheet > .content > fieldset input[type=checkbox]:indeterminate {
-  background-image: url("/images/input-check-indeterminate.svg");
+  background-image: url("/images/buttons/input-check-indeterminate.svg");
   opacity: 1;
 }
 #pick_filter_sheet > .content > fieldset input[type=checkbox]:checked {
-  background-image: url("/images/input-check.svg");
+  background-image: url("/images/buttons/input-check.svg");
   opacity: 1;
 }
 #pick_filter_sheet > .content label {

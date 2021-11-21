@@ -285,9 +285,8 @@
 				flex-basis: 0;
 				flex-grow: 1;
 				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
 				cursor: pointer;
+				@include var.truncate();
 			}
 		}
 

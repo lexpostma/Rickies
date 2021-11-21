@@ -86,8 +86,7 @@ section#timeline {
 			@include var.secondary-text();
 			left: 4px;
 			right: 0;
-			overflow: hidden;
-			text-overflow: ellipsis;
+			@include var.truncate();
 		}
 	}
 	.year {
@@ -136,8 +135,7 @@ section#timeline {
 		position: absolute;
 		height: 100%;
 		border-radius: 1.5rem;
-		overflow: hidden;
-		text-overflow: ellipsis;
+		@include var.truncate();
 		padding-left: 8px;
 		font-size: 0.75rem;
 		color: white;

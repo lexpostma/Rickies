@@ -136,6 +136,11 @@ $break-xxl: 1400px;
 	text-underline-offset: 0.14em;
 }
 
+@mixin truncate() {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 @keyframes connected_colors {
 	0% {
 		background-color: var(--connected-green);

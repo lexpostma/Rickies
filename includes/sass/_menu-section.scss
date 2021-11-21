@@ -152,8 +152,7 @@ h2.list_title {
 		padding: var(--element-padding);
 		padding-right: calc(1em + var(--element-padding));
 		border-radius: var(--element-corner-radius);
-		overflow: hidden;
-		text-overflow: ellipsis;
+		@include var.truncate();
 	}
 	&.active {
 		color: var(--link-color);
