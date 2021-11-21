@@ -19,7 +19,9 @@ section#timeline {
 		transition-timing-function: ease-out;
 		transition-property: width, left;
 	}
-	h2 {
+	h2,
+	.timeline--legend {
+		pointer-events: all;
 		margin-left: var(--auto-padding);
 	}
 }
@@ -234,4 +236,23 @@ section#timeline {
 		background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%);
 	}
 	// background: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.85) 100%)
+}
+
+.timeline--legend {
+	margin-top: var(--space-between-md);
+	li:before {
+		content: '';
+		display: inline-block;
+		margin-right: 8px;
+		height: 1em;
+		width: 1em;
+		border-radius: 50%;
+		border: var(--graphic-border);
+	}
+	li.keynote:before {
+		background: var(--connected-yellow);
+	}
+	li.annual:before {
+		background: var(--connected-orange);
+	}
 }

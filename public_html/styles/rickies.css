@@ -1602,7 +1602,9 @@ section#timeline .month {
   transition-timing-function: ease-out;
   transition-property: width, left;
 }
-section#timeline h2 {
+section#timeline h2,
+section#timeline .timeline--legend {
+  pointer-events: all;
   margin-left: var(--auto-padding);
 }
 
@@ -1777,6 +1779,25 @@ section#timeline h2 {
   .timeline--gradient-end {
     background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, black 50%);
   }
+}
+
+.timeline--legend {
+  margin-top: var(--space-between-md);
+}
+.timeline--legend li:before {
+  content: "";
+  display: inline-block;
+  margin-right: 8px;
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  border: var(--graphic-border);
+}
+.timeline--legend li.keynote:before {
+  background: var(--connected-yellow);
+}
+.timeline--legend li.annual:before {
+  background: var(--connected-orange);
 }
 
 :root {

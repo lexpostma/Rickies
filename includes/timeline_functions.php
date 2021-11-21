@@ -84,7 +84,7 @@ function chairman_timeline($host_data = [], $event_data = [])
 			$full_width .
 			' * var(--day-width)); background: rgba(var(--connected-' .
 			$host_data[$host]['personal']['color'] .
-			'-rgb), 0.05)">';
+			'-rgb), 0.1)">';
 		// Define host's avatar
 		$img_array = [
 			'type' => 'avatar',
@@ -135,9 +135,13 @@ function chairman_timeline($host_data = [], $event_data = [])
 		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-zoomout.svg') .
 		'</button>
 			</div>
-		</div>
 
+		</div>
 	</div>
+	<ul class="timeline--legend">
+		<li class="keynote">Keynote Chairman</li>
+		<li class="annual">Annual Chairman</li>
+	</ul>
 </section>';
 	return $output;
 }
