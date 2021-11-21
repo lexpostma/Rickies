@@ -8,7 +8,7 @@ section#timeline {
 	max-width: unset;
 
 	// Set the default width of the day
-	--day-scale: 2;
+	--day-scale: 1;
 
 	// Set section padding which would otherwise have been "auto"
 	--auto-padding: max(calc((100vw - #{var.$break-xxl}) / 2 + var(--space-side-padding)), var(--space-side-padding));
@@ -43,7 +43,8 @@ section#timeline {
 }
 .timeline--content {
 	overflow: scroll hidden;
-	padding-left: calc(var(--auto-padding) + var(--graphic-size) + var(--space-side-padding));
+	// padding-left: calc(var(--auto-padding) + var(--graphic-size) + var(--space-side-padding));
+	padding-left: calc(var(--graphic-size) + var(--space-side-padding) + var(--space-between-md));
 	& > * {
 		// padding-left: 200px;
 		// padding-right: calc((100vw-1400px) / 2);
@@ -116,8 +117,12 @@ section#timeline {
 
 .timeline--host-avatar {
 	position: absolute;
-	left: var(--auto-padding);
+	left: var(--space-side-padding);
 	z-index: 10;
+}
+
+@mixin open_ended($color) {
+	background: linear-gradient(-90deg, rgba(var(#{$color}-rgb), 0) 0px, var(#{$color}) 16px);
 }
 
 .timeline--chairman {
@@ -127,30 +132,83 @@ section#timeline {
 	& + & {
 		margin-top: var(--space-side-padding);
 	}
-	&.annual .chairman {
-		background: var(--connected-orange);
-	}
-	&.keynote .chairman {
-		background: var(--connected-yellow);
-	}
 	.chairman {
 		position: absolute;
 		height: 100%;
 		border-radius: 1.5rem;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		padding-left: 4px;
+		padding-left: 8px;
+		font-size: 0.75rem;
+		color: white;
+		a {
+			line-height: 1.5rem;
+		}
+		&.open_ended {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+	}
+	&.annual .chairman {
+		background: var(--connected-orange);
+		&.open_ended {
+			@include open_ended('--connected-orange');
+		}
+	}
+	&.keynote .chairman {
+		background: var(--connected-yellow);
+		&.open_ended {
+			@include open_ended('--connected-yellow');
+		}
 	}
 }
 
 .timeline--zoom {
 	position: absolute;
-	// TODO: Add styling to zoom buttons
-	top: 20px;
-	right: 20px;
-	opacity: 0.7;
-	&:hover {
-		opacity: 1;
+	display: flex;
+	flex-direction: column;
+
+	top: 0px;
+	right: var(--space-side-padding);
+
+	button {
+		box-shadow: var.$header-shadow;
+		height: 40px;
+		color: var(--link-color);
+		transition: var.$pop-transition;
+		border-radius: 2px;
+
+		&:first-of-type {
+			border-top-left-radius: 20px;
+			border-top-right-radius: 20px;
+			// z-index: 1;
+			@media (hover: hover) {
+				&:hover {
+					transform: scale(1.2) translateY(-3px);
+				}
+			}
+			&:focus,
+			&:active {
+				transform: scale(1.1) translateY(-2px);
+			}
+		}
+		&:last-of-type {
+			border-bottom-left-radius: 20px;
+			border-bottom-right-radius: 20px;
+			z-index: 1;
+			@media (hover: hover) {
+				&:hover {
+					transform: scale(1.2) translateY(3px);
+				}
+			}
+			&:focus,
+			&:active {
+				transform: scale(1.1) translateY(2px);
+			}
+		}
+	}
+	button + button {
+		margin-top: 1px;
 	}
 }
 
@@ -162,12 +220,18 @@ section#timeline {
 }
 .timeline--gradient-start {
 	left: 0;
-	width: calc(var(--auto-padding) + var(--graphic-size) + var(--space-side-padding));
+	width: calc(var(--graphic-size) + var(--space-side-padding));
 	background: linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 30%);
+	@media (prefers-color-scheme: dark) {
+		background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%);
+	}
 }
 .timeline--gradient-end {
 	right: 0;
 	width: var(--space-side-padding);
 	background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 50%);
+	@media (prefers-color-scheme: dark) {
+		background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%);
+	}
 	// background: linear-gradient(0deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.85) 100%)
 }

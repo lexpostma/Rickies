@@ -21,6 +21,7 @@ function chairman_timeline($host_data = [], $event_data = [])
 				$year_size = 365;
 			}
 
+			// Reset month position, so first month starts at 0 within new year
 			$month_position = 0;
 
 			if ($prev_year !== '') {
@@ -33,9 +34,11 @@ function chairman_timeline($host_data = [], $event_data = [])
 				$year_size .
 				' * var(--day-width)); left: calc(' .
 				$year_position .
-				' * var(--day-width));"><span>' .
-				$day_count->format('Y') .
-				'</span>';
+				' * var(--day-width));"><span><span>' .
+				substr($day_count->format('Y'), 0, 2) .
+				'</span><span>' .
+				substr($day_count->format('Y'), 2) .
+				'</span></span>';
 			$prev_year = $day_count->format('Y');
 		}
 		// Create a new month
@@ -46,9 +49,13 @@ function chairman_timeline($host_data = [], $event_data = [])
 				$day_count->format('t') .
 				' * var(--day-width)); left: calc(' .
 				$month_position .
-				' * var(--day-width));"><span>' .
-				$day_count->format('F') .
-				'</span></div>';
+				' * var(--day-width));"><span><span>' .
+				substr($day_count->format('F'), 0, 1) .
+				'</span><span>' .
+				substr($day_count->format('F'), 1, 2) .
+				'</span><span>' .
+				substr($day_count->format('F'), 3) .
+				'</span></span></div>';
 			$prev_month = $day_count->format('m');
 			$month_position = $month_position + $day_count->format('t');
 		}
@@ -91,8 +98,12 @@ function chairman_timeline($host_data = [], $event_data = [])
 		foreach ($types as $type => $events) {
 			$output .= '<div class="timeline--chairman ' . $type . '">';
 			foreach ($events as $event) {
+				$output .= '<div class="chairman ';
+				if (!$event['timeline_end']) {
+					$output .= 'open_ended';
+				}
 				$output .=
-					'<div class="chairman" style="left: calc(' .
+					'" style="left: calc(' .
 					$event['timeline_start'] .
 					' * var(--day-width)); width: calc(' .
 					$event['timeline_duration'] .
@@ -108,15 +119,19 @@ function chairman_timeline($host_data = [], $event_data = [])
 		}
 		$output .= '</div>';
 	}
-	$output .= '
+	$output .=
+		'
 		</div>
 		<div class="timeline--elements">
 			<div class="timeline--gradient-start"></div>
 			<div class="timeline--gradient-end"></div>
 			<div class="timeline--zoom">
-				<button onclick="timeline_zoom(\'in\');">+</button>
-				<button onclick="timeline_zoom(\'out\');">–</button>
-				<button onclick="timeline_zoom();">Reset</button>
+				<button title="Zoom in on timeline" class="clean" onclick="timeline_zoom(\'in\');">' .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-zoomin.svg') .
+		'</button>
+				<button title="Zoom out on timeline" class="clean" onclick="timeline_zoom(\'out\');">' .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-zoomout.svg') .
+		'</button>
 			</div>
 		</div>
 

@@ -797,12 +797,14 @@ button.js_link:focus, button.js_link:active {
   color: var(--link-hover-color);
 }
 
+.chairman a,
 footer button,
 .banner a,
 footer a:not(#footer_corner),
 nav a {
   font-weight: 500;
 }
+.chairman a.js_link,
 footer button.js_link,
 .banner a.js_link,
 footer a:not(#footer_corner).js_link,
@@ -816,7 +818,9 @@ nav a.js_link {
   -ms-user-select: none;
   user-select: none;
 }
-footer button:link, footer button:visited,
+.chairman a:link, .chairman a:visited,
+footer button:link,
+footer button:visited,
 .banner a:link,
 .banner a:visited,
 footer a:not(#footer_corner):link,
@@ -827,14 +831,17 @@ nav a:visited {
   opacity: 0.8;
 }
 @media (hover: hover) {
-  footer button:hover,
+  .chairman a:hover,
+footer button:hover,
 .banner a:hover,
 footer a:not(#footer_corner):hover,
 nav a:hover {
     opacity: 1;
   }
 }
-footer button:focus, footer button:active,
+.chairman a:focus, .chairman a:active,
+footer button:focus,
+footer button:active,
 .banner a:focus,
 .banner a:active,
 footer a:not(#footer_corner):focus,
