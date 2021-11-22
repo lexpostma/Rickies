@@ -789,6 +789,11 @@ section h2,
     --nav-height: 56px;
   }
 }
+@media screen and (max-width: 768px) {
+  section#stats {
+    padding-top: 0;
+  }
+}
 @media screen and (min-width: 768px) {
   :root {
     --nav-height: 59px;

@@ -266,7 +266,11 @@ section h2,
 		--nav-height: 56px;
 	}
 }
-
+@media screen and (max-width: var.$break-md) {
+	section#stats {
+		padding-top: 0;
+	}
+}
 @media screen and (min-width: var.$break-md) {
 	:root {
 		--nav-height: 59px;
