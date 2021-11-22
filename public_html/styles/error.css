@@ -777,6 +777,13 @@ section h2,
   margin-top: var(--space-between-lg);
 }
 
+.host_stats {
+  display: none;
+}
+.host_stats.active {
+  display: block;
+}
+
 @media screen and (min-width: 576px) {
   :root {
     --nav-height: 56px;
@@ -817,6 +824,10 @@ section h2,
   }
   section.navigate_with_mobile_menu:not(:first-of-type) h2 {
     border-top: 1px solid var(--element-hover-color);
+  }
+
+  .host_stats {
+    display: block;
   }
 
   .section_group {

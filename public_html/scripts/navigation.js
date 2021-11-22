@@ -24,11 +24,29 @@ function navigate_section(section, first = false) {
 	Array.from(document.querySelectorAll('section.navigate_with_mobile_menu')).forEach(function (el) {
 		el.classList.remove('active');
 	});
+	// Remove the "active" class from all grid elements
+	Array.from(document.querySelectorAll('.host_stats')).forEach(function (el) {
+		el.classList.remove('active');
+	});
 
 	// Add the "active" class to the chosen section and menu item
 	var active_menu = document.getElementById('menu_' + section);
 	var active_section = document.getElementById(section);
 	active_menu.classList.add('active');
+
+	if (section == 'stats') {
+		var col_id = 1;
+	} else {
+		var col_id = '_' + section;
+	}
+
+	var grid_items = document.querySelectorAll('.host_stats.column' + col_id);
+	if (grid_items.length !== 0) {
+		Array.from(grid_items).forEach(function (el) {
+			el.classList.add('active');
+		});
+		var active_section = document.getElementById('stats');
+	}
 	active_section.classList.add('active');
 
 	if (!first) {

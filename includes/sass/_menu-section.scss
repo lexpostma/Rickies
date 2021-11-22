@@ -254,6 +254,13 @@ section h2,
 	}
 }
 
+.host_stats {
+	display: none;
+	&.active {
+		display: block;
+	}
+}
+
 @media screen and (min-width: var.$break-sm) {
 	:root {
 		--nav-height: 56px;
@@ -305,7 +312,9 @@ section h2,
 			}
 		}
 	}
-
+	.host_stats {
+		display: block;
+	}
 	.section_group {
 		display: flex;
 		flex-direction: row;

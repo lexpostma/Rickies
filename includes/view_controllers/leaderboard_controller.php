@@ -53,11 +53,13 @@ function host_titles($title_array)
 	return $output;
 }
 
-function host_stats_item($title, $content, $column)
+function host_stats_item($title, $content, $column, $host)
 {
 	return '
 		<div class="host_stats column' .
 		$column .
+		' column_' .
+		strtolower($host) .
 		'">
 			<h4>' .
 		$title .
@@ -77,6 +79,8 @@ function leaderboard_item($host_data, $column = 1)
 		strtolower($host_data['personal']['first_name']) .
 		'" class="host_stats column' .
 		$column .
+		' column_' .
+		strtolower($host_data['personal']['first_name']) .
 		' host_byline">';
 
 	// Add avatar
@@ -124,28 +128,41 @@ function leaderboard_item($host_data, $column = 1)
 		'</a></p></div>';
 
 	// Core Titles
-	$output .= host_stats_item('Current titles', host_titles($host_data['titles']), $column);
+	$output .= host_stats_item(
+		'Current titles',
+		host_titles($host_data['titles']),
+		$column,
+		$host_data['personal']['first_name']
+	);
 
 	// Other Titles
-	$output .= host_stats_item('Other titles', host_titles($host_data['titles_other']), $column);
+	$output .= host_stats_item(
+		'Other titles',
+		host_titles($host_data['titles_other']),
+		$column,
+		$host_data['personal']['first_name']
+	);
 
 	// Achievements
 	$output .= host_stats_item(
 		'Achievements',
 		score_label_item($host_data['achievements'], $host_data['personal']['color']),
-		$column
+		$column,
+		$host_data['personal']['first_name']
 	);
 
 	$output .= host_stats_item(
 		'Rickies',
 		score_label_item($host_data['stats']['rickies'], $host_data['personal']['color']),
-		$column
+		$column,
+		$host_data['personal']['first_name']
 	);
 
 	$output .= host_stats_item(
 		'Flexies',
 		score_label_item($host_data['stats']['flexies'], $host_data['personal']['color']),
-		$column
+		$column,
+		$host_data['personal']['first_name']
 	);
 
 	// Statistics
@@ -153,14 +170,16 @@ function leaderboard_item($host_data, $column = 1)
 		'Picks',
 		score_chart_item($host_data['stats']['picks'], strtolower($host_data['personal']['first_name'])) .
 			score_label_item($host_data['stats']['picks_strings'], $host_data['personal']['color']),
-		$column
+		$column,
+		$host_data['personal']['first_name']
 	);
 
 	// Ahead of its time
 	$output .= host_stats_item(
 		'<span class="emoji pulse_orb" style="animation-delay: ' . rand(-2000, 0) . 'ms;">🔮</span>Ahead of his time',
 		score_label_item($host_data['stats']['too_soon'], $host_data['personal']['color'], true),
-		$column
+		$column,
+		$host_data['personal']['first_name']
 	);
 
 	// Coin flips
@@ -169,7 +188,8 @@ function leaderboard_item($host_data, $column = 1)
 			rand(-3000, 0) .
 			'ms;">🪙</span></span>Coin flips',
 		score_label_item($host_data['stats']['coin_flips'], $host_data['personal']['color'], true),
-		$column
+		$column,
+		$host_data['personal']['first_name']
 	);
 
 	// Close host and content
