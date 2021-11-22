@@ -34,17 +34,28 @@ function navigate_section(section, first = false) {
 	var active_section = document.getElementById(section);
 	active_menu.classList.add('active');
 
+	// If the section is "stats", make sure the first column inside is also active
+	// and the accompanying menu item too
+	// so that there's something to see when user resizes window
 	if (section == 'stats') {
-		var col_id = 1;
+		var col_id = 'myke';
+		document.getElementById('menu_' + col_id).classList.add('active');
 	} else {
-		var col_id = '_' + section;
+		var col_id = section;
 	}
 
-	var grid_items = document.querySelectorAll('.host_stats.column' + col_id);
+	// For Leaderboard, on small screens the section is split
+	// and the menu should navigate some of the grid items
+	var grid_items = document.querySelectorAll('.host_stats.column_' + col_id);
 	if (grid_items.length !== 0) {
 		Array.from(grid_items).forEach(function (el) {
+			// Make each grid item for this column active
 			el.classList.add('active');
 		});
+		// It should also make the "stats" section and menu items active
+		// so the menu is active when user resizes window
+		// and the section is visible for the grid to be displayed
+		document.getElementById('menu_stats').classList.add('active');
 		var active_section = document.getElementById('stats');
 	}
 	active_section.classList.add('active');
