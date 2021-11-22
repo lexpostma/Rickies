@@ -54,6 +54,9 @@ section#timeline {
 	z-index: 10;
 	text-align: center;
 	@include var.secondary-text();
+	p {
+		margin-top: 4px;
+	}
 }
 
 @mixin open_ended($color) {
@@ -202,7 +205,7 @@ section#timeline {
 	}
 	@media screen and (min-width: var.$break-md) {
 		flex-direction: column;
-		top: 0px;
+		top: 4px;
 		button {
 			&:first-of-type {
 				border-top-left-radius: 20px;

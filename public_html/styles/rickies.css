@@ -1661,6 +1661,9 @@ section#timeline .timeline--legend {
   color: var(--text-secondary-color);
   font-size: 0.75rem;
 }
+.timeline--host-avatar p {
+  margin-top: 4px;
+}
 
 .timeline--chairman-track {
   position: relative;
@@ -1804,7 +1807,7 @@ section#timeline .timeline--legend {
 @media screen and (min-width: 768px) {
   .timeline--zoom {
     flex-direction: column;
-    top: 0px;
+    top: 4px;
   }
   .timeline--zoom button:first-of-type {
     border-top-left-radius: 20px;
