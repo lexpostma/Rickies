@@ -46,7 +46,7 @@ $break-xxl: 1400px;
 	--space-between-sm: 8px;
 	--space-between-md: 16px;
 	--space-between-lg: 32px;
-	--space-between-xl: 64px;
+	--space-between-xl: 44px;
 
 	font-size: 14px;
 
@@ -101,6 +101,7 @@ $break-xxl: 1400px;
 	:root {
 		--graphic-size: 72px;
 		--space-side-padding: 32px;
+		--space-between-xl: 64px;
 		font-size: 18px;
 	}
 }

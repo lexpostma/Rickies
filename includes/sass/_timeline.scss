@@ -28,24 +28,20 @@ section#timeline {
 
 .timeline--container {
 	position: relative;
-	padding-top: var(--space-between-lg);
-
 	--scale-line-width: 1px;
 	--day-width: calc(var(--day-scale) * 1px);
 	@media screen and (max-width: var.$break-sm) {
 		--graphic-size: 32px;
 	}
 	@media screen and (min-width: var.$break-md) {
-		padding-top: 0;
 		--day-width: calc(var(--day-scale) * 2px);
 	}
-
-	// background: rgba(255, 0, 0, 0.1);
 }
 .timeline--content {
 	cursor: ew-resize;
 	overflow: scroll hidden;
-	padding-left: calc(var(--graphic-size) + var(--space-side-padding) + var(--space-between-md));
+	// padding-left: calc(var(--graphic-size) + var(--space-side-padding) + var(--space-between-md));
+	padding-left: var(--space-side-padding);
 }
 
 .timeline--host-track {
@@ -54,8 +50,10 @@ section#timeline {
 
 .timeline--host-avatar {
 	position: absolute;
-	left: var(--space-side-padding);
+	right: var(--space-side-padding);
 	z-index: 10;
+	text-align: center;
+	@include var.secondary-text();
 }
 
 @mixin open_ended($color) {
@@ -80,9 +78,8 @@ section#timeline {
 		@include var.truncate();
 		@media (hover: hover) {
 			&:hover {
-				z-index: 1;
+				z-index: 15;
 				box-shadow: var.$header-shadow;
-				transform: scale(1.2);
 			}
 		}
 		a {
@@ -99,12 +96,22 @@ section#timeline {
 	}
 	&.annual .chairman {
 		background: var(--connected-orange);
+		@media (hover: hover) {
+			&:hover {
+				transform: scale(1.05);
+			}
+		}
 		&.open_ended {
 			@include open_ended('--connected-orange');
 		}
 	}
 	&.keynote .chairman {
 		background: var(--connected-yellow);
+		@media (hover: hover) {
+			&:hover {
+				transform: scale(1.2);
+			}
+		}
 		&.open_ended {
 			@include open_ended('--connected-yellow');
 		}
@@ -153,33 +160,40 @@ section#timeline {
 		color: var(--link-color);
 		transition: var.$pop-transition;
 		border-radius: 2px;
+		&:disabled {
+			color: var(--text-secondary-color);
+			opacity: 0.7;
+		}
 
 		&:first-of-type {
 			border-top-right-radius: 20px;
 			border-bottom-right-radius: 20px;
-			// z-index: 1;
-			@media (hover: hover) {
-				&:hover {
-					transform: scale(1.2) translateX(3px);
+			z-index: 1;
+			&:not(:disabled) {
+				@media (hover: hover) {
+					&:hover {
+						transform: scale(1.2) translateX(3px);
+					}
 				}
-			}
-			&:focus,
-			&:active {
-				transform: scale(1.1) translateX(2px);
+				&:focus,
+				&:active {
+					transform: scale(1.1) translateX(2px);
+				}
 			}
 		}
 		&:last-of-type {
 			border-top-left-radius: 20px;
 			border-bottom-left-radius: 20px;
-			z-index: 1;
-			@media (hover: hover) {
-				&:hover {
-					transform: scale(1.2) translateX(-3px);
+			&:not(:disabled) {
+				@media (hover: hover) {
+					&:hover {
+						transform: scale(1.2) translateX(-3px);
+					}
 				}
-			}
-			&:focus,
-			&:active {
-				transform: scale(1.1) translateX(-2px);
+				&:focus,
+				&:active {
+					transform: scale(1.1) translateX(-2px);
+				}
 			}
 		}
 	}
@@ -194,28 +208,34 @@ section#timeline {
 				border-top-left-radius: 20px;
 				border-top-right-radius: 20px;
 				border-bottom-right-radius: 2px;
-				@media (hover: hover) {
-					&:hover {
-						transform: scale(1.2) translateY(-3px);
+				z-index: unset;
+				&:not(:disabled) {
+					@media (hover: hover) {
+						&:hover {
+							transform: scale(1.2) translateY(-3px);
+						}
 					}
-				}
-				&:focus,
-				&:active {
-					transform: scale(1.1) translateY(-2px);
+					&:focus,
+					&:active {
+						transform: scale(1.1) translateY(-2px);
+					}
 				}
 			}
 			&:last-of-type {
 				border-bottom-left-radius: 20px;
 				border-bottom-right-radius: 20px;
 				border-top-left-radius: 2px;
-				@media (hover: hover) {
-					&:hover {
-						transform: scale(1.2) translateY(3px);
+				z-index: 1;
+				&:not(:disabled) {
+					@media (hover: hover) {
+						&:hover {
+							transform: scale(1.2) translateY(3px);
+						}
 					}
-				}
-				&:focus,
-				&:active {
-					transform: scale(1.1) translateY(2px);
+					&:focus,
+					&:active {
+						transform: scale(1.1) translateY(2px);
+					}
 				}
 			}
 		}
@@ -234,20 +254,20 @@ section#timeline {
 }
 .timeline--gradient-start {
 	left: 0;
-	width: calc(var(--graphic-size) + var(--space-side-padding));
+	width: var(--space-side-padding);
 	background: linear-gradient(
 		-90deg,
 		rgba(var(--background-color-rgb), 0) 0%,
-		rgba(var(--background-color-rgb), 1) 30%
+		rgba(var(--background-color-rgb), 1) 50%
 	);
 }
 .timeline--gradient-end {
 	right: 0;
-	width: var(--space-side-padding);
+	width: calc(var(--graphic-size) + var(--space-side-padding));
 	background: linear-gradient(
 		90deg,
 		rgba(var(--background-color-rgb), 0) 0%,
-		rgba(var(--background-color-rgb), 1) 50%
+		rgba(var(--background-color-rgb), 1) 30%
 	);
 }
 

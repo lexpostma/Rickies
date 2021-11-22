@@ -1,4 +1,6 @@
 const timeline = document.getElementById('timeline');
+const zoomin_button = document.getElementById('zoomin_button');
+const zoomout_button = document.getElementById('zoomout_button');
 const defaultZoom = getComputedStyle(timeline).getPropertyValue('--day-scale');
 const timeline_content = document.getElementsByClassName('timeline--content')[0];
 
@@ -15,6 +17,20 @@ function timeline_zoom(direction) {
 	}
 	timeline.style.setProperty('--day-scale', newWidth);
 	console.log('old: ' + currentWidth + ' • new: ' + newWidth);
+
+	if (newWidth > 5) {
+		// Disable zoom in button
+		zoomin_button.disabled = true;
+		zoomout_button.disabled = false;
+	} else if (newWidth < 0.29) {
+		// Disable zoom out button
+		zoomin_button.disabled = false;
+		zoomout_button.disabled = true;
+	} else {
+		// Enable both zoom buttons
+		zoomin_button.disabled = false;
+		zoomout_button.disabled = false;
+	}
 }
 
 // Make sure the end of the timeline is in view on load
@@ -51,3 +67,6 @@ timeline_content.addEventListener('mousemove', (e) => {
 	timeline_content.scrollLeft = scrollLeft - walk;
 	// console.log(walk);
 });
+
+// TODO: Allow pinch to zoom in and out
+// Via: https://stackoverflow.com/a/11183333

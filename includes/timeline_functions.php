@@ -5,21 +5,32 @@ function chairman_timeline($host_data = [], $event_data = [])
 	// Define the timeline's scale
 	$timeline_scale = '
 <div class="timeline--scale">';
-	$first_date = $day_count = new DateTimeImmutable('2018-12-01 00:00');
+
+	// Define the start of the scale
+	$start_of_scale = $day_count = new DateTimeImmutable('2018-11-01 00:00');
 	$prev_year = $prev_month = '';
 	$year_position = $month_position = $full_width = 0;
-	$today = new DateTimeImmutable();
 
-	while ($day_count < $today) {
+	// Define the end of the scale
+	$today = new DateTimeImmutable();
+	// TODO: Better define the size of the year
+	$end_of_scale = $today->modify('+2 months');
+	// $end_of_scale = $today;
+
+	while ($day_count < $end_of_scale) {
 		// Start a new year
 		if ($day_count->format('Y') !== $prev_year) {
 			$year_position = $year_position + $month_position;
-			$full_width = $full_width + $year_position;
-			if ($day_count->format('L') == 1) {
+
+			if ($year_position == 0) {
+				// Based on Nov+Dec of the first Rickies year
+				$year_size = 61;
+			} elseif ($day_count->format('L') == 1) {
 				$year_size = 366;
 			} else {
 				$year_size = 365;
 			}
+			$full_width = $full_width + $year_size;
 
 			// Reset month position, so first month starts at 0 within new year
 			$month_position = 0;
@@ -93,7 +104,12 @@ function chairman_timeline($host_data = [], $event_data = [])
 			'color' => $host_data[$host]['personal']['color'],
 		];
 
-		$output .= '<div class="timeline--host-avatar">' . list_item_graphic($img_array) . '</div>';
+		$output .=
+			'<div class="timeline--host-avatar">' .
+			list_item_graphic($img_array) .
+			'<p>' .
+			$host_data[$host]['personal']['first_name'] .
+			'</p></div>';
 		unset($img_array);
 
 		// Create chairman track for each type of Rickies (annual and keynote)
@@ -128,10 +144,10 @@ function chairman_timeline($host_data = [], $event_data = [])
 			<div class="timeline--gradient-start"></div>
 			<div class="timeline--gradient-end"></div>
 			<div class="timeline--zoom">
-				<button title="Zoom in on timeline" class="clean" onclick="timeline_zoom(\'in\');">' .
+				<button title="Zoom in on timeline" class="clean" id="zoomin_button" onclick="timeline_zoom(\'in\');">' .
 		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-zoomin.svg') .
 		'</button>
-				<button title="Zoom out on timeline" class="clean" onclick="timeline_zoom(\'out\');">' .
+				<button title="Zoom out on timeline" class="clean" id="zoomout_button" onclick="timeline_zoom(\'out\');">' .
 		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-zoomout.svg') .
 		'</button>
 			</div>

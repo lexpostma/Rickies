@@ -20,7 +20,7 @@
   --space-between-sm: 8px;
   --space-between-md: 16px;
   --space-between-lg: 32px;
-  --space-between-xl: 64px;
+  --space-between-xl: 44px;
   font-size: 14px;
   --background-color-rgb: 255, 255, 255;
   --background-color: rgb(var(--background-color-rgb));
@@ -66,6 +66,7 @@
   :root {
     --graphic-size: 72px;
     --space-side-padding: 32px;
+    --space-between-xl: 64px;
     font-size: 18px;
   }
 }

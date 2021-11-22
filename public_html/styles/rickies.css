@@ -20,7 +20,7 @@
   --space-between-sm: 8px;
   --space-between-md: 16px;
   --space-between-lg: 32px;
-  --space-between-xl: 64px;
+  --space-between-xl: 44px;
   font-size: 14px;
   --background-color-rgb: 255, 255, 255;
   --background-color: rgb(var(--background-color-rgb));
@@ -66,6 +66,7 @@
   :root {
     --graphic-size: 72px;
     --space-side-padding: 32px;
+    --space-between-xl: 64px;
     font-size: 18px;
   }
 }
@@ -1612,7 +1613,6 @@ section#timeline .timeline--legend {
 
 .timeline--container {
   position: relative;
-  padding-top: var(--space-between-lg);
   --scale-line-width: 1px;
   --day-width: calc(var(--day-scale) * 1px);
 }
@@ -1623,7 +1623,6 @@ section#timeline .timeline--legend {
 }
 @media screen and (min-width: 768px) {
   .timeline--container {
-    padding-top: 0;
     --day-width: calc(var(--day-scale) * 2px);
   }
 }
@@ -1631,7 +1630,7 @@ section#timeline .timeline--legend {
 .timeline--content {
   cursor: ew-resize;
   overflow: scroll hidden;
-  padding-left: calc(var(--graphic-size) + var(--space-side-padding) + var(--space-between-md));
+  padding-left: var(--space-side-padding);
 }
 
 .timeline--host-track {
@@ -1640,8 +1639,11 @@ section#timeline .timeline--legend {
 
 .timeline--host-avatar {
   position: absolute;
-  left: var(--space-side-padding);
+  right: var(--space-side-padding);
   z-index: 10;
+  text-align: center;
+  color: var(--text-secondary-color);
+  font-size: 0.75rem;
 }
 
 .timeline--chairman-track {
@@ -1667,9 +1669,8 @@ section#timeline .timeline--legend {
 }
 @media (hover: hover) {
   .timeline--chairman-track .chairman:hover {
-    z-index: 1;
+    z-index: 15;
     box-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
-    transform: scale(1.2);
   }
 }
 .timeline--chairman-track .chairman a {
@@ -1686,11 +1687,21 @@ section#timeline .timeline--legend {
 .timeline--chairman-track.annual .chairman {
   background: var(--connected-orange);
 }
+@media (hover: hover) {
+  .timeline--chairman-track.annual .chairman:hover {
+    transform: scale(1.05);
+  }
+}
 .timeline--chairman-track.annual .chairman.open_ended {
   background: linear-gradient(-90deg, rgba(var(--connected-orange-rgb), 0) 0px, var(--connected-orange) 16px);
 }
 .timeline--chairman-track.keynote .chairman {
   background: var(--connected-yellow);
+}
+@media (hover: hover) {
+  .timeline--chairman-track.keynote .chairman:hover {
+    transform: scale(1.2);
+  }
 }
 .timeline--chairman-track.keynote .chairman.open_ended {
   background: linear-gradient(-90deg, rgba(var(--connected-yellow-rgb), 0) 0px, var(--connected-yellow) 16px);
@@ -1742,29 +1753,33 @@ section#timeline .timeline--legend {
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
   border-radius: 2px;
 }
+.timeline--zoom button:disabled {
+  color: var(--text-secondary-color);
+  opacity: 0.7;
+}
 .timeline--zoom button:first-of-type {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  z-index: 1;
 }
 @media (hover: hover) {
-  .timeline--zoom button:first-of-type:hover {
+  .timeline--zoom button:first-of-type:not(:disabled):hover {
     transform: scale(1.2) translateX(3px);
   }
 }
-.timeline--zoom button:first-of-type:focus, .timeline--zoom button:first-of-type:active {
+.timeline--zoom button:first-of-type:not(:disabled):focus, .timeline--zoom button:first-of-type:not(:disabled):active {
   transform: scale(1.1) translateX(2px);
 }
 .timeline--zoom button:last-of-type {
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  z-index: 1;
 }
 @media (hover: hover) {
-  .timeline--zoom button:last-of-type:hover {
+  .timeline--zoom button:last-of-type:not(:disabled):hover {
     transform: scale(1.2) translateX(-3px);
   }
 }
-.timeline--zoom button:last-of-type:focus, .timeline--zoom button:last-of-type:active {
+.timeline--zoom button:last-of-type:not(:disabled):focus, .timeline--zoom button:last-of-type:not(:disabled):active {
   transform: scale(1.1) translateX(-2px);
 }
 .timeline--zoom button + button {
@@ -1779,15 +1794,16 @@ section#timeline .timeline--legend {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 2px;
+    z-index: unset;
   }
 }
 @media screen and (min-width: 768px) and (hover: hover) {
-  .timeline--zoom button:first-of-type:hover {
+  .timeline--zoom button:first-of-type:not(:disabled):hover {
     transform: scale(1.2) translateY(-3px);
   }
 }
 @media screen and (min-width: 768px) {
-  .timeline--zoom button:first-of-type:focus, .timeline--zoom button:first-of-type:active {
+  .timeline--zoom button:first-of-type:not(:disabled):focus, .timeline--zoom button:first-of-type:not(:disabled):active {
     transform: scale(1.1) translateY(-2px);
   }
 }
@@ -1796,15 +1812,16 @@ section#timeline .timeline--legend {
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border-top-left-radius: 2px;
+    z-index: 1;
   }
 }
 @media screen and (min-width: 768px) and (hover: hover) {
-  .timeline--zoom button:last-of-type:hover {
+  .timeline--zoom button:last-of-type:not(:disabled):hover {
     transform: scale(1.2) translateY(3px);
   }
 }
 @media screen and (min-width: 768px) {
-  .timeline--zoom button:last-of-type:focus, .timeline--zoom button:last-of-type:active {
+  .timeline--zoom button:last-of-type:not(:disabled):focus, .timeline--zoom button:last-of-type:not(:disabled):active {
     transform: scale(1.1) translateY(2px);
   }
 }
@@ -1824,14 +1841,14 @@ section#timeline .timeline--legend {
 
 .timeline--gradient-start {
   left: 0;
-  width: calc(var(--graphic-size) + var(--space-side-padding));
-  background: linear-gradient(-90deg, rgba(var(--background-color-rgb), 0) 0%, rgba(var(--background-color-rgb), 1) 30%);
+  width: var(--space-side-padding);
+  background: linear-gradient(-90deg, rgba(var(--background-color-rgb), 0) 0%, rgba(var(--background-color-rgb), 1) 50%);
 }
 
 .timeline--gradient-end {
   right: 0;
-  width: var(--space-side-padding);
-  background: linear-gradient(90deg, rgba(var(--background-color-rgb), 0) 0%, rgba(var(--background-color-rgb), 1) 50%);
+  width: calc(var(--graphic-size) + var(--space-side-padding));
+  background: linear-gradient(90deg, rgba(var(--background-color-rgb), 0) 0%, rgba(var(--background-color-rgb), 1) 30%);
 }
 
 .timeline--legend {
