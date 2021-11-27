@@ -1670,12 +1670,12 @@ section#timeline .timeline--legend {
 
 .timeline--chairman-track {
   position: relative;
-  background: rgba(var(--background-color-rgb), 0.3);
+  background-color: rgba(var(--background-color-rgb), 0.3);
   height: 2rem;
 }
 @media (prefers-color-scheme: dark) {
   .timeline--chairman-track {
-    background: rgba(var(--background-color-rgb), 0.2);
+    background-color: rgba(var(--background-color-rgb), 0.2);
   }
 }
 .timeline--chairman-track + .timeline--chairman-track {
@@ -1705,9 +1705,10 @@ section#timeline .timeline--legend {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right-width: 0px;
+  background-origin: border-box;
 }
 .timeline--chairman-track.annual .chairman {
-  background: var(--connected-orange);
+  background-color: var(--connected-orange);
 }
 @media (hover: hover) {
   .timeline--chairman-track.annual .chairman:hover {
@@ -1715,10 +1716,11 @@ section#timeline .timeline--legend {
   }
 }
 .timeline--chairman-track.annual .chairman.open_ended {
-  background: linear-gradient(-90deg, rgba(var(--connected-orange-rgb), 0) 0px, var(--connected-orange) 16px);
+  background-color: transparent;
+  background-image: linear-gradient(-90deg, rgba(var(--connected-orange-rgb), 0) 0px, var(--connected-orange) 16px);
 }
 .timeline--chairman-track.keynote .chairman {
-  background: var(--connected-yellow);
+  background-color: var(--connected-yellow);
 }
 @media (hover: hover) {
   .timeline--chairman-track.keynote .chairman:hover {
@@ -1726,7 +1728,8 @@ section#timeline .timeline--legend {
   }
 }
 .timeline--chairman-track.keynote .chairman.open_ended {
-  background: linear-gradient(-90deg, rgba(var(--connected-yellow-rgb), 0) 0px, var(--connected-yellow) 16px);
+  background-color: transparent;
+  background-image: linear-gradient(-90deg, rgba(var(--connected-yellow-rgb), 0) 0px, var(--connected-yellow) 16px);
 }
 
 .timeline--scale {
