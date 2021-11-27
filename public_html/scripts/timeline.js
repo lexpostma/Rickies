@@ -118,5 +118,7 @@ var pinch = new Hammer.Pinch();
 mc.add([pinch]);
 
 mc.on('pinch', function (ev) {
-	myElement.textContent += ev.type + ' ';
+	// timeline_content.textContent += ev.type + ' ';
+
+	console.log(ev.type);
 });
