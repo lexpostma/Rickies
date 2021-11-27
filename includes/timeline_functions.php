@@ -70,6 +70,8 @@ function chairman_timeline($host_data = [], $event_data = [])
 			$prev_month = $day_count->format('m');
 			$month_position = $month_position + $day_count->format('t');
 		}
+
+		// Add another day, to move forward in the while loop
 		$day_count = $day_count->modify('+1 day');
 	}
 	// Close the final year, and the whole timeline's scale
