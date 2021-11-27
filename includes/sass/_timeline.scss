@@ -73,7 +73,10 @@ section#timeline {
 		background-color: rgba(var(--background-color-rgb), 0.2);
 	}
 	height: 2rem;
-	& + & {
+	&.hidden {
+		display: none;
+	}
+	&:not(.hidden) + & {
 		margin-top: var(--space-between-md);
 	}
 	.chairman {
@@ -262,6 +265,7 @@ section#timeline {
 
 .timeline--legend {
 	margin-top: var(--space-between-md);
+	cursor: pointer;
 	li:before {
 		content: '';
 		display: inline-block;
@@ -277,5 +281,8 @@ section#timeline {
 	}
 	li.annual:before {
 		background: var(--connected-orange);
+	}
+	li.hidden:before {
+		background: transparent;
 	}
 }

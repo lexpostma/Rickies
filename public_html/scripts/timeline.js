@@ -109,3 +109,39 @@ timeline_content.addEventListener('mousemove', (e) => {
 	timeline_content.scrollLeft = scrollLeft - walk;
 	// console.log(walk);
 });
+
+function toggle_timeline_track(track) {
+	var all_tracks = document.querySelectorAll('.timeline--chairman-track');
+	var annual_tracks = document.querySelectorAll('.timeline--chairman-track.annual');
+	var keynote_tracks = document.querySelectorAll('.timeline--chairman-track.keynote');
+	var action = '';
+
+	// Check if a track is already hidden
+	if (
+		(track == 'annual' && !annual_tracks[0].classList.contains('hidden')) ||
+		(track == 'keynote' && !keynote_tracks[0].classList.contains('hidden'))
+	) {
+		var action = 'hide';
+	}
+
+	// Show all track again
+	Array.from(all_tracks).forEach(function (el) {
+		el.classList.remove('hidden');
+	});
+	document.querySelector('.timeline--legend-item.annual').classList.remove('hidden');
+	document.querySelector('.timeline--legend-item.keynote').classList.remove('hidden');
+
+	if (track == 'annual' && action == 'hide') {
+		// Hide Annual tracks
+		Array.from(annual_tracks).forEach(function (el) {
+			el.classList.add('hidden');
+		});
+		document.querySelector('.timeline--legend-item.annual').classList.add('hidden');
+	} else if (track == 'keynote' && action == 'hide') {
+		// Hide Keynote tracks
+		Array.from(keynote_tracks).forEach(function (el) {
+			el.classList.add('hidden');
+		});
+		document.querySelector('.timeline--legend-item.keynote').classList.add('hidden');
+	}
+}
