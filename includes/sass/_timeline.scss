@@ -151,6 +151,26 @@ section#timeline {
 		border-right: var(--scale-line-width) solid rgba(var(--connected-grey-rgb), 0.3);
 	}
 }
+.timeline--content {
+	&.month_md {
+		.timeline--scale .month > span > span:last-child {
+			display: none;
+		}
+	}
+	&.month_sm {
+		.timeline--scale .month > span > span:last-child {
+			display: none;
+		}
+		.timeline--scale .month > span > span:nth-child(2) {
+			display: none;
+		}
+	}
+	&.month_xx {
+		.timeline--scale .month > span {
+			display: none;
+		}
+	}
+}
 
 .timeline--zoom {
 	position: absolute;
