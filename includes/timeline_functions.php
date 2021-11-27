@@ -9,7 +9,7 @@ function chairman_timeline($host_data = [], $event_data = [])
 	// Define the start of the scale
 	$start_of_scale = $day_count = new DateTimeImmutable('2018-11-01 00:00');
 	$prev_month = $months_in_current_year = '';
-	$year_position = $month_position = $full_width = 0;
+	$year_size = $year_position = $month_position = $full_width = 0;
 
 	// Define the end of the scale
 	$today = new DateTimeImmutable();
@@ -64,7 +64,7 @@ function chairman_timeline($host_data = [], $event_data = [])
 			$year_position = $year_position + $year_size;
 			$full_width = $full_width + $year_size;
 
-			// Reset the yearly variables
+			// Reset month position, so first month starts at 0 within new year
 			$year_size = $month_position = 0;
 			$months_in_current_year = '';
 		}

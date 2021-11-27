@@ -12,6 +12,8 @@ section#timeline {
 
 	// Set section padding which would otherwise have been "auto"
 	--auto-padding: max(calc((100vw - #{var.$break-xxl}) / 2 + var(--space-side-padding)), var(--space-side-padding));
+
+	.timeline--host-track,
 	.chairman,
 	.year,
 	.month {
@@ -91,6 +93,9 @@ section#timeline {
 			width: 100%;
 			display: block;
 			line-height: calc(2rem - 2px);
+			font-weight: 500;
+			color: white;
+			text-decoration: none;
 		}
 		&.open_ended {
 			border-top-right-radius: 0;
@@ -135,7 +140,7 @@ section#timeline {
 			position: absolute;
 			@include var.secondary-text();
 			left: 4px;
-			right: 0;
+			right: 4px;
 			@include var.truncate();
 		}
 	}

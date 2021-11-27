@@ -304,14 +304,12 @@ button.js_link:focus, button.js_link:active {
   color: var(--link-hover-color);
 }
 
-.chairman a,
 footer button,
 .banner a,
 footer a:not(#footer_corner),
 nav a {
   font-weight: 500;
 }
-.chairman a.js_link,
 footer button.js_link,
 .banner a.js_link,
 footer a:not(#footer_corner).js_link,
@@ -325,9 +323,7 @@ nav a.js_link {
   -ms-user-select: none;
   user-select: none;
 }
-.chairman a:link, .chairman a:visited,
-footer button:link,
-footer button:visited,
+footer button:link, footer button:visited,
 .banner a:link,
 .banner a:visited,
 footer a:not(#footer_corner):link,
@@ -338,17 +334,14 @@ nav a:visited {
   opacity: 0.8;
 }
 @media (hover: hover) {
-  .chairman a:hover,
-footer button:hover,
+  footer button:hover,
 .banner a:hover,
 footer a:not(#footer_corner):hover,
 nav a:hover {
     opacity: 1;
   }
 }
-.chairman a:focus, .chairman a:active,
-footer button:focus,
-footer button:active,
+footer button:focus, footer button:active,
 .banner a:focus,
 .banner a:active,
 footer a:not(#footer_corner):focus,
@@ -1617,6 +1610,7 @@ section#timeline {
   --day-scale: 1;
   --auto-padding: max(calc((100vw - 1400px) / 2 + var(--space-side-padding)), var(--space-side-padding));
 }
+section#timeline .timeline--host-track,
 section#timeline .chairman,
 section#timeline .year,
 section#timeline .month {
@@ -1700,6 +1694,9 @@ section#timeline .timeline--legend {
   width: 100%;
   display: block;
   line-height: calc(2rem - 2px);
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
 }
 .timeline--chairman-track .chairman.open_ended {
   border-top-right-radius: 0;
@@ -1748,7 +1745,7 @@ section#timeline .timeline--legend {
   color: var(--text-secondary-color);
   font-size: 0.75rem;
   left: 4px;
-  right: 0;
+  right: 4px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
