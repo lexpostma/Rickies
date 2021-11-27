@@ -78,7 +78,6 @@ if ($environment !== 'production') {
 
 <?php
 if ($focus_site == 'rickies') { ?>
-
 <!-- Canvas Confetti -->
 <script src="/scripts/confetti.browser.min.js"></script>
 
@@ -86,5 +85,11 @@ if ($focus_site == 'rickies') { ?>
 if ($url_view == 'leaderboard' || $url_view == 'search' || $url_view == 'archive') { ?>
 <!-- Chart.js -->
 <script src="/scripts/chart.min.js"></script>
+
+<?php }
+if ($url_view == 'leaderboard') { ?>
+<!-- Hammer.js -->
+<script src="/scripts/hammer.min.js"></script>
+
 <?php }
 
