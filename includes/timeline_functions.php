@@ -80,7 +80,7 @@ function chairman_timeline($host_data = [], $event_data = [])
 	// Start the section
 	$output =
 		'
-<section class="large_columns navigate_with_mobile_menu leaderboard" id="timeline" >
+<section class="large_columns navigate_with_mobile_menu" id="timeline" >
 	<h2>Chairman Timeline</h2>
 	<div class="timeline--container">
 		<div class="timeline--content">' . $timeline_scale;
