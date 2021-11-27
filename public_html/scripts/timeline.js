@@ -109,16 +109,3 @@ timeline_content.addEventListener('mousemove', (e) => {
 	timeline_content.scrollLeft = scrollLeft - walk;
 	// console.log(walk);
 });
-
-// TODO: Allow pinch to zoom in and out
-// Via: https://stackoverflow.com/a/11183333
-// hammertime.get('pinch').set({ enable: true });
-var mc = new Hammer.Manager(timeline_content);
-var pinch = new Hammer.Pinch();
-mc.add([pinch]);
-
-mc.on('pinch', function (ev) {
-	// timeline_content.textContent += ev.type + ' ';
-
-	console.log(ev.type);
-});

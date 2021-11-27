@@ -87,9 +87,4 @@ if ($url_view == 'leaderboard' || $url_view == 'search' || $url_view == 'archive
 <script src="/scripts/chart.min.js"></script>
 
 <?php }
-if ($url_view == 'leaderboard') { ?>
-<!-- Hammer.js -->
-<script src="/scripts/hammer.min.js"></script>
-
-<?php }
 
