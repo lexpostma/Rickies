@@ -182,8 +182,7 @@ section#timeline {
 	display: flex;
 	flex-direction: row-reverse;
 	bottom: calc(-40px - var(--space-between-md));
-	right: var(--space-side-padding);
-
+	right: var(--auto-padding);
 	button {
 		box-shadow: var.$header-shadow;
 		height: 40px;
@@ -231,48 +230,8 @@ section#timeline {
 		margin-right: 1px;
 	}
 	@media screen and (min-width: var.$break-md) {
-		flex-direction: column;
-		top: 4px;
-		button {
-			&:first-of-type {
-				border-top-left-radius: 20px;
-				border-top-right-radius: 20px;
-				border-bottom-right-radius: 2px;
-				z-index: unset;
-				&:not(:disabled) {
-					@media (hover: hover) {
-						&:hover {
-							transform: scale(1.2) translateY(-3px);
-						}
-					}
-					&:focus,
-					&:active {
-						transform: scale(1.1) translateY(-2px);
-					}
-				}
-			}
-			&:last-of-type {
-				border-bottom-left-radius: 20px;
-				border-bottom-right-radius: 20px;
-				border-top-left-radius: 2px;
-				z-index: 1;
-				&:not(:disabled) {
-					@media (hover: hover) {
-						&:hover {
-							transform: scale(1.2) translateY(3px);
-						}
-					}
-					&:focus,
-					&:active {
-						transform: scale(1.1) translateY(2px);
-					}
-				}
-			}
-		}
-		button + button {
-			margin-right: 0;
-			margin-top: 1px;
-		}
+		top: calc(-1 * (40px + var(--space-between-md)));
+		bottom: unset;
 	}
 }
 

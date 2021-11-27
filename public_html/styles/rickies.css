@@ -1779,7 +1779,7 @@ section#timeline .timeline--legend {
   display: flex;
   flex-direction: row-reverse;
   bottom: calc(-40px - var(--space-between-md));
-  right: var(--space-side-padding);
+  right: var(--auto-padding);
 }
 .timeline--zoom button {
   box-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
@@ -1822,48 +1822,8 @@ section#timeline .timeline--legend {
 }
 @media screen and (min-width: 768px) {
   .timeline--zoom {
-    flex-direction: column;
-    top: 4px;
-  }
-  .timeline--zoom button:first-of-type {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 2px;
-    z-index: unset;
-  }
-}
-@media screen and (min-width: 768px) and (hover: hover) {
-  .timeline--zoom button:first-of-type:not(:disabled):hover {
-    transform: scale(1.2) translateY(-3px);
-  }
-}
-@media screen and (min-width: 768px) {
-  .timeline--zoom button:first-of-type:not(:disabled):focus, .timeline--zoom button:first-of-type:not(:disabled):active {
-    transform: scale(1.1) translateY(-2px);
-  }
-}
-@media screen and (min-width: 768px) {
-  .timeline--zoom button:last-of-type {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top-left-radius: 2px;
-    z-index: 1;
-  }
-}
-@media screen and (min-width: 768px) and (hover: hover) {
-  .timeline--zoom button:last-of-type:not(:disabled):hover {
-    transform: scale(1.2) translateY(3px);
-  }
-}
-@media screen and (min-width: 768px) {
-  .timeline--zoom button:last-of-type:not(:disabled):focus, .timeline--zoom button:last-of-type:not(:disabled):active {
-    transform: scale(1.1) translateY(2px);
-  }
-}
-@media screen and (min-width: 768px) {
-  .timeline--zoom button + button {
-    margin-right: 0;
-    margin-top: 1px;
+    top: calc(-1 * (40px + var(--space-between-md)));
+    bottom: unset;
   }
 }
 
