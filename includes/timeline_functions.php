@@ -8,53 +8,17 @@ function chairman_timeline($host_data = [], $event_data = [])
 
 	// Define the start of the scale
 	$start_of_scale = $day_count = new DateTimeImmutable('2018-11-01 00:00');
-	$prev_year = $prev_month = '';
+	$prev_month = $months_in_current_year = '';
 	$year_position = $month_position = $full_width = 0;
 
 	// Define the end of the scale
 	$today = new DateTimeImmutable();
-	// TODO: Better define the size of the year
-	$end_of_scale = $today->modify('+2 months');
-	// $end_of_scale = $today;
+	$end_of_scale = $today->modify('+3 months');
 
 	while ($day_count < $end_of_scale) {
-		// Start a new year
-		if ($day_count->format('Y') !== $prev_year) {
-			$year_position = $year_position + $month_position;
-
-			if ($year_position == 0) {
-				// Based on Nov+Dec of the first Rickies year
-				$year_size = 61;
-			} elseif ($day_count->format('L') == 1) {
-				$year_size = 366;
-			} else {
-				$year_size = 365;
-			}
-			$full_width = $full_width + $year_size;
-
-			// Reset month position, so first month starts at 0 within new year
-			$month_position = 0;
-
-			if ($prev_year !== '') {
-				$timeline_scale .= '
-	</div>';
-			}
-			$timeline_scale .=
-				'
-	<div class="year" style="width: calc(' .
-				$year_size .
-				' * var(--day-width)); left: calc(' .
-				$year_position .
-				' * var(--day-width));"><span><span>' .
-				substr($day_count->format('Y'), 0, 2) .
-				'</span><span>' .
-				substr($day_count->format('Y'), 2) .
-				'</span></span>';
-			$prev_year = $day_count->format('Y');
-		}
 		// Create a new month
 		if ($day_count->format('m') !== $prev_month) {
-			$timeline_scale .=
+			$months_in_current_year .=
 				'
 		<div class="month" style="width: calc(' .
 				$day_count->format('t') .
@@ -67,8 +31,42 @@ function chairman_timeline($host_data = [], $event_data = [])
 				'</span><span>' .
 				substr($day_count->format('F'), 3) .
 				'</span></span></div>';
+
+			// Increase the monthly increments
 			$prev_month = $day_count->format('m');
 			$month_position = $month_position + $day_count->format('t');
+			$year_size = $year_size + $day_count->format('t');
+		}
+
+		// Create a new year
+		// IF tomorrow is a new year
+		// OR IF tomorrow is the last day of the scale
+		if (
+			$day_count->format('Y') !== $day_count->modify('+1 day')->format('Y') ||
+			$day_count->modify('+1 day') > $end_of_scale
+		) {
+			$timeline_scale .=
+				'
+	<div class="year" style="width: calc(' .
+				$year_size .
+				' * var(--day-width)); left: calc(' .
+				$year_position .
+				' * var(--day-width));"><span><span>' .
+				substr($day_count->format('Y'), 0, 2) .
+				'</span><span>' .
+				substr($day_count->format('Y'), 2) .
+				'</span></span>' .
+				$months_in_current_year .
+				'
+	</div>';
+
+			// Increase the yearly increments
+			$year_position = $year_position + $year_size;
+			$full_width = $full_width + $year_size;
+
+			// Reset the yearly variables
+			$year_size = $month_position = 0;
+			$months_in_current_year = '';
 		}
 
 		// Add another day, to move forward in the while loop
@@ -76,7 +74,6 @@ function chairman_timeline($host_data = [], $event_data = [])
 	}
 	// Close the final year, and the whole timeline's scale
 	$timeline_scale .= '
-	</div>
 </div>
 ';
 
