@@ -223,12 +223,13 @@ section {
 		padding-top: var(--space-between-lg);
 	}
 }
-
+section.navigate_with_mobile_menu {
+	margin-top: calc(-1 * #{var.$iX-top});
+}
 section.navigate_with_mobile_menu,
 .host_byline {
 	padding-top: calc(var(--nav-height) + var(--space-side-padding));
 	padding-top: calc(var(--nav-height) + var(--space-side-padding) + #{var.$iX-top});
-	margin-top: calc(-1 * #{var.$iX-top});
 }
 
 h2 {

@@ -748,11 +748,14 @@ section#list {
   padding-top: var(--space-between-lg);
 }
 
+section.navigate_with_mobile_menu {
+  margin-top: calc(-1 * env(safe-area-inset-top));
+}
+
 section.navigate_with_mobile_menu,
 .host_byline {
   padding-top: calc(var(--nav-height) + var(--space-side-padding));
   padding-top: calc(var(--nav-height) + var(--space-side-padding) + env(safe-area-inset-top));
-  margin-top: calc(-1 * env(safe-area-inset-top));
 }
 
 h2 {
