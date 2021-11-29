@@ -1644,10 +1644,19 @@ section#timeline .timeline--legend {
   cursor: ew-resize;
   overflow: scroll hidden;
   padding-left: var(--space-side-padding);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--nav-height) - (var(--space-side-padding) * 3) - 40px);
+  min-height: 400px;
+  max-height: 800px;
 }
 
 .timeline--host-track {
-  padding: var(--space-between-xl) 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
 .timeline--host-avatar {
@@ -1666,7 +1675,6 @@ section#timeline .timeline--legend {
   position: relative;
   background-color: rgba(var(--background-color-rgb), 0.3);
   height: 2rem;
-  overflow: hidden;
   transition-duration: 300ms;
   transition-property: height margin;
   transition-timing-function: cubic-bezier(0.68, 0.07, 0.27, 1.54);
@@ -1677,6 +1685,7 @@ section#timeline .timeline--legend {
   }
 }
 .timeline--chairman-track.hidden {
+  overflow: hidden;
   height: 0;
 }
 .timeline--chairman-track:not(.hidden) + .timeline--chairman-track {
@@ -1740,6 +1749,8 @@ section#timeline .timeline--legend {
   position: relative;
   pointer-events: none;
   height: 2.5rem;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 .timeline--scale .year,
 .timeline--scale .month {
