@@ -1851,6 +1851,9 @@ section#timeline .timeline--legend {
 
 .timeline--legend {
   margin-top: var(--space-between-md);
+}
+.timeline--legend li {
+  width: fit-content;
   cursor: pointer;
 }
 .timeline--legend li:before {
@@ -1861,7 +1864,8 @@ section#timeline .timeline--legend {
   width: 1em;
   border-radius: 50%;
   border: var(--graphic-border);
-  transform: translateY(2px);
+  transform: translateY(2px) scale(1);
+  transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
 .timeline--legend li.keynote:before {
   background: var(--connected-yellow);
@@ -1871,6 +1875,14 @@ section#timeline .timeline--legend {
 }
 .timeline--legend li.hidden:before {
   background: transparent;
+}
+@media (hover: hover) {
+  .timeline--legend li:hover {
+    color: var(--link-hover-color);
+  }
+  .timeline--legend li:hover:before {
+    transform: translateY(2px) scale(1.2);
+  }
 }
 
 :root {

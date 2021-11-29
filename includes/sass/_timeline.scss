@@ -265,24 +265,36 @@ section#timeline {
 
 .timeline--legend {
 	margin-top: var(--space-between-md);
-	cursor: pointer;
-	li:before {
-		content: '';
-		display: inline-block;
-		margin-right: 8px;
-		height: 1em;
-		width: 1em;
-		border-radius: 50%;
-		border: var(--graphic-border);
-		transform: translateY(2px);
-	}
-	li.keynote:before {
-		background: var(--connected-yellow);
-	}
-	li.annual:before {
-		background: var(--connected-orange);
-	}
-	li.hidden:before {
-		background: transparent;
+	li {
+		width: fit-content;
+		cursor: pointer;
+		&:before {
+			content: '';
+			display: inline-block;
+			margin-right: 8px;
+			height: 1em;
+			width: 1em;
+			border-radius: 50%;
+			border: var(--graphic-border);
+			transform: translateY(2px) scale(1);
+			transition: var.$pop-transition;
+		}
+		&.keynote:before {
+			background: var(--connected-yellow);
+		}
+		&.annual:before {
+			background: var(--connected-orange);
+		}
+		&.hidden:before {
+			background: transparent;
+		}
+		@media (hover: hover) {
+			&:hover {
+				color: var(--link-hover-color);
+				&:before {
+					transform: translateY(2px) scale(1.2);
+				}
+			}
+		}
 	}
 }
