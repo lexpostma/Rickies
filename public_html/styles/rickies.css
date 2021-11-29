@@ -1624,15 +1624,6 @@ section#timeline .timeline--legend {
   margin-left: var(--auto-padding);
 }
 
-:root {
-  --h2-height: 0;
-}
-@media screen and (min-width: 768px) {
-  :root {
-    --h2-height: calc(1.5em - var(--space-between-lg) - var(--space-between-md));
-  }
-}
-
 .timeline--container {
   position: relative;
   --scale-line-width: 1px;
@@ -1655,9 +1646,14 @@ section#timeline .timeline--legend {
   padding-left: var(--space-side-padding);
   display: flex;
   flex-direction: column;
-  height: calc(100vh - var(--nav-height) - (var(--space-side-padding) * 3) - 40px - var(--h2-height));
+  height: calc(100vh - var(--nav-height) - (var(--space-side-padding) * 3) - 40px);
   min-height: 400px;
   max-height: 800px;
+}
+@media screen and (min-width: 768px) {
+  .timeline--content {
+    height: calc( 			100vh - var(--nav-height) - (var(--space-side-padding) * 3) - 40px - 1.5em - var(--space-between-lg) 		);
+  }
 }
 
 .timeline--host-track {
