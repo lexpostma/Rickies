@@ -1666,6 +1666,10 @@ section#timeline .timeline--legend {
   position: relative;
   background-color: rgba(var(--background-color-rgb), 0.3);
   height: 2rem;
+  overflow: hidden;
+  transition-duration: 300ms;
+  transition-property: height margin;
+  transition-timing-function: cubic-bezier(0.68, 0.07, 0.27, 1.54);
 }
 @media (prefers-color-scheme: dark) {
   .timeline--chairman-track {
@@ -1673,7 +1677,7 @@ section#timeline .timeline--legend {
   }
 }
 .timeline--chairman-track.hidden {
-  display: none;
+  height: 0;
 }
 .timeline--chairman-track:not(.hidden) + .timeline--chairman-track {
   margin-top: var(--space-between-md);
