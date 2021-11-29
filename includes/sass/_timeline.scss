@@ -45,10 +45,13 @@ section#timeline {
 	padding-left: var(--space-side-padding);
 	display: flex;
 	flex-direction: column;
-	height: calc(100vh - var(--nav-height) - (var(--space-side-padding) * 3) - 40px);
+	height: calc(
+		100vh - var(--nav-height) - (var(--space-side-padding) * 3) - 40px - #{var.$iX-top} - #{var.$iX-bottom}
+	);
 	@media screen and (min-width: var.$break-md) {
 		height: calc(
-			100vh - var(--nav-height) - (var(--space-side-padding) * 3) - 40px - 1.5em - var(--space-between-lg)
+			100vh - var(--nav-height) - (var(--space-side-padding) * 3) - 40px - 1.5em - var(--space-between-lg) - #{var.$iX-top} -
+				#{var.$iX-bottom}
 		);
 	}
 	min-height: 400px;
