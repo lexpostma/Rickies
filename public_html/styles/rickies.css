@@ -1693,7 +1693,7 @@ section#timeline .timeline--legend {
   overflow: hidden;
   height: 0;
 }
-.timeline--chairman-track:not(.hidden) + .timeline--chairman-track {
+.timeline--chairman-track:not(.hidden) + .timeline--chairman-track:not(.hidden) {
   margin-top: var(--space-between-md);
 }
 .timeline--chairman-track .chairman {

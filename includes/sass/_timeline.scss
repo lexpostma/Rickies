@@ -96,7 +96,7 @@ section#timeline {
 		overflow: hidden;
 		height: 0;
 	}
-	&:not(.hidden) + & {
+	&:not(.hidden) + &:not(.hidden) {
 		margin-top: var(--space-between-md);
 	}
 	.chairman {
