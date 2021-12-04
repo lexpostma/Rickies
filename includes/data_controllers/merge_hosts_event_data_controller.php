@@ -6,7 +6,7 @@ $rickies_events__params = [
 	'maxRecords' => 1,
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
 ];
-$all_event_details = true;
+$rickies_event_data_set = 'details';
 
 include '../includes/data_controllers/event_data_controller.php';
 // echo '<pre>', var_dump($rickies_events__array), '</pre>';

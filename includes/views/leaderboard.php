@@ -16,6 +16,18 @@ echo no_script_banner('Charts can’t be shown with Javascript disabled'),
 	<div id="nav_content_sticky" class="nav_content">
 		<div class="nav_content--items">
 			<a class="menu_item js_link"
+				id="menu_timeline"
+				title="Chairman timeline"
+				data-goatcounter-click="Show chairman timeline"
+				data-goatcounter-referrer="<?= current_url() ?>"
+				onclick="navigate_section('timeline');">Timeline</a>
+			<a class="menu_item js_link"
+				id="menu_stats"
+				title="Host stats"
+				data-goatcounter-click="Show host stats"
+				data-goatcounter-referrer="<?= current_url() ?>"
+				onclick="navigate_section('stats');">Stats</a>
+			<a class="menu_item js_link"
 				id="menu_myke"
 				title="Myke’s stats"
 				data-goatcounter-click="Show Myke’s stats"
@@ -35,10 +47,14 @@ echo no_script_banner('Charts can’t be shown with Javascript disabled'),
 				onclick="navigate_section('stephen');">Stephen</a>
 			<a class="menu_item js_link menu_top"
 				title="Scroll to the top"
-				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-top.svg') ?></a>
+				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-menu-top.svg') ?></a>
 		</div>
 	</div>
 </nav>
 
-<?php echo leaderboard_item_bundle($hosts_data__array),
-	'<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';
+<?php echo chairman_timeline($hosts_data__array, $timeline_array),
+	leaderboard_item_bundle($hosts_data__array),
+	'<script>' .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/timeline.js') .
+		'</script>';

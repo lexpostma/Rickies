@@ -27,3 +27,14 @@ echo '</script>';
 if ($url_view == 'search' || $url_view == 'archive') {
 	echo '<script src="/scripts/accordion.js"></script>';
 }
+
+if ($url_view == 'search' || $url_view == 'archive' || $url_view == 'about') { ?>
+
+<script>
+	var mainNav = document.querySelectorAll('.nav_content.multicolor')[0];
+	document.addEventListener('DOMContentLoaded', function (event) {
+		mainNav.scrollLeft = mainNav.scrollWidth;
+	});
+</script>
+
+<?php }

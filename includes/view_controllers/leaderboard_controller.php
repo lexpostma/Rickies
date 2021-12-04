@@ -12,7 +12,8 @@ include '../includes/data_controllers/status_data_controller.php';
 
 function leaderboard_item_bundle($input)
 {
-	$output = '<section class="large_columns navigate_with_mobile_menu leaderboard"><div class="section_grid">';
+	$output =
+		'<section class="large_columns navigate_with_mobile_menu" id="stats"><h2>Host Stats</h2><div class="section_grid">';
 	$chart_script = '<script>';
 	$column = 1;
 	foreach ($input as $host_data) {
@@ -52,11 +53,13 @@ function host_titles($title_array)
 	return $output;
 }
 
-function host_stats_item($title, $content, $column)
+function host_stats_item($title, $content, $column, $host)
 {
 	return '
 		<div class="host_stats column' .
 		$column .
+		' column_' .
+		strtolower($host) .
 		'">
 			<h4>' .
 		$title .
@@ -76,6 +79,8 @@ function leaderboard_item($host_data, $column = 1)
 		strtolower($host_data['personal']['first_name']) .
 		'" class="host_stats column' .
 		$column .
+		' column_' .
+		strtolower($host_data['personal']['first_name']) .
 		' host_byline">';
 
 	// Add avatar
@@ -123,28 +128,41 @@ function leaderboard_item($host_data, $column = 1)
 		'</a></p></div>';
 
 	// Core Titles
-	$output .= host_stats_item('Current titles', host_titles($host_data['titles']), $column);
+	$output .= host_stats_item(
+		'Current titles',
+		host_titles($host_data['titles']),
+		$column,
+		$host_data['personal']['first_name']
+	);
 
 	// Other Titles
-	$output .= host_stats_item('Other titles', host_titles($host_data['titles_other']), $column);
+	$output .= host_stats_item(
+		'Other titles',
+		host_titles($host_data['titles_other']),
+		$column,
+		$host_data['personal']['first_name']
+	);
 
 	// Achievements
 	$output .= host_stats_item(
 		'Achievements',
 		score_label_item($host_data['achievements'], $host_data['personal']['color']),
-		$column
+		$column,
+		$host_data['personal']['first_name']
 	);
 
 	$output .= host_stats_item(
 		'Rickies',
 		score_label_item($host_data['stats']['rickies'], $host_data['personal']['color']),
-		$column
+		$column,
+		$host_data['personal']['first_name']
 	);
 
 	$output .= host_stats_item(
 		'Flexies',
 		score_label_item($host_data['stats']['flexies'], $host_data['personal']['color']),
-		$column
+		$column,
+		$host_data['personal']['first_name']
 	);
 
 	// Statistics
@@ -152,14 +170,16 @@ function leaderboard_item($host_data, $column = 1)
 		'Picks',
 		score_chart_item($host_data['stats']['picks'], strtolower($host_data['personal']['first_name'])) .
 			score_label_item($host_data['stats']['picks_strings'], $host_data['personal']['color']),
-		$column
+		$column,
+		$host_data['personal']['first_name']
 	);
 
 	// Ahead of its time
 	$output .= host_stats_item(
 		'<span class="emoji pulse_orb" style="animation-delay: ' . rand(-2000, 0) . 'ms;">🔮</span>Ahead of his time',
 		score_label_item($host_data['stats']['too_soon'], $host_data['personal']['color'], true),
-		$column
+		$column,
+		$host_data['personal']['first_name']
 	);
 
 	// Coin flips
@@ -168,7 +188,8 @@ function leaderboard_item($host_data, $column = 1)
 			rand(-3000, 0) .
 			'ms;">🪙</span></span>Coin flips',
 		score_label_item($host_data['stats']['coin_flips'], $host_data['personal']['color'], true),
-		$column
+		$column,
+		$host_data['personal']['first_name']
 	);
 
 	// Close host and content
@@ -180,9 +201,9 @@ function leaderboard_item($host_data, $column = 1)
 
 function score_label_item($array, $color, $display_as_paragraph = false)
 {
-	$output = '<table class="full_stats">';
+	$output = '<table class="full_stats" style="--highlight-color: var(--connected-' . $color . ');">';
 	if ($display_as_paragraph) {
-		$output .= '<tr><td colspan="2" class="string" style="--highlight-color: var(--connected-' . $color . ');">';
+		$output .= '<tr><td colspan="2" class="string">';
 	}
 	foreach ($array as $stat) {
 		if ($display_as_paragraph) {
@@ -207,9 +228,7 @@ function score_label_item($array, $color, $display_as_paragraph = false)
 				}
 				$output .=
 					'<tr>
-				<td class="value" style="color: var(--connected-' .
-					$color .
-					');">' .
+				<td class="value">' .
 					$stat['value'] .
 					'</td>
 				<td>' .
@@ -225,6 +244,26 @@ function score_label_item($array, $color, $display_as_paragraph = false)
 
 	$output .= '</table>';
 	return $output;
+}
+
+function frequent_in_array($array, $amount = 2, $sort = 'desc')
+{
+	$cat_groups = ['Hardware', 'Software', 'Services', 'People'];
+
+	// Remove the groups from the array
+	// Via https://stackoverflow.com/a/10455129
+	$clean_array = array_diff($array, $cat_groups);
+
+	// Get most frequent values
+	// Via https://stackoverflow.com/a/30626836
+	$values = array_count_values($clean_array);
+	if ($sort == 'desc') {
+		arsort($values);
+	} else {
+		asort($values);
+	}
+
+	return array_slice(array_keys($values), 0, $amount, true);
 }
 
 // Define the data for the leaderboard at the top of the page
@@ -281,6 +320,8 @@ foreach ($hosts_data__array as $host) {
 
 	array_push($leaderboard_data, $set);
 }
+
+include_once $incl_path . 'timeline_functions.php';
 
 $introduction =
 	'<p>With <b>' .

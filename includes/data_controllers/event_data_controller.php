@@ -1,18 +1,17 @@
 <?php
 
 // Rickies _data_ controller, general
-if (!isset($all_event_details)) {
-	$all_event_details = false;
+if (!isset($rickies_event_data_set)) {
+	$rickies_event_data_set = false;
 }
 
-if (!isset($rickies_events__params['fields']) && !$all_event_details) {
+if (!isset($rickies_events__params['fields']) && !$rickies_event_data_set) {
 	$rickies_events__params['fields'] = [
 		'Name',
 		'Rickies type',
 		'Event type',
 		'URL',
 		'Status',
-		'Rickies 1st (manual)',
 		'Predictions episode date',
 		'Predictions episode number',
 		'Predictions episode artwork',
@@ -73,7 +72,6 @@ do {
 						'seo' => airtable_image_url(check_key('Rickies SEO image', $fields, false, 0)),
 					],
 					'artwork_background_color' => check_key('Artwork background color', $fields),
-					'winner' => check_key('Rickies 1st (manual)', $fields),
 					'last_edited' => check_key('Last edit date', $fields),
 					'last_edited_rules' => check_key('Rules episode last edited', $fields),
 				];
@@ -99,7 +97,7 @@ do {
 					}
 				}
 
-				if (!$all_event_details) {
+				if (!$rickies_event_data_set) {
 					// Only the details needed for the Rickies overview
 					$rickies_events__array[$id]['label1'] = $rickies_events__array[$id]['name'];
 					$rickies_events__array[$id]['label3'] =
@@ -107,9 +105,11 @@ do {
 						' • Episode&nbsp;#' .
 						$rickies_events__array[$id]['episode_number'];
 					$rickies_events__array[$id]['url'] = '/' . $rickies_events__array[$id]['url_name'];
-				} else {
+				} elseif ($rickies_event_data_set == 'details') {
 					// Add more details from Airtable to array, to build the detail page
 					include 'event_extra_details_data_controller.php';
+				} elseif ($rickies_event_data_set == 'timeline') {
+					include 'event_extra_timeline_data_controller.php';
 				}
 
 				// If the status not Completed, add tag/banner
@@ -160,10 +160,7 @@ do {
 		}
 	} else {
 		// Response from Airtable is not countable, so it's probably an error instead of an empty array
-		// Continue with 503 error
-		$error_code = 503;
-		include $incl_path . 'error.php';
-		die();
+		include $incl_path . 'airtable_error.php';
 	}
 } while ($rickies_events__request = $rickies_events__response->next());
 

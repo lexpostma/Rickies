@@ -107,7 +107,7 @@ function navigation_bar($active = false)
 function back_button()
 {
 	$location = '/';
-	$middle = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-back.svg');
+	$middle = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-back.svg');
 	$link =
 		'<a href="' .
 		$location .
@@ -135,7 +135,7 @@ function share_button()
 		'<button id="share_button" class="top_button clean" type="button" data-goatcounter-click="Open share sheet" title="Share this page" data-goatcounter-referrer="' .
 		current_url() .
 		'" onclick="open_share_sheet()">' .
-		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-share.svg') .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-share.svg') .
 		'</button>
 
 		<div id="custom_share_sheet" class="">
@@ -145,8 +145,8 @@ function share_button()
 		current_url() .
 		'" />
 					<button class="clean top_button" title="Copy current URL" form="share_sheet_form" type="button" onclick="copyTextToClipboard()">' .
-		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-copy.svg') .
-		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-clipboard.svg') .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-copy.svg') .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-clipboard.svg') .
 		'</button>
 				</div>
 				<p><span>URL copied to clipboard</span></p>
@@ -161,8 +161,8 @@ function music_button()
 		'<button id="music_button" class="top_button clean" type="button" data-goatcounter-click="Theme music" title="Play theme music for The Bill of Rickies" data-goatcounter-referrer="' .
 		current_url() .
 		'">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-play.svg');
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-pause.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-play.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-pause.svg');
 	$output .= '</button>';
 
 	return $output;
@@ -174,7 +174,7 @@ function close_button()
 		'<button id="close_button" class="top_button clean" type="button" data-goatcounter-click="Hide history slider" title="Hide the history slider" data-goatcounter-title="Toggle Bill of Rickies slider" data-goatcounter-referrer="' .
 		current_url() .
 		'">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-close.svg');
 	$output .= '</button>';
 
 	return $output;
@@ -207,9 +207,26 @@ function markdown($markdown)
 }
 
 // Return random value from an array
-function random($array)
+function random($array, $disallowed_indeces = false)
 {
-	return $array[array_rand($array)];
+	if ($disallowed_indeces !== false) {
+		// Define the initial index
+		$index = false;
+
+		// Check if index is allowed to be used
+		// If not, draw another random index
+		while (in_array($index, $disallowed_indeces)) {
+			$index = array_rand($array);
+		}
+
+		// Return an array with
+		// 0. value of the array on random index
+		// 1. and the chosen index
+		return [$array[$index], $index];
+	} else {
+		// Return the value of the array on random index
+		return $array[array_rand($array)];
+	}
 }
 
 // Round the percentage to 1 decimal if it has decimals

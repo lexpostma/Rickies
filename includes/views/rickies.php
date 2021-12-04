@@ -48,9 +48,9 @@
 			</optgroup>
 		</select>
 <?php if (!isset($rickies_filter)) {
-	echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter.svg');
+	echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-filter.svg');
 } else {
-	echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter-active.svg');
+	echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-filter-active.svg');
 } ?>
 	</h2>
 	<script>

@@ -15,8 +15,8 @@ function search_button()
 {
 	$output = pick_filter_element(false, true);
 	$output .= '<button id="search_button" class="top_button clean" type="button" onclick="toggle_search()">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close2.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-search.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-close2.svg');
 	$output .= '</button>';
 
 	return $output;
@@ -77,7 +77,7 @@ function search_field($search_string = false, $part_of_filters = false)
 	}
 	$output .= '/>
 			<button class="clean top_button" title="Search" form="pick_filter_form" type="submit">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-search.svg');
 	$output .= '</button>
 		</div>';
 
@@ -122,12 +122,12 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 	) {
 		$output .=
 			'<span class="closed">Show</span><span class="opened">Hide</span> <b>active</b> filters<span class="filter_icon">' .
-			file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter-active.svg') .
+			file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-filter-active.svg') .
 			'</span>';
 	} else {
 		$output .=
 			'<span class="closed">Show</span><span class="opened">Hide</span> filters<span class="filter_icon">' .
-			file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter.svg') .
+			file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-filter.svg') .
 			'</span>';
 	}
 	$output .= '</div></summary>
@@ -371,7 +371,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 		'
 		<div class="button_section">
 			<button id="search_button_plus" class="clean js_link" title="Search and filter" form="pick_filter_form" type="submit">Search picks' .
-		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg') .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-search.svg') .
 		'</button>
 			<button class="clean js_link" id="reset_button" type="button" onclick="reset_filter()">Reset filters</button>
 		</div>
