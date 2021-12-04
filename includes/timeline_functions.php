@@ -103,12 +103,7 @@ function chairman_timeline($host_data = [], $event_data = [])
 			'color' => $host_data[$host]['personal']['color'],
 		];
 
-		$output .=
-			'<div class="timeline--host-avatar">' .
-			list_item_graphic($img_array) .
-			'<p>' .
-			$host_data[$host]['personal']['first_name'] .
-			'</p></div>';
+		$output .= '<div class="timeline--host-avatar">' . list_item_graphic($img_array) . '</div>';
 		unset($img_array);
 
 		// Create chairman track for each type of Rickies (annual and keynote)

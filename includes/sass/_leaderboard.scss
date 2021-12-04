@@ -52,49 +52,10 @@ $winner_double_ring_size: calc(var(--graphic-size) + 42px);
 				white-space: nowrap;
 			}
 		}
-		.string {
-		}
 		&.winner .avatar {
 			margin-top: 0px;
 			margin-bottom: 16px;
 			cursor: pointer;
-			// Winner ring
-			.ring {
-				width: $winner_ring_size;
-				height: $winner_ring_size;
-				position: absolute;
-				border-radius: 50%;
-				// 8px + the border width
-				top: -9px;
-				left: -9px;
-				mask-image: url('/images/ring.svg');
-				-webkit-mask-image: url('/images/ring.svg');
-				mask-repeat: no-repeat;
-				-webkit-mask-repeat: no-repeat;
-				mask-size: $winner_ring_size;
-				-webkit-mask-size: $winner_ring_size;
-
-				background-color: var(--connected-orange);
-				background-image: linear-gradient(
-					-45deg,
-					var(--connected-purple),
-					var(--connected-blue),
-					var(--connected-green),
-					var(--connected-yellow),
-					var(--connected-orange),
-					var(--connected-red),
-					var(--connected-purple),
-					var(--connected-blue),
-					var(--connected-green),
-					var(--connected-yellow)
-				);
-				background-size: 500% 500%;
-				animation: linear;
-				animation-name: gradient;
-				animation-duration: 20s;
-				animation-iteration-count: infinite;
-				// transform: scale(1);
-			}
 			@media (hover: hover) {
 				.ring,
 				img {
@@ -116,19 +77,62 @@ $winner_double_ring_size: calc(var(--graphic-size) + 42px);
 				}
 			}
 		}
-		&.winner.mega_winner .avatar {
-			.ring {
-				width: $winner_double_ring_size;
-				height: $winner_double_ring_size;
+	}
+}
 
-				top: -21px;
-				left: -21px;
-				mask-image: url('/images/ring-double.svg');
-				-webkit-mask-image: url('/images/ring-double.svg');
+.timeline--host-avatar,
+.avatar_leaderboard .host {
+	&.winner .avatar {
+		// Winner ring
+		.ring {
+			width: $winner_ring_size;
+			height: $winner_ring_size;
+			position: absolute;
+			border-radius: 50%;
+			// 8px + the border width
+			top: -9px;
+			left: -9px;
+			mask-image: url('/images/ring.svg');
+			-webkit-mask-image: url('/images/ring.svg');
+			mask-repeat: no-repeat;
+			-webkit-mask-repeat: no-repeat;
+			mask-size: $winner_ring_size;
+			-webkit-mask-size: $winner_ring_size;
 
-				mask-size: $winner_double_ring_size;
-				-webkit-mask-size: $winner_double_ring_size;
-			}
+			background-color: var(--connected-orange);
+			background-image: linear-gradient(
+				-45deg,
+				var(--connected-purple),
+				var(--connected-blue),
+				var(--connected-green),
+				var(--connected-yellow),
+				var(--connected-orange),
+				var(--connected-red),
+				var(--connected-purple),
+				var(--connected-blue),
+				var(--connected-green),
+				var(--connected-yellow)
+			);
+			background-size: 500% 500%;
+			animation-timing-function: linear;
+			animation-name: gradient;
+			animation-duration: 20s;
+			animation-iteration-count: infinite;
+			// transform: scale(1);
+		}
+	}
+	&.winner.mega_winner .avatar {
+		.ring {
+			width: $winner_double_ring_size;
+			height: $winner_double_ring_size;
+
+			top: -21px;
+			left: -21px;
+			mask-image: url('/images/ring-double.svg');
+			-webkit-mask-image: url('/images/ring-double.svg');
+
+			mask-size: $winner_double_ring_size;
+			-webkit-mask-size: $winner_double_ring_size;
 		}
 	}
 }

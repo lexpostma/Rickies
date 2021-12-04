@@ -1405,27 +1405,6 @@ p.category_tags .tag {
   margin-bottom: 16px;
   cursor: pointer;
 }
-.avatar_leaderboard .host.winner .avatar .ring {
-  width: calc(var(--graphic-size) + 16px);
-  height: calc(var(--graphic-size) + 16px);
-  position: absolute;
-  border-radius: 50%;
-  top: -9px;
-  left: -9px;
-  mask-image: url("/images/ring.svg");
-  -webkit-mask-image: url("/images/ring.svg");
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-size: calc(var(--graphic-size) + 16px);
-  -webkit-mask-size: calc(var(--graphic-size) + 16px);
-  background-color: var(--connected-orange);
-  background-image: linear-gradient(-45deg, var(--connected-purple), var(--connected-blue), var(--connected-green), var(--connected-yellow), var(--connected-orange), var(--connected-red), var(--connected-purple), var(--connected-blue), var(--connected-green), var(--connected-yellow));
-  background-size: 500% 500%;
-  animation: linear;
-  animation-name: gradient;
-  animation-duration: 20s;
-  animation-iteration-count: infinite;
-}
 @media (hover: hover) {
   .avatar_leaderboard .host.winner .avatar .ring,
 .avatar_leaderboard .host.winner .avatar img {
@@ -1442,6 +1421,30 @@ p.category_tags .tag {
 .avatar_leaderboard .host.winner .avatar:active img {
   transform: scale(0.95);
 }
+
+.timeline--host-avatar.winner .avatar .ring,
+.avatar_leaderboard .host.winner .avatar .ring {
+  width: calc(var(--graphic-size) + 16px);
+  height: calc(var(--graphic-size) + 16px);
+  position: absolute;
+  border-radius: 50%;
+  top: -9px;
+  left: -9px;
+  mask-image: url("/images/ring.svg");
+  -webkit-mask-image: url("/images/ring.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: calc(var(--graphic-size) + 16px);
+  -webkit-mask-size: calc(var(--graphic-size) + 16px);
+  background-color: var(--connected-orange);
+  background-image: linear-gradient(-45deg, var(--connected-purple), var(--connected-blue), var(--connected-green), var(--connected-yellow), var(--connected-orange), var(--connected-red), var(--connected-purple), var(--connected-blue), var(--connected-green), var(--connected-yellow));
+  background-size: 500% 500%;
+  animation-timing-function: linear;
+  animation-name: gradient;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+}
+.timeline--host-avatar.winner.mega_winner .avatar .ring,
 .avatar_leaderboard .host.winner.mega_winner .avatar .ring {
   width: calc(var(--graphic-size) + 42px);
   height: calc(var(--graphic-size) + 42px);
@@ -1629,11 +1632,6 @@ section#timeline .timeline--legend {
   --scale-line-width: 1px;
   --day-width: calc(var(--day-scale) * 1px);
 }
-@media screen and (max-width: 576px) {
-  .timeline--container {
-    --graphic-size: 32px;
-  }
-}
 @media screen and (min-width: 768px) {
   .timeline--container {
     --day-width: calc(var(--day-scale) * 2px);
@@ -1666,14 +1664,13 @@ section#timeline .timeline--legend {
 
 .timeline--host-avatar {
   position: absolute;
-  right: var(--space-side-padding);
+  right: -4px;
   z-index: 10;
-  text-align: center;
-  color: var(--text-secondary-color);
-  font-size: 0.75rem;
 }
-.timeline--host-avatar p {
-  margin-top: 4px;
+@media screen and (min-width: 576px) {
+  .timeline--host-avatar {
+    right: var(--space-side-padding);
+  }
 }
 
 .timeline--chairman-track {
@@ -1706,7 +1703,7 @@ section#timeline .timeline--legend {
 }
 @media (hover: hover) {
   .timeline--chairman-track .chairman:hover {
-    z-index: 15;
+    z-index: 9;
     box-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
   }
 }
@@ -1855,6 +1852,7 @@ section#timeline .timeline--legend {
   position: absolute;
   top: 0;
   bottom: 0;
+  z-index: 9;
 }
 
 .timeline--gradient-start {
@@ -1865,8 +1863,13 @@ section#timeline .timeline--legend {
 
 .timeline--gradient-end {
   right: 0;
-  width: calc(var(--graphic-size) + var(--space-side-padding));
+  width: calc(var(--graphic-size) - 4px);
   background: linear-gradient(90deg, rgba(var(--background-color-rgb), 0) 0%, rgba(var(--background-color-rgb), 1) 30%);
+}
+@media screen and (min-width: 576px) {
+  .timeline--gradient-end {
+    width: calc(var(--graphic-size) + var(--space-side-padding));
+  }
 }
 
 .timeline--legend {
@@ -1903,6 +1906,33 @@ section#timeline .timeline--legend {
   .timeline--legend li:hover:before {
     transform: translateY(2px) scale(1.2);
   }
+}
+
+@keyframes pop {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+@keyframes pop2 {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+.timeline--host-avatar.mega_winner .avatar, .timeline--host-avatar.winner .avatar {
+  animation-timing-function: cubic-bezier(0.68, 0.07, 0.27, 1.54);
+  animation-duration: 300ms;
+}
+.timeline--host-avatar.winner .avatar {
+  animation-name: pop;
+}
+.timeline--host-avatar.mega_winner .avatar {
+  animation-name: pop2;
 }
 
 :root {

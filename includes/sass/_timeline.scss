@@ -33,7 +33,7 @@ section#timeline {
 	--scale-line-width: 1px;
 	--day-width: calc(var(--day-scale) * 1px);
 	@media screen and (max-width: var.$break-sm) {
-		--graphic-size: 32px;
+		// --graphic-size: 32px;
 	}
 	@media screen and (min-width: var.$break-md) {
 		--day-width: calc(var(--day-scale) * 2px);
@@ -68,12 +68,10 @@ section#timeline {
 
 .timeline--host-avatar {
 	position: absolute;
-	right: var(--space-side-padding);
+	right: -4px;
 	z-index: 10;
-	text-align: center;
-	@include var.secondary-text();
-	p {
-		margin-top: 4px;
+	@media screen and (min-width: var.$break-sm) {
+		right: var(--space-side-padding);
 	}
 }
 
@@ -107,7 +105,7 @@ section#timeline {
 		@include var.truncate();
 		@media (hover: hover) {
 			&:hover {
-				z-index: 15;
+				z-index: 9;
 				box-shadow: var.$header-shadow;
 			}
 		}
@@ -265,6 +263,7 @@ section#timeline {
 	position: absolute;
 	top: 0;
 	bottom: 0;
+	z-index: 9;
 }
 .timeline--gradient-start {
 	left: 0;
@@ -277,7 +276,10 @@ section#timeline {
 }
 .timeline--gradient-end {
 	right: 0;
-	width: calc(var(--graphic-size) + var(--space-side-padding));
+	width: calc(var(--graphic-size) - 4px);
+	@media screen and (min-width: var.$break-sm) {
+		width: calc(var(--graphic-size) + var(--space-side-padding));
+	}
 	background: linear-gradient(
 		90deg,
 		rgba(var(--background-color-rgb), 0) 0%,
@@ -318,5 +320,41 @@ section#timeline {
 				}
 			}
 		}
+	}
+}
+
+@keyframes pop {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.05);
+	}
+}
+
+@keyframes pop2 {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+}
+.timeline--host-avatar {
+	&.mega_winner,
+	&.winner {
+		.avatar {
+			animation-timing-function: var.$pop-transition-timing;
+
+			animation-duration: 300ms;
+		}
+	}
+	&.winner .avatar {
+		animation-name: pop;
+	}
+	&.mega_winner .avatar {
+		animation-name: pop2;
 	}
 }

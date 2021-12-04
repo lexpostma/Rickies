@@ -34,6 +34,7 @@ function timeline_zoom(direction) {
 	}
 
 	set_timeline_scale_labels();
+	set_timeline_avatar_winner();
 }
 
 function set_timeline_scale_labels() {
@@ -62,24 +63,6 @@ function set_timeline_scale_labels() {
 		}
 	}, delayInMilliseconds);
 }
-
-// Make sure the end of the timeline is in view on load
-// Via: https://stackoverflow.com/a/56747348
-// And the labels are correctly visible
-document.addEventListener('DOMContentLoaded', function (event) {
-	timeline_content.scrollLeft = timeline_content.scrollWidth;
-	set_timeline_scale_labels();
-});
-
-window.addEventListener('resize', function () {
-	set_timeline_scale_labels();
-});
-
-// When timeline is hidden on mobile, and than resized, it defines label size at 0
-// So when timeline is visible again, it should recalculate the size
-document.getElementById('menu_timeline').addEventListener('click', function () {
-	set_timeline_scale_labels();
-});
 
 // Allow drag to scroll on timeline
 // Via: https://codepen.io/thenutz/pen/VwYeYEE
@@ -144,4 +127,78 @@ function toggle_timeline_track(track) {
 		});
 		document.querySelector('.timeline--legend-item.keynote').classList.add('hidden');
 	}
+
+	set_timeline_avatar_winner();
 }
+
+const chairmanships = document.querySelectorAll('.chairman');
+const avatars = document.getElementsByClassName('timeline--host-avatar');
+var winners = ['annual', 'keynote'];
+
+function set_timeline_avatar_winner() {
+	// Get the left side of the end gradient, which is the avatar's left edge
+	var avatar_edge = document.getElementsByClassName('timeline--gradient-end')[0].getBoundingClientRect().left;
+
+	// Cycle through chairman blobs
+	Array.from(chairmanships).forEach(function (el) {
+		// If chairman blob's left side is left of avatar's edge, and right side is right of avatar's edge
+		// That means they touch, and thus that avatar is a winner
+		if (el.getBoundingClientRect().left <= avatar_edge && el.getBoundingClientRect().right >= avatar_edge) {
+			// Only mark winner if track is visible
+			if (!el.parentNode.classList.contains('hidden')) {
+				// Set winner avatars to winners array
+				if (el.parentNode.classList.contains('annual')) {
+					winners[0] = el.parentNode.parentNode.getElementsByClassName('timeline--host-avatar')[0];
+				} else if (el.parentNode.classList.contains('keynote')) {
+					winners[1] = el.parentNode.parentNode.getElementsByClassName('timeline--host-avatar')[0];
+				}
+			}
+		}
+	});
+
+	// Cycle through all avatars on screen
+	Array.from(avatars).forEach(function (el) {
+		// if this avatar is in the winners array, it's a winner
+		if (winners.includes(el)) {
+			el.classList.add('winner');
+			// If it's in the winners array for both annual and keynote, it's a mega winner
+			if (winners[0] == winners[1]) {
+				el.classList.add('mega_winner');
+			} else {
+				el.classList.remove('mega_winner');
+			}
+		} else {
+			// loser
+			el.classList.remove('winner');
+			el.classList.remove('mega_winner');
+		}
+	});
+	// Clear array again
+	winners = ['annual', 'keynote'];
+}
+
+// When scrolling through the timeline, update the winners
+timeline_content.addEventListener('scroll', function () {
+	set_timeline_avatar_winner();
+});
+
+// Make sure the end of the timeline is in view on load
+// Via: https://stackoverflow.com/a/56747348
+// And the labels are correctly visible
+document.addEventListener('DOMContentLoaded', function (event) {
+	timeline_content.scrollLeft = timeline_content.scrollWidth;
+	set_timeline_scale_labels();
+	set_timeline_avatar_winner();
+});
+
+window.addEventListener('resize', function () {
+	set_timeline_scale_labels();
+	set_timeline_avatar_winner();
+});
+
+// When timeline is hidden on mobile, and than resized, it defines label size at 0
+// So when timeline is visible again, it should recalculate the size
+document.getElementById('menu_timeline').addEventListener('click', function () {
+	set_timeline_scale_labels();
+	set_timeline_avatar_winner();
+});
