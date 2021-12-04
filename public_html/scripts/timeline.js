@@ -5,6 +5,9 @@ const defaultZoom = getComputedStyle(timeline).getPropertyValue('--day-scale');
 const timeline_content = document.getElementsByClassName('timeline--content')[0];
 const first_month = document.getElementsByClassName('month')[0];
 
+// Should be the same as var.$hover-duration in CSS
+var delayInMilliseconds = 300;
+
 function timeline_zoom(direction) {
 	var currentWidth = getComputedStyle(timeline).getPropertyValue('--day-scale');
 	let zoomFactor = 1.25;
@@ -34,13 +37,13 @@ function timeline_zoom(direction) {
 	}
 
 	set_timeline_scale_labels();
-	set_timeline_avatar_winner();
+	setTimeout(function () {
+		set_timeline_avatar_winner();
+	}, delayInMilliseconds);
 }
 
 function set_timeline_scale_labels() {
-	// Should be the same as var.$hover-duration in CSS
 	// Timeout is needed because the animation delays the width measurement
-	var delayInMilliseconds = 300;
 
 	setTimeout(function () {
 		// console.log(first_month.offsetWidth);

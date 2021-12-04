@@ -7,13 +7,13 @@ function chairman_timeline($host_data = [], $event_data = [])
 <div class="timeline--scale">';
 
 	// Define the start of the scale
-	$start_of_scale = $day_count = new DateTimeImmutable('2018-11-01 00:00');
+	$start_of_scale = $day_count = new DateTimeImmutable('2018-06-01 00:00');
 	$prev_month = $months_in_current_year = '';
 	$year_size = $year_position = $month_position = $full_width = 0;
 
 	// Define the end of the scale
 	$today = new DateTimeImmutable();
-	$end_of_scale = $today->modify('+3 months');
+	$end_of_scale = $today->modify('+2 months');
 
 	while ($day_count < $end_of_scale) {
 		// Create a new month
