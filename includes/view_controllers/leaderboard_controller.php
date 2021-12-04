@@ -201,9 +201,9 @@ function leaderboard_item($host_data, $column = 1)
 
 function score_label_item($array, $color, $display_as_paragraph = false)
 {
-	$output = '<table class="full_stats">';
+	$output = '<table class="full_stats" style="--highlight-color: var(--connected-' . $color . ');">';
 	if ($display_as_paragraph) {
-		$output .= '<tr><td colspan="2" class="string" style="--highlight-color: var(--connected-' . $color . ');">';
+		$output .= '<tr><td colspan="2" class="string">';
 	}
 	foreach ($array as $stat) {
 		if ($display_as_paragraph) {
@@ -228,9 +228,7 @@ function score_label_item($array, $color, $display_as_paragraph = false)
 				}
 				$output .=
 					'<tr>
-				<td class="value" style="color: var(--connected-' .
-					$color .
-					');">' .
+				<td class="value">' .
 					$stat['value'] .
 					'</td>
 				<td>' .
@@ -246,6 +244,26 @@ function score_label_item($array, $color, $display_as_paragraph = false)
 
 	$output .= '</table>';
 	return $output;
+}
+
+function frequent_in_array($array, $amount = 2, $sort = 'desc')
+{
+	$cat_groups = ['Hardware', 'Software', 'Services', 'People'];
+
+	// Remove the groups from the array
+	// Via https://stackoverflow.com/a/10455129
+	$clean_array = array_diff($array, $cat_groups);
+
+	// Get most frequent values
+	// Via https://stackoverflow.com/a/30626836
+	$values = array_count_values($clean_array);
+	if ($sort == 'desc') {
+		arsort($values);
+	} else {
+		asort($values);
+	}
+
+	return array_slice(array_keys($values), 0, $amount, true);
 }
 
 // Define the data for the leaderboard at the top of the page

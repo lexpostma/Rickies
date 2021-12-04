@@ -167,17 +167,17 @@ table.full_stats {
 	border: none;
 	td {
 		vertical-align: top;
+		b,
+		strong {
+			color: var(--highlight-color);
+			white-space: nowrap;
+		}
 	}
 	td.value {
 		font-weight: bold;
 		padding-right: 0.4em;
 		font-variant-numeric: tabular-nums;
-	}
-	td.string {
-		b,
-		strong {
-			color: var(--highlight-color);
-		}
+		color: var(--highlight-color);
 	}
 }
 

@@ -71,14 +71,6 @@ do {
 				],
 			];
 
-			$cat_groups = ['Hardware', 'Software', 'Services', 'People'];
-			$all_cats = explode(';', check_key('Categories', $fields));
-			$clean_cats = array_diff($all_cats, $cat_groups);
-
-			$values = array_count_values($clean_cats);
-			arsort($values);
-			$fav_cat = array_slice(array_keys($values), 0, 1, true)[0];
-
 			$hosts_data__array[$id]['stats'] = [
 				'rickies' => [
 					'ricky_win_rate' => [
@@ -190,9 +182,16 @@ do {
 						// 'unit' => '%',
 						'0hide' => true,
 					],
-					'categories' => [
-						'value' => $fav_cat,
-						'label' => 'is his favourite category',
+					'fav_categories' => [
+						'value' => frequent_in_array(explode(';', check_key('Categories', $fields)))[0],
+						'label' =>
+							'is his favourite category, with <b>' .
+							frequent_in_array(explode(';', check_key('Categories', $fields)))[1] .
+							'</b> in 2nd place',
+					],
+					'success_categories' => [
+						'value' => frequent_in_array(explode(';', check_key('Correct Categories', $fields)), 1)[0],
+						'label' => 'is his most successful category',
 					],
 				],
 				'coin_flips' => [

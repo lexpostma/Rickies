@@ -1491,13 +1491,15 @@ table.full_stats {
 table.full_stats td {
   vertical-align: top;
 }
+table.full_stats td b,
+table.full_stats td strong {
+  color: var(--highlight-color);
+  white-space: nowrap;
+}
 table.full_stats td.value {
   font-weight: bold;
   padding-right: 0.4em;
   font-variant-numeric: tabular-nums;
-}
-table.full_stats td.string b,
-table.full_stats td.string strong {
   color: var(--highlight-color);
 }
 
