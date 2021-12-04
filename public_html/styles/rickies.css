@@ -1625,6 +1625,7 @@ section#timeline h2,
 section#timeline .timeline--legend {
   pointer-events: all;
   margin-left: var(--auto-padding);
+  margin-left: max(var(--auto-padding), env(safe-area-inset-left));
 }
 
 .timeline--container {
@@ -1800,6 +1801,7 @@ section#timeline .timeline--legend {
   flex-direction: row-reverse;
   bottom: calc(-40px - var(--space-between-md));
   right: var(--auto-padding);
+  right: max(var(--auto-padding), env(safe-area-inset-right));
 }
 .timeline--zoom button {
   box-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);

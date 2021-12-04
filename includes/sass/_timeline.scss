@@ -25,6 +25,7 @@ section#timeline {
 	.timeline--legend {
 		pointer-events: all;
 		margin-left: var(--auto-padding);
+		margin-left: max(var(--auto-padding), #{var.$iX-left});
 	}
 }
 
@@ -206,6 +207,7 @@ section#timeline {
 	flex-direction: row-reverse;
 	bottom: calc(-40px - var(--space-between-md));
 	right: var(--auto-padding);
+	right: max(var(--auto-padding), #{var.$iX-right});
 	button {
 		box-shadow: var.$header-shadow;
 		height: 40px;
