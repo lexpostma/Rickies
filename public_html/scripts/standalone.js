@@ -3,6 +3,8 @@ function promote_standalone() {
 		// Web app is on the home screen, enable pull-to-refresh
 
 		// Get the size of the notch area
+		// Uses a CSS variable
+		// Via: https://stackoverflow.com/a/66221889
 		var safeTop = getComputedStyle(document.documentElement).getPropertyValue('--safe-top').replace('px', '');
 		if (!safeTop) {
 			// If is fails, set to 0

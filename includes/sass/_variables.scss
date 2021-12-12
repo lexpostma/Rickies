@@ -22,6 +22,7 @@ $break-xl: 1200px;
 $break-xxl: 1400px;
 
 :root {
+	// Variable is used by JS for pull-to-refresh distances
 	--safe-top: #{$iX-top};
 
 	--connected-green-rgb: 68, 153, 52; // #449934
