@@ -12,7 +12,7 @@ function promote_standalone() {
 		// Define the pull-to-refresh distances based on notch size
 		var distThreshold = parseInt(safeTop) + 52,
 			distMax = parseInt(safeTop) + 80,
-			distReload = parseInt(safeTop) + 40;
+			distReload = parseInt(safeTop) + 44;
 
 		// Initiate pull-to-refresh with parameters and refresh action
 		PullToRefresh.init({
