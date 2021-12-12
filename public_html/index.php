@@ -24,6 +24,7 @@ include $incl_path . 'view_controllers/' . $focus_site . '_controller.php';
 		<div id="top" class="container">
 		<?php
   include $include_body;
+  echo '<script src="/scripts/index.umd.js?v=' . $refresh . '"></script>';
   echo '<script>' .
   	file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/share_and_search.js') .
   	file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/standalone.js') .

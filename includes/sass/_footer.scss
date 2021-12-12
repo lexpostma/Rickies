@@ -20,13 +20,12 @@ footer {
 		background: var(--relay-blue);
 		position: relative;
 
-		p#refresh_page,
 		p#promote_webapp {
 			margin-bottom: var(--space-between-md);
 		}
 	}
 }
-p#refresh_page,
+
 p#promote_webapp {
 	display: none;
 }

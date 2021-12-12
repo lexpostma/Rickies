@@ -1,4 +1,5 @@
 :root {
+  --safe-top: env(safe-area-inset-top);
   --connected-green-rgb: 68, 153, 52;
   --connected-yellow-rgb: 252, 194, 0;
   --connected-orange-rgb: 239, 123, 0;
@@ -265,6 +266,16 @@ span.need_space--sm {
     display: inline;
   }
 }
+/* Custom pull-to-refresh styling */
+.ptr--icon,
+.ptr--text {
+  color: white !important;
+}
+
+.ptr--box {
+  padding-top: env(safe-area-inset-top) !important;
+}
+
 /* For debugging */
 pre {
   font-size: 0.8rem;
@@ -1204,12 +1215,10 @@ footer#footer {
   background: var(--relay-blue);
   position: relative;
 }
-footer#footer p#refresh_page,
 footer#footer p#promote_webapp {
   margin-bottom: var(--space-between-md);
 }
 
-p#refresh_page,
 p#promote_webapp {
   display: none;
 }

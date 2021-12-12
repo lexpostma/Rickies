@@ -22,6 +22,8 @@ $break-xl: 1200px;
 $break-xxl: 1400px;
 
 :root {
+	--safe-top: #{$iX-top};
+
 	--connected-green-rgb: 68, 153, 52; // #449934
 	--connected-yellow-rgb: 252, 194, 0; // #fcc200
 	--connected-orange-rgb: 239, 123, 0; // #ef7b00

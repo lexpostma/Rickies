@@ -88,7 +88,6 @@ if (!isset($error)) {
 <p class="bill_footer">This is a living document. The One True Copy of <span id="disclaimer_title"><?= $head_custom[
 	'title'
 ] ?></span> is in the Connected Google&nbsp;Doc.</p>
-<p class="bill_footer" id="refresh_page"><button title="Refresh page" class="clean js_link" type="button" data-goatcounter-click="Refresh page" data-goatcounter-referrer="<?= current_url() ?>" onclick="refresh_inprogress(this), location.reload()">Refresh this page</button></p>
 
 <?= close_button() ?>
 <aside class="slider">
