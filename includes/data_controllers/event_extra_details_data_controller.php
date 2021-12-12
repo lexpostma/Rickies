@@ -87,18 +87,6 @@ foreach ($hosts as $host) {
 }
 
 $rickies_events__array[$id]['details'] = [
-	// Apple Event data
-	'event_title' => 'Apple event',
-	'event_data' => [
-		'url' => check_key('Event URL', $fields, false, 0),
-		'img_url' => $rickies_events__array[$id]['artwork']['event'],
-		'label1' => check_key('Event name', $fields),
-		'label2' => check_key('Event tagline', $fields, false, 0),
-		'label3' => date_to_string_label(check_key('Event date', $fields, false, 0), 'air', true, true),
-		'date' => check_key('Event date', $fields, false, 0),
-		'type' => check_key('Event type', $fields, false, 0),
-	],
-
 	// Episode data
 	'episode_title' => 'Podcast episodes',
 	'episode_data_predictions' => [
@@ -124,6 +112,25 @@ $rickies_events__array[$id]['details'] = [
 		'date' => check_key('Results episode date', $fields, false, 0),
 	],
 
+	// Apple Event and Charity data
+	'link_title' => 'Apple event and Charity',
+	'link_data_apple' => [
+		'url' => check_key('Event URL', $fields, false, 0),
+		'img_url' => $rickies_events__array[$id]['artwork']['event'],
+		'label1' => check_key('Event name', $fields),
+		'label2' => check_key('Event tagline', $fields, false, 0),
+		'label3' => date_to_string_label(check_key('Event date', $fields, false, 0), 'air', true, true),
+		'date' => check_key('Event date', $fields, false, 0),
+		'type' => check_key('Event type', $fields, false, 0),
+	],
+	'link_data_charity' => [
+		'url' => check_key('Charity URL', $fields, false, 0),
+		'img_url' => check_key('Charity logo', $fields, false, 0),
+		'label1' => check_key('Charity name', $fields, false, 0),
+		'label2' => '$' . check_key('Flexy donation', $fields) . ' donated by ' . check_key('Flexies 3rd', $fields),
+		'label3' => check_key('Flexies 1st', $fields) . '’s choice',
+	],
+
 	// More data
 	'more_title' => 'More',
 	'more_data_rules' => [
@@ -133,20 +140,41 @@ $rickies_events__array[$id]['details'] = [
 		'label1' => 'The Bill of Rickies',
 		'label3' => 'As of these ' . $rickies_events__array[$id]['type_string'],
 	],
-	'more_data_charity' => [
-		'url' => check_key('Charity URL', $fields, false, 0),
-		'img_url' => check_key('Charity logo', $fields, false, 0),
-		'label1' => check_key('Charity name', $fields, false, 0),
-		'label2' => '$' . check_key('Flexy donation', $fields) . ' donated by ' . check_key('Flexies 3rd', $fields),
-		'label3' => check_key('Flexies 1st', $fields) . '’s choice',
+	'more_data_archive' => [
+		'url' => filter_url('&rickies_event=' . $rickies_events__array[$id]['url_name']),
+		'url_internal' => true,
+		'img_url' => '/images/archive-avatar.png',
+		'label1' => 'Show picks in archive',
+		'label3' => 'Complete with metadata and filter options',
 	],
 ];
 
-// Event data
-if ($rickies_events__array[$id]['details']['event_data']['label1'] == false) {
-	// No event linked, clear details from array
-	unset($rickies_events__array[$id]['details']['event_title']);
-	unset($rickies_events__array[$id]['details']['event_data']);
+// Link data
+if (
+	$rickies_events__array[$id]['details']['link_data_apple']['label1'] == false &&
+	$rickies_events__array[$id]['details']['link_data_charity']['label1'] == false
+) {
+	// No data linked, clear details from array
+	unset($rickies_events__array[$id]['details']['link_title']);
+	unset($rickies_events__array[$id]['details']['link_data_apple']);
+	unset($rickies_events__array[$id]['details']['link_data_charity']);
+} else {
+	if ($rickies_events__array[$id]['details']['link_data_apple']['label1'] == false) {
+		// No Apple Event data linked, clear details from array
+		$rickies_events__array[$id]['details']['link_title'] = 'Charity';
+		unset($rickies_events__array[$id]['details']['link_data_apple']);
+	}
+	if ($rickies_events__array[$id]['details']['link_data_charity']['label1'] == false) {
+		// No charity, clear details from array
+		$rickies_events__array[$id]['details']['link_title'] = 'Apple event';
+		unset($rickies_events__array[$id]['details']['link_data_charity']);
+	} else {
+		// Charity is set, if image is also set, define the right URL
+		if ($rickies_events__array[$id]['details']['link_data_charity']['img_url'] !== false) {
+			$rickies_events__array[$id]['details']['link_data_charity']['img_url'] =
+				$rickies_events__array[$id]['details']['link_data_charity']['img_url']['thumbnails']['large']['url'];
+		}
+	}
 }
 
 // Episode states
@@ -198,18 +226,6 @@ if ($rickies_events__array[$id]['details']['episode_data_predictions'] == false)
 } elseif ($rickies_events__array[$id]['details']['episode_data_results'] == false) {
 	// No results episode, clear details from array
 	unset($rickies_events__array[$id]['details']['episode_data_results']);
-}
-
-// Charity data
-if ($rickies_events__array[$id]['details']['more_data_charity']['label1'] == false) {
-	// No charity, clear details from array
-	unset($rickies_events__array[$id]['details']['more_data_charity']);
-} else {
-	// Charity is set, if image is also set, define the right URL
-	if ($rickies_events__array[$id]['details']['more_data_charity']['img_url'] !== false) {
-		$rickies_events__array[$id]['details']['more_data_charity']['img_url'] =
-			$rickies_events__array[$id]['details']['more_data_charity']['img_url']['thumbnails']['large']['url'];
-	}
 }
 
 // Bill of Rickies data

@@ -92,9 +92,10 @@ if (!isset($error)) {
 <?= close_button() ?>
 <aside class="slider">
 	<div id="rule_slider">
-		<p id="slider_label_container"><span id="slider_hint">Slide to see the full history</span><span class="label" id="slider_label" for="date_slider"><?= $current_selection[
-  	'name'
-  ] ?></span></p>
+		<label id="slider_label_container" for="date_slider">
+			<span id="slider_hint">Slide to see the full history</span>
+			<span id="slider_label"><?= $current_selection['name'] ?></span>
+		</label>
 		<input
 			id="date_slider"
 			type="range"
@@ -114,7 +115,7 @@ if (!isset($error)) {
 		</datalist>
 	</div>
 </aside>
-<audio id="theme_music" hidden src="/audio/native-land-dream-cave.mp3" type="audio/mpeg"></audio>
+<audio id="theme_music" hidden src="/audio/native-land-dream-cave.mp3"></audio>
 <script><?php
 echo $event_slider_js_vars;
 echo 'var rickies_start = ' .

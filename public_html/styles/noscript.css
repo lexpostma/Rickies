@@ -1,10 +1,10 @@
 nav.nav_container {
   height: auto;
 }
-nav.nav_container #nav_content {
+nav.nav_container #nav_content_sticky {
   position: relative;
 }
-nav.nav_container.sticky #nav_content {
+nav.nav_container.sticky #nav_content_sticky {
   position: relative;
 }
 

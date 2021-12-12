@@ -1,22 +1,23 @@
 @use "variables" as var;
 
 button.top_button,
+#share_button,
 #close_button {
 	color: var(--document-text-color);
 }
 
 #music_button {
 	right: 20px;
-	div.pause {
+	svg.pause {
 		display: none;
 	}
 
 	&.is-playing {
 		position: fixed;
-		div.play {
+		svg.play {
 			display: none;
 		}
-		div.pause {
+		svg.pause {
 			display: block;
 		}
 	}
@@ -66,6 +67,15 @@ button.top_button,
 		transform: scale(1) rotate(0deg);
 		&.show {
 			transform: rotate(-180deg);
+			@media (hover: hover) {
+				&:hover {
+					transform: scale(1.2) rotate(-180deg);
+				}
+			}
+			&:focus,
+			&:active {
+				transform: scale(1.1) rotate(-180deg);
+			}
 		}
 	}
 }

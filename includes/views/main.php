@@ -10,10 +10,6 @@ echo share_button();
 include $include_subbody;
 include $incl_path . 'footer.php';
 
-if ($url_view !== 'search' && $url_view !== 'archive') {
-	echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/search.js') . '</script>';
-}
-
 echo '<script>';
 include 'scripts/confetti.js';
 if ($url_view == 'main') { ?>
@@ -26,5 +22,19 @@ if ($url_view == 'main') { ?>
 	});
 
 <?php }
-echo '</script>
-<script src="/scripts/accordion.js"></script>';
+echo '</script>';
+
+if ($url_view == 'search' || $url_view == 'archive') {
+	echo '<script src="/scripts/accordion.js"></script>';
+}
+
+if ($url_view == 'search' || $url_view == 'archive' || $url_view == 'about') { ?>
+
+<script>
+	var mainNav = document.querySelectorAll('.nav_content.multicolor')[0];
+	document.addEventListener('DOMContentLoaded', function (event) {
+		mainNav.scrollLeft = mainNav.scrollWidth;
+	});
+</script>
+
+<?php }

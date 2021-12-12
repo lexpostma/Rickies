@@ -79,21 +79,29 @@
 
 #slider_label_container {
 	position: relative;
+	display: block;
+	span {
+		display: block;
+		text-align: center;
+		margin-bottom: 16px;
+		&#slider_hint {
+			position: absolute;
+			width: 100%;
+
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			pointer-events: none;
+
+			opacity: 0;
+			animation-name: slider_label_hint;
+			animation-timing-function: ease;
+			animation-duration: 4s;
+			animation-delay: 2s;
+		}
+	}
 }
-#slider_hint {
-	position: absolute;
-	width: 100%;
-	text-align: center;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	pointer-events: none;
-	opacity: 0;
-	animation-name: slider_label_hint;
-	animation-timing-function: ease;
-	animation-duration: 4s;
-	animation-delay: 2s;
-}
+
 aside.slider,
 #slider_hint {
 	background: #fff;
@@ -117,11 +125,6 @@ aside.slider {
 		max-width: var.$readability-width;
 		margin: 0 auto;
 		color: var(--text-primary-color);
-		.label {
-			display: block;
-			text-align: center;
-			margin-bottom: 16px;
-		}
 		@media screen and (min-width: var.$break-md) {
 			padding: 16px 32px 24px;
 			padding-bottom: max(24px, calc(16px + #{var.$iX-bottom}));

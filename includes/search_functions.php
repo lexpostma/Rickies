@@ -1,17 +1,24 @@
 <?php
 /* Function for searching and filtering predictions/picks  */
 
+// The "&emsp14;" is a narrower 4-per-em space
+// It's used to tweak the spacing of emoji inside a <select>
+// Via https://stackoverflow.com/a/8515417
+function emoji_select_spacing($emoji)
+{
+	return $emoji . '&emsp14;&emsp14;';
+}
+
 // Fixed search button in the top right corner of many pages, opens a modal search field
 // Includes a search field that's always fixed, otherwise there's no search button needed on the page
 function search_button()
 {
 	$output = pick_filter_element(false, true);
 	$output .= '<button id="search_button" class="top_button clean" type="button" onclick="toggle_search()">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close2.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-search.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-close2.svg');
 	$output .= '</button>';
 
-	// NOTE: Remember to add the search.js script to the footer separately
 	return $output;
 }
 
@@ -22,7 +29,7 @@ Parameters are:
 	$displayed_as_modal -> whether the search content in modally opened, or inline
 	$categories 		-> optionally insert al the possible categories as array
 */
-function pick_filter_element($user_input = false, $displayed_as_modal = false, $categories = [])
+function pick_filter_element($user_input = false, $displayed_as_modal = false, $categories = [], $rickies_events = [])
 {
 	$output = '';
 	if (empty($user_input['search'])) {
@@ -43,7 +50,7 @@ function pick_filter_element($user_input = false, $displayed_as_modal = false, $
 		$output .= search_field($user_input['search']['string']);
 	} else {
 		$output .= search_field($user_input['search']['string'], true);
-		$output .= pick_filter_expandable_sheet($categories, $user_input);
+		$output .= pick_filter_expandable_sheet($categories, $rickies_events, $user_input);
 	}
 
 	$output .= '	</form>';
@@ -59,7 +66,7 @@ function pick_filter_element($user_input = false, $displayed_as_modal = false, $
 function search_field($search_string = false, $part_of_filters = false)
 {
 	$output = '
-		<div id="search_field_combo" class="';
+		<div id="search_field_combo" class="input_button_combo ';
 	if ($part_of_filters) {
 		$output .= 'in_summary';
 	}
@@ -70,7 +77,7 @@ function search_field($search_string = false, $part_of_filters = false)
 	}
 	$output .= '/>
 			<button class="clean top_button" title="Search" form="pick_filter_form" type="submit">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-search.svg');
 	$output .= '</button>
 		</div>';
 
@@ -91,31 +98,39 @@ Parameters are:
 	$categories	-> array of all categories available to be selected, to be forwarded to pick_category_filters() function
 	$user_input -> array of selected filters by the user, separated into 'filter_other' and 'filter_categories'
 */
-function pick_filter_expandable_sheet($categories, $user_input = [])
+function pick_filter_expandable_sheet($categories, $rickies_events, $user_input = [])
 {
 	$output = '<details id="pick_filter_sheet" ';
 	if (empty($user_input['filter_other'])) {
 		$user_input['filter_other'] = [];
 	}
 
-	if (!empty($user_input['filter_other']) || !empty($user_input['filter_categories'])) {
+	if (
+		!empty($user_input['filter_other']) ||
+		!empty($user_input['filter_categories']) ||
+		!empty($user_input['display'])
+	) {
 		$output .= ' open';
 	}
 
 	$output .= '>
-	<summary>';
-	if (!empty($user_input['filter_other']) || !empty($user_input['filter_categories'])) {
+	<summary><div class="filter_sheet_toggle">';
+	if (
+		!empty($user_input['filter_other']) ||
+		!empty($user_input['filter_categories']) ||
+		!empty($user_input['display'])
+	) {
 		$output .=
 			'<span class="closed">Show</span><span class="opened">Hide</span> <b>active</b> filters<span class="filter_icon">' .
-			file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter-active.svg') .
+			file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-filter-active.svg') .
 			'</span>';
 	} else {
 		$output .=
 			'<span class="closed">Show</span><span class="opened">Hide</span> filters<span class="filter_icon">' .
-			file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-filter.svg') .
+			file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-filter.svg') .
 			'</span>';
 	}
-	$output .= '</summary>
+	$output .= '</div></summary>
 	<div class="content">';
 
 	// Filter for hosts
@@ -222,59 +237,46 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 		</ul>
 	</fieldset>';
 
-	// TODO: Enable changing view filters
-	// Filter for changing view
-	// 	$output .= '
-	// 	<fieldset class="list">
-	// 		<ul>
-	//
-	// 			<li class="filter_option"><b>Change view</b></li>
-	//
-	// 			<li class="filter_option">
-	// 				<input type="checkbox" name="view[]" value="categories" id="view_cat" class="clean" ';
-	// 	if (key_exists('view', $filters) && strpos($filters['view'], 'categories') !== false) {
-	// 		$output .= 'checked';
-	// 	}
-	// 	$output .= '/>
-	// 				<label for="view_cat"><span class="emoji">🏷</span>Show categories</label>
-	// 			</li>
-	//
-	// 			<li class="filter_option">
-	// 				<input type="checkbox" name="view[]" value="age" id="view_age" class="clean" ';
-	// 	if (key_exists('view', $filters) && strpos($filters['view'], 'age') !== false) {
-	// 		$output .= 'checked';
-	// 	}
-	// 	$output .= '/>
-	// 				<label for="view_age"><span class="emoji">🗓</span>Show pick age</label>
-	// 			</li>
-	// 		</ul>
-	// 	</fieldset>';
-
 	// Filter for interesting stats and metadata
 	$event_select = [
-		'annual' => '📆 Annual Rickies',
-		'keynote' => '📽 Keynote Rickies',
-		'WWDC' => '💻 WWDC Rickies',
-		'ungraded' => '🟠 Ungraded Rickies',
+		'annual' => emoji_select_spacing('📆') . 'Annual Rickies',
+		'keynote' => emoji_select_spacing('📽') . 'Keynote Rickies',
+		'WWDC' => emoji_select_spacing('💻') . 'WWDC Rickies',
+		'ungraded' => emoji_select_spacing('🟠') . 'Ungraded Rickies',
 	];
 	$output .= '
 	<fieldset class="list pick_metadata">
 		<ul>
 			<li class="filter_option select">
-				<select class="clean" name="event_type" onchange=" this.dataset.chosen = this.value; " ';
-	if (key_exists('event_type', $user_input['filter_other'])) {
+				<select class="clean" name="rickies_event" onchange=" this.dataset.chosen = this.value; " ';
+	if (key_exists('rickies_event', $user_input['filter_other'])) {
 		$output .= 'data-chosen="set"';
 	} else {
 		$output .= 'data-chosen';
 	}
-	$output .= '>
-					<option value>🏆 All Rickies</option>
+	$output .=
+		'>
+					<option value>' .
+		emoji_select_spacing('🏆') .
+		'All Rickies</option>
 					<optgroup label="Only show picks from…">';
 	foreach ($event_select as $value => $label) {
 		$output .= '<option value="' . strtolower($value) . '" ';
 		if (
-			key_exists('event_type', $user_input['filter_other']) &&
-			strpos($user_input['filter_other']['event_type'], $value) !== false
+			key_exists('rickies_event', $user_input['filter_other']) &&
+			strpos($user_input['filter_other']['rickies_event'], $value) !== false
+		) {
+			$output .= 'selected';
+		}
+		$output .= '>' . $label . '</option>';
+	}
+	$output .= '</optgroup>
+					<optgroup label="Or from specific Rickies…">';
+	foreach ($rickies_events as $value => $label) {
+		$output .= '<option value="' . strtolower($value) . '" ';
+		if (
+			key_exists('rickies_event', $user_input['filter_other']) &&
+			strpos($user_input['filter_other']['rickies_event'], $value) !== false
 		) {
 			$output .= 'selected';
 		}
@@ -329,6 +331,38 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 			'</label>
 			</li>';
 	}
+
+	// Filter for changing view
+	$pick_display_select = [
+		'clean' => emoji_select_spacing('🧹') . 'Just the picks',
+		'categories' => emoji_select_spacing('🏷') . 'Show categories',
+		'age' => emoji_select_spacing('🗓') . 'Show age of picks',
+	];
+	$output .= '
+			<li class="filter_option select">
+				<select class="clean" name="display" onchange=" this.dataset.chosen = this.value; " ';
+	if (!empty($user_input['display'])) {
+		$output .= 'data-chosen="set"';
+	} else {
+		$output .= 'data-chosen';
+	}
+	$output .=
+		'>
+					<option value>' .
+		emoji_select_spacing('🗂') .
+		'All metadata</option>
+					<optgroup label="Show picks and…">';
+	foreach ($pick_display_select as $value => $label) {
+		$output .= '<option value="' . $value . '" ';
+		if ($user_input['display'] === $value) {
+			$output .= 'selected';
+		}
+		$output .= '>' . $label . '</option>';
+	}
+	$output .= '</optgroup>
+				</select>
+				<div class="select_icon"></div>
+			</li>';
 	$output .= '</ul></fieldset>';
 
 	// Add category filter, and button section, and closing the .content and <details>
@@ -337,7 +371,7 @@ function pick_filter_expandable_sheet($categories, $user_input = [])
 		'
 		<div class="button_section">
 			<button id="search_button_plus" class="clean js_link" title="Search and filter" form="pick_filter_form" type="submit">Search picks' .
-		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg') .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-search.svg') .
 		'</button>
 			<button class="clean js_link" id="reset_button" type="button" onclick="reset_filter()">Reset filters</button>
 		</div>

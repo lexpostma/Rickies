@@ -7,7 +7,7 @@ $pick_filter = $pick_filter_empty = [
 	'search' => [],
 	'filter_other' => [],
 	'filter_categories' => [],
-	// 'view' => [],
+	'display' => [],
 ];
 
 // Define search query
@@ -28,6 +28,25 @@ if (isset($_GET['search']) && $_GET['search'] !== '') {
 	),",
 	];
 	unset($search_string);
+}
+
+// Define how picks are displayed
+if (isset($_GET['display']) && $_GET['display'] !== '') {
+	$pick_filter['display'] = $_GET['display'];
+}
+switch ($pick_filter['display']) {
+	case 'categories':
+		$pick_display = ['search', 'ahead_of_its_time', 'categories'];
+		break;
+	case 'age':
+		$pick_display = ['search', 'ahead_of_its_time', 'age'];
+		break;
+	case 'clean':
+		$pick_display = ['search'];
+		break;
+	default:
+		$pick_display = ['search', 'ahead_of_its_time', 'categories', 'buzzkill', 'age'];
+		break;
 }
 
 // Define filters in query
@@ -51,25 +70,6 @@ if (isset($_GET['half_points']) && $_GET['half_points'] === 'on') {
 	$pick_filter['filter_other']['half_points'] = 'OR(Factor<1, {Half correct})';
 }
 
-if (isset($_GET['event_type'])) {
-	switch ($_GET['event_type']) {
-		case 'annual':
-			$pick_filter['filter_other']['event_type'] = '{Rickies type}="annual"';
-			break;
-		case 'keynote':
-			$pick_filter['filter_other']['event_type'] = '{Rickies type}="keynote"';
-			break;
-		case 'wwdc':
-			$pick_filter['filter_other']['event_type'] = '{Event type}="WWDC"';
-			break;
-		case 'ungraded':
-			$pick_filter['filter_other']['event_type'] = 'OR({Rickies status} = "Ungraded", {Rickies status} = "Live")';
-			break;
-		default:
-			break;
-	}
-}
-
 // Get the pick types filter as array
 if (isset($_GET['pick_type']) && is_array($_GET['pick_type'])) {
 	// Let's iterate through the array
@@ -84,7 +84,7 @@ if (isset($_GET['pick_type']) && is_array($_GET['pick_type'])) {
 	unset($types_filter);
 }
 
-// Get the pick types filter as array
+// Get the status filter as array
 if (isset($_GET['status']) && is_array($_GET['status'])) {
 	// Let's iterate through the array
 	foreach ($_GET['status'] as $status) {
@@ -116,6 +116,31 @@ if (isset($_GET['host']) && is_array($_GET['host'])) {
 	unset($hosts_filter);
 }
 
+// Get the Rickies event filter
+if (isset($_GET['rickies_event'])) {
+	switch ($_GET['rickies_event']) {
+		case '':
+			break;
+		case 'annual':
+			$pick_filter['filter_other']['rickies_event'] = '{Rickies type}="annual"';
+			break;
+		case 'keynote':
+			$pick_filter['filter_other']['rickies_event'] = '{Rickies type}="keynote"';
+			break;
+		case 'wwdc':
+			$pick_filter['filter_other']['rickies_event'] = '{Event type}="WWDC"';
+			break;
+		case 'ungraded':
+			$pick_filter['filter_other']['rickies_event'] =
+				'OR({Rickies status} = "Ungraded", {Rickies status} = "Live")';
+			break;
+		default:
+			$pick_filter['filter_other']['rickies_event'] = 'URL="' . $_GET['rickies_event'] . '"';
+			break;
+	}
+}
+
+// Define Airtable search query and filter formula
 $filterByFormula = "
 AND(
 	";
@@ -132,26 +157,58 @@ $filterByFormula .= "
 	{Round set}
 )";
 
+// Get all (within the formula) picks from Airtable
 $picks_data__params = [
 	'filterByFormula' => $filterByFormula,
 	'sort' => [['field' => 'Pick date', 'direction' => 'desc']],
 ];
-
 include '../includes/data_controllers/picks_data_controller.php';
-include '../includes/data_controllers/categories_data_controller.php';
 
-// echo '<pre>' . $filterByFormula . '</pre>';
+// Get all Rickies events from Airtable
+$rickies_events__params = [
+	'filterByFormula' => 'AND( Published = TRUE(), Picks)',
+	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
+];
+include '../includes/data_controllers/event_data_controller.php';
+
+// Define Rickies events for the select
+$rickies_events_options = [];
+foreach ($rickies_events__array as $event) {
+	if ($event['status'] == 'Live') {
+		$emoji = '🔴';
+	} elseif ($event['status'] == 'Ungraded') {
+		$emoji = '🟠';
+	} elseif ($event['type'] == 'annual') {
+		$emoji = '📆';
+	} elseif ($event['event_type'] == 'WWDC') {
+		$emoji = '💻';
+	} else {
+		$emoji = '📽';
+	}
+	$rickies_events_options[$event['url_name']] =
+		emoji_select_spacing($emoji) .
+		str_replace(
+			'Keynote WWDC',
+			'WWDC',
+			str_replace(['Rickies ', 'Rickies, ', 'Predictions ', 'Predictions, '], '', $event['name'])
+		);
+	unset($emoji);
+}
+// echo '<pre>', var_dump($rickies_events_options), '</pre>';
+
+// Get all categories from Airtable
+include '../includes/data_controllers/categories_data_controller.php';
 
 // Get the categories filter as array
 if (isset($_GET['category']) && is_array($_GET['category'])) {
-	// let's iterate thru the array
+	// let's iterate through the array
 	foreach ($_GET['category'] as $category) {
 		// do some super-magic here
 		$pick_filter['filter_categories'][] = $category;
 	}
 	if (!empty($pick_filter['filter_categories'])) {
 		// Category are filtered server-side, not in Airtable,
-		// due to difficulty to the formula and the different levels
+		// due to difficulty to the formula and the different group levels
 		// This removes the picks from the array when they don't match any of the category filters
 		foreach ($picks_data__array as $pick_type => $host_picks) {
 			foreach ($host_picks as $host => $picks) {
@@ -260,8 +317,12 @@ foreach ($picks_data__array as $type => $hosts) {
 // Count the total picks per host
 foreach ($picks_chart__array as $host => $chart_data) {
 	$picks_chart__array[$host]['Total'] = array_sum($chart_data);
+	if (!in_array('ahead_of_its_time', $pick_display)) {
+		$picks_chart__array[$host]['Wrong'] =
+			$picks_chart__array[$host]['Wrong'] + $picks_chart__array[$host]['Eventually'];
+		$picks_chart__array[$host]['Eventually'] = 0;
+	}
 }
-// echo '<pre>', var_dump($picks_chart__array), '</pre>';
 
 // Format the total picks per type
 if ($picks_type_count['Rickies'] === 0) {
@@ -279,7 +340,6 @@ if ($picks_type_count['Flexies'] === 0) {
 } else {
 	$picks_type_count['Flexies'] = $picks_type_count['Flexies'] . ' Flexies';
 }
-// echo '<pre>', var_dump($picks_type_count), '</pre>';
 
 // Define SEO for search/archive page
 if ($url_view == 'archive') {
@@ -314,12 +374,13 @@ if ($url_view == 'archive') {
 // Add the enabled filters to the SEO description
 if (!empty($pick_filter['filter_other']) || !empty($pick_filter['filter_categories'])) {
 	if (!empty($pick_filter['search'])) {
-		$seo_description_add[] = 'search';
+		$seo_description_add[] = 'Search';
 	}
-	$seo_description_add[] = implode(', ', array_keys($pick_filter['filter_other']));
+	$seo_description_add[] = ucwords(implode(', ', array_keys($pick_filter['filter_other'])));
 	if (!empty($pick_filter['filter_categories'])) {
-		$seo_description_add[] = 'categories';
+		$seo_description_add[] = 'Categories';
 	}
+
 	$seo_description_add = implode(', ', $seo_description_add);
 	$head_custom['description'] =
 		$head_custom['description'] . ' Enabled filters are: ' . str_replace('_', ' ', $seo_description_add) . '.';

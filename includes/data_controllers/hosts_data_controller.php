@@ -3,6 +3,12 @@
 // Host _data_ controller
 
 $hosts_data__array = [];
+$memoji_used_index = [
+	'neutral' => [],
+	'happy' => [],
+	'sad' => [],
+];
+
 $hosts_data__request = $airtable->getContent('Hosts', $hosts_data__params);
 do {
 	$hosts_data__response = $hosts_data__request->getResponse();
@@ -13,6 +19,7 @@ do {
 		$id = check_key('First name', $fields);
 
 		$hosts_data__array[$id] = [
+			'last_edited' => check_key('Last edit date', $fields),
 			'personal' => [
 				'first_name' => $id,
 				'full_name' => check_key('Full name', $fields),
@@ -26,7 +33,7 @@ do {
 			],
 		];
 
-		if ($all_host_details) {
+		if (isset($all_host_details)) {
 			$hosts_data__array[$id]['personal']['location'] = check_key('Location', $fields);
 			$hosts_data__array[$id]['personal']['website_url'] = check_key('Website URL', $fields);
 			$hosts_data__array[$id]['personal']['website_name'] = check_key('Website name', $fields);
@@ -34,6 +41,7 @@ do {
 			$hosts_data__array[$id]['personal']['twitter_url'] = check_key('Twitter', $fields);
 			$hosts_data__array[$id]['images']['photo'] = airtable_image_url(check_key('Photo', $fields, false, 0));
 			$hosts_data__array[$id]['titles'] = goat_referral(check_key('Titles HTML', $fields));
+			$hosts_data__array[$id]['titles_other'] = goat_referral(check_key('Other Titles HTML', $fields));
 
 			$hosts_data__array[$id]['achievements'] = [
 				'annual_rickies_wins' => [
@@ -62,27 +70,63 @@ do {
 					'0hide' => true,
 				],
 			];
+
 			$hosts_data__array[$id]['stats'] = [
-				'events' => [
+				'rickies' => [
 					'ricky_win_rate' => [
 						'value' => round_if_decimal(check_key('Rickies Wins Rate', $fields, 0) * 100),
 						'label' => 'Rickies win rate',
 						'unit' => '%',
 					],
+					'days_annual_chairman' => [
+						'value' => check_key('Days of Annual Chairman', $fields, 0),
+						'label' => 'days he’s been Annual&nbsp;Chairman',
+						'label1' => 'day he’s been Annual&nbsp;Chairman',
+						// 'unit' => '&nbsp;days',
+						// 'unit1' => '&nbsp;day',
+						'0hide' => true,
+					],
+					'days_keynote_chairman' => [
+						'value' => check_key('Days of Keynote Chairman', $fields, 0),
+						'label' => 'days acting Keynote&nbsp;Chairman',
+						'label1' => 'day acting Keynote&nbsp;Chairman',
+						// 'unit' => '&nbsp;days',
+						// 'unit1' => '&nbsp;day',
+						'0hide' => true,
+					],
+				],
+				'flexies' => [
 					'flexy_win_rate' => [
 						'value' => round_if_decimal(check_key('Flexies Wins Rate', $fields, 0) * 100),
 						'label' => 'Flexies win rate',
 						'unit' => '%',
+					],
+					'charity_choice_due_to_coin' => [
+						'value' => check_key('Chose Charity Due to Coin Flip', $fields),
+						'label' => 'Flexies won by coin flip',
+						'0hide' => true,
 					],
 					'flexy_loss_rate' => [
 						'value' => round_if_decimal(check_key('Flexies Lost Rate', $fields, 0) * 100),
 						'label' => 'Flexies lose rate',
 						'unit' => '%',
 					],
-					'donations' => [
+					'donations_total' => [
 						'value' => check_key('Flexies Donation Amount', $fields),
 						'label' => 'donated to charities',
 						'unit' => "$",
+						'0hide' => true,
+					],
+					'donations_biggest' => [
+						'value' => check_key('Flexies Biggest Single Donation Amount', $fields),
+						'label' => 'biggest single donation',
+						'unit' => "$",
+						'0hide' => true,
+					],
+					'donation_due_to_coin' => [
+						'value' => check_key('Donated Due to Coin Flip', $fields),
+						'label' => 'donations due to a coin flip',
+						'label1' => 'donation due to a coin flip',
 						'0hide' => true,
 					],
 				],
@@ -138,81 +182,28 @@ do {
 						// 'unit' => '%',
 						'0hide' => true,
 					],
+					'fav_categories' => [
+						'value' => frequent_in_array(explode(';', check_key('Categories', $fields)))[0],
+						'label' =>
+							'is his favourite category, with <b>' .
+							frequent_in_array(explode(';', check_key('Categories', $fields)))[1] .
+							'</b> in 2nd place',
+					],
+					'success_categories' => [
+						'value' => frequent_in_array(explode(';', check_key('Correct Categories', $fields)), 1)[0],
+						'label' => 'is his most successful category',
+					],
 				],
 				'coin_flips' => [
-					'coin_flips_won' => [
-						'value' => check_key('Coin Flip Wins Total', $fields),
-						'string' =>
-							$id .
-							' has won <b>' .
-							check_key('Coin Flip Wins Total', $fields) .
-							' of ' .
-							check_key('Coin Flip Participation Count', $fields) .
-							'</b> coin flips, that’s a <b>' .
-							round_if_decimal(check_key('Coin Flip Win Rate', $fields, 0) * 100) .
-							'%</b> win rate.',
-					],
-					'rickies_1_by_coin_flip' => [
-						'value' => check_key('Rickies 1st by Coin Flip', $fields),
-						'string' =>
-							'<b>' .
-							check_key('Rickies 1st by Coin Flip', $fields) .
-							'</b> of these granted him a chairman title.',
-						'0hide' => true,
-					],
-					'preferred_coin_side' => [
-						'value' => check_key('Preferred Coin Side', $fields),
-						'string' =>
-							'He has a preference for <b>' .
-							strtolower(check_key('Preferred Coin Side', $fields)) .
-							'</b> which he chose <b>' .
-							check_key(
-								'Count ' . check_key('Preferred Coin Side', $fields) . ' at Coin Flips',
-								$fields
-							) .
-							'</b> times.',
+					'coin_flips_string' => [
+						'value' => true,
+						'string' => check_key('Coin Flip String', $fields),
 					],
 				],
 				'too_soon' => [
-					'too_soon_rate' => [
-						'value' => round_if_decimal(check_key('Too Soon Rate', $fields, 0) * 100),
-						'string' =>
-							'<b>' .
-							round_if_decimal(check_key('Too Soon Rate', $fields, 0) * 100) .
-							'%</b> of ' .
-							$id .
-							'’s <a href="' .
-							filter_url('&ahead_of_its_time=on') .
-							'">wrong picks came true later</a>.',
-						'0hide' => true,
-					],
-					'too_soon_avg' => [
-						'value' => round_if_decimal(check_key('Avg Time Picked Too Soon', $fields) / 365),
-						'string' =>
-							'On average he is <b>' .
-							round_if_decimal(check_key('Avg Time Picked Too Soon', $fields) / 365) .
-							' years</b> ahead of his time.',
-						'0hide' => true,
-					],
-
-					'too_soon_min' => [
-						'value' => round_if_decimal(check_key('Least Time Picked Too Soon', $fields)),
-						'string' =>
-							'His wrong predictions are between <b>' .
-							round_if_decimal(check_key('Least Time Picked Too Soon', $fields)) .
-							' days</b> and <b>' .
-							round_if_decimal(check_key('Most Time Picked Too Soon', $fields) / 365) .
-							' years</b> to soon.',
-						// '0hide' => true,
-					],
-					'would_have_correct' => [
-						'value' => check_key('Picks Correct By Now', $fields),
-						'string' =>
-							'As of today, he would have had <b>' .
-							check_key('Picks Correct By Now', $fields) .
-							'</b> picks correct instead of ' .
-							check_key('Picks Total Correct Count', $fields) .
-							'.',
+					'too_soon_string' => [
+						'value' => true,
+						'string' => check_key('Ahead of its Time String', $fields),
 					],
 				],
 			];
@@ -263,7 +254,16 @@ do {
 		}
 
 		foreach ($hosts_data__array[$id]['images']['memoji'] as $mood => $images) {
-			$hosts_data__array[$id]['images']['memoji'][$mood] = airtable_image_url(random($images));
+			// $images must not be false, and need to be array
+			if ($images && is_array($images)) {
+				// Grab a random memoji from the array
+				$image = random($images, $memoji_used_index[$mood]);
+				// Define the URL of the selected memoji
+				$hosts_data__array[$id]['images']['memoji'][$mood] = airtable_image_url($image[0]);
+				// Make sure the same memoji is not also used for other hosts
+				$memoji_used_index[$mood][] = $image[1];
+				unset($image);
+			}
 		}
 
 		$hosts_data__array[$id]['personal']['color'] = random($connected_colors);
@@ -273,4 +273,5 @@ do {
 	}
 } while ($hosts_data__request = $hosts_data__response->next());
 
+unset($memoji_used_index);
 // echo '<pre>', var_dump($hosts_data__array), '</pre>';

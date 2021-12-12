@@ -2,12 +2,13 @@
 <header class="search">
 	<div class="gradient"></div>
 	<h1><?= $head_custom['title'] ?></h1>
-	<?= pick_filter_element($pick_filter, false, $categories__array) ?>
+	<?= pick_filter_element($pick_filter, false, $categories__array, $rickies_events_options) ?>
 
 </header>
 
 <?php
-echo no_script_banner();
+echo navigation_bar($url_view) . no_script_banner();
+
 if (empty($picks_data__array)) {
 	if (!empty($pick_filter['search'])) {
 		echo '<section id="results"><p>No predictions match ‘<mark>' .
@@ -18,6 +19,7 @@ if (empty($picks_data__array)) {
 	}
 } else {
 
+	// Define charts
 	echo '<div id="results" class="avatar_leaderboard">';
 	foreach ($picks_chart__array as $host => $chart) {
 		echo '<div class="host with_chart">';
@@ -87,7 +89,7 @@ if (empty($picks_data__array)) {
 <nav class="nav_container">
 	<div id="statusbar"></div>
 	<div id="nav_anchor"></div>
-	<div id="nav_content">
+	<div id="nav_content_sticky" class="nav_content">
 		<div class="nav_content--items">
 <?php
 if (array_key_exists('Rickies', $picks_data__array)) { ?>
@@ -107,16 +109,18 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 				onclick="navigate_section('flexies');"><?= $picks_type_count['Flexies'] ?></a>
 <?php }
 ?>
-			<a class="menu_item js_link"
-				id="menu_top"
+			<a class="menu_item js_link menu_top"
 				title="Search at the top"
 				onclick="window.scrollTo(0,0); document.getElementById('search_input').focus()"><?= file_get_contents(
-    	$_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-search.svg'
+    	$_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-menu-search.svg'
     ) ?></a>
+			<a class="menu_item js_link menu_top"
+				title="Scroll to the top"
+				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-menu-top.svg') ?></a>
 		</div>
 	</div>
 </nav>
-<div id="picks"><?= pick_item_bundle($picks_data__array, false, ['search', 'categories', 'buzzkill', 'age']) ?></div>
+<div id="picks"><?= pick_item_bundle($picks_data__array, false, $pick_display) ?></div>
 <?php
 echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/navigation.js') . '</script>';
 

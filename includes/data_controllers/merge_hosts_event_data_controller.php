@@ -5,9 +5,8 @@ $rickies_events__params = [
 	'filterByFormula' => "AND( Published = TRUE(), URL = '$url_view' )",
 	'maxRecords' => 1,
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
-	// "pageSize" => 50,
 ];
-$all_event_details = true;
+$rickies_event_data_set = 'details';
 
 include '../includes/data_controllers/event_data_controller.php';
 // echo '<pre>', var_dump($rickies_events__array), '</pre>';
@@ -16,7 +15,6 @@ include '../includes/data_controllers/event_data_controller.php';
 $hosts_data__params = [
 	'fields' => ['First name', 'Full name', 'Memoji neutral', 'Memoji happy', 'Memoji sad'],
 ];
-$all_host_details = false;
 include '../includes/data_controllers/hosts_data_controller.php';
 // echo '<pre>', var_dump($hosts_data__array), '</pre>';
 

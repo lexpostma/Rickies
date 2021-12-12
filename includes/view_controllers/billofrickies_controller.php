@@ -8,25 +8,9 @@ include '../includes/data_controllers/rules_data_controller.php';
 
 // Get Event data
 $rickies_events__params = [
-	'fields' => [
-		'Name',
-		'Rickies type',
-		'URL',
-		'Status',
-		'Rickies 1st (manual)',
-		'Predictions episode date',
-		'Predictions episode number',
-		'Predictions episode artwork',
-		'Rickies artwork',
-		'Event artwork',
-		'Interactive',
-		'Artwork background color',
-	],
-	'filterByFormula' => 'AND( Published = TRUE() )',
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'asc']],
 ];
 
-$all_event_details = false;
 include '../includes/data_controllers/event_data_controller.php';
 // echo '<pre>', var_dump($rickies_events__array), '</pre>';
 

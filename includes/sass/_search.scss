@@ -5,40 +5,9 @@
 	max-width: var.$readability-width;
 	width: 100%;
 	margin: var(--space-between-lg) auto 0 auto;
-	--search-height: 48px;
-	@media screen and (min-width: var.$break-md) {
-		--search-height: 56px;
-	}
 }
 
 #search_field_combo {
-	width: 100%;
-	position: relative;
-	input[type='search'] {
-		width: 100%;
-		box-shadow: var.$header-shadow;
-		background: var(--background-color);
-		border-radius: calc(var(--search-height) / 2);
-		height: var(--search-height);
-		padding-right: var(--search-height);
-		padding-left: 16px;
-		@media (prefers-color-scheme: dark) {
-			border: 1px solid var(--connected-blue);
-		}
-		@media screen and (min-width: var.$break-md) {
-			padding-left: 20px;
-		}
-	}
-
-	button {
-		position: absolute;
-		right: 4px;
-		top: 4px;
-		@media screen and (min-width: var.$break-md) {
-			right: 8px;
-			top: 8px;
-		}
-	}
 	&.in_summary {
 		position: absolute;
 		z-index: 1;
@@ -71,107 +40,6 @@
 				@media screen and (min-width: var.$break-md) {
 					padding-right: 12px;
 				}
-			}
-		}
-	}
-}
-
-input[type='search'] {
-	font-size: max(16px, 1em);
-	&::placeholder {
-		color: var(--text-secondary-color);
-		opacity: 1;
-	}
-	&:-ms-input-placeholder {
-		color: var(--text-secondary-color);
-	}
-	&::-ms-input-placeholder {
-		color: var(--text-secondary-color);
-	}
-}
-
-#search_button {
-	color: var(--link-color);
-	right: 20px;
-	z-index: 21;
-	svg {
-		transition: var.$hover-duration opacity ease;
-	}
-	svg + svg {
-		position: absolute;
-		top: 0;
-		left: 0;
-		opacity: 0;
-	}
-	&.open {
-		transform: rotate(180deg) scale(1);
-		@media (hover: hover) {
-			&:hover {
-				transform: rotate(180deg) scale(1.2);
-			}
-		}
-		&:focus,
-		&:active {
-			transform: rotate(180deg) scale(1.1);
-		}
-
-		position: fixed;
-		svg {
-			opacity: 0;
-		}
-		svg + svg {
-			opacity: 1;
-		}
-	}
-}
-
-#fixed_search {
-	position: fixed;
-	z-index: 20;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	bottom: calc(-1 * #{var.$iX-top});
-
-	padding: 40px var(--space-side-padding) var(--space-side-padding) var(--space-side-padding);
-
-	pointer-events: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-
-	transition-property: background, backdrop-filter, -webkit-backdrop-filter;
-	transition-duration: var.$hover-duration;
-	transition-timing-function: ease;
-
-	background: rgba(0, 0, 0, 0);
-	#pick_filter_form {
-		transition: var.$pop-transition;
-		transform: translateY(-160px);
-	}
-
-	&.open {
-		pointer-events: unset;
-		-webkit-user-select: initial;
-		-ms-user-select: initial;
-		user-select: initial;
-
-		background: rgba(0, 0, 0, 0.7);
-		-webkit-backdrop-filter: blur(10px);
-		backdrop-filter: blur(10px);
-		@media (prefers-color-scheme: dark) {
-			background: rgba(106, 106, 106, 0.3);
-		}
-		#pick_filter_form {
-			transform: translateY(200px);
-			transform: translateY(calc(200px + #{var.$iX-top}));
-
-			@media screen and (min-width: var.$break-md) {
-				transform: translateY(0px);
-			}
-			@media screen and (min-width: var.$break-md) and (min-height: 500px) {
-				transform: translateY(110px);
 			}
 		}
 	}

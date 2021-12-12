@@ -1,5 +1,5 @@
 function promote_standalone() {
-	if (window.navigator.standalone == true) {
+	if (is_standalone()) {
 		// Web app is on the home screen, enable pull-to-refresh
 
 		// Get the size of the notch area
@@ -36,6 +36,25 @@ function promote_standalone() {
 	}
 }
 
+// Check whether webapp is in standalone mode
+function is_standalone() {
+	// iOS or Android
+	if (window.navigator.standalone == true || window.matchMedia('(display-mode: standalone)').matches) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 document.addEventListener('DOMContentLoaded', function (event) {
 	promote_standalone();
+
+	if (is_standalone() && share_button) {
+		// if (share_button) {
+		// NOTE: This is a debugging IF
+		// Web app is on the home screen and share button is in DOM,
+		// show the share button since there's no browser UI
+
+		share_button.style.display = 'block';
+	}
 });

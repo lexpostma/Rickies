@@ -302,7 +302,7 @@ function episode_data($episode, $state = false)
 		}
 		if ($episode['img_url'] == false) {
 			// No custom image, fallback to local default
-			if ($episode['number'] < 304) {
+			if ($episode['number'] && $episode['number'] < 304) {
 				// Old artwork
 				$episode['img_url'] = '/images/connected-artwork-old.jpg';
 			} else {
@@ -379,7 +379,7 @@ function pick_item($data, $interactive = false, $view = [])
 
 	// Define the point score
 	$output .= '<span class="points ' . strtolower($data['type']) . ' ' . strtolower($data['status']);
-	if ($data['status_later']) {
+	if ($data['status_later'] && in_array('ahead_of_its_time', $view)) {
 		$output .= ' eventually';
 	}
 	$output .= '">';
@@ -403,7 +403,7 @@ function pick_item($data, $interactive = false, $view = [])
 	// Add optional note
 	if (
 		$data['note'] ||
-		$data['status_later'] ||
+		($data['status_later'] && in_array('ahead_of_its_time', $view)) ||
 		($data['categories'] && in_array('categories', $view)) ||
 		($data['age'] && in_array('age', $view)) ||
 		($data['buzzkill'] && in_array('buzzkill', $view))
@@ -412,7 +412,7 @@ function pick_item($data, $interactive = false, $view = [])
 		if ($data['note']) {
 			$output .= markdown($data['note']);
 		}
-		if ($data['status_later']) {
+		if ($data['status_later'] && in_array('ahead_of_its_time', $view)) {
 			$output .= markdown($data['status_later']);
 		}
 		if ($data['categories'] && in_array('categories', $view)) {

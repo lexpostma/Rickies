@@ -15,23 +15,6 @@ if (array_key_exists('theme-color', $head) && array_key_exists('theme-color-dark
 
 echo '
 <!-- iOS home screen icons -->';
-$appIconSizes = [
-	'iPhone @1x' => '60x60',
-	'iPhone @2x' => '120x120',
-	'iPhone @3x' => '180x180',
-	'iPad @1x' => '76x76',
-	'iPad @2x' => '152x152',
-	'iPad Pro @2x' => '167x167',
-	'Spotlight iPhone @2x' => '80x80',
-	'Settings iPhone @1x' => '29x29',
-	'Settings iPhone @2x' => '58x58',
-	'Settings iPhone @3x' => '87x87',
-];
-if ($environment !== 'production') {
-	$appIconDirectory = '/images/app-icons/' . $environment . '/';
-} else {
-	$appIconDirectory = '/images/app-icons/';
-}
 foreach ($appIconSizes as $device => $size) {
 	echo '
 <link rel="apple-touch-icon-precomposed" sizes="' .
@@ -76,7 +59,7 @@ $splashScreenSizes = [
 		'height' => '896',
 		'ratio' => '2',
 	],
-	'iPhone 12, 12 Pro' => [
+	'iPhone 12, 13, [12, 13] Pro' => [
 		'width' => '390',
 		'height' => '844',
 		'ratio' => '3',
@@ -86,7 +69,12 @@ $splashScreenSizes = [
 		'height' => '896',
 		'ratio' => '3',
 	],
-	'iPhone 12 Pro Max' => [
+	'iPhone [12, 13] mini' => [
+		'width' => '360',
+		'height' => '780',
+		'ratio' => '3',
+	],
+	'iPhone [12, 13] Pro Max' => [
 		'width' => '428',
 		'height' => '926',
 		'ratio' => '3',
@@ -126,6 +114,11 @@ $splashScreenSizes = [
 		'height' => '1366',
 		'ratio' => '2',
 	],
+	'iPad mini 8.3' => [
+		'width' => '744',
+		'height' => '1133',
+		'ratio' => '2',
+	],
 ];
 
 foreach ($splashScreenSizes as $device => $size) {
@@ -160,4 +153,8 @@ foreach ($splashScreenSizes as $device => $size) {
 		$size['ratio'] .
 		')" />';
 }
+
+echo '
+<!-- Android -->
+<meta name="mobile-web-app-capable" content="yes">';
 

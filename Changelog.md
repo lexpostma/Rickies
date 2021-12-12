@@ -2,15 +2,12 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
--   Add new stats for coin flips, ahead of its time, adjudication, and buzzkillers
+-   Add new stats for coin flips, ahead of its time, adjudication, categories, and buzzkillers
 -   Add filters
 -   Add charts to archive and search results. They change depending of results
--   Add links in footer to:
-    -   Filter Rickies (was already possible with filter button in list)
-    -   Go to [latest Rickies](https://rickies.co/latest), [latest Keynote Rickies](https://rickies.co/latest-keynote) or [latest Annual Rickies](https://rickies.co/latest-annual)
-    -   Go to some highlighted filters
-    -   [About Rickies.co](https://rickies.co/about) is moved to footer too
+-   Go to [latest Rickies](https://rickies.co/latest), [latest Keynote Rickies](https://rickies.co/latest-keynote) or [latest Annual Rickies](https://rickies.co/latest-annual)
 -   Rules slider visibility state is now stored
+-   [Chairman timeline](https://rickies.co/leaderboard#timeline)
 
 ### 14 October 2021
 
