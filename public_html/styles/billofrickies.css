@@ -1,4 +1,5 @@
 :root {
+  --safe-top: env(safe-area-inset-top);
   --connected-green-rgb: 68, 153, 52;
   --connected-yellow-rgb: 252, 194, 0;
   --connected-orange-rgb: 239, 123, 0;

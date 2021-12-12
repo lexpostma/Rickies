@@ -1,10 +1,26 @@
 function promote_standalone() {
 	if (window.navigator.standalone == true) {
 		// Web app is on the home screen, enable pull-to-refresh
+
+		// Get the size of the notch area
+		var safeTop = getComputedStyle(document.documentElement).getPropertyValue('--safe-top').replace('px', '');
+		if (!safeTop) {
+			// If is fails, set to 0
+			var safeTop = 0;
+		}
+
+		// Define the pull-to-refresh distances based on notch size
+		var distThreshold = parseInt(safeTop) + 52,
+			distMax = parseInt(safeTop) + 80,
+			distReload = parseInt(safeTop) + 40;
+
+		// Initiate pull-to-refresh with parameters and refresh action
 		PullToRefresh.init({
 			mainElement: '.container',
+			distThreshold: distThreshold,
+			distMax: distMax,
+			distReload: distReload,
 			onRefresh: function () {
-				// alert('refresh');
 				window.location.reload();
 			},
 		});
