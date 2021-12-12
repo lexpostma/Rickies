@@ -35,7 +35,7 @@ include $incl_path . 'view_controllers/' . $focus_site . '_controller.php';
 		<div id="top" class="container">
 		<?php
   include $include_body;
-  echo '<script src="/scripts/index.umd.min.js"></script>';
+  echo '<script src="/scripts/index.umd.js"></script>';
   echo '<script>' .
   	file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/share_button.js') .
   	file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/standalone.js') .
