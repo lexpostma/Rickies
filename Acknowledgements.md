@@ -19,6 +19,7 @@ The following are used:
 -   [JavaScript Cookie](https://github.com/js-cookie/js-cookie) API for handling cookies
 -   [Parsedown](https://parsedown.org) for parser Markdown in PHP
 -   [mark.js](https://markjs.io) to highlight the search term in search results
+-   [PulltoRefresh.js](https://github.com/BoxFactura/pulltorefresh.js) to allow native-like refresh while running as standalone webapp without browser UI
 -   [Goat Counter](https://www.goatcounter.com/) for simple analytics
 -   Host memoji designed by Apple of course, configured on my iPhone
 -   Fonts
