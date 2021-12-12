@@ -8,6 +8,7 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 -   Go to [latest Rickies](https://rickies.co/latest), [latest Keynote Rickies](https://rickies.co/latest-keynote) or [latest Annual Rickies](https://rickies.co/latest-annual)
 -   Rules slider visibility state is now stored
 -   [Chairman timeline](https://rickies.co/leaderboard#timeline)
+-   Add pull-to-refresh to standalone webapp mode
 
 ### 14 October 2021
 

@@ -97,8 +97,3 @@ p.bill_footer {
 	font-style: italic;
 	max-width: var.$readability-width;
 }
-p#refresh_page button {
-	@include var.underline;
-	color: white;
-	font-style: normal;
-}

@@ -29,16 +29,15 @@ function promote_standalone() {
 		if (document.getElementById('promote_webapp')) {
 			document.getElementById('promote_webapp').style.display = 'block';
 		}
-		// Can be overwritten by lack of share sheet support of user-agent
-		// See /scripts/share_button.js
-	} else {
-		// Not iOS
+		// } else {
+		// Not Android standalone nor iOS (browser or standalone)
 	}
 }
 
 // Check whether webapp is in standalone mode
 function is_standalone() {
 	// iOS or Android
+	// Android via: https://stackoverflow.com/a/34516083
 	if (window.navigator.standalone == true || window.matchMedia('(display-mode: standalone)').matches) {
 		return true;
 	} else {
@@ -49,12 +48,11 @@ function is_standalone() {
 document.addEventListener('DOMContentLoaded', function (event) {
 	promote_standalone();
 
+	// if (share_button) {
+	// NOTE: Above is an alternative IF for debugging
 	if (is_standalone() && share_button) {
-		// if (share_button) {
-		// NOTE: This is a debugging IF
 		// Web app is on the home screen and share button is in DOM,
 		// show the share button since there's no browser UI
-
 		share_button.style.display = 'block';
 	}
 });

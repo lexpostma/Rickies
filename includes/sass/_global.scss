@@ -164,15 +164,6 @@ span.need_space--sm {
 	}
 }
 
-/* Custom pull-to-refresh styling */
-.ptr--icon,
-.ptr--text {
-	color: white !important;
-}
-.ptr--box {
-	padding-top: var.$iX-top !important;
-}
-
 /* For debugging */
 pre {
 	font-size: 0.8rem;

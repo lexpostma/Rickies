@@ -64,6 +64,7 @@ function close_custom_share() {
 
 function open_share_sheet() {
 	if (navigator.share) {
+		// Native share sheet is supported
 		navigator
 			.share({
 				title: document.getElementsByTagName('title')[0].innerHTML,
@@ -74,6 +75,9 @@ function open_share_sheet() {
 			})
 			.catch(console.error);
 	} else {
+		// Native share sheet is not supported,
+		// fall back to custom sheet with URL copy
+
 		// console.log('No sharing support...');
 		if (custom_share_sheet.classList.contains('open')) {
 			close_custom_share();
