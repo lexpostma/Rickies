@@ -24,10 +24,10 @@ if (empty($picks_data__array)) {
 	foreach ($picks_chart__array as $host => $chart) {
 		echo '<div class="host with_chart">';
 		if ($chart['Total'] === 0) {
-			echo '<img src="/images/memoji-' . strtolower($host) . '-disabled.png" class="no_results" />';
+			echo '<img src="/images/memoji/memoji-' . strtolower($host) . '-disabled.png" class="no_results" />';
 			echo '<div class="avatar chart-container no_results">';
 		} else {
-			echo '<img src="/images/memoji-' . strtolower($host) . '-default.png" />';
+			echo '<img src="/images/memoji/memoji-' . strtolower($host) . '-default.png" />';
 			echo '<div class="avatar chart-container">';
 		}
 

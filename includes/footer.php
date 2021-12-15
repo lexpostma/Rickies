@@ -9,6 +9,6 @@
 	'site_connected_goat'
 ] ?>>Connected</a> podcast.</p>
 	<a target="_blank" href="<?= $head['site_lex'] ?>" <?= $head['site_lex_goat'] ?> id="footer_corner">
-		<img src="/images/lex-logo.svg" alt="<?= $head['author'] ?> logo"/>
+		<img src="/images/logos/lex-logo.svg" alt="<?= $head['author'] ?> logo"/>
     </a>
 </footer>

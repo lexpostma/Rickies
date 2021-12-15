@@ -55,7 +55,7 @@ echo '{
 			"name": "Latest Rickies",
 			"url": "/latest",
 			"icons": [{
-				"src": "/images/shortcut-latest.svg",
+				"src": "/images/buttons/shortcut-latest.svg",
 				"sizes": "96x96",
 				"type": "image/svg"
 			}]
@@ -64,7 +64,7 @@ echo '{
 			"name": "The Bill of Rickies",
 			"url": "/billof",
 			"icons": [{
-				"src": "/images/shortcut-bill.svg",
+				"src": "/images/buttons/shortcut-bill.svg",
 				"sizes": "96x96",
 				"type": "image/svg"
 			}]
@@ -73,7 +73,7 @@ echo '{
 			"name": "Host Leaderboard",
 			"url": "/leaderboard",
 			"icons": [{
-				"src": "/images/shortcut-leaderboard.svg",
+				"src": "/images/buttons/shortcut-leaderboard.svg",
 				"sizes": "96x96",
 				"type": "image/svg"
 			}]
@@ -82,7 +82,7 @@ echo '{
 			"name": "Rickies archive and search",
 			"url": "/archive",
 			"icons": [{
-				"src": "/images/shortcut-archive.svg",
+				"src": "/images/buttons/shortcut-archive.svg",
 				"sizes": "96x96",
 				"type": "image/svg"
 			}]
@@ -91,7 +91,7 @@ echo '{
 			"name": "About Rickies.co",
 			"url": "/about",
 			"icons": [{
-				"src": "/images/shortcut-about.svg",
+				"src": "/images/buttons/shortcut-about.svg",
 				"sizes": "96x96",
 				"type": "image/svg"
 			}]

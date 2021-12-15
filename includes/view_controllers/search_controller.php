@@ -346,7 +346,7 @@ if ($url_view == 'archive') {
 	$head_custom = [
 		'title' => 'Rickies archive',
 		'description' => 'Archive of all Rickies predictions.',
-		'image' => domain_url() . '/images/hero-archive.jpg',
+		'image' => domain_url() . '/images/seo/hero-archive.jpg',
 	];
 
 	$h1 = 'Rickies archive';
@@ -363,12 +363,12 @@ if ($url_view == 'archive') {
 		' picks were found while searching for ‘' .
 		$pick_filter['search']['string'] .
 		'’ on Rickies.co.';
-	$head_custom['image'] = domain_url() . '/images/hero-search.jpg';
+	$head_custom['image'] = domain_url() . '/images/seo/hero-search.jpg';
 } else {
 	$head_custom['title'] = 'Search for Rickies';
 	$head_custom['description'] =
 		$picks_chart__array['All']['Total'] . ' picks were found while searching and filtering on Rickies.co.';
-	$head_custom['image'] = domain_url() . '/images/hero-search.jpg';
+	$head_custom['image'] = domain_url() . '/images/seo/hero-search.jpg';
 }
 
 // Add the enabled filters to the SEO description
