@@ -362,7 +362,7 @@ a:not(.list_item_content)[href^="https://github.com"]:after, a:not(.list_item_co
 }
 a:not(.list_item_content)[href^="https://twitter.com"]:after {
   opacity: 0.7;
-  content: url("/images/twitter.svg");
+  content: url("/images/logos/twitter.svg");
   transform: translate(0px, 1px);
 }
 @media (hover: hover) {
@@ -372,7 +372,7 @@ a:not(.list_item_content)[href^="https://twitter.com"]:after {
   }
 }
 a:not(.list_item_content)[href^="https://github.com"]:after {
-  content: url("/images/github.svg");
+  content: url("/images/logos/github.svg");
   transform: translate(0px, 1px);
 }
 @media (hover: hover) {

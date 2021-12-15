@@ -337,6 +337,6 @@ $head_custom = [
 	'description' =>
 		'Charts, statistics, flexing power and other wonderful insights into the Rickies achievements of the Connected hosts.',
 	'keywords' => ['leaderboard', 'achievement', 'statistics', 'titles'],
-	'image' => domain_url() . '/images/hero-leaderboard.jpg',
+	'image' => domain_url() . '/images/seo/hero-leaderboard.jpg',
 	'theme-color' => '#222c32',
 ];

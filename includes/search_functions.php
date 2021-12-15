@@ -154,9 +154,9 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 			$host .
 			'" title="' .
 			ucfirst($host) .
-			'"><img src="/images/memoji-' .
+			'"><img src="/images/memoji/memoji-' .
 			$host .
-			'-default.png"><img src="/images/memoji-' .
+			'-default.png"><img src="/images/memoji/memoji-' .
 			$host .
 			'-disabled.png"><span>' .
 			ucfirst($host) .

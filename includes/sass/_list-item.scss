@@ -117,19 +117,19 @@ li.list_item {
 	a[href^="https://www.youtube.com"]
 	{
 		.secondary_string:before {
-			content: url('/images/youtube.svg');
+			content: url('/images/logos/youtube.svg');
 		}
 	}
 	a[href^="https://twitter.com"]
 	{
 		.secondary_string:before {
-			content: url('/images/twitter.svg');
+			content: url('/images/logos/twitter.svg');
 		}
 	}
 	a[href^="https://github.com"]
 	{
 		.secondary_string:before {
-			content: url('/images/github.svg');
+			content: url('/images/logos/github.svg');
 		}
 	}
 }

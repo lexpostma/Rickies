@@ -6,7 +6,7 @@
 		id="header_corner"
 		<?= $head['site_relay_goat'] ?>
 	>
-		<img id="relay_logo" src="/images/relay-logo.svg" alt="<?= $head['company'] ?> logo"/>
+		<img id="relay_logo" src="/images/logos/relay-logo.svg" alt="<?= $head['company'] ?> logo"/>
 	</a>
 	<div class="hero_content">
 		<img class="trophy trophy--light" src="/images/rickies-trophy.png" alt="Rickies trophy" onclick="confetti_go()"/>
