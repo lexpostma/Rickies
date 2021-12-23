@@ -3,7 +3,7 @@
 // Rickies rules _data_ controller
 
 if (!isset($rules__params['filterByFormula'])) {
-	$rules__params['filterByFormula'] = 'AND( {Applied to Rickies} )';
+	$rules__params['filterByFormula'] = 'AND( {Applied to Rickies}, {Rules set} = "Rickies" )';
 }
 
 if (!isset($rules__params['fields'])) {
