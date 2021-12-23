@@ -15,6 +15,11 @@ switch ($url_view) {
 		include '../includes/view_controllers/leaderboard_controller.php';
 		$include_subbody = '../includes/views/leaderboard.php';
 		break;
+	case 'triple-j':
+		// Leaderboard query
+		include '../includes/view_controllers/leaderboard_controller.php';
+		$include_subbody = '../includes/views/leaderboard.php';
+		break;
 	case 'about':
 		// About query
 		include '../includes/view_controllers/about_controller.php';

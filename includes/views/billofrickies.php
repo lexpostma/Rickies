@@ -85,11 +85,19 @@ if (!isset($error)) {
 
 	</div>
 </main>
+<?php
+if ($url_view == 'charter') { ?>
+<p class="bill_footer">Looking for the official <a href="/billof">Bill of Rickies</a>?</p>
+<?php } else { ?>
 <p class="bill_footer">This is a living document. The One True Copy of <span id="disclaimer_title"><?= $head_custom[
 	'title'
 ] ?></span> is in the Connected Google&nbsp;Doc.</p>
+<p class="bill_footer">Looking for <a href="/charter">The Pickies Charter</a>?</p>
 
-<?= close_button() ?>
+<?php }
+
+echo close_button();
+?>
 <aside class="slider">
 	<div id="rule_slider">
 		<label id="slider_label_container" for="date_slider">
