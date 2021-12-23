@@ -4,6 +4,7 @@
 
 $hosts_data__params = [
 	'sort' => [['field' => 'Order', 'direction' => 'asc']],
+	'filterByFormula' => 'AND( {Official host} = TRUE() )',
 ];
 $all_host_details = true;
 

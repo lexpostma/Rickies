@@ -15,6 +15,7 @@ include '../includes/data_controllers/event_data_controller.php';
 // Get host personal data
 $hosts_data__params = [
 	'fields' => ['First name', 'Full name', 'Memoji neutral', 'Memoji happy', 'Memoji sad'],
+	'filterByFormula' => 'AND( {Official host} = TRUE() )',
 ];
 $all_host_details = false;
 include '../includes/data_controllers/hosts_data_controller.php';
