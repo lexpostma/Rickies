@@ -4,8 +4,13 @@
 
 $hosts_data__params = [
 	'sort' => [['field' => 'Order', 'direction' => 'asc']],
-	'filterByFormula' => 'AND( {Official host} = TRUE() )',
 ];
+
+if ($url_view == 'triple-j') {
+	$hosts_data__params['filterByFormula'] = 'AND( {Official host} != TRUE() )';
+} else {
+	$hosts_data__params['filterByFormula'] = 'AND( {Official host} = TRUE() )';
+}
 $all_host_details = true;
 
 include '../includes/data_controllers/hosts_data_controller.php';

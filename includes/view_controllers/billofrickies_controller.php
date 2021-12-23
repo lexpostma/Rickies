@@ -93,10 +93,15 @@ $head_custom = [
 ];
 
 // This is the same logic that's also dynamic in JS, and in Event details
-if ($current_selection['date'] < $rickies_start && $current_selection['date'] < $bill_start) {
-	$head_custom['title'] = 'Drafting Rules';
-} elseif ($current_selection['date'] < $bill_start) {
-	$head_custom['title'] = 'Rickies Rules';
-} else {
+if ($url_view == 'charter') {
+	$head_custom['title'] = 'The Pickies Charter';
 	$parchment = true;
+} else {
+	if ($current_selection['date'] < $rickies_start && $current_selection['date'] < $bill_start) {
+		$head_custom['title'] = 'Drafting Rules';
+	} elseif ($current_selection['date'] < $bill_start) {
+		$head_custom['title'] = 'Rickies Rules';
+	} else {
+		$parchment = true;
+	}
 }
