@@ -6,6 +6,24 @@ $rickies_events__params = [
 	'maxRecords' => 1,
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
 ];
+
+// Function to check if string ends with a substring
+function endsWith($haystack, $needle)
+{
+	$length = strlen($needle);
+	if (!$length) {
+		return true;
+	}
+	return substr($haystack, -$length) === $needle;
+}
+
+// Allow previewing event pages when not published yet
+if (endsWith($url_view, '-preview')) {
+	$rickies_events__params['filterByFormula'] = "AND( Status = 'Preview', URL = '$url_view' )";
+} else {
+	$rickies_events__params['filterByFormula'] = "AND( Published = TRUE(), URL = '$url_view' )";
+}
+
 $rickies_event_data_set = 'details';
 
 include '../includes/data_controllers/event_data_controller.php';
