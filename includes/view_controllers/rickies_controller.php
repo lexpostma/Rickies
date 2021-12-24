@@ -106,7 +106,7 @@ function list_item_graphic($img_array = false)
 			case 'annual':
 				$class[] = 'annual diagonal';
 				$style[] = 'animation-delay: ' . rand(-50, 0) . 's;';
-				$txt = '<span>' . strftime('’%y', $img_array['date']) . '</span>';
+				$txt = '<span>’' . substr($img_array['date'], -2) . '</span>';
 				break;
 			case 'avatar':
 				$class[] = 'avatar';
@@ -198,7 +198,7 @@ function list_item($data)
 	} elseif (array_key_exists('type', $data) && $data['type'] == 'annual') {
 		// No image, but annual, so include the date/year
 		$img_array['type'] = 'annual';
-		$img_array['date'] = $data['date'];
+		$img_array['date'] = $data['annual_year'];
 	} else {
 		$img_array = false;
 	}

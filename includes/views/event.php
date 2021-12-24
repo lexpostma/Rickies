@@ -29,7 +29,7 @@ if (
 } elseif ($rickies_data['type'] == 'annual') {
 	// No image, but Annual Rickies -> show year
 	echo '<header class="details"><div class="gradient"></div><div class="big_year">' .
-		strftime('%Y', $rickies_data['date']) .
+		$rickies_data['annual_year'] .
 		'</div>';
 } else {
 	// Else -> empty header

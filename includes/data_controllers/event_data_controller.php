@@ -10,6 +10,7 @@ if (!isset($rickies_events__params['fields']) && !$rickies_event_data_set) {
 		'Name',
 		'Rickies type',
 		'Event type',
+		'Annual predictions year',
 		'URL',
 		'Status',
 		'Predictions episode date',
@@ -61,6 +62,7 @@ do {
 						true
 					),
 					'date' => strtotime(check_key('Predictions episode date', $fields, false, 0)),
+					'annual_year' => check_key('Annual predictions year', $fields),
 					'interactive' => check_key('Interactive', $fields, false, 0),
 					'artwork' => [
 						'rickies' => airtable_image_url(check_key('Rickies artwork', $fields, false, 0)),
