@@ -28,14 +28,7 @@ The following are used:
 -   The Rickies trophy is a heavily customised version of some [clipart](https://freesvg.org/trophy-street-creator-earth) from the [Glitch video game](<https://en.wikipedia.org/wiki/Glitch_(video_game)>)
 -   The host signatures are copied from [The Bill of Rickies](https://twitter.com/kingtritium/status/1278081027387392006?s=21) pdf by Mathias Bruggemann
 -   [Native Land by Dream Cave](https://www.youtube.com/watch?v=0AnFfbTupEU) as theme music for The Bill of Rickies
-
-## Referrals
-
-Use the following referral links to give us both something extra and help support this project.
-
--   [Hover](https://hover.com/RPxkv2lK), get $2 off your first domain name purchase.
--   [DigitalOcean](https://m.do.co/c/c931041cf4fc), gets $100 in credit for cloud services.
--   [Airtable](https://airtable.com/invite/r/srbbQalO), the familiarity of a spreadsheet, and the power of a database.
+-   [Accordion.js](https://css-tricks.com/how-to-animate-the-details-element-using-waapi/) for animating details/summary blocks
 
 ## Testing
 

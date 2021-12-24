@@ -2,13 +2,29 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
--   Add new stats for coin flips, ahead of its time, adjudication, categories, and buzzkillers
--   Add filters
--   Add charts to archive and search results. They change depending of results
+## 24 December 2021 v2.0
+
+-   🏷 New prediction metadata like categories, whether it came true later, buzzkillers and more. Visible in the [archive](https://rickies.co/archive), [search](https://rickies.co/?search=promotion#results) and on [Rickies pages](https://rickies.co/keynote-oct-2020#flexies)
+-   🪙 New [host statistics](https://rickies.co/leaderboard#stats) for coin flips, ahead of its time, adjudication, categories and more
+-   🔎 Search and archive are now expanded with filters and charts. Narrow down what you’re looking for with [categories](https://rickies.co/?search=&category%5B%5D=hardware#results), [event type](https://rickies.co/?search=&rickies_event=wwdc#results), [eligibility for reuse](https://rickies.co/?search=&reusable=on) and other metadata. You can also choose [what set of metadata](https://rickies.co/?search=&display=age#results) you want shown. The charts will update depending on the search results
+-   ⏳ [Chairman timeline](https://rickies.co/leaderboard#timeline) to see who was chairman when and for how long. Scroll, drag, zoom, filter, all interactive. With winner rings
+
+**Other smaller things in v2.0**
+
+-   Improved standalone web app
+    -   Add pull-to-refresh
+    -   Manifest support with new icons for Android
+    -   Share sheet fallback if there’s no native support
+-   Memojis no longer wear the default clothes
 -   Go to [latest Rickies](https://rickies.co/latest), [latest Keynote Rickies](https://rickies.co/latest-keynote) or [latest Annual Rickies](https://rickies.co/latest-annual)
--   Rules slider visibility state is now stored
--   [Chairman timeline](https://rickies.co/leaderboard#timeline)
--   Add pull-to-refresh to standalone webapp mode
+-   [Rules slider](https://rickies.co/billof) visibility state is now stored
+-   Better, more persistent navigation
+-   Add sub navigation to [leaderboard](https://rickies.co/leaderboard), which changes on mobile for easier navigation
+-   Better alignment of leaderboard statistics sections between hosts
+-   Improve SEO with sitemap and better images
+-   Added many more [little details](Details.md)
+
+---
 
 ### 14 October 2021
 
