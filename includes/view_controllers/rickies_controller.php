@@ -47,6 +47,12 @@ switch ($url_view) {
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
 		break;
+	case 'preview':
+		$rickies_filter = 'Preview';
+		$previewing_content = true;
+		include '../includes/view_controllers/rickies_list_controller.php';
+		$include_subbody = '../includes/views/rickies.php';
+		break;
 	case 'latest':
 		$auto_select_rickies = 'latest';
 		include '../includes/view_controllers/rickies_list_controller.php';

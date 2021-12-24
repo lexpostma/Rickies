@@ -33,6 +33,9 @@
    	echo 'selected';
    } ?> value="/#list">All Rickies</option>
 			<optgroup label="Filter the Rickies">
+				<?php if (isset($rickies_filter) && $rickies_filter == 'Preview') {
+    	echo '<option selected value="/preview#list">All Rickies + previews</option>';
+    } ?>
 				<option <?php if (isset($rickies_filter) && $rickies_filter == 'Annual') {
     	echo 'selected';
     } ?> value="/annual#list">Annual Rickies</option>

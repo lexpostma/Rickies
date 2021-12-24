@@ -19,9 +19,8 @@ function endsWith($haystack, $needle)
 
 // Allow previewing event pages when not published yet
 if (endsWith($url_view, '-preview')) {
+	$previewing_content = true;
 	$rickies_events__params['filterByFormula'] = "AND( Status = 'Preview', URL = '$url_view' )";
-} else {
-	$rickies_events__params['filterByFormula'] = "AND( Published = TRUE(), URL = '$url_view' )";
 }
 
 $rickies_event_data_set = 'details';

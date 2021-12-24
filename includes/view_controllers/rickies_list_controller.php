@@ -3,21 +3,6 @@
 // Rickies _view_ controller, main overview
 
 $rickies_events__params = [
-	'fields' => [
-		'Name',
-		'Rickies type',
-		'URL',
-		'Status',
-		'Rickies 1st (manual)',
-		'Predictions episode date',
-		'Predictions episode number',
-		'Predictions episode artwork',
-		'Rickies artwork',
-		'Event artwork',
-		'Artwork background color',
-		'Interactive',
-	],
-	'filterByFormula' => 'AND( Published = TRUE() )',
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
 	// "maxRecords" => 150,
 	// "pageSize" => 50,
@@ -42,6 +27,9 @@ if (isset($rickies_filter)) {
 		$head_custom['title'] = 'Ungraded Rickies';
 		$rickies_events__params['filterByFormula'] =
 			"AND( Published = TRUE(), OR(Status = 'Ungraded', Status = 'Live'))";
+	} elseif ($rickies_filter == 'Preview') {
+		$head_custom['title'] = 'Preview Rickies';
+		$rickies_events__params['filterByFormula'] = "AND( OR( Published = TRUE(), Status = 'Preview' ) )";
 	}
 	$head_custom['canonical'] = current_url(true);
 }
