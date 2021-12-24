@@ -12,7 +12,7 @@ echo navigation_bar($url_view) . no_script_banner();
 if (empty($picks_data__array)) {
 	if (!empty($pick_filter['search'])) {
 		echo '<section id="results"><p>No predictions match ‘<mark>' .
-			$pick_filter['search']['string'] .
+			htmlentities($pick_filter['search']['string'], ENT_QUOTES, 'UTF-8') .
 			'</mark>’.</p></section>';
 	} else {
 		echo '<section id="results"><p>No predictions match these filters.</p></section>';
@@ -116,7 +116,9 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
     ) ?></a>
 			<a class="menu_item js_link menu_top"
 				title="Scroll to the top"
-				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-menu-top.svg') ?></a>
+				onclick="window.scrollTo(0,0);"><?= file_get_contents(
+    	$_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-menu-top.svg'
+    ) ?></a>
 		</div>
 	</div>
 </nav>
@@ -137,7 +139,7 @@ if (!empty($pick_filter['search'])) {
 			]
 		};
 		instance.mark("' .
-		$pick_filter['search']['string'] .
+		htmlentities($pick_filter['search']['string'], ENT_QUOTES, 'UTF-8') .
 		'", mark_options); // will mark the search string keywords
 	</script>';
 }

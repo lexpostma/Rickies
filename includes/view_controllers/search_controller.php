@@ -353,10 +353,14 @@ if ($url_view == 'archive') {
 } elseif (!empty($pick_filter['search'])) {
 	if (strlen($pick_filter['search']['string']) < 20) {
 		// If string is less than 20 characters, show full string in title
-		$head_custom['title'] = 'Search Rickies for ‘' . $pick_filter['search']['string'] . '’';
+		$head_custom['title'] =
+			'Search Rickies for ‘' . htmlentities($pick_filter['search']['string'], ENT_QUOTES, 'UTF-8') . '’';
 	} else {
 		// Else, truncate the string at 16 characters
-		$head_custom['title'] = 'Search Rickies for ‘' . substr($pick_filter['search']['string'], 0, 16) . '…’';
+		$head_custom['title'] =
+			'Search Rickies for ‘' .
+			htmlentities(substr($pick_filter['search']['string'], 0, 16), ENT_QUOTES, 'UTF-8') .
+			'…’';
 	}
 	$head_custom['description'] =
 		$picks_chart__array['All']['Total'] .
