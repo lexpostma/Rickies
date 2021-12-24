@@ -33,6 +33,7 @@ Each Rickies has its own details page with all predictions, individual host stat
 -   Rickies episode titles have a predefined format since [episode 259](https://www.relay.fm/connected/archive), but thanks to Connected Pro we got insight into what the title would have been in an alternative timeline. If it was mentioned in the post-show the alternative title is on the [Rickies detail page](https://rickies.co/keynote-jun-2021).
 -   Terms like “Rickies”, “Flexies”, and “The Bill of Rickies” are different for earlier Rickies from before the terms were coined, e.g. “Bragging rights”.
 -   Some H1 titles have custom CSS to match the style of the header image, e.g. the Rickies for [April 2020](https://rickies.co/keynote-apr-2021), [September 2020](https://rickies.co/keynote-sep-2020) and [June 2019](https://rickies.co/keynote-jun-2019).
+-   I love playing with the search open/close button in the top right corner.
 
 ## [The Bill of Rickies](https://rickies.co/billof)
 
@@ -55,6 +56,7 @@ See the hosts’ latest statistics, including an interactive timeline.
 -   Click/tap the Chairman title holders to pop some confetti again.
 -   Many statistics were added with v2.0, like how far a host was ahead of its time, how he performs with a coin flip and what his favourite and most successful categories are.
 -   The sub navigation shows timeline and stats, but on mobile it replaces stats with items for each host for easier navigation.
+-   Charts now have a new purple section too, for wrong picks that came true after they were scored. Many of Stephen’s Risky picks came true later.
 
 ## [Rickies archive](https://rickies.co/archive)
 
@@ -108,9 +110,10 @@ Search and filter all metadata of all Rickies and Flexies.
 Rickie.co is optimised as a web app and takes advantage of many native features.
 
 -   Add the site to you homescreen to get the best experience, with a nice app icon, splash screen, and no browser chrome. A screen filled with Rickies content.
+-   When added to your homescreen, there is also no share button from the browser anymore. So I added a share button to the top corner, but only in standalone mode. And it opens the native share sheet you already know. If your OS does not support this, it will fall back to a simple “copy URL” action.
 -   The website has support for the safe areas on your (iOS) devices. So you don’t get big black bars at top and bottom, even when you add it to your home screen.
 -   Full support for the system light and dark mode.
--   When added to and opened from the homescreen, you can pull-to-refresh the page.
--   The rubberbanding overscroll at both the top and bottom background colour matches the content of the page itself and feels more native when installed as a web app.
+-   When added to and opened from the homescreen, you can pull to refresh the page.
+-   The rubber banding overscroll at both the top and bottom background colour matches the content of the page itself and feels more native when installed as a web app.
 -   Hover states are only present on devices that support hover, so mobile devices respond faster and don’t leave a hover state behind after you tap them. This was done with a relatively new feature `@media (hover: hover)`.
 -   Fully responsive design with items moving from [columns to rows](https://rickies.co/leaderboard) on wider screens.
