@@ -95,7 +95,9 @@ if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies
 				onclick="navigate_section('details');">Details</a>
 			<a class="menu_item js_link menu_top"
 				title="Scroll to the top"
-				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-menu-top.svg') ?></a>
+				onclick="window.scrollTo(0,0);"><?= file_get_contents(
+    	$_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-menu-top.svg'
+    ) ?></a>
 		</div>
 	</div>
 </nav>
