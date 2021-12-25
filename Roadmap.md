@@ -23,5 +23,6 @@ Features I plan to add to the website.
 -   [ ] Improve support for ties (earlier predictions did not always have winners).
 -   [x] Add web app splash screens.
 -   [ ] Support for holiday specials
+-   [ ] Add pinch to zoom to the chairman timeline
 
 _See the [changelog](Changelog.md) with everything that’s already implemented._
