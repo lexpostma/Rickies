@@ -1,4 +1,9 @@
 <?php
+// Add custom CSS if available
+if ($rickies_data['custom_css'] !== false) {
+	echo '<style>' . $rickies_data['custom_css'] . '</style>';
+}
+
 // Define the header
 if (
 	array_key_exists('img_url', $rickies_data) &&
@@ -24,16 +29,11 @@ if (
 } elseif ($rickies_data['type'] == 'annual') {
 	// No image, but Annual Rickies -> show year
 	echo '<header class="details"><div class="gradient"></div><div class="big_year">' .
-		strftime('%Y', $rickies_data['date']) .
+		$rickies_data['annual_year'] .
 		'</div>';
 } else {
 	// Else -> empty header
 	echo '<header class="details"><div class="gradient"></div>';
-}
-
-// Add custom CSS if available
-if ($rickies_data['custom_css'] !== false) {
-	echo '<style>' . $rickies_data['custom_css'] . '</style>';
 }
 ?>
 
@@ -48,7 +48,9 @@ if ($rickies_data['custom_css'] !== false) {
 
 <?php
 if (array_key_exists('tag', $rickies_data)) {
-	echo banner($rickies_data['tag_banner'], $rickies_data['tag_color']);
+	foreach ($rickies_data['tag'] as $banner) {
+		echo banner($banner['banner'], $banner['color']);
+	}
 }
 
 if ($rickies_data['ranking']['rickies'] !== []) {
@@ -59,7 +61,7 @@ if ($rickies_data['ranking']['rickies'] !== []) {
 <nav class="nav_container">
 	<div id="statusbar"></div>
 	<div id="nav_anchor"></div>
-	<div id="nav_content">
+	<div id="nav_content_sticky" class="nav_content">
 		<div class="nav_content--items">
 <?php
 if (array_key_exists('Rickies', $picks_data__array)) { ?>
@@ -93,17 +95,18 @@ if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies
 				data-goatcounter-click="Show details"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('details');">Details</a>
-			<a class="menu_item js_link"
-				id="menu_top"
+			<a class="menu_item js_link menu_top"
 				title="Scroll to the top"
-				onclick="window.scrollTo(0,0);"><?= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-menu-top.svg') ?></a>
+				onclick="window.scrollTo(0,0);"><?= file_get_contents(
+    	$_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-menu-top.svg'
+    ) ?></a>
 		</div>
 	</div>
 </nav>
 
 <?php
 echo no_script_banner();
-echo pick_item_bundle($picks_data__array, $rickies_data['interactive']);
+echo pick_item_bundle($picks_data__array, $rickies_data['interactive'], ['ahead_of_its_time', 'amendment', 'buzzkill']);
 
 if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies', $picks_data__array)) {
 	echo host_item_bundle($rickies_data['hosts'], $rickies_data['type']);

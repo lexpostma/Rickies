@@ -2,47 +2,400 @@
 
 // Search controller
 
-if (isset($_GET['search'])) {
-	$query = trim($_GET['search']);
-} else {
-	$query = '';
+// Define the filtering array
+$pick_filter = $pick_filter_empty = [
+	'search' => [],
+	'filter_other' => [],
+	'filter_categories' => [],
+	'display' => [],
+];
+
+// Define search query
+if (isset($_GET['search']) && $_GET['search'] !== '') {
+	$search_string = trim($_GET['search']);
+
+	$pick_filter['search'] = [
+		'string' => $search_string,
+		'formula' => "
+	OR(
+		SEARCH(LOWER('$search_string'),LOWER(Pick)),
+		SEARCH(LOWER('$search_string'),LOWER({Special remark})),
+		SEARCH(LOWER('$search_string'),LOWER({Came true string})),
+		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Related search terms}))),
+		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Category name},','))),
+		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Category group},','))),
+		SEARCH(LOWER('$search_string'),LOWER(ARRAYJOIN({Rickies},',')))
+	),",
+	];
+	unset($search_string);
 }
 
+// Define how picks are displayed
+if (isset($_GET['display']) && $_GET['display'] !== '') {
+	$pick_filter['display'] = $_GET['display'];
+}
+switch ($pick_filter['display']) {
+	case 'categories':
+		$pick_display = ['search', 'ahead_of_its_time', 'categories'];
+		break;
+	case 'age':
+		$pick_display = ['search', 'ahead_of_its_time', 'age'];
+		break;
+	case 'clean':
+		$pick_display = ['search'];
+		break;
+	default:
+		$pick_display = ['search', 'ahead_of_its_time', 'categories', 'buzzkill', 'age', 'amendment'];
+		break;
+}
+
+// Define filters in query
+if (isset($_GET['reusable']) && $_GET['reusable'] === 'on') {
+	$pick_filter['filter_other']['reusable'] = '{Eligible for reuse}=TRUE()';
+}
+
+if (isset($_GET['buzzkiller']) && $_GET['buzzkiller'] === 'on') {
+	$pick_filter['filter_other']['buzzkiller'] = '{Negative pick}';
+}
+
+if (isset($_GET['ahead_of_its_time']) && $_GET['ahead_of_its_time'] === 'on') {
+	$pick_filter['filter_other']['ahead_of_its_time'] = '{Came true date}';
+}
+
+if (isset($_GET['adjudicated']) && $_GET['adjudicated'] === 'on') {
+	$pick_filter['filter_other']['adjudicated'] = '{Adjudicated}';
+}
+
+if (isset($_GET['half_points']) && $_GET['half_points'] === 'on') {
+	$pick_filter['filter_other']['half_points'] = 'OR(Factor<1, {Half correct})';
+}
+
+if (isset($_GET['amendment']) && $_GET['amendment'] === 'on') {
+	$pick_filter['filter_other']['amendment'] = '{Triggered amendment}';
+}
+
+// Get the pick types filter as array
+if (isset($_GET['pick_type']) && is_array($_GET['pick_type'])) {
+	// Let's iterate through the array
+	foreach ($_GET['pick_type'] as $type) {
+		// Add a part to the formula for each type
+		$types_filter[] = 'Type="' . ucfirst($type) . '"';
+	}
+	if (!empty($types_filter)) {
+		// Combine the parts into the formula
+		$pick_filter['filter_other']['pick_type'] = 'OR(' . implode(',', $types_filter) . ')';
+	}
+	unset($types_filter);
+}
+
+// Get the status filter as array
+if (isset($_GET['status']) && is_array($_GET['status'])) {
+	// Let's iterate through the array
+	foreach ($_GET['status'] as $status) {
+		// Add a part to the formula for each status
+		if ($status == 'unknown') {
+			$status_filter[] = 'Status=""';
+		} else {
+			$status_filter[] = 'Status="' . ucfirst($status) . '"';
+		}
+	}
+	if (!empty($status_filter)) {
+		// Combine the parts into the formula
+		$pick_filter['filter_other']['status'] = 'OR(' . implode(',', $status_filter) . ')';
+	}
+	unset($status_filter);
+}
+
+// Get the hosts filter as array
+if (isset($_GET['host']) && is_array($_GET['host'])) {
+	// Let's iterate through the array
+	foreach ($_GET['host'] as $type) {
+		// Add a part to the formula for each host
+		$hosts_filter[] = 'Host="' . ucfirst($type) . '"';
+	}
+	if (!empty($hosts_filter)) {
+		// Combine the parts into the formula
+		$pick_filter['filter_other']['host'] = 'OR(' . implode(',', $hosts_filter) . ')';
+	}
+	unset($hosts_filter);
+}
+
+// Get the Rickies event filter
+if (isset($_GET['rickies_event'])) {
+	switch ($_GET['rickies_event']) {
+		case '':
+			break;
+		case 'annual':
+			$pick_filter['filter_other']['rickies_event'] = '{Rickies type}="annual"';
+			break;
+		case 'keynote':
+			$pick_filter['filter_other']['rickies_event'] = '{Rickies type}="keynote"';
+			break;
+		case 'wwdc':
+			$pick_filter['filter_other']['rickies_event'] = '{Event type}="WWDC"';
+			break;
+		case 'ungraded':
+			$pick_filter['filter_other']['rickies_event'] =
+				'OR({Rickies status} = "Ungraded", {Rickies status} = "Live")';
+			break;
+		default:
+			$pick_filter['filter_other']['rickies_event'] = 'URL="' . $_GET['rickies_event'] . '"';
+			break;
+	}
+}
+
+// Define Airtable search query and filter formula
+$filterByFormula = "
+AND(
+	";
+if (!empty($pick_filter['search'])) {
+	$filterByFormula .= $pick_filter['search']['formula'];
+}
+if (!empty($pick_filter['filter_other'])) {
+	$filterByFormula .= implode(',', $pick_filter['filter_other']) . ',';
+}
+
+// Here the Pickies are excluded
+$filterByFormula .= "
+	Pick,
+	{Host name} ,
+	Type,
+	{Round set},
+	OR(Special='Rickies', Special='Pre-Rickies')
+)";
+
+// Get all (within the formula) picks from Airtable
+$picks_data__params = [
+	'filterByFormula' => $filterByFormula,
+	'sort' => [['field' => 'Pick date', 'direction' => 'desc']],
+];
+include '../includes/data_controllers/picks_data_controller.php';
+
+// Get all Rickies events from Airtable
+$rickies_events__params = [
+	'filterByFormula' => 'AND( Published = TRUE(), Picks)',
+	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
+];
+include '../includes/data_controllers/event_data_controller.php';
+
+// Define Rickies events for the select
+$rickies_events_options = [];
+foreach ($rickies_events__array as $event) {
+	if ($event['status'] == 'Live') {
+		$emoji = '🔴';
+	} elseif ($event['status'] == 'Ungraded') {
+		$emoji = '🟠';
+	} elseif ($event['type'] == 'annual') {
+		$emoji = '📆';
+	} elseif ($event['event_type'] == 'WWDC') {
+		$emoji = '💻';
+	} else {
+		$emoji = '📽';
+	}
+	$rickies_events_options[$event['url_name']] =
+		emoji_select_spacing($emoji) .
+		str_replace(
+			'Keynote WWDC',
+			'WWDC',
+			str_replace(['Rickies ', 'Rickies, ', 'Predictions ', 'Predictions, '], '', $event['name'])
+		);
+	unset($emoji);
+}
+// echo '<pre>', var_dump($rickies_events_options), '</pre>';
+
+// Get all categories from Airtable
+include '../includes/data_controllers/categories_data_controller.php';
+
+// Get the categories filter as array
+if (isset($_GET['category']) && is_array($_GET['category'])) {
+	// let's iterate through the array
+	foreach ($_GET['category'] as $category) {
+		// do some super-magic here
+		$pick_filter['filter_categories'][] = $category;
+	}
+	if (!empty($pick_filter['filter_categories'])) {
+		// Category are filtered server-side, not in Airtable,
+		// due to difficulty to the formula and the different group levels
+		// This removes the picks from the array when they don't match any of the category filters
+		foreach ($picks_data__array as $pick_type => $host_picks) {
+			foreach ($host_picks as $host => $picks) {
+				foreach ($picks as $pick => $pick_data) {
+					// Compare 2 arrays to see if pick category array have any in common with category filter
+					// Via https://stackoverflow.com/a/8736291
+					$cat_found = count(
+						array_intersect($pick_filter['filter_categories'], $pick_data['categories_compare'])
+					)
+						? true
+						: false;
+					if (!$cat_found) {
+						unset($picks_data__array[$pick_type][$host][$pick]);
+					}
+				}
+			}
+		}
+
+		foreach ($picks_data__array as $type => $host_picks) {
+			if ($picks_data__array[$type] == $picks_data__empty[$type]) {
+				unset($picks_data__array[$type]);
+			}
+		}
+	}
+}
+// echo '<pre>', var_dump($picks_data__array), '</pre>';
+// echo '<pre>', var_dump($pick_filter), '</pre>';
+
+// If no search string and no filters, redirect to /archive
+if ($url_view !== 'archive' && $pick_filter_empty === $pick_filter) {
+	header('Location: ' . domain_url() . '/archive');
+	die();
+}
+
+// Define counters and chart data
+// Has to happens separate from getting pick data from Airtable,
+// because the category filtering is also separate
+$picks_type_count = [
+	'Rickies' => 0,
+	'Flexies' => 0,
+];
+
+$picks_chart__array = [
+	'Myke' => [
+		'Correct' => 0,
+		'Wrong' => 0,
+		'Eventually' => 0,
+		'Unknown' => 0,
+	],
+	'Federico' => [
+		'Correct' => 0,
+		'Wrong' => 0,
+		'Eventually' => 0,
+		'Unknown' => 0,
+	],
+	'Stephen' => [
+		'Correct' => 0,
+		'Wrong' => 0,
+		'Eventually' => 0,
+		'Unknown' => 0,
+	],
+	'All' => [
+		'Correct' => 0,
+		'Wrong' => 0,
+		'Eventually' => 0,
+		'Unknown' => 0,
+	],
+];
+
+foreach ($picks_data__array as $type => $hosts) {
+	foreach ($hosts as $host => $picks) {
+		foreach ($picks as $pick) {
+			// Increment the count of this type
+			$picks_type_count[$type]++;
+
+			// Increment the count of this status for this host
+			if (!$pick['status']) {
+				// Status is Unknown
+				$picks_chart__array[$host]['Unknown']++;
+				$picks_chart__array['All']['Unknown']++;
+			} elseif ($pick['status_later']) {
+				// Status is Wrong, but Came true later
+				$picks_chart__array[$host]['Eventually']++;
+				$picks_chart__array['All']['Eventually']++;
+			} elseif ($pick['status'] == 'Correct' && $pick['factor'] == 1) {
+				// Status is Correct, and full points
+				$picks_chart__array[$host]['Correct']++;
+				$picks_chart__array['All']['Correct']++;
+			} elseif ($pick['status'] == 'Correct') {
+				// Status is Correct, but not full points
+				// Count partial points as Correct
+				$picks_chart__array[$host]['Correct'] = $picks_chart__array[$host]['Correct'] + $pick['factor'];
+				$picks_chart__array['All']['Correct'] = $picks_chart__array['All']['Correct'] + $pick['factor'];
+				// Count remaining points as Wrong
+				$picks_chart__array[$host]['Wrong'] = $picks_chart__array[$host]['Wrong'] + 1 - $pick['factor'];
+				$picks_chart__array['All']['Wrong'] = $picks_chart__array['All']['Wrong'] + 1 - $pick['factor'];
+			} else {
+				// Status is Wrong
+				$picks_chart__array[$host]['Wrong']++;
+				$picks_chart__array['All']['Wrong']++;
+			}
+		}
+	}
+}
+
+// Count the total picks per host
+foreach ($picks_chart__array as $host => $chart_data) {
+	$picks_chart__array[$host]['Total'] = array_sum($chart_data);
+	if (!in_array('ahead_of_its_time', $pick_display)) {
+		$picks_chart__array[$host]['Wrong'] =
+			$picks_chart__array[$host]['Wrong'] + $picks_chart__array[$host]['Eventually'];
+		$picks_chart__array[$host]['Eventually'] = 0;
+	}
+}
+
+// Format the total picks per type
+if ($picks_type_count['Rickies'] === 0) {
+	unset($picks_type_count['Rickies']);
+} elseif ($picks_type_count['Rickies'] === 1) {
+	$picks_type_count['Rickies'] = '1 Ricky';
+} else {
+	$picks_type_count['Rickies'] = $picks_type_count['Rickies'] . ' Rickies';
+}
+
+if ($picks_type_count['Flexies'] === 0) {
+	unset($picks_type_count['Flexies']);
+} elseif ($picks_type_count['Flexies'] === 1) {
+	$picks_type_count['Flexies'] = '1 Flexy';
+} else {
+	$picks_type_count['Flexies'] = $picks_type_count['Flexies'] . ' Flexies';
+}
+
+// Define SEO for search/archive page
 if ($url_view == 'archive') {
 	$head_custom = [
 		'title' => 'Rickies archive',
 		'description' => 'Archive of all Rickies predictions.',
+		'image' => domain_url() . '/images/seo/hero-archive.jpg',
 	];
 
 	$h1 = 'Rickies archive';
+} elseif (!empty($pick_filter['search'])) {
+	if (strlen($pick_filter['search']['string']) < 20) {
+		// If string is less than 20 characters, show full string in title
+		$head_custom['title'] =
+			'Search Rickies for ‘' . htmlentities($pick_filter['search']['string'], ENT_QUOTES, 'UTF-8') . '’';
+	} else {
+		// Else, truncate the string at 16 characters
+		$head_custom['title'] =
+			'Search Rickies for ‘' .
+			htmlentities(substr($pick_filter['search']['string'], 0, 16), ENT_QUOTES, 'UTF-8') .
+			'…’';
+	}
+	$head_custom['description'] =
+		$picks_chart__array['All']['Total'] .
+		' picks were found while searching for ‘' .
+		$pick_filter['search']['string'] .
+		'’ on Rickies.co.';
+	$head_custom['image'] = domain_url() . '/images/seo/hero-search.jpg';
 } else {
-	$head_custom = [
-		'title' => 'Search for Rickies',
-		'description' => 'Search results for ‘' . $query . '’ on Rickies.co.',
-	];
+	$head_custom['title'] = 'Search for Rickies';
+	$head_custom['description'] =
+		$picks_chart__array['All']['Total'] . ' picks were found while searching and filtering on Rickies.co.';
+	$head_custom['image'] = domain_url() . '/images/seo/hero-search.jpg';
 }
 
-$head_custom['canonical'] = domain_url() . '/archive';
-$head_custom['keywords'] = ['archive', 'history', 'search', 'filters'];
+// Add the enabled filters to the SEO description
+if (!empty($pick_filter['filter_other']) || !empty($pick_filter['filter_categories'])) {
+	if (!empty($pick_filter['search'])) {
+		$seo_description_add[] = 'Search';
+	}
+	$seo_description_add[] = ucwords(implode(', ', array_keys($pick_filter['filter_other'])));
+	if (!empty($pick_filter['filter_categories'])) {
+		$seo_description_add[] = 'Categories';
+	}
 
-$picks_data__params = [
-	'filterByFormula' => "AND(
-		OR(
-			SEARCH(LOWER('$query'),LOWER(Pick)),
-			SEARCH(LOWER('$query'),LOWER({Special remark})),
-			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Related search terms}))),
-			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Category name},','))),
-			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Category group},','))),
-			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Rickies name},','))),
-			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN(Host,','))),
-			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN(Type,','))),
-			SEARCH(LOWER('$query'),LOWER(ARRAYJOIN({Type group},',')))
-		),
-		Pick,
-		{Host name} ,
-		Type,
-		{Round set}
-	)",
-	'sort' => [['field' => 'Pick date', 'direction' => 'desc']],
-];
-include '../includes/data_controllers/picks_data_controller.php';
+	$seo_description_add = implode(', ', $seo_description_add);
+	$head_custom['description'] =
+		$head_custom['description'] . ' Enabled filters are: ' . str_replace('_', ' ', $seo_description_add) . '.';
+}
+
+$head_custom['canonical'] = current_url(true) . 'archive';
+$head_custom['keywords'] = ['archive', 'history', 'search', 'filters', 'categories', 'charts'];

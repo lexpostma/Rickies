@@ -2,10 +2,6 @@
 
 a {
 	font-weight: 500;
-	span.emoji {
-		text-decoration: none;
-		display: inline-block;
-	}
 
 	// Add Twitter/GitHub logos to their URLs
 	&:not(.list_item_content) {
@@ -22,7 +18,7 @@ a {
 		{
 			&:after {
 				opacity: 0.7;
-				content: url('/images/twitter.svg');
+				content: url('/images/logos/twitter.svg');
 				transform: translate(0px, 1px);
 			}
 			@media (hover: hover) {
@@ -37,7 +33,7 @@ a {
 		&[href^="https://github.com"]
 		{
 			&:after {
-				content: url('/images/github.svg');
+				content: url('/images/logos/github.svg');
 				transform: translate(0px, 1px);
 			}
 			@media (hover: hover) {

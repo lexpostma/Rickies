@@ -72,7 +72,10 @@ $head_custom = [
 	        </section>
 <?php
 include $incl_path . 'footer.php';
-echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/standalone.js') . '</script>';
+echo '<script>' .
+	file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/share_and_search.js') .
+	file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/standalone.js') .
+	'</script>';
 ?>
 		</div>
     </body>

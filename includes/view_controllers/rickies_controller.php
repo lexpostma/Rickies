@@ -28,24 +28,42 @@ switch ($url_view) {
 		$back_to_overview = true;
 		break;
 	case 'wwdc':
-		$filter = 'WWDC';
+		$rickies_filter = 'WWDC';
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
 		break;
 	case 'annual':
-		$filter = 'Annual';
+		$rickies_filter = 'Annual';
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
 		break;
 	case 'keynote':
-		$filter = 'Keynote';
+		$rickies_filter = 'Keynote';
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
 		break;
 	case 'ungraded':
-		$filter = 'Ungraded';
+		$rickies_filter = 'Ungraded';
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
+		break;
+	case 'preview':
+		$rickies_filter = 'Preview';
+		$previewing_content = true;
+		include '../includes/view_controllers/rickies_list_controller.php';
+		$include_subbody = '../includes/views/rickies.php';
+		break;
+	case 'latest':
+		$auto_select_rickies = 'latest';
+		include '../includes/view_controllers/rickies_list_controller.php';
+		break;
+	case 'latest-keynote':
+		$auto_select_rickies = 'keynote';
+		include '../includes/view_controllers/rickies_list_controller.php';
+		break;
+	case 'latest-annual':
+		$auto_select_rickies = 'annual';
+		include '../includes/view_controllers/rickies_list_controller.php';
 		break;
 	default:
 		// If non of the above, it's probably a Rickies event
@@ -88,7 +106,7 @@ function list_item_graphic($img_array = false)
 			case 'annual':
 				$class[] = 'annual diagonal';
 				$style[] = 'animation-delay: ' . rand(-50, 0) . 's;';
-				$txt = '<span>' . strftime('’%y', $img_array['date']) . '</span>';
+				$txt = '<span>’' . substr($img_array['date'], -2) . '</span>';
 				break;
 			case 'avatar':
 				$class[] = 'avatar';
@@ -180,7 +198,7 @@ function list_item($data)
 	} elseif (array_key_exists('type', $data) && $data['type'] == 'annual') {
 		// No image, but annual, so include the date/year
 		$img_array['type'] = 'annual';
-		$img_array['date'] = $data['date'];
+		$img_array['date'] = $data['annual_year'];
 	} else {
 		$img_array = false;
 	}
@@ -193,25 +211,29 @@ function list_item($data)
 		$output .= '<p class="label2">' . $data['label2'] . '</p>';
 	}
 
-	// Is there an 3nd label OR tag, yes/no?
+	// Is there a 3rd label OR tag, yes/no?
 	if (isset($data['tag']) || isset($data['label3'])) {
 		$output .= '<p class="secondary_string">';
 		if (isset($data['tag'])) {
-			// Does the tag have a color defined, yes/no?
-			$data['tag_class'] = 'tag';
-			if (!isset($data['tag_color'])) {
-				$data['tag_color'] = 'red';
-			} elseif ($data['tag_color'] == 'yellow') {
-				$data['tag_class'] .= ' contrast';
+			$output .= '<span class="tag_group">';
+			foreach ($data['tag'] as $tag) {
+				// Does the tag have a color defined, yes/no?
+				$tag['class'] = 'tag';
+				if (!isset($tag['color'])) {
+					$tag['color'] = 'red';
+				} elseif ($tag['color'] == 'yellow') {
+					$tag['class'] .= ' contrast';
+				}
+				$output .=
+					'<span class="' .
+					$tag['class'] .
+					'" style="--tag-color: var(--connected-' .
+					$tag['color'] .
+					')">' .
+					$tag['label'] .
+					'</span>';
 			}
-			$output .=
-				'<span class="' .
-				$data['tag_class'] .
-				'" style="--tag-color: var(--connected-' .
-				$data['tag_color'] .
-				')">' .
-				$data['tag'] .
-				'</span>';
+			$output .= '</span>';
 		}
 		if (isset($data['label3'])) {
 			$output .= '<span class="label3">' . $data['label3'] . '</span>';
@@ -290,7 +312,7 @@ function episode_data($episode, $state = false)
 		}
 		if ($episode['img_url'] == false) {
 			// No custom image, fallback to local default
-			if ($episode['number'] < 304) {
+			if ($episode['number'] && $episode['number'] < 304) {
 				// Old artwork
 				$episode['img_url'] = '/images/connected-artwork-old.jpg';
 			} else {
@@ -335,7 +357,7 @@ function avatar_leaderboard($host_array)
 }
 
 // Function to display picks
-function pick_item($data, $interactive = false, $search = false)
+function pick_item($data, $interactive = false, $view = [])
 {
 	if ($interactive) {
 		$output =
@@ -349,14 +371,14 @@ function pick_item($data, $interactive = false, $search = false)
 	}
 
 	// If it's not a Flexy, the picks are in 3 rounds
-	if ($search) {
+	if (in_array('search', $view)) {
 		$pick_link =
 			'<a href="/' . $data['url'] . '#' . strtolower($data['type_group']) . '">' . $data['rickies'] . '</a>';
 	}
 
-	if ($search && $data['type'] !== 'Flexy') {
-		$output .= '<span class="round">' . $pick_link . ' • ' . $data['round'] . '</span>';
-	} elseif ($search) {
+	if (in_array('search', $view) && $data['type'] !== 'Flexy') {
+		$output .= '<span class="round">' . $pick_link . ' • <span class="nowrap">' . $data['round'] . '</span></span>';
+	} elseif (in_array('search', $view)) {
 		$output .= '<span class="round">' . $pick_link . '</span>';
 	} elseif ($data['type'] !== 'Flexy') {
 		$output .= '<span class="round">' . $data['round'] . '</span>';
@@ -366,7 +388,11 @@ function pick_item($data, $interactive = false, $search = false)
 	$output .= '<p class="pick"><span class="label">' . $data['pick'] . '</span>';
 
 	// Define the point score
-	$output .= '<span class="points ' . strtolower($data['type']) . ' ' . strtolower($data['status']) . '">';
+	$output .= '<span class="points ' . strtolower($data['type']) . ' ' . strtolower($data['status']);
+	if ($data['status_later'] && in_array('ahead_of_its_time', $view)) {
+		$output .= ' eventually';
+	}
+	$output .= '">';
 	if ($data['status'] == false) {
 		$output .= '?';
 	} elseif ($data['points'] > 0 && $data['type'] == 'Flexy') {
@@ -385,15 +411,55 @@ function pick_item($data, $interactive = false, $search = false)
 	$output .= '</p>';
 
 	// Add optional note
-	if ($data['note']) {
-		$output .= '<div class="note">' . markdown($data['note']) . '</div>';
+	if (
+		$data['note'] ||
+		($data['status_later'] && in_array('ahead_of_its_time', $view)) ||
+		($data['categories'] && in_array('categories', $view)) ||
+		($data['age'] && in_array('age', $view)) ||
+		($data['buzzkill'] && in_array('buzzkill', $view)) ||
+		($data['amendment'] && in_array('amendment', $view))
+	) {
+		$output .= '<div class="note">';
+		if ($data['note']) {
+			$output .= markdown($data['note']);
+		}
+		if ($data['status_later'] && in_array('ahead_of_its_time', $view)) {
+			$output .= markdown($data['status_later']);
+		}
+		if ($data['categories'] && in_array('categories', $view)) {
+			$output .= '<p class="tag_group">';
+			foreach ($data['categories'] as $cat_data) {
+				$output .=
+					'<a class="tag ' .
+					$cat_data['color'] .
+					'" href="' .
+					domain_url() .
+					'?search=&category%5B%5D=' .
+					$cat_data['value'] .
+					'">' .
+					$cat_data['string'] .
+					'</a>';
+			}
+			$output .= '</p>';
+		}
+		if ($data['age'] && in_array('age', $view)) {
+			$output .= markdown($data['age']);
+		}
+		if ($data['buzzkill'] && in_array('buzzkill', $view)) {
+			$output .= markdown($data['buzzkill']);
+		}
+		if ($data['amendment'] && in_array('amendment', $view)) {
+			$output .= markdown($data['amendment']);
+		}
+
+		$output .= '</div>';
 	}
 
 	$output .= '</li>';
 	return $output;
 }
 
-function pick_item_bundle($data, $interactive = false, $search = false)
+function pick_item_bundle($data, $interactive = false, $view = [])
 {
 	$output = '';
 
@@ -403,7 +469,7 @@ function pick_item_bundle($data, $interactive = false, $search = false)
 			'<section class="navigate_with_mobile_menu large_columns" id="' .
 			strtolower($type) .
 			'"><h2 class="section_title">';
-		if (!$search) {
+		if (!in_array('search', $view)) {
 			$output .= 'The ';
 		}
 		$output .= $type . '</h2><div class="section_group">';
@@ -426,16 +492,16 @@ function pick_item_bundle($data, $interactive = false, $search = false)
 					if ($value['status'] == 'Correct') {
 						$score['correct'] = $score['correct'] + $value['factor'];
 					}
-					$pick_items .= pick_item($value, $interactive, $search);
+					$pick_items .= pick_item($value, $interactive, $view);
 				}
 				if ($score['count'] !== 0) {
 					// Calculate the ratio of correct picks, if not 0 picks, and round it
 					$score['percentage'] = round_if_decimal(($score['correct'] / $score['count']) * 100);
 				}
 			} else {
-				if (!$search && $type == 'Rickies') {
+				if (!in_array('search', $view) && $type == 'Rickies') {
 					$pick_items .= '<li class="pick_item no_results">Waiting for ' . $host . '’s first pick…</li>';
-				} elseif (!$search && $type == 'Flexies') {
+				} elseif (!in_array('search', $view) && $type == 'Flexies') {
 					$pick_items .= '<li class="pick_item no_results">Waiting for ' . $host . '’s Flexies…</li>';
 				} else {
 					$pick_items .=

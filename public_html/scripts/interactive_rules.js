@@ -1,6 +1,7 @@
 const document_date = document.getElementById('document_date');
 const paper = document.getElementById('the_document');
 const slider_label = document.getElementById('slider_label');
+const slider = document.querySelector('aside.slider');
 const document_title = document.getElementById('document_title');
 const disclaimer_title = document.getElementById('disclaimer_title');
 const browser_title = document.getElementsByTagName('title')[0];
@@ -103,19 +104,44 @@ function show_rule(element) {
 
 // Toggle rules slider open/closed
 document.getElementById('close_button').addEventListener('click', function () {
-	var slider = document.querySelector('aside.slider');
 	if (this.classList.contains('show')) {
-		// Slider is visible
-		this.classList.remove('show');
-		slider.classList.remove('hide');
-		this.title = 'Open the history slider';
-		this.setAttribute('data-goatcounter-click', 'Open history slider');
+		// Button is set to open, slider is not visible yet
+		open_slider(this);
 	} else {
-		// Slider is hidden
-		this.classList.add('show');
-		slider.classList.add('hide');
-		this.title = 'Hide the history slider';
-		this.setAttribute('data-goatcounter-click', 'Hide history slider');
+		// Button is set to close, slider is visible
+		close_slider(this);
+	}
+});
+
+function close_slider(element) {
+	// Hide slider
+	slider.classList.add('hide');
+
+	// Change button attributes
+	element.classList.add('show');
+	element.title = 'Hide the history slider';
+	element.setAttribute('data-goatcounter-click', 'Hide history slider');
+
+	// Store slider state in cookie
+	Cookies.set('slider_closed', 'true', { expires: 7, path: '/billof' });
+}
+function open_slider(element) {
+	// Show slider
+	slider.classList.remove('hide');
+
+	// Change button attributes
+	element.classList.remove('show');
+	element.title = 'Open the history slider';
+	element.setAttribute('data-goatcounter-click', 'Open history slider');
+
+	// Store slider state in cookie
+	Cookies.set('slider_closed', 'false', { expires: 0, path: '/billof' });
+}
+
+// If cookie is set for slider state, close the slider
+document.addEventListener('DOMContentLoaded', function (event) {
+	if (Cookies.get('slider_closed')) {
+		close_slider(document.getElementById('close_button'));
 	}
 });
 

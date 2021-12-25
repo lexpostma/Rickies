@@ -19,8 +19,9 @@ if (isset($_GET['view'])) {
 $head_defaults = [
 	'title' => 'The Rickies',
 	'name' => 'The Rickies',
+	'short_name' => 'Rickies',
 	'favicon' => '/favicon.png',
-	'image' => domain_url() . '/images/hero-rickies.jpg',
+	'image' => domain_url() . '/images/seo/hero-rickies.jpg',
 	'canonical' => current_url(),
 	'author' => 'Lex Postma',
 	'company' => 'Relay FM',
@@ -56,15 +57,36 @@ On Connected at Relay FM.',
 ];
 
 if ($environment == 'production') {
+	$appIconDirectory = '/images/app-icons/';
 	$head_defaults['site_goatcounter'] = 'https://rickies.goatcounter.com';
 	$github = 'main';
-	// NOTE: update for new releases
-	$refresh = 'v1.5.11';
+	// NOTE: Update for new releases
+	$refresh = 'v1.5.12';
 } else {
+	$appIconDirectory = '/images/app-icons/' . $environment . '/';
 	$head_defaults['site_goatcounter'] = 'https://rickies-test.goatcounter.com';
 	$github = 'development';
 	$refresh = date('s');
 }
+
+// App icon sizes
+$appIconSizes = [
+	'iPhone @1x' => '60x60',
+	'iPhone @2x' => '120x120',
+	'iPhone @3x' => '180x180',
+	'iPad @1x' => '76x76',
+	'iPad @2x' => '152x152',
+	'iPad Pro @2x' => '167x167',
+	'Spotlight iPhone @2x' => '80x80',
+	'Settings iPhone @1x' => '29x29',
+	'Settings iPhone @2x' => '58x58',
+	'Settings iPhone @3x' => '87x87',
+	'App Store @1x' => '512x512',
+	'App Store @2x' => '1024x1024',
+	'Generic 1' => '128x128',
+	'Generic 2' => '144x144',
+	'Generic 3' => '196x196',
+];
 
 // Term "Rickies" was coined on episode #245, officially branded in #259
 $rickies_start = strtotime('2019-09-04');

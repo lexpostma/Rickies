@@ -1,10 +1,10 @@
 nav.nav_container {
   height: auto;
 }
-nav.nav_container #nav_content {
+nav.nav_container #nav_content_sticky {
   position: relative;
 }
-nav.nav_container.sticky #nav_content {
+nav.nav_container.sticky #nav_content_sticky {
   position: relative;
 }
 
@@ -29,12 +29,12 @@ h2.list_title svg {
 .charts,
 aside.slider,
 button.back_button,
+#reset_button,
 #fixed_search,
 #search_button,
 #share_button,
 #music_button,
 #close_button,
-p#promote_webapp,
-p#refresh_page {
+p#promote_webapp {
   display: none;
 }

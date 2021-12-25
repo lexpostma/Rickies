@@ -1,0 +1,31 @@
+@use "variables" as var;
+
+.footer_space {
+	margin-top: calc(var(--space-between-lg) * 2);
+}
+footer {
+	padding: var(--space-side-padding);
+	color: white;
+	text-align: center;
+	font-size: 0.875rem;
+	&:first-of-type {
+		margin-top: auto;
+	}
+	p {
+		max-width: var.$readability-width;
+		margin: auto;
+	}
+	&#footer {
+		padding-bottom: max(var(--space-side-padding), #{var.$iX-bottom});
+		background: var(--relay-blue);
+		position: relative;
+
+		p#promote_webapp {
+			margin-bottom: var(--space-between-md);
+		}
+	}
+}
+
+p#promote_webapp {
+	display: none;
+}
