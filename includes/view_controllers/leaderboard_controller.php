@@ -326,11 +326,11 @@ include_once $incl_path . 'timeline_functions.php';
 
 $introduction =
 	'<p>With <b>' .
-	$status_data__array['Completed'] .
+	$status_data__array['Completed']['rickies'] .
 	' graded</b> Rickies officially behind us, this is the leaderboard of overall wins, picks, risk, and <span title="Pokémon! 😉">flexing power (FP)</span> of the hosts of Connected.</p><p>The predictions charts and statistics include picks from all Rickies, including the <a href="/latest-keynote">latest Keynote Rickies</a> and <a href="/latest-annual">Annual Rickies</a>, picks from <a href="/ungraded"><b class="nowrap">' .
-	digit_text($status_data__array['Ungraded']) .
+	digit_text($status_data__array['Ungraded']['rickies']) .
 	' ungraded</b></a> Rickies, and picks from ' .
-	digit_text($status_data__array['Pre-Rickies']) .
+	digit_text($status_data__array['Total']['pre-rickies']) .
 	' earlier prediction episodes that predate the (<a href="/billof/keynote-sep-2018" title="The Bill of Rickies">Bill of</a>) Rickies as partial points had been awarded.</p>';
 
 $head_custom = [

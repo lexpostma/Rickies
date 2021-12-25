@@ -127,7 +127,7 @@ echo '<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/naviga
 
 // Change some strings to originals before the terms Rickies/Flexies were coined
 if (
-	$rickies_data['status'] == 'Pre-Rickies' ||
+	$rickies_data['special'] == 'Pre-Rickies' ||
 	$rickies_data['date'] < $rickies_start ||
 	$rickies_data['date'] < $flexies_start
 ) {
