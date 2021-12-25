@@ -304,6 +304,10 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 			'label' => 'Adjudicated',
 			'emoji' => '🧑‍⚖️',
 		],
+		'amendment' => [
+			'label' => 'Lead to amendment',
+			'emoji' => '📜',
+		],
 		'half_points' => [
 			'label' => 'Half correct',
 			'emoji' => '➗',

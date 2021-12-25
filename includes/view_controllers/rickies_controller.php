@@ -412,7 +412,8 @@ function pick_item($data, $interactive = false, $view = [])
 		($data['status_later'] && in_array('ahead_of_its_time', $view)) ||
 		($data['categories'] && in_array('categories', $view)) ||
 		($data['age'] && in_array('age', $view)) ||
-		($data['buzzkill'] && in_array('buzzkill', $view))
+		($data['buzzkill'] && in_array('buzzkill', $view)) ||
+		($data['amendment'] && in_array('amendment', $view))
 	) {
 		$output .= '<div class="note">';
 		if ($data['note']) {
@@ -443,6 +444,10 @@ function pick_item($data, $interactive = false, $view = [])
 		if ($data['buzzkill'] && in_array('buzzkill', $view)) {
 			$output .= markdown($data['buzzkill']);
 		}
+		if ($data['amendment'] && in_array('amendment', $view)) {
+			$output .= markdown($data['amendment']);
+		}
+
 		$output .= '</div>';
 	}
 

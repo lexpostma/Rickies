@@ -45,7 +45,7 @@ switch ($pick_filter['display']) {
 		$pick_display = ['search'];
 		break;
 	default:
-		$pick_display = ['search', 'ahead_of_its_time', 'categories', 'buzzkill', 'age'];
+		$pick_display = ['search', 'ahead_of_its_time', 'categories', 'buzzkill', 'age', 'amendment'];
 		break;
 }
 
@@ -68,6 +68,10 @@ if (isset($_GET['adjudicated']) && $_GET['adjudicated'] === 'on') {
 
 if (isset($_GET['half_points']) && $_GET['half_points'] === 'on') {
 	$pick_filter['filter_other']['half_points'] = 'OR(Factor<1, {Half correct})';
+}
+
+if (isset($_GET['amendment']) && $_GET['amendment'] === 'on') {
+	$pick_filter['filter_other']['amendment'] = '{Triggered amendment}';
 }
 
 // Get the pick types filter as array
@@ -150,6 +154,8 @@ if (!empty($pick_filter['search'])) {
 if (!empty($pick_filter['filter_other'])) {
 	$filterByFormula .= implode(',', $pick_filter['filter_other']) . ',';
 }
+
+// Here the Pickies are excluded
 $filterByFormula .= "
 	Pick,
 	{Host name} ,
