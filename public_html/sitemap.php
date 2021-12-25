@@ -122,7 +122,7 @@ foreach ($picks_data__array[array_key_first($picks_data__array)] as $host => $pi
 		break;
 	}
 }
-echo sitemap_url('/archive', $pick['last_edited'], 'weekly');
+echo sitemap_url('/archive', $pick['last_edited'], '0.5', 'weekly');
 
 // Date for /about
 $about = max([filemtime('../includes/view_controllers/about_controller.php'), filemtime('../includes/about.html')]);
