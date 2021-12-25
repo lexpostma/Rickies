@@ -2403,11 +2403,11 @@ mark {
 #pick_filter_sheet > .content > fieldset.categories > fieldset:not(:last-child) {
   margin-right: -24px;
 }
-#pick_filter_sheet > .content > fieldset.categories > fieldset > ul > li > ul {
+#pick_filter_sheet > .content > fieldset.categories > fieldset > ul > li ul {
   margin-top: 4px;
   flex-basis: 100%;
 }
-#pick_filter_sheet > .content > fieldset.categories > fieldset > ul > li > ul li.filter_option {
+#pick_filter_sheet > .content > fieldset.categories > fieldset > ul > li ul li.filter_option {
   font-size: 0.75em;
   margin-left: 4px;
   margin-right: 4px;
