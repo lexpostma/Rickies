@@ -5,7 +5,22 @@ a {
 	&:link,
 	&:visited {
 		color: var(--link-color);
+		@include var.underline;
 	}
+	@media (hover: hover) {
+		&:hover {
+			color: var(--link-hover-color);
+		}
+	}
+
+	&:focus,
+	&:active {
+		color: var(--link-hover-color);
+	}
+}
+
+button.js_link {
+	color: var(--link-color);
 	@media (hover: hover) {
 		&:hover {
 			color: var(--link-hover-color);
@@ -28,7 +43,7 @@ nav a {
 		color: white;
 		cursor: pointer;
 		opacity: 0.8;
-		text-decoration: underline;
+		@include var.underline;
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		user-select: none;

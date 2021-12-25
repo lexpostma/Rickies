@@ -8,25 +8,9 @@ include '../includes/data_controllers/rules_data_controller.php';
 
 // Get Event data
 $rickies_events__params = [
-	'fields' => [
-		'Name',
-		'Rickies type',
-		'URL',
-		'Status',
-		'Rickies 1st (manual)',
-		'Predictions episode date',
-		'Predictions episode number',
-		'Predictions episode artwork',
-		'Rickies artwork',
-		'Event artwork',
-		'Interactive',
-		'Artwork background color',
-	],
-	'filterByFormula' => 'AND( Published = TRUE() )',
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'asc']],
 ];
 
-$all_event_details = false;
 include '../includes/data_controllers/event_data_controller.php';
 // echo '<pre>', var_dump($rickies_events__array), '</pre>';
 
@@ -102,7 +86,7 @@ $head_custom = [
 	'title' => 'The Bill of Rickies',
 	'favicon' => '/favicon-bill.png',
 	'description' => $description,
-	'image' => domain_url() . '/images/hero-billofrickies.jpg',
+	'image' => domain_url() . '/images/seo/hero-billofrickies.jpg',
 	'canonical' => current_url(true) . 'billof',
 	'theme-color' => '#0d87ca',
 	'theme-color-dark' => '#333f48',

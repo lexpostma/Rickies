@@ -198,11 +198,11 @@ function host_item_bundle($host_event_data, $event_type)
 			list_item_graphic($avatar_img_array) .
 			'
 				<div class="list_item_labels">
-					<p><a href="/leaderboard#' .
+					<h3><a href="/leaderboard#' .
 			strtolower($event_details['details']['first_name']) .
 			'">' .
 			$event_details['details']['full_name'] .
-			'</a></p>
+			'</a></h3>
 					<p class="ranking">' .
 			implode(' • ', $html_strings['ranking']) .
 			'</p>';
@@ -263,13 +263,13 @@ if (
 	// Ungraded, so future keynote
 	$description .=
 		'What will Apple announce at the keynote on ' .
-		date_to_string_label($rickies_data['details']['event_data']['date']) .
+		date_to_string_label($rickies_data['details']['link_data_apple']['date']) .
 		'? And who will become Keynote Chairman? Follow along with this interactive scorecard.';
 } else {
 	// Graded keynote, past
 	$description .=
 		'What has Apple announced at the keynote on ' .
-		date_to_string_label($rickies_data['details']['event_data']['date']) .
+		date_to_string_label($rickies_data['details']['link_data_apple']['date']) .
 		'? And how did Myke, Stephen, and Federico perform with their predictions for this event?';
 }
 

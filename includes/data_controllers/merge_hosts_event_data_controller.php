@@ -5,9 +5,25 @@ $rickies_events__params = [
 	'filterByFormula' => "AND( Published = TRUE(), URL = '$url_view' )",
 	'maxRecords' => 1,
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
-	// "pageSize" => 50,
 ];
-$all_event_details = true;
+
+// Function to check if string ends with a substring
+function endsWith($haystack, $needle)
+{
+	$length = strlen($needle);
+	if (!$length) {
+		return true;
+	}
+	return substr($haystack, -$length) === $needle;
+}
+
+// Allow previewing event pages when not published yet
+if (endsWith($url_view, '-preview')) {
+	$previewing_content = true;
+	$rickies_events__params['filterByFormula'] = "AND( Status = 'Preview', URL = '$url_view' )";
+}
+
+$rickies_event_data_set = 'details';
 
 include '../includes/data_controllers/event_data_controller.php';
 // echo '<pre>', var_dump($rickies_events__array), '</pre>';
@@ -17,7 +33,6 @@ $hosts_data__params = [
 	'fields' => ['First name', 'Full name', 'Memoji neutral', 'Memoji happy', 'Memoji sad'],
 	'filterByFormula' => 'AND( {Official host} = TRUE() )',
 ];
-$all_host_details = false;
 include '../includes/data_controllers/hosts_data_controller.php';
 // echo '<pre>', var_dump($hosts_data__array), '</pre>';
 

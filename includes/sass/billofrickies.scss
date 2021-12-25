@@ -3,6 +3,7 @@
 @use "rule-document";
 @use "rule-slider";
 @use "links";
+@use "modal-input";
 @use "buttons";
 
 @font-face {
@@ -95,8 +96,4 @@ p.bill_footer {
 	opacity: 0.5;
 	font-style: italic;
 	max-width: var.$readability-width;
-}
-p#refresh_page button {
-	text-decoration: underline;
-	font-style: normal;
 }

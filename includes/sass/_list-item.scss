@@ -28,7 +28,7 @@ li.list_item {
 			.secondary_string {
 				margin-top: 4px;
 				@include var.secondary-text;
-				.tag {
+				.tag_group {
 					margin-right: 8px;
 					color: white;
 				}
@@ -73,7 +73,7 @@ li.list_item {
 		.list_item_labels {
 			.label1 {
 				font-weight: 500;
-				text-decoration: underline;
+				@include var.underline;
 			}
 			.label2 {
 				color: var(--text-primary-color);
@@ -117,27 +117,19 @@ li.list_item {
 	a[href^="https://www.youtube.com"]
 	{
 		.secondary_string:before {
-			content: url('/images/youtube.svg');
+			content: url('/images/logos/youtube.svg');
 		}
 	}
 	a[href^="https://twitter.com"]
 	{
 		.secondary_string:before {
-			content: url('/images/twitter.svg');
+			content: url('/images/logos/twitter.svg');
 		}
 	}
 	a[href^="https://github.com"]
 	{
 		.secondary_string:before {
-			content: url('/images/github.svg');
+			content: url('/images/logos/github.svg');
 		}
 	}
-}
-
-span.tag {
-	color: #fff;
-	background: var(--tag-color);
-	padding: 0px 0.4em;
-	border-radius: var(--corner-radius);
-	border: var(--graphic-border);
 }

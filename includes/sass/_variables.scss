@@ -1,7 +1,10 @@
 $readability-width: 650px;
 $hover-duration: 300ms;
-$pop-transition: $hover-duration transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+$pop-transition-timing: cubic-bezier(0.68, 0.07, 0.27, 1.54);
+$pop-transition: $hover-duration transform $pop-transition-timing;
 $header-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
+$emoji-font: 'Apple Color Emoji', 'Noto Color Emoji', 'Segoe UI Emoji', Times, Symbola, Aegyptus, Code2000, Code2001,
+	Code2002, Musica, emoji, sans-serif;
 
 // iOS safe-areas
 $iX-top: env(safe-area-inset-top);
@@ -19,15 +22,26 @@ $break-xl: 1200px;
 $break-xxl: 1400px;
 
 :root {
-	--connected-green: #449934;
-	--connected-yellow: #fcc200;
-	--connected-orange: #ef7b00;
-	--connected-red: #e51f2e;
-	--connected-purple: #9d3489;
-	--connected-blue: #0d87ca;
-	--relay-blue: #333f48;
+	// Variable is used by JS for pull-to-refresh distances
+	--safe-top: #{$iX-top};
 
-	--connected-grey: #6b8aa4; // Not official
+	--connected-green-rgb: 68, 153, 52; // #449934
+	--connected-yellow-rgb: 252, 194, 0; // #fcc200
+	--connected-orange-rgb: 239, 123, 0; // #ef7b00
+	--connected-red-rgb: 229, 31, 46; // #e51f2e
+	--connected-purple-rgb: 157, 52, 137; // #9d3489
+	--connected-blue-rgb: 13, 135, 202; // #0d87ca
+	--connected-grey-rgb: 107, 138, 164; // Not official #6b8aa4
+	--relay-blue-rgb: 51, 63, 72; // #333f48
+
+	--connected-green: rgb(var(--connected-green-rgb));
+	--connected-yellow: rgb(var(--connected-yellow-rgb));
+	--connected-orange: rgb(var(--connected-orange-rgb));
+	--connected-red: rgb(var(--connected-red-rgb));
+	--connected-purple: rgb(var(--connected-purple-rgb));
+	--connected-blue: rgb(var(--connected-blue-rgb));
+	--connected-grey: rgb(var(--connected-grey-rgb));
+	--relay-blue: rgb(var(--relay-blue-rgb));
 
 	--text-primary-color: #31373d;
 
@@ -35,11 +49,13 @@ $break-xxl: 1400px;
 	--space-between-sm: 8px;
 	--space-between-md: 16px;
 	--space-between-lg: 32px;
+	--space-between-xl: 44px;
 
 	font-size: 14px;
 
-	--background-color: #fff;
-	--text-secondary-color: #5e6d7a;
+	--background-color-rgb: 255, 255, 255;
+	--background-color: rgb(var(--background-color-rgb));
+	--text-secondary-color: #7b8a98; //#5e6d7a;
 	--link-color: #106dc6;
 	--link-hover-color: #23527c;
 
@@ -65,7 +81,7 @@ $break-xxl: 1400px;
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--background-color: #000000;
+		--background-color-rgb: 0, 0, 0;
 		--text-primary-color: #9baec1;
 		--text-secondary-color: #637c96;
 		--link-color: var(--connected-blue);
@@ -88,6 +104,7 @@ $break-xxl: 1400px;
 	:root {
 		--graphic-size: 72px;
 		--space-side-padding: 32px;
+		--space-between-xl: 64px;
 		font-size: 18px;
 	}
 }
@@ -120,6 +137,15 @@ $break-xxl: 1400px;
 	animation-name: connected_colors;
 	animation-duration: $duration;
 	animation-iteration-count: infinite;
+}
+@mixin underline() {
+	text-decoration: underline;
+	text-underline-offset: 0.14em;
+}
+
+@mixin truncate() {
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 @keyframes connected_colors {

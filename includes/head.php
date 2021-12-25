@@ -28,11 +28,12 @@ if ($environment !== 'production') {
 <meta name="keywords" content="<?= implode(',', $head['keywords']) ?>" />
 <meta name="author" content="<?= $head['author'] ?>" />
 <meta name="copyright" content="Copyright © <?= date('Y') ?> by <?= $head['author'] ?> and Relay FM" />
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<?php if ($environment !== 'production') {
+<?php if ($environment !== 'production' || isset($previewing_content)) {
+	// Do not index if it's not production, or if you're previewing a Rickies
 	echo '<meta name="robots" content="noindex,nofollow" />';
 } ?>
 
+<link rel="sitemap" type="application/xml" title="Sitemap" href="<?= domain_url() ?>/sitemap.xml" />
 
 <!-- Open Graph protocol / Facebook -->
 <meta property="og:title" content="<?= $head['title'] ?>" />
@@ -54,8 +55,7 @@ if ($environment !== 'production') {
 <meta name="twitter:image" content="<?= $head['image'] ?>" />
 <meta name="twitter:url" content="<?= current_url() ?>" />
 
-<?php include 'ios_optimisation.php'; ?>
-
+<?php include 'webapp_optimisation.php'; ?>
 
 <!-- Style sheets -->
 <link rel="stylesheet" href="/styles/normalize.css"> <!-- Normalize -->
@@ -74,18 +74,18 @@ if ($environment !== 'production') {
 <?php } ?>
 <script data-goatcounter="<?= $head['site_goatcounter'] ?>/count" async src="//gc.zgo.at/count.js"></script>
 
-<?php
-if ($focus_site == 'rickies') { ?>
-
-<!-- Canvas Confetti -->
-<script src="/scripts/confetti.browser.min.js"></script>
-
 <!-- JavaScript Cookie -->
 <script src="/scripts/js.cookie.js"></script>
 
+<?php
+if ($focus_site == 'rickies') { ?>
+<!-- Canvas Confetti -->
+<script src="/scripts/confetti.browser.min.js"></script>
+
 <?php }
-if ($url_view == 'leaderboard') { ?>
+if ($url_view == 'leaderboard' || $url_view == 'search' || $url_view == 'archive') { ?>
 <!-- Chart.js -->
 <script src="/scripts/chart.min.js"></script>
+
 <?php }
 

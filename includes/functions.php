@@ -1,8 +1,23 @@
 <?php
 
 $incl_path = $_SERVER['DOCUMENT_ROOT'] . '/../includes/';
+
+// Define Airtable integration
+include $incl_path . 'airtable/Airtable.php';
+include $incl_path . 'airtable/Request.php';
+include $incl_path . 'airtable/Response.php';
+
+use TANIOS\Airtable\Airtable;
+$airtable = new Airtable([
+	'api_key' => getenv('AIRTABLE_API'),
+	'base' => getenv('AIRTABLE_BASE'),
+]);
+
+// Include other functions
 include_once $incl_path . 'Parsedown.php';
 include_once $incl_path . 'variables.php';
+include_once $incl_path . 'search_functions.php';
+include_once $incl_path . 'chart_functions.php';
 
 // Is the current URL accessed via http or https?
 function url_protocol()
@@ -21,13 +36,20 @@ function domain_url()
 }
 
 // https://example.com/something
-function current_url($filter = false)
+// Custom is 'false' by default -> so it returns the actual full URL
+// If 'true' -> return bare URL
+function current_url($custom = false)
 {
-	if ($filter) {
-		return domain_url() . '/';
-	} else {
+	if (!$custom) {
 		return domain_url() . $_SERVER['REQUEST_URI'];
+	} else {
+		return domain_url() . '/';
 	}
+}
+
+function filter_url($query = '')
+{
+	return current_url(true) . '?search=' . $query . '#results';
 }
 
 function navigation_bar($active = false)
@@ -35,7 +57,7 @@ function navigation_bar($active = false)
 	$output =
 		'
 
-<nav id="nav_content" class="home" style="animation-delay: ' .
+<nav class="nav_content multicolor" style="animation-delay: ' .
 		rand(-50, 0) .
 		's;">
 	<div class="nav_content--items">
@@ -64,7 +86,11 @@ function navigation_bar($active = false)
 	if ($active == 'archive') {
 		$output .= 'class="active" ';
 	}
-	$output .= 'href="/archive">Archive</a>
+	$output .= 'href="/archive">Archive';
+	if ($active == 'search') {
+		$output .= '<span> &#8634;</span>';
+	}
+	$output .= '</a>
 		<a ';
 	if ($active == 'about') {
 		$output .= 'class="active" ';
@@ -81,7 +107,7 @@ function navigation_bar($active = false)
 function back_button()
 {
 	$location = '/';
-	$middle = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-back.svg');
+	$middle = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-back.svg');
 	$link =
 		'<a href="' .
 		$location .
@@ -108,10 +134,24 @@ function share_button()
 	$output =
 		'<button id="share_button" class="top_button clean" type="button" data-goatcounter-click="Open share sheet" title="Share this page" data-goatcounter-referrer="' .
 		current_url() .
-		'" onclick="open_share_sheet()">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-share.svg');
-	$output .= '</button>';
+		'" onclick="open_share_sheet()">' .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-share.svg') .
+		'</button>
 
+		<div id="custom_share_sheet" class="">
+			<form class="filters" id="share_sheet_form">
+				<div id="share_field_combo" class="input_button_combo">
+					<input id="share_input" class="clean" type="text" name="text" title="Current URL" placeholder="Current URL" value="' .
+		current_url() .
+		'" />
+					<button class="clean top_button" title="Copy current URL" form="share_sheet_form" type="button" onclick="copyTextToClipboard()">' .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-copy.svg') .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-clipboard.svg') .
+		'</button>
+				</div>
+				<p><span>URL copied to clipboard</span></p>
+			</form>
+		</div>';
 	return $output;
 }
 
@@ -121,10 +161,8 @@ function music_button()
 		'<button id="music_button" class="top_button clean" type="button" data-goatcounter-click="Theme music" title="Play theme music for The Bill of Rickies" data-goatcounter-referrer="' .
 		current_url() .
 		'">';
-	$output .=
-		'<div class="play">' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-play.svg') . '</div>';
-	$output .=
-		'<div class="pause">' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-pause.svg') . '</div>';
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-play.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-pause.svg');
 	$output .= '</button>';
 
 	return $output;
@@ -136,48 +174,8 @@ function close_button()
 		'<button id="close_button" class="top_button clean" type="button" data-goatcounter-click="Hide history slider" title="Hide the history slider" data-goatcounter-title="Toggle Bill of Rickies slider" data-goatcounter-referrer="' .
 		current_url() .
 		'">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close.svg');
+	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-close.svg');
 	$output .= '</button>';
-
-	return $output;
-}
-
-function search_button()
-{
-	$output = search_field(false, true);
-	$output .= '<button id="search_button" class="top_button clean" type="button" onclick="toggle_search()">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-close2.svg');
-	$output .= '</button>';
-
-	// NOTE: Remember to add the search.js script to the footer separately
-	return $output;
-}
-
-function search_field($query = false, $fixed = false)
-{
-	$output = '';
-	if ($fixed) {
-		$output .= '<div id="fixed_search" class="">';
-	}
-
-	$output .= '
-	<form method="get" action="/" class="filters" id="search_form">
-		<div id="inline_search">
-			<input id="search_input" class="clean" type="search" name="search" title="Search for predictions" placeholder="Search for predictions" ';
-	if ($query) {
-		$output .= ' value="' . $query . '" ';
-	}
-	$output .= '/>
-			<button class="clean top_button" title="Search" form="search_form" type="submit">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/button-search.svg');
-	$output .= '</button>
-		</div>
-	</form>';
-
-	if ($fixed) {
-		$output .= '</div>';
-	}
 
 	return $output;
 }
@@ -209,9 +207,26 @@ function markdown($markdown)
 }
 
 // Return random value from an array
-function random($array)
+function random($array, $disallowed_indeces = false)
 {
-	return $array[array_rand($array)];
+	if ($disallowed_indeces !== false) {
+		// Define the initial index
+		$index = false;
+
+		// Check if index is allowed to be used
+		// If not, draw another random index
+		while (in_array($index, $disallowed_indeces)) {
+			$index = array_rand($array);
+		}
+
+		// Return an array with
+		// 0. value of the array on random index
+		// 1. and the chosen index
+		return [$array[$index], $index];
+	} else {
+		// Return the value of the array on random index
+		return $array[array_rand($array)];
+	}
 }
 
 // Round the percentage to 1 decimal if it has decimals
