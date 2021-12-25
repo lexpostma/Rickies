@@ -48,7 +48,9 @@ if (
 
 <?php
 if (array_key_exists('tag', $rickies_data)) {
-	echo banner($rickies_data['tag_banner'], $rickies_data['tag_color']);
+	foreach ($rickies_data['tag'] as $banner) {
+		echo banner($banner['banner'], $banner['color']);
+	}
 }
 
 if ($rickies_data['ranking']['rickies'] !== []) {

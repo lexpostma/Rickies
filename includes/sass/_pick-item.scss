@@ -102,7 +102,7 @@ li.pick_item {
 		p {
 			@include var.secondary-text;
 		}
-		p.category_tags,
+		p.tag_group,
 		p + p {
 			margin-top: 4px;
 		}

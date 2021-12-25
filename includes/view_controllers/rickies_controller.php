@@ -215,21 +215,25 @@ function list_item($data)
 	if (isset($data['tag']) || isset($data['label3'])) {
 		$output .= '<p class="secondary_string">';
 		if (isset($data['tag'])) {
-			// Does the tag have a color defined, yes/no?
-			$data['tag_class'] = 'tag';
-			if (!isset($data['tag_color'])) {
-				$data['tag_color'] = 'red';
-			} elseif ($data['tag_color'] == 'yellow') {
-				$data['tag_class'] .= ' contrast';
+			$output .= '<span class="tag_group">';
+			foreach ($data['tag'] as $tag) {
+				// Does the tag have a color defined, yes/no?
+				$tag['class'] = 'tag';
+				if (!isset($tag['color'])) {
+					$tag['color'] = 'red';
+				} elseif ($tag['color'] == 'yellow') {
+					$tag['class'] .= ' contrast';
+				}
+				$output .=
+					'<span class="' .
+					$tag['class'] .
+					'" style="--tag-color: var(--connected-' .
+					$tag['color'] .
+					')">' .
+					$tag['label'] .
+					'</span>';
 			}
-			$output .=
-				'<span class="' .
-				$data['tag_class'] .
-				'" style="--tag-color: var(--connected-' .
-				$data['tag_color'] .
-				')">' .
-				$data['tag'] .
-				'</span>';
+			$output .= '</span>';
 		}
 		if (isset($data['label3'])) {
 			$output .= '<span class="label3">' . $data['label3'] . '</span>';
@@ -423,7 +427,7 @@ function pick_item($data, $interactive = false, $view = [])
 			$output .= markdown($data['status_later']);
 		}
 		if ($data['categories'] && in_array('categories', $view)) {
-			$output .= '<p class="category_tags">';
+			$output .= '<p class="tag_group">';
 			foreach ($data['categories'] as $cat_data) {
 				$output .=
 					'<a class="tag ' .

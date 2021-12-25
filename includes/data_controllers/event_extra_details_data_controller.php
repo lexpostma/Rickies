@@ -96,8 +96,7 @@ $rickies_events__array[$id]['details'] = [
 		'label2' => check_key('Predictions episode alt title', $fields, false, 0),
 		'label3' => date_to_string_label(check_key('Predictions episode date', $fields, false, 0), 'air', true, true),
 		'number' => check_key('Predictions episode number', $fields, false, 0),
-		'tag' => 'Predictions',
-		'tag_color' => 'blue',
+		'tag' => ['label' => 'Predictions', 'color' => 'blue'],
 		'date' => check_key('Predictions episode date', $fields, false, 0),
 	],
 	'episode_data_results' => [
@@ -107,8 +106,7 @@ $rickies_events__array[$id]['details'] = [
 		'label2' => check_key('Results episode alt title', $fields, false, 0),
 		'label3' => date_to_string_label(check_key('Results episode date', $fields, false, 0), 'air', true, true),
 		'number' => check_key('Results episode number', $fields, false, 0),
-		'tag' => 'Results',
-		'tag_color' => 'green',
+		'tag' => ['label' => 'Results', 'color' => 'green'],
 		'date' => check_key('Results episode date', $fields, false, 0),
 	],
 

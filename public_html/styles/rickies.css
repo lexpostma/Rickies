@@ -1014,7 +1014,7 @@ li.list_item .list_item_content .list_item_labels .secondary_string {
   color: var(--text-secondary-color);
   font-size: 0.75rem;
 }
-li.list_item .list_item_content .list_item_labels .secondary_string .tag {
+li.list_item .list_item_content .list_item_labels .secondary_string .tag_group {
   margin-right: 8px;
   color: white;
 }
@@ -1194,7 +1194,7 @@ li.pick_item .note p {
   color: var(--text-secondary-color);
   font-size: 0.75rem;
 }
-li.pick_item .note p.category_tags,
+li.pick_item .note p.tag_group,
 li.pick_item .note p + p {
   margin-top: 4px;
 }
@@ -1343,10 +1343,10 @@ a.tag:hover.cat_people {
   background: var(--connected-green) !important;
 }
 
-p.category_tags {
+.tag_group {
   margin-bottom: -4px;
 }
-p.category_tags .tag {
+.tag_group .tag {
   margin-bottom: 4px;
 }
 

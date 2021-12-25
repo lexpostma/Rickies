@@ -28,7 +28,7 @@ li.list_item {
 			.secondary_string {
 				margin-top: 4px;
 				@include var.secondary-text;
-				.tag {
+				.tag_group {
 					margin-right: 8px;
 					color: white;
 				}
