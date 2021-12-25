@@ -51,12 +51,24 @@ The continuously changing rules that guide the Rickies, with the complete histor
 ![Memojis of Federico with hearts, Myke with mind blown, and Stephen with confetti, in front of a Connected dotted world map](public_html/images/seo/hero-leaderboard.jpg)
 See the hosts’ latest statistics, including an interactive timeline.
 
+### [Statistics](https://rickies.co/leaderboard#stats)
+
 -   Aside from Chairman titles, most titles on the leaderboard are randomised. Refresh a few times to see the inside japes.
 -   Nice donut charts to show the ratio of correct, wrong and unknown predictions, with hover state per section.
--   Click/tap the Chairman title holders to pop some confetti again.
+-   Click/tap the Chairman title holder avatars to pop some confetti again.
 -   Many statistics were added with v2.0, like how far a host was ahead of its time, how he performs with a coin flip and what his favourite and most successful categories are.
 -   The sub navigation shows timeline and stats, but on mobile it replaces stats with items for each host for easier navigation.
--   Charts now have a new purple section too, for wrong picks that came true after they were scored. Many of Stephen’s Risky picks came true later.
+-   Charts now have a new purple section too, for wrong picks that came true after they were scored. Many of Stephen’s **Risky** picks came true later.
+-   Note the little animations on some emoji, like the flipping coin and the pulsing orb of “ahead of its time”.
+
+### [Chairman timeline](https://rickies.co/leaderboard#timeline)
+
+-   The Chairman timeline shows which host was a chairman when and for how long.
+-   There are 2 tracks per host, for Annual and Keynote Chairman, so you can easily see how the title has moved.
+-   When the chairman bubble touched the host avatar, a ring is shown to indicate they were the chairman during that time. This show both titles together, and also the Mega Chairman (both titles).
+-   Tap the legend to show or hide one of the tracks. Enjoy the bouncy animation.
+-   You zoom in and out to change your overview.
+-   Scroll left/right to see past title on the timeline, or drag of that’s more your thing.
 
 ## [Rickies archive](https://rickies.co/archive)
 
@@ -68,9 +80,10 @@ The complete archive of all predictions ever made during the Rickies.
     -   [Buzzkiller](https://rickies.co/?search=&buzzkiller=on#results), was it a negative pick.
     -   [Ahead of its time](https://rickies.co/?search=&ahead_of_its_time=on#results), picks that were wrong when scored, but came true later. And how and when did you come true.
     -   Did the pick require [adjudication](https://rickies.co/?search=&adjudicated=on#results)?
-    -   Was the [Bill of Rickies amended](https://rickies.co/) because of this pick
-    -   What [categories](https://rickies.co/) does a pick fall into.
+    -   Was the [Bill of Rickies amended](https://rickies.co/?search=&amendment=on&#results) because of this pick
+    -   What [categories](https://rickies.co/?search=&display=&category%5B%5D=hardware#results) does a pick fall into.
 -   The archive and search results are basically the same page, just with less content. When you have an actual query, and the Archive menu item as a little reset arrow to the return to “all picks”.
+-   Note the little animations on some emoji, like when you hover on a pick and it is or is not reusable.
 
 ## [Search on Rickies](https://rickies.co/?search=promotion)
 
@@ -80,17 +93,18 @@ Search and filter all metadata of all Rickies and Flexies.
 -   Full filtering of all predictions
     -   All of the metadata from the archive above
     -   “Everything in the prediction document must come true, no half point may be awarded.” But [what if there were half points awared](https://rickies.co/?search=&half_points=on#results)?
-    -   Prediction type
-    -   Prediction result
-    -   Picks by host
+    -   [Prediction type](https://rickies.co/?search=&pick_type%5B%5D=risky#results) (regular, Risky, Flexy)
+    -   [Prediction result](https://rickies.co/?search=&status%5B%5D=correct&#results) (correct, wrong, unknown)
+    -   [Picks by host](https://rickies.co/?search=&host%5B%5D=federico#results)
     -   Picks by event or [event type](https://rickies.co/?search=&rickies_event=wwdc#results)
 -   The charts at the top depict the actual search results below. This makes it easy to compare the host’s performances based on your interest. And there’s a combined chart on the right.
 -   Notice all the little animations and UI changes when opening/closing the filters, or when resizing the window.
 -   Did you notice the hosts are sleeping when there are no results for them?
--   Categories have multiple levels. At the top level there are Hardware, Software, Service and People. The levels below are also visible. For some there’s even a level below that, but those are not visible by default because it’d be too much. But when you filter on those by clicking on a category below a pick, [they become visible](https://rickies.co/?search=&category%5B%5D=ipad-mini&category%5B%5D=imac&category%5B%5D=display#results).
+-   Categories have multiple levels. At the top level there are Hardware, Software, Service and People. More specific levels below are also visible.
+-   For some categories there’s even a level below that, but those are not visible by default because it’d be too much. But when you filter on those by clicking on a category below a pick, [they become visible](https://rickies.co/?search=&category%5B%5D=ipad-mini&category%5B%5D=imac&category%5B%5D=display#results).
 -   You can choose what metadata you want visible on the overview:
     -   [All metadata](https://rickies.co/archive) (default)
-    -   [Just the picks](https://rickies.co/?search=&display=clean#results)
+    -   [Just the picks](https://rickies.co/?search=&display=clean#results) with no extra metadata
     -   [Only the categories](https://rickies.co/?search=&display=categories#results)
     -   [Only the age and reusability](https://rickies.co/?search=&display=age#results)
 
@@ -102,6 +116,7 @@ Search and filter all metadata of all Rickies and Flexies.
 -   I had to get the artwork for The Prompt in this website somewhere. Haha, goal achieved.
 -   Other incredible fan efforts are all mentioned too.
 -   Twitter, YouTube, and GitHub [links](https://rickies.co/about#more_fan_efforts) have a little logo.
+-   The MagTricky image randomises between the different chairman magnets.
 
 ## (Standalone) web app
 
@@ -111,7 +126,7 @@ Rickie.co is optimised as a web app and takes advantage of many native features.
 
 -   Add the site to you homescreen to get the best experience, with a nice app icon, splash screen, and no browser chrome. A screen filled with Rickies content.
 -   When added to your homescreen, there is also no share button from the browser anymore. So I added a share button to the top corner, but only in standalone mode. And it opens the native share sheet you already know. If your OS does not support this, it will fall back to a simple “copy URL” action.
--   The website has support for the safe areas on your (iOS) devices. So you don’t get big black bars at top and bottom, even when you add it to your home screen.
+-   The website has support for the safe areas on your devices (like the iPhones with notch). So you don’t get big black bars at top and bottom, even when you add it to your home screen.
 -   Full support for the system light and dark mode.
 -   When added to and opened from the homescreen, you can pull to refresh the page.
 -   The rubber banding overscroll at both the top and bottom background colour matches the content of the page itself and feels more native when installed as a web app.

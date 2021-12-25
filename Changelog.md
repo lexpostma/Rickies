@@ -2,7 +2,7 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
-## 24 December 2021 v2.0
+## 25 December 2021 v2.0
 
 -   🏷 New prediction metadata like categories, whether it came true later, buzzkillers and more. Visible in the [archive](https://rickies.co/archive), [search](https://rickies.co/?search=promotion#results) and on [Rickies pages](https://rickies.co/keynote-oct-2020#flexies)
 -   🪙 New [host statistics](https://rickies.co/leaderboard#stats) for coin flips, ahead of its time, adjudication, categories and more
