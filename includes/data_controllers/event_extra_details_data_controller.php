@@ -197,8 +197,11 @@ if (
 	// Prediction episode title == '' && Results episode title == ''
 	$predictions_state = 'future';
 	$results_state = false;
-} elseif ($rickies_events__array[$id]['details']['episode_data_results']['label1'] == false) {
-	// Results episode title == ''
+} elseif (
+	$rickies_events__array[$id]['details']['episode_data_results']['label1'] == false &&
+	$rickies_events__array[$id]['details']['episode_data_results']['date'] !== false
+) {
+	// Results episode title == '' && Results episode has a date
 	$predictions_state = false;
 	$results_state = 'future';
 } else {

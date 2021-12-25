@@ -72,6 +72,13 @@ $resources = [
 		'url' => 'https://getconnectedpro.co',
 		'img_url' => '/images/connected-pro-artwork.jpg',
 	],
+	[
+		'label1' => 'MagTricky',
+		'label2' => 'Magnetic Chairman tracker',
+		// 'label3' => '',
+		'url' => 'https://magtricky.com',
+		'img_url' => '/images/about/magtricky-' . rand(1, 2) . '.jpg',
+	],
 	'More Fan Efforts',
 	[
 		'label1' => 'Rickipedia',
@@ -86,6 +93,14 @@ $resources = [
 		'label3' => 'By Majd Koshakji<br />Shared in Discord on <time datetime="2021-03-24">March 24, 2021</time>',
 		'url' => 'https://www.notion.so/Connected-262725156a0041bd9b0248c172862cb0',
 		'img_url' => '/images/about/notion.png',
+	],
+	[
+		'label1' => 'The Official Trophy (Late 2021)',
+		// 'label2' => '',
+		'label3' =>
+			'By Matt VanOrmer<br />Unpacked in episode #368 on <time datetime="2021-10-20">October 20, 2021</time>',
+		'url' => 'https://www.peerreviewed.io/blog/2021/10/20/scorekeeping-across-borders',
+		'img_url' => '/images/about/official-trophy-2021.jpg',
 	],
 	[
 		'label1' => 'The Bill of Rickies',

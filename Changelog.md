@@ -26,6 +26,10 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 
 ---
 
+### 28 October 2021
+
+-   Updated [About](https://rickies.co/about) page to include the official Rickies Trophy by Matt VanOrmer, and the new MagTricky chairman magnets
+
 ### 14 October 2021
 
 -   Replace the back button with a navigation bar in a few places, for easier navigation
