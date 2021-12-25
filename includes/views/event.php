@@ -133,7 +133,7 @@ if (
 ) {
 	echo '<script>';
 
-	if ($rickies_data['status'] == 'Pre-Rickies' || $rickies_data['date'] < $rickies_start) {
+	if ($rickies_data['special'] == 'Pre-Rickies' || $rickies_data['date'] < $rickies_start) {
 		echo "var rickies_alt = 'Predictions';";
 	}
 
