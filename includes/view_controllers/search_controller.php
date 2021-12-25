@@ -154,7 +154,8 @@ $filterByFormula .= "
 	Pick,
 	{Host name} ,
 	Type,
-	{Round set}
+	{Round set},
+	OR(Special='Rickies', Special='Pre-Rickies')
 )";
 
 // Get all (within the formula) picks from Airtable
