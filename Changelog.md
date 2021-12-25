@@ -71,7 +71,7 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 ### 27 May 2021
 
 -   Fix for new emoji on unsupported devices overlapping with text
--   Add `<time>` tags to better SEO
+-   Add `<time>` tags for better SEO
 
 ## 26 May 2021 v1.0
 
