@@ -20,7 +20,14 @@
 
 
 
-<?= navigation_bar() . no_script_banner() ?>
+<?php
+if (!isset($triple_j)) {
+	echo navigation_bar();
+} else {
+	echo navigation_bar(false, true);
+}
+echo no_script_banner();
+?>
 
 <section><?= $introduction ?></section>
 

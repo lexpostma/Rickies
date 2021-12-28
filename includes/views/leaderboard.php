@@ -4,7 +4,12 @@
 </header>
 
 <?php
-echo navigation_bar('leaderboard');
+if (!isset($triple_j)) {
+	echo navigation_bar('leaderboard');
+} else {
+	echo navigation_bar('leaderboard', true);
+}
+
 echo no_script_banner('Charts can’t be shown with Javascript disabled'),
 	'<section>' . $introduction . '</section>',
 	avatar_leaderboard($leaderboard_data);
@@ -82,7 +87,7 @@ echo no_script_banner('Charts can’t be shown with Javascript disabled'),
 </nav>
 
 <?php
-if ($url_view == 'leaderboard') {
+if (!isset($tripje_j)) {
 	echo chairman_timeline($hosts_data__array, $timeline_array),
 		'<script>' . file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/timeline.js') . '</script>';
 }

@@ -7,7 +7,13 @@
 </header>
 
 <?php
-echo navigation_bar($url_view) . no_script_banner();
+if (!isset($triple_j)) {
+	echo navigation_bar($url_view);
+} else {
+	echo navigation_bar($url_view, true);
+}
+
+echo no_script_banner();
 
 if (empty($picks_data__array)) {
 	if (!empty($pick_filter['search'])) {
