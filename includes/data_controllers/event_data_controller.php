@@ -181,12 +181,14 @@ do {
 		} elseif (isset($rickies_filter)) {
 			// Countable, but no Rickies (0 results), but filter is set
 			if ($rickies_filter == 'Ungraded') {
-				$rickies_title_string = 'ungraded';
+				$rickies_title_string = 'ungraded Rickies';
+			} elseif ($rickies_filter == 'Pickies') {
+				$rickies_title_string = 'Pickies';
 			} else {
-				$rickies_title_string = $rickies_filter;
+				$rickies_title_string = $rickies_filter . ' Rickies';
 			}
 			$rickies_filter_empty =
-				'No ' . $rickies_title_string . ' Rickies were found. <a href="/#list">Show all Rickies</a>.';
+				'No ' . $rickies_title_string . ' were found. <a href="/#list">Show all Rickies</a>.';
 		} else {
 			// Countable, but no Rickies (0 results) and no filter
 			// Continue with 404 error
