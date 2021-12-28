@@ -10,12 +10,10 @@ switch ($url_view) {
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
 		break;
+	case '3j-leaderboard':
+		// Leaderboard of Triple J Pickies
+		$triple_j = true;
 	case 'leaderboard':
-		// Leaderboard query
-		include '../includes/view_controllers/leaderboard_controller.php';
-		$include_subbody = '../includes/views/leaderboard.php';
-		break;
-	case 'triple-j':
 		// Leaderboard query
 		include '../includes/view_controllers/leaderboard_controller.php';
 		$include_subbody = '../includes/views/leaderboard.php';
@@ -25,6 +23,9 @@ switch ($url_view) {
 		include '../includes/view_controllers/about_controller.php';
 		$include_subbody = '../includes/views/about.php';
 		break;
+	case '3j-archive':
+		// Archive of Triple J Pickies
+		$triple_j = true;
 	case 'archive':
 	case 'search':
 		// Search query
@@ -33,41 +34,47 @@ switch ($url_view) {
 		$back_to_overview = true;
 		break;
 	case 'wwdc':
-		$rickies_filter = 'WWDC';
-		include '../includes/view_controllers/rickies_list_controller.php';
-		$include_subbody = '../includes/views/rickies.php';
-		break;
 	case 'annual':
-		$rickies_filter = 'Annual';
-		include '../includes/view_controllers/rickies_list_controller.php';
-		$include_subbody = '../includes/views/rickies.php';
-		break;
 	case 'keynote':
-		$rickies_filter = 'Keynote';
-		include '../includes/view_controllers/rickies_list_controller.php';
-		$include_subbody = '../includes/views/rickies.php';
-		break;
 	case 'ungraded':
-		$rickies_filter = 'Ungraded';
-		include '../includes/view_controllers/rickies_list_controller.php';
-		$include_subbody = '../includes/views/rickies.php';
-		break;
+	case 'pickies':
 	case 'preview':
-		$rickies_filter = 'Preview';
-		$previewing_content = true;
+		switch ($url_view) {
+			case 'wwdc':
+				$rickies_filter = 'WWDC';
+				break;
+			case 'annual':
+				$rickies_filter = 'Annual';
+				break;
+			case 'keynote':
+				$rickies_filter = 'Keynote';
+				break;
+			case 'pickies':
+				$triple_j = true;
+				$rickies_filter = 'Pickies';
+				break;
+			case 'ungraded':
+				$rickies_filter = 'Ungraded';
+				break;
+			case 'preview':
+				$rickies_filter = 'Preview';
+				$previewing_content = true;
+				break;
+		}
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
-		break;
+
 	case 'latest':
-		$auto_select_rickies = 'latest';
-		include '../includes/view_controllers/rickies_list_controller.php';
-		break;
 	case 'latest-keynote':
-		$auto_select_rickies = 'keynote';
-		include '../includes/view_controllers/rickies_list_controller.php';
-		break;
 	case 'latest-annual':
-		$auto_select_rickies = 'annual';
+		switch ($url_view) {
+			case 'latest':
+				$auto_select_rickies = 'latest';
+			case 'latest-keynote':
+				$auto_select_rickies = 'keynote';
+			case 'latest-annual':
+				$auto_select_rickies = 'annual';
+		}
 		include '../includes/view_controllers/rickies_list_controller.php';
 		break;
 	default:
