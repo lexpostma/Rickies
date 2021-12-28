@@ -24,7 +24,7 @@ if (isset($_GET['reusable']) && $_GET['reusable'] === 'on') {
 	$pick_filter['filter_other']['reusable'] = '{Eligible for reuse}=TRUE()';
 }
 
-if (isset($_GET['3j']) && $_GET['3j'] === 'on') {
+if ((isset($_GET['3j']) && $_GET['3j'] === 'on') || isset($triple_j)) {
 	$triple_j = true;
 	$pick_filter['filter_other']['3j'] = 'Special="Pickies"';
 }

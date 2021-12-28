@@ -2,7 +2,7 @@
 
 function define_score_chart_id($host, $type)
 {
-	return 'chart_' . strtolower($host) . '_' . strtolower($type);
+	return 'chart_' . str_replace(' ', '_', strtolower($host)) . '_' . str_replace(' ', '_', strtolower($type));
 }
 
 // Define score charts

@@ -43,9 +43,10 @@ do {
 				'buzzkill' => check_key('Buzzkill string', $fields),
 				'amendment' => check_key('Amendment string', $fields),
 				'last_edited' => check_key('Last edit date', $fields),
+				'categories' => check_key('Category', $fields),
 			];
 
-			if (check_key('Category', $fields)) {
+			if ($picks_data__array_temp['categories']) {
 				$cat_strings = explode(';', check_key('Categories flat', $fields));
 				$cat_keys = explode(';', check_key('Categories flat (web)', $fields));
 
@@ -81,8 +82,6 @@ do {
 
 				$picks_data__array_temp['categories_compare'] = $pick_categories_compare;
 				unset($pick_categories_compare);
-			} else {
-				$picks_data__array_temp['categories'] = false;
 			}
 			// Add pick to array
 			array_push(

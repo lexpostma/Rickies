@@ -262,6 +262,12 @@ if (!isset($triple_j)) {
 	}
 }
 
+// Rewrite the "All hosts" chart count
+if (isset($triple_j)) {
+	$picks_chart__array['Triple J'] = $picks_chart__array['All'];
+	unset($picks_chart__array['All']);
+}
+
 // Define SEO for search/archive page
 if (!isset($triple_j)) {
 	$rickies = 'Rickies';
