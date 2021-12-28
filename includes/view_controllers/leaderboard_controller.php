@@ -337,12 +337,14 @@ foreach ($hosts_data__array as $host) {
 		strpos($set['title'], 'Consolidated Champion') !== false ||
 		(strpos($set['title'], 'Shindig King') && strpos($set['title'], 'Admiral Pickerton'))
 	) {
+		// Combined winner
 		$set['winner'] = 2;
 	} elseif (
 		strpos($set['title'], 'chairman') !== false ||
 		strpos($set['title'], 'Shindig King') ||
 		strpos($set['title'], 'Admiral Pickerton')
 	) {
+		// Single winner
 		$set['winner'] = true;
 	}
 
