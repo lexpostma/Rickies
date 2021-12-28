@@ -101,6 +101,29 @@ do {
 					}
 				}
 
+				switch ($rickies_events__array[$id]['special']) {
+					case 'Pickies':
+						// Holiday special for Pickies with Triple J
+						$triple_j = true;
+						// TODO: Interactivity overwritten until scoring is defined
+						$rickies_events__array[$id]['interactive'] = false;
+						$rickies_events__array[$id]['tag'][] = [
+							'label' => $rickies_events__array[$id]['special'],
+							'color' => 'purple',
+							'banner' =>
+								'The Pickies are a holiday special episode, high jacked by the Triple J. It has different hosts and different rules',
+						];
+						break;
+					case 'Pre-Rickies':
+						// Pre-Rickies
+						$rickies_events__array[$id]['tag'][] = [
+							'label' => $rickies_events__array[$id]['special'],
+							'color' => 'yellow',
+							'banner' => 'These predictions predate The Rickies and are not officially graded as such',
+						];
+						break;
+				}
+
 				if (!$rickies_event_data_set) {
 					// Only the details needed for the Rickies overview
 					$rickies_events__array[$id]['label1'] = $rickies_events__array[$id]['name'];
@@ -120,14 +143,22 @@ do {
 				switch ($rickies_events__array[$id]['status']) {
 					case 'Ungraded':
 						// Ungraded Rickies
-						$rickies_events__array[$id]['tag'][] = [
-							'label' => 'Interactive',
-							'color' => 'orange',
-							'banner' =>
-								'<b>Interactive scorecard</b><br /><span>Grade the Rickies and Flexies yourself until the official results are in. Tap the picks to cycles through unknown, correct, and wrong states. <a class="clean js_link nowrap" onclick="clear_manual_score(this)" data-goatcounter-click="Clear interactive picks" title="Clear manual scores" data-goatcounter-referrer=' .
-								current_url() .
-								'>Clear manual scores</a></span>',
-						];
+						if ($rickies_events__array[$id]['interactive']) {
+							$rickies_events__array[$id]['tag'][] = [
+								'label' => 'Interactive',
+								'color' => 'orange',
+								'banner' =>
+									'<b>Interactive scorecard</b><br /><span>Grade the Rickies and Flexies yourself until the official results are in. Tap the picks to cycles through unknown, correct, and wrong states. <a class="clean js_link nowrap" onclick="clear_manual_score(this)" data-goatcounter-click="Clear interactive picks" title="Clear manual scores" data-goatcounter-referrer=' .
+									current_url() .
+									'>Clear manual scores</a></span>',
+							];
+						} else {
+							$rickies_events__array[$id]['tag'][] = [
+								'label' => 'Ungraded',
+								'color' => 'orange',
+								'banner' => '<span>Ungraded until the official results are in.</span>',
+							];
+						}
 						break;
 					case 'Pending':
 						// Pending Rickies
@@ -154,26 +185,6 @@ do {
 								'Updating now…<br /><a href="https://relay.fm/live" data-goatcounter-click="Relay live" title="Listen live" data-goatcounter-referrer="' .
 								current_url() .
 								'" >Listen live to the episode</a>',
-						];
-						break;
-				}
-
-				switch ($rickies_events__array[$id]['special']) {
-					case 'Pickies':
-						// Holiday special for Pickies
-						$rickies_events__array[$id]['tag'][] = [
-							'label' => $rickies_events__array[$id]['special'],
-							'color' => 'purple',
-							'banner' =>
-								'The Pickies are a holiday special episode, high jacked by the Triple J. It has different hosts and different rules',
-						];
-						break;
-					case 'Pre-Rickies':
-						// Pre-Rickies
-						$rickies_events__array[$id]['tag'][] = [
-							'label' => $rickies_events__array[$id]['special'],
-							'color' => 'yellow',
-							'banner' => 'These predictions predate The Rickies and are not officially graded as such',
 						];
 						break;
 				}

@@ -2,10 +2,17 @@
 
 // Rickies picks _data_ controller
 
-$picks_data__empty = $picks_data__array = [
-	'Rickies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
-	'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
-];
+if (!isset($triple_j)) {
+	$picks_data__empty = $picks_data__array = [
+		'Rickies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
+		'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
+	];
+} else {
+	$picks_data__empty = $picks_data__array = [
+		'Pickies' => ['Jason' => [], 'John' => [], 'James' => []],
+		'Lightning Round' => ['Jason' => [], 'John' => [], 'James' => []],
+	];
+}
 
 $picks_data__request = $airtable->getContent('Picks', $picks_data__params);
 do {

@@ -385,14 +385,20 @@ function pick_item($data, $interactive = false, $view = [])
 	// If it's not a Flexy, the picks are in 3 rounds
 	if (in_array('search', $view)) {
 		$pick_link =
-			'<a href="/' . $data['url'] . '#' . strtolower($data['type_group']) . '">' . $data['rickies'] . '</a>';
+			'<a href="/' .
+			$data['url'] .
+			'#' .
+			str_replace(' ', '_', strtolower($data['type_group'])) .
+			'">' .
+			$data['rickies'] .
+			'</a>';
 	}
 
-	if (in_array('search', $view) && $data['type'] !== 'Flexy') {
+	if (in_array('search', $view) && $data['type'] !== 'Flexy' && $data['type'] !== 'Lightning') {
 		$output .= '<span class="round">' . $pick_link . ' • <span class="nowrap">' . $data['round'] . '</span></span>';
 	} elseif (in_array('search', $view)) {
 		$output .= '<span class="round">' . $pick_link . '</span>';
-	} elseif ($data['type'] !== 'Flexy') {
+	} elseif ($data['type'] !== 'Flexy' && $data['type'] !== 'Lightning') {
 		$output .= '<span class="round">' . $data['round'] . '</span>';
 	}
 
@@ -479,9 +485,9 @@ function pick_item_bundle($data, $interactive = false, $view = [])
 	foreach ($data as $type => $hosts) {
 		$output .=
 			'<section class="navigate_with_mobile_menu large_columns" id="' .
-			strtolower($type) .
+			str_replace(' ', '_', strtolower($type)) .
 			'"><h2 class="section_title">';
-		if (!in_array('search', $view)) {
+		if (!in_array('search', $view) && $type !== 'Lightning Round') {
 			$output .= 'The ';
 		}
 		$output .= $type . '</h2><div class="section_group">';
@@ -528,17 +534,22 @@ function pick_item_bundle($data, $interactive = false, $view = [])
 				'_' .
 				strtolower($host) .
 				'"><h3>' .
-				$host .
-				'<span class="host_score">';
-			if ($type == 'Rickies') {
-				// Rickies have points
-				$output .= plural_points($score['points']) . ' • ' . $score['correct'] . '/' . $score['count'];
-			} elseif ($score['count'] !== 0) {
-				// Flexies have ratio, but only for more than 0 picks
-				$output .= $score['percentage'] . '% • ' . $score['correct'] . '/' . $score['count'];
+				$host;
+
+			if ($type == 'Rickies' || $type == 'Flexies') {
+				// TODO: Define scoring for Pickies
+				$output .= '<span class="host_score">';
+				if ($type == 'Rickies') {
+					// Rickies have points
+					$output .= plural_points($score['points']) . ' • ' . $score['correct'] . '/' . $score['count'];
+				} elseif ($score['count'] !== 0) {
+					// Flexies have ratio, but only for more than 0 picks
+					$output .= $score['percentage'] . '% • ' . $score['correct'] . '/' . $score['count'];
+				}
+				$output .= '</span>';
 			}
 
-			$output .= '</span></h3><ul class="list_item_group">' . $pick_items . '</ul></div>';
+			$output .= '</h3><ul class="list_item_group">' . $pick_items . '</ul></div>';
 		}
 		$output .= '</div></section>';
 	}

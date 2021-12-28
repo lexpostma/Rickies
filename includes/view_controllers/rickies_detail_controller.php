@@ -13,6 +13,9 @@ foreach ($rickies_data['hosts'] as $host) {
 		'Federico' => 'Picker of Passion',
 		'Myke' => 'Risk Taker',
 		'Stephen' => 'Document Maintainer',
+		'Jason' => 'Document Maintainer',
+		'John' => 'One True John',
+		'James' => 'The Dicy One',
 	];
 
 	// Define array
@@ -102,7 +105,7 @@ if (isset($leaderboard_order)) {
 
 // echo "<pre>", var_dump($leaderboard_data), "</pre>";
 
-function host_item_bundle($host_event_data, $event_type)
+function host_item_bundle($host_event_data, $event_type, $triple_j = false)
 {
 	$output = '<section class="navigate_with_mobile_menu large_columns" id="hosts">
 	<h2>Hosts</h2>
@@ -189,6 +192,12 @@ function host_item_bundle($host_event_data, $event_type)
 			'color' => $event_details['details']['color'],
 		];
 
+		if (!$triple_j) {
+			$leaderboard_url = '/leaderboard#' . strtolower($event_details['details']['first_name']);
+		} else {
+			$leaderboard_url = '/3j-leaderboard#' . strtolower($event_details['details']['first_name']);
+		}
+
 		$output .=
 			'
 <div class="section_group--list">
@@ -198,8 +207,8 @@ function host_item_bundle($host_event_data, $event_type)
 			list_item_graphic($avatar_img_array) .
 			'
 				<div class="list_item_labels">
-					<h3><a href="/leaderboard#' .
-			strtolower($event_details['details']['first_name']) .
+					<h3><a href="' .
+			$leaderboard_url .
 			'">' .
 			$event_details['details']['full_name'] .
 			'</a></h3>
@@ -240,6 +249,12 @@ function host_item_bundle($host_event_data, $event_type)
 
 // Define SEO description
 $description = 'The predictions show of Connected on Relay FM. ';
+if (!isset($triple_j)) {
+	$host_string = 'Myke, Stephen, and Federico';
+} else {
+	$host_string = 'the Triple J';
+}
+
 if (
 	$rickies_data['type'] == 'annual' &&
 	($rickies_data['status'] == 'Ungraded' || $rickies_data['status'] == 'Live' || $rickies_data['status'] == 'Pending')
@@ -254,7 +269,9 @@ if (
 	$description .=
 		'What has Apple announced in ' .
 		strftime('%Y', $rickies_data['date']) .
-		'? And how did Myke, Stephen, and Federico perform with their yearly predictions?';
+		'? And how did ' .
+		$host_string .
+		' perform with their yearly predictions?';
 } elseif (
 	$rickies_data['status'] == 'Ungraded' ||
 	$rickies_data['status'] == 'Live' ||
@@ -270,7 +287,9 @@ if (
 	$description .=
 		'What has Apple announced at the keynote on ' .
 		date_to_string_label($rickies_data['details']['link_data_apple']['date']) .
-		'? And how did Myke, Stephen, and Federico perform with their predictions for this event?';
+		'? And how did ' .
+		$host_string .
+		' perform with their predictions for this event?';
 }
 
 $head_custom = [
