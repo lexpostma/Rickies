@@ -24,6 +24,11 @@ if (isset($_GET['reusable']) && $_GET['reusable'] === 'on') {
 	$pick_filter['filter_other']['reusable'] = '{Eligible for reuse}=TRUE()';
 }
 
+if (isset($_GET['3j']) && $_GET['3j'] === 'on') {
+	$triple_j = true;
+	$pick_filter['filter_other']['3j'] = 'Special="Pickies"';
+}
+
 if (isset($_GET['buzzkiller']) && $_GET['buzzkiller'] === 'on') {
 	$pick_filter['filter_other']['buzzkiller'] = '{Negative pick}';
 }
@@ -125,14 +130,13 @@ if (!empty($pick_filter['filter_other'])) {
 	$filterByFormula .= implode(',', $pick_filter['filter_other']) . ',';
 }
 
-// Here the Pickies are excluded
+// Here the Pickies are in/excluded
 if (!isset($triple_j)) {
 	$filterByFormula .= "
 	OR(Special='Rickies', Special='Pre-Rickies'),";
-} else {
-	$filterByFormula .= "
-	Special='Pickies',";
 }
+
+// Finishing up the formula with the default pick requirements
 $filterByFormula .= "
 	Pick,
 	{Host name} ,

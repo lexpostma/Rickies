@@ -183,6 +183,11 @@ do {
 						],
 					],
 				];
+				unset($ricky);
+				unset($flexing);
+				unset($fp);
+				unset($search);
+
 				if (check_key('Categories', $fields)) {
 					$hosts_data__array[$id]['stats']['picks_strings']['fav_categories'] = [
 						'value' => frequent_in_array(explode(';', check_key('Categories', $fields)))[0],

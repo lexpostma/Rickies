@@ -2337,8 +2337,10 @@ mark {
   }
 }
 #pick_filter_sheet > .content > fieldset.hosts {
+  position: relative;
   justify-content: center;
   align-items: center;
+  padding-bottom: var(--space-between-lg);
 }
 #pick_filter_sheet > .content > fieldset.hosts .host {
   flex-basis: calc(100% / 3);
@@ -2394,6 +2396,19 @@ mark {
 #pick_filter_sheet > .content > fieldset.hosts .host + .host {
   margin-left: var(--space-between-md);
 }
+#pick_filter_sheet > .content > fieldset.hosts .triple_j_filter {
+  position: absolute;
+  bottom: var(--space-between-sm);
+  right: var(--space-between-sm);
+  font-size: 0.75em;
+}
+#pick_filter_sheet > .content > fieldset.hosts .triple_j_filter label {
+  padding-left: 4px;
+}
+#pick_filter_sheet > .content > fieldset.hosts .triple_j_filter input[type=checkbox] {
+  margin-right: 0;
+  margin-left: 4px;
+}
 #pick_filter_sheet > .content > fieldset.categories {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2448,6 +2463,9 @@ mark {
   align-items: flex-start;
   flex-wrap: wrap;
   border-radius: 5px;
+}
+#pick_filter_sheet > .content > fieldset .filter_option.hidden {
+  display: none;
 }
 @media (hover: hover) {
   #pick_filter_sheet > .content > fieldset .filter_option:hover {

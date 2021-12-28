@@ -2,7 +2,7 @@
 <header class="search">
 	<div class="gradient"></div>
 	<h1><?= $head_custom['title'] ?></h1>
-	<?= pick_filter_element($pick_filter, false, $categories__array, $rickies_events_options) ?>
+	<?= pick_filter_element($pick_filter, false, false, $categories__array, $rickies_events_options) ?>
 
 </header>
 

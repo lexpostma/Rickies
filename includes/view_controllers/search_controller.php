@@ -263,31 +263,33 @@ if (!isset($triple_j)) {
 }
 
 // Define SEO for search/archive page
-if ($url_view == 'archive') {
+if (!isset($triple_j)) {
+	$rickies = 'Rickies';
+	$hero = 'hero';
+} else {
+	$rickies = 'Pickies';
+	$hero = 'hero-3j';
+}
+
+if ($url_view == 'archive' || $url_view == '3j-archive') {
 	$head_custom = [
-		'title' => 'Rickies archive',
-		'description' => 'Archive of all Rickies predictions.',
-		'image' => domain_url() . '/images/seo/hero-archive.jpg',
+		'title' => $rickies . ' archive',
+		'description' => 'Archive of all ' . $rickies . ' predictions.',
+		'image' => domain_url() . '/images/seo/' . $hero . '-archive.jpg',
 	];
 
-	$h1 = 'Rickies archive';
-} elseif ($url_view == '3j-archive') {
-	$head_custom = [
-		'title' => 'Pickies archive',
-		'description' => 'Archive of all Pickies predictions.',
-		'image' => domain_url() . '/images/seo/hero-archive-pickies.jpg',
-	];
-
-	$h1 = 'Rickies archive';
+	$h1 = $rickies . ' archive';
 } elseif (!empty($pick_filter['search'])) {
 	if (strlen($pick_filter['search']['string']) < 20) {
 		// If string is less than 20 characters, show full string in title
 		$head_custom['title'] =
-			'Search Rickies for ‘' . htmlentities($pick_filter['search']['string'], ENT_QUOTES, 'UTF-8') . '’';
+			'Search ' . $rickies . ' for ‘' . htmlentities($pick_filter['search']['string'], ENT_QUOTES, 'UTF-8') . '’';
 	} else {
 		// Else, truncate the string at 16 characters
 		$head_custom['title'] =
-			'Search Rickies for ‘' .
+			'Search ' .
+			$rickies .
+			' for ‘' .
 			htmlentities(substr($pick_filter['search']['string'], 0, 16), ENT_QUOTES, 'UTF-8') .
 			'…’';
 	}
@@ -296,13 +298,15 @@ if ($url_view == 'archive') {
 		' picks were found while searching for ‘' .
 		$pick_filter['search']['string'] .
 		'’ on Rickies.co.';
-	$head_custom['image'] = domain_url() . '/images/seo/hero-search.jpg';
+	$head_custom['image'] = domain_url() . '/images/seo/' . $hero . '-search.jpg';
 } else {
-	$head_custom['title'] = 'Search for Rickies';
+	$head_custom['title'] = 'Search for ' . $rickies;
 	$head_custom['description'] =
 		$picks_chart__array['All']['Total'] . ' picks were found while searching and filtering on Rickies.co.';
-	$head_custom['image'] = domain_url() . '/images/seo/hero-search.jpg';
+	$head_custom['image'] = domain_url() . '/images/seo/' . $hero . '-search.jpg';
 }
+unset($rickies);
+unset($hero);
 
 // Add the enabled filters to the SEO description
 if (!empty($pick_filter['filter_other']) || !empty($pick_filter['filter_categories'])) {
