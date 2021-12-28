@@ -114,6 +114,22 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('flexies');"><?= $picks_type_count['Flexies'] ?></a>
 <?php }
+if (array_key_exists('Pickies', $picks_data__array)) { ?>
+			<a class="menu_item js_link"
+				id="menu_pickies"
+				title="Pickies"
+				data-goatcounter-click="Show Pickies"
+				data-goatcounter-referrer="<?= current_url() ?>"
+				onclick="navigate_section('pickies');"><?= $picks_type_count['Pickies'] ?></a>
+<?php }
+if (array_key_exists('Lightning Round', $picks_data__array)) { ?>
+			<a class="menu_item js_link"
+				id="menu_lightning_round"
+				title="Lightning Rounds"
+				data-goatcounter-click="Show Lightning Rounds"
+				data-goatcounter-referrer="<?= current_url() ?>"
+				onclick="navigate_section('lightning_round');"><?= $picks_type_count['Lightning Round'] ?></a>
+<?php }
 ?>
 			<a class="menu_item js_link menu_top"
 				title="Search at the top"

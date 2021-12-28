@@ -86,6 +86,7 @@ if ($focus_site == 'rickies') { ?>
 if (
 	$url_view == 'leaderboard' ||
 	$url_view == '3j-leaderboard' ||
+	$url_view == '3j-archive' ||
 	$url_view == 'archive' ||
 	$url_view == 'search'
 ) { ?>

@@ -28,7 +28,7 @@ if ($url_view == 'search' || $url_view == 'archive') {
 	echo '<script src="/scripts/accordion.js"></script>';
 }
 
-if ($url_view == 'search' || $url_view == 'archive' || $url_view == 'about') { ?>
+if ($url_view == 'search' || $url_view == 'archive' || $url_view == '3j-archive' || $url_view == 'about') { ?>
 
 <script>
 	var mainNav = document.querySelectorAll('.nav_content.multicolor')[0];
