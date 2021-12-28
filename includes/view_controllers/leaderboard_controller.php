@@ -319,9 +319,19 @@ foreach ($hosts_data__array as $host) {
 			'color' => $host['personal']['color'],
 		],
 	];
-	if (strpos($set['title'], 'Mega Chairman') !== false || strpos($set['title'], 'Consolidated Champion') !== false) {
+	unset($string);
+
+	if (
+		strpos($set['title'], 'Mega Chairman') !== false ||
+		strpos($set['title'], 'Consolidated Champion') !== false ||
+		(strpos($set['title'], 'Shindig King') && strpos($set['title'], 'Admiral Pickerton'))
+	) {
 		$set['winner'] = 2;
-	} elseif (strpos($set['title'], 'chairman') !== false) {
+	} elseif (
+		strpos($set['title'], 'chairman') !== false ||
+		strpos($set['title'], 'Shindig King') ||
+		strpos($set['title'], 'Admiral Pickerton')
+	) {
 		$set['winner'] = true;
 	}
 
