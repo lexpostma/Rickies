@@ -128,24 +128,41 @@ $rickies_events__array[$id]['details'] = [
 		'label2' => '$' . check_key('Flexy donation', $fields) . ' donated by ' . check_key('Flexies 3rd', $fields),
 		'label3' => check_key('Flexies 1st', $fields) . '’s choice',
 	],
-
 	// More data
 	'more_title' => 'More',
-	'more_data_rules' => [
+];
+
+if (!isset($triple_j)) {
+	$rickies_events__array[$id]['details']['more_data_rules'] = [
 		'url' => '/billof/' . $rickies_events__array[$id]['url_name'],
 		'url_internal' => true,
 		'img_url' => '/images/bill-of-rickies-avatar.png',
 		'label1' => 'The Bill of Rickies',
 		'label3' => 'As of these ' . $rickies_events__array[$id]['type_string'],
-	],
-	'more_data_archive' => [
+	];
+	$rickies_events__array[$id]['details']['more_data_archive'] = [
 		'url' => filter_url('&rickies_event=' . $rickies_events__array[$id]['url_name']),
 		'url_internal' => true,
 		'img_url' => '/images/archive-avatar.png',
 		'label1' => 'Show picks in archive',
 		'label3' => 'Complete with metadata and filter options',
-	],
-];
+	];
+} else {
+	$rickies_events__array[$id]['details']['more_data_rules'] = [
+		'url' => '/charter/' . $rickies_events__array[$id]['url_name'],
+		'url_internal' => true,
+		'img_url' => '/images/pickies-charter-avatar.png',
+		'label1' => 'The Pickies Charter',
+		'label3' => 'As of these ' . $rickies_events__array[$id]['type_string'],
+	];
+	$rickies_events__array[$id]['details']['more_data_archive'] = [
+		'url' => filter_url('&3j=on&rickies_event=' . $rickies_events__array[$id]['url_name']),
+		'url_internal' => true,
+		'img_url' => '/images/archive-avatar.png',
+		'label1' => 'Show picks in archive',
+		'label3' => 'Complete with metadata and filter options',
+	];
+}
 
 // Link data
 if (

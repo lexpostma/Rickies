@@ -38,7 +38,11 @@ function navigate_section(section, first = false) {
 	// and the accompanying menu item too
 	// so that there's something to see when user resizes window
 	if (section == 'stats') {
-		var col_id = 'myke';
+		if (!triple_j) {
+			var col_id = 'myke';
+		} else {
+			var col_id = 'jason';
+		}
 		document.getElementById('menu_' + col_id).classList.add('active');
 	} else {
 		var col_id = section;

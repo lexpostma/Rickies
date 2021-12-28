@@ -7,10 +7,18 @@ main {
 	background-image: url(/images/parchment-border/light-top.png), url(/images/parchment-border/light-left.png),
 		url(/images/parchment-border/light-right.png), url(/images/parchment-border/light-bottom.png),
 		linear-gradient(170deg, #ffffff 0.21%, #f1f1f1 98.37%), url(/images/parchment-background.jpg);
+	&.charter {
+		background-image: url(/images/parchment-border/charter-top.png), url(/images/parchment-border/charter-left.png),
+			url(/images/parchment-border/charter-right.png), url(/images/parchment-border/charter-bottom.png),
+			linear-gradient(170deg, #ffffff 0.21%, #f1f1f1 98.37%), url(/images/parchment-background.jpg);
+	}
 	@media (prefers-color-scheme: dark) {
-		background-image: url(/images/parchment-border/dark-top.png), url(/images/parchment-border/dark-left.png),
-			url(/images/parchment-border/dark-right.png), url(/images/parchment-border/dark-bottom.png),
-			linear-gradient(170deg, #0e0e0e 0.21%, #1e1e1e 98.37%), url(/images/parchment-background.jpg);
+		&,
+		&.charter {
+			background-image: url(/images/parchment-border/dark-top.png), url(/images/parchment-border/dark-left.png),
+				url(/images/parchment-border/dark-right.png), url(/images/parchment-border/dark-bottom.png),
+				linear-gradient(170deg, #0e0e0e 0.21%, #1e1e1e 98.37%), url(/images/parchment-background.jpg);
+		}
 	}
 	background-repeat: repeat-x, repeat-y, repeat-y, repeat-x, no-repeat, no-repeat;
 	background-size: auto 32px, 32px auto, 32px auto, auto 32px, cover, cover;
@@ -58,17 +66,31 @@ main {
 			url(/images/parchment-border/light-right.png), url(/images/parchment-border/light-bottom.png),
 			radial-gradient(107.69% 64.1% at 50.13% 51.34%, rgba(255, 245, 225, 0.7) 0%, rgba(255, 218, 184, 0.7) 100%),
 			url(/images/parchment-background.jpg);
-
-		background-position: left top, left top, right top, right bottom, center, center;
-		@media (prefers-color-scheme: dark) {
-			background-image: url(/images/parchment-border/dark-top.png), url(/images/parchment-border/dark-left.png),
-				url(/images/parchment-border/dark-right.png), url(/images/parchment-border/dark-bottom.png),
+		&.charter {
+			background-image: url(/images/parchment-border/charter-top.png),
+				url(/images/parchment-border/charter-left.png), url(/images/parchment-border/charter-right.png),
+				url(/images/parchment-border/charter-bottom.png),
 				radial-gradient(
 					107.69% 64.1% at 50.13% 51.34%,
-					rgba(255, 227, 170, 0.7) 0%,
-					rgba(255, 155, 63, 0.7) 100%
+					rgba(255, 245, 225, 0.7) 0%,
+					rgba(255, 218, 184, 0.7) 100%
 				),
 				url(/images/parchment-background.jpg);
+		}
+		background-position: left top, left top, right top, right bottom, center, center;
+		@media (prefers-color-scheme: dark) {
+			&,
+			&.charter {
+				background-image: url(/images/parchment-border/dark-top.png),
+					url(/images/parchment-border/dark-left.png), url(/images/parchment-border/dark-right.png),
+					url(/images/parchment-border/dark-bottom.png),
+					radial-gradient(
+						107.69% 64.1% at 50.13% 51.34%,
+						rgba(255, 227, 170, 0.7) 0%,
+						rgba(255, 155, 63, 0.7) 100%
+					),
+					url(/images/parchment-background.jpg);
+			}
 		}
 		font-family: -apple-system-ui-serif, ui-serif, Georgia, serif;
 		h1,

@@ -40,7 +40,7 @@ $rickies_events__params = [
 	'sort' => $airtable_sorting,
 ];
 include '../includes/data_controllers/event_data_controller.php';
-$home = $latest = $latest_keynote = $latest_annual = $ungraded_filter = $wwdc_filter = $keynote_filter = $annual_filter = true;
+$home = $latest = $latest_keynote = $latest_annual = $ungraded_filter = $wwdc_filter = $keynote_filter = $annual_filter = $pickies_filter = true;
 
 foreach ($rickies_events__array as $event) {
 	if (isset($home)) {
@@ -76,6 +76,11 @@ foreach ($rickies_events__array as $event) {
 		echo sitemap_url('/ungraded', $event['last_edited'], '0.4');
 		unset($ungraded_filter);
 	}
+	if ($event['special'] == 'Pickies' && isset($pickies_filter)) {
+		echo sitemap_url('/pickies', $event['last_edited'], '0.2');
+		echo sitemap_url('/charter', $event['last_edited_rules'], '0.2');
+		unset($pickies_filter);
+	}
 	if ($event['status'] == 'Ungraded' || $event['status'] == 'Live') {
 		echo sitemap_url('/' . $event['url_name'], $event['last_edited']);
 		echo sitemap_url('/billof/' . $event['url_name'], $event['last_edited_rules']);
@@ -96,7 +101,7 @@ echo sitemap_url('/billof', $rules__array[array_key_first($rules__array)][0]['la
 // Host data for /leaderboard
 $hosts_data__params = [
 	'fields' => ['First name', 'Full name', 'Last edit date'],
-	'filterByFormula' => 'AND( {Official host} = TRUE() )',
+	'filterByFormula' => 'AND( {Host type} = "Official" )',
 	'sort' => $airtable_sorting,
 	'maxRecords' => 1,
 ];
@@ -105,6 +110,21 @@ echo sitemap_url(
 	'/leaderboard',
 	$hosts_data__array[array_key_first($hosts_data__array)]['last_edited'],
 	'0.7',
+	'always'
+);
+
+// Host data for /3j-leaderboard
+$hosts_data__params = [
+	'fields' => ['First name', 'Full name', 'Last edit date'],
+	'filterByFormula' => 'AND( {Host type} = "Triple J" )',
+	'sort' => $airtable_sorting,
+	'maxRecords' => 1,
+];
+include '../includes/data_controllers/hosts_data_controller.php';
+echo sitemap_url(
+	'/3j-leaderboard',
+	$hosts_data__array[array_key_first($hosts_data__array)]['last_edited'],
+	'0.2',
 	'always'
 );
 
@@ -123,6 +143,7 @@ foreach ($picks_data__array[array_key_first($picks_data__array)] as $host => $pi
 	}
 }
 echo sitemap_url('/archive', $pick['last_edited'], '0.5', 'weekly');
+echo sitemap_url('/3j-archive', $pick['last_edited'], '0.2', 'monthly');
 
 // Date for /about
 $about = max([filemtime('../includes/view_controllers/about_controller.php'), filemtime('../includes/about.html')]);

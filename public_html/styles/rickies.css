@@ -305,12 +305,14 @@ button.js_link:focus, button.js_link:active {
   color: var(--link-hover-color);
 }
 
+.bill_footer a,
 footer button,
 .banner a,
 footer a:not(#footer_corner),
 nav a {
   font-weight: 500;
 }
+.bill_footer a.js_link,
 footer button.js_link,
 .banner a.js_link,
 footer a:not(#footer_corner).js_link,
@@ -324,7 +326,9 @@ nav a.js_link {
   -ms-user-select: none;
   user-select: none;
 }
-footer button:link, footer button:visited,
+.bill_footer a:link, .bill_footer a:visited,
+footer button:link,
+footer button:visited,
 .banner a:link,
 .banner a:visited,
 footer a:not(#footer_corner):link,
@@ -335,14 +339,17 @@ nav a:visited {
   opacity: 0.8;
 }
 @media (hover: hover) {
-  footer button:hover,
+  .bill_footer a:hover,
+footer button:hover,
 .banner a:hover,
 footer a:not(#footer_corner):hover,
 nav a:hover {
     opacity: 1;
   }
 }
-footer button:focus, footer button:active,
+.bill_footer a:focus, .bill_footer a:active,
+footer button:focus,
+footer button:active,
 .banner a:focus,
 .banner a:active,
 footer a:not(#footer_corner):focus,
@@ -530,6 +537,9 @@ header.about.contain_img img, header.search.contain_img img, header.details.cont
 }
 header.leaderboard {
   background-image: url(/images/connected-map.png);
+}
+header.leaderboard.triple_j {
+  background-image: url(/images/connected-map-3j.png);
 }
 header.search {
   padding-top: 80px;
@@ -1601,9 +1611,7 @@ table.full_stats td.value {
     display: block;
   }
 
-  #menu_myke,
-#menu_federico,
-#menu_stephen {
+  .menu_mobile_only {
     display: none;
   }
 }
@@ -2329,8 +2337,10 @@ mark {
   }
 }
 #pick_filter_sheet > .content > fieldset.hosts {
+  position: relative;
   justify-content: center;
   align-items: center;
+  padding-bottom: var(--space-between-lg);
 }
 #pick_filter_sheet > .content > fieldset.hosts .host {
   flex-basis: calc(100% / 3);
@@ -2386,6 +2396,19 @@ mark {
 #pick_filter_sheet > .content > fieldset.hosts .host + .host {
   margin-left: var(--space-between-md);
 }
+#pick_filter_sheet > .content > fieldset.hosts .triple_j_filter {
+  position: absolute;
+  bottom: var(--space-between-sm);
+  right: var(--space-between-sm);
+  font-size: 0.75em;
+}
+#pick_filter_sheet > .content > fieldset.hosts .triple_j_filter label {
+  padding-left: 4px;
+}
+#pick_filter_sheet > .content > fieldset.hosts .triple_j_filter input[type=checkbox] {
+  margin-right: 0;
+  margin-left: 4px;
+}
 #pick_filter_sheet > .content > fieldset.categories {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2440,6 +2463,9 @@ mark {
   align-items: flex-start;
   flex-wrap: wrap;
   border-radius: 5px;
+}
+#pick_filter_sheet > .content > fieldset .filter_option.hidden {
+  display: none;
 }
 @media (hover: hover) {
   #pick_filter_sheet > .content > fieldset .filter_option:hover {

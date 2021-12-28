@@ -1,4 +1,16 @@
 <?php
+
+if (isset($triple_j)) { ?>
+<style>
+	:root {
+		--document-background-color: #9D3489;
+	}
+	@media (prefers-color-scheme: dark) {
+		--document-background-color: var(--relay-blue);
+	}
+</style>
+<?php }
+
 echo back_button(), no_script_banner();
 if (isset($error)) {
 	echo $error;
@@ -8,9 +20,14 @@ if (!isset($error)) {
 	echo share_button();
 }
 ?>
-<main id="the_document" <?php if (isset($parchment)) {
-	echo 'class="parchment"';
-} ?>>
+<main id="the_document" class="<?php
+if (isset($parchment)) {
+	echo ' parchment ';
+}
+if (isset($triple_j)) {
+	echo ' charter ';
+}
+?>">
 	<p id="document_date"><?= $current_selection['date_string'] ?></p>
 	<h1 id="document_title"><?= $head_custom['title'] ?></h1>
 
@@ -73,23 +90,38 @@ if (!isset($error)) {
 } ?>
 	<div class="document_footer">
 		<div class="signatures">
+			<?php if (!isset($triple_j)) { ?>
 			<img src="/images/signature-stephen.png" alt="Stephen’s signature"/>
 			<img src="/images/signature-federico.png" alt="Federico’s signature"/>
 			<img src="/images/signature-myke.png" alt="Myke’s signature"/>
+			<?php } ?>
 		</div>
 		<div class="seal">
 			<img id="ticci_seal"  class="seal" src="/images/viticci-seal-of-quality.png" alt="Viticci Seal of Quality"/>
+			<?php if (!isset($triple_j)) { ?>
 			<img id="wax_seal" class="seal" src="/images/connected-seal.png" alt="Connected classic wax seal"/>
+			<?php } else { ?>
+			<img id="wax_seal" class="seal" src="/images/3j-seal.png" alt="Connected classic wax seal"/>
+			<?php } ?>
 		</div>
 
 
 	</div>
 </main>
+<?php
+if (!isset($triple_j)) { ?>
+
 <p class="bill_footer">This is a living document. The One True Copy of <span id="disclaimer_title"><?= $head_custom[
 	'title'
 ] ?></span> is in the Connected Google&nbsp;Doc.</p>
+<p class="bill_footer">Looking for <a href="/charter">The Pickies Charter</a>?</p>
 
-<?= close_button() ?>
+<?php } else { ?>
+<p class="bill_footer">Looking for the official <a href="/billof">Bill of Rickies</a>?</p>
+<?php }
+
+echo close_button();
+?>
 <aside class="slider">
 	<div id="rule_slider">
 		<label id="slider_label_container" for="date_slider">
@@ -118,14 +150,21 @@ if (!isset($error)) {
 <audio id="theme_music" hidden src="/audio/native-land-dream-cave.mp3"></audio>
 <script><?php
 echo $event_slider_js_vars;
-echo 'var rickies_start = ' .
+echo 'const rickies_start = ' .
 	$rickies_start .
-	'; var flexies_start = ' .
+	'; const flexies_start = ' .
 	$flexies_start .
-	'; var bill_start = ' .
+	'; const bill_start = ' .
 	$bill_start .
-	';';
+	'; const triple_j = ';
+if (!isset($triple_j)) {
+	echo 'false';
+} else {
+	echo 'true';
+}
+echo ';
 
+';
 include 'scripts/interactive_rules.js';
 echo 'document.addEventListener(\'DOMContentLoaded\', function (event) { update_rules(' .
 	$current_selection['index'] .

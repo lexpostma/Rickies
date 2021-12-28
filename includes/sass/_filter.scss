@@ -147,8 +147,10 @@
 		}
 
 		&.hosts {
+			position: relative;
 			justify-content: center;
 			align-items: center;
+			padding-bottom: var(--space-between-lg);
 			.host {
 				flex-basis: calc(100% / 3);
 				max-width: 120px;
@@ -208,6 +210,20 @@
 			}
 			.host + .host {
 				margin-left: var(--space-between-md);
+			}
+			.triple_j_filter {
+				position: absolute;
+				bottom: var(--space-between-sm);
+				right: var(--space-between-sm);
+				font-size: 0.75em;
+
+				label {
+					padding-left: 4px;
+				}
+				input[type='checkbox'] {
+					margin-right: 0;
+					margin-left: 4px;
+				}
 			}
 		}
 		&.categories {
@@ -272,6 +288,9 @@
 			align-items: flex-start;
 			flex-wrap: wrap;
 			border-radius: 5px;
+			&.hidden {
+				display: none;
+			}
 			@media (hover: hover) {
 				&:hover {
 					background-color: var(--element-hover-color);

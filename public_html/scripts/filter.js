@@ -37,6 +37,65 @@ function check_elements_for_state() {
 	return false;
 }
 
+function host_flip_3j(element) {
+	var host_checks = document.querySelectorAll('fieldset.hosts .host');
+	var type_checks = document.querySelectorAll('fieldset.pick_types .filter_option input');
+
+	if (element.checked == true) {
+		// console.log('Triple J enabled');
+		var host_replacements = {
+			stephen: 'james',
+			myke: 'jason',
+			federico: 'john',
+			Stephen: 'James',
+			Myke: 'Jason',
+			Federico: 'John',
+		};
+
+		Array.from(type_checks).forEach(function (el) {
+			el.checked = false;
+			if (el.getAttribute('data-3j') == 'true') {
+				el.parentNode.classList.remove('hidden');
+			} else {
+				el.parentNode.classList.add('hidden');
+			}
+		});
+	} else {
+		// console.log('Triple J disabled');
+		var host_replacements = {
+			james: 'stephen',
+			jason: 'myke',
+			john: 'federico',
+			James: 'Stephen',
+			Jason: 'Myke',
+			John: 'Federico',
+		};
+		Array.from(type_checks).forEach(function (el) {
+			el.checked = false;
+			if (el.getAttribute('data-3j') == 'false') {
+				el.parentNode.classList.remove('hidden');
+			} else {
+				el.parentNode.classList.add('hidden');
+			}
+		});
+	}
+	Array.from(host_checks).forEach(function (el) {
+		el.innerHTML = replaceAll(el.innerHTML, host_replacements);
+	});
+}
+
+// Find and replace multiple strings
+// Via https://stackoverflow.com/a/15604206
+function replaceAll(str, mapObj) {
+	// Replaced 'gi' with 'g', it's now case sensitive
+	var re = new RegExp(Object.keys(mapObj).join('|'), 'g');
+
+	return str.replace(re, function (matched) {
+		// Remove the lowercase matching
+		return mapObj[matched];
+	});
+}
+
 const search_field_combo = document.getElementById('search_field_combo');
 const pick_filter_sheet = document.getElementById('pick_filter_sheet');
 
@@ -74,9 +133,15 @@ addEventListener('change', (e) => {
 	// define the element that triggered the event
 	let check = e.target;
 
-	//  exit if change event did not come from
-	//  our list of allThings
-	if (allThings.indexOf(check) === -1) return;
+	// Check is element was the Triple JS checkbox
+	if (check.parentNode.classList.contains('triple_j_filter')) {
+		host_flip_3j(check);
+	}
+
+	if (allThings.indexOf(check) === -1)
+		//  exit if change event did not come from
+		//  our list of allThings
+		return;
 
 	//  check/uncheck children (includes check itself)
 	const children = nodeArray('input', check.parentNode);
