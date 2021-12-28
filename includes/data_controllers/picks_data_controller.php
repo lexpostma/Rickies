@@ -68,17 +68,21 @@ do {
 					$pick_categories_compare[] = $cat_keys[$index];
 				}
 				unset($color);
-			}
-			$picks_data__array_temp['categories'] = $pick_categories;
-			$picks_data__array_temp['categories_compare'] = $pick_categories_compare;
 
+				$picks_data__array_temp['categories'] = $pick_categories;
+				unset($pick_categories);
+
+				$picks_data__array_temp['categories_compare'] = $pick_categories_compare;
+				unset($pick_categories_compare);
+			} else {
+				$picks_data__array_temp['categories'] = false;
+			}
+			// Add pick to array
 			array_push(
 				$picks_data__array[check_key('Type group', $fields)][check_key('Host name', $fields, false, 0)],
 				$picks_data__array_temp
 			);
 			unset($picks_data__array_temp);
-			unset($pick_categories);
-			unset($pick_categories_compare);
 		}
 	} else {
 		// Response from Airtable is not countable, so it's probably an error instead of an empty array
