@@ -100,6 +100,7 @@ Search and filter all metadata of all Rickies and Flexies.
 -   The charts at the top depict the actual search results below. This makes it easy to compare the host’s performances based on your interest. And there’s a combined chart on the right.
 -   Notice all the little animations and UI changes when opening/closing the filters, or when resizing the window.
 -   Did you notice the hosts are sleeping when there are no results for them?
+-   On touch devices the filter checkboxes have bigger touch target for improved tappability.
 -   Categories have multiple levels. At the top level there are Hardware, Software, Service and People. More specific levels below are also visible.
 -   For some categories there’s even a level below that, but those are not visible by default because it’d be too much. But when you filter on those by clicking on a category below a pick, [they become visible](https://rickies.co/?search=&category%5B%5D=ipad-mini&category%5B%5D=imac&category%5B%5D=display#results).
 -   You can choose what metadata you want visible on the overview:
