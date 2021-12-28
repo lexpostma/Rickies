@@ -2,6 +2,17 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+## 29 December 2021 v2.1
+
+-   Support for The Pickies, the [Triple J 2021 holiday special](https://rickies.co/annual-2022-special). Complete with:
+    -   🏆 [Pickies homepage](https://rickies.co/pickies) and trophy
+    -   ⚡️ Regular picks and Lightning rounds
+    -   📜 [The Pickies Charter](https://rickies.co/charter), including amendments
+    -   📊 [Triple J leaderboard](https://rickies.co/3j-leaderboard) with stats and new Memoji
+    -   📦 [Pickies archive](https://rickies.co/3j-archive) with custom filters
+
+---
+
 ## 25 December 2021 v2.0
 
 -   🏷 New prediction metadata like categories, whether it came true later, buzzkillers and more. Visible in the [archive](https://rickies.co/archive), [search](https://rickies.co/?search=promotion#results) and on [Rickies pages](https://rickies.co/keynote-oct-2020#flexies)
