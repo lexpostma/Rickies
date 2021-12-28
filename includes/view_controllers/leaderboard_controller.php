@@ -294,24 +294,35 @@ foreach ($hosts_data__array as $host) {
 			break;
 		}
 	}
-
-	$set = [
-		'name' => $host['personal']['first_name'],
-		'winner' => false,
-		'title' => implode('<br />', $title_array),
-		'string' =>
+	if (!isset($triple_j)) {
+		$string =
 			'Won ' .
 			($host['achievements']['annual_rickies_wins']['value'] +
 				$host['achievements']['keynote_rickies_wins']['value']) .
 			" Rickies<br />
-		" .
+	" .
+			$host['stats']['picks']['Overall']['Rate'] .
+			"% correct picks<br />
+	" .
+			$host['stats']['picks_strings']['scored_points']['value'] .
+			'&nbsp;points • <span class="nowrap" title="Flexing Power">' .
+			$host['stats']['picks_strings']['correct_flexies']['value'] .
+			' FP</span>';
+	} else {
+		$string =
 			$host['stats']['picks']['Overall']['Rate'] .
 			"% correct picks<br />
 		" .
 			$host['stats']['picks_strings']['scored_points']['value'] .
-			'&nbsp;points • <span class="nowrap" title="Flexing Power">' .
+			'&nbsp;points • <span class="nowrap" title="Lightning Power">' .
 			$host['stats']['picks_strings']['correct_flexies']['value'] .
-			' FP</span>',
+			' LP</span>';
+	}
+	$set = [
+		'name' => $host['personal']['first_name'],
+		'winner' => false,
+		'title' => implode('<br />', $title_array),
+		'string' => $string,
 		'img_array' => [
 			'type' => 'avatar',
 			'name' => $host['personal']['first_name'],
