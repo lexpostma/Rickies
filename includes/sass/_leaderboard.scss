@@ -282,9 +282,7 @@ table.full_stats {
 	#menu_stats {
 		display: block;
 	}
-	#menu_myke,
-	#menu_federico,
-	#menu_stephen {
+	.menu_mobile_only {
 		display: none;
 	}
 }

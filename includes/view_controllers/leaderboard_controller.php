@@ -6,24 +6,25 @@ $hosts_data__params = [
 	'sort' => [['field' => 'Order', 'direction' => 'asc']],
 ];
 
-if ($url_view == 'triple-j') {
-	$hosts_data__params['filterByFormula'] = 'AND( {Official host} != TRUE() )';
+if (!isset($triple_j)) {
+	$hosts_data__params['filterByFormula'] = 'AND( {Host type} = "Official" )';
 } else {
-	$hosts_data__params['filterByFormula'] = 'AND( {Official host} = TRUE() )';
+	$hosts_data__params['filterByFormula'] = 'AND( {Host type} = "Triple J" )';
 }
+
 $all_host_details = true;
 
 include '../includes/data_controllers/hosts_data_controller.php';
 include '../includes/data_controllers/status_data_controller.php';
 
-function leaderboard_item_bundle($input)
+function leaderboard_item_bundle($input, $triple_j = false)
 {
 	$output =
 		'<section class="large_columns navigate_with_mobile_menu" id="stats"><h2>Host Stats</h2><div class="section_grid">';
 	$chart_script = '<script>';
 	$column = 1;
 	foreach ($input as $host_data) {
-		$output .= leaderboard_item($host_data, $column);
+		$output .= leaderboard_item($host_data, $column, $triple_j);
 		$chart_script .= score_chart_script($host_data['stats']['picks'], $host_data['personal']['first_name']);
 		$column++;
 	}
@@ -76,7 +77,7 @@ function host_stats_item($title, $content, $column, $host)
 		</div>';
 }
 
-function leaderboard_item($host_data, $column = 1)
+function leaderboard_item($host_data, $column = 1, $triple_j = false)
 {
 	// Open section
 	// $output = '<div class="section_group--list host_stats">';
@@ -148,29 +149,29 @@ function leaderboard_item($host_data, $column = 1)
 		$column,
 		$host_data['personal']['first_name']
 	);
+	if (!$triple_j) {
+		// Achievements
+		$output .= host_stats_item(
+			'Achievements',
+			score_label_item($host_data['achievements'], $host_data['personal']['color']),
+			$column,
+			$host_data['personal']['first_name']
+		);
 
-	// Achievements
-	$output .= host_stats_item(
-		'Achievements',
-		score_label_item($host_data['achievements'], $host_data['personal']['color']),
-		$column,
-		$host_data['personal']['first_name']
-	);
+		$output .= host_stats_item(
+			'Rickies',
+			score_label_item($host_data['stats']['rickies'], $host_data['personal']['color']),
+			$column,
+			$host_data['personal']['first_name']
+		);
 
-	$output .= host_stats_item(
-		'Rickies',
-		score_label_item($host_data['stats']['rickies'], $host_data['personal']['color']),
-		$column,
-		$host_data['personal']['first_name']
-	);
-
-	$output .= host_stats_item(
-		'Flexies',
-		score_label_item($host_data['stats']['flexies'], $host_data['personal']['color']),
-		$column,
-		$host_data['personal']['first_name']
-	);
-
+		$output .= host_stats_item(
+			'Flexies',
+			score_label_item($host_data['stats']['flexies'], $host_data['personal']['color']),
+			$column,
+			$host_data['personal']['first_name']
+		);
+	}
 	// Statistics
 	$output .= host_stats_item(
 		'Picks',
@@ -327,22 +328,33 @@ foreach ($hosts_data__array as $host) {
 	array_push($leaderboard_data, $set);
 }
 
-include_once $incl_path . 'timeline_functions.php';
-
-$introduction =
-	'<p>With <b>' .
-	$status_data__array['Completed']['rickies'] .
-	' graded</b> Rickies officially behind us, this is the leaderboard of overall wins, picks, risk, and <span title="Pokémon! 😉">flexing power (FP)</span> of the hosts of Connected.</p><p>The predictions charts and statistics include picks from all Rickies, including the <a href="/latest-keynote">latest Keynote Rickies</a> and <a href="/latest-annual">Annual Rickies</a>, picks from <a href="/ungraded"><b class="nowrap">' .
-	digit_text($status_data__array['Ungraded']['rickies'] + $status_data__array['Live']['rickies']) .
-	' ungraded</b></a> Rickies, and picks from ' .
-	digit_text($status_data__array['Total']['pre-rickies']) .
-	' earlier prediction episodes that predate the (<a href="/billof/keynote-sep-2018" title="The Bill of Rickies">Bill of</a>) Rickies as partial points had been awarded.</p>';
-
 $head_custom = [
-	'title' => 'Host Leaderboard • The Rickies',
-	'description' =>
-		'Charts, statistics, flexing power and other wonderful insights into the Rickies achievements of the Connected hosts.',
-	'keywords' => ['leaderboard', 'achievement', 'statistics', 'titles'],
-	'image' => domain_url() . '/images/seo/hero-leaderboard.jpg',
+	'keywords' => ['leaderboard', 'achievement', 'statistics', 'titles', 'timeline'],
 	'theme-color' => '#222c32',
 ];
+
+if (!isset($triple_j)) {
+	include_once $incl_path . 'timeline_functions.php';
+
+	$introduction =
+		'<p>With <b>' .
+		$status_data__array['Completed']['rickies'] .
+		' graded</b> Rickies officially behind us, this is the leaderboard of overall wins, picks, risk, and <span title="Pokémon! 😉">flexing power (FP)</span> of the hosts of Connected.</p><p>The predictions charts and statistics include picks from all Rickies, including the <a href="/latest-keynote">latest Keynote Rickies</a> and <a href="/latest-annual">Annual Rickies</a>, picks from <a href="/ungraded"><b class="nowrap">' .
+		digit_text($status_data__array['Ungraded']['rickies'] + $status_data__array['Live']['rickies']) .
+		' ungraded</b></a> Rickies, and picks from ' .
+		digit_text($status_data__array['Total']['pre-rickies']) .
+		' earlier prediction episodes that predate the (<a href="/billof/keynote-sep-2018" title="The Bill of Rickies">Bill of</a>) Rickies as partial points had been awarded.</p>';
+
+	$head_custom['title'] = 'Host Leaderboard • The Rickies';
+	$head_custom['description'] =
+		'Charts, statistics, flexing power and other wonderful insights into the Rickies achievements of the Connected hosts.';
+	$head_custom['image'] = domain_url() . '/images/seo/hero-leaderboard.jpg';
+} else {
+	$introduction =
+		'<p>This is the leaderboard of overall wins, picks, fractions, and <span title="Pokémon! 😉">lightning power (LP)</span> of the Triple J. The predictions charts and statistics include picks from all Pickies.</p>';
+
+	$head_custom['title'] = 'Triple J Leaderboard • The Pickies';
+	$head_custom['description'] =
+		'Charts, statistics, lightning power and other wonderful insights into the Pickies achievements of the Triple J.';
+	$head_custom['image'] = domain_url() . '/images/seo/hero-3j-leaderboard.jpg';
+}

@@ -83,7 +83,12 @@ if ($focus_site == 'rickies') { ?>
 <script src="/scripts/confetti.browser.min.js"></script>
 
 <?php }
-if ($url_view == 'leaderboard' || $url_view == 'search' || $url_view == 'archive') { ?>
+if (
+	$url_view == 'leaderboard' ||
+	$url_view == '3j-leaderboard' ||
+	$url_view == 'archive' ||
+	$url_view == 'search'
+) { ?>
 <!-- Chart.js -->
 <script src="/scripts/chart.min.js"></script>
 

@@ -13,6 +13,7 @@ function score_chart_item($chart_array, $host)
 		'Regular' => '🎯',
 		'Risky' => '⚠️',
 		'Flexy' => '💪',
+		'Lightning' => '⚡️',
 	];
 
 	foreach ($chart_array as $pick_type => $chart) {

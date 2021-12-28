@@ -538,6 +538,9 @@ header.about.contain_img img, header.search.contain_img img, header.details.cont
 header.leaderboard {
   background-image: url(/images/connected-map.png);
 }
+header.leaderboard.triple_j {
+  background-image: url(/images/connected-map-3j.png);
+}
 header.search {
   padding-top: 80px;
   padding-top: calc(80px + env(safe-area-inset-top));

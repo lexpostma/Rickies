@@ -96,7 +96,7 @@ echo sitemap_url('/billof', $rules__array[array_key_first($rules__array)][0]['la
 // Host data for /leaderboard
 $hosts_data__params = [
 	'fields' => ['First name', 'Full name', 'Last edit date'],
-	'filterByFormula' => 'AND( {Official host} = TRUE() )',
+	'filterByFormula' => 'AND( {Host type} = "Official" )',
 	'sort' => $airtable_sorting,
 	'maxRecords' => 1,
 ];
