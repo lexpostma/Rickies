@@ -149,7 +149,7 @@ do {
 							'label1' => $ricky . 'point scored overall',
 						],
 						'correct_flexies' => [
-							'value' => check_key('Picks Flexy Total Count', $fields, 0),
+							'value' => check_key('Picks Flexy Correct Count', $fields, 0),
 							'label' => $flexing . ' Points overall',
 							'label1' => $flexing . ' Point overall',
 							'unit' => '&nbsp;' . $fp,
