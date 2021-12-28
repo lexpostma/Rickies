@@ -72,7 +72,17 @@ do {
 						'0hide' => true,
 					],
 				];
-
+				if (!isset($triple_j)) {
+					$ricky = 'Ricky ';
+					$flexing = 'Flexing';
+					$fp = 'FP';
+					$search = '';
+				} else {
+					$ricky = '';
+					$flexing = 'Lightning';
+					$fp = 'LP';
+					$search = '&3j=on';
+				}
 				$hosts_data__array[$id]['stats'] = [
 					'rickies' => [
 						'ricky_win_rate' => [
@@ -132,69 +142,32 @@ do {
 							'0hide' => true,
 						],
 					],
-					'picks' => [
-						'Regular' => [
-							'Correct' => check_key('Picks Regular Correct Count', $fields, 0),
-							'Wrong' =>
-								check_key('Picks Regular Wrong Count', $fields, 0) -
-								check_key('Picks Regular Eventually Count', $fields, 0),
-							'Eventually' => check_key('Picks Regular Eventually Count', $fields, 0),
-							'Unknown' => check_key('Picks Regular Unknown Count', $fields, 0),
-							'Total' => check_key('Picks Regular Total Count', $fields, 0),
-						],
-						'Risky' => [
-							'Correct' => check_key('Picks Risky Correct Count', $fields, 0),
-							'Wrong' =>
-								check_key('Picks Risky Wrong Count', $fields, 0) -
-								check_key('Picks Risky Eventually Count', $fields, 0),
-							'Eventually' => check_key('Picks Risky Eventually Count', $fields, 0),
-							'Unknown' => check_key('Picks Risky Unknown Count', $fields, 0),
-							'Total' => check_key('Picks Risky Total Count', $fields, 0),
-						],
-						'Flexy' => [
-							'Correct' => check_key('Picks Flexy Correct Count', $fields, 0),
-							'Wrong' =>
-								check_key('Picks Flexy Wrong Count', $fields, 0) -
-								check_key('Picks Flexy Eventually Count', $fields, 0),
-							'Eventually' => check_key('Picks Flexy Eventually Count', $fields, 0),
-							'Unknown' => check_key('Picks Flexy Unknown Count', $fields, 0),
-							'Total' => check_key('Picks Flexy Total Count', $fields, 0),
-						],
-					],
 					'picks_strings' => [
 						'scored_points' => [
 							'value' => check_key('Points Scored Total', $fields, 0),
-							'label' => 'Ricky points scored overall',
-							'label1' => 'Ricky point scored overall',
+							'label' => $ricky . 'points scored overall',
+							'label1' => $ricky . 'point scored overall',
 						],
 						'correct_flexies' => [
 							'value' => check_key('Picks Flexy Total Count', $fields, 0),
-							'label' => 'Flexing Points overall',
-							'label1' => 'Flexing Point overall',
-							'unit' => '&nbsp;FP',
+							'label' => $flexing . ' Points overall',
+							'label1' => $flexing . ' Point overall',
+							'unit' => '&nbsp;' . $fp,
 						],
 						'buzzkillers' => [
 							'value' => round_if_decimal(check_key('Negative Rate', $fields, 0) * 100),
-							'label' => 'of picks are <a href="' . filter_url('&buzzkiller=on') . '">buzzkillers</a>',
+							'label' =>
+								'of picks are <a href="' . filter_url($search . '&buzzkiller=on') . '">buzzkillers</a>',
 							'unit' => '%',
 						],
 						'adjudicated' => [
 							'value' => check_key('Picks Adjudicated Count', $fields, 0),
 							'label' =>
-								'picks had to be <a href="' . filter_url('&adjudicated=on') . '">adjudicated</a>',
+								'picks had to be <a href="' .
+								filter_url($search . '&adjudicated=on') .
+								'">adjudicated</a>',
 							// 'unit' => '%',
 							'0hide' => true,
-						],
-						'fav_categories' => [
-							'value' => frequent_in_array(explode(';', check_key('Categories', $fields)))[0],
-							'label' =>
-								'is his favourite category, with <b>' .
-								frequent_in_array(explode(';', check_key('Categories', $fields)))[1] .
-								'</b> in 2nd place',
-						],
-						'success_categories' => [
-							'value' => frequent_in_array(explode(';', check_key('Correct Categories', $fields)), 1)[0],
-							'label' => 'is his most successful category',
 						],
 					],
 					'coin_flips' => [
@@ -210,50 +183,26 @@ do {
 						],
 					],
 				];
+				unset($ricky);
+				unset($flexing);
+				unset($fp);
+				unset($search);
 
-				// Calculate the scored/graded picks
-				$hosts_data__array[$id]['stats']['picks']['Scored'] = [
-					'Correct' =>
-						$hosts_data__array[$id]['stats']['picks']['Regular']['Correct'] +
-						$hosts_data__array[$id]['stats']['picks']['Risky']['Correct'],
-					'Wrong' =>
-						$hosts_data__array[$id]['stats']['picks']['Regular']['Wrong'] +
-						$hosts_data__array[$id]['stats']['picks']['Risky']['Wrong'],
-
-					'Unknown' =>
-						$hosts_data__array[$id]['stats']['picks']['Regular']['Unknown'] +
-						$hosts_data__array[$id]['stats']['picks']['Risky']['Unknown'],
-
-					'Total' =>
-						$hosts_data__array[$id]['stats']['picks']['Regular']['Total'] +
-						$hosts_data__array[$id]['stats']['picks']['Risky']['Total'],
-				];
-
-				// Calculate the overall pick counts
-				$hosts_data__array[$id]['stats']['picks']['Overall'] = [
-					'Correct' =>
-						$hosts_data__array[$id]['stats']['picks']['Scored']['Correct'] +
-						$hosts_data__array[$id]['stats']['picks']['Flexy']['Correct'],
-					'Wrong' =>
-						$hosts_data__array[$id]['stats']['picks']['Scored']['Wrong'] +
-						$hosts_data__array[$id]['stats']['picks']['Flexy']['Wrong'],
-
-					'Unknown' =>
-						$hosts_data__array[$id]['stats']['picks']['Scored']['Unknown'] +
-						$hosts_data__array[$id]['stats']['picks']['Flexy']['Unknown'],
-
-					'Total' =>
-						$hosts_data__array[$id]['stats']['picks']['Scored']['Total'] +
-						$hosts_data__array[$id]['stats']['picks']['Flexy']['Total'],
-				];
-
-				// Calculate the rate of correctness per pick type
-				foreach ($hosts_data__array[$id]['stats']['picks'] as $pick_type => $pick_values) {
-					// echo $pick_type;
-					$hosts_data__array[$id]['stats']['picks'][$pick_type]['Rate'] = round_if_decimal(
-						($pick_values['Correct'] / ($pick_values['Total'] - $pick_values['Unknown'])) * 100
-					);
+				if (check_key('Categories', $fields)) {
+					$hosts_data__array[$id]['stats']['picks_strings']['fav_categories'] = [
+						'value' => frequent_in_array(explode(';', check_key('Categories', $fields)))[0],
+						'label' =>
+							'is his favourite category, with <b>' .
+							frequent_in_array(explode(';', check_key('Categories', $fields)))[1] .
+							'</b> in 2nd place',
+					];
+					$hosts_data__array[$id]['stats']['picks_strings']['success_categories'] = [
+						'value' => frequent_in_array(explode(';', check_key('Correct Categories', $fields)), 1)[0],
+						'label' => 'is his most successful category',
+					];
 				}
+
+				include 'picks_count.php';
 			}
 
 			foreach ($hosts_data__array[$id]['images']['memoji'] as $mood => $images) {

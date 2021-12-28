@@ -2,12 +2,18 @@
 <header class="search">
 	<div class="gradient"></div>
 	<h1><?= $head_custom['title'] ?></h1>
-	<?= pick_filter_element($pick_filter, false, $categories__array, $rickies_events_options) ?>
+	<?= pick_filter_element($pick_filter, false, false, $categories__array, $rickies_events_options) ?>
 
 </header>
 
 <?php
-echo navigation_bar($url_view) . no_script_banner();
+if (!isset($triple_j)) {
+	echo navigation_bar($url_view);
+} else {
+	echo navigation_bar($url_view, true);
+}
+
+echo no_script_banner();
 
 if (empty($picks_data__array)) {
 	if (!empty($pick_filter['search'])) {
@@ -24,10 +30,12 @@ if (empty($picks_data__array)) {
 	foreach ($picks_chart__array as $host => $chart) {
 		echo '<div class="host with_chart">';
 		if ($chart['Total'] === 0) {
-			echo '<img src="/images/memoji/memoji-' . strtolower($host) . '-disabled.png" class="no_results" />';
+			echo '<img src="/images/memoji/memoji-' .
+				str_replace(' ', '_', strtolower($host)) .
+				'-disabled.png" class="no_results" />';
 			echo '<div class="avatar chart-container no_results">';
 		} else {
-			echo '<img src="/images/memoji/memoji-' . strtolower($host) . '-default.png" />';
+			echo '<img src="/images/memoji/memoji-' . str_replace(' ', '_', strtolower($host)) . '-default.png" />';
 			echo '<div class="avatar chart-container">';
 		}
 
@@ -107,6 +115,22 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 				data-goatcounter-click="Show Flexies"
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('flexies');"><?= $picks_type_count['Flexies'] ?></a>
+<?php }
+if (array_key_exists('Pickies', $picks_data__array)) { ?>
+			<a class="menu_item js_link"
+				id="menu_pickies"
+				title="Pickies"
+				data-goatcounter-click="Show Pickies"
+				data-goatcounter-referrer="<?= current_url() ?>"
+				onclick="navigate_section('pickies');"><?= $picks_type_count['Pickies'] ?></a>
+<?php }
+if (array_key_exists('Lightning Round', $picks_data__array)) { ?>
+			<a class="menu_item js_link"
+				id="menu_lightning_round"
+				title="Lightning Rounds"
+				data-goatcounter-click="Show Lightning Rounds"
+				data-goatcounter-referrer="<?= current_url() ?>"
+				onclick="navigate_section('lightning_round');"><?= $picks_type_count['Lightning Round'] ?></a>
 <?php }
 ?>
 			<a class="menu_item js_link menu_top"

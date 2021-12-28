@@ -222,8 +222,12 @@ header {
 			border-radius: var(--corner-radius);
 		}
 	}
+
 	&.leaderboard {
 		background-image: url(/images/connected-map.png);
+	}
+	&.leaderboard.triple_j {
+		background-image: url(/images/connected-map-3j.png);
 	}
 	&.search {
 		padding-top: 80px;

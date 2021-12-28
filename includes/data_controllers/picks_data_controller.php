@@ -2,10 +2,17 @@
 
 // Rickies picks _data_ controller
 
-$picks_data__empty = $picks_data__array = [
-	'Rickies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
-	'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
-];
+if (!isset($triple_j)) {
+	$picks_data__empty = $picks_data__array = [
+		'Rickies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
+		'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
+	];
+} else {
+	$picks_data__empty = $picks_data__array = [
+		'Pickies' => ['Jason' => [], 'John' => [], 'James' => []],
+		'Lightning Round' => ['Jason' => [], 'John' => [], 'James' => []],
+	];
+}
 
 $picks_data__request = $airtable->getContent('Picks', $picks_data__params);
 do {
@@ -36,9 +43,10 @@ do {
 				'buzzkill' => check_key('Buzzkill string', $fields),
 				'amendment' => check_key('Amendment string', $fields),
 				'last_edited' => check_key('Last edit date', $fields),
+				'categories' => check_key('Category', $fields),
 			];
 
-			if (check_key('Category', $fields)) {
+			if ($picks_data__array_temp['categories']) {
 				$cat_strings = explode(';', check_key('Categories flat', $fields));
 				$cat_keys = explode(';', check_key('Categories flat (web)', $fields));
 
@@ -68,17 +76,19 @@ do {
 					$pick_categories_compare[] = $cat_keys[$index];
 				}
 				unset($color);
-			}
-			$picks_data__array_temp['categories'] = $pick_categories;
-			$picks_data__array_temp['categories_compare'] = $pick_categories_compare;
 
+				$picks_data__array_temp['categories'] = $pick_categories;
+				unset($pick_categories);
+
+				$picks_data__array_temp['categories_compare'] = $pick_categories_compare;
+				unset($pick_categories_compare);
+			}
+			// Add pick to array
 			array_push(
 				$picks_data__array[check_key('Type group', $fields)][check_key('Host name', $fields, false, 0)],
 				$picks_data__array_temp
 			);
 			unset($picks_data__array_temp);
-			unset($pick_categories);
-			unset($pick_categories_compare);
 		}
 	} else {
 		// Response from Airtable is not countable, so it's probably an error instead of an empty array

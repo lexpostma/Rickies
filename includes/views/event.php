@@ -80,7 +80,28 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('flexies');"><span class="need_space--xs">The </span>Flexies</a>
 <?php }
-if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies', $picks_data__array)) { ?>
+if (array_key_exists('Pickies', $picks_data__array)) { ?>
+			<a class="menu_item js_link"
+				id="menu_pickies"
+				title="The Pickies"
+				data-goatcounter-click="Show Pickies"
+				data-goatcounter-referrer="<?= current_url() ?>"
+				onclick="navigate_section('pickies');"><span class="need_space--xs">The </span>Pickies</a>
+<?php }
+if (array_key_exists('Lightning Round', $picks_data__array)) { ?>
+			<a class="menu_item js_link"
+				id="menu_lightning_round"
+				title="Lightning Round"
+				data-goatcounter-click="Show Lightning Round"
+				data-goatcounter-referrer="<?= current_url() ?>"
+				onclick="navigate_section('lightning_round');">Lightning<span class="need_space--xs"> Round</span></a>
+<?php }
+if (
+	array_key_exists('Rickies', $picks_data__array) ||
+	array_key_exists('Flexies', $picks_data__array) ||
+	array_key_exists('Lightning Round', $picks_data__array) ||
+	array_key_exists('Pickies', $picks_data__array)
+) { ?>
 			<a class="menu_item js_link"
 				id="menu_hosts"
 				title="Hosts and ranking"
@@ -108,8 +129,17 @@ if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies
 echo no_script_banner();
 echo pick_item_bundle($picks_data__array, $rickies_data['interactive'], ['ahead_of_its_time', 'amendment', 'buzzkill']);
 
-if (array_key_exists('Rickies', $picks_data__array) || array_key_exists('Flexies', $picks_data__array)) {
-	echo host_item_bundle($rickies_data['hosts'], $rickies_data['type']);
+if (
+	array_key_exists('Rickies', $picks_data__array) ||
+	array_key_exists('Flexies', $picks_data__array) ||
+	array_key_exists('Lightning Round', $picks_data__array) ||
+	array_key_exists('Pickies', $picks_data__array)
+) {
+	if (!isset($triple_j)) {
+		echo host_item_bundle($rickies_data['hosts'], $rickies_data['type']);
+	} else {
+		echo host_item_bundle($rickies_data['hosts'], $rickies_data['type'], true);
+	}
 }
 ?>
 

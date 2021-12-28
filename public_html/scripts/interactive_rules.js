@@ -22,35 +22,37 @@ function update_rules(value) {
 	slider_label.innerHTML = rickies_event_names[value];
 	document_date.innerHTML = rickies_event_dates[value];
 
-	if (rickies_event_values[value] < rickies_start && rickies_event_values[value] < bill_start) {
-		document_title.innerHTML = 'Drafting Rules';
-		disclaimer_title.innerHTML = 'the Drafting Rules';
-		browser_title.innerText = browser_title.innerText.replace('The Bill of Rickies', 'Drafting Rules');
-		browser_title.innerText = browser_title.innerText.replace('Rickies Rules', 'Drafting Rules');
-		paper.classList.remove('parchment');
-	} else if (rickies_event_values[value] < bill_start) {
-		document_title.innerHTML = 'Rickies Rules';
-		disclaimer_title.innerHTML = 'the Rickies Rules';
-		browser_title.innerText = browser_title.innerText.replace('The Bill of Rickies', 'Rickies Rules');
-		browser_title.innerText = browser_title.innerText.replace('Drafting Rules', 'Rickies Rules');
-		paper.classList.remove('parchment');
-	} else {
-		disclaimer_title.innerHTML = document_title.innerHTML = 'The Bill of Rickies';
-		browser_title.innerText = browser_title.innerText.replace('Drafting Rules', 'The Bill of Rickies');
-		browser_title.innerText = browser_title.innerText.replace('Rickies Rules', 'The Bill of Rickies');
-		paper.classList.add('parchment');
-	}
+	if (!triple_j) {
+		if (rickies_event_values[value] < rickies_start && rickies_event_values[value] < bill_start) {
+			document_title.innerHTML = 'Drafting Rules';
+			disclaimer_title.innerHTML = 'the Drafting Rules';
+			browser_title.innerText = browser_title.innerText.replace('The Bill of Rickies', 'Drafting Rules');
+			browser_title.innerText = browser_title.innerText.replace('Rickies Rules', 'Drafting Rules');
+			paper.classList.remove('parchment');
+		} else if (rickies_event_values[value] < bill_start) {
+			document_title.innerHTML = 'Rickies Rules';
+			disclaimer_title.innerHTML = 'the Rickies Rules';
+			browser_title.innerText = browser_title.innerText.replace('The Bill of Rickies', 'Rickies Rules');
+			browser_title.innerText = browser_title.innerText.replace('Drafting Rules', 'Rickies Rules');
+			paper.classList.remove('parchment');
+		} else {
+			disclaimer_title.innerHTML = document_title.innerHTML = 'The Bill of Rickies';
+			browser_title.innerText = browser_title.innerText.replace('Drafting Rules', 'The Bill of Rickies');
+			browser_title.innerText = browser_title.innerText.replace('Rickies Rules', 'The Bill of Rickies');
+			paper.classList.add('parchment');
+		}
 
-	if (rickies_event_values[value] < rickies_start) {
-		rickies_title.innerHTML = 'Predictions';
-	} else {
-		rickies_title.innerHTML = 'The Rickies';
-	}
+		if (rickies_event_values[value] < rickies_start) {
+			rickies_title.innerHTML = 'Predictions';
+		} else {
+			rickies_title.innerHTML = 'The Rickies';
+		}
 
-	if (rickies_event_values[value] < flexies_start) {
-		flexies_title.innerHTML = 'Non-graded extra picks';
-	} else {
-		flexies_title.innerHTML = 'The Flexies';
+		if (rickies_event_values[value] < flexies_start) {
+			flexies_title.innerHTML = 'Non-graded extra picks';
+		} else {
+			flexies_title.innerHTML = 'The Flexies';
+		}
 	}
 
 	// Check is the list is empty (all <li> rules inside are hidden )

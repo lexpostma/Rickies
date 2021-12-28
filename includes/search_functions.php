@@ -11,9 +11,9 @@ function emoji_select_spacing($emoji)
 
 // Fixed search button in the top right corner of many pages, opens a modal search field
 // Includes a search field that's always fixed, otherwise there's no search button needed on the page
-function search_button()
+function search_button($triple_j = false)
 {
-	$output = pick_filter_element(false, true);
+	$output = pick_filter_element(false, true, $triple_j);
 	$output .= '<button id="search_button" class="top_button clean" type="button" onclick="toggle_search()">';
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-search.svg');
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-close2.svg');
@@ -29,8 +29,13 @@ Parameters are:
 	$displayed_as_modal -> whether the search content in modally opened, or inline
 	$categories 		-> optionally insert al the possible categories as array
 */
-function pick_filter_element($user_input = false, $displayed_as_modal = false, $categories = [], $rickies_events = [])
-{
+function pick_filter_element(
+	$user_input = false,
+	$displayed_as_modal = false,
+	$triple_j = false,
+	$categories = [],
+	$rickies_events = []
+) {
 	$output = '';
 	if (empty($user_input['search'])) {
 		$user_input['search']['string'] = false;
@@ -47,7 +52,7 @@ function pick_filter_element($user_input = false, $displayed_as_modal = false, $
 	$output .= '" id="pick_filter_form">';
 
 	if ($displayed_as_modal) {
-		$output .= search_field($user_input['search']['string']);
+		$output .= search_field($user_input['search']['string'], false, $triple_j);
 	} else {
 		$output .= search_field($user_input['search']['string'], true);
 		$output .= pick_filter_expandable_sheet($categories, $rickies_events, $user_input);
@@ -63,7 +68,7 @@ function pick_filter_element($user_input = false, $displayed_as_modal = false, $
 }
 
 /* The search input field */
-function search_field($search_string = false, $part_of_filters = false)
+function search_field($search_string = false, $part_of_filters = false, $triple_j = false)
 {
 	$output = '
 		<div id="search_field_combo" class="input_button_combo ';
@@ -75,10 +80,14 @@ function search_field($search_string = false, $part_of_filters = false)
 	if ($search_string) {
 		$output .= ' value="' . $search_string . '" ';
 	}
-	$output .= '/>
-			<button class="clean top_button" title="Search" form="pick_filter_form" type="submit">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-search.svg');
-	$output .= '</button>
+	$output .= '/>';
+	if (!$part_of_filters && $triple_j) {
+		$output .= '<input type="hidden" name="3j" value="on" />';
+	}
+	$output .=
+		'<button class="clean top_button" title="Search" form="pick_filter_form" type="submit">' .
+		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-search.svg') .
+		'</button>
 		</div>';
 
 	return $output;
@@ -134,7 +143,12 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 	<div class="content">';
 
 	// Filter for hosts
-	$hosts = ['myke', 'federico', 'stephen'];
+	if (key_exists('3j', $user_input['filter_other']) || isset($triple_j)) {
+		$hosts = ['jason', 'john', 'james'];
+	} else {
+		$hosts = ['myke', 'federico', 'stephen'];
+	}
+
 	$output .= '<fieldset class="hosts">';
 	foreach ($hosts as $host) {
 		$output .=
@@ -162,22 +176,44 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 			ucfirst($host) .
 			'</span></label></div>';
 	}
+	$output .= '<div class="filter_option triple_j_filter">
+	<label for="triple_j_check">Triple J</label>
+				<input type="checkbox" name="3j" id="triple_j_check" class="clean" ';
+	if (key_exists('3j', $user_input['filter_other'])) {
+		$output .= 'checked';
+	}
+	$output .= '/>
+
+			</div>';
 	$output .= '</fieldset>';
 
 	// Filter for pick types
 	$types = [
-		'regular' => '🧠',
-		'risky' => '⚠️',
-		'flexy' => '💪',
+		'regular' => ['emoji' => '🧠', '3j' => 'false'],
+		'risky' => ['emoji' => '⚠️', '3j' => 'false'],
+		'flexy' => ['emoji' => '💪', '3j' => 'false'],
+		'picky' => ['emoji' => '🧠', '3j' => 'true'],
+		'lightning' => ['emoji' => '⚡️', '3j' => 'true'],
 	];
+
 	$output .= '<fieldset class="list pick_types"><ul>';
-	foreach ($types as $type => $emoji) {
+	foreach ($types as $type => $data) {
+		$output .= '<li class="filter_option ';
+		if (
+			(key_exists('3j', $user_input['filter_other']) && $data['3j'] === 'false') ||
+			(!key_exists('3j', $user_input['filter_other']) && $data['3j'] === 'true')
+		) {
+			$output .= 'hidden';
+		}
+
 		$output .=
-			'<li class="filter_option"><input type="checkbox" name="pick_type[]" value="' .
+			'"><input type="checkbox" name="pick_type[]" value="' .
 			$type .
 			'" id="pick_type_' .
 			$type .
-			'" class="clean" ';
+			'" class="clean" data-3j="' .
+			$data['3j'] .
+			'"';
 		if (
 			key_exists('pick_type', $user_input['filter_other']) &&
 			strpos($user_input['filter_other']['pick_type'], ucfirst($type)) !== false
@@ -188,7 +224,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 			'/><label for="pick_type_' .
 			$type .
 			'"><span class="emoji">' .
-			$emoji .
+			$data['emoji'] .
 			'</span>' .
 			ucfirst($type) .
 			'<span class="need_space--sm"> picks</span></label></li>';

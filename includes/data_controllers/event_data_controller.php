@@ -101,6 +101,29 @@ do {
 					}
 				}
 
+				switch ($rickies_events__array[$id]['special']) {
+					case 'Pickies':
+						// Holiday special for Pickies with Triple J
+						$triple_j = true;
+						// TODO: Interactivity overwritten until scoring is defined
+						$rickies_events__array[$id]['interactive'] = false;
+						$rickies_events__array[$id]['tag'][] = [
+							'label' => $rickies_events__array[$id]['special'],
+							'color' => 'purple',
+							'banner' =>
+								'The Pickies are a holiday special episode, high jacked by the Triple J. It has different hosts and different rules',
+						];
+						break;
+					case 'Pre-Rickies':
+						// Pre-Rickies
+						$rickies_events__array[$id]['tag'][] = [
+							'label' => $rickies_events__array[$id]['special'],
+							'color' => 'yellow',
+							'banner' => 'These predictions predate The Rickies and are not officially graded as such',
+						];
+						break;
+				}
+
 				if (!$rickies_event_data_set) {
 					// Only the details needed for the Rickies overview
 					$rickies_events__array[$id]['label1'] = $rickies_events__array[$id]['name'];
@@ -117,68 +140,66 @@ do {
 				}
 
 				// If the status not Completed, add tag/banner
-				if ($rickies_events__array[$id]['status'] == 'Ungraded') {
-					// Ungraded Rickies
-					$rickies_events__array[$id]['tag'][] = [
-						'label' => 'Interactive',
-						'color' => 'orange',
-						'banner' =>
-							'<b>Interactive scorecard</b><br /><span>Grade the Rickies and Flexies yourself until the official results are in. Tap the picks to cycles through unknown, correct, and wrong states. <a class="clean js_link nowrap" onclick="clear_manual_score(this)" data-goatcounter-click="Clear interactive picks" title="Clear manual scores" data-goatcounter-referrer=' .
-							current_url() .
-							'>Clear manual scores</a></span>',
-					];
-				} elseif ($rickies_events__array[$id]['status'] == 'Pending') {
-					// Pending Rickies
-					$rickies_events__array[$id]['tag'][] = [
-						'label' => 'Awaiting show',
-						'color' => 'grey',
-						'banner' => 'Waiting for the predictions episode…',
-					];
-				} elseif ($rickies_events__array[$id]['status'] == 'Preview') {
-					// Preview Rickies
-					$rickies_events__array[$id]['tag'][] = [
-						'label' => 'Preview',
-						'color' => 'grey',
-						'banner' => 'You are looking at an unpublished preview of these Rickies',
-					];
-				} elseif ($rickies_events__array[$id]['status'] == 'Live') {
-					// Live Rickies
-					$rickies_events__array[$id]['tag'][] = [
-						'label' => 'Live',
-						'color' => 'red',
-						'banner' =>
-							'Updating now…<br /><a href="https://relay.fm/live" data-goatcounter-click="Relay live" title="Listen live" data-goatcounter-referrer="' .
-							current_url() .
-							'" >Listen live to the episode</a>',
-					];
-				}
-
-				if ($rickies_events__array[$id]['special'] == 'Pickies') {
-					// Holiday special for Pickies
-					$rickies_events__array[$id]['tag'][] = [
-						'label' => $rickies_events__array[$id]['special'],
-						'color' => 'purple',
-						'banner' =>
-							'The Pickies are a holiday special episode, high jacked by the Triple J. It has different hosts and different rules',
-					];
-				} elseif ($rickies_events__array[$id]['special'] == 'Pre-Rickies') {
-					// Pre-Rickies
-					$rickies_events__array[$id]['tag'][] = [
-						'label' => $rickies_events__array[$id]['special'],
-						'color' => 'yellow',
-						'banner' => 'These predictions predate The Rickies and are not officially graded as such',
-					];
+				switch ($rickies_events__array[$id]['status']) {
+					case 'Ungraded':
+						// Ungraded Rickies
+						if ($rickies_events__array[$id]['interactive']) {
+							$rickies_events__array[$id]['tag'][] = [
+								'label' => 'Interactive',
+								'color' => 'orange',
+								'banner' =>
+									'<b>Interactive scorecard</b><br /><span>Grade the Rickies and Flexies yourself until the official results are in. Tap the picks to cycles through unknown, correct, and wrong states. <a class="clean js_link nowrap" onclick="clear_manual_score(this)" data-goatcounter-click="Clear interactive picks" title="Clear manual scores" data-goatcounter-referrer=' .
+									current_url() .
+									'>Clear manual scores</a></span>',
+							];
+						} else {
+							$rickies_events__array[$id]['tag'][] = [
+								'label' => 'Ungraded',
+								'color' => 'orange',
+								'banner' => '<span>Ungraded until the official results are in.</span>',
+							];
+						}
+						break;
+					case 'Pending':
+						// Pending Rickies
+						$rickies_events__array[$id]['tag'][] = [
+							'label' => 'Awaiting show',
+							'color' => 'grey',
+							'banner' => 'Waiting for the predictions episode…',
+						];
+						break;
+					case 'Preview':
+						// Preview Rickies
+						$rickies_events__array[$id]['tag'][] = [
+							'label' => 'Preview',
+							'color' => 'grey',
+							'banner' => 'You are looking at an unpublished preview of these Rickies',
+						];
+						break;
+					case 'Live':
+						// Live Rickies
+						$rickies_events__array[$id]['tag'][] = [
+							'label' => 'Live',
+							'color' => 'red',
+							'banner' =>
+								'Updating now…<br /><a href="https://relay.fm/live" data-goatcounter-click="Relay live" title="Listen live" data-goatcounter-referrer="' .
+								current_url() .
+								'" >Listen live to the episode</a>',
+						];
+						break;
 				}
 			}
 		} elseif (isset($rickies_filter)) {
 			// Countable, but no Rickies (0 results), but filter is set
 			if ($rickies_filter == 'Ungraded') {
-				$rickies_title_string = 'ungraded';
+				$rickies_title_string = 'ungraded Rickies';
+			} elseif ($rickies_filter == 'Pickies') {
+				$rickies_title_string = 'Pickies';
 			} else {
-				$rickies_title_string = $rickies_filter;
+				$rickies_title_string = $rickies_filter . ' Rickies';
 			}
 			$rickies_filter_empty =
-				'No ' . $rickies_title_string . ' Rickies were found. <a href="/#list">Show all Rickies</a>.';
+				'No ' . $rickies_title_string . ' were found. <a href="/#list">Show all Rickies</a>.';
 		} else {
 			// Countable, but no Rickies (0 results) and no filter
 			// Continue with 404 error

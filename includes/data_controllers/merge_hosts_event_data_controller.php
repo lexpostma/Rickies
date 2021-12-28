@@ -29,10 +29,14 @@ include '../includes/data_controllers/event_data_controller.php';
 // echo '<pre>', var_dump($rickies_events__array), '</pre>';
 
 // Get host personal data
-$hosts_data__params = [
-	'fields' => ['First name', 'Full name', 'Memoji neutral', 'Memoji happy', 'Memoji sad'],
-	'filterByFormula' => 'AND( {Official host} = TRUE() )',
-];
+$hosts_data__params['fields'] = ['First name', 'Full name', 'Memoji neutral', 'Memoji happy', 'Memoji sad'];
+
+if (!isset($triple_j)) {
+	$hosts_data__params['filterByFormula'] = 'AND( {Host type} = "Official" )';
+} else {
+	$hosts_data__params['filterByFormula'] = 'AND( {Host type} = "Triple J" )';
+}
+
 include '../includes/data_controllers/hosts_data_controller.php';
 // echo '<pre>', var_dump($hosts_data__array), '</pre>';
 

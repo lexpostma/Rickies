@@ -9,18 +9,28 @@
 		<img id="relay_logo" src="/images/logos/relay-logo.svg" alt="<?= $head['company'] ?> logo"/>
 	</a>
 	<div class="hero_content">
-		<img class="trophy trophy--light" src="/images/rickies-trophy.png" alt="Rickies trophy" onclick="confetti_go()"/>
-		<img class="trophy trophy--dark" src="/images/rickies-trophy-glow.png" alt="Rickies trophy" onclick="confetti_go()"/>
+		<img class="trophy trophy--light" src="/images/<?= $trophy_asset ?>-trophy.png" alt="<?= ucfirst(
+	$trophy_asset
+) ?> trophy" onclick="confetti_go()"/>
+		<img class="trophy trophy--dark" src="/images/<?= $trophy_asset ?>-trophy-glow.png" alt="<?= ucfirst(
+	$trophy_asset
+) ?> trophy" onclick="confetti_go()"/>
 		<div class="hero_heading">
-			<h1>The Rickies</h1>
-			<?= $hero_tag ?>
+			<?= $hero_title, $hero_tag ?>
 		</div>
 	</div>
 </header>
 
 
 
-<?= navigation_bar() . no_script_banner() ?>
+<?php
+if (!isset($triple_j)) {
+	echo navigation_bar();
+} else {
+	echo navigation_bar(false, true);
+}
+echo no_script_banner();
+?>
 
 <section><?= $introduction ?></section>
 
@@ -48,6 +58,9 @@
 				<option <?php if (isset($rickies_filter) && $rickies_filter == 'Ungraded') {
     	echo 'selected';
     } ?> value="/ungraded#list">Ungraded Rickies</option>
+				<option <?php if (isset($rickies_filter) && $rickies_filter == 'Pickies') {
+    	echo 'selected';
+    } ?> value="/pickies">The Pickies</option>
 			</optgroup>
 		</select>
 <?php if (!isset($rickies_filter)) {

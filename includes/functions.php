@@ -52,7 +52,7 @@ function filter_url($query = '')
 	return current_url(true) . '?search=' . $query . '#results';
 }
 
-function navigation_bar($active = false)
+function navigation_bar($active = false, $triple_j = false)
 {
 	$output =
 		'
@@ -60,42 +60,79 @@ function navigation_bar($active = false)
 <nav class="nav_content multicolor" style="animation-delay: ' .
 		rand(-50, 0) .
 		's;">
-	<div class="nav_content--items">
+	<div class="nav_content--items">';
+	if (!$triple_j) {
+		$output .= '
 		<a ';
-	if (!$active) {
-		$output .= 'class="active" ';
-	}
-	$output .= 'href="';
-	if (!$active) {
-		$output .= '#list';
+		if (!$active) {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="';
+		if (!$active) {
+			$output .= '#list';
+		} else {
+			$output .= '/';
+		}
+		$output .= '"><span class="need_space--sm">The </span>Rickies</a>
+		<a ';
+		if ($active == 'bill') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/billof"><span class="need_space--sm">The </span>Bill of Rickies</a>
+		<a ';
+		if ($active == 'leaderboard') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/leaderboard"><span class="need_space--sm">Host </span>Leaderboard</a>
+		<a ';
+		if ($active == 'archive' || $active == '3j-archive') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/archive">Archive';
+		if ($active == 'search') {
+			$output .= '<span> &#8634;</span>';
+		}
+		$output .= '</a>
+		<a ';
+		if ($active == 'about') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/about">About</a>';
 	} else {
-		$output .= '/';
-	}
-	$output .= '"><span class="need_space--sm">The </span>Rickies</a>
+		$output .= '
 		<a ';
-	if ($active == 'bill') {
-		$output .= 'class="active" ';
-	}
-	$output .= 'href="/billof"><span class="need_space--sm">The </span>Bill of Rickies</a>
+		if (!$active) {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="';
+		if (!$active) {
+			$output .= '/pickies#list';
+		} else {
+			$output .= '/pickies';
+		}
+		$output .= '"><span class="need_space--sm">The </span>Pickies</a>
 		<a ';
-	if ($active == 'leaderboard') {
-		$output .= 'class="active" ';
-	}
-	$output .= 'href="/leaderboard"><span class="need_space--sm">Host </span>Leaderboard</a>
+		if ($active == 'bill') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/charter"><span class="need_space--sm">The </span>Pickies Charter</a>
 		<a ';
-	if ($active == 'archive') {
-		$output .= 'class="active" ';
-	}
-	$output .= 'href="/archive">Archive';
-	if ($active == 'search') {
-		$output .= '<span> &#8634;</span>';
-	}
-	$output .= '</a>
+		if ($active == 'leaderboard') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/3j-leaderboard"><span class="need_space--sm">Triple J </span>Leaderboard</a>
 		<a ';
-	if ($active == 'about') {
-		$output .= 'class="active" ';
+		if ($active == 'archive' || $active == '3j-archive') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/3j-archive">Archive<sup>3J</sup>';
+		if ($active == 'search') {
+			$output .= '<span> &#8634;</span>';
+		}
+		$output .= '</a>
+		<a href="/">&#8634;</a>';
 	}
-	$output .= 'href="/about">About</a>
+	$output .= '
 	</div>
 </nav>
 
