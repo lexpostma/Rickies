@@ -141,5 +141,6 @@ $filterByFormula .= "
 	Pick,
 	{Host name} ,
 	Type,
+	Published = TRUE(),
 	{Round set}
 )";
