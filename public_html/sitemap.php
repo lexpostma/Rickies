@@ -78,6 +78,7 @@ foreach ($rickies_events__array as $event) {
 	}
 	if ($event['special'] == 'Pickies' && isset($pickies_filter)) {
 		echo sitemap_url('/pickies', $event['last_edited'], '0.2');
+		echo sitemap_url('/charter', $event['last_edited_rules'], '0.2');
 		unset($pickies_filter);
 	}
 	if ($event['status'] == 'Ungraded' || $event['status'] == 'Live') {

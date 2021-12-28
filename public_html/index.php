@@ -6,6 +6,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../includes/functions.php';
 if ((isset($_GET['sub']) && $_GET['sub'] == 'billof') || $url_view == 'billof' || $url_view == 'charter') {
 	// Does the URL include "thebillof" for The Bill of Rickies?
 	$focus_site = 'billofrickies';
+	if ($url_view == 'charter') {
+		$triple_j = true;
+	}
 } else {
 	// Default "rickies"
 	$focus_site = 'rickies';
