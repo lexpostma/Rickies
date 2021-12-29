@@ -15,6 +15,7 @@ function reset_filter() {
 		selectTags[i].setAttribute('data-chosen', '');
 	}
 
+	host_flip_3j(document.getElementsByClassName('triple_j_filter')[0]);
 	reset_button.disabled = true;
 }
 

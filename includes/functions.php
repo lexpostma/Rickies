@@ -141,7 +141,7 @@ function navigation_bar($active = false, $triple_j = false)
 				$output .= '/leaderboard';
 				break;
 			default:
-				$output .= '/archive';
+				$output .= '/';
 				break;
 		}
 		$output .= '" title="Back to the Rickies"><span class="emoji">🏆</span></a>';

@@ -41,7 +41,7 @@ include '../includes/data_controllers/picks_data_controller.php';
 
 // Get all Rickies events from Airtable
 $rickies_events__params = [
-	'filterByFormula' => "AND( Published = TRUE(), Picks, OR(Special='Rickies', Special='Pre-Rickies'))",
+	'filterByFormula' => 'AND( Published = TRUE(), Picks)',
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
 ];
 include '../includes/data_controllers/event_data_controller.php';
@@ -49,7 +49,9 @@ include '../includes/data_controllers/event_data_controller.php';
 // Define Rickies events for the select
 $rickies_events_options = [];
 foreach ($rickies_events__array as $event) {
-	if ($event['status'] == 'Live') {
+	if ($event['special'] == 'Pickies') {
+		$emoji = '🎄';
+	} elseif ($event['status'] == 'Live') {
 		$emoji = '🔴';
 	} elseif ($event['status'] == 'Ungraded') {
 		$emoji = '🟠';

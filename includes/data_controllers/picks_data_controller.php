@@ -3,12 +3,12 @@
 // Rickies picks _data_ controller
 
 if (!isset($triple_j)) {
-	$picks_data__empty = $picks_data__array = [
+	$picks_data__array = $picks_data__empty = [
 		'Rickies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
 		'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
 	];
 } else {
-	$picks_data__empty = $picks_data__array = [
+	$picks_data__array = $picks_data__empty = [
 		'Pickies' => ['Jason' => [], 'John' => [], 'James' => []],
 		'Lightning Round' => ['Jason' => [], 'John' => [], 'James' => []],
 	];
