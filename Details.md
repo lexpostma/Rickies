@@ -12,7 +12,7 @@ Below are several little details I’m proud of for this project. I just wanted 
 
 ## [Rickies overview](https://rickies.co/)
 
-![The Rickies trophy with confetti](public_html/images/seo/hero-rickies.jpg)
+![The gold Rickies trophy with confetti](public_html/images/seo/hero-rickies.jpg)
 The main overview of all Rickies.
 
 -   The Rickies trophy is custom designed, showing 3 hosts holding the coloured Connected globe.
@@ -37,7 +37,7 @@ Each Rickies has its own details page with all predictions, individual host stat
 
 ## [The Bill of Rickies](https://rickies.co/billof)
 
-![Piece of old parchment with the Bill of Rickies in caligraphy and a wax Connected seal](public_html/images/seo/hero-billofrickies.jpg)
+![Piece of old parchment with the Bill of Rickies in calligraphy and a wax Connected seal](public_html/images/seo/hero-billofrickies.jpg)
 The continuously changing rules that guide the Rickies, with the complete history of amendments.
 
 -   The rules changed over time, and so does the document. New rules get added, old ones removed. Sometimes text even changes within a rule.
@@ -92,7 +92,7 @@ Search and filter all metadata of all Rickies and Flexies.
 
 -   Full filtering of all predictions
     -   All of the metadata from the archive above
-    -   “Everything in the prediction document must come true, no half point may be awarded.” But [what if there were half points awared](https://rickies.co/?search=&half_points=on#results)?
+    -   “Everything in the prediction document must come true, no half point may be awarded.” But [what if there were half points awarded](https://rickies.co/?search=&half_points=on#results)?
     -   [Prediction type](https://rickies.co/?search=&pick_type%5B%5D=risky#results) (regular, Risky, Flexy)
     -   [Prediction result](https://rickies.co/?search=&status%5B%5D=correct&#results) (correct, wrong, unknown)
     -   [Picks by host](https://rickies.co/?search=&host%5B%5D=federico#results)
@@ -108,6 +108,39 @@ Search and filter all metadata of all Rickies and Flexies.
     -   [Just the picks](https://rickies.co/?search=&display=clean#results) with no extra metadata
     -   [Only the categories](https://rickies.co/?search=&display=categories#results)
     -   [Only the age and reusability](https://rickies.co/?search=&display=age#results)
+
+## [The Pickies](https://rickies.co/pickies)
+
+![Compilation of Pickies images, similar to their Rickies equivalents. The silver Pickies trophy with confetti, The Pickies Charter with 3J seal, Memoji of John, James and Jason, The Pickies on a box, and a magnifying glass on the Pickies trophy](public_html/images/seo/hero-3j-combined.jpg)
+Full support for the Pickies holiday special with Jason, John, and James.
+
+-   The main navigation completely changes when viewing the Pickies.
+-   You can always go back to the Rickies with the little trophy on the right.
+-   The menu items change size depending on your screen size, e.g. from “Leaderboard^3J” to “Triple J Leaderboard”.
+-   The Pickies trophy is similar to the Rickies trophy, only silver instead of gold to match the Triple J’s grey style. Also the base has a different colour and the glove is upside down.
+-   Predictions for [Annual Pickies 2022](https://rickies.co/annual-2022-special) were completed. There’s now support for Lightning Rounds and double points.
+-   There’s a custom Pickies Charter avatar at the bottom of the page.
+
+### [The Pickies Charter](https://rickies.co/charter)
+
+-   The Pickies Charter has all the rules for the Pickies and of course it has full historical support for the latest amendments.
+-   Custom “historical” rules set, because the history is lost to time.
+-   The seal has of the 3J logo.
+
+### [Triple J Leaderboard](https://rickies.co/3j-leaderboard)
+
+-   Memoji for all the new hosts, Jason, John, and James.
+-   New randomised titles for each.
+-   Charts for regular and lightning picks.
+-   If you look real close at the dotted world map, you’ll see the dots have moved to the locations of the Triple J.
+
+### [Pickies archive and search](https://rickies.co/3j-archive)
+
+-   A new little checkbox in the hosts corner. Toggle it to switch hosts and related filters
+-   New filters for:
+    -   Picks by the [Triple J](https://rickies.co/?search=&3j=on#results), [Jason](https://rickies.co/?search=&host%5B%5D=jason&3j=on#results), [John](https://rickies.co/?search=&host%5B%5D=john&3j=on#results), and [James](https://rickies.co/?search=&host%5B%5D=james&3j=on#results)
+    -   Picks from [Pickies](https://rickies.co/?search=&3j=on&pick_type%5B%5D=picky#results) and [Lightning Round](https://rickies.co/?search=&3j=on&pick_type%5B%5D=lightning#results)
+    -   Picks with [double points](https://rickies.co/?search=&3j=on&double_points=on#results) because they came true in the first half of the year
 
 ## [About Rickies.co](https://rickies.co/about)
 
@@ -130,6 +163,6 @@ Rickie.co is optimised as a web app and takes advantage of many native features.
 -   The website has support for the safe areas on your devices (like the iPhones with notch). So you don’t get big black bars at top and bottom, even when you add it to your home screen.
 -   Full support for the system light and dark mode.
 -   When added to and opened from the homescreen, you can pull to refresh the page.
--   The rubber banding overscroll at both the top and bottom background colour matches the content of the page itself and feels more native when installed as a web app.
+-   The rubber banding over-scroll at both the top and bottom background colour matches the content of the page itself and feels more native when installed as a web app.
 -   Hover states are only present on devices that support hover, so mobile devices respond faster and don’t leave a hover state behind after you tap them. This was done with a relatively new feature `@media (hover: hover)`.
 -   Fully responsive design with items moving from [columns to rows](https://rickies.co/leaderboard) on wider screens.

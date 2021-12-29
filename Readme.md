@@ -2,7 +2,7 @@
 
 # The Rickies
 
-Predictions with risk, flexing, and passion.  
+Predictions with risk, flexing, and passion.
 On Connected at Relay FM.
 
 [The Rickies](https://rickies.co) are a prediction draft show on the [Connected ](https://relay.fm/connected) podcast at [Relay FM](https://relay.fm). Every year and every Apple event, Myke Hurley, Stephen Hackett, and Federico Viticci try to predict what Apple will announce next. Over the course of the show, the hosts have relied on [The Bill of Rickies](https://thebillof.rickies.co) to keep the record straight. Some predictions are risky, some are just to flex, most are formed with passion.
@@ -17,6 +17,7 @@ On Connected at Relay FM.
 -   📱 Standalone web app, optimised for iOS devices with support for dark mode, sharing, pull-to-refresh, and safe areas.
 -   🗄 Built on top of an [Airtable](https://airtable.com/invite/r/srbbQalO) database. All data and most assets and calculations come from there.
 -   🔍 [Search and filter](https://rickies.co/?search=promotion) the full prediction [archive](https://rickies.co/archive), including metadata like prediction type, category, host, event and more. With search term highlighting and charts that change with the results.
+-   🎄 Supports holiday specials with [The Pickies](https://rickies.co/pickies), including [The Pickies Charter](https://rickies.co/charter) with history, [Triple J Leaderboard](https://rickies.co/3j-leaderboard) with Memoji, and the [archive](https://rickies.co/3j-archive) with custom filters.
 
 ## More
 
