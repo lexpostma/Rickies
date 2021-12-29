@@ -116,7 +116,7 @@ do {
 							'label' => $rickies_events__array[$id]['special'],
 							'color' => 'purple',
 							'banner' =>
-								'The Pickies are a holiday special episode, high jacked by the Triple J. It has different hosts and different rules.',
+								'The Pickies are a holiday special episode, hijacked by the Triple J. It has different hosts and different rules.',
 						];
 						break;
 					case 'Pre-Rickies':
