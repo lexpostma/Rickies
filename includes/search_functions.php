@@ -327,36 +327,57 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 		'reusable' => [
 			'label' => 'Eligible for reuse',
 			'emoji' => '♻️',
+			'3j' => 'false',
+		],
+		'double_points' => [
+			'label' => 'Double points',
+			'emoji' => '✖️',
+			'3j' => 'true',
 		],
 		'buzzkiller' => [
 			'label' => 'Buzzkiller',
 			'emoji' => '🐝',
+			'3j' => 'both',
 		],
 		'ahead_of_its_time' => [
 			'label' => 'Ahead of its time',
 			'emoji' => '🔮',
+			'3j' => 'both',
 		],
 		'adjudicated' => [
 			'label' => 'Adjudicated',
 			'emoji' => '🧑‍⚖️',
+			'3j' => 'false',
 		],
 		'amendment' => [
 			'label' => 'Lead to amendment',
 			'emoji' => '📜',
+			'3j' => 'both',
 		],
 		'half_points' => [
 			'label' => 'Half correct',
 			'emoji' => '➗',
+			'3j' => 'both',
 		],
 	];
 	foreach ($metadata as $value => $visual) {
+		$output .= '<li class="filter_option ';
+		if (
+			(key_exists('3j', $user_input['filter_other']) && $visual['3j'] === 'false') ||
+			(!key_exists('3j', $user_input['filter_other']) && $visual['3j'] === 'true')
+		) {
+			$output .= 'hidden';
+		}
+
 		$output .=
-			'<li class="filter_option">
+			'">
 				<input type="checkbox" name="' .
 			$value .
 			'" id="' .
 			$value .
-			'" class="clean" ';
+			'" class="clean" data-3j="' .
+			$visual['3j'] .
+			'" ';
 		if (key_exists($value, $user_input['filter_other'])) {
 			$output .= 'checked';
 		}

@@ -38,8 +38,9 @@ function check_elements_for_state() {
 }
 
 function host_flip_3j(element) {
-	var host_checks = document.querySelectorAll('fieldset.hosts .host');
-	var type_checks = document.querySelectorAll('fieldset.pick_types .filter_option input');
+	// Switch some checkbox around when in 3J mode
+	let host_checks = document.querySelectorAll('fieldset.hosts .host');
+	let other_checks = document.querySelectorAll('fieldset .filter_option:not(.triple_j_filter) input');
 
 	if (element.checked == true) {
 		// console.log('Triple J enabled');
@@ -52,12 +53,12 @@ function host_flip_3j(element) {
 			Federico: 'John',
 		};
 
-		Array.from(type_checks).forEach(function (el) {
-			el.checked = false;
+		Array.from(other_checks).forEach(function (el) {
 			if (el.getAttribute('data-3j') == 'true') {
 				el.parentNode.classList.remove('hidden');
-			} else {
+			} else if (el.getAttribute('data-3j') == 'false') {
 				el.parentNode.classList.add('hidden');
+				el.checked = false;
 			}
 		});
 	} else {
@@ -70,12 +71,12 @@ function host_flip_3j(element) {
 			Jason: 'Myke',
 			John: 'Federico',
 		};
-		Array.from(type_checks).forEach(function (el) {
-			el.checked = false;
+		Array.from(other_checks).forEach(function (el) {
 			if (el.getAttribute('data-3j') == 'false') {
 				el.parentNode.classList.remove('hidden');
-			} else {
+			} else if (el.getAttribute('data-3j') == 'true') {
 				el.parentNode.classList.add('hidden');
+				el.checked = false;
 			}
 		});
 	}

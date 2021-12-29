@@ -309,11 +309,13 @@
 				cursor: pointer;
 				@include var.truncate();
 			}
+			margin-bottom: 4px;
 		}
 
-		.filter_option + .filter_option {
-			margin-top: 4px;
+		.filter_option:last-child {
+			margin-bottom: 0;
 		}
+
 		.select {
 			position: relative;
 			select {

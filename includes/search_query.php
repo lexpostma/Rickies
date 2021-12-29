@@ -49,6 +49,10 @@ if (isset($_GET['amendment']) && $_GET['amendment'] === 'on') {
 	$pick_filter['filter_other']['amendment'] = '{Triggered amendment}';
 }
 
+if (isset($_GET['double_points']) && $_GET['double_points'] === 'on') {
+	$pick_filter['filter_other']['double_points'] = '{3J doubler}=2';
+}
+
 // Get the pick types filter as array
 if (isset($_GET['pick_type']) && is_array($_GET['pick_type'])) {
 	// Let's iterate through the array

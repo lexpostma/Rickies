@@ -2463,6 +2463,7 @@ mark {
   align-items: flex-start;
   flex-wrap: wrap;
   border-radius: 5px;
+  margin-bottom: 4px;
 }
 #pick_filter_sheet > .content > fieldset .filter_option.hidden {
   display: none;
@@ -2484,8 +2485,8 @@ mark {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-#pick_filter_sheet > .content > fieldset .filter_option + .filter_option {
-  margin-top: 4px;
+#pick_filter_sheet > .content > fieldset .filter_option:last-child {
+  margin-bottom: 0;
 }
 #pick_filter_sheet > .content > fieldset .select {
   position: relative;
