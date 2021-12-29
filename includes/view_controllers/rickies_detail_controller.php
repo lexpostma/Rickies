@@ -261,7 +261,10 @@ if (!isset($triple_j)) {
 
 if (
 	$rickies_data['type'] == 'annual' &&
-	($rickies_data['status'] == 'Ungraded' || $rickies_data['status'] == 'Live' || $rickies_data['status'] == 'Pending')
+	($rickies_data['status'] == 'Ungraded' ||
+		$rickies_data['status'] == 'Live' ||
+		$rickies_data['status'] == 'Pending' ||
+		$rickies_data['status'] == 'Preview')
 ) {
 	// Annual and ungraded, so future
 	$description .=
@@ -269,7 +272,7 @@ if (
 		$rickies_data['annual_year'] .
 		'? And who will become ' .
 		$annual_chairman .
-		'? Follow along with this interactive scorecard';
+		'?';
 } elseif ($rickies_data['type'] == 'annual') {
 	// Annual and graded, so past
 	$description .=
@@ -281,7 +284,8 @@ if (
 } elseif (
 	$rickies_data['status'] == 'Ungraded' ||
 	$rickies_data['status'] == 'Live' ||
-	$rickies_data['status'] == 'Pending'
+	$rickies_data['status'] == 'Pending' ||
+	$rickies_data['status'] == 'Preview'
 ) {
 	// Ungraded, so future keynote
 	$description .=
@@ -289,7 +293,7 @@ if (
 		date_to_string_label($rickies_data['details']['link_data_apple']['date']) .
 		'? And who will become ' .
 		$keynote_chairman .
-		'? Follow along with this interactive scorecard.';
+		'?';
 } else {
 	// Graded keynote, past
 	$description .=
@@ -299,6 +303,10 @@ if (
 		$host_string .
 		' perform with their predictions for this event?';
 }
+if ($rickies_data['interactive']) {
+	$description .= ' Follow along with this interactive scorecard.';
+}
+
 unset($host_string, $annual_chairman, $keynote_chairman);
 
 $head_custom = [
@@ -307,10 +315,22 @@ $head_custom = [
 	'keywords' => ['wwdc', 'keynote', 'risky picks', 'Flexies', 'charity', 'chairman'],
 ];
 
-if ($rickies_data['status'] == 'Ungraded') {
-	$head_custom['title'] = '🟠 ' . $head_custom['title'] . ' • Interactive scorecard';
-} elseif ($rickies_data['status'] == 'Live') {
-	$head_custom['title'] = '🔴 ' . $head_custom['title'] . ' • Live now, interactive scorecard';
+switch ($rickies_data['status']) {
+	case 'Ungraded':
+		$head_custom['title'] = '🟠 ' . $head_custom['title'];
+		if ($rickies_data['interactive']) {
+			$head_custom['title'] = $head_custom['title'] . ' • Interactive scorecard';
+		}
+		break;
+	case 'Live':
+		$head_custom['title'] = '🔴 ' . $head_custom['title'] . ' • Live now';
+		if ($rickies_data['interactive']) {
+			$head_custom['title'] = $head_custom['title'] . ', interactive scorecard';
+		}
+		break;
+	case 'Preview':
+		$head_custom['title'] = '👁 ' . $head_custom['title'] . ' [PREVIEW]';
+		break;
 }
 
 if ($rickies_data['artwork']['seo'] !== false) {
