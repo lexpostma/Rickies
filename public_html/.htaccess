@@ -1,6 +1,6 @@
 RewriteEngine On
 
-## From WWW to non-WWW ##
+## From WWW to non-WWW
 RewriteBase /
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
@@ -11,13 +11,14 @@ RewriteRule ^sitemap\.xml$ /sitemap.php [L]
 ## Manifest JSON to PHP
 RewriteRule ^manifest\.json$ /manifest.php [L]
 
-## From Bill subdomain to directory ##
+## From Bill subdomain to directory
 RewriteBase /
 RewriteCond %{HTTP_HOST} ^thebillof\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/billof/$1 [R=301,L]
 
-## All other rewrites ##
+## All other rewrites
 RewriteRule ^billof/([A-Za-z0-9-_]+)/?$	/index.php?view=$1&sub=billof	[NC,L]
+RewriteRule ^charter/([A-Za-z0-9-_]+)/?$	/index.php?view=$1&sub=charter	[NC,L]
 RewriteRule ^([A-Za-z0-9-_]+)/?$		/index.php?view=$1	[NC,L]
 
 ## Error pages
