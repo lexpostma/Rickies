@@ -77,16 +77,14 @@ foreach ($rickies_events__array as $event) {
 		unset($ungraded_filter);
 	}
 	if ($event['special'] == 'Pickies' && isset($pickies_filter)) {
-		echo sitemap_url('/pickies', $event['last_edited'], '0.2');
-		echo sitemap_url('/charter', $event['last_edited_rules'], '0.2');
+		echo sitemap_url('/pickies', $event['last_edited'], '0.2', 'yearly');
+		echo sitemap_url('/charter', $event['last_edited_rules'], '0.2', 'yearly');
 		unset($pickies_filter);
 	}
 	if ($event['status'] == 'Ungraded' || $event['status'] == 'Live') {
 		echo sitemap_url('/' . $event['url_name'], $event['last_edited']);
-		echo sitemap_url('/billof/' . $event['url_name'], $event['last_edited_rules']);
 	} else {
 		echo sitemap_url('/' . $event['url_name'], $event['last_edited'], '0.4', 'never');
-		echo sitemap_url('/billof/' . $event['url_name'], $event['last_edited_rules'], '0.1');
 	}
 }
 
@@ -97,6 +95,7 @@ $rules__params = [
 ];
 include '../includes/data_controllers/rules_data_controller.php';
 echo sitemap_url('/billof', $rules__array[array_key_first($rules__array)][0]['last_edited'], '0.7');
+echo sitemap_url('/charter', $rules__array[array_key_first($rules__array)][0]['last_edited'], '0.7');
 
 // Host data for /leaderboard
 $hosts_data__params = [
@@ -130,7 +129,17 @@ echo sitemap_url(
 
 // Picks data for /archive
 $picks_data__params = [
-	'filterByFormula' => 'AND( Pick, {Host name}, Type, {Round set} )',
+	'filterByFormula' => 'AND(
+			Pick,
+			{Host name},
+			Type,
+			{Round set},
+			Published = TRUE(),
+			OR(
+				Special="Rickies",
+				Special="Pre-Rickies"
+			)
+		)',
 	'sort' => $airtable_sorting,
 	'maxRecords' => 1,
 ];
