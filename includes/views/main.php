@@ -3,7 +3,7 @@
 if (isset($back_to_overview)) {
 	echo back_button();
 }
-if ($url_view !== 'search' && $url_view !== 'archive') {
+if ($url_view !== 'search' && $url_view !== 'archive' && $url_view !== '3j-archive') {
 	if (!isset($triple_j)) {
 		echo search_button();
 	} else {
