@@ -3,12 +3,13 @@
 // Search controller
 
 // Define the filtering array
-$pick_filter = $pick_filter_empty = [
+$pick_filter = $pick_filter_empty = $pick_filter_empty_3j = [
 	'search' => [],
 	'filter_other' => [],
 	'filter_categories' => [],
 	'display' => [],
 ];
+$pick_filter_empty_3j['filter_other']['3j'] = 'Special="Pickies"';
 
 // Define how picks are displayed
 if (isset($_GET['display']) && $_GET['display'] !== '') {
@@ -115,9 +116,14 @@ if (isset($_GET['category']) && is_array($_GET['category'])) {
 // echo '<pre>', var_dump($pick_filter), '</pre>';
 
 // If no search string and no filters, redirect to /archive
-if ($url_view !== 'archive' && $url_view !== '3j-archive' && $pick_filter_empty === $pick_filter) {
-	header('Location: ' . domain_url() . '/archive');
-	die();
+if ($url_view !== 'archive' && $url_view !== '3j-archive') {
+	if ($pick_filter === $pick_filter_empty) {
+		header('Location: ' . domain_url() . '/archive');
+		die();
+	} elseif ($pick_filter === $pick_filter_empty_3j) {
+		header('Location: ' . domain_url() . '/3j-archive');
+		die();
+	}
 }
 
 // Define counters and chart data
