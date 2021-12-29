@@ -116,7 +116,7 @@ do {
 							'label' => $rickies_events__array[$id]['special'],
 							'color' => 'purple',
 							'banner' =>
-								'The Pickies are a holiday special episode, high jacked by the Triple J. It has different hosts and different rules',
+								'The Pickies are a holiday special episode, high jacked by the Triple J. It has different hosts and different rules.',
 						];
 						break;
 					case 'Pre-Rickies':
@@ -124,7 +124,7 @@ do {
 						$rickies_events__array[$id]['tag'][] = [
 							'label' => $rickies_events__array[$id]['special'],
 							'color' => 'yellow',
-							'banner' => 'These predictions predate The Rickies and are not officially graded as such',
+							'banner' => 'These predictions predate The Rickies and are not officially graded as such.',
 						];
 						break;
 				}
@@ -178,7 +178,7 @@ do {
 						$rickies_events__array[$id]['tag'][] = [
 							'label' => 'Preview',
 							'color' => 'grey',
-							'banner' => 'You are looking at an unpublished preview of these Rickies',
+							'banner' => 'You are looking at an unpublished preview of these Rickies.',
 						];
 						break;
 					case 'Live':
