@@ -86,8 +86,7 @@ if (isset($triple_j)) {
 		$output_h2 .= '">' . $type . '</h2>';
 
 		echo $output_h2 . $output;
-		unset($output);
-		unset($output_h2);
+		unset($output, $output_h2);
 	}
 } ?>
 	<div class="document_footer">

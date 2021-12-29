@@ -170,9 +170,11 @@ if (
 	$rickies_events__array[$id]['details']['link_data_charity']['label1'] == false
 ) {
 	// No data linked, clear details from array
-	unset($rickies_events__array[$id]['details']['link_title']);
-	unset($rickies_events__array[$id]['details']['link_data_apple']);
-	unset($rickies_events__array[$id]['details']['link_data_charity']);
+	unset(
+		$rickies_events__array[$id]['details']['link_title'],
+		$rickies_events__array[$id]['details']['link_data_apple'],
+		$rickies_events__array[$id]['details']['link_data_charity']
+	);
 } else {
 	if ($rickies_events__array[$id]['details']['link_data_apple']['label1'] == false) {
 		// No Apple Event data linked, clear details from array
@@ -238,9 +240,11 @@ $rickies_events__array[$id]['details']['episode_data_results'] = episode_data(
 
 if ($rickies_events__array[$id]['details']['episode_data_predictions'] == false) {
 	// No predictions episode
-	unset($rickies_events__array[$id]['details']['episode_title']);
-	unset($rickies_events__array[$id]['details']['episode_data_predictions']);
-	unset($rickies_events__array[$id]['details']['episode_data_results']);
+	unset(
+		$rickies_events__array[$id]['details']['episode_title'],
+		$rickies_events__array[$id]['details']['episode_data_predictions'],
+		$rickies_events__array[$id]['details']['episode_data_results']
+	);
 } elseif ($rickies_events__array[$id]['details']['episode_data_results'] == false) {
 	// No results episode, clear details from array
 	unset($rickies_events__array[$id]['details']['episode_data_results']);

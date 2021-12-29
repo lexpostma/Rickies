@@ -183,10 +183,7 @@ do {
 						],
 					],
 				];
-				unset($ricky);
-				unset($flexing);
-				unset($fp);
-				unset($search);
+				unset($ricky, $flexing, $fp, $search);
 
 				if (check_key('Categories', $fields)) {
 					$hosts_data__array[$id]['stats']['picks_strings']['fav_categories'] = [
