@@ -1178,7 +1178,7 @@ li.pick_item p.pick span.points {
 li.pick_item p.pick span.points.flexy {
   border-radius: var(--corner-radius);
 }
-li.pick_item p.pick span.points.correct.regular, li.pick_item p.pick span.points.correct.risky {
+li.pick_item p.pick span.points.correct {
   background: var(--connected-green);
 }
 li.pick_item p.pick span.points.correct.flexy {

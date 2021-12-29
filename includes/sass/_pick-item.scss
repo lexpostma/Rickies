@@ -59,10 +59,7 @@ li.pick_item {
 			// Default if status is unknown
 			background: var(--connected-yellow);
 			&.correct {
-				&.regular,
-				&.risky {
-					background: var(--connected-green);
-				}
+				background: var(--connected-green);
 				&.flexy {
 					background: var(--connected-blue);
 				}
