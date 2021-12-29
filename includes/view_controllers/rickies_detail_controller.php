@@ -251,8 +251,12 @@ function host_item_bundle($host_event_data, $event_type, $triple_j = false)
 $description = 'The predictions show of Connected on Relay FM. ';
 if (!isset($triple_j)) {
 	$host_string = 'Myke, Stephen, and Federico';
+	$annual_chairman = 'Annual Chairman';
+	$keynote_chairman = 'Keynote Chairman';
 } else {
 	$host_string = 'the Triple J';
+	$annual_chairman = 'Grand Admiral Pickerton';
+	$keynote_chairman = 'San Jose Shindig King';
 }
 
 if (
@@ -262,13 +266,15 @@ if (
 	// Annual and ungraded, so future
 	$description .=
 		'What will Apple announce in ' .
-		strftime('%Y', $rickies_data['date']) .
-		'? And who will become Annual Chairman? Follow along with this interactive scorecard';
+		$rickies_data['annual_year'] .
+		'? And who will become ' .
+		$annual_chairman .
+		'? Follow along with this interactive scorecard';
 } elseif ($rickies_data['type'] == 'annual') {
 	// Annual and graded, so past
 	$description .=
 		'What has Apple announced in ' .
-		strftime('%Y', $rickies_data['date']) .
+		$rickies_data['annual_year'] .
 		'? And how did ' .
 		$host_string .
 		' perform with their yearly predictions?';
@@ -281,7 +287,9 @@ if (
 	$description .=
 		'What will Apple announce at the keynote on ' .
 		date_to_string_label($rickies_data['details']['link_data_apple']['date']) .
-		'? And who will become Keynote Chairman? Follow along with this interactive scorecard.';
+		'? And who will become ' .
+		$keynote_chairman .
+		'? Follow along with this interactive scorecard.';
 } else {
 	// Graded keynote, past
 	$description .=
@@ -291,6 +299,7 @@ if (
 		$host_string .
 		' perform with their predictions for this event?';
 }
+unset($host_string, $annual_chairman, $keynote_chairman);
 
 $head_custom = [
 	'title' => $rickies_data['name'],
