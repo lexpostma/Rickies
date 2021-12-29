@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /confetti.php
+Disallow: /preview
+
+Sitemap: https://rickies.co/sitemap.xml
