@@ -38,6 +38,8 @@ if (isset($rickies_filter)) {
 			break;
 		case 'Pickies':
 			$head_custom['title'] = 'The Pickies';
+			$head_custom['description'] = 'Apple predictions special with fractions, lightning, and bravery.
+Sometimes on Connected with the Triple J at Relay FM.';
 			$head_custom['image'] = domain_url() . '/images/seo/hero-pickies.jpg';
 			$rickies_events__params['filterByFormula'] = "AND( Published = TRUE(), Special = 'Pickies' )";
 			break;
