@@ -132,6 +132,7 @@ function navigation_bar($active = false, $triple_j = false)
 		$output .= '</a>
 		<a href="';
 		switch ($active) {
+			case 'search':
 			case '3j-archive':
 			case 'archive':
 				$output .= '/archive';
