@@ -126,7 +126,7 @@ $resources = [
 		'label2' => 'Annual awards of the Upgrade podcast',
 		'label3' => 'By Zach Knox',
 		'url' => 'https://upgradies.com',
-		'img_url' => '/images/about/upgradies.jpg',
+		'img_url' => '/images/about/upgradies-' . rand(2021, 2020) . '.jpg',
 	],
 	[
 		'label1' => 'Upgrade Draft interactive scorecards',
