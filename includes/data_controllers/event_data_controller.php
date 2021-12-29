@@ -104,7 +104,12 @@ do {
 				switch ($rickies_events__array[$id]['special']) {
 					case 'Pickies':
 						// Holiday special for Pickies with Triple J
-						$triple_j = true;
+						if ($rickies_event_data_set) {
+							// Only set this if more details are needed, not on overview page
+							// Because this will cause the overview to always be "Pickies" version
+							// when a special is published, even without filter
+							$triple_j = true;
+						}
 						// TODO: Interactivity overwritten until scoring is defined
 						$rickies_events__array[$id]['interactive'] = false;
 						$rickies_events__array[$id]['tag'][] = [
