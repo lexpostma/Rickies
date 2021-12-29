@@ -83,7 +83,7 @@ The complete archive of all predictions ever made during the Rickies.
     -   Was the [Bill of Rickies amended](https://rickies.co/?search=&amendment=on&#results) because of this pick
     -   What [categories](https://rickies.co/?search=&display=&category%5B%5D=hardware#results) does a pick fall into.
 -   The archive and search results are basically the same page, just with less content. When you have an actual query, and the Archive menu item as a little reset arrow to the return to “all picks”.
--   Note the little animations on some emoji, like when you hover on a pick and it is or is not reusable.
+-   Note the little animations on some emoji, like when you hover on a pick and it is or is not reusable, or on buzzkillers.
 
 ## [Search on Rickies](https://rickies.co/?search=promotion)
 

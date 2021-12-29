@@ -325,38 +325,22 @@ section#timeline {
 	}
 }
 
-@keyframes pop {
-	0%,
-	100% {
-		transform: scale(1);
-	}
-	50% {
-		transform: scale(1.05);
-	}
-}
-
-@keyframes pop2 {
-	0%,
-	100% {
-		transform: scale(1);
-	}
-	50% {
-		transform: scale(1.1);
-	}
-}
 .timeline--host-avatar {
 	&.mega_winner,
 	&.winner {
 		.avatar {
+			-webkit-animation-timing-function: var.$pop-transition-timing;
 			animation-timing-function: var.$pop-transition-timing;
-
+			-webkit-animation-duration: 300ms;
 			animation-duration: 300ms;
 		}
 	}
 	&.winner .avatar {
+		-webkit-animation-name: pop;
 		animation-name: pop;
 	}
 	&.mega_winner .avatar {
+		-webkit-animation-name: pop2;
 		animation-name: pop2;
 	}
 }

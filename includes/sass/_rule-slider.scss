@@ -30,8 +30,11 @@
 		background-image: url('/images/connected-globe-on-dark.png');
 	}
 
+	-webkit-animation-name: slider_thumb_hint;
 	animation-name: slider_thumb_hint;
+	-webkit-animation-duration: 2s;
 	animation-duration: 2s;
+	-webkit-animation-delay: 3s;
 	animation-delay: 3s;
 }
 
@@ -53,30 +56,6 @@
 	}
 }
 
-@keyframes slider_thumb_hint {
-	0%,
-	100% {
-		transform: translateX(0px);
-	}
-	25% {
-		transform: translateX(-20px);
-	}
-	75% {
-		transform: translateX(20px);
-	}
-}
-
-@keyframes slider_label_hint {
-	0%,
-	100% {
-		opacity: 0;
-	}
-	20%,
-	80% {
-		opacity: 1;
-	}
-}
-
 #slider_label_container {
 	position: relative;
 	display: block;
@@ -94,9 +73,13 @@
 			pointer-events: none;
 
 			opacity: 0;
+			-webkit-animation-name: slider_label_hint;
 			animation-name: slider_label_hint;
+			-webkit-animation-timing-function: ease;
 			animation-timing-function: ease;
+			-webkit-animation-duration: 4s;
 			animation-duration: 4s;
+			-webkit-animation-delay: 2s;
 			animation-delay: 2s;
 		}
 	}

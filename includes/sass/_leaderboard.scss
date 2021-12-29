@@ -1,19 +1,5 @@
 @use "variables" as var;
 
-// Gradient background (aka winner ring) animation
-// Via https://codepen.io/P1N2O/pen/pyBNzX
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-
 $winner_ring_size: calc(var(--graphic-size) + 16px);
 $winner_double_ring_size: calc(var(--graphic-size) + 42px);
 
@@ -114,9 +100,13 @@ $winner_double_ring_size: calc(var(--graphic-size) + 42px);
 				var(--connected-yellow)
 			);
 			background-size: 500% 500%;
+			-webkit-animation-timing-function: linear;
 			animation-timing-function: linear;
-			animation-name: gradient;
+			-webkit-animation-name: ring_gradient;
+			animation-name: ring_gradient;
+			-webkit-animation-duration: 20s;
 			animation-duration: 20s;
+			-webkit-animation-iteration-count: infinite;
 			animation-iteration-count: infinite;
 			// transform: scale(1);
 		}
@@ -228,20 +218,6 @@ table.full_stats {
 	position: relative;
 }
 
-@-webkit-keyframes rotateCoin {
-	to {
-		-webkit-transform: rotateY(360deg);
-		transform: rotateY(360deg);
-	}
-}
-
-@keyframes rotateCoin {
-	to {
-		-webkit-transform: rotateY(360deg);
-		transform: rotateY(360deg);
-	}
-}
-
 .rotate_coin {
 	-webkit-perspective: 100px;
 	perspective: 100px;
@@ -253,25 +229,9 @@ table.full_stats {
 }
 
 .pulse_orb {
+	-webkit-animation: pulsePurple 2s infinite;
 	animation: pulsePurple 2s infinite;
 	border-radius: 50%;
-}
-
-@keyframes pulsePurple {
-	0% {
-		transform: scale(0.95);
-		box-shadow: 0 0 0 0 rgba(var(--connected-purple-rgb), 0.7);
-	}
-
-	70% {
-		transform: scale(1);
-		box-shadow: 0 0 0 10px rgba(var(--connected-purple-rgb), 0);
-	}
-
-	100% {
-		transform: scale(0.95);
-		box-shadow: 0 0 0 0 rgba(var(--connected-purple-rgb), 0);
-	}
 }
 
 #menu_stats {

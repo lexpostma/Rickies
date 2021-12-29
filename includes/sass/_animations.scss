@@ -1,0 +1,295 @@
+@mixin connected_colors {
+	0% {
+		background-color: var(--connected-green);
+	}
+	14% {
+		background-color: var(--connected-yellow);
+	}
+	29% {
+		background-color: var(--connected-orange);
+	}
+	43% {
+		background-color: var(--connected-red);
+	}
+	57% {
+		background-color: var(--connected-purple);
+	}
+	71% {
+		background-color: var(--connected-blue);
+	}
+	86% {
+		background-color: var(--relay-blue);
+	}
+	100% {
+		background-color: var(--connected-green);
+	}
+}
+@-webkit-keyframes connected_colors {
+	@include connected_colors;
+}
+@keyframes connected_colors {
+	@include connected_colors;
+}
+
+@mixin rotateInThirds {
+	0%,
+	30% {
+		-webkit-transform: translateX(0px) translateY(0px) rotate(0deg);
+		transform: translateX(0px) translateY(0px) rotate(0deg);
+	}
+	33% {
+		-webkit-transform: translateX(2px) translateY(2px) rotate(129deg);
+		transform: translateX(2px) translateY(2px) rotate(129deg);
+	}
+	35%,
+	63% {
+		-webkit-transform: translateX(2px) translateY(2px) rotate(120deg);
+		transform: translateX(2px) translateY(2px) rotate(120deg);
+	}
+	66% {
+		-webkit-transform: translateX(-2px) translateY(1px) rotate(249deg);
+		transform: translateX(-2px) translateY(1px) rotate(249deg);
+	}
+	68%,
+	96% {
+		-webkit-transform: translateX(-2px) translateY(1px) rotate(240deg);
+		transform: translateX(-2px) translateY(1px) rotate(240deg);
+	}
+	98% {
+		-webkit-transform: translateX(0px) translateY(0px) rotate(369deg);
+		transform: translateX(0px) translateY(0px) rotate(369deg);
+	}
+	100% {
+		-webkit-transform: translateX(0px) translateY(0px) rotate(360deg);
+		transform: translateX(0px) translateY(0px) rotate(360deg);
+	}
+}
+
+@-webkit-keyframes rotateInThirds {
+	@include rotateInThirds;
+}
+@keyframes rotateInThirds {
+	@include rotateInThirds;
+}
+
+@mixin rotateInHalfs {
+	0%,
+	45% {
+		-webkit-transform: translateY(0px) rotate(0deg);
+		transform: translateY(0px) rotate(0deg);
+	}
+	50% {
+		-webkit-transform: translateY(2px) rotate(190deg);
+		transform: translateY(2px) rotate(190deg);
+	}
+	55%,
+	90% {
+		-webkit-transform: translateY(2px) rotate(180deg);
+		transform: translateY(2px) rotate(180deg);
+	}
+	95% {
+		-webkit-transform: translateY(0px) rotate(370deg);
+		transform: translateY(0px) rotate(370deg);
+	}
+	100% {
+		-webkit-transform: translateY(0px) rotate(360deg);
+		transform: translateY(0px) rotate(360deg);
+	}
+}
+
+@-webkit-keyframes rotateInHalfs {
+	@include rotateInHalfs;
+}
+@keyframes rotateInHalfs {
+	@include rotateInHalfs;
+}
+
+@mixin buzz_out {
+	10% {
+		-webkit-transform: translateX(3px) rotate(2deg);
+		transform: translateX(3px) rotate(2deg);
+	}
+	20% {
+		-webkit-transform: translateX(-3px) rotate(-2deg);
+		transform: translateX(-3px) rotate(-2deg);
+	}
+	30% {
+		-webkit-transform: translateX(3px) rotate(2deg);
+		transform: translateX(3px) rotate(2deg);
+	}
+	40% {
+		-webkit-transform: translateX(-3px) rotate(-2deg);
+		transform: translateX(-3px) rotate(-2deg);
+	}
+	50% {
+		-webkit-transform: translateX(2px) rotate(1deg);
+		transform: translateX(2px) rotate(1deg);
+	}
+	60% {
+		-webkit-transform: translateX(-2px) rotate(-1deg);
+		transform: translateX(-2px) rotate(-1deg);
+	}
+	70% {
+		-webkit-transform: translateX(2px) rotate(1deg);
+		transform: translateX(2px) rotate(1deg);
+	}
+	80% {
+		-webkit-transform: translateX(-2px) rotate(-1deg);
+		transform: translateX(-2px) rotate(-1deg);
+	}
+	90% {
+		-webkit-transform: translateX(1px) rotate(0);
+		transform: translateX(1px) rotate(0);
+	}
+	100% {
+		-webkit-transform: translateX(-1px) rotate(0);
+		transform: translateX(-1px) rotate(0);
+	}
+}
+
+@-webkit-keyframes buzz_out {
+	@include buzz_out;
+}
+@keyframes buzz_out {
+	@include buzz_out;
+}
+
+@mixin rotateCoin {
+	to {
+		-webkit-transform: rotateY(360deg);
+		transform: rotateY(360deg);
+	}
+}
+
+@-webkit-keyframes rotateCoin {
+	@include rotateCoin;
+}
+@keyframes rotateCoin {
+	@include rotateCoin;
+}
+
+@mixin pulsePurple {
+	0% {
+		-webkit-transform: scale(0.95);
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(var(--connected-purple-rgb), 0.7);
+	}
+
+	70% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(var(--connected-purple-rgb), 0);
+	}
+
+	100% {
+		-webkit-transform: scale(0.95);
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(var(--connected-purple-rgb), 0);
+	}
+}
+
+@-webkit-keyframes pulsePurple {
+	@include pulsePurple;
+}
+@keyframes pulsePurple {
+	@include pulsePurple;
+}
+
+@mixin slider_thumb_hint {
+	0%,
+	100% {
+		-webkit-transform: translateX(0px);
+		transform: translateX(0px);
+	}
+	25% {
+		-webkit-transform: translateX(-20px);
+		transform: translateX(-20px);
+	}
+	75% {
+		-webkit-transform: translateX(20px);
+		transform: translateX(20px);
+	}
+}
+
+@-webkit-keyframes slider_thumb_hint {
+	@include slider_thumb_hint;
+}
+@keyframes slider_thumb_hint {
+	@include slider_thumb_hint;
+}
+
+@mixin slider_label_hint {
+	0%,
+	100% {
+		opacity: 0;
+	}
+	20%,
+	80% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes slider_label_hint {
+	@include slider_label_hint;
+}
+@keyframes slider_label_hint {
+	@include slider_label_hint;
+}
+
+@mixin pop {
+	0%,
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	50% {
+		-webkit-transform: scale(1.05);
+		transform: scale(1.05);
+	}
+}
+
+@-webkit-keyframes pop {
+	@include pop;
+}
+@keyframes pop {
+	@include pop;
+}
+@mixin pop2 {
+	0%,
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	50% {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	}
+}
+
+@-webkit-keyframes pop2 {
+	@include pop2;
+}
+@keyframes pop2 {
+	@include pop2;
+}
+
+// Gradient background (aka winner ring) animation
+// Via https://codepen.io/P1N2O/pen/pyBNzX
+@mixin ring_gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@-webkit-keyframes ring_gradient {
+	@include ring_gradient;
+}
+@keyframes ring_gradient {
+	@include ring_gradient;
+}

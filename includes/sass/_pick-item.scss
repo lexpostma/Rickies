@@ -148,63 +148,17 @@ li.pick_item {
 	&:focus,
 	&:active {
 		.recycle {
+			-webkit-animation: rotateInThirds 8s infinite;
 			animation: rotateInThirds 8s infinite;
-			// transform: translateX(0px) translateY(0px) rotate(0deg);
-			// transform: translateX(2px) translateY(2px) rotate(120deg);
-			// transform: translateX(-2px) translateY(1px) rotate(240deg);
-			// transform: translateX(0px) translateY(0px) rotate(360deg);
 		}
 
 		.hourglass {
+			-webkit-animation: rotateInHalfs 6s infinite;
 			animation: rotateInHalfs 6s infinite;
-			// transform: translateY(2px) rotate(180deg);
 		}
-	}
-}
-
-@keyframes rotateInThirds {
-	0%,
-	30% {
-		transform: translateX(0px) translateY(0px) rotate(0deg);
-	}
-	33% {
-		transform: translateX(2px) translateY(2px) rotate(129deg);
-	}
-	35%,
-	63% {
-		transform: translateX(2px) translateY(2px) rotate(120deg);
-	}
-	66% {
-		transform: translateX(-2px) translateY(1px) rotate(249deg);
-	}
-	68%,
-	96% {
-		transform: translateX(-2px) translateY(1px) rotate(240deg);
-	}
-	98% {
-		transform: translateX(0px) translateY(0px) rotate(369deg);
-	}
-	100% {
-		transform: translateX(0px) translateY(0px) rotate(360deg);
-	}
-}
-
-@keyframes rotateInHalfs {
-	0%,
-	45% {
-		transform: translateY(0px) rotate(0deg);
-	}
-	50% {
-		transform: translateY(2px) rotate(190deg);
-	}
-	55%,
-	90% {
-		transform: translateY(2px) rotate(180deg);
-	}
-	95% {
-		transform: translateY(0px) rotate(370deg);
-	}
-	100% {
-		transform: translateY(0px) rotate(360deg);
+		.buzz {
+			-webkit-animation: buzz_out 0.3s infinite linear;
+			animation: buzz_out 0.3s infinite linear;
+		}
 	}
 }
