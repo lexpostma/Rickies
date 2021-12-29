@@ -265,6 +265,10 @@ span.need_space--sm {
   span.need_space--sm {
     display: inline;
   }
+
+  span.less_space--sm {
+    display: none;
+  }
 }
 /* For debugging */
 pre {

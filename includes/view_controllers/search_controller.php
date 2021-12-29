@@ -262,12 +262,6 @@ if (!isset($triple_j)) {
 	}
 }
 
-// Rewrite the "All hosts" chart count
-if (isset($triple_j)) {
-	$picks_chart__array['Triple J'] = $picks_chart__array['All'];
-	unset($picks_chart__array['All']);
-}
-
 // Define SEO for search/archive page
 if (!isset($triple_j)) {
 	$rickies = 'Rickies';
@@ -331,3 +325,9 @@ if (!empty($pick_filter['filter_other']) || !empty($pick_filter['filter_categori
 
 $head_custom['canonical'] = current_url(true) . 'archive';
 $head_custom['keywords'] = ['archive', 'history', 'search', 'filters', 'categories', 'charts'];
+
+// Rewrite the "All hosts" chart count
+if (isset($triple_j)) {
+	$picks_chart__array['Triple J'] = $picks_chart__array['All'];
+	unset($picks_chart__array['All']);
+}

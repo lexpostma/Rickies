@@ -153,6 +153,7 @@ span.need_space--xs,
 span.need_space--sm {
 	display: none;
 }
+
 @media screen and (min-width: var.$break-xs) {
 	span.need_space--xs {
 		display: inline;
@@ -161,6 +162,9 @@ span.need_space--sm {
 @media screen and (min-width: var.$break-sm) {
 	span.need_space--sm {
 		display: inline;
+	}
+	span.less_space--sm {
+		display: none;
 	}
 }
 

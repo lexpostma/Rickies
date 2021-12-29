@@ -76,6 +76,10 @@ $statusbar: var.$iX-top;
 			padding: var(--space-between-md) var(--space-between-sm);
 			white-space: nowrap;
 			text-decoration: none;
+			.emoji {
+				margin: 0;
+				filter: grayscale(100%) brightness(2.5);
+			}
 			&.active {
 				opacity: 1;
 				font-weight: bold;

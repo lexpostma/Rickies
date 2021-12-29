@@ -265,6 +265,10 @@ span.need_space--sm {
   span.need_space--sm {
     display: inline;
   }
+
+  span.less_space--sm {
+    display: none;
+  }
 }
 /* For debugging */
 pre {
@@ -612,6 +616,10 @@ body {
   padding: var(--space-between-md) var(--space-between-sm);
   white-space: nowrap;
   text-decoration: none;
+}
+.nav_content .nav_content--items a .emoji {
+  margin: 0;
+  filter: grayscale(100%) brightness(2.5);
 }
 .nav_content .nav_content--items a.active {
   opacity: 1;

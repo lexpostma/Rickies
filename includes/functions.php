@@ -120,7 +120,7 @@ function navigation_bar($active = false, $triple_j = false)
 		if ($active == 'leaderboard') {
 			$output .= 'class="active" ';
 		}
-		$output .= 'href="/3j-leaderboard"><span class="need_space--sm">Triple J </span>Leaderboard</a>
+		$output .= 'href="/3j-leaderboard"><span class="need_space--sm">Triple J </span>Leaderboard<span class="less_space--sm"><sup>3J</sup></span></a>
 		<a ';
 		if ($active == 'archive' || $active == '3j-archive') {
 			$output .= 'class="active" ';
@@ -130,7 +130,21 @@ function navigation_bar($active = false, $triple_j = false)
 			$output .= '<span> &#8634;</span>';
 		}
 		$output .= '</a>
-		<a href="/">&#8634;</a>';
+		<a href="';
+		switch ($active) {
+			case '3j-archive':
+			case 'archive':
+				$output .= '/archive';
+				break;
+			case '3j-leaderboard':
+			case 'leaderboard':
+				$output .= '/leaderboard';
+				break;
+			default:
+				$output .= '/archive';
+				break;
+		}
+		$output .= '" title="Back to the Rickies"><span class="emoji">🏆</span></a>';
 	}
 	$output .= '
 	</div>
