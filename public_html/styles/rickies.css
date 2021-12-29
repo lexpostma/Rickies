@@ -2725,7 +2725,7 @@ mark {
     grid-gap: var(--space-between-lg);
   }
 }
-#pick_filter_sheet > .content > fieldset.categories > fieldset:not(:last-child) {
+#pick_filter_sheet > .content > fieldset.categories > fieldset:not(:last-child) > ul > li {
   margin-right: -24px;
 }
 #pick_filter_sheet > .content > fieldset.categories > fieldset > ul > li ul {

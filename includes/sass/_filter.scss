@@ -240,7 +240,7 @@
 			}
 
 			& > fieldset {
-				&:not(:last-child) {
+				&:not(:last-child) > ul > li {
 					margin-right: -24px;
 				}
 				& > ul > li {
