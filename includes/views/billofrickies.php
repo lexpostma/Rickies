@@ -6,7 +6,9 @@ if (isset($triple_j)) { ?>
 		--document-background-color: #9D3489;
 	}
 	@media (prefers-color-scheme: dark) {
-		--document-background-color: var(--relay-blue);
+		:root {
+			--document-background-color: var(--relay-blue);
+		}
 	}
 </style>
 <?php }
