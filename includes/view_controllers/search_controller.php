@@ -325,11 +325,14 @@ if (!empty($pick_filter['filter_other']) || !empty($pick_filter['filter_categori
 		$head_custom['description'] . ' Enabled filters are: ' . str_replace('_', ' ', $seo_description_add) . '.';
 }
 
-$head_custom['canonical'] = current_url(true) . 'archive';
 $head_custom['keywords'] = ['archive', 'history', 'search', 'filters', 'categories', 'charts'];
 
-// Rewrite the "All hosts" chart count
-if (isset($triple_j)) {
+if (!isset($triple_j)) {
+	$head_custom['canonical'] = current_url(true) . 'archive';
+} else {
+	$head_custom['canonical'] = current_url(true) . '3j-archive';
+
+	// Rewrite the "All hosts" chart count
 	$picks_chart__array['Triple J'] = $picks_chart__array['All'];
 	unset($picks_chart__array['All']);
 }
