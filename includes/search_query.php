@@ -26,7 +26,7 @@ if (isset($_GET['reusable']) && $_GET['reusable'] === 'on') {
 
 if ((isset($_GET['3j']) && $_GET['3j'] === 'on') || isset($triple_j)) {
 	$triple_j = true;
-	$pick_filter['filter_other']['3j'] = 'Special="Pickies"';
+	$pick_filter['filter_other']['3j'] = $pick_filter_empty_3j['filter_other']['3j'];
 }
 
 if (isset($_GET['buzzkiller']) && $_GET['buzzkiller'] === 'on') {

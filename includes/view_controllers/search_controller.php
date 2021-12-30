@@ -9,6 +9,8 @@ $pick_filter = $pick_filter_empty = $pick_filter_empty_3j = [
 	'filter_categories' => [],
 	'display' => [],
 ];
+// Define the 3J filter, for when everything but 3J is empty
+// Value is also used in the final search query
 $pick_filter_empty_3j['filter_other']['3j'] = 'Special="Pickies"';
 
 // Define how picks are displayed
