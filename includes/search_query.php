@@ -46,7 +46,7 @@ if (isset($_GET['half_points']) && $_GET['half_points'] === 'on') {
 }
 
 if (isset($_GET['amendment']) && $_GET['amendment'] === 'on') {
-	$pick_filter['filter_other']['amendment'] = '{Triggered amendment}';
+	$pick_filter['filter_other']['amendment'] = '{Amendments}';
 }
 
 if (isset($_GET['double_points']) && $_GET['double_points'] === 'on') {
