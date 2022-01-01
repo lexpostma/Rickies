@@ -34,7 +34,7 @@ if (isset($_GET['buzzkiller']) && $_GET['buzzkiller'] === 'on') {
 }
 
 if (isset($_GET['ahead_of_its_time']) && $_GET['ahead_of_its_time'] === 'on') {
-	$pick_filter['filter_other']['ahead_of_its_time'] = '{Came true date}';
+	$pick_filter['filter_other']['ahead_of_its_time'] = 'AND({Came true date},Status="Wrong")';
 }
 
 if (isset($_GET['adjudicated']) && $_GET['adjudicated'] === 'on') {
