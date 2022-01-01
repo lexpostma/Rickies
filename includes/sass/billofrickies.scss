@@ -66,6 +66,11 @@ h2.rule_type,
 			display: none;
 		}
 	}
+	&:target {
+		color: var(--connected-blue);
+		-webkit-animation: rule_highlight 8s linear forwards;
+		animation: rule_highlight 8s linear forwards;
+	}
 }
 span.rule {
 	display: inline-block;

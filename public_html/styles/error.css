@@ -390,6 +390,34 @@
     background-position: 0% 50%;
   }
 }
+@-webkit-keyframes rule_highlight {
+  0%, 10% {
+    color: var(--connected-blue);
+  }
+  20% {
+    color: var(--document-text-color);
+  }
+  30%, 90% {
+    color: var(--connected-blue);
+  }
+  100% {
+    color: var(--document-text-color);
+  }
+}
+@keyframes rule_highlight {
+  0%, 10% {
+    color: var(--connected-blue);
+  }
+  20% {
+    color: var(--document-text-color);
+  }
+  30%, 90% {
+    color: var(--connected-blue);
+  }
+  100% {
+    color: var(--document-text-color);
+  }
+}
 :root {
   --safe-top: env(safe-area-inset-top);
   --connected-green-rgb: 68, 153, 52;

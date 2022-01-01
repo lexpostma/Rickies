@@ -293,3 +293,27 @@
 @keyframes ring_gradient {
 	@include ring_gradient;
 }
+
+@mixin rule_highlight {
+	0%,
+	10% {
+		color: var(--connected-blue);
+	}
+	20% {
+		color: var(--document-text-color);
+	}
+	30%,
+	90% {
+		color: var(--connected-blue);
+	}
+	100% {
+		color: var(--document-text-color);
+	}
+}
+
+@-webkit-keyframes rule_highlight {
+	@include rule_highlight;
+}
+@keyframes rule_highlight {
+	@include rule_highlight;
+}

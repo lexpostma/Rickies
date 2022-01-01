@@ -2,6 +2,11 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+### 1 January 2022
+
+-   [Link to](https://rickies.co/billof/keynote-oct-2021#rule68) and highlight specific rule on the Bill of Rickies
+-   [Picks that caused amendments](https://rickies.co/?search=&amendment=on#results) now have a link to said amendment on the Bill
+
 ## 29 December 2021 v2.1
 
 -   Support for The Pickies, the [Triple J 2021 holiday special](https://rickies.co/annual-2022-special). Complete with:
