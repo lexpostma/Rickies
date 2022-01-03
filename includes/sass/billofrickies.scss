@@ -68,8 +68,8 @@ h2.rule_type,
 	}
 	&:target {
 		color: var(--connected-blue);
-		-webkit-animation: rule_highlight 8s linear forwards;
-		animation: rule_highlight 8s linear forwards;
+		-webkit-animation: rule_highlight 10s linear forwards;
+		animation: rule_highlight 10s linear forwards;
 	}
 }
 span.rule {

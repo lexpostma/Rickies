@@ -296,13 +296,30 @@
 
 @mixin rule_highlight {
 	0%,
-	10% {
+	5% {
 		color: var(--connected-blue);
 	}
-	20% {
+	10%,
+	12% {
 		color: var(--document-text-color);
 	}
+	15%,
+	17% {
+		color: var(--connected-blue);
+	}
+	20%,
+	22% {
+		color: var(--document-text-color);
+	}
+	25%,
+	27% {
+		color: var(--connected-blue);
+	}
 	30%,
+	32% {
+		color: var(--document-text-color);
+	}
+	35%,
 	90% {
 		color: var(--connected-blue);
 	}
