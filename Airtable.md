@@ -306,3 +306,40 @@ IF(
 	'</span>'
 )
 ```
+
+## Scored points
+
+```
+IF(
+	Status,
+	IF(
+		Type="Regular",
+		IF(
+			Status="Correct",
+			1*Factor,
+			0
+		),
+		IF(
+			Type="Risky",
+			IF(
+				Status="Correct",
+				2*Factor,
+				-1*Factor
+			),
+			IF(
+				AND(Type="Pickies", {Round set}=1, Status="Correct"),
+				3*Factor*{3J doubler},
+				IF(
+					AND(Type="Pickies", {Round set}=2, Status="Correct"),
+					2*Factor*{3J doubler},
+					IF(
+						AND(Type="Lightning", Status="Correct"),
+						1*Factor*{3J doubler}
+					)
+				)
+			)
+
+		)
+	)
+)
+```
