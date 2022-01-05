@@ -124,6 +124,7 @@ section#timeline {
 			border-bottom-right-radius: 0;
 			border-right-width: 0px;
 			background-origin: border-box;
+			min-width: var(--space-between-lg);
 		}
 	}
 	&.annual .chairman {

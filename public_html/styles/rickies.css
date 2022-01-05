@@ -2099,6 +2099,7 @@ section#timeline .timeline--legend {
   border-bottom-right-radius: 0;
   border-right-width: 0px;
   background-origin: border-box;
+  min-width: var(--space-between-lg);
 }
 .timeline--chairman-track.annual .chairman {
   background-color: var(--connected-orange);
