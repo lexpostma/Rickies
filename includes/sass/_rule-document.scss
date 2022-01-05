@@ -168,12 +168,11 @@ ol {
 	padding-left: 26px;
 }
 
-h2 + div.rule p {
+#document_title,
+ol.rules,
+div.rule {
 	margin-top: 0;
 	margin-bottom: var(--space-between-md);
-}
-ol + div.rule p {
-	margin-top: var(--space-between-md);
 }
 
 div.rule p del {
