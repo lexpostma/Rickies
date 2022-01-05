@@ -3,7 +3,7 @@
 // Rickies rules _data_ controller
 
 if (!isset($rules__params['filterByFormula'])) {
-	$rules__params['filterByFormula'] = 'AND( {Applied to Rickies}, {Rules set} = "Rickies" )';
+	$rules__params['filterByFormula'] = 'AND( {Applied to Rickies}, {Rules set} = "Rickies", {Section within type} )';
 }
 
 if (!isset($rules__params['fields'])) {
@@ -16,6 +16,7 @@ if (!isset($rules__params['fields'])) {
 		'Rule type',
 		'Applied to Rickies',
 		'Last edit date',
+		'Section within type',
 	];
 }
 if (!isset($rules__params['sort'])) {
@@ -39,6 +40,7 @@ do {
 				'date_end' => strtotime(check_key('End date', $fields)),
 				'events' => check_key('Applied to Rickies', $fields),
 				'order' => check_key('Order', $fields),
+				'section' => check_key('Section within type', $fields),
 				'last_edited' => check_key('Last edit date', $fields),
 			];
 		}

@@ -52,17 +52,28 @@ if (isset($triple_j)) {
 		$i = 0;
 		$len = count($rules);
 
-		$output = '<ol class="rules">';
+		$intro_output = $outro_output = '';
+		$rules_output = '<ol class="rules">';
 		foreach ($rules as $rule) {
-			$output .= '<li class="rule ';
+			switch ($rule['section']) {
+				case 'Rules':
+					$temp_rule_output = '<li';
+					break;
+				case 'Intro':
+				case 'Outro':
+					$temp_rule_output = '<div';
+					break;
+			}
+
+			$temp_rule_output .= ' class="rule ';
 
 			// This is the same rule that's also in the JS
 			if ($rule['date_start'] <= $current_selection['date'] && $rule['date_end'] >= $current_selection['date']) {
 			} else {
-				$output .= 'hidden gone';
+				$temp_rule_output .= 'hidden gone';
 				$i++;
 			}
-			$output .=
+			$temp_rule_output .=
 				'" id="rule' .
 				$rule['id'] .
 				'"
@@ -73,11 +84,26 @@ if (isset($triple_j)) {
 				$rule['date_end'] .
 				'"
 				>' .
-				$rule['rule'] .
-				'</li>';
+				$rule['rule'];
+
+			switch ($rule['section']) {
+				case 'Rules':
+					$temp_rule_output .= '</li>';
+					$rules_output .= $temp_rule_output;
+					break;
+				case 'Intro':
+					$temp_rule_output .= '</div>';
+					$intro_output .= $temp_rule_output;
+					break;
+				case 'Outro':
+					$temp_rule_output .= '</div>';
+					$outro_output .= $temp_rule_output;
+					break;
+			}
+			unset($temp_rule_output);
 		}
 
-		$output .= '</ol>';
+		$rules_output .= '</ol>';
 		$output_h2 = '<h2 id="' . strtolower(explode(' ', $type)[1]) . '_title" class="rule_type ';
 		if ($i == $len) {
 			// All rules in <ol> are hidden, so also hide <h2>
@@ -85,7 +111,7 @@ if (isset($triple_j)) {
 		}
 		$output_h2 .= '">' . $type . '</h2>';
 
-		echo $output_h2 . $output;
+		echo $output_h2 . $intro_output . $rules_output . $outro_output;
 		unset($output, $output_h2);
 	}
 } ?>

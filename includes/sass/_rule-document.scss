@@ -168,15 +168,21 @@ ol {
 	padding-left: 26px;
 }
 
-div.rule p {
-	margin-top: var(--space-between-md);
-	del {
-		text-align: center;
-		text-decoration: none;
-		display: block;
-		opacity: 0.6;
-	}
+h2 + div.rule p {
+	margin-top: 0;
+	margin-bottom: var(--space-between-md);
 }
+ol + div.rule p {
+	margin-top: var(--space-between-md);
+}
+
+div.rule p del {
+	text-align: center;
+	text-decoration: none;
+	display: block;
+	opacity: 0.6;
+}
+
 main a {
 	padding: 2px 4px;
 	margin: -2px -4px;
