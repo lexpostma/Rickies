@@ -5,6 +5,7 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 ### 6 January 2022
 
 -   Add host filters to the stats-links on Host Leaderboard
+-   Fix timeline starting position on mobile not being at the end
 
 ### 1 January 2022
 

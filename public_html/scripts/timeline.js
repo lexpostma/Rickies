@@ -189,7 +189,10 @@ timeline_content.addEventListener('scroll', function () {
 // Via: https://stackoverflow.com/a/56747348
 // And the labels are correctly visible
 document.addEventListener('DOMContentLoaded', function (event) {
-	timeline_content.scrollLeft = timeline_content.scrollWidth;
+	setTimeout(function () {
+		timeline_content.scrollLeft = timeline_content.scrollWidth;
+	}, 100);
+
 	set_timeline_scale_labels();
 	set_timeline_avatar_winner();
 });
