@@ -159,6 +159,7 @@ if (!isset($triple_j)) {
 		],
 	];
 }
+shuffle($signatures);
 ?>
 	<div class="document_footer">
 		<div class="signatures">
