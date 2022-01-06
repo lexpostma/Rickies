@@ -157,14 +157,17 @@ do {
 						'buzzkillers' => [
 							'value' => round_if_decimal(check_key('Negative Rate', $fields, 0) * 100),
 							'label' =>
-								'of picks are <a href="' . filter_url($search . '&buzzkiller=on') . '">buzzkillers</a>',
+								'of picks are <a href="' .
+								filter_url($search . '&host%5B%5D=' . strtolower($id) . '&buzzkiller=on') .
+								'">buzzkillers</a>',
 							'unit' => '%',
+							'0hide' => true,
 						],
 						'adjudicated' => [
 							'value' => check_key('Picks Adjudicated Count', $fields, 0),
 							'label' =>
 								'picks had to be <a href="' .
-								filter_url($search . '&adjudicated=on') .
+								filter_url($search . '&host%5B%5D=' . strtolower($id) . '&adjudicated=on') .
 								'">adjudicated</a>',
 							// 'unit' => '%',
 							'0hide' => true,

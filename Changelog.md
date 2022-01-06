@@ -2,6 +2,10 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+### 6 January 2022
+
+-   Add host filters to the stats-links on Host Leaderboard
+
 ### 1 January 2022
 
 -   [Link to](https://rickies.co/billof/keynote-oct-2021#rule68) and highlight specific rule on the Bill of Rickies
