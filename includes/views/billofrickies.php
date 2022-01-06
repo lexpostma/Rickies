@@ -33,7 +33,8 @@ if (isset($triple_j)) {
 	<p id="document_date"><?= $current_selection['date_string'] ?></p>
 	<h1 id="document_title"><?= $head_custom['title'] ?></h1>
 
-<?php foreach ($rules__array as $type => $rules) {
+<?php
+foreach ($rules__array as $type => $rules) {
 	if ($type == 'Intro' || $type == 'Outro') {
 		foreach ($rules as $rule) {
 			echo '<div class="rule ';
@@ -114,14 +115,68 @@ if (isset($triple_j)) {
 		echo $output_h2 . $intro_output . $rules_output . $outro_output;
 		unset($output, $output_h2);
 	}
-} ?>
+}
+if (!isset($triple_j)) {
+	$signatures = [
+		[
+			'img' => 'stephen',
+			'name' => 'Stephen Hackett',
+			'title' => 'Stephen’s signature',
+			'style' => 'width: 168px; margin-bottom: -5px; margin-left: -6px;',
+		],
+		[
+			'img' => 'federico',
+			'name' => 'Federico Viticci',
+			'title' => 'Federico’s signature',
+			'style' => 'width: 160px; margin-left: 0px;',
+		],
+		[
+			'img' => 'myke',
+			'name' => 'Myke Hurley',
+			'title' => 'Myke’s signature',
+			'style' => 'width: 130px; margin-bottom: -24px; margin-left: -20px;',
+		],
+	];
+} else {
+	$signatures = [
+		[
+			'img' => 'james',
+			'name' => 'James Thomson',
+			'title' => 'James’s signature',
+			'style' => 'width: 142px; margin-bottom: -15px; margin-left: -18px; transform: rotate(-6deg);',
+		],
+		[
+			'img' => 'john',
+			'name' => 'John Voorhees',
+			'title' => 'John’s signature',
+			'style' => 'width: 160px; margin-bottom: -1px; margin-left: -7px;',
+		],
+		[
+			'img' => 'jason',
+			'name' => 'Jason Snell',
+			'title' => 'Jason’s signature',
+			'style' => 'width: 170px; margin-bottom: -27px; margin-left: -23px;',
+		],
+	];
+}
+?>
 	<div class="document_footer">
 		<div class="signatures">
-			<?php if (!isset($triple_j)) { ?>
-			<img src="/images/signature-stephen.png" alt="Stephen’s signature"/>
-			<img src="/images/signature-federico.png" alt="Federico’s signature"/>
-			<img src="/images/signature-myke.png" alt="Myke’s signature"/>
-			<?php } ?>
+<?php foreach ($signatures as $sign) {
+	echo '
+<div class="signature">
+	<img src="/images/signatures/' .
+		$sign['img'] .
+		'.png" alt="' .
+		$sign['title'] .
+		'" style="' .
+		$sign['style'] .
+		'"/>
+	<span>' .
+		$sign['name'] .
+		'</span>
+</div>';
+} ?>
 		</div>
 		<div class="seal">
 			<img id="ticci_seal"  class="seal" src="/images/viticci-seal-of-quality.png" alt="Viticci Seal of Quality"/>

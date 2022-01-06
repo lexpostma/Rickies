@@ -787,19 +787,46 @@ main .document_footer {
 }
 main .document_footer .signatures {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   align-items: flex-start;
   margin-top: 32px;
-  border-bottom: 2px dotted var(--text-primary-color);
   padding-right: 16px;
 }
-main .document_footer .signatures img {
-  margin-left: -16px;
-  max-height: 2.3rem;
+@media screen and (min-width: 576px) {
+  main .document_footer .signatures {
+    padding-left: 16px;
+  }
+}
+main .document_footer .signatures .signature {
+  width: 128px;
+  margin-right: 32px;
+  height: 80px;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+}
+@media screen and (min-width: 576px) {
+  main .document_footer .signatures .signature {
+    margin-right: 64px;
+  }
+}
+main .document_footer .signatures .signature span {
+  border-top: 1px dotted var(--text-primary-color);
+  display: block;
+  width: 100%;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  padding-top: 2px;
+}
+main .document_footer .signatures .signature img {
+  filter: saturate(0%);
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 @media (prefers-color-scheme: dark) {
-  main .document_footer .signatures img {
-    filter: brightness(100);
+  main .document_footer .signatures .signature img {
+    filter: brightness(90);
+    opacity: 0.7;
   }
 }
 main .document_footer img.seal {
@@ -807,6 +834,11 @@ main .document_footer img.seal {
   max-width: 120px;
   align-self: flex-end;
   margin-bottom: -10px;
+}
+@media screen and (min-width: 576px) {
+  main .document_footer img.seal {
+    max-width: 150px;
+  }
 }
 main .document_footer #ticci_seal {
   transform: rotate(9deg);
@@ -817,12 +849,12 @@ main .document_footer #wax_seal {
   transform: rotate(-6deg);
   filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.4));
 }
-main.parchment .document_footer .signatures {
-  border-bottom-color: var(--document-text-color);
+main.parchment .document_footer .signatures .signature span {
+  border-color: var(--document-text-color);
 }
-main.parchment .document_footer .signatures img {
-  filter: sepia(100%);
-  opacity: 0.9;
+main.parchment .document_footer .signatures .signature img {
+  filter: unset;
+  opacity: unset;
 }
 main.parchment #ticci_seal {
   display: none;

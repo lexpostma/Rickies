@@ -109,23 +109,48 @@ main {
 		}
 		.signatures {
 			display: flex;
-			flex-direction: column;
+			flex-flow: row wrap;
 			align-items: flex-start;
 			margin-top: 32px;
-			border-bottom: 2px dotted var(--text-primary-color);
 			padding-right: 16px;
-
-			img {
-				margin-left: -16px;
-				max-height: 2.3rem;
-				@media (prefers-color-scheme: dark) {
-					filter: brightness(100);
+			@media screen and (min-width: var.$break-sm) {
+				padding-left: 16px;
+			}
+			.signature {
+				width: 128px;
+				margin-right: 32px;
+				@media screen and (min-width: var.$break-sm) {
+					margin-right: 64px;
+				}
+				height: 80px;
+				display: flex;
+				flex-flow: column;
+				justify-content: flex-end;
+				span {
+					border-top: 1px dotted var(--text-primary-color);
+					display: block;
+					width: 100%;
+					font-size: 0.75rem;
+					opacity: 0.6;
+					padding-top: 2px;
+				}
+				img {
+					filter: saturate(0%);
+					flex-grow: 0;
+					flex-shrink: 0;
+					@media (prefers-color-scheme: dark) {
+						filter: brightness(90);
+						opacity: 0.7;
+					}
 				}
 			}
 		}
 		img.seal {
 			width: 24vw;
 			max-width: 120px;
+			@media screen and (min-width: var.$break-sm) {
+				max-width: 150px;
+			}
 			align-self: flex-end;
 			margin-bottom: -10px;
 		}
@@ -141,11 +166,13 @@ main {
 	}
 	&.parchment {
 		.document_footer {
-			.signatures {
-				border-bottom-color: var(--document-text-color);
+			.signatures .signature {
+				span {
+					border-color: var(--document-text-color);
+				}
 				img {
-					filter: sepia(100%);
-					opacity: 0.9;
+					filter: unset;
+					opacity: unset;
 				}
 			}
 		}

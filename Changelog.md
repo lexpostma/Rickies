@@ -4,6 +4,7 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 
 ### 6 January 2022
 
+-   New and improved signatures on [The Bill of Rickies](https://rickies.co/billof) and [The Pickies Charter](https://rickies.co/charter), in random order
 -   Add host filters to the stats-links on Host Leaderboard
 -   Fix timeline starting position on mobile not being at the end
 
