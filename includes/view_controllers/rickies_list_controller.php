@@ -44,7 +44,6 @@ Sometimes on Connected with the Triple J at Relay FM.';
 			$rickies_events__params['filterByFormula'] = "AND( Published = TRUE(), Special = 'Pickies' )";
 			break;
 	}
-	$head_custom['canonical'] = current_url(true);
 }
 
 if (isset($auto_select_rickies)) {
