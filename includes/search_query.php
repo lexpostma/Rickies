@@ -46,7 +46,15 @@ if (isset($_GET['half_points']) && $_GET['half_points'] === 'on') {
 }
 
 if (isset($_GET['amendment']) && $_GET['amendment'] === 'on') {
-	$pick_filter['filter_other']['amendment'] = '{Amendments}';
+	$pick_filter['filter_other']['amendment'] = 'Amendments';
+}
+
+if (isset($_GET['complex_min']) && is_numeric($_GET['complex_min'])) {
+	$pick_filter['filter_other']['complex_min'] = 'Conditions >= ' . $_GET['complex_min'];
+}
+
+if (isset($_GET['complex_max']) && is_numeric($_GET['complex_max'])) {
+	$pick_filter['filter_other']['complex_max'] = 'Conditions <= ' . $_GET['complex_max'];
 }
 
 if (isset($_GET['double_points']) && $_GET['double_points'] === 'on') {

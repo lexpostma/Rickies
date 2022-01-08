@@ -393,6 +393,23 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 			</li>';
 	}
 
+	// Filter for complexity/number of conditions
+	$output .= '<li class="filter_option range">
+		<div class="range_icon"></div>
+			<span class="emoji">🧮</span>Complexity:
+			<input class="clean" name="complex_min" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="1" ';
+	if (key_exists('complex_min', $user_input['filter_other'])) {
+		$output .= ' value="' . str_replace('Conditions >= ', '', $user_input['filter_other']['complex_min']) . '" ';
+	}
+	$output .= '/>
+			&ndash;
+			<input class="clean" name="complex_max" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="7" ';
+	if (key_exists('complex_max', $user_input['filter_other'])) {
+		$output .= ' value="' . str_replace('Conditions <= ', '', $user_input['filter_other']['complex_max']) . '" ';
+	}
+	$output .= '/>
+	</li>';
+
 	// Filter for changing view
 	$pick_display_select = [
 		'clean' => emoji_select_spacing('🧹') . 'Just the picks',

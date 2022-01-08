@@ -546,22 +546,37 @@ select.clean {
   cursor: pointer;
 }
 
+input[type=number],
 input[type=text],
 input[type=search] {
   font-size: max(16px, 1em);
 }
+input[type=number]::placeholder,
 input[type=text]::placeholder,
 input[type=search]::placeholder {
   color: var(--text-secondary-color);
   opacity: 1;
+  font-weight: normal;
 }
+input[type=number]:-ms-input-placeholder,
 input[type=text]:-ms-input-placeholder,
 input[type=search]:-ms-input-placeholder {
   color: var(--text-secondary-color);
+  font-weight: normal;
 }
+input[type=number]::-ms-input-placeholder,
 input[type=text]::-ms-input-placeholder,
 input[type=search]::-ms-input-placeholder {
   color: var(--text-secondary-color);
+  font-weight: normal;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+input[type=number].clean::-webkit-inner-spin-button, input[type=number].clean::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 html,

@@ -546,22 +546,37 @@ select.clean {
   cursor: pointer;
 }
 
+input[type=number],
 input[type=text],
 input[type=search] {
   font-size: max(16px, 1em);
 }
+input[type=number]::placeholder,
 input[type=text]::placeholder,
 input[type=search]::placeholder {
   color: var(--text-secondary-color);
   opacity: 1;
+  font-weight: normal;
 }
+input[type=number]:-ms-input-placeholder,
 input[type=text]:-ms-input-placeholder,
 input[type=search]:-ms-input-placeholder {
   color: var(--text-secondary-color);
+  font-weight: normal;
 }
+input[type=number]::-ms-input-placeholder,
 input[type=text]::-ms-input-placeholder,
 input[type=search]::-ms-input-placeholder {
   color: var(--text-secondary-color);
+  font-weight: normal;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+input[type=number].clean::-webkit-inner-spin-button, input[type=number].clean::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 html,
@@ -2843,37 +2858,80 @@ mark {
 #pick_filter_sheet > .content > fieldset .filter_option:last-child {
   margin-bottom: 0;
 }
+#pick_filter_sheet > .content > fieldset .range,
 #pick_filter_sheet > .content > fieldset .select {
   position: relative;
 }
-#pick_filter_sheet > .content > fieldset .select select {
-  padding: var(--label-padding) 0 var(--label-padding) calc(1.4rem + 8px);
-  width: 100%;
-}
-#pick_filter_sheet > .content > fieldset .select .select_icon {
+#pick_filter_sheet > .content > fieldset .range .select_icon,
+#pick_filter_sheet > .content > fieldset .range .range_icon,
+#pick_filter_sheet > .content > fieldset .select .select_icon,
+#pick_filter_sheet > .content > fieldset .select .range_icon {
   opacity: 0.3;
   width: 1.5em;
   height: calc(1.5em + 2 * (var(--label-padding)));
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("/images/buttons/input-unselect.svg");
-  position: absolute;
   pointer-events: none;
 }
 @media (prefers-color-scheme: dark) {
-  #pick_filter_sheet > .content > fieldset .select .select_icon {
+  #pick_filter_sheet > .content > fieldset .range .select_icon,
+#pick_filter_sheet > .content > fieldset .range .range_icon,
+#pick_filter_sheet > .content > fieldset .select .select_icon,
+#pick_filter_sheet > .content > fieldset .select .range_icon {
     opacity: 0.6;
   }
 }
 @media (hover: hover) {
-  #pick_filter_sheet > .content > fieldset .select .select_icon:hover {
+  #pick_filter_sheet > .content > fieldset .range .select_icon:hover,
+#pick_filter_sheet > .content > fieldset .range .range_icon:hover,
+#pick_filter_sheet > .content > fieldset .select .select_icon:hover,
+#pick_filter_sheet > .content > fieldset .select .range_icon:hover {
     opacity: 1;
   }
+}
+#pick_filter_sheet > .content > fieldset .select select {
+  padding: var(--label-padding) 0 var(--label-padding) calc(1.4rem + 8px);
+  width: 100%;
+}
+#pick_filter_sheet > .content > fieldset .select .select_icon {
+  position: absolute;
+  background-image: url("/images/buttons/input-unselect.svg");
 }
 #pick_filter_sheet > .content > fieldset .select select:not([data-chosen=""]) + .select_icon {
   background-image: url("/images/buttons/input-select.svg");
   opacity: 1;
+}
+#pick_filter_sheet > .content > fieldset .range input[type=number] {
+  width: 2rem;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid var(--link-color);
+  margin: 0 4px;
+  border-radius: 2px;
+  height: 1.5em;
+  line-height: 1em;
+}
+#pick_filter_sheet > .content > fieldset .range input[type=number]:placeholder-shown {
+  opacity: 0.3;
+}
+@media (prefers-color-scheme: dark) {
+  #pick_filter_sheet > .content > fieldset .range input[type=number]:placeholder-shown {
+    opacity: 0.6;
+  }
+}
+@media (hover: hover) {
+  #pick_filter_sheet > .content > fieldset .range input[type=number]:placeholder-shown:hover {
+    opacity: 1;
+  }
+}
+#pick_filter_sheet > .content > fieldset .range input[type=number]:not(:placeholder-shown) {
+  background: var(--link-color);
+  color: white;
+}
+#pick_filter_sheet > .content > fieldset .range .range_icon {
+  margin-right: 4px;
+  background-image: url("/images/buttons/input-number-empty.svg");
 }
 #pick_filter_sheet > .content > fieldset input[type=checkbox] {
   opacity: 0.3;

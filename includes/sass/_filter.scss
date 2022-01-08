@@ -315,9 +315,16 @@
 		.filter_option:last-child {
 			margin-bottom: 0;
 		}
-
+		.range,
 		.select {
 			position: relative;
+			.select_icon,
+			.range_icon {
+				@include input-icon;
+				pointer-events: none;
+			}
+		}
+		.select {
 			select {
 				padding: var(--label-padding) 0 var(--label-padding) calc(1.4rem + 8px);
 				width: 100%;
@@ -325,14 +332,44 @@
 			select:not([data-chosen='']) {
 			}
 			.select_icon {
-				@include input-icon;
-				background-image: url('/images/buttons/input-unselect.svg');
 				position: absolute;
-				pointer-events: none;
+				background-image: url('/images/buttons/input-unselect.svg');
 			}
 			select:not([data-chosen='']) + .select_icon {
 				background-image: url('/images/buttons/input-select.svg');
 				opacity: 1;
+			}
+		}
+		.range {
+			input[type='number'] {
+				width: 2rem;
+				font-weight: bold;
+				text-align: center;
+				border: 1px solid var(--link-color);
+				margin: 0 4px;
+				border-radius: 2px;
+				height: 1.5em;
+				line-height: 1em;
+				&:placeholder-shown {
+					opacity: 0.3;
+					@media (prefers-color-scheme: dark) {
+						opacity: 0.6;
+					}
+					@media (hover: hover) {
+						&:hover {
+							opacity: 1;
+						}
+					}
+				}
+				&:not(:placeholder-shown) {
+					background: var(--link-color);
+					color: white;
+				}
+			}
+			.range_icon {
+				margin-right: 4px;
+				// background-image: url('/images/buttons/input-number.svg');
+				background-image: url('/images/buttons/input-number-empty.svg');
 			}
 		}
 		input[type='checkbox'] {

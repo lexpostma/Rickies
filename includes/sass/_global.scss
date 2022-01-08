@@ -26,18 +26,31 @@ select.clean {
 	cursor: pointer;
 }
 
+input[type='number'],
 input[type='text'],
 input[type='search'] {
 	font-size: max(16px, 1em);
 	&::placeholder {
 		color: var(--text-secondary-color);
 		opacity: 1;
+		font-weight: normal;
 	}
 	&:-ms-input-placeholder {
 		color: var(--text-secondary-color);
+		font-weight: normal;
 	}
 	&::-ms-input-placeholder {
 		color: var(--text-secondary-color);
+		font-weight: normal;
+	}
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
+	&.clean::-webkit-inner-spin-button,
+	&.clean::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
 	}
 }
 
