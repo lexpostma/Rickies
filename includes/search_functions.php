@@ -354,6 +354,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 			'emoji' => '📜',
 			'3j' => 'both',
 		],
+		'conditions' => '',
 		'half_points' => [
 			'label' => 'Half correct',
 			'emoji' => '➗',
@@ -361,54 +362,58 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 		],
 	];
 	foreach ($metadata as $value => $visual) {
-		$output .= '<li class="filter_option ';
-		if (
-			(key_exists('3j', $user_input['filter_other']) && $visual['3j'] === 'false') ||
-			(!key_exists('3j', $user_input['filter_other']) && $visual['3j'] === 'true')
-		) {
-			$output .= 'hidden';
-		}
-
-		$output .=
-			'">
-				<input type="checkbox" name="' .
-			$value .
-			'" id="' .
-			$value .
-			'" class="clean" data-3j="' .
-			$visual['3j'] .
-			'" ';
-		if (key_exists($value, $user_input['filter_other'])) {
-			$output .= 'checked';
-		}
-		$output .=
-			'/>
-				<label for="' .
-			$value .
-			'"><span class="emoji">' .
-			$visual['emoji'] .
-			'</span>' .
-			$visual['label'] .
-			'</label>
+		if ($value === 'conditions') {
+			// Filter for complexity/number of conditions
+			$output .= '<li class="filter_option range">
+				<div class="range_icon"></div>
+					<span class="emoji">🧮</span>Conditions
+					<input class="clean" name="complex_min" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="1" ';
+			if (key_exists('complex_min', $user_input['filter_other'])) {
+				$output .=
+					' value="' . str_replace('Conditions >= ', '', $user_input['filter_other']['complex_min']) . '" ';
+			}
+			$output .= '/>
+					&ndash;
+					<input class="clean" name="complex_max" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="7" ';
+			if (key_exists('complex_max', $user_input['filter_other'])) {
+				$output .=
+					' value="' . str_replace('Conditions <= ', '', $user_input['filter_other']['complex_max']) . '" ';
+			}
+			$output .= '/>
 			</li>';
-	}
+		} else {
+			$output .= '<li class="filter_option ';
+			if (
+				(key_exists('3j', $user_input['filter_other']) && $visual['3j'] === 'false') ||
+				(!key_exists('3j', $user_input['filter_other']) && $visual['3j'] === 'true')
+			) {
+				$output .= 'hidden';
+			}
 
-	// Filter for complexity/number of conditions
-	$output .= '<li class="filter_option range">
-		<div class="range_icon"></div>
-			<span class="emoji">🧮</span>Conditions
-			<input class="clean" name="complex_min" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="1" ';
-	if (key_exists('complex_min', $user_input['filter_other'])) {
-		$output .= ' value="' . str_replace('Conditions >= ', '', $user_input['filter_other']['complex_min']) . '" ';
+			$output .=
+				'">
+				<input type="checkbox" name="' .
+				$value .
+				'" id="' .
+				$value .
+				'" class="clean" data-3j="' .
+				$visual['3j'] .
+				'" ';
+			if (key_exists($value, $user_input['filter_other'])) {
+				$output .= 'checked';
+			}
+			$output .=
+				'/>
+				<label for="' .
+				$value .
+				'"><span class="emoji">' .
+				$visual['emoji'] .
+				'</span>' .
+				$visual['label'] .
+				'</label>
+			</li>';
+		}
 	}
-	$output .= '/>
-			&ndash;
-			<input class="clean" name="complex_max" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="7" ';
-	if (key_exists('complex_max', $user_input['filter_other'])) {
-		$output .= ' value="' . str_replace('Conditions <= ', '', $user_input['filter_other']['complex_max']) . '" ';
-	}
-	$output .= '/>
-	</li>';
 
 	// Filter for changing view
 	$pick_display_select = [
