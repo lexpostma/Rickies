@@ -341,13 +341,14 @@
 			}
 		}
 		.range {
+			flex-wrap: nowrap;
 			input[type='number'] {
-				width: 2rem;
+				width: 1.45rem;
 				font-weight: bold;
 				text-align: center;
 				border: 1px solid var(--link-color);
 				margin: 0 4px;
-				border-radius: 2px;
+				border-radius: 4px;
 				height: 1.5em;
 				line-height: 1em;
 				&:placeholder-shown {

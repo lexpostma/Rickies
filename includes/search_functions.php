@@ -396,7 +396,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 	// Filter for complexity/number of conditions
 	$output .= '<li class="filter_option range">
 		<div class="range_icon"></div>
-			<span class="emoji">🧮</span>Complexity:
+			<span class="emoji">🧮</span>Conditions
 			<input class="clean" name="complex_min" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="1" ';
 	if (key_exists('complex_min', $user_input['filter_other'])) {
 		$output .= ' value="' . str_replace('Conditions >= ', '', $user_input['filter_other']['complex_min']) . '" ';
