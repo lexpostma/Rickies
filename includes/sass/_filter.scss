@@ -349,9 +349,10 @@
 				font-weight: bold;
 				text-align: center;
 				border: 1px solid var(--link-color);
-				margin: var(--label-padding) 4px;
+				margin: 0 4px;
 				border-radius: 4px;
 				height: 1.5rem;
+				height: calc(1.5rem + 2 * var(--label-padding));
 				line-height: 1em;
 				&:placeholder-shown {
 					opacity: 0.3;
