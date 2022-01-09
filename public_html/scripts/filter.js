@@ -233,3 +233,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
 		reset_button.disabled = true;
 	}
 });
+
+// Clean up the parameters in the URL on submitting
+// Via: https://stackoverflow.com/a/8029581
+const pick_filter_form = document.getElementById('pick_filter_form');
+
+pick_filter_form.addEventListener('submit', function () {
+	var allFilters = pick_filter_form.querySelectorAll('input, select');
+
+	for (var i = 0; i < allFilters.length; i++) {
+		var input = allFilters[i];
+
+		if (input.name && !input.value && input.name !== 'search') {
+			input.name = '';
+		}
+	}
+});
