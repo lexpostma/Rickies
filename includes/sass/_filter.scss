@@ -240,8 +240,10 @@
 			}
 
 			& > fieldset {
-				&:not(:last-child) > ul > li {
-					margin-right: -24px;
+				@media screen and (min-width: var.$break-sm) {
+					&:not(:last-child) > ul > li {
+						margin-right: -24px;
+					}
 				}
 				& > ul > li {
 					& ul {
