@@ -344,38 +344,12 @@
 		}
 		.range {
 			flex-wrap: nowrap;
-			label {
-				flex-basis: unset;
-				flex-grow: unset;
-			}
-			span.small_label {
-			}
-			span.big_label {
-				display: none;
-			}
-			@media screen and (min-width: var.$break-xs) {
-				span.small_label {
-					display: none;
-				}
-				span.big_label {
-					display: inline;
-				}
-			}
-			@media screen and (min-width: var.$break-sm) {
-				span.small_label {
-					display: inline;
-				}
-				span.big_label {
-					display: none;
-				}
-			}
-
 			input[type='number'] {
-				width: 1.45rem;
+				width: 2rem;
 				font-weight: bold;
 				text-align: center;
 				border: 1px solid var(--link-color);
-				margin: 0 4px;
+				margin: var(--label-padding) 4px;
 				border-radius: 4px;
 				height: 1.5rem;
 				line-height: 1em;
@@ -397,6 +371,32 @@
 				&:not(:placeholder-shown) {
 					background: var(--link-color);
 					color: white;
+				}
+				@media screen and (min-width: var.$break-xl) {
+					width: 1.45rem;
+				}
+			}
+			label:not(.end_of_input) {
+				flex-basis: unset;
+				flex-grow: unset;
+			}
+			span.big_label {
+				display: none;
+			}
+			@media screen and (min-width: var.$break-xs) {
+				span.small_label {
+					display: none;
+				}
+				span.big_label {
+					display: inline;
+				}
+			}
+			@media screen and (min-width: var.$break-sm) {
+				span.small_label {
+					display: inline;
+				}
+				span.big_label {
+					display: none;
 				}
 			}
 			.range_icon {

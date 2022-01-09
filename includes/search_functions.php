@@ -388,7 +388,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 						'" ';
 				}
 				$output .= '/>
-					&ndash;
+					<label for="complex_max">&ndash;</label>
 					<input class="clean" id="complex_max" name="complex_max" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="7" ';
 				if (key_exists('complex_max', $user_input['filter_other'])) {
 					$output .=
@@ -396,7 +396,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 						str_replace('Conditions <= ', '', $user_input['filter_other']['complex_max']) .
 						'" ';
 				}
-				$output .= '/><span class="big_label">conditions</span>
+				$output .= '/><label for="complex_max" class="end_of_input"><span class="big_label">conditions</span>&nbsp;</label>
 			</li>';
 				break;
 			case 'reusable':
