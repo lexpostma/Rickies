@@ -2,6 +2,10 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+### 9 January 2022
+
+-   New and improved signatures on [The Bill of Rickies](https://rickies.co/billof) and [The Pickies Charter](https://rickies.co/charter), in random order
+
 ### 6 January 2022
 
 -   Add host filters to the stats-links on Host Leaderboard
