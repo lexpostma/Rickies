@@ -128,7 +128,7 @@ if (!isset($triple_j)) {
 			'img' => 'federico',
 			'name' => 'Federico Viticci',
 			'title' => 'Federico’s signature',
-			'style' => 'width: 160px; margin-left: 0px;',
+			'style' => 'width: 170px; margin-left: -15px; margin-bottom: -14px; transform: rotate(8deg);',
 		],
 		[
 			'img' => 'myke',
