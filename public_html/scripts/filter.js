@@ -13,14 +13,17 @@ function reset_filter() {
 	}
 
 	for (var i = 0; i < selectTags.length; i++) {
-		selectTags[i].selectedIndex = 0;
-		selectTags[i].setAttribute('data-chosen', '');
+		reset_select(selectTags[i]);
 	}
 
 	host_flip_3j(document.getElementsByClassName('triple_j_filter')[0]);
 	reset_button.disabled = true;
 }
 
+function reset_select(el) {
+	el.selectedIndex = 0;
+	el.setAttribute('data-chosen', '');
+}
 function number_input_state() {
 	var active_number_inputs = [];
 
@@ -67,7 +70,7 @@ function check_elements_for_state() {
 function host_flip_3j(element) {
 	// Switch some checkbox around when in 3J mode
 	let host_checks = document.querySelectorAll('fieldset.hosts .host');
-	let other_checks = document.querySelectorAll('fieldset .filter_option:not(.triple_j_filter) input');
+	let other_checks = document.querySelectorAll('[data-3j]');
 
 	if (element.checked == true) {
 		// console.log('Triple J enabled');
@@ -85,7 +88,11 @@ function host_flip_3j(element) {
 				el.parentNode.classList.remove('hidden');
 			} else if (el.getAttribute('data-3j') == 'false') {
 				el.parentNode.classList.add('hidden');
-				el.checked = false;
+				if (el.type == 'checkbox') {
+					el.checked = false;
+				} else if (el.tagName == 'SELECT') {
+					reset_select(el);
+				}
 			}
 		});
 	} else {

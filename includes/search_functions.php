@@ -336,7 +336,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 					$output .= 'data-chosen';
 				}
 				$output .=
-					'>
+					' data-3j="both">
 								<option value>' .
 					emoji_select_spacing('🏆') .
 					'All Rickies</option>
@@ -399,6 +399,50 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 				$output .= '/><span class="big_label">conditions</span>
 			</li>';
 				break;
+			case 'reusable':
+				// Reusability filter via select
+				$output .= '
+						<li class="filter_option select ';
+				if (key_exists('3j', $user_input['filter_other'])) {
+					$output .= 'hidden';
+				}
+				$output .= '">
+							<select class="clean" name="reusable" onchange=" this.dataset.chosen = this.value; " ';
+				if (!empty($user_input['filter_other']['reusable'])) {
+					$output .= 'data-chosen="set"';
+				} else {
+					$output .= 'data-chosen';
+				}
+				$output .=
+					' data-3j="false">
+					<option value>' .
+					emoji_select_spacing('♻️') .
+					'Reusability</option>
+					<option disabled>&mdash;</option>
+					<option value="yes" ';
+				if (
+					key_exists('reusable', $user_input['filter_other']) &&
+					strpos($user_input['filter_other']['reusable'], 'TRUE()') !== false
+				) {
+					$output .= 'selected';
+				}
+				$output .=
+					'>' .
+					emoji_select_spacing('♻️') .
+					'Eligible for reuse</option>
+				<option value="no" ';
+				if (
+					key_exists('reusable', $user_input['filter_other']) &&
+					strpos($user_input['filter_other']['reusable'], 'FALSE()') !== false
+				) {
+					$output .= 'selected';
+				}
+				$output .= '>' . emoji_select_spacing('⏳') . 'Not reusable yet</option>';
+				$output .= '</select>
+							<div class="select_icon"></div>
+						</li>';
+
+				break;
 			case 'display':
 				// Filter for changing view
 				$pick_display_select = [
@@ -415,7 +459,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 					$output .= 'data-chosen';
 				}
 				$output .=
-					'>
+					' data-3j="both">
 								<option value>' .
 					emoji_select_spacing('🗂') .
 					'All metadata</option>

@@ -20,8 +20,16 @@ if (isset($_GET['search']) && $_GET['search'] !== '') {
 }
 
 // Define filters in query
-if (isset($_GET['reusable']) && $_GET['reusable'] === 'on') {
-	$pick_filter['filter_other']['reusable'] = '{Eligible for reuse}=TRUE()';
+if (isset($_GET['reusable'])) {
+	switch ($_GET['reusable']) {
+		case 'on':
+		case 'yes':
+			$pick_filter['filter_other']['reusable'] = '{Eligible for reuse}=TRUE()';
+			break;
+		case 'no':
+			$pick_filter['filter_other']['reusable'] = '{Eligible for reuse}=FALSE()';
+			break;
+	}
 }
 
 if ((isset($_GET['3j']) && $_GET['3j'] === 'on') || isset($triple_j)) {
