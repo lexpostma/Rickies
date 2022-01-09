@@ -342,6 +342,32 @@
 		}
 		.range {
 			flex-wrap: nowrap;
+			label {
+				flex-basis: unset;
+				flex-grow: unset;
+			}
+			span.small_label {
+			}
+			span.big_label {
+				display: none;
+			}
+			@media screen and (min-width: var.$break-xs) {
+				span.small_label {
+					display: none;
+				}
+				span.big_label {
+					display: inline;
+				}
+			}
+			@media screen and (min-width: var.$break-sm) {
+				span.small_label {
+					display: inline;
+				}
+				span.big_label {
+					display: none;
+				}
+			}
+
 			input[type='number'] {
 				width: 1.45rem;
 				font-weight: bold;
@@ -349,7 +375,7 @@
 				border: 1px solid var(--link-color);
 				margin: 0 4px;
 				border-radius: 4px;
-				height: 1.5em;
+				height: 1.5rem;
 				line-height: 1em;
 				&:placeholder-shown {
 					opacity: 0.3;
@@ -361,6 +387,10 @@
 							opacity: 1;
 						}
 					}
+					&:focus,
+					&:active {
+						opacity: 1;
+					}
 				}
 				&:not(:placeholder-shown) {
 					background: var(--link-color);
@@ -369,10 +399,14 @@
 			}
 			.range_icon {
 				margin-right: 4px;
-				// background-image: url('/images/buttons/input-number.svg');
 				background-image: url('/images/buttons/input-number-empty.svg');
 			}
+			&.active .range_icon {
+				opacity: 1;
+				background-image: url('/images/buttons/input-number.svg');
+			}
 		}
+
 		input[type='checkbox'] {
 			@include input-icon;
 			background-image: url('/images/buttons/input-uncheck.svg');

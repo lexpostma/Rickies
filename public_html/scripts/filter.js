@@ -7,6 +7,8 @@ function reset_filter() {
 		if (inputTags[i].type == 'checkbox') {
 			inputTags[i].checked = false;
 			inputTags[i].indeterminate = false;
+		} else if (inputTags[i].type == 'number') {
+			inputTags[i].value = '';
 		}
 	}
 
@@ -19,7 +21,38 @@ function reset_filter() {
 	reset_button.disabled = true;
 }
 
+function number_input_state() {
+	var active_number_inputs = [];
+
+	for (var i = 0; i < inputTags.length; ++i) {
+		if (inputTags[i].type == 'number') {
+			if (inputTags[i].value) {
+				active_number_inputs.push(inputTags[i]);
+			} else {
+				inputTags[i].parentNode.classList.remove('active');
+			}
+		}
+	}
+	if (active_number_inputs.length != 0) {
+		for (var i = 0; i < active_number_inputs.length; ++i) {
+			active_number_inputs[i].parentNode.classList.add('active');
+		}
+	}
+}
+
 function check_elements_for_state() {
+	number_input_state();
+
+	for (var i = 0; i < inputTags.length; ++i) {
+		if (inputTags[i].type == 'number' && inputTags[i].value) {
+			// Check if any number input has a value
+			return true;
+		} else if (inputTags[i].type == 'checkbox' && inputTags[i].checked == true) {
+			// Check if any checkbox is checked
+			return true;
+		}
+	}
+
 	// Check if any select is selected
 	for (var i = 0; i < selectTags.length; i++) {
 		if (selectTags[i].selectedIndex !== 0) {
@@ -27,14 +60,7 @@ function check_elements_for_state() {
 		}
 	}
 
-	// Check if any checkbox is checked
-	for (var i = 0; i < inputTags.length; ++i) {
-		if (inputTags[i].type == 'checkbox' && inputTags[i].checked == true) {
-			return true;
-		}
-	}
-
-	// Nothing is checked or selected
+	// Nothing is checked, selected, or entered
 	return false;
 }
 

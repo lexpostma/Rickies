@@ -2905,6 +2905,29 @@ mark {
 #pick_filter_sheet > .content > fieldset .range {
   flex-wrap: nowrap;
 }
+#pick_filter_sheet > .content > fieldset .range label {
+  flex-basis: unset;
+  flex-grow: unset;
+}
+#pick_filter_sheet > .content > fieldset .range span.big_label {
+  display: none;
+}
+@media screen and (min-width: 375px) {
+  #pick_filter_sheet > .content > fieldset .range span.small_label {
+    display: none;
+  }
+  #pick_filter_sheet > .content > fieldset .range span.big_label {
+    display: inline;
+  }
+}
+@media screen and (min-width: 576px) {
+  #pick_filter_sheet > .content > fieldset .range span.small_label {
+    display: inline;
+  }
+  #pick_filter_sheet > .content > fieldset .range span.big_label {
+    display: none;
+  }
+}
 #pick_filter_sheet > .content > fieldset .range input[type=number] {
   width: 1.45rem;
   font-weight: bold;
@@ -2912,7 +2935,7 @@ mark {
   border: 1px solid var(--link-color);
   margin: 0 4px;
   border-radius: 4px;
-  height: 1.5em;
+  height: 1.5rem;
   line-height: 1em;
 }
 #pick_filter_sheet > .content > fieldset .range input[type=number]:placeholder-shown {
@@ -2928,6 +2951,9 @@ mark {
     opacity: 1;
   }
 }
+#pick_filter_sheet > .content > fieldset .range input[type=number]:placeholder-shown:focus, #pick_filter_sheet > .content > fieldset .range input[type=number]:placeholder-shown:active {
+  opacity: 1;
+}
 #pick_filter_sheet > .content > fieldset .range input[type=number]:not(:placeholder-shown) {
   background: var(--link-color);
   color: white;
@@ -2935,6 +2961,10 @@ mark {
 #pick_filter_sheet > .content > fieldset .range .range_icon {
   margin-right: 4px;
   background-image: url("/images/buttons/input-number-empty.svg");
+}
+#pick_filter_sheet > .content > fieldset .range.active .range_icon {
+  opacity: 1;
+  background-image: url("/images/buttons/input-number.svg");
 }
 #pick_filter_sheet > .content > fieldset input[type=checkbox] {
   opacity: 0.3;

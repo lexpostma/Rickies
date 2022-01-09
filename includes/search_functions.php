@@ -364,22 +364,29 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 	foreach ($metadata as $value => $visual) {
 		if ($value === 'conditions') {
 			// Filter for complexity/number of conditions
-			$output .= '<li class="filter_option range">
+			$output .= '<li class="filter_option range ';
+			if (
+				key_exists('complex_min', $user_input['filter_other']) ||
+				key_exists('complex_max', $user_input['filter_other'])
+			) {
+				$output .= 'active';
+			}
+			$output .= '">
 				<div class="range_icon"></div>
-					<span class="emoji">🧮</span>Conditions
-					<input class="clean" name="complex_min" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="1" ';
+					<label for="complex_min"><span class="emoji">🧮</span><span class="big_label">Complexity: </span><span class="small_label">Conditions</span></label>
+					<input class="clean" id="complex_min" name="complex_min" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="1" ';
 			if (key_exists('complex_min', $user_input['filter_other'])) {
 				$output .=
 					' value="' . str_replace('Conditions >= ', '', $user_input['filter_other']['complex_min']) . '" ';
 			}
 			$output .= '/>
 					&ndash;
-					<input class="clean" name="complex_max" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="7" ';
+					<input class="clean" id="complex_max" name="complex_max" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="7" ';
 			if (key_exists('complex_max', $user_input['filter_other'])) {
 				$output .=
 					' value="' . str_replace('Conditions <= ', '', $user_input['filter_other']['complex_max']) . '" ';
 			}
-			$output .= '/>
+			$output .= '/><span class="big_label">conditions</span>
 			</li>';
 		} else {
 			$output .= '<li class="filter_option ';
