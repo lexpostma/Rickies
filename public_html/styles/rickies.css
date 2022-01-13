@@ -2101,6 +2101,9 @@ section#timeline .timeline--legend {
   background-origin: border-box;
   min-width: var(--space-between-lg);
 }
+.timeline--chairman-track .chairman.pre_rickies {
+  opacity: 0.5;
+}
 .timeline--chairman-track.annual .chairman {
   background-color: var(--connected-orange);
 }

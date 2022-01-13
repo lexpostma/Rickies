@@ -126,6 +126,9 @@ section#timeline {
 			background-origin: border-box;
 			min-width: var(--space-between-lg);
 		}
+		&.pre_rickies {
+			opacity: 0.5;
+		}
 	}
 	&.annual .chairman {
 		background-color: var(--connected-orange);
