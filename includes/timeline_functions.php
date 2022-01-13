@@ -110,9 +110,12 @@ function chairman_timeline($host_data = [], $event_data = [])
 		foreach ($types as $type => $events) {
 			$output .= '<div class="timeline--chairman-track ' . $type . '">';
 			foreach ($events as $event) {
-				$output .= '<div class="chairman ';
+				$output .= '<div class="chairman';
 				if (!$event['timeline_end']) {
-					$output .= 'open_ended';
+					$output .= ' open_ended';
+				}
+				if ($event['special'] == 'Pre-Rickies') {
+					$output .= ' pre_rickies';
 				}
 				$output .=
 					'" style="left: calc(' .
