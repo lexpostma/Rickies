@@ -197,14 +197,14 @@ if (
 // Episode states
 if (
 	$rickies_events__array[$id]['status'] == 'Live' &&
-	strtotime($rickies_events__array[$id]['details']['event_data']['date']) > strtotime('today')
+	strtotime($rickies_events__array[$id]['details']['link_data_apple']['date']) > strtotime('today')
 ) {
 	// Rickies status == live && Event date > (bigger=before) today
 	$predictions_state = 'live';
 	$results_state = false;
 } elseif (
 	$rickies_events__array[$id]['status'] == 'Live' &&
-	strtotime($rickies_events__array[$id]['details']['event_data']['date']) < strtotime('today')
+	strtotime($rickies_events__array[$id]['details']['link_data_apple']['date']) < strtotime('today')
 ) {
 	// Rickies status == live && Event date < (smaller=after) today
 	$predictions_state = false;
