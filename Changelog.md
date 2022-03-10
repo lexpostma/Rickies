@@ -5,6 +5,7 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 ### 10 March 2022
 
 -   Support for when others hosts match the donation of the Flexy loser, reflected on the [event page](https://rickies.co/keynote-mar-2022) and in the stats
+-   Support for the Flexy titles of the Duke, the Prince and the AG
 
 ### 13 January 2022
 

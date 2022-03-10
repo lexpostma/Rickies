@@ -62,16 +62,21 @@ foreach ($rickies_data['hosts'] as $host) {
 		$added_host['ranking'] = $host['rickies']['ranking'];
 	}
 
+	// If there's a Flexies ranking, and host is #1 -> Add title
+	if ($host['flexies']['ranking'] !== false && $host['flexies']['ranking'] == 0) {
+		$added_host['title'][] = $host['details']['flexy_title'];
+	}
+
 	// If there's a Flexies ranking, host is #1 and there is a charity -> Add title
 	if (
 		$host['flexies']['ranking'] !== false &&
 		$host['flexies']['ranking'] == 0 &&
-		array_key_exists('more_data_charity', $rickies_data['details'])
+		array_key_exists('link_data_charity', $rickies_data['details'])
 	) {
 		$added_host['title'][] = 'Charity Chooser';
 	} elseif ($host['flexies']['ranking'] !== false && $host['flexies']['ranking'] == 2) {
 		// If there's a Flexies ranking, host is #3 and there is a charity -> Add title
-		if (array_key_exists('more_data_charity', $rickies_data['details'])) {
+		if (array_key_exists('link_data_charity', $rickies_data['details'])) {
 			$added_host['title'][] = 'Generous Donor';
 		}
 
@@ -81,7 +86,7 @@ foreach ($rickies_data['hosts'] as $host) {
 		}
 	}
 
-	// Fill title is default of empty
+	// Fill title with default if empty
 	if (empty($added_host['title'])) {
 		$added_host['title'][] = $filler_titles[$added_host['name']];
 	}
@@ -129,7 +134,10 @@ function host_item_bundle($host_event_data, $event_type, $triple_j = false)
 		}
 
 		if ($event_details['flexies']['ranking'] !== false && $event_details['flexies']['ranking'] == 0) {
-			array_push($html_strings['ranking'], '<span class="nowrap">Flexies winner</span>');
+			array_push(
+				$html_strings['ranking'],
+				'<span class="nowrap">' . $event_details['details']['flexy_title'] . '</span>'
+			);
 		} elseif ($event_details['flexies']['ranking'] == 2) {
 			array_push($html_strings['ranking'], '<span class="nowrap">Flexies loser</span>');
 		}
