@@ -33,6 +33,24 @@ switch ($url_view) {
 		$include_subbody = '../includes/views/search.php';
 		$back_to_overview = true;
 		break;
+	case 'trophies':
+		// Trophies query
+		include '../includes/view_controllers/trophies_controller.php';
+		$include_subbody = '../includes/views/trophies.php';
+		$back_to_overview = true;
+		break;
+	case 'charities':
+		// Charities query
+		include '../includes/view_controllers/charities_controller.php';
+		$include_subbody = '../includes/views/charities.php';
+		$back_to_overview = true;
+		break;
+	case 'apple-events':
+		// Apple Events query
+		include '../includes/view_controllers/apple_events_controller.php';
+		$include_subbody = '../includes/views/apple_events.php';
+		$back_to_overview = true;
+		break;
 	case 'wwdc':
 	case 'annual':
 	case 'keynote':

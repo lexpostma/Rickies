@@ -94,6 +94,21 @@ function navigation_bar($active = false, $triple_j = false)
 		}
 		$output .= '</a>
 		<a ';
+		if ($active == 'trophies') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/trophies">Trophies</a>
+		<a ';
+		if ($active == 'charities') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/charities">Charities</a>
+		<a ';
+		if ($active == 'apple-events') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/apple-events"><span class="need_space--sm">Apple</span><span class="less_space--sm"></span> Events</a>
+		<a ';
 		if ($active == 'about') {
 			$output .= 'class="active" ';
 		}
@@ -341,8 +356,13 @@ function date_string_format()
 {
 	return '%B %e, %Y';
 }
-function date_to_string_label($date, $context = false, $date_needs_conversion = true, $html_time = false)
-{
+function date_to_string_label(
+	$date,
+	$context = false,
+	$date_needs_conversion = true,
+	$html_time = false,
+	$custom_format = false
+) {
 	$current = strtotime(date('Y-m-d'));
 
 	// Is date still a string that needs to be converted?
@@ -375,12 +395,20 @@ function date_to_string_label($date, $context = false, $date_needs_conversion = 
 		// Future after tomorrow
 		$on = 'on ';
 		$air_string = 'Airs ' . $on;
-		$date_output = strftime(date_string_format(), $date);
+		if ($custom_format) {
+			$date_output = strftime($custom_format, $date);
+		} else {
+			$date_output = strftime(date_string_format(), $date);
+		}
 	} else {
 		// Past before yesterday
 		$on = 'on ';
 		$air_string = 'Aired ' . $on;
-		$date_output = strftime(date_string_format(), $date);
+		if ($custom_format) {
+			$date_output = strftime($custom_format, $date);
+		} else {
+			$date_output = strftime(date_string_format(), $date);
+		}
 	}
 
 	if ($html_time) {

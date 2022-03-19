@@ -341,3 +341,28 @@ section h2,
 		}
 	}
 }
+
+.image-grid {
+	display: grid;
+	gap: var(--space-between-md);
+	margin: var(--space-between-md) 0;
+	&.img1 {
+		grid-template-columns: 1fr;
+	}
+	&.img2 {
+		grid-template-columns: 1fr 1fr;
+	}
+	img {
+		// object-fit: cover;
+		width: 100%;
+	}
+}
+
+h2.subtitled {
+	margin-bottom: 0;
+}
+p.subtitle {
+	margin-top: 0;
+	color: var(--text-secondary-color);
+	font-style: italic;
+}
