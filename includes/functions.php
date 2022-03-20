@@ -78,12 +78,12 @@ function navigation_bar($active = false, $triple_j = false)
 		if ($active == 'bill') {
 			$output .= 'class="active" ';
 		}
-		$output .= 'href="/billof"><span class="need_space--sm">The </span>Bill of Rickies</a>
+		$output .= 'href="/billof">The Bill <span class="need_space--sm">of Rickies</span></a>
 		<a ';
 		if ($active == 'leaderboard') {
 			$output .= 'class="active" ';
 		}
-		$output .= 'href="/leaderboard"><span class="need_space--sm">Host </span>Leaderboard</a>
+		$output .= 'href="/leaderboard">Host<span class="less_space--sm">s</span><span class="need_space--sm"> Leaderboard</span></a>
 		<a ';
 		if ($active == 'archive' || $active == '3j-archive') {
 			$output .= 'class="active" ';
@@ -93,6 +93,13 @@ function navigation_bar($active = false, $triple_j = false)
 			$output .= '<span> &#8634;</span>';
 		}
 		$output .= '</a>
+		<button id="nav_opener" class="clean js_link ';
+		if ($active == 'about' || $active == 'trophies' || $active == 'apple-events' || $active == 'charities') {
+			$output .= ' active ';
+		}
+		$output .= '" onclick="toggle_extra_items(this)"><span class="row_indicator top_row">•••</span><span class="row_indicator bottom_row">•••</span></button>
+	</div>
+	<div class="nav_content--items hidden" id="nav_content--extra-items">
 		<a ';
 		if ($active == 'trophies') {
 			$output .= 'class="active" ';
@@ -165,7 +172,6 @@ function navigation_bar($active = false, $triple_j = false)
 	$output .= '
 	</div>
 </nav>
-
 	';
 
 	return $output;

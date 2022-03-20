@@ -1263,14 +1263,16 @@ button.js_link:focus, button.js_link:active {
 footer button,
 .banner a,
 footer a:not(#footer_corner),
-nav a {
+nav a,
+nav button.js_link {
   font-weight: 500;
 }
 .bill_footer a.js_link,
 footer button.js_link,
 .banner a.js_link,
 footer a:not(#footer_corner).js_link,
-nav a.js_link {
+nav a.js_link,
+nav button.js_link.js_link {
   color: white;
   cursor: pointer;
   opacity: 0.8;
@@ -1288,7 +1290,9 @@ footer button:visited,
 footer a:not(#footer_corner):link,
 footer a:not(#footer_corner):visited,
 nav a:link,
-nav a:visited {
+nav a:visited,
+nav button.js_link:link,
+nav button.js_link:visited {
   color: white;
   opacity: 0.8;
 }
@@ -1297,7 +1301,8 @@ nav a:visited {
 footer button:hover,
 .banner a:hover,
 footer a:not(#footer_corner):hover,
-nav a:hover {
+nav a:hover,
+nav button.js_link:hover {
     opacity: 1;
   }
 }
@@ -1309,7 +1314,9 @@ footer button:active,
 footer a:not(#footer_corner):focus,
 footer a:not(#footer_corner):active,
 nav a:focus,
-nav a:active {
+nav a:active,
+nav button.js_link:focus,
+nav button.js_link:active {
   opacity: 1;
 }
 
