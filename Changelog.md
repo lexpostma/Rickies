@@ -2,6 +2,13 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+## 22 March 2022 v2.2
+
+-   New [Charities](https://rickies.co/charities) page with all charities that were donated too during the Flexies including some stats, ordered by donation amount
+-   New [Trophies](https://rickies.co/trophies) page with explanations about the different Rickies trophies
+-   New [Apple Events](https://rickies.co/apple-events) page with all Apple keynotes that were predicted in chronological order
+-   Improved navigation bar is now expandable to make room for the new pages
+
 ### 13 January 2022
 
 -   The Annual Predictions of 2018 are differently styled on the timeline, because they were not official Rickies.
