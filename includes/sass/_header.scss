@@ -112,6 +112,7 @@ header {
 		}
 	}
 	&.apple_events,
+	&.charities,
 	&.about,
 	&.search,
 	&.details,
@@ -123,6 +124,7 @@ header {
 		}
 	}
 	&.apple_events,
+	&.charities,
 	&.about,
 	&.details,
 	&.leaderboard {
@@ -140,6 +142,7 @@ header {
 		max-height: calc(375px + #{var.$iX-top});
 	}
 	&.apple_events,
+	&.charities,
 	&.about,
 	&.search,
 	&.details {
@@ -224,7 +227,12 @@ header {
 			border-radius: var(--corner-radius);
 		}
 	}
+	&.charities {
+		background-color: var(--connected-red);
+		background-image: url(/images/hands-holding-rainbow-heart.png);
+	}
 	&.apple_events {
+		background-color: black;
 		background-image: url(/images/tim-connected.jpg);
 	}
 	&.leaderboard {
@@ -237,6 +245,7 @@ header {
 		padding-top: 80px;
 		padding-top: calc(80px + #{var.$iX-top});
 	}
+	&.charities,
 	&.apple_events,
 	&.about,
 	&.leaderboard {

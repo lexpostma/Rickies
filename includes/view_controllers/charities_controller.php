@@ -17,6 +17,9 @@ $stjude = goat_referral(
 $head_custom = [
 	'title' => 'Charities • The Rickies',
 	'description' => strip_tags($introduction),
+	'image' => domain_url() . '/images/seo/hero-charities.jpg',
+	'keywords' => ['charity', 'fundraising', 'donations'],
+	'theme-color' => '#E51F2E',
 ];
 
 $introduction = $introduction . $stjude;

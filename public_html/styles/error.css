@@ -898,12 +898,12 @@ header.home .hero_content h1 {
     text-align: left;
   }
 }
-header.apple_events h1, header.about h1, header.search h1, header.details h1, header.leaderboard h1 {
+header.apple_events h1, header.charities h1, header.about h1, header.search h1, header.details h1, header.leaderboard h1 {
   text-transform: uppercase;
   color: white;
   text-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
 }
-header.apple_events h1, header.about h1, header.details h1, header.leaderboard h1 {
+header.apple_events h1, header.charities h1, header.about h1, header.details h1, header.leaderboard h1 {
   position: absolute;
   z-index: 2;
   left: var(--space-between-lg);
@@ -915,12 +915,12 @@ header.details {
   max-height: 375px;
   max-height: calc(375px + env(safe-area-inset-top));
 }
-header.apple_events, header.about, header.search, header.details {
+header.apple_events, header.charities, header.about, header.search, header.details {
   background-color: var(--connected-blue);
   background-size: cover;
   background-image: url(/images/diagonal-rainbow-header.svg);
 }
-header.apple_events .gradient, header.about .gradient, header.search .gradient, header.details .gradient {
+header.apple_events .gradient, header.charities .gradient, header.about .gradient, header.search .gradient, header.details .gradient {
   position: absolute;
   top: 0;
   right: 0;
@@ -929,11 +929,11 @@ header.apple_events .gradient, header.about .gradient, header.search .gradient, 
   background-image: linear-gradient(to bottom, rgba(51, 63, 72, 0) 0%, rgba(51, 63, 72, 0.003) 18.7%, rgba(51, 63, 72, 0.01) 34.9%, rgba(51, 63, 72, 0.021) 48.8%, rgba(51, 63, 72, 0.035) 60.6%, rgba(51, 63, 72, 0.052) 70.4%, rgba(51, 63, 72, 0.07) 78.4%, rgba(51, 63, 72, 0.09) 84.8%, rgba(51, 63, 72, 0.11) 89.8%, rgba(51, 63, 72, 0.13) 93.6%, rgba(51, 63, 72, 0.148) 96.3%, rgba(51, 63, 72, 0.165) 98.1%, rgba(51, 63, 72, 0.179) 99.2%, rgba(51, 63, 72, 0.19) 99.8%, rgba(51, 63, 72, 0.197) 100%, rgba(51, 63, 72, 0.2) 100%);
 }
 @media (prefers-color-scheme: dark) {
-  header.apple_events .gradient, header.about .gradient, header.search .gradient, header.details .gradient {
+  header.apple_events .gradient, header.charities .gradient, header.about .gradient, header.search .gradient, header.details .gradient {
     background-image: linear-gradient(to bottom, rgba(51, 63, 72, 0) 0%, rgba(51, 63, 72, 0.008) 11.1%, rgba(51, 63, 72, 0.029) 21%, rgba(51, 63, 72, 0.062) 29.8%, rgba(51, 63, 72, 0.105) 37.6%, rgba(51, 63, 72, 0.156) 44.6%, rgba(51, 63, 72, 0.211) 50.9%, rgba(51, 63, 72, 0.27) 56.7%, rgba(51, 63, 72, 0.33) 62%, rgba(51, 63, 72, 0.389) 67.1%, rgba(51, 63, 72, 0.444) 72.1%, rgba(51, 63, 72, 0.495) 77.1%, rgba(51, 63, 72, 0.538) 82.2%, rgba(51, 63, 72, 0.571) 87.7%, rgba(51, 63, 72, 0.592) 93.5%, rgba(51, 63, 72, 0.6) 100%);
   }
 }
-header.apple_events .big_year, header.about .big_year, header.search .big_year, header.details .big_year {
+header.apple_events .big_year, header.charities .big_year, header.about .big_year, header.search .big_year, header.details .big_year {
   color: rgba(255, 255, 255, 0.8);
   font-weight: 900;
   font-size: 100px;
@@ -945,26 +945,31 @@ header.apple_events .big_year, header.about .big_year, header.search .big_year, 
   text-shadow: 0px 2px 8px rgba(51, 63, 72, 0.1);
 }
 @media screen and (min-width: 375px) {
-  header.apple_events .big_year, header.about .big_year, header.search .big_year, header.details .big_year {
+  header.apple_events .big_year, header.charities .big_year, header.about .big_year, header.search .big_year, header.details .big_year {
     margin-top: 40px;
     font-size: 120px;
   }
 }
 @media screen and (min-width: 768px) {
-  header.apple_events .big_year, header.about .big_year, header.search .big_year, header.details .big_year {
+  header.apple_events .big_year, header.charities .big_year, header.about .big_year, header.search .big_year, header.details .big_year {
     font-size: 180px;
     margin-top: 0;
   }
 }
-header.apple_events.custom.color, header.about.custom.color, header.search.custom.color, header.details.custom.color {
+header.apple_events.custom.color, header.charities.custom.color, header.about.custom.color, header.search.custom.color, header.details.custom.color {
   background-size: auto 100%;
 }
-header.apple_events.contain_img img, header.about.contain_img img, header.search.contain_img img, header.details.contain_img img {
+header.apple_events.contain_img img, header.charities.contain_img img, header.about.contain_img img, header.search.contain_img img, header.details.contain_img img {
   height: 80%;
   filter: drop-shadow(0px 1px 6px rgba(51, 63, 72, 0.5));
   border-radius: var(--corner-radius);
 }
+header.charities {
+  background-color: var(--connected-red);
+  background-image: url(/images/hands-holding-rainbow-heart.png);
+}
 header.apple_events {
+  background-color: black;
   background-image: url(/images/tim-connected.jpg);
 }
 header.leaderboard {
@@ -977,7 +982,7 @@ header.search {
   padding-top: 80px;
   padding-top: calc(80px + env(safe-area-inset-top));
 }
-header.apple_events, header.about, header.leaderboard {
+header.charities, header.apple_events, header.about, header.leaderboard {
   height: 100vw;
   max-height: 300px;
   max-height: calc(300px + env(safe-area-inset-top));
@@ -1341,7 +1346,7 @@ section h2,
   }
   .section_group .section_group--list {
     margin-top: 0;
-    flex-basis: calc((100% / 3) - (var(--space-between-lg) / 2));
+    flex-basis: calc(33.3333333333% - var(--space-between-lg) / 2);
   }
   .section_group .section_group--list + .section_group--list {
     margin-left: var(--space-between-lg);

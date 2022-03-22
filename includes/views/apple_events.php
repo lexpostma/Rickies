@@ -1,6 +1,6 @@
 
 <div id="statusbar"></div>
-<header class="apple_events contain_img">
+<header class="apple_events">
 	<div class="gradient"></div>
 	<h1>Apple Events</h1>
 </header>

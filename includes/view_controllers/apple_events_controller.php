@@ -11,4 +11,7 @@ $introduction =
 $head_custom = [
 	'title' => 'Apple Events • The Rickies',
 	'description' => strip_tags($introduction),
+	'image' => domain_url() . '/images/seo/hero-apple-events.jpg',
+	'keywords' => ['Apple Events', 'Apple Keynotes', 'Tim Cook'],
+	'theme-color' => '#000000',
 ];

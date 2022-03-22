@@ -1,8 +1,7 @@
 
 <div id="statusbar"></div>
-<header class="about contain_img">
+<header class="charities">
 	<div class="gradient"></div>
-	<img src="/images/rickies-trophy-glow.png" alt="Rickies trophy"/>
 	<h1>Charities</h1>
 </header>
 
