@@ -597,7 +597,8 @@ p {
   margin: 0;
 }
 
-section > p + p {
+section > p + p,
+.section_article > p + p {
   margin-top: var(--space-between-md);
 }
 
@@ -983,7 +984,7 @@ aside.slider {
 }
 aside.slider #rule_slider {
   padding: 8px 24px 24px;
-  padding-bottom: max(24px, calc(16px + env(safe-area-inset-bottom)));
+  padding-bottom: max(24px, 16px + env(safe-area-inset-bottom));
   max-width: 650px;
   margin: 0 auto;
   color: var(--text-primary-color);
@@ -991,7 +992,7 @@ aside.slider #rule_slider {
 @media screen and (min-width: 768px) {
   aside.slider #rule_slider {
     padding: 16px 32px 24px;
-    padding-bottom: max(24px, calc(16px + env(safe-area-inset-bottom)));
+    padding-bottom: max(24px, 16px + env(safe-area-inset-bottom));
   }
 }
 aside.slider #rule_slider input[type=range] {
@@ -1547,7 +1548,7 @@ button.top_button,
 #close_button {
   position: fixed;
   bottom: 52px;
-  bottom: max(52px, calc(44px + env(safe-area-inset-bottom)));
+  bottom: max(52px, 44px + env(safe-area-inset-bottom));
   right: 0px;
   z-index: 13;
   top: unset;
@@ -1569,17 +1570,17 @@ button.top_button,
 #close_button.show {
   box-shadow: 0px -1px 4px rgba(84, 52, 4, 0.5);
   transform: scale(1) translate(-20px, 32px) rotate(-180deg);
-  transform: scale(1) translate(-20px, max(32px, calc(24px + env(safe-area-inset-bottom)))) rotate(-180deg);
+  transform: scale(1) translate(-20px, max(32px, 24px + env(safe-area-inset-bottom))) rotate(-180deg);
 }
 @media (hover: hover) {
   #close_button.show:hover {
     transform: scale(1.2) translate(-17px, 27px) rotate(-180deg);
-    transform: scale(1.2) translate(-17px, max(27px, calc(20px + env(safe-area-inset-bottom)))) rotate(-180deg);
+    transform: scale(1.2) translate(-17px, max(27px, 20px + env(safe-area-inset-bottom))) rotate(-180deg);
   }
 }
 #close_button.show:focus, #close_button.show:active {
   transform: scale(1.1) translate(-18px, 29px) rotate(-180deg);
-  transform: scale(1.1) translate(-18px, max(29px, calc(22px + env(safe-area-inset-bottom)))) rotate(-180deg);
+  transform: scale(1.1) translate(-18px, max(29px, 22px + env(safe-area-inset-bottom))) rotate(-180deg);
 }
 @media screen and (min-width: 768px) {
   #close_button {

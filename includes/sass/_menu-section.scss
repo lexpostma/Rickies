@@ -271,7 +271,7 @@ section {
 		&.active {
 			display: block;
 		}
-		h2 {
+		&:not(.article) h2 {
 			display: none;
 		}
 	}
@@ -293,9 +293,17 @@ h2 {
 	margin-top: 0;
 	margin-bottom: var(--space-between-md);
 }
+section.article {
+	margin-bottom: var(--space-between-lg);
+	h2:not(:first-of-type) {
+		margin-top: var(--space-between-lg);
+	}
+}
+
 section h2,
 .timeline--container,
 .section_group,
+.section_article,
 .section_grid {
 	pointer-events: all;
 }
@@ -361,9 +369,9 @@ section h2,
 
 			h2 {
 				padding-top: var(--space-between-lg);
-				display: block;
+				display: block !important;
 			}
-			~ .navigate_with_mobile_menu h2 {
+			~ .navigate_with_mobile_menu:not(.article) h2 {
 				border-top: 1px solid var(--element-hover-color);
 			}
 		}
@@ -413,6 +421,9 @@ section h2,
 	img {
 		// object-fit: cover;
 		width: 100%;
+	}
+	img.span-full {
+		grid-column: 1 / 3;
 	}
 }
 

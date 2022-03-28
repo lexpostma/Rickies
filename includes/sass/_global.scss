@@ -79,8 +79,11 @@ body {
 p {
 	margin: 0;
 }
-section > p + p {
-	margin-top: var(--space-between-md);
+section,
+.section_article {
+	& > p + p {
+		margin-top: var(--space-between-md);
+	}
 }
 
 .top_button,

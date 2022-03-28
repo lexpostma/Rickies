@@ -1,0 +1,45 @@
+#interactive_magtricky {
+	margin: var(--space-between-md) auto;
+	position: relative;
+	transform: rotate(-5deg);
+	& > img {
+		width: 100%;
+	}
+
+	$magnet_size: 40px;
+	& > button {
+		position: absolute;
+		width: $magnet_size;
+		height: $magnet_size;
+		transform: translateX($magnet_size * -0.5) translateY($magnet_size * -0.5);
+		border-radius: 50%;
+		background-repeat: no-repeat;
+		background-position: center;
+		&[data-chairman='0'] {
+			opacity: 0;
+			// background-color: black;
+		}
+		&[data-chairman='1'] {
+			// background-color: yellow;
+			background-image: url(/images/magtricky-chairman-silver.png);
+			background-size: 32px auto;
+		}
+		&[data-chairman='2'] {
+			// background-color: red;
+			background-image: url(/images/magtricky-chairman-gold.png);
+			background-size: 40px auto;
+		}
+		&#london {
+			top: 36.7%;
+			left: 60.5%;
+		}
+		&#rome {
+			top: 43.4%;
+			left: 69.2%;
+		}
+		&#memphis {
+			top: 45.2%;
+			left: 20.4%;
+		}
+	}
+}

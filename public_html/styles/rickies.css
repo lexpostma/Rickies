@@ -597,7 +597,8 @@ p {
   margin: 0;
 }
 
-section > p + p {
+section > p + p,
+.section_article > p + p {
   margin-top: var(--space-between-md);
 }
 
@@ -833,6 +834,50 @@ header {
   background-position: center;
   background-repeat: no-repeat;
 }
+header .gradient {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom, rgba(51, 63, 72, 0) 0%, rgba(51, 63, 72, 0.003) 18.7%, rgba(51, 63, 72, 0.01) 34.9%, rgba(51, 63, 72, 0.021) 48.8%, rgba(51, 63, 72, 0.035) 60.6%, rgba(51, 63, 72, 0.052) 70.4%, rgba(51, 63, 72, 0.07) 78.4%, rgba(51, 63, 72, 0.09) 84.8%, rgba(51, 63, 72, 0.11) 89.8%, rgba(51, 63, 72, 0.13) 93.6%, rgba(51, 63, 72, 0.148) 96.3%, rgba(51, 63, 72, 0.165) 98.1%, rgba(51, 63, 72, 0.179) 99.2%, rgba(51, 63, 72, 0.19) 99.8%, rgba(51, 63, 72, 0.197) 100%, rgba(51, 63, 72, 0.2) 100%);
+}
+@media (prefers-color-scheme: dark) {
+  header .gradient {
+    background-image: linear-gradient(to bottom, rgba(51, 63, 72, 0) 0%, rgba(51, 63, 72, 0.008) 11.1%, rgba(51, 63, 72, 0.029) 21%, rgba(51, 63, 72, 0.062) 29.8%, rgba(51, 63, 72, 0.105) 37.6%, rgba(51, 63, 72, 0.156) 44.6%, rgba(51, 63, 72, 0.211) 50.9%, rgba(51, 63, 72, 0.27) 56.7%, rgba(51, 63, 72, 0.33) 62%, rgba(51, 63, 72, 0.389) 67.1%, rgba(51, 63, 72, 0.444) 72.1%, rgba(51, 63, 72, 0.495) 77.1%, rgba(51, 63, 72, 0.538) 82.2%, rgba(51, 63, 72, 0.571) 87.7%, rgba(51, 63, 72, 0.592) 93.5%, rgba(51, 63, 72, 0.6) 100%);
+  }
+}
+header .big_year {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 900;
+  font-size: 100px;
+  margin-top: 30px;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-shadow: 0px 2px 8px rgba(51, 63, 72, 0.1);
+}
+@media screen and (min-width: 375px) {
+  header .big_year {
+    margin-top: 40px;
+    font-size: 120px;
+  }
+}
+@media screen and (min-width: 768px) {
+  header .big_year {
+    font-size: 180px;
+    margin-top: 0;
+  }
+}
+header.custom.color {
+  background-size: auto 100%;
+}
+header.contain_img img {
+  height: 80%;
+  filter: drop-shadow(0px 1px 6px rgba(51, 63, 72, 0.5));
+  border-radius: var(--corner-radius);
+}
 header.home {
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.306) 8.1%, rgba(255, 255, 255, 0.324) 15.5%, rgba(255, 255, 255, 0.352) 22.5%, rgba(255, 255, 255, 0.388) 29%, rgba(255, 255, 255, 0.43) 35.3%, rgba(255, 255, 255, 0.476) 41.2%, rgba(255, 255, 255, 0.525) 47.1%, rgba(255, 255, 255, 0.575) 52.9%, rgba(255, 255, 255, 0.624) 58.8%, rgba(255, 255, 255, 0.67) 64.7%, rgba(255, 255, 255, 0.712) 71%, rgba(255, 255, 255, 0.748) 77.5%, rgba(255, 255, 255, 0.776) 84.5%, rgba(255, 255, 255, 0.794) 91.9%, rgba(255, 255, 255, 0.8) 100%), url("/images/confetti.svg");
   padding: 48px var(--space-side-padding);
@@ -898,12 +943,12 @@ header.home .hero_content h1 {
     text-align: left;
   }
 }
-header.apple_events h1, header.charities h1, header.about h1, header.search h1, header.details h1, header.leaderboard h1 {
+header.trophies h1, header.apple_events h1, header.charities h1, header.about h1, header.search h1, header.details h1, header.leaderboard h1 {
   text-transform: uppercase;
   color: white;
   text-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
 }
-header.apple_events h1, header.charities h1, header.about h1, header.details h1, header.leaderboard h1 {
+header.trophies h1, header.apple_events h1, header.charities h1, header.about h1, header.details h1, header.leaderboard h1 {
   position: absolute;
   z-index: 2;
   left: var(--space-between-lg);
@@ -920,50 +965,6 @@ header.apple_events, header.charities, header.about, header.search, header.detai
   background-size: cover;
   background-image: url(/images/diagonal-rainbow-header.svg);
 }
-header.apple_events .gradient, header.charities .gradient, header.about .gradient, header.search .gradient, header.details .gradient {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: linear-gradient(to bottom, rgba(51, 63, 72, 0) 0%, rgba(51, 63, 72, 0.003) 18.7%, rgba(51, 63, 72, 0.01) 34.9%, rgba(51, 63, 72, 0.021) 48.8%, rgba(51, 63, 72, 0.035) 60.6%, rgba(51, 63, 72, 0.052) 70.4%, rgba(51, 63, 72, 0.07) 78.4%, rgba(51, 63, 72, 0.09) 84.8%, rgba(51, 63, 72, 0.11) 89.8%, rgba(51, 63, 72, 0.13) 93.6%, rgba(51, 63, 72, 0.148) 96.3%, rgba(51, 63, 72, 0.165) 98.1%, rgba(51, 63, 72, 0.179) 99.2%, rgba(51, 63, 72, 0.19) 99.8%, rgba(51, 63, 72, 0.197) 100%, rgba(51, 63, 72, 0.2) 100%);
-}
-@media (prefers-color-scheme: dark) {
-  header.apple_events .gradient, header.charities .gradient, header.about .gradient, header.search .gradient, header.details .gradient {
-    background-image: linear-gradient(to bottom, rgba(51, 63, 72, 0) 0%, rgba(51, 63, 72, 0.008) 11.1%, rgba(51, 63, 72, 0.029) 21%, rgba(51, 63, 72, 0.062) 29.8%, rgba(51, 63, 72, 0.105) 37.6%, rgba(51, 63, 72, 0.156) 44.6%, rgba(51, 63, 72, 0.211) 50.9%, rgba(51, 63, 72, 0.27) 56.7%, rgba(51, 63, 72, 0.33) 62%, rgba(51, 63, 72, 0.389) 67.1%, rgba(51, 63, 72, 0.444) 72.1%, rgba(51, 63, 72, 0.495) 77.1%, rgba(51, 63, 72, 0.538) 82.2%, rgba(51, 63, 72, 0.571) 87.7%, rgba(51, 63, 72, 0.592) 93.5%, rgba(51, 63, 72, 0.6) 100%);
-  }
-}
-header.apple_events .big_year, header.charities .big_year, header.about .big_year, header.search .big_year, header.details .big_year {
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 900;
-  font-size: 100px;
-  margin-top: 30px;
-  pointer-events: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  text-shadow: 0px 2px 8px rgba(51, 63, 72, 0.1);
-}
-@media screen and (min-width: 375px) {
-  header.apple_events .big_year, header.charities .big_year, header.about .big_year, header.search .big_year, header.details .big_year {
-    margin-top: 40px;
-    font-size: 120px;
-  }
-}
-@media screen and (min-width: 768px) {
-  header.apple_events .big_year, header.charities .big_year, header.about .big_year, header.search .big_year, header.details .big_year {
-    font-size: 180px;
-    margin-top: 0;
-  }
-}
-header.apple_events.custom.color, header.charities.custom.color, header.about.custom.color, header.search.custom.color, header.details.custom.color {
-  background-size: auto 100%;
-}
-header.apple_events.contain_img img, header.charities.contain_img img, header.about.contain_img img, header.search.contain_img img, header.details.contain_img img {
-  height: 80%;
-  filter: drop-shadow(0px 1px 6px rgba(51, 63, 72, 0.5));
-  border-radius: var(--corner-radius);
-}
 header.charities {
   background-color: var(--connected-red);
   background-image: url(/images/hands-holding-rainbow-heart.png);
@@ -978,11 +979,15 @@ header.leaderboard {
 header.leaderboard.triple_j {
   background-image: url(/images/connected-map-3j.png);
 }
+header.trophies {
+  background-size: auto 100%, cover;
+  background-image: url(/images/trophies-header.jpg), linear-gradient(90deg, var(--connected-green) 49.9%, var(--connected-blue) 50.1%);
+}
 header.search {
   padding-top: 80px;
   padding-top: calc(80px + env(safe-area-inset-top));
 }
-header.charities, header.apple_events, header.about, header.leaderboard {
+header.trophies, header.charities, header.apple_events, header.about, header.leaderboard {
   height: 100vw;
   max-height: 300px;
   max-height: calc(300px + env(safe-area-inset-top));
@@ -1241,7 +1246,7 @@ section.navigate_with_mobile_menu {
 section.navigate_with_mobile_menu.active {
   display: block;
 }
-section.navigate_with_mobile_menu h2 {
+section.navigate_with_mobile_menu:not(.article) h2 {
   display: none;
 }
 section#list {
@@ -1264,9 +1269,17 @@ h2 {
   margin-bottom: var(--space-between-md);
 }
 
+section.article {
+  margin-bottom: var(--space-between-lg);
+}
+section.article h2:not(:first-of-type) {
+  margin-top: var(--space-between-lg);
+}
+
 section h2,
 .timeline--container,
 .section_group,
+.section_article,
 .section_grid {
   pointer-events: all;
 }
@@ -1329,9 +1342,9 @@ section h2,
   }
   section.navigate_with_mobile_menu h2 {
     padding-top: var(--space-between-lg);
-    display: block;
+    display: block !important;
   }
-  section.navigate_with_mobile_menu ~ .navigate_with_mobile_menu h2 {
+  section.navigate_with_mobile_menu ~ .navigate_with_mobile_menu:not(.article) h2 {
     border-top: 1px solid var(--element-hover-color);
   }
 
@@ -1380,6 +1393,9 @@ section h2,
 }
 .image-grid img {
   width: 100%;
+}
+.image-grid img.span-full {
+  grid-column: 1/3;
 }
 
 h2.subtitled {
@@ -2402,6 +2418,47 @@ section#timeline .timeline--legend {
 .timeline--host-avatar.mega_winner .avatar {
   -webkit-animation-name: pop2;
   animation-name: pop2;
+}
+
+#interactive_magtricky {
+  margin: var(--space-between-md) auto;
+  position: relative;
+  transform: rotate(-5deg);
+}
+#interactive_magtricky > img {
+  width: 100%;
+}
+#interactive_magtricky > button {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  transform: translateX(-20px) translateY(-20px);
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#interactive_magtricky > button[data-chairman="0"] {
+  opacity: 0;
+}
+#interactive_magtricky > button[data-chairman="1"] {
+  background-image: url(/images/magtricky-chairman-silver.png);
+  background-size: 32px auto;
+}
+#interactive_magtricky > button[data-chairman="2"] {
+  background-image: url(/images/magtricky-chairman-gold.png);
+  background-size: 40px auto;
+}
+#interactive_magtricky > button#london {
+  top: 36.7%;
+  left: 60.5%;
+}
+#interactive_magtricky > button#rome {
+  top: 43.4%;
+  left: 69.2%;
+}
+#interactive_magtricky > button#memphis {
+  top: 45.2%;
+  left: 20.4%;
 }
 
 :root {
