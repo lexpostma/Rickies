@@ -6,7 +6,7 @@ $trophy_content = [
 	'tricky' => file_get_contents($incl_path . 'trophies-tricky.html'),
 	'magtricky' => file_get_contents($incl_path . 'trophies-magtricky.html'),
 	'ricky' => file_get_contents($incl_path . 'trophies-ricky.html'),
-	'others' => file_get_contents($incl_path . 'trophies-others.html'),
+	'other' => file_get_contents($incl_path . 'trophies-others.html'),
 ];
 
 $introduction = '<p>The Rickies have known an increasing variety of trophies to award the prediction champion. One of the challenges is
