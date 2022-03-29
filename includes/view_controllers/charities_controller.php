@@ -19,7 +19,7 @@ $head_custom = [
 	'description' =>
 		'The Flexies have amounted to $' .
 		$total_donated .
-		' donated to charities, thanks to the $25 rules in The Bill of Rickies.',
+		' donated to charities, thanks to the $25 rule in The Bill of Rickies.',
 	'image' => domain_url() . '/images/seo/hero-charities.jpg',
 	'keywords' => ['charity', 'fundraising', 'donations'],
 	'theme-color' => '#E51F2E',
