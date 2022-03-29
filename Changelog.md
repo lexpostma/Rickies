@@ -2,10 +2,13 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
-## 22 March 2022 v2.2
+## 29 March 2022 v2.2
 
--   New [Charities](https://rickies.co/charities) page with all charities that were donated too during the Flexies including some stats, ordered by donation amount
--   New [Trophies](https://rickies.co/trophies) page with explanations about the different Rickies trophies
+-   New [Trophies](https://rickies.co/trophies) page with explanations about the different Rickies trophies, including:
+    -   🧲 [Interactive MagTricky](https://rickies.co/trophies#magtricky)
+    -   🦠 The [Ricky mascot](https://rickies.co/trophies#ricky)
+    -   And [other trophies](https://rickies.co/trophies#other)
+-   New [Charities](https://rickies.co/charities) page with all charities that were donated to during the Flexies including some stats, ordered by donation amount
 -   New [Apple Events](https://rickies.co/apple-events) page with all Apple keynotes that were predicted in chronological order
 -   Improved navigation bar is now expandable to make room for the new pages
 

@@ -16,6 +16,16 @@ function update_magtricky(button) {
 	} else if (total_chairmen == 2 && current_state == 2) {
 		// Two chairmen total, both on the clicked host, aka it's consolidated > decrease clicked by 1
 		button.setAttribute('data-chairman', 1);
+	} else if (total_chairmen == 2 && current_state == 0) {
+		// Other hosts have title, clicked does not > check what others have and increase clicked by 1
+		Array.from(magtricky_chairmen).forEach(function (el) {
+			if (parseFloat(el.getAttribute('data-chairman')) == 2) {
+				el.setAttribute('data-chairman', 1);
+			} else {
+				el.setAttribute('data-chairman', 0);
+			}
+		});
+		button.setAttribute('data-chairman', current_state + 1);
 	} else {
 		// Different chairmen total, probably 2 total, on different hosts > set all to 0 and increase clicked by 1
 		Array.from(magtricky_chairmen).forEach(function (el) {

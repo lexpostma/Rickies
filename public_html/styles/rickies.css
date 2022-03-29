@@ -2430,33 +2430,35 @@ section#timeline .timeline--legend {
 }
 #interactive_magtricky > button {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  transform: translateX(-20px) translateY(-20px);
+  width: 48px;
+  height: 48px;
+  transform: translateX(-24px) translateY(-24px);
+  transition: 300ms background-size cubic-bezier(0.68, 0.07, 0.27, 1.54);
   border-radius: 50%;
   background-repeat: no-repeat;
   background-position: center;
 }
 #interactive_magtricky > button[data-chairman="0"] {
-  opacity: 0;
+  background-image: url(/images/magtricky-chairman-silver.png);
+  background-size: 0px auto;
 }
 #interactive_magtricky > button[data-chairman="1"] {
   background-image: url(/images/magtricky-chairman-silver.png);
-  background-size: 32px auto;
+  background-size: 34px auto;
 }
 #interactive_magtricky > button[data-chairman="2"] {
   background-image: url(/images/magtricky-chairman-gold.png);
-  background-size: 40px auto;
+  background-size: 42px auto;
 }
-#interactive_magtricky > button#london {
+#interactive_magtricky > button#magnet_myke {
   top: 36.7%;
   left: 60.5%;
 }
-#interactive_magtricky > button#rome {
+#interactive_magtricky > button#magnet_federico {
   top: 43.4%;
   left: 69.2%;
 }
-#interactive_magtricky > button#memphis {
+#interactive_magtricky > button#magnet_stephen {
   top: 45.2%;
   left: 20.4%;
 }

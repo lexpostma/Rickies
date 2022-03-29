@@ -1,3 +1,5 @@
+@use "variables" as var;
+
 #interactive_magtricky {
 	margin: var(--space-between-md) auto;
 	position: relative;
@@ -6,38 +8,45 @@
 		width: 100%;
 	}
 
-	$magnet_size: 40px;
+	$magnet_size: 48px;
+	$magnet_center_shift: translateX($magnet_size * -0.5) translateY($magnet_size * -0.5);
 	& > button {
 		position: absolute;
 		width: $magnet_size;
 		height: $magnet_size;
-		transform: translateX($magnet_size * -0.5) translateY($magnet_size * -0.5);
+		transform: $magnet_center_shift;
+		transition: var.$hover-duration background-size var.$pop-transition-timing;
 		border-radius: 50%;
 		background-repeat: no-repeat;
 		background-position: center;
 		&[data-chairman='0'] {
-			opacity: 0;
+			background-image: url(/images/magtricky-chairman-silver.png);
+			background-size: 0px auto;
+			// opacity: 0;
+			// transform: $magnet_center_shift scale(0.2);
 			// background-color: black;
 		}
 		&[data-chairman='1'] {
 			// background-color: yellow;
 			background-image: url(/images/magtricky-chairman-silver.png);
-			background-size: 32px auto;
+			background-size: 34px auto;
+			// transform: $magnet_center_shift scale(1.1);
 		}
 		&[data-chairman='2'] {
 			// background-color: red;
 			background-image: url(/images/magtricky-chairman-gold.png);
-			background-size: 40px auto;
+			background-size: 42px auto;
+			// transform: $magnet_center_shift scale(1.2);
 		}
-		&#london {
+		&#magnet_myke {
 			top: 36.7%;
 			left: 60.5%;
 		}
-		&#rome {
+		&#magnet_federico {
 			top: 43.4%;
 			left: 69.2%;
 		}
-		&#memphis {
+		&#magnet_stephen {
 			top: 45.2%;
 			left: 20.4%;
 		}
