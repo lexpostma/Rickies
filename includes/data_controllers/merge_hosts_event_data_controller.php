@@ -29,7 +29,14 @@ include '../includes/data_controllers/event_data_controller.php';
 // echo '<pre>', var_dump($rickies_events__array), '</pre>';
 
 // Get host personal data
-$hosts_data__params['fields'] = ['First name', 'Full name', 'Memoji neutral', 'Memoji happy', 'Memoji sad'];
+$hosts_data__params['fields'] = [
+	'First name',
+	'Full name',
+	'Memoji neutral',
+	'Memoji happy',
+	'Memoji sad',
+	'Flexy winner title (flat)',
+];
 
 if (!isset($triple_j)) {
 	$hosts_data__params['filterByFormula'] = 'AND( {Host type} = "Official" )';
@@ -48,6 +55,8 @@ foreach ($rickies_data['hosts'] as $first_name => $host_data) {
 		$hosts_data__array[$first_name]['personal']['full_name'];
 	$rickies_data['hosts'][$first_name]['details']['color'] = $hosts_data__array[$first_name]['personal']['color'];
 	$rickies_data['hosts'][$first_name]['details']['memoji'] = $hosts_data__array[$first_name]['images']['memoji'];
+	$rickies_data['hosts'][$first_name]['details']['flexy_title'] =
+		$hosts_data__array[$first_name]['personal']['flexy_title'];
 }
 
 // echo '<pre>', var_dump($rickies_data), '</pre>';
