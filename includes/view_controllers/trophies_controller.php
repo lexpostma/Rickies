@@ -3,7 +3,7 @@
 // Trophies controller
 function ar_button()
 {
-	$output = '<a id="ar_button" class="top_button" title="View Tricky in AR" rel="ar" href="/3d-models/tricky.usdz">';
+	$output = '<a href="/3d-models/tricky.usdz" rel="ar" id="ar_button" class="top_button" title="View Tricky in AR">';
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-ar.svg');
 	$output .= '</a>';
 
@@ -52,13 +52,17 @@ ob_start();
 include '../includes/trophies-magtricky.php';
 $magtricky_content = ob_get_clean();
 
+ob_start();
+include '../includes/trophies-tricky.php';
+$tricky_content = ob_get_clean();
+
 $trophy_content = [
-	'tricky' => file_get_contents($incl_path . 'trophies-tricky.html'),
+	'tricky' => $tricky_content,
 	'magtricky' => $magtricky_content,
 	'ricky' => file_get_contents($incl_path . 'trophies-ricky.html'),
 	'other' => file_get_contents($incl_path . 'trophies-others.html'),
 ];
-unset($interactive_magtricky, $magtricky_content);
+unset($interactive_magtricky, $magtricky_content, $tricky_content);
 
 $introduction = '<p>The Rickies have known an increasing variety of trophies to award the prediction champion. One of the challenges is
 	that the hosts span three countries over two continents, and shipping a challenge cup across oceans is a costly
