@@ -1,14 +1,6 @@
 <?php
 
 // Trophies controller
-function ar_button()
-{
-	$output = '<a href="/3d-models/tricky.usdz" rel="ar" id="ar_button" class="top_button" title="View Tricky in AR">';
-	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-ar.svg');
-	$output .= '</a>';
-
-	return $output;
-}
 
 include '../includes/data_controllers/magtricky_data_controller.php';
 
