@@ -183,3 +183,15 @@ document.onkeydown = function (evt) {
 		close_custom_share();
 	}
 };
+
+// Enable expandable navigation bar with extra menu items
+const extra_items = document.getElementById('nav_content--extra-items');
+function toggle_extra_items(el) {
+	if (extra_items.classList.contains('hidden')) {
+		extra_items.classList.remove('hidden');
+		el.classList.add('opened');
+	} else {
+		extra_items.classList.add('hidden');
+		el.classList.remove('opened');
+	}
+}

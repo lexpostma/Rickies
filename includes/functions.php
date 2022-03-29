@@ -78,12 +78,12 @@ function navigation_bar($active = false, $triple_j = false)
 		if ($active == 'bill') {
 			$output .= 'class="active" ';
 		}
-		$output .= 'href="/billof"><span class="need_space--sm">The </span>Bill of Rickies</a>
+		$output .= 'href="/billof">The Bill <span class="need_space--sm">of Rickies</span></a>
 		<a ';
 		if ($active == 'leaderboard') {
 			$output .= 'class="active" ';
 		}
-		$output .= 'href="/leaderboard"><span class="need_space--sm">Host </span>Leaderboard</a>
+		$output .= 'href="/leaderboard">Host<span class="less_space--sm">s</span><span class="need_space--sm"> Leaderboard</span></a>
 		<a ';
 		if ($active == 'archive' || $active == '3j-archive') {
 			$output .= 'class="active" ';
@@ -93,6 +93,28 @@ function navigation_bar($active = false, $triple_j = false)
 			$output .= '<span> &#8634;</span>';
 		}
 		$output .= '</a>
+		<button id="nav_opener" class="clean js_link ';
+		if ($active == 'about' || $active == 'trophies' || $active == 'apple-events' || $active == 'charities') {
+			$output .= ' active ';
+		}
+		$output .= '" onclick="toggle_extra_items(this)"><span class="row_indicator top_row">•••</span><span class="row_indicator bottom_row">•••</span></button>
+	</div>
+	<div class="nav_content--items hidden" id="nav_content--extra-items">
+		<a ';
+		if ($active == 'trophies') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/trophies">Trophies</a>
+		<a ';
+		if ($active == 'charities') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/charities">Charities</a>
+		<a ';
+		if ($active == 'apple-events') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/apple-events"><span class="need_space--sm">Apple</span><span class="less_space--sm"></span> Events</a>
 		<a ';
 		if ($active == 'about') {
 			$output .= 'class="active" ';
@@ -150,7 +172,6 @@ function navigation_bar($active = false, $triple_j = false)
 	$output .= '
 	</div>
 </nav>
-
 	';
 
 	return $output;
@@ -341,8 +362,13 @@ function date_string_format()
 {
 	return '%B %e, %Y';
 }
-function date_to_string_label($date, $context = false, $date_needs_conversion = true, $html_time = false)
-{
+function date_to_string_label(
+	$date,
+	$context = false,
+	$date_needs_conversion = true,
+	$html_time = false,
+	$custom_format = false
+) {
 	$current = strtotime(date('Y-m-d'));
 
 	// Is date still a string that needs to be converted?
@@ -375,12 +401,20 @@ function date_to_string_label($date, $context = false, $date_needs_conversion = 
 		// Future after tomorrow
 		$on = 'on ';
 		$air_string = 'Airs ' . $on;
-		$date_output = strftime(date_string_format(), $date);
+		if ($custom_format) {
+			$date_output = strftime($custom_format, $date);
+		} else {
+			$date_output = strftime(date_string_format(), $date);
+		}
 	} else {
 		// Past before yesterday
 		$on = 'on ';
 		$air_string = 'Aired ' . $on;
-		$date_output = strftime(date_string_format(), $date);
+		if ($custom_format) {
+			$date_output = strftime($custom_format, $date);
+		} else {
+			$date_output = strftime(date_string_format(), $date);
+		}
 	}
 
 	if ($html_time) {

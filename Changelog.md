@@ -2,9 +2,20 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+## 29 March 2022 v2.2
+
+-   New [Trophies](https://rickies.co/trophies) page with explanations about the different Rickies trophies, including:
+    -   🕋 The official [Tricky in AR](https://rickies.co/trophies#tricky)
+    -   🧲 [Interactive MagTricky](https://rickies.co/trophies#magtricky)
+    -   🦠 The [Ricky mascot](https://rickies.co/trophies#ricky)
+    -   And [other trophies](https://rickies.co/trophies#other)
+-   New [Charities](https://rickies.co/charities) page with all charities that were donated to during the Flexies including some stats, ordered by donation amount
+-   New [Apple Events](https://rickies.co/apple-events) page with all Apple keynotes that were predicted in chronological order
+-   Improved navigation bar is now expandable to make room for the new pages
+
 ### 10 March 2022
 
--   Support for when others hosts match the donation of the Flexy loser, reflected on the [event page](https://rickies.co/keynote-mar-2022) and in the stats
+-   Support for when other hosts match the donation of the Flexy loser, reflected on the [event page](https://rickies.co/keynote-mar-2022) and in the stats
 -   Support for the Flexy titles of the Duke, the Prince and the AG
 
 ### 13 January 2022
