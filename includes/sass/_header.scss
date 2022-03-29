@@ -221,8 +221,6 @@ header {
 		max-height: 375px;
 		max-height: calc(375px + #{var.$iX-top});
 	}
-	&.apple_events,
-	&.charities,
 	&.about,
 	&.search,
 	&.details {
@@ -231,10 +229,12 @@ header {
 		background-image: url(/images/diagonal-rainbow-header.svg);
 	}
 	&.charities {
+		background-size: auto 100%;
 		background-color: var(--connected-red);
 		background-image: url(/images/hands-holding-rainbow-heart.png);
 	}
 	&.apple_events {
+		background-size: auto 100%;
 		background-color: black;
 		background-image: url(/images/tim-connected.jpg);
 	}

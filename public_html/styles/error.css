@@ -960,16 +960,18 @@ header.details {
   max-height: 375px;
   max-height: calc(375px + env(safe-area-inset-top));
 }
-header.apple_events, header.charities, header.about, header.search, header.details {
+header.about, header.search, header.details {
   background-color: var(--connected-blue);
   background-size: cover;
   background-image: url(/images/diagonal-rainbow-header.svg);
 }
 header.charities {
+  background-size: auto 100%;
   background-color: var(--connected-red);
   background-image: url(/images/hands-holding-rainbow-heart.png);
 }
 header.apple_events {
+  background-size: auto 100%;
   background-color: black;
   background-image: url(/images/tim-connected.jpg);
 }
