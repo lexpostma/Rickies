@@ -1382,6 +1382,7 @@ section h2,
 }
 .image-grid {
   display: grid;
+  position: relative;
   gap: var(--space-between-md);
   margin: var(--space-between-md) 0;
 }

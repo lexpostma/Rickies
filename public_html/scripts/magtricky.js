@@ -48,9 +48,9 @@ function ar_supported() {
 		}
 	};
 
-	if (isiOS12OrNewer()) {
-		document.getElementById('ar_button').style.display = 'block';
-	}
+	// if (isiOS12OrNewer()) {
+	document.getElementById('ar_button').style.display = 'block';
+	// }
 }
 
 document.addEventListener('DOMContentLoaded', function (event) {

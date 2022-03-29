@@ -3,6 +3,7 @@
 <h2 class="subtitled">The Tricky</h2>
 <p class="subtitle">The official trophies of the Connected hosts.</p>
 <div class="image-grid img1">
+	<?= ar_button() ?>
 	<img src="images/about/tricky.jpg" />
 </div>
 

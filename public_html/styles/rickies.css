@@ -1382,6 +1382,7 @@ section h2,
 }
 .image-grid {
   display: grid;
+  position: relative;
   gap: var(--space-between-md);
   margin: var(--space-between-md) 0;
 }
@@ -2466,8 +2467,6 @@ section#timeline .timeline--legend {
 #ar_button {
   display: none;
   right: 20px;
-  bottom: 20px;
-  top: unset;
 }
 
 :root {
