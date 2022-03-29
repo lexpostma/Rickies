@@ -165,4 +165,15 @@ echo sitemap_url('/3j-archive', $pick['last_edited'], '0.2', 'monthly');
 // Date for /about
 $about = max([filemtime('../includes/view_controllers/about_controller.php'), filemtime('../includes/about.html')]);
 echo sitemap_url('/about', date('c', $about), '0.5', 'yearly');
+
+// Date for /trophies
+$trophies = max([
+	filemtime('../includes/view_controllers/trophies-controller.php'),
+	filemtime('../includes/views/trophies.php'),
+	filemtime('../includes/trophies-magtricky.php'),
+	filemtime('../includes/trophies-tricky.php'),
+	filemtime('../includes/trophies-ricky.html'),
+	filemtime('../includes/trophies-others.html'),
+]);
+echo sitemap_url('/trophies', date('c', $trophies), '0.5', 'yearly');
 echo '</urlset>';
