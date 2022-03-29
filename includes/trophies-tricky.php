@@ -5,8 +5,9 @@
 <h2 class="subtitled">The Tricky</h2>
 <p class="subtitle">The official trophies of the Connected hosts.</p>
 <div class="image-grid img1">
-	<?= ar_button() ?>
-	<img src="images/about/tricky.jpg" />
+	<a href="/3d-models/tricky.usdz" rel="ar">
+		<img src="images/about/tricky.jpg" />
+	</a>
 </div>
 
 <p>The official trophy of the Rickies, brought to live by passionate listener and Discord mod Matt VanOrmer.</p>
