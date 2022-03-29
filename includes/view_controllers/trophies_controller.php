@@ -3,7 +3,7 @@
 // Trophies controller
 function ar_button()
 {
-	$output = '<a id="ar_button" class="top_button" title="View Tricky in AR" href="/3d-models/tricky.usdz">';
+	$output = '<a id="ar_button" class="top_button" title="View Tricky in AR" rel="ar" href="/3d-models/tricky.usdz">';
 	$output .= file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/images/buttons/button-ar.svg');
 	$output .= '</a>';
 
