@@ -2463,6 +2463,13 @@ section#timeline .timeline--legend {
   left: 20.4%;
 }
 
+#ar_button {
+  display: none;
+  right: 20px;
+  bottom: 20px;
+  top: unset;
+}
+
 :root {
   --search-height: 48px;
 }

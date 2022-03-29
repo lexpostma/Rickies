@@ -34,3 +34,25 @@ function update_magtricky(button) {
 		button.setAttribute('data-chairman', current_state + 1);
 	}
 }
+
+// Via https://alexandermonachino.com/ar-quick-look/
+function ar_supported() {
+	const isiOS12OrNewer = () => {
+		const iOS = /iP(hone|od|ad)/.test(navigator.userAgent) && !window.MSStream;
+		const iOSVersion = iOS && parseInt(navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/)[1], 10);
+
+		if (iOS && iOSVersion >= 12) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+
+	if (isiOS12OrNewer()) {
+		document.getElementById('ar_button').style.display = 'block';
+	}
+}
+
+document.addEventListener('DOMContentLoaded', function (event) {
+	ar_supported();
+});

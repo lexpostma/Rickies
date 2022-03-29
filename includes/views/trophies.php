@@ -3,6 +3,7 @@
 <header class="trophies">
 	<div class="gradient"></div>
 	<h1>Rickies trophies</h1>
+	<?= ar_button() ?>
 </header>
 
 <?php
