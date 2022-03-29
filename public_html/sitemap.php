@@ -61,7 +61,7 @@ foreach ($rickies_events__array as $event) {
 		unset($latest_keynote);
 	}
 	if ($event['type'] == 'keynote' && isset($apple_events)) {
-		echo sitemap_url('/apple-event', $event['last_edited']);
+		echo sitemap_url('/apple-events', $event['last_edited']);
 		unset($apple_events);
 	}
 	if ($event['type'] == 'keynote' && isset($keynote_filter)) {
