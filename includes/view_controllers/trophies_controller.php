@@ -44,12 +44,8 @@ ob_start();
 include '../includes/trophies-magtricky.php';
 $magtricky_content = ob_get_clean();
 
-ob_start();
-include '../includes/trophies-tricky.php';
-$tricky_content = ob_get_clean();
-
 $trophy_content = [
-	'tricky' => $tricky_content,
+	'tricky' => file_get_contents($incl_path . 'trophies-tricky.html'),
 	'magtricky' => $magtricky_content,
 	'ricky' => file_get_contents($incl_path . 'trophies-ricky.html'),
 	'other' => file_get_contents($incl_path . 'trophies-others.html'),

@@ -5,6 +5,7 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 ## 29 March 2022 v2.2
 
 -   New [Trophies](https://rickies.co/trophies) page with explanations about the different Rickies trophies, including:
+    -   🕋 The official [Tricky in AR](https://rickies.co/trophies#tricky)
     -   🧲 [Interactive MagTricky](https://rickies.co/trophies#magtricky)
     -   🦠 The [Ricky mascot](https://rickies.co/trophies#ricky)
     -   And [other trophies](https://rickies.co/trophies#other)

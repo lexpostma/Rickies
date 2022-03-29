@@ -8,8 +8,8 @@
 
 
 <p>
-	For listeners at home there’s the <a href="https://www.magtricky.com" target="_blank">MagTricky</a>, the official
-	way to keep up with who has won the Rickies. A 10cm (4”) flat magnet featuring the majestic Connected globe artwork
+	For listeners at home there’s the <a href="https://www.magtricky.com" target="_blank">MagTricky</a>, the <a href="/billof/annual-2022#rule120">official
+	way</a> to keep up with who has won the Rickies. A 10cm (4”) flat magnet featuring the majestic Connected globe artwork
 	allows the passionistas to track who currently holds Chairman titles with small cylindrical magnets. Because magnets
 	are awesome.
 </p>
