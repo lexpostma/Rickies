@@ -10,6 +10,10 @@ switch ($url_view) {
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
 		break;
+	case 'api':
+		// Redirect to the API output (temporary)
+		header('Location: ' . domain_url() . '/api/chairmen.json');
+		die();
 	case '3j-leaderboard':
 		// Leaderboard of Triple J Pickies
 		$triple_j = true;

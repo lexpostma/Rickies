@@ -2,6 +2,10 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+### 4 April 2022
+
+-   [Rickies API](https://rickies.co/api) available to fetch the current chairmen in JSON format
+
 ## 29 March 2022 v2.2
 
 -   New [Trophies](https://rickies.co/trophies) page with explanations about the different Rickies trophies, including:

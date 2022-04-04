@@ -11,6 +11,9 @@ RewriteRule ^sitemap\.xml$ /sitemap.php [L]
 ## Manifest JSON to PHP
 RewriteRule ^manifest\.json$ /manifest.php [L]
 
+## API JSON to PHP
+RewriteRule ^api/chairmen\.json$ /api/chairmen.php [L]
+
 ## From Bill subdomain to directory
 RewriteBase /
 RewriteCond %{HTTP_HOST} ^thebillof\.(.*)$ [NC]
