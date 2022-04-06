@@ -779,7 +779,6 @@ main .document_footer {
   justify-content: space-between;
   align-items: flex-end;
   padding: 0 16px;
-  margin-top: 32px;
 }
 @media screen and (min-width: 576px) {
   main .document_footer {
