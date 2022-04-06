@@ -1654,7 +1654,7 @@ html {
 
 h2.rule_type,
 .rule {
-  max-height: 150px;
+  max-height: 300px;
   opacity: 1;
   transition-property: max-height, opacity;
   transition-duration: 750ms, 495ms;
