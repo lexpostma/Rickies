@@ -57,15 +57,32 @@ ul.bullet_list > li {
 		margin-right: 8px;
 	}
 }
-
 .highlight_card {
-	padding: var(--space-between-sm) var(--space-between-md);
-	border-radius: var(--corner-radius);
 	margin: var(--space-between-lg) auto;
+}
+code,
+pre,
+.highlight_card {
+	border-radius: var(--corner-radius);
 	border: 1px solid var(--connected-blue);
 	background: var(--element-active-color);
 }
+pre,
+.highlight_card {
+	padding: var(--space-between-sm) var(--space-between-md);
+}
 
+code,
+pre {
+	font-family: ui-monospace, monospace;
+	font-size: 0.8rem;
+}
+code {
+	padding: 2px;
+}
+pre {
+	overflow-x: scroll;
+}
 .top_button {
 	box-shadow: var.$header-shadow;
 }

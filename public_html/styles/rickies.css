@@ -689,19 +689,6 @@ span.need_space--sm {
     display: none;
   }
 }
-/* For debugging */
-pre {
-  font-size: 0.8rem;
-  overflow-x: scroll;
-  padding: 10px;
-  background: pink;
-}
-@media (prefers-color-scheme: dark) {
-  pre {
-    background: #230034;
-  }
-}
-
 a:link, a:visited {
   color: var(--link-color);
   text-decoration: underline;
@@ -1493,6 +1480,9 @@ p.subtitle {
   background-repeat: no-repeat;
   background-origin: border-box;
   background-position: center;
+}
+.item_graphic.app_shape {
+  border-radius: 22.37%;
 }
 .item_graphic.avatar {
   border-radius: 50%;
@@ -3286,11 +3276,34 @@ ul.bullet_list > li span.emoji {
 }
 
 .highlight_card {
-  padding: var(--space-between-sm) var(--space-between-md);
-  border-radius: var(--corner-radius);
   margin: var(--space-between-lg) auto;
+}
+
+code,
+pre,
+.highlight_card {
+  border-radius: var(--corner-radius);
   border: 1px solid var(--connected-blue);
   background: var(--element-active-color);
+}
+
+pre,
+.highlight_card {
+  padding: var(--space-between-sm) var(--space-between-md);
+}
+
+code,
+pre {
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+}
+
+code {
+  padding: 2px;
+}
+
+pre {
+  overflow-x: scroll;
 }
 
 .top_button {

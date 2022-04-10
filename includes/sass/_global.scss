@@ -170,14 +170,3 @@ span.need_space--sm {
 		display: none;
 	}
 }
-
-/* For debugging */
-pre {
-	font-size: 0.8rem;
-	overflow-x: scroll;
-	padding: 10px;
-	background: pink;
-	@media (prefers-color-scheme: dark) {
-		background: #230034;
-	}
-}

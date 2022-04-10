@@ -12,7 +12,7 @@ RewriteRule ^sitemap\.xml$ /sitemap.php [L]
 RewriteRule ^manifest\.json$ /manifest.php [L]
 
 ## API JSON to PHP
-RewriteRule ^api/chairmen\.json$ /api/chairmen.php [L]
+RewriteRule ^api/([A-Za-z0-9-_]+)/?\.json$$	/index.php?view=api&api=$1	[NC,L]
 
 ## From Bill subdomain to directory
 RewriteBase /

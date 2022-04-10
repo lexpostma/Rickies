@@ -2,7 +2,7 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
-### 4 April 2022
+## 10 April 2022 v2.3
 
 -   [Rickies API](https://rickies.co/api) available to fetch the current chairmen in JSON format
 

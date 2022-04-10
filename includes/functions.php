@@ -94,7 +94,13 @@ function navigation_bar($active = false, $triple_j = false)
 		}
 		$output .= '</a>
 		<button id="nav_opener" class="clean js_link ';
-		if ($active == 'about' || $active == 'trophies' || $active == 'apple-events' || $active == 'charities') {
+		if (
+			$active == 'about' ||
+			$active == 'trophies' ||
+			$active == 'apple-events' ||
+			$active == 'charities' ||
+			$active == 'api'
+		) {
 			$output .= ' active ';
 		}
 		$output .= '" onclick="toggle_extra_items(this)"><span class="row_indicator top_row">•••</span><span class="row_indicator bottom_row">•••</span></button>
@@ -115,6 +121,11 @@ function navigation_bar($active = false, $triple_j = false)
 			$output .= 'class="active" ';
 		}
 		$output .= 'href="/apple-events"><span class="need_space--sm">Apple</span><span class="less_space--sm"></span> Events</a>
+		<a ';
+		if ($active == 'api') {
+			$output .= 'class="active" ';
+		}
+		$output .= 'href="/api">API</a>
 		<a ';
 		if ($active == 'about') {
 			$output .= 'class="active" ';

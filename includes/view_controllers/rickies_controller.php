@@ -11,9 +11,10 @@ switch ($url_view) {
 		$include_subbody = '../includes/views/rickies.php';
 		break;
 	case 'api':
-		// Redirect to the API output (temporary)
-		header('Location: ' . domain_url() . '/api/chairmen.json');
-		die();
+		// API page
+		include '../includes/view_controllers/api_controller.php';
+		$include_subbody = '../includes/views/api.php';
+		break;
 	case '3j-leaderboard':
 		// Leaderboard of Triple J Pickies
 		$triple_j = true;
@@ -110,6 +111,7 @@ function list_item_graphic($img_array = false)
 {
 	// Image array types can be:
 	// * background: fill the background with src, optional color
+	// * app: same as background, but more rounded
 	// * color: use color as background
 	// * annual: use text + random color background
 	// * avatar: use <img> with memoji on a color background
@@ -121,6 +123,8 @@ function list_item_graphic($img_array = false)
 		$style[] = 'animation-delay: ' . rand(-50, 0) . 's;';
 	} else {
 		switch ($img_array['type']) {
+			case 'app':
+				$class[] = 'app_shape';
 			case 'background':
 				$class[] = 'fill_image';
 				if (isset($img_array['color']) && $img_array['color'] == 'random') {
