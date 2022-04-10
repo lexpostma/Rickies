@@ -37,12 +37,12 @@ do {
 					'name' => check_key('First name', $fields),
 					'last_name' => check_key('Last name', $fields),
 					'location' => check_key('Location', $fields),
-					// 'memoji' =>
-					// 	domain_url() .
-					// 	'/images/memoji/memoji-' .
-					// 	strtolower(check_key('First name', $fields)) .
-					// 	'-default.png',
-					// 'twitter' => check_key('Twitter', $fields),
+					'twitter' => check_key('Twitter', $fields),
+					'memoji' =>
+						domain_url() .
+						'/images/memoji/memoji-' .
+						strtolower(check_key('First name', $fields)) .
+						'-default.png',
 				];
 			}
 		} else {
@@ -56,12 +56,12 @@ do {
 					'name' => check_key('First name', $fields),
 					'last_name' => check_key('Last name', $fields),
 					'location' => check_key('Location', $fields),
-					// 'memoji' =>
-					// 	domain_url() .
-					// 	'/images/memoji/memoji-' .
-					// 	strtolower(check_key('First name', $fields)) .
-					// 	'-default.png',
-					// 'twitter' => check_key('Twitter', $fields),
+					'twitter' => check_key('Twitter', $fields),
+					'memoji' =>
+						domain_url() .
+						'/images/memoji/memoji-' .
+						strtolower(check_key('First name', $fields)) .
+						'-default.png',
 				];
 			}
 		}
