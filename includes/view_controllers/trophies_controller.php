@@ -2,7 +2,7 @@
 
 // Trophies controller
 
-include '../includes/data_controllers/magtricky_data_controller.php';
+include '../includes/data_controllers/chairmen_data_controller.php';
 
 $interactive_magtricky =
 	'
