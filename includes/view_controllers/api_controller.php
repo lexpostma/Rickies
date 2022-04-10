@@ -7,7 +7,7 @@ if (isset($_GET['api']) && $_GET['api'] == 'chairmen') {
 	die();
 }
 
-include $_SERVER['DOCUMENT_ROOT'] . '/../includes/data_controllers/magtricky_data_controller.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/../includes/data_controllers/chairmen_data_controller.php';
 
 $api_consumers = [
 	'API uses',
