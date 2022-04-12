@@ -40,7 +40,7 @@ $rickies_events__params = [
 	'sort' => $airtable_sorting,
 ];
 include '../includes/data_controllers/event_data_controller.php';
-$home = $latest = $latest_keynote = $latest_annual = $ungraded_filter = $wwdc_filter = $keynote_filter = $annual_filter = $pickies_filter = $charities = $apple_events = true;
+$home = $latest = $latest_keynote = $latest_annual = $ungraded_filter = $wwdc_filter = $pickies_filter = true;
 
 foreach ($rickies_events__array as $event) {
 	if (isset($home)) {
@@ -50,30 +50,19 @@ foreach ($rickies_events__array as $event) {
 
 	if (isset($latest)) {
 		echo sitemap_url('/latest', $event['last_edited'], '0.7');
-		unset($latest);
-	}
-	if (isset($charities)) {
 		echo sitemap_url('/charities', $event['last_edited'], '0.7');
-		unset($charities);
+		echo sitemap_url('/api', $event['last_edited'], '0.7');
+		unset($latest);
 	}
 	if ($event['type'] == 'keynote' && isset($latest_keynote)) {
 		echo sitemap_url('/latest-keynote', $event['last_edited']);
-		unset($latest_keynote);
-	}
-	if ($event['type'] == 'keynote' && isset($apple_events)) {
 		echo sitemap_url('/apple-events', $event['last_edited']);
-		unset($apple_events);
-	}
-	if ($event['type'] == 'keynote' && isset($keynote_filter)) {
 		echo sitemap_url('/keynote', $event['last_edited'], '0.3');
-		unset($keynote_filter);
-	}
-	if ($event['type'] == 'annual' && isset($annual_filter)) {
-		echo sitemap_url('/annual', $event['last_edited'], '0.3');
-		unset($annual_filter);
+		unset($latest_keynote);
 	}
 	if ($event['type'] == 'annual' && isset($latest_annual)) {
 		echo sitemap_url('/latest-annual', $event['last_edited']);
+		echo sitemap_url('/annual', $event['last_edited'], '0.3');
 		unset($latest_annual);
 	}
 	if ($event['event_type'] == 'WWDC' && isset($wwdc_filter)) {
