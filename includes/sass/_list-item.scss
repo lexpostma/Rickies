@@ -101,7 +101,10 @@ li.list_item {
 			}
 		}
 	}
+	a[href^="https://apps.apple.com"],
+	a[href^="https://discordapp.com"],
 	a[href^="https://github.com"],
+	a[href^="https://gist.github.com"],
 	a[href^="https://twitter.com"],
 	a[href^="https://www.youtube.com"]
 	{
@@ -126,6 +129,19 @@ li.list_item {
 			content: url('/images/logos/twitter.svg');
 		}
 	}
+	a[href^="https://discordapp.com"]
+	{
+		.secondary_string:before {
+			content: url('/images/logos/discord.svg');
+		}
+	}
+	a[href^="https://apps.apple.com"]
+	{
+		.secondary_string:before {
+			content: url('/images/logos/app-store.svg');
+		}
+	}
+	a[href^="https://gist.github.com"],
 	a[href^="https://github.com"]
 	{
 		.secondary_string:before {

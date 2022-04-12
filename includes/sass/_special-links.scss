@@ -5,7 +5,10 @@ a {
 
 	// Add Twitter/GitHub logos to their URLs
 	&:not(.list_item_content) {
+		&[href^="https://apps.apple.com"],
+		&[href^="https://discordapp.com"],
 		&[href^="https://github.com"],
+		&[href^="https://gist.github.com"],
 	&[href^="https://twitter.com"]
 		{
 			&:after {
@@ -30,10 +33,39 @@ a {
 				}
 			}
 		}
-		&[href^="https://github.com"]
+		&[href^="https://github.com"],
+		&[href^="https://gist.github.com"]
 		{
 			&:after {
 				content: url('/images/logos/github.svg');
+				transform: translate(0px, 1px);
+			}
+			@media (hover: hover) {
+				&:hover {
+					&:after {
+						transform: scale(1.2);
+					}
+				}
+			}
+		}
+		&[href^="https://apps.apple.com"]
+		{
+			&:after {
+				content: url('/images/logos/app-store.svg');
+				transform: translate(0px, 1px);
+			}
+			@media (hover: hover) {
+				&:hover {
+					&:after {
+						transform: scale(1.2);
+					}
+				}
+			}
+		}
+		&[href^="https://discordapp.com"]
+		{
+			&:after {
+				content: url('/images/logos/discord.svg');
 				transform: translate(0px, 1px);
 			}
 			@media (hover: hover) {
