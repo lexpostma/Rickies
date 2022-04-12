@@ -3305,6 +3305,8 @@ ul.bullet_list > li span.emoji {
 
 .highlight_card {
   margin: var(--space-between-lg) auto;
+  border: 1px solid var(--connected-blue);
+  background: var(--element-active-color);
 }
 
 code,
@@ -3324,6 +3326,8 @@ code,
 pre {
   font-family: ui-monospace, monospace;
   font-size: 0.8rem;
+  border: 1px solid var(--connected-green);
+  background: rgba(var(--connected-green-rgb), 0.1);
 }
 
 code {

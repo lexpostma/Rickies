@@ -33,6 +33,17 @@ $api_consumers = [
 			'type' => 'app',
 		],
 	],
+	[
+		'label1' => 'Obsidian plugin',
+		'label2' => 'Paste nicely formatted chairmen data directly into your note.',
+		'label3' => 'By Henry Gustafson',
+		'url' => 'https://github.com/lizard-heart/rickies-chairman-obsidian',
+		'img_url' => [
+			// 'src' => '/images/about/scriptable.png',
+			'src' => '/images/about/obsidian.png',
+			'type' => 'app',
+		],
+	],
 ];
 
 $head_custom = [
