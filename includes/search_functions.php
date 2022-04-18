@@ -430,6 +430,17 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 					'>' .
 					emoji_select_spacing('♻️') .
 					'Eligible for reuse</option>
+				<option value="keynote" ';
+				if (
+					key_exists('reusable', $user_input['filter_other']) &&
+					strpos($user_input['filter_other']['reusable'], 'Age string') !== false
+				) {
+					$output .= 'selected';
+				}
+				$output .=
+					'>' .
+					emoji_select_spacing('♻️') .
+					'Eligible for keynotes only</option>
 				<option value="no" ';
 				if (
 					key_exists('reusable', $user_input['filter_other']) &&

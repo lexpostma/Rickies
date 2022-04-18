@@ -29,6 +29,9 @@ if (isset($_GET['reusable'])) {
 		case 'no':
 			$pick_filter['filter_other']['reusable'] = '{Eligible for reuse}=FALSE()';
 			break;
+		case 'keynote':
+			$pick_filter['filter_other']['reusable'] = "SEARCH('♻️',{Age string})";
+			break;
 	}
 }
 
