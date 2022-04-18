@@ -1807,6 +1807,10 @@ li.pick_item.manual {
   background-color: rgba(239, 123, 0, 0.15);
 }
 
+#picks li.pick_item + li.pick_item {
+  margin-top: var(--space-between-md);
+}
+
 .pick_item:hover .recycle, .pick_item:focus .recycle, .pick_item:active .recycle {
   -webkit-animation: rotateInThirds 8s infinite;
   animation: rotateInThirds 8s infinite;
