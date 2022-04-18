@@ -62,6 +62,7 @@ body {
 body {
 	font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, Helvetica, Arial,
 		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	font-feature-settings: 'ss01' on, 'ss02' on;
 }
 
 .container {
