@@ -2,7 +2,14 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
-## 12 April 2022
+### 18 April 2022
+
+-   Improved filters on picks archive:
+    -   ♻️ Reusability labels and [filter](https://rickies.co/?search=&reusable=yes&display=reusability#results). It’s now also possible to filter by ‘[not reusable](https://rickies.co/?search=&reusable=no&display=reusability#results)’ or ‘[reusable for Keynote Rickies](https://rickies.co/?search=&reusable=keynote&display=reusability#results)’, given the [latest Bill of Rickies changes](https://rickies.co/billof/keynote-jun-2022#rule149)
+    -   🧮 New [complexity filter](https://rickies.co/?search=&complex_min=4&complex_max=6#results) to filter the picks by their number of conditions
+-   The search URL is cleaned up when submitting, so there’s no more empty queries in it
+
+### 12 April 2022
 
 -   Tweaked API styling
 -   Added Obsidian plugin to API uses list
