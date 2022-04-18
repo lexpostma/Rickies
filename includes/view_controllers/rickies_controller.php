@@ -459,7 +459,7 @@ function pick_item($data, $interactive = false, $view = [])
 		$data['note'] ||
 		($data['status_later'] && in_array('ahead_of_its_time', $view)) ||
 		($data['categories'] && in_array('categories', $view)) ||
-		($data['age'] && in_array('age', $view)) ||
+		($data['reusability'] && in_array('reusability', $view)) ||
 		($data['buzzkill'] && in_array('buzzkill', $view)) ||
 		($data['amendment'] && in_array('amendment', $view))
 	) {
@@ -486,8 +486,8 @@ function pick_item($data, $interactive = false, $view = [])
 			}
 			$output .= '</p>';
 		}
-		if ($data['age'] && in_array('age', $view)) {
-			$output .= markdown($data['age']);
+		if ($data['reusability'] && in_array('reusability', $view)) {
+			$output .= markdown($data['reusability']);
 		}
 		if ($data['buzzkill'] && in_array('buzzkill', $view)) {
 			$output .= markdown($data['buzzkill']);
