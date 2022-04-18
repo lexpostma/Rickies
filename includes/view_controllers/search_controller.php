@@ -22,13 +22,15 @@ switch ($pick_filter['display']) {
 		$pick_display = ['search', 'ahead_of_its_time', 'categories'];
 		break;
 	case 'age':
-		$pick_display = ['search', 'ahead_of_its_time', 'age'];
+	// 'age' is here of historical compatibility
+	case 'reusability':
+		$pick_display = ['search', 'ahead_of_its_time', 'reusability'];
 		break;
 	case 'clean':
 		$pick_display = ['search'];
 		break;
 	default:
-		$pick_display = ['search', 'ahead_of_its_time', 'categories', 'buzzkill', 'age', 'amendment'];
+		$pick_display = ['search', 'ahead_of_its_time', 'categories', 'buzzkill', 'reusability', 'amendment'];
 		break;
 }
 

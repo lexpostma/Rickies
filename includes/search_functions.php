@@ -439,7 +439,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 				}
 				$output .=
 					'>' .
-					emoji_select_spacing('♻️') .
+					emoji_select_spacing('🏳') .
 					'Eligible for keynotes only</option>
 				<option value="no" ';
 				if (
@@ -448,7 +448,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 				) {
 					$output .= 'selected';
 				}
-				$output .= '>' . emoji_select_spacing('⏳') . 'Not reusable yet</option>';
+				$output .= '>' . emoji_select_spacing('🚫') . 'Not reusable yet</option>';
 				$output .= '</select>
 							<div class="select_icon"></div>
 						</li>';
@@ -459,7 +459,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 				$pick_display_select = [
 					'clean' => emoji_select_spacing('🧹') . 'Just the picks',
 					'categories' => emoji_select_spacing('🏷') . 'Show categories',
-					'age' => emoji_select_spacing('🗓') . 'Show age of picks',
+					'reusability' => emoji_select_spacing('♻️') . 'Show reusability of picks',
 				];
 				$output .= '
 						<li class="filter_option select">
