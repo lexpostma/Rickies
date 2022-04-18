@@ -92,8 +92,11 @@ body {
 p {
 	margin: 0;
 }
-section > p + p {
-	margin-top: var(--space-between-md);
+section,
+.section_article {
+	& > p + p {
+		margin-top: var(--space-between-md);
+	}
 }
 
 .top_button,
@@ -178,16 +181,5 @@ span.need_space--sm {
 	}
 	span.less_space--sm {
 		display: none;
-	}
-}
-
-/* For debugging */
-pre {
-	font-size: 0.8rem;
-	overflow-x: scroll;
-	padding: 10px;
-	background: pink;
-	@media (prefers-color-scheme: dark) {
-		background: #230034;
 	}
 }

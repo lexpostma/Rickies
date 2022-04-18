@@ -10,6 +10,11 @@ switch ($url_view) {
 		include '../includes/view_controllers/rickies_list_controller.php';
 		$include_subbody = '../includes/views/rickies.php';
 		break;
+	case 'api':
+		// API page
+		include '../includes/view_controllers/api_controller.php';
+		$include_subbody = '../includes/views/api.php';
+		break;
 	case '3j-leaderboard':
 		// Leaderboard of Triple J Pickies
 		$triple_j = true;
@@ -31,6 +36,24 @@ switch ($url_view) {
 		// Search query
 		include '../includes/view_controllers/search_controller.php';
 		$include_subbody = '../includes/views/search.php';
+		$back_to_overview = true;
+		break;
+	case 'trophies':
+		// Trophies query
+		include '../includes/view_controllers/trophies_controller.php';
+		$include_subbody = '../includes/views/trophies.php';
+		$back_to_overview = true;
+		break;
+	case 'charities':
+		// Charities query
+		include '../includes/view_controllers/charities_controller.php';
+		$include_subbody = '../includes/views/charities.php';
+		$back_to_overview = true;
+		break;
+	case 'apple-events':
+		// Apple Events query
+		include '../includes/view_controllers/apple_events_controller.php';
+		$include_subbody = '../includes/views/apple_events.php';
 		$back_to_overview = true;
 		break;
 	case 'wwdc':
@@ -88,6 +111,7 @@ function list_item_graphic($img_array = false)
 {
 	// Image array types can be:
 	// * background: fill the background with src, optional color
+	// * app: same as background, but more rounded
 	// * color: use color as background
 	// * annual: use text + random color background
 	// * avatar: use <img> with memoji on a color background
@@ -99,6 +123,8 @@ function list_item_graphic($img_array = false)
 		$style[] = 'animation-delay: ' . rand(-50, 0) . 's;';
 	} else {
 		switch ($img_array['type']) {
+			case 'app':
+				$class[] = 'app_shape';
 			case 'background':
 				$class[] = 'fill_image';
 				if (isset($img_array['color']) && $img_array['color'] == 'random') {

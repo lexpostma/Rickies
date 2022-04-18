@@ -125,8 +125,8 @@ $rickies_events__array[$id]['details'] = [
 		'url' => check_key('Charity URL', $fields, false, 0),
 		'img_url' => check_key('Charity logo', $fields, false, 0),
 		'label1' => check_key('Charity name', $fields, false, 0),
-		'label2' => '$' . check_key('Flexy donation', $fields) . ' donated by ' . check_key('Flexies 3rd', $fields),
-		'label3' => check_key('Flexies 1st', $fields) . '’s choice',
+		'label2' => check_key('Charity label 2', $fields),
+		'label3' => check_key('Charity label 3', $fields),
 	],
 	// More data
 	'more_title' => 'More',
@@ -197,14 +197,14 @@ if (
 // Episode states
 if (
 	$rickies_events__array[$id]['status'] == 'Live' &&
-	strtotime($rickies_events__array[$id]['details']['event_data']['date']) > strtotime('today')
+	strtotime($rickies_events__array[$id]['details']['link_data_apple']['date']) > strtotime('today')
 ) {
 	// Rickies status == live && Event date > (bigger=before) today
 	$predictions_state = 'live';
 	$results_state = false;
 } elseif (
 	$rickies_events__array[$id]['status'] == 'Live' &&
-	strtotime($rickies_events__array[$id]['details']['event_data']['date']) < strtotime('today')
+	strtotime($rickies_events__array[$id]['details']['link_data_apple']['date']) < strtotime('today')
 ) {
 	// Rickies status == live && Event date < (smaller=after) today
 	$predictions_state = false;

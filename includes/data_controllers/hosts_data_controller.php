@@ -25,6 +25,7 @@ do {
 				'personal' => [
 					'first_name' => $id,
 					'full_name' => check_key('Full name', $fields),
+					'flexy_title' => check_key('Flexy winner title (flat)', $fields),
 				],
 				'images' => [
 					'memoji' => [
@@ -41,6 +42,7 @@ do {
 				$hosts_data__array[$id]['personal']['website_name'] = check_key('Website name', $fields);
 				$hosts_data__array[$id]['personal']['twitter'] = check_key('Twitter handle', $fields);
 				$hosts_data__array[$id]['personal']['twitter_url'] = check_key('Twitter', $fields);
+
 				$hosts_data__array[$id]['images']['photo'] = airtable_image_url(check_key('Photo', $fields, false, 0));
 				$hosts_data__array[$id]['titles'] = goat_referral(check_key('Titles HTML', $fields));
 				$hosts_data__array[$id]['titles_other'] = goat_referral(check_key('Other Titles HTML', $fields));

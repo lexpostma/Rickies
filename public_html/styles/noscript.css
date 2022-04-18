@@ -26,6 +26,10 @@ h2.list_title svg {
   display: none;
 }
 
+.nav_content #nav_content--extra-items.hidden {
+  max-height: unset;
+}
+
 .charts,
 aside.slider,
 button.back_button,
@@ -35,6 +39,7 @@ button.back_button,
 #share_button,
 #music_button,
 #close_button,
+#nav_opener,
 p#promote_webapp {
   display: none;
 }

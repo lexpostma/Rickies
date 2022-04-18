@@ -143,6 +143,13 @@ li.pick_item {
 	}
 }
 
+// More space between picks in archive view, because more clutter
+#picks {
+	li.pick_item + li.pick_item {
+		margin-top: var(--space-between-md);
+	}
+}
+
 .pick_item {
 	&:hover,
 	&:focus,

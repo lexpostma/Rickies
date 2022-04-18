@@ -40,7 +40,7 @@ $rickies_events__params = [
 	'sort' => $airtable_sorting,
 ];
 include '../includes/data_controllers/event_data_controller.php';
-$home = $latest = $latest_keynote = $latest_annual = $ungraded_filter = $wwdc_filter = $keynote_filter = $annual_filter = $pickies_filter = true;
+$home = $latest = $latest_keynote = $latest_annual = $ungraded_filter = $wwdc_filter = $pickies_filter = true;
 
 foreach ($rickies_events__array as $event) {
 	if (isset($home)) {
@@ -50,22 +50,19 @@ foreach ($rickies_events__array as $event) {
 
 	if (isset($latest)) {
 		echo sitemap_url('/latest', $event['last_edited'], '0.7');
+		echo sitemap_url('/charities', $event['last_edited'], '0.7');
+		echo sitemap_url('/api', $event['last_edited'], '0.7');
 		unset($latest);
 	}
 	if ($event['type'] == 'keynote' && isset($latest_keynote)) {
 		echo sitemap_url('/latest-keynote', $event['last_edited']);
-		unset($latest_keynote);
-	}
-	if ($event['type'] == 'keynote' && isset($keynote_filter)) {
+		echo sitemap_url('/apple-events', $event['last_edited']);
 		echo sitemap_url('/keynote', $event['last_edited'], '0.3');
-		unset($keynote_filter);
-	}
-	if ($event['type'] == 'annual' && isset($annual_filter)) {
-		echo sitemap_url('/annual', $event['last_edited'], '0.3');
-		unset($annual_filter);
+		unset($latest_keynote);
 	}
 	if ($event['type'] == 'annual' && isset($latest_annual)) {
 		echo sitemap_url('/latest-annual', $event['last_edited']);
+		echo sitemap_url('/annual', $event['last_edited'], '0.3');
 		unset($latest_annual);
 	}
 	if ($event['event_type'] == 'WWDC' && isset($wwdc_filter)) {
@@ -157,4 +154,15 @@ echo sitemap_url('/3j-archive', $pick['last_edited'], '0.2', 'monthly');
 // Date for /about
 $about = max([filemtime('../includes/view_controllers/about_controller.php'), filemtime('../includes/about.html')]);
 echo sitemap_url('/about', date('c', $about), '0.5', 'yearly');
+
+// Date for /trophies
+$trophies = max([
+	filemtime('../includes/view_controllers/trophies-controller.php'),
+	filemtime('../includes/views/trophies.php'),
+	filemtime('../includes/trophies-magtricky.php'),
+	filemtime('../includes/trophies-tricky.php'),
+	filemtime('../includes/trophies-ricky.html'),
+	filemtime('../includes/trophies-others.html'),
+]);
+echo sitemap_url('/trophies', date('c', $trophies), '0.5', 'yearly');
 echo '</urlset>';

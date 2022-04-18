@@ -612,7 +612,8 @@ p {
   margin: 0;
 }
 
-section > p + p {
+section > p + p,
+.section_article > p + p {
   margin-top: var(--space-between-md);
 }
 
@@ -703,19 +704,6 @@ span.need_space--sm {
     display: none;
   }
 }
-/* For debugging */
-pre {
-  font-size: 0.8rem;
-  overflow-x: scroll;
-  padding: 10px;
-  background: pink;
-}
-@media (prefers-color-scheme: dark) {
-  pre {
-    background: #230034;
-  }
-}
-
 main {
   max-width: 750px;
   margin: 0 auto;
@@ -793,7 +781,6 @@ main .document_footer {
   justify-content: space-between;
   align-items: flex-end;
   padding: 0 16px;
-  margin-top: 32px;
 }
 @media screen and (min-width: 576px) {
   main .document_footer {
@@ -802,19 +789,46 @@ main .document_footer {
 }
 main .document_footer .signatures {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   align-items: flex-start;
   margin-top: 32px;
-  border-bottom: 2px dotted var(--text-primary-color);
   padding-right: 16px;
 }
-main .document_footer .signatures img {
-  margin-left: -16px;
-  max-height: 2.3rem;
+@media screen and (min-width: 576px) {
+  main .document_footer .signatures {
+    padding-left: 16px;
+  }
+}
+main .document_footer .signatures .signature {
+  width: 128px;
+  margin-right: 32px;
+  height: 80px;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+}
+@media screen and (min-width: 576px) {
+  main .document_footer .signatures .signature {
+    margin-right: 64px;
+  }
+}
+main .document_footer .signatures .signature span {
+  border-top: 1px dotted var(--text-primary-color);
+  display: block;
+  width: 100%;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  padding-top: 2px;
+}
+main .document_footer .signatures .signature img {
+  filter: saturate(0%);
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 @media (prefers-color-scheme: dark) {
-  main .document_footer .signatures img {
-    filter: brightness(100);
+  main .document_footer .signatures .signature img {
+    filter: brightness(90);
+    opacity: 0.7;
   }
 }
 main .document_footer img.seal {
@@ -822,6 +836,11 @@ main .document_footer img.seal {
   max-width: 120px;
   align-self: flex-end;
   margin-bottom: -10px;
+}
+@media screen and (min-width: 576px) {
+  main .document_footer img.seal {
+    max-width: 150px;
+  }
 }
 main .document_footer #ticci_seal {
   transform: rotate(9deg);
@@ -832,12 +851,12 @@ main .document_footer #wax_seal {
   transform: rotate(-6deg);
   filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.4));
 }
-main.parchment .document_footer .signatures {
-  border-bottom-color: var(--document-text-color);
+main.parchment .document_footer .signatures .signature span {
+  border-color: var(--document-text-color);
 }
-main.parchment .document_footer .signatures img {
-  filter: sepia(100%);
-  opacity: 0.9;
+main.parchment .document_footer .signatures .signature img {
+  filter: unset;
+  opacity: unset;
 }
 main.parchment #ticci_seal {
   display: none;
@@ -853,7 +872,7 @@ main.parchment #wax_seal {
 
 ol {
   margin: 0;
-  padding-left: 26px;
+  padding-left: 2em;
 }
 
 #document_title,
@@ -966,7 +985,7 @@ aside.slider {
 }
 aside.slider #rule_slider {
   padding: 8px 24px 24px;
-  padding-bottom: max(24px, calc(16px + env(safe-area-inset-bottom)));
+  padding-bottom: max(24px, 16px + env(safe-area-inset-bottom));
   max-width: 650px;
   margin: 0 auto;
   color: var(--text-primary-color);
@@ -974,7 +993,7 @@ aside.slider #rule_slider {
 @media screen and (min-width: 768px) {
   aside.slider #rule_slider {
     padding: 16px 32px 24px;
-    padding-bottom: max(24px, calc(16px + env(safe-area-inset-bottom)));
+    padding-bottom: max(24px, 16px + env(safe-area-inset-bottom));
   }
 }
 aside.slider #rule_slider input[type=range] {
@@ -1246,14 +1265,16 @@ button.js_link:focus, button.js_link:active {
 footer button,
 .banner a,
 footer a:not(#footer_corner),
-nav a {
+nav a,
+nav button.js_link {
   font-weight: 500;
 }
 .bill_footer a.js_link,
 footer button.js_link,
 .banner a.js_link,
 footer a:not(#footer_corner).js_link,
-nav a.js_link {
+nav a.js_link,
+nav button.js_link.js_link {
   color: white;
   cursor: pointer;
   opacity: 0.8;
@@ -1271,7 +1292,9 @@ footer button:visited,
 footer a:not(#footer_corner):link,
 footer a:not(#footer_corner):visited,
 nav a:link,
-nav a:visited {
+nav a:visited,
+nav button.js_link:link,
+nav button.js_link:visited {
   color: white;
   opacity: 0.8;
 }
@@ -1280,7 +1303,8 @@ nav a:visited {
 footer button:hover,
 .banner a:hover,
 footer a:not(#footer_corner):hover,
-nav a:hover {
+nav a:hover,
+nav button.js_link:hover {
     opacity: 1;
   }
 }
@@ -1292,7 +1316,9 @@ footer button:active,
 footer a:not(#footer_corner):focus,
 footer a:not(#footer_corner):active,
 nav a:focus,
-nav a:active {
+nav a:active,
+nav button.js_link:focus,
+nav button.js_link:active {
   opacity: 1;
 }
 
@@ -1523,7 +1549,7 @@ button.top_button,
 #close_button {
   position: fixed;
   bottom: 52px;
-  bottom: max(52px, calc(44px + env(safe-area-inset-bottom)));
+  bottom: max(52px, 44px + env(safe-area-inset-bottom));
   right: 0px;
   z-index: 13;
   top: unset;
@@ -1545,17 +1571,17 @@ button.top_button,
 #close_button.show {
   box-shadow: 0px -1px 4px rgba(84, 52, 4, 0.5);
   transform: scale(1) translate(-20px, 32px) rotate(-180deg);
-  transform: scale(1) translate(-20px, max(32px, calc(24px + env(safe-area-inset-bottom)))) rotate(-180deg);
+  transform: scale(1) translate(-20px, max(32px, 24px + env(safe-area-inset-bottom))) rotate(-180deg);
 }
 @media (hover: hover) {
   #close_button.show:hover {
     transform: scale(1.2) translate(-17px, 27px) rotate(-180deg);
-    transform: scale(1.2) translate(-17px, max(27px, calc(20px + env(safe-area-inset-bottom)))) rotate(-180deg);
+    transform: scale(1.2) translate(-17px, max(27px, 20px + env(safe-area-inset-bottom))) rotate(-180deg);
   }
 }
 #close_button.show:focus, #close_button.show:active {
   transform: scale(1.1) translate(-18px, 29px) rotate(-180deg);
-  transform: scale(1.1) translate(-18px, max(29px, calc(22px + env(safe-area-inset-bottom)))) rotate(-180deg);
+  transform: scale(1.1) translate(-18px, max(29px, 22px + env(safe-area-inset-bottom))) rotate(-180deg);
 }
 @media screen and (min-width: 768px) {
   #close_button {
@@ -1629,7 +1655,7 @@ html {
 
 h2.rule_type,
 .rule {
-  max-height: 150px;
+  max-height: 300px;
   opacity: 1;
   transition-property: max-height, opacity;
   transition-duration: 750ms, 495ms;

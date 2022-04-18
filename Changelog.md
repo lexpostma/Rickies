@@ -2,6 +2,39 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+## 12 April 2022
+
+-   Tweaked API styling
+-   Added Obsidian plugin to API uses list
+
+## 10 April 2022 v2.3
+
+-   [Rickies API](https://rickies.co/api) available to fetch the current chairmen in JSON format
+
+## 29 March 2022 v2.2
+
+-   New [Trophies](https://rickies.co/trophies) page with explanations about the different Rickies trophies, including:
+    -   🕋 The official [Tricky in AR](https://rickies.co/trophies#tricky)
+    -   🧲 [Interactive MagTricky](https://rickies.co/trophies#magtricky)
+    -   🦠 The [Ricky mascot](https://rickies.co/trophies#ricky)
+    -   And [other trophies](https://rickies.co/trophies#other)
+-   New [Charities](https://rickies.co/charities) page with all charities that were donated to during the Flexies including some stats, ordered by donation amount
+-   New [Apple Events](https://rickies.co/apple-events) page with all Apple keynotes that were predicted in chronological order
+-   Improved navigation bar is now expandable to make room for the new pages
+
+### 10 March 2022
+
+-   Support for when other hosts match the donation of the Flexy loser, reflected on the [event page](https://rickies.co/keynote-mar-2022) and in the stats
+-   Support for the Flexy titles of the Duke, the Prince and the AG
+
+### 13 January 2022
+
+-   The Annual Predictions of 2018 are differently styled on the timeline, because they were not official Rickies.
+
+### 9 January 2022
+
+-   New and improved signatures on [The Bill of Rickies](https://rickies.co/billof) and [The Pickies Charter](https://rickies.co/charter), in random order
+
 ### 6 January 2022
 
 -   Add host filters to the stats-links on Host Leaderboard

@@ -15,6 +15,83 @@ header {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+
+	// Relay blue gradient over the diagonal Connected colors
+	.gradient {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-image: linear-gradient(
+			to bottom,
+			hsla(205.71, 17.07%, 24.12%, 0) 0%,
+			hsla(205.71, 17.07%, 24.12%, 0.003) 18.7%,
+			hsla(205.71, 17.07%, 24.12%, 0.01) 34.9%,
+			hsla(205.71, 17.07%, 24.12%, 0.021) 48.8%,
+			hsla(205.71, 17.07%, 24.12%, 0.035) 60.6%,
+			hsla(205.71, 17.07%, 24.12%, 0.052) 70.4%,
+			hsla(205.71, 17.07%, 24.12%, 0.07) 78.4%,
+			hsla(205.71, 17.07%, 24.12%, 0.09) 84.8%,
+			hsla(205.71, 17.07%, 24.12%, 0.11) 89.8%,
+			hsla(205.71, 17.07%, 24.12%, 0.13) 93.6%,
+			hsla(205.71, 17.07%, 24.12%, 0.148) 96.3%,
+			hsla(205.71, 17.07%, 24.12%, 0.165) 98.1%,
+			hsla(205.71, 17.07%, 24.12%, 0.179) 99.2%,
+			hsla(205.71, 17.07%, 24.12%, 0.19) 99.8%,
+			hsla(205.71, 17.07%, 24.12%, 0.197) 100%,
+			hsla(205.71, 17.07%, 24.12%, 0.2) 100%
+		);
+
+		@media (prefers-color-scheme: dark) {
+			background-image: linear-gradient(
+				to bottom,
+				hsla(205.71, 17.07%, 24.12%, 0) 0%,
+				hsla(205.71, 17.07%, 24.12%, 0.008) 11.1%,
+				hsla(205.71, 17.07%, 24.12%, 0.029) 21%,
+				hsla(205.71, 17.07%, 24.12%, 0.062) 29.8%,
+				hsla(205.71, 17.07%, 24.12%, 0.105) 37.6%,
+				hsla(205.71, 17.07%, 24.12%, 0.156) 44.6%,
+				hsla(205.71, 17.07%, 24.12%, 0.211) 50.9%,
+				hsla(205.71, 17.07%, 24.12%, 0.27) 56.7%,
+				hsla(205.71, 17.07%, 24.12%, 0.33) 62%,
+				hsla(205.71, 17.07%, 24.12%, 0.389) 67.1%,
+				hsla(205.71, 17.07%, 24.12%, 0.444) 72.1%,
+				hsla(205.71, 17.07%, 24.12%, 0.495) 77.1%,
+				hsla(205.71, 17.07%, 24.12%, 0.538) 82.2%,
+				hsla(205.71, 17.07%, 24.12%, 0.571) 87.7%,
+				hsla(205.71, 17.07%, 24.12%, 0.592) 93.5%,
+				hsla(205.71, 17.07%, 24.12%, 0.6) 100%
+			);
+		}
+	}
+	.big_year {
+		color: rgba(255, 255, 255, 0.8);
+		font-weight: 900;
+		font-size: 100px;
+		margin-top: 30px;
+		@media screen and (min-width: var.$break-xs) {
+			margin-top: 40px;
+			font-size: 120px;
+		}
+		@media screen and (min-width: var.$break-md) {
+			font-size: 180px;
+			margin-top: 0;
+		}
+		pointer-events: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		text-shadow: 0px 2px 8px rgba(51, 63, 72, 0.1);
+	}
+	&.custom.color {
+		background-size: auto 100%;
+	}
+	&.contain_img img {
+		height: 80%;
+		filter: drop-shadow(var.$header-shadow);
+		border-radius: var(--corner-radius);
+	}
 	&.home {
 		background-image: linear-gradient(
 				to bottom,
@@ -112,6 +189,9 @@ header {
 		}
 	}
 
+	&.trophies,
+	&.apple_events,
+	&.charities,
 	&.about,
 	&.search,
 	&.details,
@@ -122,6 +202,9 @@ header {
 			text-shadow: var.$header-shadow;
 		}
 	}
+	&.trophies,
+	&.apple_events,
+	&.charities,
 	&.about,
 	&.details,
 	&.leaderboard {
@@ -144,95 +227,35 @@ header {
 		background-color: var(--connected-blue);
 		background-size: cover;
 		background-image: url(/images/diagonal-rainbow-header.svg);
-
-		// Relay blue gradient over the diagonal Connected colors
-		.gradient {
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			background-image: linear-gradient(
-				to bottom,
-				hsla(205.71, 17.07%, 24.12%, 0) 0%,
-				hsla(205.71, 17.07%, 24.12%, 0.003) 18.7%,
-				hsla(205.71, 17.07%, 24.12%, 0.01) 34.9%,
-				hsla(205.71, 17.07%, 24.12%, 0.021) 48.8%,
-				hsla(205.71, 17.07%, 24.12%, 0.035) 60.6%,
-				hsla(205.71, 17.07%, 24.12%, 0.052) 70.4%,
-				hsla(205.71, 17.07%, 24.12%, 0.07) 78.4%,
-				hsla(205.71, 17.07%, 24.12%, 0.09) 84.8%,
-				hsla(205.71, 17.07%, 24.12%, 0.11) 89.8%,
-				hsla(205.71, 17.07%, 24.12%, 0.13) 93.6%,
-				hsla(205.71, 17.07%, 24.12%, 0.148) 96.3%,
-				hsla(205.71, 17.07%, 24.12%, 0.165) 98.1%,
-				hsla(205.71, 17.07%, 24.12%, 0.179) 99.2%,
-				hsla(205.71, 17.07%, 24.12%, 0.19) 99.8%,
-				hsla(205.71, 17.07%, 24.12%, 0.197) 100%,
-				hsla(205.71, 17.07%, 24.12%, 0.2) 100%
-			);
-
-			@media (prefers-color-scheme: dark) {
-				background-image: linear-gradient(
-					to bottom,
-					hsla(205.71, 17.07%, 24.12%, 0) 0%,
-					hsla(205.71, 17.07%, 24.12%, 0.008) 11.1%,
-					hsla(205.71, 17.07%, 24.12%, 0.029) 21%,
-					hsla(205.71, 17.07%, 24.12%, 0.062) 29.8%,
-					hsla(205.71, 17.07%, 24.12%, 0.105) 37.6%,
-					hsla(205.71, 17.07%, 24.12%, 0.156) 44.6%,
-					hsla(205.71, 17.07%, 24.12%, 0.211) 50.9%,
-					hsla(205.71, 17.07%, 24.12%, 0.27) 56.7%,
-					hsla(205.71, 17.07%, 24.12%, 0.33) 62%,
-					hsla(205.71, 17.07%, 24.12%, 0.389) 67.1%,
-					hsla(205.71, 17.07%, 24.12%, 0.444) 72.1%,
-					hsla(205.71, 17.07%, 24.12%, 0.495) 77.1%,
-					hsla(205.71, 17.07%, 24.12%, 0.538) 82.2%,
-					hsla(205.71, 17.07%, 24.12%, 0.571) 87.7%,
-					hsla(205.71, 17.07%, 24.12%, 0.592) 93.5%,
-					hsla(205.71, 17.07%, 24.12%, 0.6) 100%
-				);
-			}
-		}
-		.big_year {
-			color: rgba(255, 255, 255, 0.8);
-			font-weight: 900;
-			font-size: 100px;
-			margin-top: 30px;
-			@media screen and (min-width: var.$break-xs) {
-				margin-top: 40px;
-				font-size: 120px;
-			}
-			@media screen and (min-width: var.$break-md) {
-				font-size: 180px;
-				margin-top: 0;
-			}
-			pointer-events: none;
-			-webkit-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
-			text-shadow: 0px 2px 8px rgba(51, 63, 72, 0.1);
-		}
-		&.custom.color {
-			background-size: auto 100%;
-		}
-		&.contain_img img {
-			height: 80%;
-			filter: drop-shadow(var.$header-shadow);
-			border-radius: var(--corner-radius);
-		}
 	}
-
+	&.charities {
+		background-size: auto 100%;
+		background-color: var(--connected-red);
+		background-image: url(/images/hands-holding-rainbow-heart.png);
+	}
+	&.apple_events {
+		background-size: auto 100%;
+		background-color: black;
+		background-image: url(/images/tim-connected.jpg);
+	}
 	&.leaderboard {
 		background-image: url(/images/connected-map.png);
 	}
 	&.leaderboard.triple_j {
 		background-image: url(/images/connected-map-3j.png);
 	}
+	&.trophies {
+		background-size: auto 100%, cover;
+		background-image: url(/images/trophies-header.jpg),
+			linear-gradient(90deg, var(--connected-green) 49.9%, var(--connected-blue) 50.1%);
+	}
 	&.search {
 		padding-top: 80px;
 		padding-top: calc(80px + #{var.$iX-top});
 	}
+	&.trophies,
+	&.charities,
+	&.apple_events,
 	&.about,
 	&.leaderboard {
 		height: 100vw;

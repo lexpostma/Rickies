@@ -71,8 +71,10 @@ function update_rules(value) {
 			show_rule(el);
 
 			// Title <h2> is sibling before the <li>'s parent <ol>
-			if (el.parentNode.tagName == 'OL') {
+			if (el.parentNode.tagName == 'OL' && el.parentNode.previousSibling == 'H2') {
 				show_rule(el.parentNode.previousSibling);
+			} else if (el.previousSibling == 'H2') {
+				show_rule(el.previousSibling);
 			}
 		} else {
 			// Add class "hidden" to the rule

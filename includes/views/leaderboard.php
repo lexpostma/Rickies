@@ -1,5 +1,7 @@
 <div id="statusbar"></div>
-<header class="leaderboard triple_j">
+<header class="leaderboard <?php if (isset($triple_j)) {
+	echo 'triple_j';
+} ?>">
 	<h1>Host Leaderboard</h1>
 </header>
 

@@ -11,6 +11,9 @@ RewriteRule ^sitemap\.xml$ /sitemap.php [L]
 ## Manifest JSON to PHP
 RewriteRule ^manifest\.json$ /manifest.php [L]
 
+## API JSON to PHP
+RewriteRule ^api/([A-Za-z0-9-_]+)/?\.json$$	/index.php?view=api&api=$1	[NC,L]
+
 ## From Bill subdomain to directory
 RewriteBase /
 RewriteCond %{HTTP_HOST} ^thebillof\.(.*)$ [NC]
@@ -20,6 +23,27 @@ RewriteRule ^(.*)$ https://%1/billof/$1 [R=301,L]
 RewriteRule ^billof/([A-Za-z0-9-_]+)/?$	/index.php?view=$1&sub=billof	[NC,L]
 RewriteRule ^charter/([A-Za-z0-9-_]+)/?$	/index.php?view=$1&sub=charter	[NC,L]
 RewriteRule ^([A-Za-z0-9-_]+)/?$		/index.php?view=$1	[NC,L]
+
+# Alternative URLs redirect
+Redirect 301 /trophy /trophies
+Redirect 301 /trophie /trophies
+Redirect 301 /tricky /trophies
+Redirect 301 /trickies /trophies
+Redirect 301 /magtricky /trophies
+Redirect 301 /magtrickies /trophies
+
+Redirect 301 /apple-event /apple-events
+Redirect 301 /events /apple-events
+Redirect 301 /event /apple-events
+
+Redirect 301 /hosts /leaderboard
+Redirect 301 /3j /3j-leaderboard
+Redirect 301 /triple-j /3j-leaderboard
+
+Redirect 301 /charity /charities
+Redirect 301 /donation /charities
+
+Redirect 301 /recent /latest
 
 ## Error pages
 ErrorDocument 400 /error/400.php

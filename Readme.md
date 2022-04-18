@@ -17,6 +17,8 @@ On Connected at Relay FM.
 -   📱 Standalone web app, optimised for iOS devices with support for dark mode, sharing, pull-to-refresh, and safe areas.
 -   🗄 Built on top of an [Airtable](https://airtable.com/invite/r/srbbQalO) database. All data and most assets and calculations come from there.
 -   🔍 [Search and filter](https://rickies.co/?search=promotion) the full prediction [archive](https://rickies.co/archive), including metadata like prediction type, category, host, event and more. With search term highlighting and charts that change with the results.
+-   🧲 All the official and unofficial [trophies](https://rickies.co/trophies) with the [Tricky in AR](https://rickies.co/trophies#tricky), an [interactive MagTricky](https://rickies.co/trophies#magtricky), and the cute [Ricky mascot](https://rickies.co/trophies#ricky).
+-   💻 [Rickies API](https://rickies.co/api) to fetch who is the current chairmen.
 -   🎄 Supports holiday specials with [The Pickies](https://rickies.co/pickies), including [The Pickies Charter](https://rickies.co/charter) with history, [Triple J Leaderboard](https://rickies.co/3j-leaderboard) with Memoji, and the [archive](https://rickies.co/3j-archive) with custom filters.
 
 ## More

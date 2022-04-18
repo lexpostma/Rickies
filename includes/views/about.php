@@ -8,7 +8,7 @@
 
 <?= navigation_bar('about') ?>
 
-<section><?= $introduction ?></section>
+<section class="article"><?= $introduction ?></section>
 
 <section class="large_columns">
 	<div class="section_group">

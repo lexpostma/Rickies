@@ -2,6 +2,9 @@
 
 .item_graphic {
 	border-radius: var(--corner-radius);
+	&.app_shape {
+		border-radius: 22.37%;
+	}
 	border: var(--graphic-border);
 	width: var(--graphic-size);
 	height: var(--graphic-size);

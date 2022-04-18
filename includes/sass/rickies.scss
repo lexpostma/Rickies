@@ -11,6 +11,7 @@
 @use "tag";
 @use "leaderboard";
 @use "timeline";
+@use "trophies";
 @use "modal-input";
 @use "search";
 @use "filter";
@@ -56,15 +57,36 @@ ul.bullet_list > li {
 		margin-right: 8px;
 	}
 }
-
 .highlight_card {
-	padding: var(--space-between-sm) var(--space-between-md);
-	border-radius: var(--corner-radius);
 	margin: var(--space-between-lg) auto;
 	border: 1px solid var(--connected-blue);
 	background: var(--element-active-color);
 }
+code,
+pre,
+.highlight_card {
+	border-radius: var(--corner-radius);
+	border: 1px solid var(--connected-blue);
+	background: var(--element-active-color);
+}
+pre,
+.highlight_card {
+	padding: var(--space-between-sm) var(--space-between-md);
+}
 
+code,
+pre {
+	font-family: ui-monospace, monospace;
+	font-size: 0.8rem;
+	border: 1px solid var(--connected-green);
+	background: rgba(var(--connected-green-rgb), 0.1);
+}
+code {
+	padding: 2px;
+}
+pre {
+	overflow-x: scroll;
+}
 .top_button {
 	box-shadow: var.$header-shadow;
 }
