@@ -7,19 +7,55 @@ function reset_filter() {
 		if (inputTags[i].type == 'checkbox') {
 			inputTags[i].checked = false;
 			inputTags[i].indeterminate = false;
+		} else if (inputTags[i].type == 'number') {
+			inputTags[i].value = '';
 		}
 	}
 
 	for (var i = 0; i < selectTags.length; i++) {
-		selectTags[i].selectedIndex = 0;
-		selectTags[i].setAttribute('data-chosen', '');
+		reset_select(selectTags[i]);
 	}
 
 	host_flip_3j(document.getElementsByClassName('triple_j_filter')[0]);
 	reset_button.disabled = true;
 }
 
+function reset_select(el) {
+	el.selectedIndex = 0;
+	el.setAttribute('data-chosen', '');
+}
+function number_input_state() {
+	var active_number_inputs = [];
+
+	for (var i = 0; i < inputTags.length; ++i) {
+		if (inputTags[i].type == 'number') {
+			if (inputTags[i].value) {
+				active_number_inputs.push(inputTags[i]);
+			} else {
+				inputTags[i].parentNode.classList.remove('active');
+			}
+		}
+	}
+	if (active_number_inputs.length != 0) {
+		for (var i = 0; i < active_number_inputs.length; ++i) {
+			active_number_inputs[i].parentNode.classList.add('active');
+		}
+	}
+}
+
 function check_elements_for_state() {
+	number_input_state();
+
+	for (var i = 0; i < inputTags.length; ++i) {
+		if (inputTags[i].type == 'number' && inputTags[i].value) {
+			// Check if any number input has a value
+			return true;
+		} else if (inputTags[i].type == 'checkbox' && inputTags[i].checked == true) {
+			// Check if any checkbox is checked
+			return true;
+		}
+	}
+
 	// Check if any select is selected
 	for (var i = 0; i < selectTags.length; i++) {
 		if (selectTags[i].selectedIndex !== 0) {
@@ -27,21 +63,14 @@ function check_elements_for_state() {
 		}
 	}
 
-	// Check if any checkbox is checked
-	for (var i = 0; i < inputTags.length; ++i) {
-		if (inputTags[i].type == 'checkbox' && inputTags[i].checked == true) {
-			return true;
-		}
-	}
-
-	// Nothing is checked or selected
+	// Nothing is checked, selected, or entered
 	return false;
 }
 
 function host_flip_3j(element) {
 	// Switch some checkbox around when in 3J mode
 	let host_checks = document.querySelectorAll('fieldset.hosts .host');
-	let other_checks = document.querySelectorAll('fieldset .filter_option:not(.triple_j_filter) input');
+	let other_checks = document.querySelectorAll('[data-3j]');
 
 	if (element.checked == true) {
 		// console.log('Triple J enabled');
@@ -59,7 +88,11 @@ function host_flip_3j(element) {
 				el.parentNode.classList.remove('hidden');
 			} else if (el.getAttribute('data-3j') == 'false') {
 				el.parentNode.classList.add('hidden');
-				el.checked = false;
+				if (el.type == 'checkbox') {
+					el.checked = false;
+				} else if (el.tagName == 'SELECT') {
+					reset_select(el);
+				}
 			}
 		});
 	} else {
@@ -198,5 +231,21 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	} else {
 		// And make reset button disabled
 		reset_button.disabled = true;
+	}
+});
+
+// Clean up the parameters in the URL on submitting
+// Via: https://stackoverflow.com/a/8029581
+const pick_filter_form = document.getElementById('pick_filter_form');
+
+pick_filter_form.addEventListener('submit', function () {
+	var allFilters = pick_filter_form.querySelectorAll('input, select');
+
+	for (var i = 0; i < allFilters.length; i++) {
+		var input = allFilters[i];
+
+		if (input.name && !input.value && input.name !== 'search') {
+			input.name = '';
+		}
 	}
 });

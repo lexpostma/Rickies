@@ -240,8 +240,10 @@
 			}
 
 			& > fieldset {
-				&:not(:last-child) > ul > li {
-					margin-right: -24px;
+				@media screen and (min-width: var.$break-sm) {
+					&:not(:last-child) > ul > li {
+						margin-right: -24px;
+					}
 				}
 				& > ul > li {
 					& ul {
@@ -315,9 +317,16 @@
 		.filter_option:last-child {
 			margin-bottom: 0;
 		}
-
+		.range,
 		.select {
 			position: relative;
+			.select_icon,
+			.range_icon {
+				@include input-icon;
+				pointer-events: none;
+			}
+		}
+		.select {
 			select {
 				padding: var(--label-padding) 0 var(--label-padding) calc(1.4rem + 8px);
 				width: 100%;
@@ -325,16 +334,82 @@
 			select:not([data-chosen='']) {
 			}
 			.select_icon {
-				@include input-icon;
-				background-image: url('/images/buttons/input-unselect.svg');
 				position: absolute;
-				pointer-events: none;
+				background-image: url('/images/buttons/input-unselect.svg');
 			}
 			select:not([data-chosen='']) + .select_icon {
 				background-image: url('/images/buttons/input-select.svg');
 				opacity: 1;
 			}
 		}
+		.range {
+			flex-wrap: nowrap;
+			input[type='number'] {
+				width: 2rem;
+				font-weight: bold;
+				text-align: center;
+				border: 1px solid var(--link-color);
+				margin: 0 4px;
+				border-radius: 4px;
+				height: 1.5rem;
+				height: calc(1.5rem + 2 * var(--label-padding));
+				line-height: 1em;
+				&:placeholder-shown {
+					opacity: 0.3;
+					@media (prefers-color-scheme: dark) {
+						opacity: 0.6;
+					}
+					@media (hover: hover) {
+						&:hover {
+							opacity: 1;
+						}
+					}
+					&:focus,
+					&:active {
+						opacity: 1;
+					}
+				}
+				&:not(:placeholder-shown) {
+					background: var(--link-color);
+					color: white;
+				}
+				@media screen and (min-width: var.$break-xl) {
+					width: 1.45rem;
+				}
+			}
+			label:not(.end_of_input) {
+				flex-basis: unset;
+				flex-grow: unset;
+			}
+			span.big_label {
+				display: none;
+			}
+			@media screen and (min-width: var.$break-xs) {
+				span.small_label {
+					display: none;
+				}
+				span.big_label {
+					display: inline;
+				}
+			}
+			@media screen and (min-width: var.$break-sm) {
+				span.small_label {
+					display: inline;
+				}
+				span.big_label {
+					display: none;
+				}
+			}
+			.range_icon {
+				margin-right: 4px;
+				background-image: url('/images/buttons/input-number-empty.svg');
+			}
+			&.active .range_icon {
+				opacity: 1;
+				background-image: url('/images/buttons/input-number.svg');
+			}
+		}
+
 		input[type='checkbox'] {
 			@include input-icon;
 			background-image: url('/images/buttons/input-uncheck.svg');

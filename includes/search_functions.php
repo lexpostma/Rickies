@@ -274,56 +274,12 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 	</fieldset>';
 
 	// Filter for interesting stats and metadata
-	$event_select = [
-		'annual' => emoji_select_spacing('📆') . 'Annual Rickies',
-		'keynote' => emoji_select_spacing('📽') . 'Keynote Rickies',
-		'WWDC' => emoji_select_spacing('💻') . 'WWDC Rickies',
-		'ungraded' => emoji_select_spacing('🟠') . 'Ungraded Rickies',
-	];
 	$output .= '
 	<fieldset class="list pick_metadata">
-		<ul>
-			<li class="filter_option select">
-				<select class="clean" name="rickies_event" onchange=" this.dataset.chosen = this.value; " ';
-	if (key_exists('rickies_event', $user_input['filter_other'])) {
-		$output .= 'data-chosen="set"';
-	} else {
-		$output .= 'data-chosen';
-	}
-	$output .=
-		'>
-					<option value>' .
-		emoji_select_spacing('🏆') .
-		'All Rickies</option>
-					<optgroup label="Only show picks from…">';
-	foreach ($event_select as $value => $label) {
-		$output .= '<option value="' . strtolower($value) . '" ';
-		if (
-			key_exists('rickies_event', $user_input['filter_other']) &&
-			strpos($user_input['filter_other']['rickies_event'], $value) !== false
-		) {
-			$output .= 'selected';
-		}
-		$output .= '>' . $label . '</option>';
-	}
-	$output .= '</optgroup>
-					<optgroup label="Or from specific Rickies…">';
-	foreach ($rickies_events as $value => $label) {
-		$output .= '<option value="' . strtolower($value) . '" ';
-		if (
-			key_exists('rickies_event', $user_input['filter_other']) &&
-			strpos($user_input['filter_other']['rickies_event'], $value) !== false
-		) {
-			$output .= 'selected';
-		}
-		$output .= '>' . $label . '</option>';
-	}
-	$output .= '</optgroup>
-				</select>
-				<div class="select_icon"></div>
-			</li>';
+		<ul>';
 
 	$metadata = [
+		'rickies_event' => '',
 		'reusable' => [
 			'label' => 'Eligible for reuse',
 			'emoji' => '♻️',
@@ -354,76 +310,217 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 			'emoji' => '📜',
 			'3j' => 'both',
 		],
+		'conditions' => '',
 		'half_points' => [
 			'label' => 'Half correct',
 			'emoji' => '➗',
 			'3j' => 'both',
 		],
+		'display' => '',
 	];
 	foreach ($metadata as $value => $visual) {
-		$output .= '<li class="filter_option ';
-		if (
-			(key_exists('3j', $user_input['filter_other']) && $visual['3j'] === 'false') ||
-			(!key_exists('3j', $user_input['filter_other']) && $visual['3j'] === 'true')
-		) {
-			$output .= 'hidden';
-		}
+		switch ($value) {
+			case 'rickies_event':
+				$event_select = [
+					'annual' => emoji_select_spacing('📆') . 'Annual Rickies',
+					'keynote' => emoji_select_spacing('📽') . 'Keynote Rickies',
+					'WWDC' => emoji_select_spacing('💻') . 'WWDC Rickies',
+					'ungraded' => emoji_select_spacing('🟠') . 'Ungraded Rickies',
+				];
 
-		$output .=
-			'">
-				<input type="checkbox" name="' .
-			$value .
-			'" id="' .
-			$value .
-			'" class="clean" data-3j="' .
-			$visual['3j'] .
-			'" ';
-		if (key_exists($value, $user_input['filter_other'])) {
-			$output .= 'checked';
-		}
-		$output .=
-			'/>
-				<label for="' .
-			$value .
-			'"><span class="emoji">' .
-			$visual['emoji'] .
-			'</span>' .
-			$visual['label'] .
-			'</label>
+				$output .= '<li class="filter_option select">
+							<select class="clean" name="rickies_event" onchange=" this.dataset.chosen = this.value; " ';
+				if (key_exists('rickies_event', $user_input['filter_other'])) {
+					$output .= 'data-chosen="set"';
+				} else {
+					$output .= 'data-chosen';
+				}
+				$output .=
+					' data-3j="both">
+								<option value>' .
+					emoji_select_spacing('🏆') .
+					'All Rickies</option>
+								<optgroup label="Only show picks from…">';
+				foreach ($event_select as $value => $label) {
+					$output .= '<option value="' . strtolower($value) . '" ';
+					if (
+						key_exists('rickies_event', $user_input['filter_other']) &&
+						strpos($user_input['filter_other']['rickies_event'], $value) !== false
+					) {
+						$output .= 'selected';
+					}
+					$output .= '>' . $label . '</option>';
+				}
+				$output .= '</optgroup>
+								<optgroup label="Or from specific Rickies…">';
+				foreach ($rickies_events as $value => $label) {
+					$output .= '<option value="' . strtolower($value) . '" ';
+					if (
+						key_exists('rickies_event', $user_input['filter_other']) &&
+						strpos($user_input['filter_other']['rickies_event'], $value) !== false
+					) {
+						$output .= 'selected';
+					}
+					$output .= '>' . $label . '</option>';
+				}
+				$output .= '</optgroup>
+							</select>
+							<div class="select_icon"></div>
+						</li>';
+				break;
+			case 'conditions':
+				// Filter for complexity/number of conditions
+				$output .= '<li class="filter_option range ';
+				if (
+					key_exists('complex_min', $user_input['filter_other']) ||
+					key_exists('complex_max', $user_input['filter_other'])
+				) {
+					$output .= 'active';
+				}
+				$output .= '">
+				<div class="range_icon"></div>
+					<label for="complex_min"><span class="emoji">🧮</span><span class="big_label">Complexity: </span><span class="small_label">Conditions</span></label>
+					<input class="clean" id="complex_min" name="complex_min" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="1" ';
+				if (key_exists('complex_min', $user_input['filter_other'])) {
+					$output .=
+						' value="' .
+						str_replace('Conditions >= ', '', $user_input['filter_other']['complex_min']) .
+						'" ';
+				}
+				$output .= '/>
+					<label for="complex_max">&ndash;</label>
+					<input class="clean" id="complex_max" name="complex_max" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="7" placeholder="7" ';
+				if (key_exists('complex_max', $user_input['filter_other'])) {
+					$output .=
+						' value="' .
+						str_replace('Conditions <= ', '', $user_input['filter_other']['complex_max']) .
+						'" ';
+				}
+				$output .= '/><label for="complex_max" class="end_of_input"><span class="big_label">conditions</span>&nbsp;</label>
 			</li>';
-	}
-
-	// Filter for changing view
-	$pick_display_select = [
-		'clean' => emoji_select_spacing('🧹') . 'Just the picks',
-		'categories' => emoji_select_spacing('🏷') . 'Show categories',
-		'age' => emoji_select_spacing('🗓') . 'Show age of picks',
-	];
-	$output .= '
-			<li class="filter_option select">
-				<select class="clean" name="display" onchange=" this.dataset.chosen = this.value; " ';
-	if (!empty($user_input['display'])) {
-		$output .= 'data-chosen="set"';
-	} else {
-		$output .= 'data-chosen';
-	}
-	$output .=
-		'>
+				break;
+			case 'reusable':
+				// Reusability filter via select
+				$output .= '
+						<li class="filter_option select ';
+				if (key_exists('3j', $user_input['filter_other'])) {
+					$output .= 'hidden';
+				}
+				$output .= '">
+							<select class="clean" name="reusable" onchange=" this.dataset.chosen = this.value; " ';
+				if (!empty($user_input['filter_other']['reusable'])) {
+					$output .= 'data-chosen="set"';
+				} else {
+					$output .= 'data-chosen';
+				}
+				$output .=
+					' data-3j="false">
 					<option value>' .
-		emoji_select_spacing('🗂') .
-		'All metadata</option>
-					<optgroup label="Show picks and…">';
-	foreach ($pick_display_select as $value => $label) {
-		$output .= '<option value="' . $value . '" ';
-		if ($user_input['display'] === $value) {
-			$output .= 'selected';
-		}
-		$output .= '>' . $label . '</option>';
-	}
-	$output .= '</optgroup>
-				</select>
-				<div class="select_icon"></div>
+					emoji_select_spacing('♻️') .
+					'Reusability</option>
+					<option disabled>&mdash;</option>
+					<option value="yes" ';
+				if (
+					key_exists('reusable', $user_input['filter_other']) &&
+					strpos($user_input['filter_other']['reusable'], 'TRUE()') !== false
+				) {
+					$output .= 'selected';
+				}
+				$output .=
+					'>' .
+					emoji_select_spacing('♻️') .
+					'Eligible for reuse</option>
+				<option value="keynote" ';
+				if (
+					key_exists('reusable', $user_input['filter_other']) &&
+					strpos($user_input['filter_other']['reusable'], 'Age string') !== false
+				) {
+					$output .= 'selected';
+				}
+				$output .=
+					'>' .
+					emoji_select_spacing('♻️') .
+					'Eligible for keynotes only</option>
+				<option value="no" ';
+				if (
+					key_exists('reusable', $user_input['filter_other']) &&
+					strpos($user_input['filter_other']['reusable'], 'FALSE()') !== false
+				) {
+					$output .= 'selected';
+				}
+				$output .= '>' . emoji_select_spacing('⏳') . 'Not reusable yet</option>';
+				$output .= '</select>
+							<div class="select_icon"></div>
+						</li>';
+
+				break;
+			case 'display':
+				// Filter for changing view
+				$pick_display_select = [
+					'clean' => emoji_select_spacing('🧹') . 'Just the picks',
+					'categories' => emoji_select_spacing('🏷') . 'Show categories',
+					'age' => emoji_select_spacing('🗓') . 'Show age of picks',
+				];
+				$output .= '
+						<li class="filter_option select">
+							<select class="clean" name="display" onchange=" this.dataset.chosen = this.value; " ';
+				if (!empty($user_input['display'])) {
+					$output .= 'data-chosen="set"';
+				} else {
+					$output .= 'data-chosen';
+				}
+				$output .=
+					' data-3j="both">
+								<option value>' .
+					emoji_select_spacing('🗂') .
+					'All metadata</option>
+								<optgroup label="Show picks and…">';
+				foreach ($pick_display_select as $value => $label) {
+					$output .= '<option value="' . $value . '" ';
+					if ($user_input['display'] === $value) {
+						$output .= 'selected';
+					}
+					$output .= '>' . $label . '</option>';
+				}
+				$output .= '</optgroup>
+							</select>
+							<div class="select_icon"></div>
+						</li>';
+				break;
+			default:
+				$output .= '<li class="filter_option ';
+				if (
+					(key_exists('3j', $user_input['filter_other']) && $visual['3j'] === 'false') ||
+					(!key_exists('3j', $user_input['filter_other']) && $visual['3j'] === 'true')
+				) {
+					$output .= 'hidden';
+				}
+
+				$output .=
+					'">
+				<input type="checkbox" name="' .
+					$value .
+					'" id="' .
+					$value .
+					'" class="clean" data-3j="' .
+					$visual['3j'] .
+					'" ';
+				if (key_exists($value, $user_input['filter_other'])) {
+					$output .= 'checked';
+				}
+				$output .=
+					'/>
+				<label for="' .
+					$value .
+					'"><span class="emoji">' .
+					$visual['emoji'] .
+					'</span>' .
+					$visual['label'] .
+					'</label>
 			</li>';
+				break;
+		}
+	}
 	$output .= '</ul></fieldset>';
 
 	// Add category filter, and button section, and closing the .content and <details>
