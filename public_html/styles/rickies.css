@@ -1778,11 +1778,19 @@ li.pick_item p.pick span.points.risky.correct:after {
 li.pick_item p.pick span.points.risky.wrong:after {
   border-color: var(--connected-red);
 }
+li.pick_item .note ul,
 li.pick_item .note p {
   color: var(--text-secondary-color);
   font-size: 0.75rem;
 }
+li.pick_item .note ul {
+  list-style: initial;
+  margin-left: 1.4em;
+}
 li.pick_item .note p.tag_group,
+li.pick_item .note ul + ul,
+li.pick_item .note p + ul,
+li.pick_item .note ul + p,
 li.pick_item .note p + p {
   margin-top: 4px;
 }

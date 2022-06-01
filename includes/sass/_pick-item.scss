@@ -96,10 +96,18 @@ li.pick_item {
 		}
 	}
 	.note {
+		ul,
 		p {
 			@include var.secondary-text;
 		}
+		ul {
+			list-style: initial;
+			margin-left: 1.4em;
+		}
 		p.tag_group,
+		ul + ul,
+		p + ul,
+		ul + p,
 		p + p {
 			margin-top: 4px;
 		}
