@@ -1703,6 +1703,7 @@ li.list_item a[href^="https://github.com"] .secondary_string:before {
   color: var(--text-secondary-color);
   float: right;
   font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" on, "lnum" on;
 }
 
 li.pick_item {
@@ -2060,6 +2061,7 @@ table.full_stats td.value {
   font-weight: bold;
   padding-right: 0.4em;
   font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" on, "lnum" on;
   color: var(--highlight-color);
 }
 

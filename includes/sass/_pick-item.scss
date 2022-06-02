@@ -12,6 +12,7 @@
 			color: var(--text-secondary-color);
 			float: right;
 			font-variant-numeric: tabular-nums;
+			font-feature-settings: 'tnum' on, 'lnum' on;
 		}
 	}
 }

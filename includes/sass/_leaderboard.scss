@@ -167,6 +167,7 @@ table.full_stats {
 		font-weight: bold;
 		padding-right: 0.4em;
 		font-variant-numeric: tabular-nums;
+		font-feature-settings: 'tnum' on, 'lnum' on;
 		color: var(--highlight-color);
 	}
 }
