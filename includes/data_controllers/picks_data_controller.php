@@ -31,6 +31,7 @@ do {
 				'host' => check_key('Host name', $fields, false, 0),
 				'status' => check_key('Status', $fields),
 				'round' => check_key('Round', $fields),
+				'round_number' => check_key('Round set', $fields),
 				'score_points' => check_key('Scoring points', $fields),
 				'brag_points' => check_key('Bragging points', $fields),
 				'points' => check_key('Points', $fields),

@@ -28,8 +28,19 @@ function update_pick(pick, state = null) {
 		localStorage.setItem(pick.id, 'correct');
 	}
 
-	// Update the host's total score
-	update_host_score(pick.parentNode.parentNode);
+	// Update the host's total score if it's not TripleJ
+	if (!triple_j) {
+		update_host_score(pick.parentNode.parentNode);
+	}
+}
+
+// Define the 3J "first half of year" point doubler
+const d = new Date();
+let month = d.getMonth();
+if (month < 6) {
+	var doubler = 2;
+} else {
+	var doubler = 1;
 }
 
 // Update the visible point's per pick
@@ -46,6 +57,30 @@ function update_pick_points(points, state) {
 		points.innerText = '💪';
 	} else if (points.classList.contains('flexy') && state == 'wrong') {
 		points.innerText = '👎';
+	} else if (
+		points.classList.contains('picky') &&
+		points.classList.contains('round1') &&
+		state == 'correct' &&
+		doubler == 2
+	) {
+		points.innerText = '+6';
+	} else if (
+		points.classList.contains('picky') &&
+		points.classList.contains('round2') &&
+		state == 'correct' &&
+		doubler == 2
+	) {
+		points.innerText = '+4';
+	} else if (points.classList.contains('lightning') && state == 'correct' && doubler == 2) {
+		points.innerText = '+2';
+	} else if (points.classList.contains('picky') && points.classList.contains('round1') && state == 'correct') {
+		points.innerText = '+3';
+	} else if (points.classList.contains('picky') && points.classList.contains('round2') && state == 'correct') {
+		points.innerText = '+2';
+	} else if (points.classList.contains('lightning') && state == 'correct') {
+		points.innerText = '+1';
+	} else if ((points.classList.contains('picky') || points.classList.contains('lightning')) && state == 'wrong') {
+		points.innerText = '—';
 	} else if (state == 'unknown') {
 		points.innerText = '?';
 	}
@@ -59,15 +94,39 @@ function update_host_score(host_picks) {
 
 	// Calculate the score
 	var score = 0;
+	var wrong_count = 0;
+
 	Array.from(host_picks.getElementsByClassName('points')).forEach(function (points) {
 		if (points.classList.contains('risky') && points.classList.contains('correct')) {
 			score = score + 2;
 		} else if (points.classList.contains('risky') && points.classList.contains('wrong')) {
 			score = score - 1;
+		} else if (
+			points.classList.contains('picky') &&
+			points.classList.contains('round1') &&
+			points.classList.contains('correct')
+		) {
+			score = score + 3 * doubler;
+		} else if (
+			points.classList.contains('picky') &&
+			points.classList.contains('round2') &&
+			points.classList.contains('correct')
+		) {
+			score = score + 2 * doubler;
+		} else if (points.classList.contains('lightning') && points.classList.contains('correct')) {
+			score = score + 1 * doubler;
+		} else if (
+			(points.classList.contains('picky') || points.classList.contains('lightning')) &&
+			points.classList.contains('wrong')
+		) {
+			wrong_count = wrong_count + 1;
 		} else if (points.classList.contains('correct')) {
 			score = score + 1;
 		}
 	});
+
+	// TODO: Pickies fractional deduction
+	// score = score - (wrong_count / count) * 5;
 
 	// Define what the points look like
 	var new_points;

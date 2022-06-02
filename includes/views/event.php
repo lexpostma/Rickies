@@ -127,6 +127,14 @@ if (
 
 <?php
 echo no_script_banner();
+echo '<script>';
+if (!isset($triple_j)) {
+	echo 'const triple_j = false;';
+} else {
+	echo 'const triple_j = true;';
+}
+echo '</script>';
+
 echo pick_item_bundle($picks_data__array, $rickies_data['interactive'], ['ahead_of_its_time', 'amendment', 'buzzkill']);
 
 if (

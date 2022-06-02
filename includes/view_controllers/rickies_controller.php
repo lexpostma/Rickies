@@ -432,7 +432,13 @@ function pick_item($data, $interactive = false, $view = [])
 	$output .= '<p class="pick"><span class="label">' . $data['pick'] . '</span>';
 
 	// Define the point score
-	$output .= '<span class="points ' . strtolower($data['type']) . ' ' . strtolower($data['status']);
+	$output .=
+		'<span class="points ' .
+		strtolower($data['type']) .
+		' ' .
+		strtolower($data['status']) .
+		' round' .
+		$data['round_number'];
 	if ($data['status_later'] && in_array('ahead_of_its_time', $view)) {
 		$output .= ' eventually';
 	}
@@ -447,6 +453,8 @@ function pick_item($data, $interactive = false, $view = [])
 		$output .= '+' . $data['points'];
 	} elseif ($data['points'] > 0) {
 		$output .= $data['points'];
+	} elseif ($data['points'] == '') {
+		$output .= '—';
 	} else {
 		$output .= $data['points'];
 	}
@@ -566,6 +574,7 @@ function pick_item_bundle($data, $interactive = false, $view = [])
 				// TODO: Define scoring for Pickies
 				$output .= '<span class="host_score">';
 				if ($type == 'Rickies') {
+					// if ($type == 'Rickies' || $type == 'Pickies' || $type == 'Lightning') {
 					// Rickies have points
 					$output .= plural_points($score['points']) . ' • ' . $score['correct'] . '/' . $score['count'];
 				} elseif ($score['count'] !== 0) {

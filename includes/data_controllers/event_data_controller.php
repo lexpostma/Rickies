@@ -110,8 +110,6 @@ do {
 							// when a special is published, even without filter
 							$triple_j = true;
 						}
-						// TODO: Interactivity overwritten until scoring is defined
-						$rickies_events__array[$id]['interactive'] = false;
 						$rickies_events__array[$id]['tag'][] = [
 							'label' => $rickies_events__array[$id]['special'],
 							'color' => 'purple',
@@ -151,14 +149,25 @@ do {
 					case 'Ungraded':
 						// Ungraded Rickies
 						if ($rickies_events__array[$id]['interactive']) {
-							$rickies_events__array[$id]['tag'][] = [
-								'label' => 'Interactive',
-								'color' => 'orange',
-								'banner' =>
-									'<b>Interactive scorecard</b><br /><span>Grade the Rickies and Flexies yourself until the official results are in. Tap the picks to cycles through unknown, correct, and wrong states. <a class="clean js_link nowrap" onclick="clear_manual_score(this)" data-goatcounter-click="Clear interactive picks" title="Clear manual scores" data-goatcounter-referrer=' .
-									current_url() .
-									'>Clear manual scores</a></span>',
-							];
+							if ($rickies_events__array[$id]['special'] !== 'Pickies') {
+								$rickies_events__array[$id]['tag'][] = [
+									'label' => 'Interactive',
+									'color' => 'orange',
+									'banner' =>
+										'<b>Interactive scorecard</b><br /><span>Grade the Rickies and Flexies yourself until the official results are in. Tap the picks to cycles through unknown, correct, and wrong states. <a class="clean js_link nowrap" onclick="clear_manual_score(this)" data-goatcounter-click="Clear interactive picks" title="Clear manual scores" data-goatcounter-referrer=' .
+										current_url() .
+										'>Clear manual scores</a></span>',
+								];
+							} else {
+								$rickies_events__array[$id]['tag'][] = [
+									'label' => 'Interactive',
+									'color' => 'orange',
+									'banner' =>
+										'<b>Interactive scorecard</b><br /><span>Grade the Pickies and Lightning Round yourself until the official results are in. Tap the picks to cycles through unknown, correct, and wrong states. <a class="clean js_link nowrap" onclick="clear_manual_score(this)" data-goatcounter-click="Clear interactive picks" title="Clear manual scores" data-goatcounter-referrer=' .
+										current_url() .
+										'>Clear manual scores</a></span>',
+								];
+							}
 						} else {
 							$rickies_events__array[$id]['tag'][] = [
 								'label' => 'Ungraded',
