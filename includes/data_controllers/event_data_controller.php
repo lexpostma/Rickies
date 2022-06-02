@@ -132,10 +132,12 @@ do {
 				if (!$rickies_event_data_set) {
 					// Only the details needed for the Rickies overview
 					$rickies_events__array[$id]['label1'] = $rickies_events__array[$id]['name'];
-					$rickies_events__array[$id]['label3'] =
-						$rickies_events__array[$id]['date_html'] .
-						' • Episode&nbsp;#' .
-						$rickies_events__array[$id]['episode_number'];
+					$rickies_events__array[$id]['label3'] = $rickies_events__array[$id]['date_html'];
+					if ($rickies_events__array[$id]['episode_number'] !== '?') {
+						$rickies_events__array[$id]['label3'] .=
+							' • Episode&nbsp;#' . $rickies_events__array[$id]['episode_number'];
+					} else {
+					}
 					$rickies_events__array[$id]['url'] = '/' . $rickies_events__array[$id]['url_name'];
 				} elseif ($rickies_event_data_set == 'details') {
 					// Add more details from Airtable to array, to build the detail page
