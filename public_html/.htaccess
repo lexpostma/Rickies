@@ -39,6 +39,7 @@ Redirect 301 /event /apple-events
 Redirect 301 /hosts /leaderboard
 Redirect 301 /3j /3j-leaderboard
 Redirect 301 /triple-j /3j-leaderboard
+Redirect 301 /leaderboard-3j /3j-leaderboard
 
 Redirect 301 /charity /charities
 Redirect 301 /donation /charities
