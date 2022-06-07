@@ -378,7 +378,8 @@ function date_to_string_label(
 	$context = false,
 	$date_needs_conversion = true,
 	$html_time = false,
-	$custom_format = false
+	$custom_format = false,
+	$relative = true
 ) {
 	$current = strtotime(date('Y-m-d'));
 
@@ -421,6 +422,14 @@ function date_to_string_label(
 		// Past before yesterday
 		$on = 'on ';
 		$air_string = 'Aired ' . $on;
+		if ($custom_format) {
+			$date_output = strftime($custom_format, $date);
+		} else {
+			$date_output = strftime(date_string_format(), $date);
+		}
+	}
+
+	if (!$relative) {
 		if ($custom_format) {
 			$date_output = strftime($custom_format, $date);
 		} else {

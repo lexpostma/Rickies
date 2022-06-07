@@ -357,7 +357,7 @@ if (
 	// Ungraded, so future keynote
 	$description .=
 		'What will Apple announce at the keynote on ' .
-		date_to_string_label($rickies_data['details']['link_data_apple']['date']) .
+		date_to_string_label($rickies_data['details']['link_data_apple']['date'], false, true, false, false, false) .
 		'? And who will become ' .
 		$keynote_chairman .
 		'?';
@@ -365,7 +365,7 @@ if (
 	// Graded keynote, past
 	$description .=
 		'What has Apple announced at the keynote on ' .
-		date_to_string_label($rickies_data['details']['link_data_apple']['date']) .
+		date_to_string_label($rickies_data['details']['link_data_apple']['date'], false, true, false, false, false) .
 		'? And how did ' .
 		$host_string .
 		' perform with their predictions for this event?';
