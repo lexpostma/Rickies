@@ -470,10 +470,20 @@ function goat_referral($input)
 	return str_replace('<a ', '<a data-goatcounter-referrer="' . current_url() . '" ', $input);
 }
 
-function chairman_url($event_type)
+function chairman_url($event_type, $triple_j = false)
 {
-	$twitter = 'https://twitter.com/' . $event_type . 'chairman';
-	$label = ucfirst($event_type) . ' Chairman';
+	if (!$triple_j) {
+		$twitter = 'https://twitter.com/' . $event_type . 'chairman';
+		$label = ucfirst($event_type) . ' Chairman';
+	} else {
+		if ($event_type === 'keynote') {
+			$twitter = 'https://twitter.com/wwdcshindigking';
+			$label = 'Cupertino Shindig King';
+		} else {
+			$twitter = 'https://twitter.com/pickiesadmiral';
+			$label = 'Grand Admiral Pickerton';
+		}
+	}
 
 	$chairman_link =
 		'<a

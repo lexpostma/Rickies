@@ -2,6 +2,10 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+### 7 June 2022
+
+-   Fix bugs on Pickies detail page
+
 ### 2 June 2022
 
 -   Add support for interactive scorecards for the Triple J’s Pickies like the [holiday special](https://rickies.co/annual-2022-special) and the [WWDC Pickies](https://rickies.co/keynote-jun-2022-special)

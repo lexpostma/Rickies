@@ -10,6 +10,12 @@ $rickies_events__array[$id]['ranking'] = [
 	'robin' => check_key('Round Robin order', $fields),
 ];
 
+if (!isset($triple_j)) {
+	$main_pick_type = 'Ricky';
+} else {
+	$main_pick_type = 'Picky';
+}
+
 // Convert ranking strings to arrays
 foreach ($rickies_events__array[$id]['ranking'] as $type => $ranking) {
 	if ($ranking) {
@@ -51,8 +57,8 @@ foreach ($hosts as $host) {
 		],
 		'rickies' => [
 			'ranking' => array_search($host, $rickies_events__array[$id]['ranking']['rickies']),
-			'count' => check_key($host . '’s Ricky count', $fields),
-			'correct' => check_key($host . '’s correct Ricky count', $fields),
+			'count' => check_key($host . '’s ' . $main_pick_type . ' count', $fields),
+			'correct' => check_key($host . '’s correct ' . $main_pick_type . ' count', $fields),
 			'risky_correct' => check_key($host . '’s Risky Pick', $fields),
 			'points' => check_key($host . '’s score', $fields),
 			'coin_toss_winner' => false,
