@@ -432,6 +432,16 @@ function pick_item($data, $interactive = false, $view = [])
 	$output .= '<p class="pick"><span class="label">' . $data['pick'] . '</span>';
 
 	// Define the point score
+
+	// Count decimals and if more than 2 decimals, round to 3.
+	// This was added for Pickies 2022 which had 16 decimal values
+	// e.g. "-0.7142857142857142" -> "-0.714"
+	$decimal_count = strlen(substr(strrchr($data['points'], '.'), 1));
+	if ($decimal_count >= 2) {
+		$data['points_full'] = $data['points'];
+		$data['points'] = round($data['points'], 3);
+	}
+
 	$output .=
 		'<span class="points ' .
 		strtolower($data['type']) .
@@ -442,7 +452,19 @@ function pick_item($data, $interactive = false, $view = [])
 	if ($data['status_later'] && in_array('ahead_of_its_time', $view)) {
 		$output .= ' eventually';
 	}
-	$output .= '">';
+	// Make the circle elongated, to fit 3 decimals
+	if ($decimal_count >= 2 && $data['type'] !== 'Flexy') {
+		$output .= ' long';
+	}
+	$output .= '" ';
+
+	// Add title to the rounded values, to show the original precise value
+	if ($decimal_count >= 2) {
+		$output .= ' title="Precise points: ' . $data['points_full'] . '" ';
+	}
+
+	$output .= '>';
+
 	if ($data['status'] == false) {
 		$output .= '?';
 	} elseif ($data['points'] > 0 && $data['type'] == 'Flexy') {

@@ -1744,6 +1744,7 @@ li.pick_item p.pick span.points {
   font-weight: 600;
   position: relative;
   border-radius: 50%;
+  overflow: hidden;
   background: var(--connected-yellow);
 }
 li.pick_item p.pick span.points.flexy {
@@ -1762,6 +1763,10 @@ li.pick_item p.pick span.points.wrong.eventually {
   background-origin: border-box;
   background-position: center;
   background-image: linear-gradient(120deg, var(--connected-red) 20%, var(--connected-purple) 60%);
+}
+li.pick_item p.pick span.points.long {
+  border-radius: 1.3rem;
+  width: 2.6rem;
 }
 li.pick_item p.pick span.points.risky.correct:after, li.pick_item p.pick span.points.risky.wrong:after {
   content: "";
