@@ -632,7 +632,7 @@ button.top_button {
 }
 @media (hover: hover) {
   .top_button:hover,
-button.top_button:hover {
+  button.top_button:hover {
     transform: scale(1.2);
   }
 }
@@ -700,7 +700,6 @@ span.need_space--sm {
   span.need_space--sm {
     display: inline;
   }
-
   span.less_space--sm {
     display: none;
   }
@@ -970,7 +969,7 @@ aside.slider,
 }
 @media (prefers-color-scheme: dark) {
   aside.slider,
-#slider_hint {
+  #slider_hint {
     background: black;
   }
 }
@@ -998,12 +997,9 @@ aside.slider #rule_slider {
   }
 }
 aside.slider #rule_slider input[type=range] {
-  -webkit-appearance: none;
-  /* Hides the slider so that custom slider can be made */
-  width: 100%;
-  /* Specific width is required for Firefox. */
-  background: transparent;
-  /* Otherwise white in Chrome */
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
   outline: none;
 }
 aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
@@ -1042,7 +1038,7 @@ aside.slider #rule_slider input[type=range]::-webkit-slider-thumb:active {
 }
 @media (prefers-color-scheme: dark) {
   aside.slider #rule_slider input[type=range]::-webkit-slider-thumb {
-    filter: drop-shadow(0px 0px 2px black);
+    filter: drop-shadow(0px 0px 2px rgb(0, 0, 0));
     background-image: url("/images/connected-globe-on-dark.png");
   }
 }
@@ -1082,7 +1078,7 @@ aside.slider #rule_slider input[type=range]::-moz-range-thumb:active {
 }
 @media (prefers-color-scheme: dark) {
   aside.slider #rule_slider input[type=range]::-moz-range-thumb {
-    filter: drop-shadow(0px 0px 2px black);
+    filter: drop-shadow(0px 0px 2px rgb(0, 0, 0));
     background-image: url("/images/connected-globe-on-dark.png");
   }
 }
@@ -1122,7 +1118,7 @@ aside.slider #rule_slider input[type=range]::-ms-thumb:active {
 }
 @media (prefers-color-scheme: dark) {
   aside.slider #rule_slider input[type=range]::-ms-thumb {
-    filter: drop-shadow(0px 0px 2px black);
+    filter: drop-shadow(0px 0px 2px rgb(0, 0, 0));
     background-image: url("/images/connected-globe-on-dark.png");
   }
 }
@@ -1301,11 +1297,11 @@ nav button.js_link:visited {
 }
 @media (hover: hover) {
   .bill_footer a:hover,
-footer button:hover,
-.banner a:hover,
-footer a:not(#footer_corner):hover,
-nav a:hover,
-nav button.js_link:hover {
+  footer button:hover,
+  .banner a:hover,
+  footer a:not(#footer_corner):hover,
+  nav a:hover,
+  nav button.js_link:hover {
     opacity: 1;
   }
 }
@@ -1368,7 +1364,7 @@ nav button.js_link:active {
 }
 @media (prefers-color-scheme: dark) {
   #custom_share_sheet.open,
-#fixed_search.open {
+  #fixed_search.open {
     background: rgba(106, 106, 106, 0.3);
   }
 }
@@ -1379,13 +1375,13 @@ nav button.js_link:active {
 }
 @media screen and (min-width: 768px) {
   #custom_share_sheet.open form,
-#fixed_search.open form {
+  #fixed_search.open form {
     transform: translateY(0px);
   }
 }
 @media screen and (min-width: 768px) and (min-height: 500px) {
   #custom_share_sheet.open form,
-#fixed_search.open form {
+  #fixed_search.open form {
     transform: translateY(110px);
   }
 }
@@ -1406,13 +1402,13 @@ nav button.js_link:active {
 }
 @media (prefers-color-scheme: dark) {
   .input_button_combo input[type=text],
-.input_button_combo input[type=search] {
+  .input_button_combo input[type=search] {
     border: 1px solid var(--connected-blue);
   }
 }
 @media screen and (min-width: 768px) {
   .input_button_combo input[type=text],
-.input_button_combo input[type=search] {
+  .input_button_combo input[type=search] {
     padding-left: 20px;
   }
 }
