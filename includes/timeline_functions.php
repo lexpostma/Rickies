@@ -167,6 +167,7 @@ $rickies_events__params = [
 			Published = TRUE(),
 			{Results episode date},
 			{Days from first Rickies} >=0,
+			Special != "Pickies",
 			{Rickies 1st (manual)})',
 	'sort' => [['field' => 'Predictions episode date', 'direction' => 'desc']],
 ];
