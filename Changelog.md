@@ -2,6 +2,15 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+## 30 December 2022 v2.4
+
+-   Added Flexies wins to the [leaderboard timeline](https://rickies.co/leaderboard#timeline)
+-   Updated the [Trophies page](https://rickies.co/trophies#other)
+    -   Added the new Flexies titles, with a mention of the rule change
+    -   Moved the OG Twitter trophy accounts to the bottom, with a mention of the rule change
+-   Added support for Mastodon the logo to Mastodon links
+-   Removed most of the Twitter profile links, replaced some with Mastodon profiles
+
 ### 7 June 2022
 
 -   Fix bugs on Pickies detail page
