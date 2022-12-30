@@ -22,7 +22,7 @@ section#timeline {
 		transition-property: width, left, transform;
 	}
 	h2,
-	.timeline--legend {
+	.timeline--legend-set {
 		pointer-events: all;
 		margin-left: var(--auto-padding);
 		margin-left: max(var(--auto-padding), #{var.$iX-left});
@@ -87,21 +87,29 @@ section#timeline {
 	@media (prefers-color-scheme: dark) {
 		background-color: rgba(var(--background-color-rgb), 0.2);
 	}
-	height: 2rem;
+	--track-height: 2rem;
+	&.flexies_keynote,
+	&.flexies_annual {
+		--track-height: 1.2rem;
+		--space-between-md: 8px;
+	}
+	height: var(--track-height);
 	transition-duration: var.$hover-duration;
 	transition-property: height margin;
 	transition-timing-function: var.$pop-transition-timing;
+	& + &:not(.hidden) {
+		margin-top: var(--space-between-md);
+	}
 	&.hidden {
 		overflow: hidden;
 		height: 0;
+		margin-top: 0;
 	}
-	&:not(.hidden) + &:not(.hidden) {
-		margin-top: var(--space-between-md);
-	}
+
 	.chairman {
 		position: absolute;
 		height: 100%;
-		border-radius: 2rem;
+		border-radius: var(--track-height);
 		border: var(--graphic-border);
 		@include var.truncate();
 		@media (hover: hover) {
@@ -114,7 +122,7 @@ section#timeline {
 			padding-left: 8px;
 			width: 100%;
 			display: block;
-			line-height: calc(2rem - 2px);
+			line-height: calc(var(--track-height) - 2px);
 			font-weight: 500;
 			color: white;
 			text-decoration: none;
@@ -130,24 +138,46 @@ section#timeline {
 			opacity: 0.5;
 		}
 	}
-	&.annual .chairman {
-		background-color: var(--connected-orange);
+
+	&.rickies_annual .chairman,
+	&.flexies_annual .chairman {
 		@media (hover: hover) {
 			&:hover {
 				transform: scale(1.05);
 			}
 		}
-		&.open_ended {
-			@include open_ended('--connected-orange');
-		}
 	}
-	&.keynote .chairman {
-		background-color: var(--connected-yellow);
+
+	&.rickies_keynote .chairman,
+	&.flexies_keynote .chairman {
 		@media (hover: hover) {
 			&:hover {
 				transform: scale(1.2);
 			}
 		}
+	}
+
+	&.rickies_annual .chairman {
+		background-color: var(--connected-blue);
+		&.open_ended {
+			@include open_ended('--connected-blue');
+		}
+	}
+	&.flexies_annual .chairman {
+		background-color: var(--connected-green);
+		&.open_ended {
+			@include open_ended('--connected-green');
+		}
+	}
+
+	&.rickies_keynote .chairman {
+		background-color: var(--connected-orange);
+		&.open_ended {
+			@include open_ended('--connected-orange');
+		}
+	}
+	&.flexies_keynote .chairman {
+		background-color: var(--connected-yellow);
 		&.open_ended {
 			@include open_ended('--connected-yellow');
 		}
@@ -292,7 +322,15 @@ section#timeline {
 		rgba(var(--background-color-rgb), 1) 30%
 	);
 }
-
+.timeline--legend-set {
+	display: flex;
+	gap: var(--space-between-sm) var(--space-between-lg);
+	flex-flow: column wrap;
+	@media screen and (min-width: var.$break-sm) {
+		gap: var(--space-between-sm) var(--space-between-lg);
+		flex-flow: row wrap;
+	}
+}
 .timeline--legend {
 	margin-top: var(--space-between-md);
 	li {
@@ -309,12 +347,19 @@ section#timeline {
 			transform: translateY(2px) scale(1);
 			transition: var.$pop-transition;
 		}
-		&.keynote:before {
-			background: var(--connected-yellow);
+		&.rickies_annual:before {
+			background: var(--connected-blue);
 		}
-		&.annual:before {
+		&.flexies_annual:before {
+			background: var(--connected-green);
+		}
+		&.rickies_keynote:before {
 			background: var(--connected-orange);
 		}
+		&.flexies_keynote:before {
+			background: var(--connected-yellow);
+		}
+
 		&.hidden:before {
 			background: transparent;
 		}

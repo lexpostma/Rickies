@@ -81,7 +81,7 @@ function chairman_timeline($host_data = [], $event_data = [])
 	$output =
 		'
 <section class="large_columns navigate_with_mobile_menu" id="timeline" >
-	<h2>Chairman Timeline</h2>
+	<h2>Titles Timeline</h2>
 	<div class="timeline--container">
 		<div class="timeline--content">' . $timeline_scale;
 
@@ -114,7 +114,10 @@ function chairman_timeline($host_data = [], $event_data = [])
 				if (!$event['timeline_end']) {
 					$output .= ' open_ended';
 				}
-				if ($event['special'] == 'Pre-Rickies') {
+				if (
+					$event['special'] == 'Pre-Rickies' ||
+					(($type == 'flexies_annual' || $type == 'flexies_keynote') && $event['episode_number'] < 274)
+				) {
 					$output .= ' pre_rickies';
 				}
 				$output .=
@@ -151,10 +154,16 @@ function chairman_timeline($host_data = [], $event_data = [])
 
 		</div>
 	</div>
-	<ul class="timeline--legend">
-		<li class="timeline--legend-item annual" onclick="toggle_timeline_track(\'annual\')">Annual Chairman</li>
-		<li class="timeline--legend-item keynote" onclick="toggle_timeline_track(\'keynote\')">Keynote Chairman</li>
-	</ul>
+	<div class="timeline--legend-set">
+		<ul class="timeline--legend">
+			<li class="timeline--legend-item rickies_annual" onclick="toggle_timeline_track(\'rickies_annual\')">Annual Chairman</li>
+			<li class="timeline--legend-item flexies_annual" onclick="toggle_timeline_track(\'flexies_annual\')">Annual Flexies winner</li>
+		</ul>
+		<ul class="timeline--legend">
+			<li class="timeline--legend-item rickies_keynote" onclick="toggle_timeline_track(\'rickies_keynote\')">Keynote Chairman</li>
+			<li class="timeline--legend-item flexies_keynote" onclick="toggle_timeline_track(\'flexies_keynote\')">Keynote Flexies winner</li>
+		</ul>
+	</div>
 </section>
 <script>' .
 		file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/scripts/timeline.js') .
@@ -177,20 +186,32 @@ include '../includes/data_controllers/event_data_controller.php';
 
 $timeline_array = [
 	'Myke' => [
-		'annual' => [],
-		'keynote' => [],
+		'rickies_annual' => [],
+		'flexies_annual' => [],
+		'rickies_keynote' => [],
+		'flexies_keynote' => [],
 	],
 	'Federico' => [
-		'annual' => [],
-		'keynote' => [],
+		'rickies_annual' => [],
+		'flexies_annual' => [],
+		'rickies_keynote' => [],
+		'flexies_keynote' => [],
 	],
 	'Stephen' => [
-		'annual' => [],
-		'keynote' => [],
+		'rickies_annual' => [],
+		'flexies_annual' => [],
+		'rickies_keynote' => [],
+		'flexies_keynote' => [],
 	],
 ];
 
 foreach ($rickies_events__array as $event) {
-	$timeline_array[$event['winner']][$event['type']][] = $event;
+	$timeline_array[$event['rickies_winner']]['rickies_' . $event['type']][] = $event;
+	if (!empty($event['flexies_winner'])) {
+		if (strpos($event['flexies_winner'], 'Tie') !== false) {
+		} else {
+			$timeline_array[$event['flexies_winner']]['flexies_' . $event['type']][] = $event;
+		}
+	}
 }
 // echo '<pre>', var_dump($timeline_array), '</pre>';

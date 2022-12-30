@@ -98,37 +98,21 @@ timeline_content.addEventListener('mousemove', (e) => {
 
 function toggle_timeline_track(track) {
 	var all_tracks = document.querySelectorAll('.timeline--chairman-track');
-	var annual_tracks = document.querySelectorAll('.timeline--chairman-track.annual');
-	var keynote_tracks = document.querySelectorAll('.timeline--chairman-track.keynote');
-	var action = '';
+	var actionable_tracks = document.querySelectorAll('.timeline--chairman-track.' + track);
 
 	// Check if a track is already hidden
-	if (
-		(track == 'annual' && !annual_tracks[0].classList.contains('hidden')) ||
-		(track == 'keynote' && !keynote_tracks[0].classList.contains('hidden'))
-	) {
-		var action = 'hide';
-	}
-
-	// Show all track again
-	Array.from(all_tracks).forEach(function (el) {
-		el.classList.remove('hidden');
-	});
-	document.querySelector('.timeline--legend-item.annual').classList.remove('hidden');
-	document.querySelector('.timeline--legend-item.keynote').classList.remove('hidden');
-
-	if (track == 'annual' && action == 'hide') {
-		// Hide Annual tracks
-		Array.from(annual_tracks).forEach(function (el) {
+	if (!actionable_tracks[0].classList.contains('hidden')) {
+		// Hide track
+		Array.from(actionable_tracks).forEach(function (el) {
 			el.classList.add('hidden');
 		});
-		document.querySelector('.timeline--legend-item.annual').classList.add('hidden');
-	} else if (track == 'keynote' && action == 'hide') {
-		// Hide Keynote tracks
-		Array.from(keynote_tracks).forEach(function (el) {
-			el.classList.add('hidden');
+		document.querySelector('.timeline--legend-item.' + track).classList.add('hidden');
+	} else {
+		// Show track
+		Array.from(actionable_tracks).forEach(function (el) {
+			el.classList.remove('hidden');
 		});
-		document.querySelector('.timeline--legend-item.keynote').classList.add('hidden');
+		document.querySelector('.timeline--legend-item.' + track).classList.remove('hidden');
 	}
 
 	set_timeline_avatar_winner();
@@ -136,7 +120,7 @@ function toggle_timeline_track(track) {
 
 const chairmanships = document.querySelectorAll('.chairman');
 const avatars = document.getElementsByClassName('timeline--host-avatar');
-var winners = ['annual', 'keynote'];
+var winners = ['rickies_annual', 'rickies_keynote'];
 
 function set_timeline_avatar_winner() {
 	// Get the left side of the end gradient, which is the avatar's left edge
@@ -150,9 +134,9 @@ function set_timeline_avatar_winner() {
 			// Only mark winner if track is visible
 			if (!el.parentNode.classList.contains('hidden')) {
 				// Set winner avatars to winners array
-				if (el.parentNode.classList.contains('annual')) {
+				if (el.parentNode.classList.contains('rickies_annual')) {
 					winners[0] = el.parentNode.parentNode.getElementsByClassName('timeline--host-avatar')[0];
-				} else if (el.parentNode.classList.contains('keynote')) {
+				} else if (el.parentNode.classList.contains('rickies_keynote')) {
 					winners[1] = el.parentNode.parentNode.getElementsByClassName('timeline--host-avatar')[0];
 				}
 			}
@@ -177,7 +161,7 @@ function set_timeline_avatar_winner() {
 		}
 	});
 	// Clear array again
-	winners = ['annual', 'keynote'];
+	winners = ['rickies_annual', 'rickies_keynote'];
 }
 
 // When scrolling through the timeline, update the winners
