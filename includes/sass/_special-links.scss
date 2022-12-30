@@ -9,7 +9,8 @@ a {
 		&[href^="https://discordapp.com"],
 		&[href^="https://github.com"],
 		&[href^="https://gist.github.com"],
-	&[href^="https://twitter.com"]
+		&[href^="https://twitter.com"],
+		&[href^="https://mastodon.social"]
 		{
 			&:after {
 				display: inline-block;
@@ -67,6 +68,20 @@ a {
 			&:after {
 				content: url('/images/logos/discord.svg');
 				transform: translate(0px, 1px);
+			}
+			@media (hover: hover) {
+				&:hover {
+					&:after {
+						transform: scale(1.2);
+					}
+				}
+			}
+		}
+		&[href^="https://mastodon.social"]
+		{
+			&:after {
+				content: url('/images/logos/mastodon.svg');
+				transform: translate(-1px, 0px);
 			}
 			@media (hover: hover) {
 				&:hover {

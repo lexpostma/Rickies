@@ -105,20 +105,20 @@ function leaderboard_item($host_data, $column = 1, $triple_j = false)
 		$host_data['personal']['full_name'] .
 		'</h3><p>' .
 		$host_data['personal']['location'] .
-		' • <a target="_blank" href="' .
-		$host_data['personal']['twitter_url'] .
-		'"
-		data-goatcounter-click="' .
-		$host_data['personal']['twitter_url'] .
-		'"
-		title="Go to @' .
-		$host_data['personal']['twitter'] .
-		'"
-		data-goatcounter-referrer="' .
-		current_url() .
-		'">@' .
-		$host_data['personal']['twitter'] .
-		'</a>' .
+		// ' • <a target="_blank" href="' .
+		// $host_data['personal']['twitter_url'] .
+		// '"
+		// data-goatcounter-click="' .
+		// $host_data['personal']['twitter_url'] .
+		// '"
+		// title="Go to @' .
+		// $host_data['personal']['twitter'] .
+		// '"
+		// data-goatcounter-referrer="' .
+		// current_url() .
+		// '">@' .
+		// $host_data['personal']['twitter'] .
+		// '</a>' .
 		' • <a target="_blank" class="nowrap" href="' .
 		$host_data['personal']['website_url'] .
 		'"

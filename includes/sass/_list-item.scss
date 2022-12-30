@@ -106,7 +106,8 @@ li.list_item {
 	a[href^="https://github.com"],
 	a[href^="https://gist.github.com"],
 	a[href^="https://twitter.com"],
-	a[href^="https://www.youtube.com"]
+	a[href^="https://www.youtube.com"],
+	a[href^="https://mastodon.social"]
 	{
 		.secondary_string:before {
 			display: inline-block;
@@ -139,6 +140,12 @@ li.list_item {
 	{
 		.secondary_string:before {
 			content: url('/images/logos/app-store.svg');
+		}
+	}
+	a[href^="https://mastodon.social"]
+	{
+		.secondary_string:before {
+			content: url('/images/logos/mastodon.svg');
 		}
 	}
 	a[href^="https://gist.github.com"],

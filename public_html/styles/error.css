@@ -794,7 +794,7 @@ nav button.js_link:active {
 a {
   font-weight: 500;
 }
-a:not(.list_item_content)[href^="https://apps.apple.com"]:after, a:not(.list_item_content)[href^="https://discordapp.com"]:after, a:not(.list_item_content)[href^="https://github.com"]:after, a:not(.list_item_content)[href^="https://gist.github.com"]:after, a:not(.list_item_content)[href^="https://twitter.com"]:after {
+a:not(.list_item_content)[href^="https://apps.apple.com"]:after, a:not(.list_item_content)[href^="https://discordapp.com"]:after, a:not(.list_item_content)[href^="https://github.com"]:after, a:not(.list_item_content)[href^="https://gist.github.com"]:after, a:not(.list_item_content)[href^="https://twitter.com"]:after, a:not(.list_item_content)[href^="https://mastodon.social"]:after {
   display: inline-block;
   margin-left: 0.3em;
   transition: 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
@@ -834,6 +834,15 @@ a:not(.list_item_content)[href^="https://discordapp.com"]:after {
 }
 @media (hover: hover) {
   a:not(.list_item_content)[href^="https://discordapp.com"]:hover:after {
+    transform: scale(1.2);
+  }
+}
+a:not(.list_item_content)[href^="https://mastodon.social"]:after {
+  content: url("/images/logos/mastodon.svg");
+  transform: translate(-1px, 0px);
+}
+@media (hover: hover) {
+  a:not(.list_item_content)[href^="https://mastodon.social"]:hover:after {
     transform: scale(1.2);
   }
 }

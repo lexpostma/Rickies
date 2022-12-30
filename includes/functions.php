@@ -482,7 +482,7 @@ function goat_referral($input)
 function chairman_url($event_type, $triple_j = false)
 {
 	if (!$triple_j) {
-		$twitter = 'https://twitter.com/' . $event_type . 'chairman';
+		// $twitter = 'https://twitter.com/' . $event_type . 'chairman';
 		$label = ucfirst($event_type) . ' Chairman';
 	} else {
 		if ($event_type === 'keynote') {
@@ -494,25 +494,28 @@ function chairman_url($event_type, $triple_j = false)
 		}
 	}
 
-	$chairman_link =
-		'<a
+	if (isset($twitter)) {
+		$chairman_link =
+			'<a
 		class="nowrap"
 		target="_blank"
 		href="' .
-		$twitter .
-		'"
+			$twitter .
+			'"
 		data-goatcounter-click="' .
-		$twitter .
-		'"
+			$twitter .
+			'"
 		title="' .
-		$label .
-		'"
+			$label .
+			'"
 		data-goatcounter-referrer="' .
-		current_url() .
-		'" >' .
-		$label .
-		'</a>';
-
+			current_url() .
+			'" >' .
+			$label .
+			'</a>';
+	} else {
+		$chairman_link = '<strong class="nowrap">' . $label . '</strong>';
+	}
 	return $chairman_link;
 }
 
