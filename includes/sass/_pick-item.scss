@@ -1,4 +1,4 @@
-@use "variables" as var;
+@use 'variables' as var;
 
 .host_picks {
 	h3 {
@@ -102,17 +102,24 @@ li.pick_item {
 		}
 	}
 	.note {
+		ol,
 		ul,
 		p {
 			@include var.secondary-text;
 		}
+		ol,
 		ul {
 			list-style: initial;
 			margin-left: 1.4em;
 		}
 		p.tag_group,
+		ol + ul,
+		ul + ol,
+		ol + ol,
 		ul + ul,
+		p + ol,
 		p + ul,
+		ol + p,
 		ul + p,
 		p + p {
 			margin-top: 4px;
