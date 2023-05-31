@@ -1,21 +1,21 @@
-@use "variables" as var;
-@use "global";
-@use "links";
-@use "special-links";
-@use "header";
-@use "menu-section";
-@use "logo-tag";
-@use "list-graphic";
-@use "list-item";
-@use "pick-item";
-@use "tag";
-@use "leaderboard";
-@use "timeline";
-@use "trophies";
-@use "modal-input";
-@use "search";
-@use "filter";
-@use "footer";
+@use 'variables' as var;
+@use 'global';
+@use 'links';
+@use 'special-links';
+@use 'header';
+@use 'menu-section';
+@use 'logo-tag';
+@use 'list-graphic';
+@use 'list-item';
+@use 'pick-item';
+@use 'tag';
+@use 'leaderboard';
+@use 'timeline';
+@use 'trophies';
+@use 'modal-input';
+@use 'search';
+@use 'filter';
+@use 'footer';
 
 h3 {
 	margin: 0;
@@ -44,9 +44,12 @@ span.emoji {
 	text-align: center;
 }
 
-ul {
+ul,
+ol {
 	margin: 0;
 	padding: 0;
+}
+ul {
 	list-style: none;
 }
 

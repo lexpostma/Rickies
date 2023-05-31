@@ -109,8 +109,10 @@ li.pick_item {
 		}
 		ol,
 		ul {
-			list-style: initial;
 			margin-left: 1.4em;
+		}
+		ul {
+			list-style: initial;
 		}
 		p.tag_group,
 		ol + ul,

@@ -1799,8 +1799,10 @@ li.pick_item .note p {
 }
 li.pick_item .note ol,
 li.pick_item .note ul {
-  list-style: initial;
   margin-left: 1.4em;
+}
+li.pick_item .note ul {
+  list-style: initial;
 }
 li.pick_item .note p.tag_group,
 li.pick_item .note ol + ul,
@@ -3459,9 +3461,13 @@ span.emoji {
   text-align: center;
 }
 
-ul {
+ul,
+ol {
   margin: 0;
   padding: 0;
+}
+
+ul {
   list-style: none;
 }
 
