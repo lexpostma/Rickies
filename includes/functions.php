@@ -22,7 +22,15 @@ include_once $incl_path . 'chart_functions.php';
 // Is the current URL accessed via http or https?
 function url_protocol()
 {
-	return strtolower(substr($_SERVER['SERVER_PROTOCOL'], 0, strpos($_SERVER['SERVER_PROTOCOL'], '/'))) . '://';
+	// This doesn't work with MAMP Pro somehow.
+	// return strtolower(substr($_SERVER['SERVER_PROTOCOL'], 0, strpos($_SERVER['SERVER_PROTOCOL'], '/'))) . '://';
+
+	// Replaced with this below, via https://stackoverflow.com/a/16825287
+	if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+		return 'https://';
+	} else {
+		return 'http://';
+	}
 }
 
 // https://example.com
