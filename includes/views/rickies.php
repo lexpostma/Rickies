@@ -72,13 +72,13 @@ echo no_script_banner();
 	<script>
 		 var urlmenu = document.getElementById( 'filter_menu' );
 		 urlmenu.onchange = function() {
+			window.open( this.options[ this.selectedIndex ].value, '_self');
 			window.goatcounter.count({
 				path: 'Filter by '+this.options[ this.selectedIndex ].text,
 				title: 'Filter Rickies',
 				referrer: window.location.href,
 				event: true,
 			});
-			window.open( this.options[ this.selectedIndex ].value, '_self');
 		 };
 	</script>
 <?php if (!isset($rickies_filter_empty)) {
