@@ -138,7 +138,16 @@ $rickies_events__array[$id]['details'] = [
 	'more_title' => 'More',
 ];
 
-if (!isset($triple_j)) {
+if ($rickies_events__array[$id]['special'] == 'EUies') {
+	unset($rickies_events__array[$id]['details']['more_data_archive']);
+	$rickies_events__array[$id]['details']['more_data_rules'] = [
+		// 'url' => '/billof/' . $rickies_events__array[$id]['url_name'],
+		// 'url_internal' => true,
+		'img_url' => '/images/rickies-rules-avatar.png',
+		'label1' => 'EUie rules',
+		'label3' => 'Pick in order of proximity to the EU<br/>+2 points for correct picks, -1 for incorrect',
+	];
+} elseif (!isset($triple_j)) {
 	$rickies_events__array[$id]['details']['more_data_rules'] = [
 		'url' => '/billof/' . $rickies_events__array[$id]['url_name'],
 		'url_internal' => true,

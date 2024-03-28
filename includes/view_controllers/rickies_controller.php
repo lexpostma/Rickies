@@ -61,6 +61,7 @@ switch ($url_view) {
 	case 'keynote':
 	case 'ungraded':
 	case 'pickies':
+	case 'euies':
 	case 'preview':
 		switch ($url_view) {
 			case 'wwdc':
@@ -78,6 +79,9 @@ switch ($url_view) {
 				break;
 			case 'ungraded':
 				$rickies_filter = 'Ungraded';
+				break;
+			case 'euies':
+				$rickies_filter = 'EUies';
 				break;
 			case 'preview':
 				$rickies_filter = 'Preview';
@@ -261,6 +265,9 @@ function list_item($data)
 					$tag['color'] = 'red';
 				} elseif ($tag['color'] == 'yellow') {
 					$tag['class'] .= ' contrast';
+				} elseif ($tag['color'] == 'eu') {
+					$tag['class'] .= ' euies';
+					$tag['color'] = 'blue';
 				}
 				$output .=
 					'<span class="' .

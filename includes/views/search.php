@@ -116,6 +116,14 @@ if (array_key_exists('Flexies', $picks_data__array)) { ?>
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('flexies');"><?= $picks_type_count['Flexies'] ?></a>
 <?php }
+if (array_key_exists('EUies', $picks_data__array)) { ?>
+			<a class="menu_item js_link"
+				id="menu_euies"
+				title="EUies"
+				data-goatcounter-click="Show EUies"
+				data-goatcounter-referrer="<?= current_url() ?>"
+				onclick="navigate_section('euies');"><?= $picks_type_count['EUies'] ?></a>
+<?php }
 if (array_key_exists('Pickies', $picks_data__array)) { ?>
 			<a class="menu_item js_link"
 				id="menu_pickies"

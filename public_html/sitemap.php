@@ -40,7 +40,7 @@ $rickies_events__params = [
 	'sort' => $airtable_sorting,
 ];
 include '../includes/data_controllers/event_data_controller.php';
-$home = $latest = $latest_keynote = $latest_annual = $ungraded_filter = $wwdc_filter = $pickies_filter = true;
+$home = $latest = $latest_keynote = $latest_annual = $ungraded_filter = $wwdc_filter = $pickies_filter = $euies_filter = true;
 
 foreach ($rickies_events__array as $event) {
 	if (isset($home)) {
@@ -77,6 +77,10 @@ foreach ($rickies_events__array as $event) {
 		echo sitemap_url('/pickies', $event['last_edited'], '0.2', 'yearly');
 		echo sitemap_url('/charter', $event['last_edited_rules'], '0.2', 'yearly');
 		unset($pickies_filter);
+	}
+	if ($event['special'] == 'EUies' && isset($euies_filter)) {
+		echo sitemap_url('/pickies', $event['last_edited'], '0.2', 'monthly');
+		unset($euies_filter);
 	}
 	if ($event['status'] == 'Ungraded' || $event['status'] == 'Live') {
 		echo sitemap_url('/' . $event['url_name'], $event['last_edited']);

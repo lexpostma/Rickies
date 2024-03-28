@@ -460,6 +460,8 @@
   --connected-blue: rgb(var(--connected-blue-rgb));
   --connected-grey: rgb(var(--connected-grey-rgb));
   --relay-blue: rgb(var(--relay-blue-rgb));
+  --eu-blue: #001489;
+  --eu-yellow: #ffdd00;
   --text-primary-color: #31373d;
   --space-side-padding: 16px;
   --space-between-sm: 8px;
@@ -658,6 +660,7 @@ button.top_button:active {
   text-align: center;
   color: white;
   padding: 8px 16px;
+  background-color: var(--banner-color);
 }
 .banner p {
   max-width: 650px;
@@ -669,6 +672,10 @@ button.top_button:active {
 }
 .banner br + span {
   opacity: 0.8;
+}
+.banner.euies {
+  background-color: var(--eu-blue);
+  color: var(--eu-yellow);
 }
 
 .contrast {
@@ -977,6 +984,9 @@ header.trophies h1, header.apple_events h1, header.charities h1, header.about h1
   color: white;
   text-shadow: 0px 1px 6px rgba(51, 63, 72, 0.5);
 }
+header.trophies h1 span.lowercase_caps, header.apple_events h1 span.lowercase_caps, header.charities h1 span.lowercase_caps, header.about h1 span.lowercase_caps, header.search h1 span.lowercase_caps, header.details h1 span.lowercase_caps, header.leaderboard h1 span.lowercase_caps {
+  text-transform: initial;
+}
 header.trophies h1, header.apple_events h1, header.charities h1, header.about h1, header.details h1, header.leaderboard h1 {
   position: absolute;
   z-index: 2;
@@ -993,6 +1003,11 @@ header.about, header.search, header.details {
   background-color: var(--connected-blue);
   background-size: cover;
   background-image: url(/images/diagonal-rainbow-header.svg);
+}
+header.details.euies {
+  background-color: var(--eu-blue);
+  background-size: contain;
+  background-image: url(/images/seo/hero-euies.jpg);
 }
 header.charities {
   background-size: auto 100%;

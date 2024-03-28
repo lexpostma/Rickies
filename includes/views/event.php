@@ -34,6 +34,9 @@ if ($rickies_data['artwork']['hero'] !== false && $rickies_data['artwork_backgro
 	echo '<header class="details"><div class="gradient"></div><div class="big_year">' .
 		$rickies_data['annual_year'] .
 		'</div>';
+} elseif ($rickies_data['special'] == 'EUies') {
+	// No image, but EUies -> show EUies hero
+	echo '<header class="details euies">';
 } else {
 	// Else -> empty header
 	echo '<header class="details"><div class="gradient"></div>';
@@ -43,6 +46,8 @@ if ($rickies_data['artwork']['hero'] !== false && $rickies_data['artwork_backgro
 	<h1>
 <?php if ($rickies_data['type'] == 'keynote') {
 	echo str_lreplace(' ', '&nbsp;', $rickies_data['name']);
+} elseif ($rickies_data['special'] == 'EUies') {
+	echo str_lreplace('EUies', '<span class="lowercase_caps">EUies</span>', $rickies_data['name']);
 } else {
 	echo $rickies_data['name'];
 } ?>
@@ -99,9 +104,18 @@ if (array_key_exists('Lightning Round', $picks_data__array)) { ?>
 				data-goatcounter-referrer="<?= current_url() ?>"
 				onclick="navigate_section('lightning_round');">Lightning<span class="need_space--xs"> Round</span></a>
 <?php }
+if (array_key_exists('EUies', $picks_data__array)) { ?>
+			<a class="menu_item js_link"
+				id="menu_euies_round"
+				title="EUies"
+				data-goatcounter-click="Show EUies"
+				data-goatcounter-referrer="<?= current_url() ?>"
+				onclick="navigate_section('lightning_round');"><span class="need_space--xs">The </span>EUies</a>
+<?php }
 if (
 	array_key_exists('Rickies', $picks_data__array) ||
 	array_key_exists('Flexies', $picks_data__array) ||
+	array_key_exists('EUies', $picks_data__array) ||
 	array_key_exists('Lightning Round', $picks_data__array) ||
 	array_key_exists('Pickies', $picks_data__array)
 ) { ?>
@@ -143,6 +157,7 @@ echo pick_item_bundle($picks_data__array, $rickies_data['interactive'], ['ahead_
 if (
 	array_key_exists('Rickies', $picks_data__array) ||
 	array_key_exists('Flexies', $picks_data__array) ||
+	array_key_exists('EUies', $picks_data__array) ||
 	array_key_exists('Lightning Round', $picks_data__array) ||
 	array_key_exists('Pickies', $picks_data__array)
 ) {

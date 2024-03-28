@@ -113,6 +113,15 @@ do {
 								'The Pickies rose from a holiday special hijacked by the Triple J. It has <a href="/3j-leaderboard">different hosts</a> and <a href="/charter">different rules</a>.',
 						];
 						break;
+					case 'EUies':
+						// EUies, European Digital Markets Act
+						$rickies_events__array[$id]['tag'][] = [
+							'label' => $rickies_events__array[$id]['special'],
+							'color' => 'eu',
+							'banner' =>
+								'These EUies are a response to the European Union’s Digital Markets Act and are not officially graded as part of the Rickies.',
+						];
+						break;
 					case 'Pre-Rickies':
 						// Pre-Rickies
 						$rickies_events__array[$id]['tag'][] = [
@@ -185,7 +194,7 @@ do {
 						$rickies_events__array[$id]['tag'][] = [
 							'label' => 'Preview',
 							'color' => 'grey',
-							'banner' => 'You are looking at an unpublished preview of these Rickies.',
+							'banner' => 'You are looking at an unpublished preview of this page.',
 						];
 						break;
 					case 'Live':
@@ -207,6 +216,8 @@ do {
 				$rickies_title_string = 'ungraded Rickies';
 			} elseif ($rickies_filter == 'Pickies') {
 				$rickies_title_string = 'Pickies';
+			} elseif ($rickies_filter == 'EUies') {
+				$rickies_title_string = 'EUies';
 			} else {
 				$rickies_title_string = $rickies_filter . ' Rickies';
 			}

@@ -56,6 +56,8 @@ $rickies_events_options = [];
 foreach ($rickies_events__array as $event) {
 	if ($event['special'] == 'Pickies') {
 		$emoji = '🎄';
+	} elseif ($event['special'] == 'EUies') {
+		$emoji = '🇪🇺';
 	} elseif ($event['status'] == 'Live') {
 		$emoji = '🔴';
 	} elseif ($event['status'] == 'Ungraded') {
@@ -137,6 +139,7 @@ if (!isset($triple_j)) {
 	$picks_type_count = [
 		'Rickies' => 0,
 		'Flexies' => 0,
+		'EUies' => 0,
 	];
 
 	$picks_chart__array = [

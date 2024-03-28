@@ -139,6 +139,7 @@ button.top_button {
 	text-align: center;
 	color: white;
 	padding: 8px 16px;
+	background-color: var(--banner-color);
 	p {
 		max-width: var.$readability-width;
 		margin-right: auto;
@@ -149,6 +150,10 @@ button.top_button {
 	}
 	br + span {
 		opacity: 0.8;
+	}
+	&.euies {
+		background-color: var(--eu-blue);
+		color: var(--eu-yellow);
 	}
 }
 .contrast {

@@ -326,6 +326,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 					'keynote' => emoji_select_spacing('📽') . 'Keynote Rickies',
 					'WWDC' => emoji_select_spacing('💻') . 'WWDC Rickies',
 					'ungraded' => emoji_select_spacing('🟠') . 'Ungraded Rickies',
+					'euies' => emoji_select_spacing('🇪🇺') . 'EUies',
 				];
 
 				$output .= '<li class="filter_option select">

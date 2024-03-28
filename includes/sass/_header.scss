@@ -200,6 +200,9 @@ header {
 			text-transform: uppercase;
 			color: white;
 			text-shadow: var.$header-shadow;
+			span.lowercase_caps {
+				text-transform: initial;
+			}
 		}
 	}
 	&.trophies,
@@ -227,6 +230,11 @@ header {
 		background-color: var(--connected-blue);
 		background-size: cover;
 		background-image: url(/images/diagonal-rainbow-header.svg);
+	}
+	&.details.euies {
+		background-color: var(--eu-blue);
+		background-size: contain;
+		background-image: url(/images/seo/hero-euies.jpg);
 	}
 	&.charities {
 		background-size: auto 100%;

@@ -6,6 +6,7 @@ if (!isset($triple_j)) {
 	$picks_data__array = $picks_data__empty = [
 		'Rickies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
 		'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
+		'EUies' => ['Federico' => [], 'Myke' => [], 'Stephen' => []],
 	];
 } else {
 	$picks_data__array = $picks_data__empty = [

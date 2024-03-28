@@ -40,6 +40,13 @@
 	&.cat_people ~ &.cat_people {
 		background: rgba(var(--connected-green-rgb), var(--next-color));
 	}
+	&.euies {
+		&:after {
+			content: ' ★';
+		}
+		background: var(--eu-blue);
+		color: var(--eu-yellow) !important;
+	}
 }
 a.tag {
 	text-decoration: none;

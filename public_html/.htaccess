@@ -44,6 +44,9 @@ Redirect 301 /leaderboard-3j /3j-leaderboard
 Redirect 301 /charity /charities
 Redirect 301 /donation /charities
 
+Redirect 301 /eu /euies
+Redirect 301 /dma /euies
+
 Redirect 301 /recent /latest
 
 ## Error pages

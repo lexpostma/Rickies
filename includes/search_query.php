@@ -136,6 +136,9 @@ if (isset($_GET['rickies_event'])) {
 			$pick_filter['filter_other']['rickies_event'] =
 				'OR({Rickies status} = "Ungraded", {Rickies status} = "Live")';
 			break;
+		case 'euies':
+			$pick_filter['filter_other']['rickies_event'] = '{Special}="EUies"';
+			break;
 		default:
 			$pick_filter['filter_other']['rickies_event'] = 'URL="' . $_GET['rickies_event'] . '"';
 			break;

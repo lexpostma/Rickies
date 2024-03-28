@@ -45,9 +45,9 @@ if (month < 6) {
 
 // Update the visible point's per pick
 function update_pick_points(points, state) {
-	if (points.classList.contains('risky') && state == 'correct') {
+	if ((points.classList.contains('risky') || points.classList.contains('euie')) && state == 'correct') {
 		points.innerText = '+2';
-	} else if (points.classList.contains('risky') && state == 'wrong') {
+	} else if ((points.classList.contains('risky') || points.classList.contains('euie')) && state == 'wrong') {
 		points.innerText = '-1';
 	} else if (points.classList.contains('regular') && state == 'correct') {
 		points.innerText = '+1';
@@ -97,9 +97,15 @@ function update_host_score(host_picks) {
 	var wrong_count = 0;
 
 	Array.from(host_picks.getElementsByClassName('points')).forEach(function (points) {
-		if (points.classList.contains('risky') && points.classList.contains('correct')) {
+		if (
+			(points.classList.contains('risky') || points.classList.contains('euie')) &&
+			points.classList.contains('correct')
+		) {
 			score = score + 2;
-		} else if (points.classList.contains('risky') && points.classList.contains('wrong')) {
+		} else if (
+			(points.classList.contains('risky') || points.classList.contains('euie')) &&
+			points.classList.contains('wrong')
+		) {
 			score = score - 1;
 		} else if (
 			points.classList.contains('picky') &&

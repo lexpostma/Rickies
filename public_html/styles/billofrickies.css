@@ -460,6 +460,8 @@
   --connected-blue: rgb(var(--connected-blue-rgb));
   --connected-grey: rgb(var(--connected-grey-rgb));
   --relay-blue: rgb(var(--relay-blue-rgb));
+  --eu-blue: #001489;
+  --eu-yellow: #ffdd00;
   --text-primary-color: #31373d;
   --space-side-padding: 16px;
   --space-between-sm: 8px;
@@ -658,6 +660,7 @@ button.top_button:active {
   text-align: center;
   color: white;
   padding: 8px 16px;
+  background-color: var(--banner-color);
 }
 .banner p {
   max-width: 650px;
@@ -669,6 +672,10 @@ button.top_button:active {
 }
 .banner br + span {
   opacity: 0.8;
+}
+.banner.euies {
+  background-color: var(--eu-blue);
+  color: var(--eu-yellow);
 }
 
 .contrast {

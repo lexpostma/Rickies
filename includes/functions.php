@@ -356,9 +356,12 @@ function banner($string, $color = 'orange')
 	$output = '<div class="banner';
 	if ($color == 'yellow') {
 		$output .= ' contrast ';
+	} elseif ($color == 'eu') {
+		$output .= ' euies ';
+		$color = 'blue';
 	}
 
-	$output .= '" style="background-color: var(--connected-' . $color . ');"><p>' . $string . '</p></div>';
+	$output .= '" style="--banner-color: var(--connected-' . $color . ');"><p>' . $string . '</p></div>';
 	return $output;
 }
 

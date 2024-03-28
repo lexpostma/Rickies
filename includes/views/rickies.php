@@ -58,6 +58,11 @@ echo no_script_banner();
 				<option <?php if (isset($rickies_filter) && $rickies_filter == 'Ungraded') {
     	echo 'selected';
     } ?> value="/ungraded#list">Ungraded Rickies</option>
+	</optgroup>
+	<optgroup label="Other">
+				<option <?php if (isset($rickies_filter) && $rickies_filter == 'EUies') {
+    	echo 'selected';
+    } ?> value="/euies">The EUies</option>
 				<option <?php if (isset($rickies_filter) && $rickies_filter == 'Pickies') {
     	echo 'selected';
     } ?> value="/pickies">The Pickies</option>

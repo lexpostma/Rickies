@@ -351,6 +351,18 @@ if (
 		$host_string .
 		' perform with their yearly predictions?';
 } elseif (
+	$rickies_data['special'] == 'EUies' &&
+	($rickies_data['status'] == 'Ungraded' ||
+		$rickies_data['status'] == 'Live' ||
+		$rickies_data['status'] == 'Pending' ||
+		$rickies_data['status'] == 'Preview')
+) {
+	// EUies and ungraded, so future
+	$description .= 'How will Apple deal with the DMA in the European Union this time?';
+} elseif ($rickies_data['special'] == 'EUies') {
+	// EUies and graded, past
+	$description .= 'How did Apple deal with the DMA in the European Union this time?';
+} elseif (
 	$rickies_data['status'] == 'Ungraded' ||
 	$rickies_data['status'] == 'Live' ||
 	$rickies_data['status'] == 'Pending' ||
@@ -404,8 +416,16 @@ switch ($rickies_data['status']) {
 
 if ($rickies_data['artwork']['seo'] !== false) {
 	$head_custom['image'] = $rickies_data['artwork']['seo'];
+} elseif ($rickies_data['special'] == 'EUies') {
+	$head_custom['image'] = domain_url() . '/images/seo/hero-euies.jpg';
 }
 
 if ($rickies_data['artwork_background_color'] !== false) {
 	$head_custom['theme-color'] = $rickies_data['artwork_background_color'];
+} elseif ($rickies_data['special'] == 'EUies') {
+	$head_custom['theme-color'] = '#001489';
+}
+
+if ($rickies_data['special'] == 'EUies') {
+	$head_custom['keywords'] = ['EU', 'European Union', 'Digital Markets Act', 'DMA'];
 }
