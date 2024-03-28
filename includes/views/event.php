@@ -5,24 +5,27 @@ if ($rickies_data['custom_css'] !== false) {
 }
 
 // Define the header
-if (
-	array_key_exists('img_url', $rickies_data) &&
-	$rickies_data['artwork']['rickies'] == $rickies_data['img_url'] &&
-	$rickies_data['artwork_background_color'] !== false
-) {
-	// Image is custom Rickies image + color is set -> contain image, with background color
+if ($rickies_data['artwork']['hero'] !== false && $rickies_data['artwork_background_color'] !== false) {
+	// Hero image is set + color is set -> contain image, with background color
 	echo '<header class="details custom color" style="background-color: ' .
 		$rickies_data['artwork_background_color'] .
 		'; background-image: url(' .
-		$rickies_data['img_url'] .
+		$rickies_data['artwork']['hero'] .
 		');"><div class="gradient"></div>';
-} elseif (array_key_exists('img_url', $rickies_data) && $rickies_data['artwork']['event'] == $rickies_data['img_url']) {
-	// Image is same as Apple Event image, use as background cover
+} elseif ($rickies_data['artwork']['hero'] !== false) {
+	// Hero image is set, but no background color -> use image to fill header
 	echo '<header class="details" style="background-image: url(' .
-		$rickies_data['img_url'] .
+		$rickies_data['artwork']['hero'] .
 		');"><div class="gradient"></div>';
-} elseif (array_key_exists('img_url', $rickies_data)) {
-	// Image exists, no exceptions -> place image above the title
+} elseif (key_exists('img_url', $rickies_data) && $rickies_data['artwork_background_color'] !== false) {
+	// Some other image is set + color is set -> place image above title, with background color
+	echo '<header class="details contain_img color" style="background-color: ' .
+		$rickies_data['artwork_background_color'] .
+		'; "><div class="gradient"></div><img src="' .
+		$rickies_data['img_url'] .
+		'" />';
+} elseif (key_exists('img_url', $rickies_data)) {
+	// Some other image is set, but no background color -> place image above the title
 	echo '<header class="details contain_img"><div class="gradient"></div><img src="' .
 		$rickies_data['img_url'] .
 		'" />';

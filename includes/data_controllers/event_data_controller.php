@@ -16,7 +16,8 @@ if (!isset($rickies_events__params['fields']) && !$rickies_event_data_set) {
 		'Predictions episode date',
 		'Predictions episode number',
 		'Predictions episode artwork',
-		'Rickies artwork',
+		'Rickies thumbnail',
+		'Rickies hero',
 		'Event artwork',
 		'Artwork background color',
 		'Interactive',
@@ -67,7 +68,8 @@ do {
 					'annual_year' => check_key('Annual predictions year', $fields),
 					'interactive' => check_key('Interactive', $fields, false, 0),
 					'artwork' => [
-						'rickies' => airtable_image_url(check_key('Rickies artwork', $fields, false, 0)),
+						'thumbnail' => airtable_image_url(check_key('Rickies thumbnail', $fields, false, 0)),
+						'hero' => airtable_image_url(check_key('Rickies hero', $fields, false, 0)),
 						'event' => airtable_image_url(check_key('Event artwork', $fields, false, 0)),
 						'predictions_ep' => airtable_image_url(
 							check_key('Predictions episode artwork', $fields, false, 0)
@@ -87,18 +89,12 @@ do {
 
 				// Set large thumbnail URL as the value of the main event artwork.
 				// The first one that's not-false will be set,
-				// excluding episode artwork and SEO images
-				foreach ($rickies_events__array[$id]['artwork'] as $source => $artwork) {
-					if (
-						$artwork !== false &&
-						!isset($rickies_events__array[$id]['img_url']) &&
-						$source !== 'results_ep' &&
-						$source !== 'predictions_ep' &&
-						$source !== 'seo'
-					) {
-						$rickies_events__array[$id]['img_url'] = $artwork;
-						break;
-					}
+				if ($rickies_events__array[$id]['artwork']['thumbnail'] !== false) {
+					$rickies_events__array[$id]['img_url'] = $rickies_events__array[$id]['artwork']['thumbnail'];
+				} elseif ($rickies_events__array[$id]['artwork']['event'] !== false) {
+					$rickies_events__array[$id]['img_url'] = $rickies_events__array[$id]['artwork']['event'];
+				} elseif ($rickies_events__array[$id]['artwork']['hero'] !== false) {
+					$rickies_events__array[$id]['img_url'] = $rickies_events__array[$id]['artwork']['hero'];
 				}
 
 				switch ($rickies_events__array[$id]['special']) {

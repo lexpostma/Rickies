@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @-webkit-keyframes connected_colors {
   0% {
     background-color: var(--connected-green);
@@ -2202,18 +2203,13 @@ section#timeline .timeline--legend-set {
   padding-left: var(--space-side-padding);
   display: flex;
   flex-direction: column;
-  height: calc(
-		100vh - var(--nav-height) - (var(--space-side-padding) * 3) - 40px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
-	);
+  height: calc(100vh - var(--nav-height) - var(--space-side-padding) * 3 - 40px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
   min-height: 400px;
   max-height: 800px;
 }
 @media screen and (min-width: 768px) {
   .timeline--content {
-    height: calc(
-			100vh - var(--nav-height) - (var(--space-side-padding) * 3) - 40px - 1.5em - var(--space-between-lg) - env(safe-area-inset-top) -
-				env(safe-area-inset-bottom)
-		);
+    height: calc(100vh - var(--nav-height) - var(--space-side-padding) * 3 - 40px - 1.5em - var(--space-between-lg) - env(safe-area-inset-top) - env(safe-area-inset-bottom));
   }
 }
 
