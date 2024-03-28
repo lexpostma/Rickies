@@ -2,14 +2,20 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+## 28 March 2024 v2.5
+
+-   🇪🇺 Add support for [the EUies](https://rickies.co/euies)
+-   Improve thumbnail and hero images, no longer being the same asset
+-   Fix tab switching when analytics was blocked
+
 ## 30 December 2022 v2.4
 
--   Added Flexies wins to the [leaderboard timeline](https://rickies.co/leaderboard#timeline)
--   Updated the [Trophies page](https://rickies.co/trophies#other)
-    -   Added the new Flexies titles, with a mention of the rule change
-    -   Moved the OG Twitter trophy accounts to the bottom, with a mention of the rule change
--   Added support for Mastodon the logo to Mastodon links
--   Removed most of the Twitter profile links, replaced some with Mastodon profiles
+-   Add Flexies wins to the [leaderboard timeline](https://rickies.co/leaderboard#timeline)
+-   Update the [Trophies page](https://rickies.co/trophies#other)
+    -   Add the new Flexies titles, with a mention of the rule change
+    -   Move the OG Twitter trophy accounts to the bottom, with a mention of the rule change
+-   Add support for Mastodon the logo to Mastodon links
+-   Remove most of the Twitter profile links, replaced some with Mastodon profiles
 
 ### 7 June 2022
 
@@ -28,8 +34,8 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 
 ### 12 April 2022
 
--   Tweaked API styling
--   Added Obsidian plugin to API uses list
+-   Tweak API styling
+-   Add Obsidian plugin to API uses list
 
 ## 10 April 2022 v2.3
 
