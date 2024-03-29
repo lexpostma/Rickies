@@ -38,6 +38,7 @@ do {
 				'points' => check_key('Points', $fields),
 				'factor' => check_key('Factor', $fields),
 				'note' => check_key('Special remark', $fields),
+				'regrade_note' => check_key('3J regrading note', $fields),
 				'url' => check_key('URL', $fields, false, 0),
 				'rickies' => check_key('Rickies name', $fields, false, 0),
 				'status_later' => check_key('Came true string', $fields),

@@ -499,6 +499,7 @@ function pick_item($data, $interactive = false, $view = [])
 	// Add optional note
 	if (
 		$data['note'] ||
+		$data['regrade_note'] ||
 		($data['status_later'] && in_array('ahead_of_its_time', $view)) ||
 		($data['categories'] && in_array('categories', $view)) ||
 		($data['reusability'] && in_array('reusability', $view)) ||
@@ -508,6 +509,9 @@ function pick_item($data, $interactive = false, $view = [])
 		$output .= '<div class="note">';
 		if ($data['note']) {
 			$output .= markdown($data['note']);
+		}
+		if ($data['regrade_note']) {
+			$output .= markdown($data['regrade_note']);
 		}
 		if ($data['status_later'] && in_array('ahead_of_its_time', $view)) {
 			$output .= markdown($data['status_later']);
