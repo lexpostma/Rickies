@@ -235,6 +235,8 @@ function list_item($data)
 			// Set color, if defined
 			if (array_key_exists('artwork_background_color', $data) && $data['artwork_background_color'] !== false) {
 				$img_array['color'] = $data['artwork_background_color'];
+			} elseif ($data['special'] == 'EUies') {
+				$img_array['color'] = 'random';
 			}
 		}
 	} elseif (array_key_exists('type', $data) && $data['type'] == 'annual') {
