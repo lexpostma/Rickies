@@ -95,7 +95,7 @@ if (!isset($triple_j) && (!isset($rickies_filter) or $rickies_filter != 'EUies')
 		$head_defaults['site_relay'] .
 		'" ' .
 		$head_defaults['site_relay_goat'] .
-		'>Relay FM</a>, started cooking something fun. In true Connected fashion, they’re now somewhat regularly making predictions of what they think Apple needs to change next in its DMA response. A real Rickies-style segment of the show, turning regulation into a game. </p>';
+		'>Relay FM</a>, started cooking something fun.</p><p>In true Connected fashion, Federico, Myke, and Stephen are now somewhat regularly making predictions of what they think Apple needs to change next in its DMA response. A real Rickies-style segment of the show, turning regulation into a game. </p>';
 } else {
 	$trophy_asset = 'pickies';
 	$hero_title = '<h1>The Pickies</h1>';
