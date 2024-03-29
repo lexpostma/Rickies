@@ -159,7 +159,7 @@ if (!empty($pick_filter['filter_other'])) {
 // Here the Pickies are in/excluded
 if (!isset($triple_j)) {
 	$filterByFormula .= "
-	OR(Special='Rickies', Special='Pre-Rickies'),";
+	OR(Special='Rickies', Special='Pre-Rickies', Special='EUies'),";
 }
 
 // Finishing up the formula with the default pick requirements

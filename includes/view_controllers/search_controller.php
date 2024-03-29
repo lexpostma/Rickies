@@ -259,6 +259,14 @@ if (!isset($triple_j)) {
 	} else {
 		$picks_type_count['Flexies'] = $picks_type_count['Flexies'] . ' Flexies';
 	}
+
+	if ($picks_type_count['EUies'] === 0) {
+		unset($picks_type_count['EUies']);
+	} elseif ($picks_type_count['EUies'] === 1) {
+		$picks_type_count['EUies'] = '1 EUie';
+	} else {
+		$picks_type_count['EUies'] = $picks_type_count['EUies'] . ' EUies';
+	}
 } else {
 	if ($picks_type_count['Pickies'] === 0) {
 		unset($picks_type_count['Pickies']);
