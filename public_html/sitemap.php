@@ -79,7 +79,7 @@ foreach ($rickies_events__array as $event) {
 		unset($pickies_filter);
 	}
 	if ($event['special'] == 'EUies' && isset($euies_filter)) {
-		echo sitemap_url('/pickies', $event['last_edited'], '0.2', 'monthly');
+		echo sitemap_url('/euies', $event['last_edited'], '0.2', 'monthly');
 		unset($euies_filter);
 	}
 	if ($event['status'] == 'Ungraded' || $event['status'] == 'Live') {
