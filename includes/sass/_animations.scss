@@ -334,3 +334,44 @@
 @keyframes rule_highlight {
 	@include rule_highlight;
 }
+
+@mixin pick_highlight {
+	0%,
+	5% {
+		background: var(--element-active-color);
+	}
+	10%,
+	12% {
+		background: var(--element-neutral-color);
+	}
+	15%,
+	17% {
+		background: var(--element-active-color);
+	}
+	20%,
+	22% {
+		background: var(--element-neutral-color);
+	}
+	25%,
+	27% {
+		background: var(--element-active-color);
+	}
+	30%,
+	32% {
+		background: var(--element-neutral-color);
+	}
+	35%,
+	90% {
+		background: var(--element-active-color);
+	}
+	100% {
+		background: var(--element-active-color);
+	}
+}
+
+@-webkit-keyframes pick_highlight {
+	@include pick_highlight;
+}
+@keyframes pick_highlight {
+	@include pick_highlight;
+}

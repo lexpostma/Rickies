@@ -415,6 +415,7 @@ function pick_item($data, $interactive = false, $view = [])
 		$output = '<li id="pick_' . $data['id'] . '" class="pick_item">';
 	}
 
+	// In the search/archive view, show link to Rickies + the round it was picked in
 	// If it's not a Flexy, the picks are in 3 rounds
 	if (in_array('search', $view)) {
 		$pick_link =
@@ -435,8 +436,10 @@ function pick_item($data, $interactive = false, $view = [])
 		$output .= '<span class="round">' . $data['round'] . '</span>';
 	}
 
-	// Define the pick label
+	// Define the pick label with copy button
 	$output .= '<p class="pick"><span class="label">' . $data['pick'] . '</span>';
+	// TODO: Add copy button to picks
+	// '<p class="pick"><span class="label">' . $data['pick'] . copy_url_button('#pick_' . $data['id']) . '</span>';
 
 	// Define the point score
 
@@ -536,6 +539,7 @@ function pick_item($data, $interactive = false, $view = [])
 		$output .= '</div>';
 	}
 
+	// $output .= copy_url_button('#pick_' . $data['id']);
 	$output .= '</li>';
 	return $output;
 }

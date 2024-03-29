@@ -36,6 +36,7 @@ li.pick_item {
 		align-items: flex-start;
 		span.label {
 			flex-grow: 1;
+			position: relative;
 		}
 		span.points {
 			flex-grow: 0;
@@ -163,6 +164,32 @@ li.pick_item {
 	}
 	&.manual {
 		background-color: rgba(239, 123, 0, 0.15);
+	}
+	&:target {
+		background: var(--element-active-color);
+		-webkit-animation: pick_highlight 10s linear forwards;
+		animation: pick_highlight 10s linear forwards;
+	}
+
+	&:hover button.copy_direct_url {
+		transition: var.$hover-duration opacity ease;
+		opacity: 0.3;
+	}
+	--share-link-color: white;
+	--share-link-background: var(--link-color);
+
+	button.copy_direct_url {
+		left: -30px;
+		position: absolute;
+		top: 0;
+
+		opacity: 0;
+		&:hover {
+			opacity: 0.6;
+		}
+		&:active {
+			opacity: 1;
+		}
 	}
 }
 

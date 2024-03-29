@@ -442,6 +442,58 @@
     color: var(--document-text-color);
   }
 }
+@-webkit-keyframes pick_highlight {
+  0%, 5% {
+    background: var(--element-active-color);
+  }
+  10%, 12% {
+    background: var(--element-neutral-color);
+  }
+  15%, 17% {
+    background: var(--element-active-color);
+  }
+  20%, 22% {
+    background: var(--element-neutral-color);
+  }
+  25%, 27% {
+    background: var(--element-active-color);
+  }
+  30%, 32% {
+    background: var(--element-neutral-color);
+  }
+  35%, 90% {
+    background: var(--element-active-color);
+  }
+  100% {
+    background: var(--element-active-color);
+  }
+}
+@keyframes pick_highlight {
+  0%, 5% {
+    background: var(--element-active-color);
+  }
+  10%, 12% {
+    background: var(--element-neutral-color);
+  }
+  15%, 17% {
+    background: var(--element-active-color);
+  }
+  20%, 22% {
+    background: var(--element-neutral-color);
+  }
+  25%, 27% {
+    background: var(--element-active-color);
+  }
+  30%, 32% {
+    background: var(--element-neutral-color);
+  }
+  35%, 90% {
+    background: var(--element-active-color);
+  }
+  100% {
+    background: var(--element-active-color);
+  }
+}
 :root {
   --safe-top: env(safe-area-inset-top);
   --connected-green-rgb: 68, 153, 52;
@@ -654,6 +706,29 @@ button.top_button:active {
 }
 #music_button + #share_button, #search_button + #share_button {
   right: 76px;
+}
+
+button.copy_direct_url {
+  display: inline-flex;
+  align-content: center;
+  justify-content: center;
+  padding: 0.5em;
+  margin: -0.25em;
+  border-radius: 50%;
+  background: none;
+  transition: 300ms opacity ease, 300ms background ease, 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
+}
+button.copy_direct_url > svg {
+  height: 1em;
+  width: 1em;
+}
+button.copy_direct_url:hover {
+  background: var(--share-link-background);
+  color: var(--share-link-color);
+  transform: scale(1.05);
+}
+button.copy_direct_url:active {
+  transform: scale(0.95);
 }
 
 .banner {
@@ -1717,70 +1792,47 @@ p.bill_footer {
 }
 
 main {
-  --share-link-color: black;
-  --share-link-background: var(--link-hover-color);
+  --share-link-color: white;
+  --share-link-background: var(--link-color);
 }
 main.parchment {
   --share-link-color: var(--document-text-color);
   --share-link-background: var(--document-link-color);
 }
 
-button.copy_rule_url {
-  display: inline-flex;
-  align-content: center;
-  justify-content: center;
-  padding: 0.5em;
-  margin: -0.25em;
-  border-radius: 50%;
-  background: none;
-  transition: 300ms opacity ease, 300ms background ease, 300ms transform cubic-bezier(0.68, 0.07, 0.27, 1.54);
-}
-button.copy_rule_url > svg {
-  height: 1em;
-  width: 1em;
-}
-button.copy_rule_url:hover {
-  background: var(--share-link-background);
-  color: var(--share-link-color);
-  transform: scale(1.05);
-}
-button.copy_rule_url:active {
-  transform: scale(0.95);
-}
-
-.document_date:hover button.copy_rule_url,
-div.rule:hover button.copy_rule_url,
-li.rule:hover button.copy_rule_url {
+.document_date:hover button.copy_direct_url,
+div.rule:hover button.copy_direct_url,
+li.rule:hover button.copy_direct_url {
   transition: 300ms opacity ease;
-  opacity: 0.5;
+  opacity: 0.3;
 }
-.document_date button.copy_rule_url,
-div.rule button.copy_rule_url,
-li.rule button.copy_rule_url {
+.document_date button.copy_direct_url,
+div.rule button.copy_direct_url,
+li.rule button.copy_direct_url {
   position: absolute;
   top: 0;
   --left-position: -24px;
   opacity: 0;
 }
-.document_date button.copy_rule_url:hover,
-div.rule button.copy_rule_url:hover,
-li.rule button.copy_rule_url:hover {
-  opacity: 1;
+.document_date button.copy_direct_url:hover,
+div.rule button.copy_direct_url:hover,
+li.rule button.copy_direct_url:hover {
+  opacity: 0.6;
 }
-.document_date button.copy_rule_url:active,
-div.rule button.copy_rule_url:active,
-li.rule button.copy_rule_url:active {
+.document_date button.copy_direct_url:active,
+div.rule button.copy_direct_url:active,
+li.rule button.copy_direct_url:active {
   opacity: 1;
 }
 
-.document_date button.copy_rule_url {
+.document_date button.copy_direct_url {
   margin-left: 10px;
 }
 
-li.rule button.copy_rule_url {
+li.rule button.copy_direct_url {
   left: calc(-2em + var(--left-position));
 }
 
-div.rule button.copy_rule_url {
+div.rule button.copy_direct_url {
   left: var(--left-position);
 }
