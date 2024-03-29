@@ -22,6 +22,23 @@ function update_rules(value) {
 	slider_label.innerHTML = rickies_event_names[value];
 	document_date.innerHTML = rickies_event_dates[value];
 
+	// Rewrite the URL to reflect the currently viewed document version
+	var new_url;
+	if (!triple_j) {
+		new_url = '/billof/' + rickies_event_urls[value];
+	} else {
+		new_url = '/charter/' + rickies_event_urls[value];
+	}
+	// Append the hashtag again if it was there
+	if (window.location.hash) {
+		new_url = new_url + window.location.hash;
+	}
+	if (window.history.replaceState) {
+		//prevents browser from storing history with each change:
+		window.history.replaceState(null, '', new_url);
+	}
+
+	// Tweak words based on historical events for Bill of Rickies
 	if (!triple_j) {
 		if (rickies_event_values[value] < rickies_start && rickies_event_values[value] < bill_start) {
 			document_title.innerHTML = 'Drafting Rules';

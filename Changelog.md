@@ -7,6 +7,7 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 -   🇪🇺 Add support for [the EUies](https://rickies.co/euies)
 -   🔗 Add copy URLs to [Bill of Rickies versions](https://rickies.co/billof) and even to each individual rule
 -   Improve thumbnail and hero images, no longer being the same asset
+-   Update URL of Bill of Rickies when you slide to different version
 -   Fix tab switching when analytics was blocked
 
 ## 30 December 2022 v2.4
