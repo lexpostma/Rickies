@@ -119,7 +119,7 @@ do {
 							'label' => $rickies_events__array[$id]['special'],
 							'color' => 'eu',
 							'banner' =>
-								'These EUies are a response to the European Union’s Digital Markets Act and are not officially graded as part of the Rickies.',
+								'These EUies predict Apple’s changes to the European Union’s Digital Markets Act. They are not officially graded as part of the Rickies.',
 						];
 						break;
 					case 'Pre-Rickies':
