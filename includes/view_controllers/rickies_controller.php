@@ -609,10 +609,10 @@ function pick_item_bundle($data, $interactive = false, $view = [])
 				'"><h3>' .
 				$host;
 
-			if ($type == 'Rickies' || $type == 'Flexies') {
+			if ($type == 'Rickies' || $type == 'Flexies' || $type == 'EUies') {
 				// TODO: Define scoring for Pickies
 				$output .= '<span class="host_score">';
-				if ($type == 'Rickies') {
+				if ($type == 'Rickies' || $type == 'EUies') {
 					// if ($type == 'Rickies' || $type == 'Pickies' || $type == 'Lightning') {
 					// Rickies have points
 					$output .= plural_points($score['points']) . ' • ' . $score['correct'] . '/' . $score['count'];
