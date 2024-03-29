@@ -19,7 +19,7 @@ if ($rickies_data['artwork']['hero'] !== false && $rickies_data['artwork_backgro
 		');"><div class="gradient"></div>';
 } elseif (key_exists('img_url', $rickies_data) && $rickies_data['artwork_background_color'] !== false) {
 	// Some other image is set + color is set -> place image above title, with background color
-	echo '<header class="details contain_img color" style="background-color: ' .
+	echo '<header class="details contain_img custom color" style="background-color: ' .
 		$rickies_data['artwork_background_color'] .
 		'; "><div class="gradient"></div><img src="' .
 		$rickies_data['img_url'] .
