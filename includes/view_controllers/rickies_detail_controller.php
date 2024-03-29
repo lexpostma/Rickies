@@ -417,7 +417,7 @@ switch ($rickies_data['status']) {
 if ($rickies_data['artwork']['seo'] !== false) {
 	$head_custom['image'] = $rickies_data['artwork']['seo'];
 } elseif ($rickies_data['special'] == 'EUies') {
-	$head_custom['image'] = domain_url() . '/images/seo/hero-euies.jpg';
+	$head_custom['image'] = domain_url() . '/images/seo/hero-euies-detail.jpg';
 }
 
 if ($rickies_data['artwork_background_color'] !== false) {
