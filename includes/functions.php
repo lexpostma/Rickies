@@ -249,8 +249,6 @@ function share_button()
 
 function copy_url_button($to_copy)
 {
-	// TODO: define the URL. Must include rule id + version of Bill currently being viewed.
-
 	return '<button class="clean copy_direct_url" title="Copy direct link to clipboard" onclick="copy_direct_url_to_clipboard(\'' .
 		$to_copy .
 		'\')">' .
