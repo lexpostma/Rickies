@@ -88,6 +88,16 @@ function open_share_sheet() {
 }
 
 // Functions to copy text to the clipboard
+
+// Share buttons on each rule and bill version, to put a direct link in the clipboard
+function copy_direct_url_to_clipboard(text, url = true) {
+	if (url) {
+		text = window.location.href.substr(0, window.location.href.indexOf('#')) + text;
+	}
+	navigator.clipboard.writeText(text);
+}
+
+// Below is used as fallback for when native share sheet is not supported
 // Via https://stackoverflow.com/a/30810322
 function fallbackCopyTextToClipboard(text) {
 	var textArea = document.createElement('textarea');

@@ -1,10 +1,10 @@
-@use "variables" as var;
-@use "global";
-@use "rule-document";
-@use "rule-slider";
-@use "links";
-@use "modal-input";
-@use "buttons";
+@use 'variables' as var;
+@use 'global';
+@use 'rule-document';
+@use 'rule-slider';
+@use 'links';
+@use 'modal-input';
+@use 'buttons';
 
 @font-face {
 	font-family: 'BlackChancery';
@@ -50,6 +50,7 @@ h2.rule_type,
 .rule {
 	max-height: 300px;
 	opacity: 1;
+	position: relative;
 
 	// transition: $transition_time max-height ease-in, ($transition_time * 0.66) opacity ease-in;
 	transition-property: max-height, opacity;
@@ -101,4 +102,66 @@ p.bill_footer {
 	opacity: 0.5;
 	font-style: italic;
 	max-width: var.$readability-width;
+}
+
+main {
+	--share-link-color: black;
+	--share-link-background: var(--link-hover-color);
+	&.parchment {
+		--share-link-color: var(--document-text-color);
+		--share-link-background: var(--document-link-color);
+	}
+}
+button.copy_rule_url {
+	display: inline-flex;
+	align-content: center;
+	justify-content: center;
+	padding: 0.5em;
+	margin: -0.25em;
+	border-radius: 50%;
+	background: none;
+	transition: var.$hover-duration opacity ease, var.$hover-duration background ease, var.$pop-transition;
+	& > svg {
+		height: 1em;
+		width: 1em;
+	}
+	&:hover {
+		background: var(--share-link-background);
+		color: var(--share-link-color);
+		transform: scale(1.05);
+	}
+	&:active {
+		transform: scale(0.95);
+	}
+}
+.document_date,
+div.rule,
+li.rule {
+	&:hover button.copy_rule_url {
+		transition: var.$hover-duration opacity ease;
+		opacity: 0.5;
+	}
+	button.copy_rule_url {
+		position: absolute;
+		top: 0;
+		--left-position: -24px;
+
+		opacity: 0;
+		&:hover {
+			opacity: 1;
+		}
+		&:active {
+			opacity: 1;
+		}
+	}
+}
+.document_date button.copy_rule_url {
+	margin-left: 10px;
+}
+li.rule button.copy_rule_url {
+	left: calc(-2em + var(--left-position));
+}
+
+div.rule button.copy_rule_url {
+	left: var(--left-position);
 }

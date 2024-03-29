@@ -5,6 +5,7 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 ## 28 March 2024 v2.5
 
 -   🇪🇺 Add support for [the EUies](https://rickies.co/euies)
+-   🔗 Add copy URLs to [Bill of Rickies versions](https://rickies.co/billof) and even to each individual rule
 -   Improve thumbnail and hero images, no longer being the same asset
 -   Fix tab switching when analytics was blocked
 

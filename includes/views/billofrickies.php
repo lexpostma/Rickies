@@ -30,7 +30,10 @@ if (isset($triple_j)) {
 	echo ' charter ';
 }
 ?>">
-	<p id="document_date"><?= $current_selection['date_string'] ?></p>
+	<p class="document_date">
+		<span id="document_date"><?= $current_selection['date_string'] ?></span>
+		<?= copy_url_button('') ?>
+	</p>
 	<h1 id="document_title"><?= $head_custom['title'] ?></h1>
 
 <?php
@@ -47,7 +50,7 @@ foreach ($rules__array as $type => $rules) {
 			echo '" id="rule' . $rule['id'] . '" ';
 			echo ' data-start-date="' . $rule['date_start'] . '" ';
 			echo ' data-end-date="' . $rule['date_end'] . '" ';
-			echo '>' . $rule['rule'] . '</div>';
+			echo '>' . $rule['rule'] . copy_url_button('#rule' . $rule['id']) . '</div>';
 		}
 	} else {
 		$i = 0;
@@ -85,7 +88,8 @@ foreach ($rules__array as $type => $rules) {
 				$rule['date_end'] .
 				'"
 				>' .
-				$rule['rule'];
+				$rule['rule'] .
+				copy_url_button('#rule' . $rule['id']);
 
 			switch ($rule['section']) {
 				case 'Rules':

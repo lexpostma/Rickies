@@ -1,4 +1,4 @@
-@use "variables" as var;
+@use 'variables' as var;
 
 main {
 	// Slightly wider than readability, due to paper's large padding
@@ -184,7 +184,8 @@ main {
 	}
 }
 
-#document_date {
+.document_date {
+	position: relative;
 	text-align: center;
 	margin: 5px 0 22px;
 }
