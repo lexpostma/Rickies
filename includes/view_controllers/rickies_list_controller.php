@@ -46,7 +46,7 @@ Sometimes on Connected with the Triple J at Relay FM.';
 		case 'EUies':
 			$head_custom['title'] = 'The EUies';
 			$head_custom['description'] =
-				'What will Apple change next to comply with the European Union’s Digital Markets Act?';
+				'Turn regulation into a game. What will Apple change next to comply with the European Union’s Digital Markets Act?';
 			$head_custom['image'] = domain_url() . '/images/seo/hero-euies.jpg';
 			$rickies_events__params['filterByFormula'] = "AND( Published = TRUE(), Special = 'EUies' )";
 			break;
