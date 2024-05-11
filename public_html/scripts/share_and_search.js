@@ -92,7 +92,11 @@ function open_share_sheet() {
 // Share buttons on each rule and bill version, to put a direct link in the clipboard
 function copy_direct_url_to_clipboard(text, url = true) {
 	if (url) {
-		text = window.location.href.substr(0, window.location.href.indexOf('#')) + text;
+		if (window.location.href.indexOf('#') > -1) {
+			text = window.location.href.substr(0, window.location.href.indexOf('#')) + text;
+		} else {
+			text = window.location.href + text;
+		}
 	}
 	navigator.clipboard.writeText(text);
 }
