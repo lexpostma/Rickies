@@ -200,7 +200,7 @@ if (!isset($triple_j)) { ?>
 
 <p class="bill_footer">This is a living document. The One True Copy of <span id="disclaimer_title"><?= $head_custom[
 	'title'
-] ?></span> is in the Connected Google&nbsp;Doc.</p>
+] ?></span> is in the Connected Notion&nbsp;document.</p>
 <p class="bill_footer">Looking for <a href="/charter">The Pickies Charter</a>?</p>
 
 <?php } else { ?>
