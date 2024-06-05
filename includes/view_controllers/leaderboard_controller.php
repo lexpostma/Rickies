@@ -335,13 +335,15 @@ foreach ($hosts_data__array as $host) {
 	if (
 		strpos($set['title'], 'Mega Chairman') !== false ||
 		strpos($set['title'], 'Consolidated Champion') !== false ||
-		(strpos($set['title'], 'Shindig King') && strpos($set['title'], 'Admiral Pickerton'))
+		strpos($set['title'], 'Ricky Benchman') !== false ||
+		(strpos($set['title'], 'Apple Park Prince') && strpos($set['title'], 'Admiral Pickerton'))
 	) {
 		// Combined winner
 		$set['winner'] = 2;
 	} elseif (
 		strpos($set['title'], 'chairman') !== false ||
 		strpos($set['title'], 'Shindig King') ||
+		strpos($set['title'], 'Apple Park Prince') ||
 		strpos($set['title'], 'Admiral Pickerton')
 	) {
 		// Single winner
