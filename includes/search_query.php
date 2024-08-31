@@ -126,8 +126,14 @@ if (isset($_GET['rickies_event'])) {
 		case 'annual':
 			$pick_filter['filter_other']['rickies_event'] = '{Rickies type}="annual"';
 			break;
+		case 'annual-3':
+			$pick_filter['filter_other']['rickies_event'] = 'AND({Rickies type}="annual", {Rickies in last 3}<=3)';
+			break;
 		case 'keynote':
 			$pick_filter['filter_other']['rickies_event'] = '{Rickies type}="keynote"';
+			break;
+		case 'keynote-3':
+			$pick_filter['filter_other']['rickies_event'] = 'AND({Rickies type}="keynote", {Rickies in last 3}<=3)';
 			break;
 		case 'wwdc':
 			$pick_filter['filter_other']['rickies_event'] = '{Event type}="WWDC"';
@@ -142,6 +148,9 @@ if (isset($_GET['rickies_event'])) {
 		default:
 			$pick_filter['filter_other']['rickies_event'] = 'URL="' . $_GET['rickies_event'] . '"';
 			break;
+	}
+	if ($_GET['rickies_event'] !== '') {
+		$pick_filter['filter_event_value'] = $_GET['rickies_event'];
 	}
 }
 

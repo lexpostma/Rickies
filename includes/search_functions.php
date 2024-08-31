@@ -324,7 +324,9 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 				$event_select = [
 					'annual' => emoji_select_spacing('📆') . 'Annual Rickies',
 					'keynote' => emoji_select_spacing('📽') . 'Keynote Rickies',
-					'WWDC' => emoji_select_spacing('💻') . 'WWDC Rickies',
+					'annual-3' => emoji_select_spacing('📆') . 'Last 3 Annual Rickies',
+					'keynote-3' => emoji_select_spacing('📽') . 'Last 3 Keynote Rickies',
+					'wwdc' => emoji_select_spacing('💻') . 'WWDC Rickies',
 					'ungraded' => emoji_select_spacing('🟠') . 'Ungraded Rickies',
 					'euies' => emoji_select_spacing('🇪🇺') . 'EUies',
 				];
@@ -346,7 +348,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 					$output .= '<option value="' . strtolower($value) . '" ';
 					if (
 						key_exists('rickies_event', $user_input['filter_other']) &&
-						strpos($user_input['filter_other']['rickies_event'], $value) !== false
+						$user_input['filter_event_value'] == $value
 					) {
 						$output .= 'selected';
 					}
@@ -358,7 +360,7 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 					$output .= '<option value="' . strtolower($value) . '" ';
 					if (
 						key_exists('rickies_event', $user_input['filter_other']) &&
-						strpos($user_input['filter_other']['rickies_event'], $value) !== false
+						$user_input['filter_event_value'] == $value
 					) {
 						$output .= 'selected';
 					}
