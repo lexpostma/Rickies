@@ -27,7 +27,7 @@ if ($environment !== 'production') {
 <meta name="description" content="<?= $head['description'] ?>" />
 <meta name="keywords" content="<?= implode(',', $head['keywords']) ?>" />
 <meta name="author" content="<?= $head['author'] ?>" />
-<meta name="copyright" content="Copyright © <?= date('Y') ?> by <?= $head['author'] ?> and Relay FM" />
+<meta name="copyright" content="Copyright © <?= date('Y') ?> by <?= $head['author'] ?> and Relay" />
 <?php if ($environment !== 'production' || isset($previewing_content)) {
 	// Do not index if it's not production, or if you're previewing a Rickies
 	echo '<meta name="robots" content="noindex,nofollow" />';

@@ -39,7 +39,7 @@ if (isset($rickies_filter)) {
 		case 'Pickies':
 			$head_custom['title'] = 'The Pickies';
 			$head_custom['description'] = 'Apple predictions special with fractions, lightning, and bravery.
-Sometimes on Connected with the Triple J at Relay FM.';
+Sometimes on Connected with the Triple J at Relay.';
 			$head_custom['image'] = domain_url() . '/images/seo/hero-pickies.jpg';
 			$rickies_events__params['filterByFormula'] = "AND( Published = TRUE(), Special = 'Pickies' )";
 			break;
@@ -71,7 +71,7 @@ if (isset($auto_select_rickies)) {
 if (!isset($triple_j) && (!isset($rickies_filter) or $rickies_filter != 'EUies')) {
 	$trophy_asset = 'rickies';
 	$hero_title = '<h1>The Rickies</h1>';
-	$hero_tag = '<p>Predictions with risk, flexing, and passion. <br />On Connected at Relay FM.</p>';
+	$hero_tag = '<p>Predictions with risk, flexing, and passion. <br />On Connected at Relay.</p>';
 	$introduction =
 		'<p>The Rickies are the prediction draft episodes of the <a target="_blank" href="' .
 		$head_defaults['site_connected'] .
@@ -81,11 +81,11 @@ if (!isset($triple_j) && (!isset($rickies_filter) or $rickies_filter != 'EUies')
 		$head_defaults['site_relay'] .
 		'" ' .
 		$head_defaults['site_relay_goat'] .
-		'>Relay FM</a>. Every year and every Apple event, Myke Hurley, Stephen Hackett, and Federico Viticci try to predict what Apple will announce next. Over the course of the show, the hosts have relied on <a href="/billof">The Bill of Rickies</a> to keep the record straight. Some predictions are risky, some are just to flex, most are formed with passion.</p>';
+		'>Relay</a>. Every year and every Apple event, Myke Hurley, Stephen Hackett, and Federico Viticci try to predict what Apple will announce next. Over the course of the show, the hosts have relied on <a href="/billof">The Bill of Rickies</a> to keep the record straight. Some predictions are risky, some are just to flex, most are formed with passion.</p>';
 } elseif ($rickies_filter == 'EUies') {
 	$trophy_asset = 'euies';
 	$hero_title = '<h1>The EUies</h1>';
-	$hero_tag = '<p>Predictions with regulation, compliance, and law making. <br />On Connected at Relay FM.</p>';
+	$hero_tag = '<p>Predictions with regulation, compliance, and law making. <br />On Connected at Relay.</p>';
 	$introduction =
 		'<p>After Apple released its proposed solution to comply with the European Union’s Digital Markets Act, the boys over on the <a target="_blank" href="' .
 		$head_defaults['site_connected'] .
@@ -95,11 +95,11 @@ if (!isset($triple_j) && (!isset($rickies_filter) or $rickies_filter != 'EUies')
 		$head_defaults['site_relay'] .
 		'" ' .
 		$head_defaults['site_relay_goat'] .
-		'>Relay FM</a>, started cooking something fun.</p><p>In true Connected fashion, Federico, Myke, and Stephen are now somewhat regularly making predictions of what they think Apple needs to change next in its DMA response. A real Rickies-style segment of the show, turning regulation into a game. </p>';
+		'>Relay</a>, started cooking something fun.</p><p>In true Connected fashion, Federico, Myke, and Stephen are now somewhat regularly making predictions of what they think Apple needs to change next in its DMA response. A real Rickies-style segment of the show, turning regulation into a game. </p>';
 } else {
 	$trophy_asset = 'pickies';
 	$hero_title = '<h1>The Pickies</h1>';
-	$hero_tag = '<p>Predictions with fractions, lightning, and bravery. <br />Sometimes on Connected at Relay FM.</p>';
+	$hero_tag = '<p>Predictions with fractions, lightning, and bravery. <br />Sometimes on Connected at Relay.</p>';
 	$introduction =
 		'<p>The Pickies are the holiday special prediction draft episodes of the <a target="_blank" href="' .
 		$head_defaults['site_connected'] .
@@ -109,7 +109,7 @@ if (!isset($triple_j) && (!isset($rickies_filter) or $rickies_filter != 'EUies')
 		$head_defaults['site_relay'] .
 		'" ' .
 		$head_defaults['site_relay_goat'] .
-		'>Relay FM</a>. Some years and some WWDCs, Jason Snell, John Voorhees, and James Thomson take over and try to predict what Apple will announce next. The Triple J have relied on <a href="/charter">The Pickies Charter</a> to keep the record straight. Some predictions are almost correct, some are lightning fast, most are formed with bravery.</p>';
+		'>Relay</a>. Some years and some WWDCs, Jason Snell, John Voorhees, and James Thomson take over and try to predict what Apple will announce next. The Triple J have relied on <a href="/charter">The Pickies Charter</a> to keep the record straight. Some predictions are almost correct, some are lightning fast, most are formed with bravery.</p>';
 }
 include '../includes/data_controllers/event_data_controller.php';
 

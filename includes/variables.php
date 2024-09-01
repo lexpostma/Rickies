@@ -24,23 +24,13 @@ $head_defaults = [
 	'image' => domain_url() . '/images/seo/hero-rickies.jpg',
 	'canonical' => current_url(),
 	'author' => 'Lex Postma',
-	'company' => 'Relay FM',
+	'company' => 'Relay',
 	'description' => 'Apple predictions show with risk, flexing, and passion.
-On Connected at Relay FM.',
-	'keywords' => [
-		'Apple',
-		'podcast',
-		'Relay FM',
-		'Connected',
-		'Rickies',
-		'episode',
-		'fan site',
-		'predictions',
-		'awards',
-	],
+On Connected at Relay.',
+	'keywords' => ['Apple', 'podcast', 'Relay', 'Connected', 'Rickies', 'episode', 'fan site', 'predictions', 'awards'],
 	'site_relay' => 'https://relay.fm/',
 	'site_relay_goat' =>
-		' data-goatcounter-click="relay.fm" title="Visit Relay FM" data-goatcounter-referrer="' . current_url() . '" ',
+		' data-goatcounter-click="relay.fm" title="Visit Relay" data-goatcounter-referrer="' . current_url() . '" ',
 	'site_connected' => 'https://relay.fm/connected',
 	'site_connected_goat' =>
 		' data-goatcounter-click="relay.fm/connected" title="Visit Connected" data-goatcounter-referrer="' .

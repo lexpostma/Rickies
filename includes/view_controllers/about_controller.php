@@ -54,13 +54,13 @@ $resources = [
 	[
 		'label1' => 'A Brief History of The Prompt and Connected',
 		'label3' =>
-			'By Stephen Hackett<br />Published at MacStories on <time datetime="2019-04-18">April 18, 2019</time>',
+			'By Stephen Hackett<br />Published on MacStories on <time datetime="2019-04-18">April 18, 2019</time>',
 		'url' => 'https://www.macstories.net/stories/a-brief-history-of-the-prompt-and-connected/',
 		'img_url' => '/images/about/the-prompt.png',
 	],
 	[
 		'label1' => 'Listen to Connected',
-		'label2' => 'The podcast on Relay FM',
+		'label2' => 'The podcast on Relay',
 		// 'label3' => '',
 		'url' => 'https://relay.fm/connected',
 		'img_url' => '/images/connected-artwork.jpg',
@@ -142,5 +142,5 @@ $introduction = file_get_contents($incl_path . 'about.html');
 $head_custom = [
 	'title' => 'About Rickies.co',
 	'description' =>
-		'Rickies.co is a tribute to the Rickies prediction draft episodes of the Connected podcast on Relay FM. Designed and built by Lex Postma.',
+		'Rickies.co is a tribute to the Rickies prediction draft episodes of the Connected podcast on Relay. Designed and built by Lex Postma.',
 ];

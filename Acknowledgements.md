@@ -4,7 +4,7 @@ Credits where credit’s due.
 
 ## Content
 
-Obviously, 99% of the content on Rickies.co comes from the [Connected](https://relay.fm/connected) podcast on [Relay FM](https://relay.fm). The website is meant as a tribute to the great show that Federico Viticci, Myke Hurley, and Stephen Hackett have hosted for many years.
+Obviously, 99% of the content on Rickies.co comes from the [Connected](https://relay.fm/connected) podcast on [Relay](https://relay.fm). The website is meant as a tribute to the great show that Federico Viticci, Myke Hurley, and Stephen Hackett have hosted for many years.
 
 [Airtable](https://airtable.com) is used as the backend of this web application. All data and most images are managed and hosted there.
 

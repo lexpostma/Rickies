@@ -317,7 +317,7 @@ function host_item_bundle($host_event_data, $event_type, $triple_j = false)
 }
 
 // Define SEO description
-$description = 'The predictions show of Connected on Relay FM. ';
+$description = 'The predictions show of Connected on Relay. ';
 if (!isset($triple_j)) {
 	$host_string = 'Myke, Stephen, and Federico';
 	$annual_chairman = 'Annual Chairman';
