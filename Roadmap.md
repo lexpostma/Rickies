@@ -23,6 +23,7 @@ Features I plan to add to the website.
 -   [ ] Improve support for ties (earlier predictions did not always have winners).
 -   [x] Add web app splash screens.
 -   [x] Support for holiday specials.
+-   [x] Interactive support for Pickies.
 -   [ ] Interactive support for Pickies with custom scoring rules.
 -   [ ] Add pinch to zoom to the chairman timeline.
 -   [x] Add copy URL to rules
