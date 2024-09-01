@@ -1846,7 +1846,6 @@ li.pick_item p.pick span.points {
   font-weight: 600;
   position: relative;
   border-radius: 50%;
-  overflow: hidden;
   background: var(--connected-yellow);
 }
 li.pick_item p.pick span.points.flexy {
@@ -1857,6 +1856,12 @@ li.pick_item p.pick span.points.correct {
 }
 li.pick_item p.pick span.points.correct.flexy {
   background: var(--connected-blue);
+}
+li.pick_item p.pick span.points.correct.condition1 {
+  background: linear-gradient(90deg, var(--connected-green) 33%, var(--relay-blue) 34%);
+}
+li.pick_item p.pick span.points.correct.condition2 {
+  background: linear-gradient(90deg, var(--connected-green) 66%, var(--relay-blue) 67%);
 }
 li.pick_item p.pick span.points.wrong {
   background: var(--connected-red);
@@ -1870,7 +1875,7 @@ li.pick_item p.pick span.points.long {
   border-radius: 1.3rem;
   width: 2.6rem;
 }
-li.pick_item p.pick span.points.risky.correct:after, li.pick_item p.pick span.points.risky.wrong:after {
+li.pick_item p.pick span.points.risky.correct.condition3:after, li.pick_item p.pick span.points.risky.wrong:after {
   content: "";
   border-radius: 50%;
   border: 1px solid;
@@ -1880,7 +1885,7 @@ li.pick_item p.pick span.points.risky.correct:after, li.pick_item p.pick span.po
   bottom: -3px;
   left: -3px;
 }
-li.pick_item p.pick span.points.risky.correct:after {
+li.pick_item p.pick span.points.risky.correct.condition3:after {
   border-color: var(--connected-green);
 }
 li.pick_item p.pick span.points.risky.wrong:after {

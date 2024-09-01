@@ -464,6 +464,10 @@ function pick_item($data, $interactive = false, $view = [])
 	if ($data['status_later'] && in_array('ahead_of_its_time', $view)) {
 		$output .= ' eventually';
 	}
+	if ($data['type'] == 'Risky' && $data['risky_conditions']) {
+		$output .= ' condition' . $data['risky_conditions'];
+	}
+
 	// Make the circle elongated, to fit 3 decimals
 	if ($decimal_count >= 2 && $data['type'] !== 'Flexy') {
 		$output .= ' long';

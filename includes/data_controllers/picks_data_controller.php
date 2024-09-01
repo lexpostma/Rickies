@@ -35,6 +35,7 @@ do {
 				'round_number' => check_key('Round set', $fields),
 				'score_points' => check_key('Scoring points', $fields),
 				'brag_points' => check_key('Bragging points', $fields),
+				'risky_conditions' => check_key('Risky conditions correct', $fields),
 				'points' => check_key('Points', $fields),
 				'factor' => check_key('Factor', $fields),
 				'note' => check_key('Special remark', $fields),

@@ -54,7 +54,7 @@ li.pick_item {
 			font-weight: 600;
 			position: relative;
 			border-radius: 50%;
-			overflow: hidden;
+			// overflow: hidden; // No 'overflow: hidden' to support the Risky points ring
 			&.flexy {
 				border-radius: var(--corner-radius);
 			}
@@ -65,6 +65,12 @@ li.pick_item {
 				background: var(--connected-green);
 				&.flexy {
 					background: var(--connected-blue);
+				}
+				&.condition1 {
+					background: linear-gradient(90deg, var(--connected-green) 33%, var(--relay-blue) 34%);
+				}
+				&.condition2 {
+					background: linear-gradient(90deg, var(--connected-green) 66%, var(--relay-blue) 67%);
 				}
 			}
 			&.wrong {
@@ -81,7 +87,7 @@ li.pick_item {
 			}
 
 			// Risky points ring
-			&.risky.correct,
+			&.risky.correct.condition3,
 			&.risky.wrong {
 				&:after {
 					content: '';
@@ -94,7 +100,7 @@ li.pick_item {
 					left: -3px;
 				}
 			}
-			&.risky.correct:after {
+			&.risky.correct.condition3:after {
 				border-color: var(--connected-green);
 			}
 			&.risky.wrong:after {
