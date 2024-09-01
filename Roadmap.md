@@ -22,8 +22,10 @@ Features I plan to add to the website.
 -   [x] Improve support for coin flips (heads/tails, best of 3, flip for which place, etc).
 -   [ ] Improve support for ties (earlier predictions did not always have winners).
 -   [x] Add web app splash screens.
--   [x] Support for holiday specials
--   [ ] Interactive support for Pickies with custom scoring rules
--   [ ] Add pinch to zoom to the chairman timeline
+-   [x] Support for holiday specials.
+-   [ ] Interactive support for Pickies with custom scoring rules.
+-   [ ] Add pinch to zoom to the chairman timeline.
+-   [x] Add copy URL to rules
+-   [ ] Add copy URL to picks
 
 _See the [changelog](Changelog.md) with everything that’s already implemented._
