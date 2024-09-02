@@ -106,11 +106,11 @@ if (array_key_exists('Lightning Round', $picks_data__array)) { ?>
 <?php }
 if (array_key_exists('EUies', $picks_data__array)) { ?>
 			<a class="menu_item js_link"
-				id="menu_euies_round"
+				id="menu_euies"
 				title="EUies"
 				data-goatcounter-click="Show EUies"
 				data-goatcounter-referrer="<?= current_url() ?>"
-				onclick="navigate_section('lightning_round');"><span class="need_space--xs">The </span>EUies</a>
+				onclick="navigate_section('euies');"><span class="need_space--xs">The </span>EUies</a>
 <?php }
 if (
 	array_key_exists('Rickies', $picks_data__array) ||
