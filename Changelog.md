@@ -5,15 +5,15 @@ _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the
 ## 1 September 2024 v2.6
 
 -   🔮 Add support for the new ‘ahead of its time’ bonus rounds according to the [updated Bill of Rickies](https://rickies.co/billof/keynote-sep-2024#rule186)
--   📊 Add more stats on ‘ahead of its time’ predictions on the leaderboard
+-   📊 Add more stats on ‘ahead of its time’ predictions on the [leaderboard](https://rickies.co/leaderboard)
 -   3️⃣ Add option to filter the archive by last 3 [Keynote](https://rickies.co/?search=&pick_type%5B%5D=regular&pick_type%5B%5D=risky&rickies_event=keynote-3&ahead_of_its_time=on#results) and [Annual](https://rickies.co/?search=&pick_type%5B%5D=regular&pick_type%5B%5D=risky&rickies_event=annual-3&ahead_of_its_time=on#results) Rickies
     -   Add [editor’s note](https://rickies.co/billof/keynote-sep-2024#rule186) to Bill of Rickies with links to said filters, combined with filters for ‘ahead of its time’ on only regular and Risky picks. This should give an indication on how many bonus rounds are available
--   🔗 Add copy URLs to each individual prediction
+-   🔗 Add copy URLs to each [individual prediction](https://rickies.co/keynote-jun-2019#flexies-pick353)
 -   🌟 Add a mark on picks in the archive when they have been used for a bonus round already, and are not eligible during next Rickies, along with a direct link to the resulting bonus pick
 -   Add support for the new Risky pick scoring based on the [new conditions rule](https://rickies.co/billof/keynote-sep-2024#rule188)
-    -   Also works in interactive mode, just keep tapping the pick to cycle through scores from -1 to 2.
--   Removed the “FM” from “Relay FM” to match the updated brand.
--   Fix navigation tab on EUies details page.
+    -   Also works in interactive mode, just keep tapping the pick to cycle through scores from -1 to 2
+-   Removed the “FM” from “Relay FM” to match the updated brand
+-   Fix navigation tab on EUies details page
 
 ## 28 March 2024 v2.5
 
