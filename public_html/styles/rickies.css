@@ -1916,10 +1916,12 @@ li.pick_item .note ul + p,
 li.pick_item .note p + p {
   margin-top: 4px;
 }
+li.pick_item.interactive, li.pick_item.target, li.pick_item:target {
+  border-radius: var(--element-corner-radius);
+}
 li.pick_item.interactive {
   cursor: pointer;
   background: var(--element-neutral-color);
-  border-radius: var(--element-corner-radius);
   transition: 300ms background ease-in-out;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -1952,7 +1954,7 @@ li.pick_item.no_results {
 li.pick_item.manual {
   background-color: rgba(239, 123, 0, 0.15);
 }
-li.pick_item:target {
+li.pick_item.target, li.pick_item:target {
   background: var(--element-active-color);
   -webkit-animation: pick_highlight 10s linear forwards;
   animation: pick_highlight 10s linear forwards;
@@ -1962,10 +1964,16 @@ li.pick_item:hover button.copy_direct_url {
   opacity: 0.3;
 }
 li.pick_item button.copy_direct_url {
-  left: -30px;
   position: absolute;
   top: 0;
+  right: 0px;
   opacity: 0;
+}
+@media screen and (min-width: 768px) {
+  li.pick_item button.copy_direct_url {
+    right: unset;
+    left: -30px;
+  }
 }
 li.pick_item button.copy_direct_url:hover {
   opacity: 0.6;

@@ -134,10 +134,14 @@ li.pick_item {
 			margin-top: 4px;
 		}
 	}
+	&.interactive,
+	&.target,
+	&:target {
+		border-radius: var(--element-corner-radius);
+	}
 	&.interactive {
 		cursor: pointer;
 		background: var(--element-neutral-color);
-		border-radius: var(--element-corner-radius);
 		transition: var.$hover-duration background ease-in-out;
 		-webkit-user-select: none;
 		-ms-user-select: none;
@@ -171,6 +175,7 @@ li.pick_item {
 	&.manual {
 		background-color: rgba(239, 123, 0, 0.15);
 	}
+	&.target,
 	&:target {
 		background: var(--element-active-color);
 		-webkit-animation: pick_highlight 10s linear forwards;
@@ -185,9 +190,14 @@ li.pick_item {
 	--share-link-background: var(--link-color);
 
 	button.copy_direct_url {
-		left: -30px;
 		position: absolute;
 		top: 0;
+		right: 0px;
+
+		@media screen and (min-width: var.$break-md) {
+			right: unset;
+			left: -30px;
+		}
 
 		opacity: 0;
 		&:hover {

@@ -27,6 +27,6 @@ Features I plan to add to the website.
 -   [ ] Interactive support for Pickies with custom scoring rules.
 -   [ ] Add pinch to zoom to the chairman timeline.
 -   [x] Add copy URL to rules
--   [ ] Add copy URL to picks
+-   [x] Add copy URL to picks
 
 _See the [changelog](Changelog.md) with everything that’s already implemented._

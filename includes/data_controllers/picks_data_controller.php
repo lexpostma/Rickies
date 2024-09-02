@@ -26,6 +26,7 @@ do {
 
 			$picks_data__array_temp = [
 				'id' => check_key('id', $fields),
+				'anchor' => check_key('URL anchor of pick', $fields),
 				'pick' => check_key('Pick', $fields),
 				'type' => check_key('Type', $fields),
 				'type_group' => check_key('Type group', $fields),

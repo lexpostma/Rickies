@@ -408,13 +408,13 @@ function pick_item($data, $interactive = false, $view = [])
 {
 	if ($interactive) {
 		$output =
-			'<li id="pick_' .
+			'<li id="pick' .
 			$data['id'] .
 			'" class="pick_item interactive" onclick="update_pick(this)" data-goatcounter-click="Interactive picks" title="Update pick state" data-goatcounter-referrer=' .
 			current_url() .
 			'>';
 	} else {
-		$output = '<li id="pick_' . $data['id'] . '" class="pick_item">';
+		$output = '<li id="pick' . $data['id'] . '" class="pick_item">';
 	}
 
 	// In the search/archive view, show link to Rickies + the round it was picked in
@@ -439,9 +439,9 @@ function pick_item($data, $interactive = false, $view = [])
 	}
 
 	// Define the pick label with copy button
-	$output .= '<p class="pick"><span class="label">' . $data['pick'] . '</span>';
+	// $output .= '<p class="pick"><span class="label">' . $data['pick'] . '</span>';
 	// TODO: Add copy button to picks
-	// '<p class="pick"><span class="label">' . $data['pick'] . copy_url_button('#pick_' . $data['id']) . '</span>';
+	$output .= '<p class="pick"><span class="label">' . $data['pick'] . copy_url_button($data['anchor']) . '</span>';
 
 	// Define the point score
 
@@ -549,7 +549,7 @@ function pick_item($data, $interactive = false, $view = [])
 		$output .= '</div>';
 	}
 
-	// $output .= copy_url_button('#pick_' . $data['id']);
+	// $output .= copy_url_button($data['anchor']);
 	$output .= '</li>';
 	return $output;
 }

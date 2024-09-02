@@ -2,12 +2,32 @@
 function get_anchor_from_url() {
 	var anchor = window.location.hash.substr(1);
 
+	if (anchor.includes('-')) {
+		// For picks, the menu and pick id are combined with a dash
+		// Here we split them and set the anchor for the menu, and a scroll_to to the pick
+		var scroll_to = anchor.split('-')[1];
+		anchor = anchor.split('-')[0];
+	}
+
 	if (anchor == '' || anchor == 'top' || anchor == 'results') {
 		var menu_items = document.getElementsByClassName('menu_item');
 		var first_item = menu_items[0].id.replace('menu_', '');
 		navigate_section(first_item, true);
 	} else {
 		navigate_section(anchor);
+	}
+
+	if (scroll_to) {
+		// Define element with ID
+		scroll_to = document.getElementById(scroll_to);
+		if (scroll_to) {
+			// After delay scroll to element and add .target class
+			// Add delay because browser anchor and navigation is being done first
+			setTimeout(function () {
+				scroll_to.classList.add('target');
+				scroll_to.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+			}, 50);
+		}
 	}
 }
 document.addEventListener('DOMContentLoaded', function (event) {
