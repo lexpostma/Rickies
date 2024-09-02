@@ -126,14 +126,16 @@ if (isset($_GET['rickies_event'])) {
 		case 'annual':
 			$pick_filter['filter_other']['rickies_event'] = '{Rickies type}="annual"';
 			break;
-		case 'annual-3':
-			$pick_filter['filter_other']['rickies_event'] = 'AND({Rickies type}="annual", {Rickies in last 3}<=3)';
+		case 'annual-' . $past_x_rickies:
+			$pick_filter['filter_other']['rickies_event'] =
+				'AND({Rickies type}="annual", {Rickies in last ' . $past_x_rickies . '}<=' . $past_x_rickies . ')';
 			break;
 		case 'keynote':
 			$pick_filter['filter_other']['rickies_event'] = '{Rickies type}="keynote"';
 			break;
-		case 'keynote-3':
-			$pick_filter['filter_other']['rickies_event'] = 'AND({Rickies type}="keynote", {Rickies in last 3}<=3)';
+		case 'keynote-' . $past_x_rickies:
+			$pick_filter['filter_other']['rickies_event'] =
+				'AND({Rickies type}="keynote", {Rickies in last ' . $past_x_rickies . '}<=' . $past_x_rickies . ')';
 			break;
 		case 'wwdc':
 			$pick_filter['filter_other']['rickies_event'] = '{Event type}="WWDC"';

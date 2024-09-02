@@ -87,4 +87,8 @@ $flexies_start = strtotime('2020-01-01');
 // Term "Bill of Rickies" was coined on episode #300
 $bill_start = strtotime('2020-06-17');
 
+// Define how far back the past X Rickies need to go for bonus picks
+// Used for filtering archive
+$past_x_rickies = '3';
+
 $connected_colors = ['green', 'yellow', 'orange', 'red', 'purple', 'blue'];
