@@ -320,6 +320,8 @@ function random($array, $disallowed_indeces = false)
 			$index = array_rand($array);
 		}
 
+		// TODO: Fix infinite loop if there are not indeces allowed
+
 		// Return an array with
 		// 0. value of the array on random index
 		// 1. and the chosen index
