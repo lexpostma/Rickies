@@ -594,13 +594,20 @@ function pick_item_bundle($data, $interactive = false, $view = [])
 					$score['percentage'] = round_if_decimal(($score['correct'] / $score['count']) * 100);
 				}
 			} else {
-				if (!in_array('search', $view) && $type == 'Rickies') {
-					$pick_items .= '<li class="pick_item no_results">Waiting for ' . $host . '’s first pick…</li>';
-				} elseif (!in_array('search', $view) && $type == 'Flexies') {
-					$pick_items .= '<li class="pick_item no_results">Waiting for ' . $host . '’s Flexies…</li>';
-				} else {
+				if (in_array('search', $view)) {
 					$pick_items .=
 						'<li class="pick_item no_results">No ' . $type . ' about this predicted by ' . $host . '.</li>';
+				} else {
+					if (in_array('fixed_picks', $view)) {
+						$pick_items .= '<li class="pick_item no_results">No ' . $type . ' from ' . $host . '</li>';
+					} else {
+						if ($type == 'Flexies') {
+							$pick_items .= '<li class="pick_item no_results">Waiting for ' . $host . '’s Flexies…</li>';
+						} else {
+							$pick_items .=
+								'<li class="pick_item no_results">Waiting for ' . $host . '’s first pick…</li>';
+						}
+					}
 				}
 			}
 

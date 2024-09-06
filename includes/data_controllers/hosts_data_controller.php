@@ -9,6 +9,8 @@ $memoji_used_index = [
 	'sad' => [],
 ];
 
+// echo '<pre>', var_dump($hosts_data__params), '</pre>';
+
 $hosts_data__request = $airtable->getContent('Hosts', $hosts_data__params);
 do {
 	$hosts_data__response = $hosts_data__request->getResponse();

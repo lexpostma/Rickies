@@ -28,6 +28,9 @@ $rickies_event_data_set = 'details';
 include '../includes/data_controllers/event_data_controller.php';
 // echo '<pre>', var_dump($rickies_events__array), '</pre>';
 
+$rickies_data = reset($rickies_events__array);
+// echo '<pre>', var_dump($rickies_data), '</pre>';
+
 // Get host personal data
 $hosts_data__params['fields'] = [
 	'First name',
@@ -38,16 +41,22 @@ $hosts_data__params['fields'] = [
 	'Flexy winner title (flat)',
 ];
 
-if (!isset($triple_j)) {
-	$hosts_data__params['filterByFormula'] = 'AND( {Host type} = "Official" )';
-} else {
-	$hosts_data__params['filterByFormula'] = 'AND( {Host type} = "Triple J" )';
+// Use the Round Robin to define the participants of this event
+// echo '<pre>', var_dump($rickies_data['ranking']['robin']), '</pre>';
+$hosts_data__params['filterByFormula'] = 'AND( OR( ';
+$hosts_data_param_round_robin = [];
+$picks_data_param_round_robin = [];
+
+foreach ($rickies_data['ranking']['robin'] as $host_name) {
+	array_push($hosts_data_param_round_robin, '{First name} = "' . $host_name . '"');
+	$picks_data_param_round_robin[$host_name] = [];
 }
+$hosts_data__params['filterByFormula'] .= implode(', ', $hosts_data_param_round_robin);
+$hosts_data__params['filterByFormula'] .= ' ) )';
+// unset($round_robin_hosts_param);
 
 include '../includes/data_controllers/hosts_data_controller.php';
 // echo '<pre>', var_dump($hosts_data__array), '</pre>';
-
-$rickies_data = reset($rickies_events__array);
 
 // Merge the Event array and the Host array
 foreach ($rickies_data['hosts'] as $first_name => $host_data) {
@@ -60,6 +69,7 @@ foreach ($rickies_data['hosts'] as $first_name => $host_data) {
 }
 
 // echo '<pre>', var_dump($rickies_data), '</pre>';
+// echo '<pre>', var_dump($picks_data_param_round_robin), '</pre>';
 
 // Get picks data
 $picks_data__params = [

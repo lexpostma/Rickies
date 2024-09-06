@@ -2,17 +2,33 @@
 
 // Rickies picks _data_ controller
 
-if (!isset($triple_j)) {
+// Create initial, empty, arrays to define starting order and add picks to
+// Also used to compare against at the end
+if (isset($picks_data_param_round_robin)) {
+	// Use hosts from former query, probably event details with round robin
+	// Most flexible, when there's new hosts or guests on the show
 	$picks_data__array = $picks_data__empty = [
-		'Rickies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
-		'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
-		'EUies' => ['Federico' => [], 'Myke' => [], 'Stephen' => []],
+		'Rickies' => $picks_data_param_round_robin,
+		'Flexies' => $picks_data_param_round_robin,
+		'EUies' => $picks_data_param_round_robin,
+		'Pickies' => $picks_data_param_round_robin,
+		'Lightning Round' => $picks_data_param_round_robin,
 	];
 } else {
-	$picks_data__array = $picks_data__empty = [
-		'Pickies' => ['Jason' => [], 'John' => [], 'James' => []],
-		'Lightning Round' => ['Jason' => [], 'John' => [], 'James' => []],
-	];
+	// Fall back to predefined hosts
+	// Used for archive and search
+	if (!isset($triple_j)) {
+		$picks_data__array = $picks_data__empty = [
+			'Rickies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
+			'Flexies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
+			'EUies' => ['Myke' => [], 'Federico' => [], 'Stephen' => []],
+		];
+	} else {
+		$picks_data__array = $picks_data__empty = [
+			'Pickies' => ['Jason' => [], 'John' => [], 'James' => []],
+			'Lightning Round' => ['Jason' => [], 'John' => [], 'James' => []],
+		];
+	}
 }
 
 $picks_data__request = $airtable->getContent('Picks', $picks_data__params);

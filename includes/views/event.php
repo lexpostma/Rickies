@@ -152,7 +152,15 @@ if (!isset($triple_j)) {
 }
 echo '</script>';
 
-echo pick_item_bundle($picks_data__array, $rickies_data['interactive'], ['ahead_of_its_time', 'amendment', 'buzzkill']);
+$pick_display = ['ahead_of_its_time', 'amendment', 'buzzkill'];
+if (
+	$rickies_data['status'] =
+		'Completed' || ($rickies_data['status'] = 'Ungraded' || ($rickies_data['status'] = 'Preview'))
+) {
+	array_push($pick_display, 'fixed_picks');
+}
+
+echo pick_item_bundle($picks_data__array, $rickies_data['interactive'], $pick_display);
 
 if (
 	array_key_exists('Rickies', $picks_data__array) ||

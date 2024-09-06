@@ -16,6 +16,7 @@ foreach ($rickies_data['hosts'] as $host) {
 		'Jason' => 'Document Maintainer',
 		'John' => 'One True John',
 		'James' => 'The Dicy One',
+		'ChatGPT' => 'AI Competition',
 	];
 
 	// Define array
