@@ -491,6 +491,8 @@ function pick_item($data, $interactive = false, $view = [])
 		$output .= '+' . $data['points'];
 	} elseif ($data['points'] > 0) {
 		$output .= $data['points'];
+	} elseif ($data['points'] == 0) {
+		$output .= '0';
 	} elseif ($data['points'] == '') {
 		$output .= '—';
 	} else {
