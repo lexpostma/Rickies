@@ -1031,6 +1031,9 @@ header.home .hero_content img.trophy:active {
 header.home .hero_content img.trophy--dark {
   display: none;
 }
+header.home .hero_content p + p {
+  margin-top: 16px;
+}
 @media (prefers-color-scheme: dark) {
   header.home .hero_content img.trophy--dark {
     display: block;

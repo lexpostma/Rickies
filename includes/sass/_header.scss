@@ -163,6 +163,9 @@ header {
 			img.trophy--dark {
 				display: none;
 			}
+			p + p {
+				margin-top: 16px;
+			}
 			@media (prefers-color-scheme: dark) {
 				img.trophy--dark {
 					display: block;
