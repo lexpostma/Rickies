@@ -18,9 +18,9 @@
 		<div class="hero_heading">
 			<?= $hero_title, $hero_tag ?>
 			<?php if (date('m') == '9') {
-   	echo '<p>🎗️ September is Childhood Cancer Awareness Month.<br/>Let’s come together as the Relay community and <a title="Donate to St. Jude" data-goatcounter-title="Donate to St. Jude" data-goatcounter-referrer="' .
-   		current_url() .
-   		'" target="_blank" href="https://relay.experience.stjude.org/">donate to St. Jude</a>.</p>';
+   	echo goat_referral(
+   		'<p>🎗️ September is Childhood Cancer Awareness Month.<br/><a title="Donate to St. Jude" target="_blank" href="http://relay.fm/stjude">Donate to St. Jude Children’s Research Hospital</a></p>'
+   	);
    } ?>
 		</div>
 	</div>
