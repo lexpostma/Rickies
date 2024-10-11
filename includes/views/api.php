@@ -11,7 +11,7 @@
 	<p>The Rickies API gives you access to different data points from the Rickies. The first one can be used via <code><a href="<?= domain_url() ?>/api/chairmen.json" target="_blank">/api/chairmen.json</a></code> which allows you to fetch who the current chairmen are. The response is formatted in JSON and looks like this:</p>
 	<pre><?= json_encode($api__array, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) ?></pre>
 	<p>More APIs for other data points could come in the future.</p>
-	<p>Are you using the API, or want to use it but are missing data? Please get in touch on Mastodon <a href="https://mastodon.social/lexpostma" target="_blank" data-goatcounter-click="https://mastodon.social/lexpostma" title="Go to @lexpostma">@lexpostma</a>, via <a href="mailto:rickies@lexpostma.me" data-goatcounter-click="Feedback email" title="Email me">email</a> or in the Relay members <a href="https://discordapp.com/users/824348644509483028">Discord</a>.</p>
+	<p>Are you using the API, or want to use it but are missing data? Please get in touch on Mastodon <a href="https://mastodon.social/@lexpostma" rel="me" target="_blank" data-goatcounter-click="https://mastodon.social/@lexpostma" title="Go to @lexpostma">@lexpostma</a>, via <a href="mailto:rickies@lexpostma.me" data-goatcounter-click="Feedback email" title="Email me">email</a> or in the Relay members <a href="https://discordapp.com/users/824348644509483028">Discord</a>.</p>
 </section>
 
 <section><?= list_item_bundle($api_consumers) ?></section>

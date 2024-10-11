@@ -35,8 +35,8 @@ if ($environment !== 'production') {
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href="<?= domain_url() ?>/sitemap.xml" />
 
-<!-- Mastodon -->
-<link rel="me" href="https://mastodon.social/@lexpostma"/>
+<!-- Mastodon link verification -->
+<link href="https://mastodon.social/@lexpostma" rel="me" />
 
 <!-- Open Graph protocol / Facebook -->
 <meta property="og:title" content="<?= $head['title'] ?>" />
