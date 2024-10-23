@@ -32,7 +32,7 @@ All available Rickies can be found on [the main overview](/).',
 		'Service Unavailable',
 		'The server is not ready to handle the request. Common causes are a server that is down for maintenance or that is overloaded.
 
-In this case it probably means that Airtable is down or under maintenance. [Check Airtable’s status](https://status.airtable.com) to be sure.',
+In the case of Rickies.co it usually means that the Airtable API is down or under maintenance. [Check Airtable’s status](https://status.airtable.com) to be sure.',
 	],
 	504 => [
 		'Gateway Timeout',
@@ -68,7 +68,7 @@ $head_custom = [
 	        </header>
 	        <section>
 	            <?= markdown($errors[$error_code][1]) ?>
-				<p><i>More about <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">HTTP response status codes</a> at Mozilla.</i></p>
+				<p><i><a href="https://stats.uptimerobot.com/YVZOQfDqN0">Check UptimeRobot</a> for the latest status of Rickies.co. More about <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">HTTP response status codes</a> at Mozilla.</i></p>
 	        </section>
 <?php
 include $incl_path . 'footer.php';
