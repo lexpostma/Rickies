@@ -2,11 +2,16 @@
 
 _Also check out the [roadmap](Roadmap.md) with features I’d like to add in the future._
 
+### 8 January 2025
+
+-   Tweaked the filter on past Annual Rickies to go back 4 events.
+    -   The Bill of Rickies says “[past 3 corresponding Rickies](https://rickies.co/billof/annual-2025#rule186)” but Annual Rickies are scored and predicted for past and future year in the same episode. That would mean that the just closed year is included too, but that felt wrong and was ignored in [Annual Rickies 2025](https://rickies.co/annual-2025) where a [pick from 2021](https://rickies.co/annual-2021#rickies-pick202) gave a bonus pick to Myke.
+
 ## 1 September 2024 v2.6
 
 -   🔮 Add support for the new ‘ahead of its time’ bonus rounds according to the [updated Bill of Rickies](https://rickies.co/billof/keynote-sep-2024#rule186)
 -   📊 Add more stats on ‘ahead of its time’ predictions on the [leaderboard](https://rickies.co/leaderboard)
--   3️⃣ Add option to filter the archive by last 3 [Keynote](https://rickies.co/?search=&pick_type%5B%5D=regular&pick_type%5B%5D=risky&rickies_event=keynote-3&ahead_of_its_time=on#results) and [Annual](https://rickies.co/?search=&pick_type%5B%5D=regular&pick_type%5B%5D=risky&rickies_event=annual-3&ahead_of_its_time=on#results) Rickies
+-   3️⃣ Add option to filter the archive by last 3 [Keynote](https://rickies.co/?search=&pick_type%5B%5D=regular&pick_type%5B%5D=risky&rickies_event=keynote-3&ahead_of_its_time=on#results) and [Annual](https://rickies.co/?search=&pick_type%5B%5D=regular&pick_type%5B%5D=risky&rickies_event=annual-4&ahead_of_its_time=on#results) Rickies
     -   Add [editor’s note](https://rickies.co/billof/keynote-sep-2024#rule186) to Bill of Rickies with links to said filters, combined with filters for ‘ahead of its time’ on only regular and Risky picks. This should give an indication on how many bonus rounds are available
 -   🔗 Add copy URLs to each [individual prediction](https://rickies.co/keynote-jun-2019#flexies-pick353)
 -   🌟 Add a mark on picks in the archive when they have been used for a bonus round already, and are not eligible during next Rickies, along with a direct link to the resulting bonus pick

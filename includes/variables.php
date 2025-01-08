@@ -51,7 +51,7 @@ if ($environment == 'production') {
 	$head_defaults['site_goatcounter'] = 'https://rickies.goatcounter.com';
 	$github = 'main';
 	// NOTE: Update for new releases
-	$refresh = 'v2.6.2';
+	$refresh = 'v2.6.3';
 } else {
 	$appIconDirectory = '/images/app-icons/' . $environment . '/';
 	$head_defaults['site_goatcounter'] = 'https://rickies-test.goatcounter.com';
@@ -89,6 +89,7 @@ $bill_start = strtotime('2020-06-17');
 
 // Define how far back the past X Rickies need to go for bonus picks
 // Used for filtering archive
-$past_x_rickies = '3';
+$past_x_keynote_rickies = '3';
+$past_x_annual_rickies = '4';
 
 $connected_colors = ['green', 'yellow', 'orange', 'red', 'purple', 'blue'];

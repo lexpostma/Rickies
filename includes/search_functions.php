@@ -319,7 +319,8 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 		'display' => '',
 	];
 
-	global $past_x_rickies;
+	global $past_x_keynote_rickies;
+	global $past_x_annual_rickies;
 
 	foreach ($metadata as $value => $visual) {
 		switch ($value) {
@@ -327,10 +328,10 @@ function pick_filter_expandable_sheet($categories, $rickies_events, $user_input 
 				$event_select = [
 					'annual' => emoji_select_spacing('📆') . 'Annual Rickies',
 					'keynote' => emoji_select_spacing('📽') . 'Keynote Rickies',
-					'annual-' . $past_x_rickies =>
-						emoji_select_spacing('📆') . 'Last ' . $past_x_rickies . ' Annual Rickies',
-					'keynote-' . $past_x_rickies =>
-						emoji_select_spacing('📽') . 'Last ' . $past_x_rickies . ' Keynote Rickies',
+					'annual-' . $past_x_annual_rickies =>
+						emoji_select_spacing('📆') . 'Last ' . $past_x_annual_rickies . ' Annual Rickies',
+					'keynote-' . $past_x_keynote_rickies =>
+						emoji_select_spacing('📽') . 'Last ' . $past_x_keynote_rickies . ' Keynote Rickies',
 					'wwdc' => emoji_select_spacing('💻') . 'WWDC Rickies',
 					'ungraded' => emoji_select_spacing('🟠') . 'Ungraded Rickies',
 					'euies' => emoji_select_spacing('🇪🇺') . 'EUies',
