@@ -1,4 +1,4 @@
-@use "variables" as var;
+@use 'variables' as var;
 
 html {
 	line-height: 1.5;
@@ -58,16 +58,15 @@ $statusbar: var.$iX-top;
 }
 
 .nav_content {
-	background-color: var(--connected-blue);
-	&.multicolor {
-		@include var.connected_background(40s);
-	}
-
 	padding: 0;
 	display: flex;
 	flex-direction: column;
 	overflow-x: auto;
 
+	background-color: var(--connected-blue);
+	&.multicolor {
+		@include var.connected_background(40s);
+	}
 	.nav_content--items {
 		display: flex;
 		flex-direction: row;

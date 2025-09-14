@@ -1,13 +1,13 @@
-@use "variables" as var;
-@use "global";
-@use "links";
-@use "special-links";
-@use "header";
-@use "menu-section";
-@use "logo-tag";
-@use "search";
-@use "modal-input";
-@use "footer";
+@use 'variables' as var;
+@use 'global';
+@use 'links';
+@use 'special-links';
+@use 'header';
+@use 'menu-section';
+@use 'logo-tag';
+@use 'search';
+@use 'modal-input';
+@use 'footer';
 
 html {
 	line-height: 1.5;
