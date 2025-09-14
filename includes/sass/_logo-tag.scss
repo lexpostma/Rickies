@@ -1,4 +1,4 @@
-@use "variables" as var;
+@use 'variables' as var;
 
 #header_corner {
 	position: absolute;
@@ -13,10 +13,10 @@
 	img {
 		width: 34px;
 		position: absolute;
-		right: 46px;
-		top: 5px;
-		right: calc(#{var.$iX-top} + 46px);
-		top: calc(#{var.$iX-top} + 5px);
+		left: 10px;
+		top: 10px;
+		left: calc(#{var.$iX-top} + 10px);
+		top: calc(#{var.$iX-top} + 10px);
 		transition: var.$pop-transition;
 	}
 	@media screen and (min-width: var.$break-md) {
@@ -27,10 +27,10 @@
 
 		img {
 			width: 44px;
-			top: 7px;
-			right: 65px;
-			top: calc(#{var.$iX-top} + 7px);
-			right: calc(#{var.$iX-top} + 65px);
+			top: 13px;
+			left: 13px;
+			top: calc(#{var.$iX-top} + 13px);
+			left: calc(#{var.$iX-top} + 13px);
 		}
 	}
 	@media (hover: hover) {
