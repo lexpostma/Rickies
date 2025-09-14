@@ -361,7 +361,10 @@ function episode_data($episode, $state = false)
 			// No custom image, fallback to local default
 			if ($episode['number'] && $episode['number'] < 304) {
 				// Old artwork
-				$episode['img_url'] = '/images/connected-artwork-old.jpg';
+				$episode['img_url'] = '/images/connected-artwork-until-303.jpg';
+			} elseif ($episode['number'] && $episode['number'] < 537) {
+				// Old artwork
+				$episode['img_url'] = '/images/connected-artwork-until-536.jpg';
 			} else {
 				// New artwork
 				$episode['img_url'] = '/images/connected-artwork.jpg';
