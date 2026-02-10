@@ -15,7 +15,7 @@
 		position: absolute;
 		left: 10px;
 		top: 10px;
-		left: calc(#{var.$iX-top} + 10px);
+		left: calc(#{var.$iX-left} + 10px);
 		top: calc(#{var.$iX-top} + 10px);
 		transition: var.$pop-transition;
 	}
